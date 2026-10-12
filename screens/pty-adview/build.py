@@ -1,4 +1,4 @@
-"""Inline every file in assets/ into one self-contained index.html."""
+"""Build self-contained index.html (prototype) and canvas.html (prototype + artboard) from the templates."""
 import base64, pathlib, re
 here = pathlib.Path(__file__).parent
 html = (here / 'template.html').read_text(encoding='utf-8')
@@ -20,3 +20,11 @@ html = html.replace('<script>\n(function () {', '<script>' + table + '</script>\
 assert 'assets/' not in html, 'unresolved asset path'
 (here / 'index.html').write_text(html, encoding='utf-8')
 print('index.html', len(html) // 1024, 'KB;', len(dyn), 'dynamic assets')
+
+# canvas.html: prototype + artboard frames, sharing one embedded copy of the page
+import json
+canvas = (here / 'canvas.template.html').read_text(encoding='utf-8')
+payload = json.dumps(html, ensure_ascii=False).replace('</', '<\\/')
+canvas = canvas.replace('/*__PROTO__*/', payload, 1)
+(here / 'canvas.html').write_text(canvas, encoding='utf-8')
+print('canvas.html', len(canvas) // 1024, 'KB')

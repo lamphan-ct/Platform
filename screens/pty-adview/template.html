@@ -86,13 +86,23 @@ a { color: inherit; text-decoration: none; }
   position: absolute; top: 11px; left: 50%; transform: translateX(-50%);
   width: 122px; height: 35px; border-radius: 20px; background: #000; z-index: 50; pointer-events: none;
 }
-@media (max-height: 880px) { .iphone { transform: scale(calc((100vh - 48px) / 832)); transform-origin: center; } }
+@media (max-height: 880px) { html:not(.embed) .iphone { transform: scale(calc((100vh - 48px) / 832)); transform-origin: center; } }
 @media (max-width: 427px) {
-  body { padding: 0; align-items: flex-start; }
-  .iphone { transform: none; width: 100%; height: 100vh; padding: 0; border-radius: 0; box-shadow: none; }
-  .iphone::before, .iphone::after, .island { display: none; }
-  .iphone-screen { width: 100%; height: 100%; border-radius: 0; }
+  html:not(.embed) body { padding: 0; align-items: flex-start; }
+  html:not(.embed) .iphone { transform: none; width: 100%; height: 100vh; padding: 0; border-radius: 0; box-shadow: none; }
+  html:not(.embed) .iphone::before, html:not(.embed) .iphone::after, html:not(.embed) .island { display: none; }
+  html:not(.embed) .iphone-screen { width: 100%; height: 100%; border-radius: 0; }
 }
+/* Embedded in canvas.html: transparent page, fixed-size device */
+html.embed, html.embed body { background: transparent; }
+html.embed body { padding: 40px; min-height: 0; }
+html.embed .iphone { box-shadow: 0 0 0 2px var(--device-edge), 0 12px 24px rgba(0,0,0,.16); }
+/* Artboard: static full-length 375px frame, no device chrome */
+html.artboard body { display: block; padding: 0; overflow: visible; min-height: 0; }
+html.artboard .iphone { width: 375px; height: auto; padding: 0; border-radius: 0; box-shadow: none; background: none; }
+html.artboard .iphone::before, html.artboard .iphone::after, html.artboard .island, html.artboard .toast { display: none; }
+html.artboard .iphone-screen { height: auto; border-radius: 0; }
+html.artboard .app-scroll { position: relative; overflow: visible; }
 .app-scroll {
   position: absolute; inset: 0; overflow-y: auto; overflow-x: hidden;
   scroll-behavior: smooth; scrollbar-width: none; background: var(--background-secondary);
@@ -1163,7 +1173,7 @@ a { color: inherit; text-decoration: none; }
     const base = scroller.getBoundingClientRect().top + 92 + 36 + 12;
     let cur = ids[0];
     ids.forEach(id => { const el = document.getElementById(id); if (el && el.getBoundingClientRect().top <= base) cur = id; });
-    if (st + scroller.clientHeight >= scroller.scrollHeight - 4) cur = ids[ids.length - 1];
+    if (!document.documentElement.classList.contains('artboard') && st + scroller.clientHeight >= scroller.scrollHeight - 4) cur = ids[ids.length - 1];
     if (cur !== lastActive) {
       lastActive = cur;
       allTabs().forEach(t => t.classList.toggle('active', t.dataset.target === cur));
