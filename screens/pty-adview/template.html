@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nhà Tốt AdView</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&display=swap" rel="stylesheet">
+<style>
+/* Nhà Tốt theme — CHOTOT DS v3.0 semantic tokens */
+:root {
+  --background-primary: #ffffff;
+  --background-secondary: #f4f4f4;
+  --background-tertiary: #e8e8e8;
+  --background-inverted: #222222;
+  --background-brand: #fa6819;
+  --background-error-light: #feebef;
+  --background-promo: #fb7328;
+  --background-overlay: rgba(0,0,0,.4);
+  --background-glass: rgba(255,255,255,.75);
+  --text-primary: #222222;
+  --text-secondary: #595959;
+  --text-tertiary: #8c8c8c;
+  --text-blank: #ffffff;
+  --text-on-background: #ffffff;
+  --text-brand: #fa6819;
+  --text-error: #f0325e;
+  --text-link: #306bd9;
+  --text-success: #12a154;
+  --text-promo: #fb7328;
+  --border-thin: #e8e8e8;
+  --border-divider: #f4f4f4;
+  --border-regular: #dddddd;
+  --border-bold: #8c8c8c;
+  --border-black: #222222;
+  --border-brand: #fa6819;
+  --border-active: #fa6819;
+  --icon-primary: #222222;
+  --icon-brand: #fa6819;
+  --interaction-brand-hover: #fb8f4a;
+  --interaction-brand-pressed: #e05a10;
+  --interaction-hover: rgba(34,34,34,.04);
+  --interaction-pressed: rgba(34,34,34,.08);
+  --chart-area: rgba(255,176,87,.23);
+  --chart-area-end: rgba(255,176,87,0);
+  --page-bg: #e9e7e4;
+  --device-body: #1b1b1d;
+  --device-edge: #3a3a3d;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  font-family: 'Reddit Sans', system-ui, sans-serif;
+  background: var(--page-bg);
+  color: var(--text-primary);
+  display: flex; align-items: center; justify-content: center;
+  min-height: 100vh; padding: 24px 16px; overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+button:focus-visible, a:focus-visible, input:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--border-active); outline-offset: 2px;
+}
+img { display: block; }
+a { color: inherit; text-decoration: none; }
+.ic { flex: none; }
+
+/* ---------- iPhone 14 Pro frame ---------- */
+.iphone {
+  position: relative; width: 395px; height: 832px; flex: none;
+  border-radius: 57px; padding: 10px;
+  background: var(--device-body);
+  box-shadow: 0 0 0 2px var(--device-edge), 0 30px 80px rgba(0,0,0,.28);
+}
+.iphone::before, .iphone::after { /* side buttons */
+  content: ""; position: absolute; width: 3px; background: var(--device-edge); border-radius: 2px;
+}
+.iphone::before { left: -4px; top: 170px; height: 64px; box-shadow: 0 84px 0 var(--device-edge); }
+.iphone::after { right: -4px; top: 220px; height: 100px; }
+.iphone-screen {
+  position: relative; width: 375px; height: 812px; border-radius: 47px; overflow: hidden;
+  background: var(--background-primary); isolation: isolate;
+}
+.island {
+  position: absolute; top: 11px; left: 50%; transform: translateX(-50%);
+  width: 122px; height: 35px; border-radius: 20px; background: #000; z-index: 50; pointer-events: none;
+}
+@media (max-height: 880px) { .iphone { transform: scale(calc((100vh - 48px) / 832)); transform-origin: center; } }
+@media (max-width: 427px) {
+  body { padding: 0; align-items: flex-start; }
+  .iphone { transform: none; width: 100%; height: 100vh; padding: 0; border-radius: 0; box-shadow: none; }
+  .iphone::before, .iphone::after, .island { display: none; }
+  .iphone-screen { width: 100%; height: 100%; border-radius: 0; }
+}
+.app-scroll {
+  position: absolute; inset: 0; overflow-y: auto; overflow-x: hidden;
+  scroll-behavior: smooth; scrollbar-width: none; background: var(--background-secondary);
+}
+.app-scroll::-webkit-scrollbar { display: none; }
+
+/* ---------- Floating header + status bar ---------- */
+.topbar {
+  position: absolute; top: 0; left: 0; right: 0; z-index: 30;
+  background: linear-gradient(to bottom, rgba(0,0,0,.5), rgba(0,0,0,0));
+  transition: background .3s ease, box-shadow .3s ease;
+}
+.statusbar { height: 44px; display: flex; align-items: center; justify-content: space-between; padding: 0 22px 0 32px; }
+.statusbar .time { font: 600 15px/20px -apple-system, 'SF Pro Text', system-ui, sans-serif; letter-spacing: -.24px; color: var(--text-blank); transition: color .3s; }
+.statusbar .sys { display: flex; gap: 5px; align-items: center; transition: filter .3s; }
+.navrow { height: 48px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; }
+.navrow .grp { display: flex; gap: 8px; }
+.glass-btn {
+  width: 36px; height: 36px; border-radius: 53px; display: grid; place-items: center;
+  background: var(--background-glass); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);
+  transition: background .2s, transform .1s;
+}
+.glass-btn:hover { background: rgba(255,255,255,.9); }
+.glass-btn:active { transform: scale(.94); }
+.nav-title {
+  flex: 1; margin: 0 12px; font-weight: 600; font-size: 14px; line-height: 20px; color: var(--text-primary);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; opacity: 0; transition: opacity .25s;
+}
+.topbar.solid { background: var(--background-primary); box-shadow: 0 1px 0 var(--border-thin); }
+.topbar.solid .time { color: var(--text-primary); }
+.topbar.solid .sys { filter: invert(1); }
+.topbar.solid .nav-title { opacity: 1; }
+.topbar.solid .glass-btn { background: transparent; }
+.topbar.solid .glass-btn:hover { background: var(--interaction-hover); }
+.sticky-tabs {
+  display: none; background: var(--background-primary);
+}
+.topbar.solid .sticky-tabs { display: block; }
+
+/* ---------- Tabs ---------- */
+.tabs {
+  display: flex; gap: 16px; height: 36px; padding: 0 16px; overflow-x: auto; scrollbar-width: none;
+  border-bottom: 1px solid var(--border-divider); background: var(--background-primary);
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tab {
+  flex: none; height: 100%; display: flex; align-items: center; white-space: nowrap;
+  font-weight: 500; font-size: 12px; line-height: 18px; color: var(--text-tertiary);
+  border-bottom: 2px solid transparent; transition: color .2s, border-color .2s;
+}
+.tab:hover { color: var(--text-secondary); }
+.tab.active { color: var(--text-primary); border-bottom-color: var(--border-black); }
+
+/* ---------- Hero ---------- */
+.hero { position: relative; height: 292px; background: var(--background-inverted); overflow: hidden; }
+.hero > img.photo { width: 100%; height: 100%; object-fit: cover; }
+.hero .play {
+  position: absolute; left: calc(50% + .5px); top: 50%; transform: translate(-50%,-50%);
+  padding: 14px; border-radius: 99px; background: var(--background-glass); backdrop-filter: blur(2px);
+  transition: transform .15s;
+}
+.hero .play:hover { transform: translate(-50%,-50%) scale(1.06); }
+.hero .chips { position: absolute; left: 0; right: 0; bottom: 0; display: flex; justify-content: space-between; padding: 10px 16px; }
+.pill-dark {
+  height: 24px; padding: 0 6px; border-radius: 6px; display: inline-flex; gap: 3px; align-items: center;
+  background: var(--background-overlay); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+  color: var(--text-blank); font-weight: 500; font-size: 12px; line-height: 18px;
+}
+
+/* ---------- Generic section ---------- */
+.sections { display: flex; flex-direction: column; gap: 6px; padding-bottom: 106px; }
+.sec { background: var(--background-primary); padding: 12px 16px; display: flex; flex-direction: column; gap: 8px; }
+.sec-head { display: flex; align-items: center; gap: 16px; min-height: 20px; }
+.sec-head .title { flex: 1; font-weight: 700; font-size: 18px; line-height: 26px; }
+.sec-head .title.sm { font-size: 16px; line-height: 24px; }
+.accent { width: 5px; height: 14px; border-radius: 9px; background: var(--background-brand); flex: none; margin-right: -6px; }
+.more-link {
+  display: inline-flex; align-items: center; gap: 0; color: var(--text-brand);
+  font-weight: 600; font-size: 14px; line-height: 20px; white-space: nowrap;
+}
+.more-link:hover { text-decoration: underline; }
+.more-link.medium { font-weight: 500; }
+.divider { height: 1px; background: var(--border-divider); width: 100%; flex: none; }
+.hscroll { display: flex; overflow-x: auto; scrollbar-width: none; margin: 0 -16px; padding: 0 16px; scroll-padding: 16px; scroll-snap-type: x proximity; }
+.hscroll::-webkit-scrollbar { display: none; }
+.hscroll > * { scroll-snap-align: start; flex: none; }
+.cap-12 { font-size: 12px; line-height: 18px; }
+.t2 { color: var(--text-secondary); }
+.t3 { color: var(--text-tertiary); }
+.w5 { font-weight: 500; } .w6 { font-weight: 600; } .w7 { font-weight: 700; }
+
+/* ---------- Overview ---------- */
+.ov { padding: 8px 16px 12px; gap: 10px; }
+.badges { display: flex; gap: 4px; margin-bottom: 4px; }
+.badge-partner {
+  height: 18px; padding: 1px 4px 1px 3px; border-radius: 5px; background: var(--background-promo);
+  display: inline-flex; gap: 2px; align-items: center; color: var(--text-blank); font-weight: 700; font-size: 11px; line-height: 18px;
+}
+.badge-p5 {
+  height: 18px; width: 94px; padding: 3px; border-radius: 4px; display: inline-flex; gap: 2px; align-items: center;
+  background: linear-gradient(109.6deg, #2a70df 2%, #4482e4 39%, #68a0f8 52%, #387ae2 65%, #2a70df 93%);
+  color: var(--text-blank); font-weight: 800; font-style: italic; font-size: 11px; line-height: 12px; letter-spacing: .2px; white-space: nowrap;
+}
+.badge-p5 b { color: #ffd84d; font-weight: 800; }
+.ov-title { display: flex; gap: 12px; }
+.ov-title h1 { flex: 1; font-weight: 700; font-size: 16px; line-height: 24px; }
+.save-btn {
+  align-self: center; width: 40px; padding: 4px 0; border: 1px solid var(--border-thin); border-radius: 8px;
+  display: flex; flex-direction: column; align-items: center; background: var(--background-primary);
+  font-weight: 700; font-size: 10px; line-height: 16px; transition: background .15s, transform .1s; white-space: nowrap;
+}
+.save-btn:hover { background: var(--interaction-hover); }
+.save-btn:active { transform: scale(.95); }
+.save-btn img { margin-bottom: -2px; }
+.meta { display: flex; gap: 16px; align-items: center; padding: 2px 0; color: var(--text-tertiary); font-weight: 500; font-size: 14px; line-height: 20px; }
+.meta span { display: inline-flex; gap: 4px; align-items: center; white-space: nowrap; }
+.meta sup, .sup { font-size: 9px; vertical-align: 5px; line-height: 0; }
+.price-row { display: flex; align-items: center; justify-content: space-between; }
+.price-row .l { display: flex; align-items: center; gap: 8px; }
+.price { font-weight: 700; font-size: 20px; line-height: 28px; color: var(--text-error); }
+.strike { font-weight: 600; font-size: 12px; line-height: 18px; color: var(--text-tertiary); text-decoration: line-through; }
+.vsep { width: 1px; height: 12px; background: var(--border-regular); }
+.discount { background: var(--background-error-light); color: var(--text-error); border-radius: 4px; padding: 0 4px; font-weight: 600; font-size: 12px; line-height: 18px; }
+.trend { display: inline-flex; align-items: center; color: var(--text-success); font-weight: 500; font-size: 12px; line-height: 18px; }
+.trend .arr { width: 20px; height: 20px; display: grid; place-items: center; }
+.addr { display: flex; gap: 12px; }
+.addr p { flex: 1; font-weight: 600; font-size: 14px; line-height: 20px; }
+.addr p .muted { font-weight: 400; color: var(--text-tertiary); }
+.addr img.thumb { width: 40px; height: 40px; border-radius: 8px; object-fit: cover; }
+.chip-attr {
+  height: 36px; padding: 7px 10px; border: 1px solid var(--border-thin); border-radius: 10px;
+  display: inline-flex; align-items: center; gap: 6px; font-weight: 500; font-size: 14px; line-height: 20px; white-space: nowrap;
+  max-width: 220px; background: var(--background-primary); transition: background .15s;
+}
+.chip-attr span { overflow: hidden; text-overflow: ellipsis; max-width: 160px; }
+.chip-attr:hover { background: var(--interaction-hover); }
+.attr-row { gap: 8px; }
+.subhead { display: flex; align-items: center; gap: 16px; }
+.subhead .t { flex: 1; font-weight: 600; font-size: 14px; line-height: 20px; }
+.desc { font-size: 14px; line-height: 20px; position: relative; }
+.desc .body { max-height: 120px; overflow: hidden; transition: max-height .35s ease; }
+.desc.open .body { max-height: 600px; }
+.desc .body p { min-height: 20px; }
+.desc a { color: var(--text-brand); font-weight: 500; text-decoration: none; }
+.desc a:hover { text-decoration: underline; }
+.desc .toggle {
+  position: absolute; right: 0; bottom: 0; padding-left: 40px; font-weight: 600; font-size: 14px; line-height: 20px;
+  background: linear-gradient(to right, rgba(255,255,255,0), var(--background-primary) 36px);
+}
+.desc.open .toggle { position: static; display: block; margin-left: auto; padding-left: 0; background: none; }
+.contact-card { border: 1px solid var(--border-black); border-radius: 20px; overflow: hidden; }
+.contact-card .top { display: flex; align-items: center; gap: 16px; padding: 0 16px; border-bottom: 1px solid var(--border-divider); }
+.contact-card .top .who { flex: 1; display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 14px; line-height: 20px; }
+.contact-card .lnk { color: var(--text-link); font-weight: 600; font-size: 14px; line-height: 20px; text-decoration: underline; padding: 16px 0; }
+.contact-card .lnk:hover { opacity: .8; }
+.contact-card .promo { display: flex; align-items: center; gap: 12px; padding: 10px 16px; }
+.contact-card .promo .txt { flex: 1; display: flex; align-items: center; gap: 6px; font-size: 12px; line-height: 18px; }
+.contact-card .promo .tk { background: var(--background-promo); border-radius: 4px; padding: 2px; }
+.contact-card .promo b { color: var(--text-promo); }
+.contact-card .promo .save { color: var(--text-promo); font-weight: 600; font-size: 14px; line-height: 20px; }
+.hesitate { display: flex; align-items: center; gap: 12px; }
+.hesitate::before, .hesitate::after { content: ""; flex: 1; height: 1px; background: var(--border-thin); }
+.hesitate span { font-size: 12px; line-height: 18px; color: var(--text-tertiary); }
+.nudge { display: flex; align-items: center; gap: 12px; }
+.nudge .r { flex: 1; display: flex; align-items: center; gap: 12px; padding: 10px 0; }
+.nudge.first .r { border-bottom: 1px solid var(--border-divider); }
+.nudge .r .tx { flex: 1; }
+.nudge .r .h { font-weight: 600; font-size: 14px; line-height: 20px; }
+.nudge .r .s { font-size: 12px; line-height: 18px; color: var(--text-secondary); }
+.nudge .act { font-weight: 600; font-size: 14px; line-height: 20px; padding: 6px 0; }
+.nudge .act:hover { text-decoration: underline; }
+
+/* ---------- Seller ---------- */
+.seller { gap: 12px; }
+.profile { display: flex; gap: 12px; align-items: flex-start; }
+.ava-wrap { position: relative; width: 52px; height: 52px; flex: none; }
+.ava { width: 48px; height: 48px; border-radius: 999px; border: 1px solid var(--border-divider); object-fit: cover; background: #f2f2f2; }
+.ava-follow { position: absolute; right: 0; bottom: 0; background: var(--background-primary); border: 1px solid var(--border-thin); border-radius: 99px; padding: 2px; transition: transform .15s; }
+.ava-follow.on { background: var(--background-brand); border-color: var(--background-brand); }
+.ava-follow.on img { filter: brightness(0) invert(1); transform: rotate(45deg); }
+.ava-follow img { transition: transform .2s; }
+.agent { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.agent .nm { font-weight: 700; font-size: 14px; line-height: 20px; }
+.agent .co { display: flex; gap: 16px; align-items: flex-start; }
+.agent .co p { flex: 1; font-size: 12px; line-height: 18px; color: var(--text-secondary); }
+.agent .co img { width: 28px; height: 28px; border-radius: 6px; border: 1.4px solid #fff; }
+.status { display: flex; align-items: center; gap: 6px; font-weight: 500; font-size: 12px; line-height: 18px; }
+.status i { width: 6px; height: 6px; border-radius: 50%; background: var(--text-success); }
+.proof { display: flex; gap: 12px; align-items: center; height: 18px; }
+.proof > span { display: inline-flex; gap: 4px; align-items: center; white-space: nowrap; }
+.proof b { font-weight: 500; font-size: 14px; line-height: 20px; }
+.proof small { font-size: 12px; line-height: 18px; color: var(--text-secondary); }
+.joined { display: flex; gap: 16px; font-weight: 500; font-size: 12px; line-height: 18px; white-space: nowrap; }
+.joined > span { display: flex; gap: 4px; min-width: 0; }
+.joined .k { color: var(--text-tertiary); }
+.joined .v { overflow: hidden; text-overflow: ellipsis; }
+.post-card {
+  width: 223px; display: flex; border: 1px solid var(--border-thin); border-radius: 14px; overflow: hidden; background: var(--background-primary);
+  transition: background .15s; text-align: left;
+}
+.post-card:hover { background: var(--interaction-hover); }
+.post-card img { width: 44px; height: 44px; border-radius: 8px; margin: 8px 0 8px 8px; object-fit: cover; }
+.post-card .d { padding: 10px 14px; }
+.post-card .d b { display: block; font-weight: 700; font-size: 14px; line-height: 20px; white-space: nowrap; }
+.post-card .d small { font-size: 12px; line-height: 18px; opacity: .8; }
+.gap12 { gap: 12px; }
+.ask-head b { display: block; font-weight: 700; font-size: 16px; line-height: 20px; }
+.ask-head small { font-weight: 500; font-size: 12px; line-height: 18px; color: var(--text-tertiary); }
+.ask-box { border: 2px solid var(--border-divider); border-radius: 20px; padding: 8px 12px; display: flex; flex-direction: column; gap: 8px; }
+.ask-who { display: flex; gap: 8px; align-items: center; height: 40px; }
+.ask-who img { width: 32px; height: 32px; border-radius: 999px; border: 1px solid var(--border-divider); object-fit: cover; }
+.ask-who b { display: block; font-weight: 600; font-size: 14px; line-height: 20px; }
+.ask-who small { font-weight: 500; font-size: 12px; line-height: 18px; color: var(--text-tertiary); }
+.qchips { display: flex; flex-wrap: wrap; gap: 6px 4px; }
+.qchip {
+  height: 28px; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--border-regular); background: var(--background-primary);
+  color: var(--text-secondary); font-weight: 600; font-size: 12px; line-height: 18px; display: inline-flex; gap: 3px; align-items: center; white-space: nowrap;
+  transition: background .15s, border-color .15s, color .15s;
+}
+.qchip:hover { background: var(--interaction-hover); }
+.qchip.on { background: var(--background-secondary); border-color: var(--border-bold); color: var(--text-primary); }
+.qchip .x { display: none; }
+.qchip.on .x { display: block; }
+.ask-input { display: flex; gap: 8px; align-items: center; }
+.ask-input input {
+  flex: 1; min-width: 0; height: 32px; border: 0; border-radius: 20px; padding: 0 16px; background: var(--background-secondary);
+  font: 500 12px/18px 'Reddit Sans', sans-serif; color: var(--text-primary); outline: none;
+}
+.ask-input input::placeholder { color: var(--text-tertiary); }
+.ask-input input:focus { box-shadow: inset 0 0 0 1px var(--border-active); }
+.btn-primary {
+  height: 32px; padding: 4px 12px; border-radius: 999px; background: var(--background-brand); color: var(--text-on-background);
+  font-weight: 700; font-size: 14px; line-height: 20px; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px;
+  transition: background .15s, transform .1s, opacity .15s;
+}
+.btn-primary:hover { background: var(--interaction-brand-hover); }
+.btn-primary:active { background: var(--interaction-brand-pressed); transform: scale(.97); }
+.btn-primary:disabled { opacity: .4; cursor: not-allowed; }
+.spinner { width: 14px; height: 14px; border: 2px solid rgba(255,255,255,.4); border-top-color: #fff; border-radius: 50%; animation: spin .7s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.privacy { display: flex; gap: 10px; align-items: center; font-size: 12px; line-height: 18px; color: var(--text-tertiary); }
+.privacy a { color: inherit; text-decoration: underline; }
+.shake { animation: shake .35s; }
+@keyframes shake { 20%,60% { transform: translateX(-4px); } 40%,80% { transform: translateX(4px); } }
+
+/* ---------- Price reference ---------- */
+.proj { display: flex; gap: 12px; align-items: center; }
+.proj .t { flex: 1; }
+.proj b { display: block; font-weight: 600; font-size: 14px; line-height: 20px; }
+.proj small { font-weight: 500; font-size: 12px; line-height: 18px; color: var(--text-tertiary); }
+.proj img { width: 40px; height: 40px; border-radius: 8px; object-fit: cover; }
+.range { position: relative; height: 60px; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; }
+.range .ind { display: flex; flex-direction: column; align-items: center; margin-bottom: -8px; position: relative; z-index: 2; }
+.tip { background: var(--background-inverted); color: var(--text-blank); border-radius: 4px; padding: 2px 6px; font-weight: 700; font-size: 12px; line-height: 18px; white-space: nowrap; }
+.tip-arrow { width: 0; height: 0; border-left: 8px solid transparent; border-right: 8px solid transparent; border-top: 8px solid var(--background-inverted); }
+.dash { height: 12px; border-left: 1px dashed var(--border-regular); }
+.bar { display: flex; width: 100%; height: 4px; }
+.bar i { flex: 1; background: var(--background-tertiary); }
+.bar i.mid { background: var(--background-brand); min-width: 161.5px; }
+.minmax { width: 191px; display: flex; justify-content: space-between; font-size: 12px; line-height: 18px; margin-top: 4px; }
+.price-note { text-align: center; font-size: 14px; line-height: 20px; }
+.price-note b { color: var(--text-brand); font-weight: 600; }
+.ptabs { display: flex; gap: 8px; border-bottom: 1px solid var(--border-divider); padding-top: 4px; }
+.ptab { flex: 1; display: flex; justify-content: center; }
+.ptab span { padding: 4px 0; font-size: 12px; line-height: 18px; border-bottom: 2px solid transparent; opacity: .5; transition: opacity .2s; }
+.ptab.active span { font-weight: 600; opacity: 1; border-bottom-color: var(--border-black); }
+.chart { position: relative; }
+.chart .tt { position: absolute; right: 0; top: 0; background: var(--background-inverted); color: var(--text-blank); border-radius: 4px; padding: 4px 8px; font-weight: 700; font-size: 10px; transition: left .15s, top .15s; }
+.chart .plot { display: flex; gap: 10px; margin-top: 21px; }
+.chart .yax { height: 130px; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-end; font-size: 11px; color: var(--text-tertiary); width: 26px; margin-top: -7px; }
+.chart svg { overflow: visible; }
+.chart .xax { display: flex; justify-content: space-between; padding-left: 36px; margin-top: 6px; font-weight: 500; font-size: 11px; color: var(--text-tertiary); }
+.chart .xax span:last-child { color: var(--text-primary); }
+.chart .alt { display: none; height: 151px; align-items: center; justify-content: center; font-size: 12px; color: var(--text-tertiary); }
+.chart.alt-on .main { display: none; } .chart.alt-on .alt { display: flex; }
+
+/* ---------- Locality ---------- */
+.loc { gap: 10px; }
+.rate-row { display: flex; align-items: center; gap: 16px; }
+.rate-row .l { flex: 1; display: flex; gap: 4px; align-items: center; font-weight: 700; font-size: 14px; line-height: 20px; }
+.rate-row .l big { font-size: 16px; line-height: 24px; font-weight: 700; display: inline-flex; gap: 2px; align-items: center; }
+.ellip { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cat-chip { height: 36px; padding: 6px 12px; border-radius: 99px; border: 1px solid var(--border-thin); display: inline-flex; gap: 4px; align-items: center; font-weight: 600; font-size: 14px; line-height: 20px; white-space: nowrap; }
+.cat-chip:hover { background: var(--interaction-hover); }
+.review { display: flex; gap: 12px; }
+.review img { width: 32px; height: 32px; border-radius: 999px; border: 1px solid var(--border-divider); object-fit: cover; }
+.review .n { font-weight: 500; font-size: 14px; line-height: 20px; }
+.review p { font-size: 14px; line-height: 20px; color: var(--text-secondary); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.review.open p { -webkit-line-clamp: unset; }
+.review .more { font-weight: 500; font-size: 14px; color: var(--text-secondary); text-decoration: underline; }
+.am-chip {
+  height: 36px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--border-regular); background: var(--background-primary);
+  display: inline-flex; gap: 4px; align-items: center; color: var(--text-secondary); font-weight: 600; font-size: 14px; line-height: 20px; white-space: nowrap;
+  transition: background .15s, color .15s;
+}
+.am-chip:hover { background: var(--interaction-hover); }
+.am-chip.on { background: var(--background-inverted); border-color: var(--background-inverted); color: var(--text-blank); }
+.am-chip.on img { filter: brightness(0) invert(1); }
+.am-row { height: 32px; display: flex; gap: 8px; align-items: center; padding: 2px 0; }
+.am-row .nm { flex: 1; font-weight: 500; font-size: 14px; line-height: 20px; }
+.am-row .ds { font-size: 12px; line-height: 18px; color: var(--text-secondary); text-decoration: underline; }
+.am-list { animation: fade .3s ease; }
+@keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+/* ---------- Feedback ---------- */
+.fb { align-items: center; gap: 12px; }
+.fb .q { position: relative; width: 100%; text-align: center; font-weight: 500; font-size: 14px; line-height: 20px; color: var(--text-secondary); }
+.fb .q button { position: absolute; right: 0; top: 0; }
+.emos { display: flex; gap: 16px; }
+.emo { width: 28px; height: 28px; border-radius: 50%; transition: transform .2s, opacity .2s, filter .2s; }
+.emo:hover { transform: scale(1.15); }
+.emos.picked .emo { opacity: .35; }
+.emos.picked .emo.on { opacity: 1; transform: scale(1.2); filter: sepia(1) saturate(6) hue-rotate(-15deg); }
+.fb .thanks { font-size: 12px; line-height: 18px; color: var(--text-success); font-weight: 500; display: none; }
+.emos.picked + .thanks { display: block; animation: fade .3s; }
+.report { width: 100%; display: flex; gap: 8px; }
+.report .l { flex: 1; display: flex; gap: 4px; align-items: center; font-weight: 500; font-size: 14px; line-height: 20px; color: var(--text-tertiary); }
+.report .r { display: flex; gap: 12px; }
+.report .r button { font-weight: 500; font-size: 14px; line-height: 20px; text-decoration: underline; }
+
+/* ---------- Listing cards (grid) ---------- */
+.gcard { width: 156px; border-radius: 12px; overflow: hidden; background: var(--background-primary); text-align: left; }
+.gcard .im { position: relative; width: 156px; height: 156px; border-radius: 6px; overflow: hidden; }
+.gcard .im > img.ph { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; }
+.gcard:hover .im > img.ph { transform: scale(1.04); }
+.gcard .ov2 { position: absolute; left: 0; right: 0; bottom: 0; display: flex; justify-content: space-between; padding: 12px 10px 8px; background: linear-gradient(to top, rgba(0,0,0,.75), rgba(0,0,0,0)); color: var(--text-blank); font-weight: 700; font-size: 10px; line-height: 16px; }
+.gcard .ov2 .cnt { display: flex; gap: 4px; align-items: center; }
+.gcard .ov2 .cnt span { display: inline-flex; gap: 2px; align-items: center; }
+.heart { position: absolute; right: 0; top: 0; width: 40px; height: 40px; display: grid; place-items: center; filter: drop-shadow(0 4px 4px rgba(89,89,89,.15)); }
+.heart img { grid-area: 1/1; transition: transform .2s; }
+.heart .on { opacity: 0; transform: scale(.6); }
+.heart.liked .on { opacity: 1; transform: scale(1); }
+.heart.liked .off { opacity: 0; }
+.gcard .info { padding: 8px 4px; display: flex; flex-direction: column; gap: 4px; }
+.gcard .ttl { height: 40px; font-size: 14px; line-height: 20px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.gcard .ttl .badge-partner { vertical-align: 1px; margin-right: 4px; }
+.gcard .params { display: flex; gap: 8px; font-size: 12px; line-height: 18px; color: var(--text-tertiary); white-space: nowrap; overflow: hidden; }
+.gcard .pr { display: flex; gap: 8px; align-items: center; white-space: nowrap; }
+.gcard .pr b { font-weight: 700; font-size: 14px; line-height: 20px; color: var(--text-error); }
+.gcard .pr small { font-weight: 500; font-size: 12px; line-height: 18px; }
+.gcard .lc { display: flex; gap: 4px; align-items: center; font-size: 12px; line-height: 18px; color: var(--text-tertiary); }
+
+/* ---------- Social posts ---------- */
+.spost { width: 278px; border: 2px solid var(--border-divider); border-radius: 16px; padding: 12px 16px; display: flex; flex-direction: column; gap: 6px; text-align: left; background: var(--background-primary); }
+.spost:hover { border-color: var(--border-thin); }
+.spost .hd { display: flex; gap: 8px; align-items: center; }
+.spost .hd img { width: 32px; height: 32px; border-radius: 999px; border: 1px solid var(--border-divider); object-fit: cover; }
+.spost .hd b { display: block; font-weight: 600; font-size: 14px; line-height: 20px; }
+.spost .hd small { font-size: 12px; line-height: 18px; color: var(--text-tertiary); }
+.spost .bd { display: flex; gap: 12px; align-items: flex-start; }
+.spost .bd p { flex: 1; font-size: 14px; line-height: 20px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.spost .bd img { width: 48px; height: 48px; border-radius: 8px; object-fit: cover; }
+.spost .ft { display: flex; gap: 6px; align-items: center; white-space: nowrap; }
+.spost .ft b { font-weight: 700; font-size: 16px; line-height: 24px; color: var(--text-error); }
+.spost .ft .a { font-weight: 600; font-size: 14px; line-height: 20px; }
+.spost .ft .vs { width: 1px; height: 12px; background: var(--border-regular); }
+.spost .ft .lc { display: flex; gap: 4px; align-items: center; font-size: 12px; line-height: 18px; color: var(--text-tertiary); }
+
+/* ---------- Top agents / searches ---------- */
+.agents-head { display: flex; gap: 8px; align-items: flex-start; }
+.agents-head .t { flex: 1; }
+.agents-head b { display: block; font-weight: 700; font-size: 16px; line-height: 24px; }
+.agents-head small { font-size: 12px; line-height: 18px; color: var(--text-tertiary); }
+.laurel { display: flex; gap: 4px; align-items: center; height: 29px; }
+.laurel img:first-child { transform: scaleX(-1); }
+.agent-card { width: 200px; border: 2px solid var(--border-divider); border-radius: 16px; padding: 10px 16px; display: flex; gap: 12px; align-items: center; text-align: left; background: var(--background-primary); transition: border-color .15s; }
+.agent-card:hover { border-color: var(--border-thin); }
+.agent-card .av { position: relative; width: 36px; height: 36px; flex: none; }
+.agent-card .av img.p { width: 36px; height: 36px; border-radius: 999px; object-fit: cover; border: 1px solid var(--border-divider); }
+.agent-card .vf { position: absolute; left: 22px; top: 22px; background: var(--background-brand); border: 1px solid #fff; border-radius: 99px; padding: 1.75px; }
+.agent-card .tx { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.agent-card .tx b { font-weight: 400; font-size: 14px; line-height: 20px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.agent-card .tx small { font-weight: 500; font-size: 12px; line-height: 18px; color: var(--text-tertiary); }
+.srch { display: flex; flex-direction: column; gap: 6px; overflow-x: auto; scrollbar-width: none; margin: 0 -16px; padding: 0 16px; }
+.srch::-webkit-scrollbar { display: none; }
+.srch .row { display: flex; gap: 6px; width: max-content; }
+.s-chip { height: 32px; padding: 4px 12px; border: 2px solid var(--border-thin); border-radius: 99px; display: inline-flex; gap: 4px; align-items: center; font-weight: 500; font-size: 14px; line-height: 20px; white-space: nowrap; background: var(--background-primary); }
+.s-chip:hover { background: var(--interaction-hover); }
+
+/* ---------- Similar (list cards) ---------- */
+.similar { padding: 12px 0 0; gap: 4px; }
+.similar .sec-head { padding: 0 16px 8px; }
+.lcards { display: flex; flex-direction: column; gap: 4px; background: var(--background-secondary); }
+.lcard { background: var(--background-primary); padding: 12px 16px; display: flex; gap: 12px; text-align: left; width: 100%; }
+.lcard .im { position: relative; width: 120px; flex: none; border-radius: 8px; overflow: hidden; background: var(--background-tertiary); }
+.lcard .im img.ph { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.lcard .im .bt { position: absolute; left: 0; right: 0; bottom: 0; display: flex; gap: 8px; align-items: center; padding: 6px 8px; background: linear-gradient(to bottom, rgba(34,34,34,0), rgba(34,34,34,.75)); color: #fff; font-size: 10px; line-height: 16px; }
+.lcard .im .bt span:first-child { flex: 1; font-weight: 600; }
+.lcard .im .bt span:last-child { display: inline-flex; gap: 2px; align-items: center; font-weight: 700; }
+.lcard .im .pl { position: absolute; left: calc(50% + 2px); top: 50%; transform: translate(-50%,-50%); width: 28px; height: 28px; border-radius: 999px; background: rgba(34,34,34,.5); display: grid; place-items: center; }
+.lcard .bd { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+.lcard .tl { display: flex; gap: 8px; align-items: flex-start; }
+.lcard .tl p { flex: 1; font-weight: 600; font-size: 14px; line-height: 20px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.fav-sm { height: 37px; padding: 4px 8px 3px; border: 1px solid var(--border-thin); border-radius: 8px; display: flex; flex-direction: column; align-items: center; font-weight: 500; font-size: 10px; line-height: 16px; background: var(--background-primary); flex: none; }
+.fav-sm img { margin-bottom: -2px; }
+.fav-sm:hover { background: var(--interaction-hover); }
+.lcard .proj-n { font-weight: 500; font-size: 12px; line-height: 18px; color: var(--text-tertiary); }
+.lcard .pm { position: relative; display: flex; gap: 8px; height: 24px; align-items: center; overflow: hidden; white-space: nowrap; font-weight: 500; font-size: 12px; line-height: 18px; }
+.lcard .pm::after { content: ""; position: absolute; right: 0; top: 0; width: 40px; height: 24px; background: linear-gradient(to left, #fff, rgba(255,255,255,0)); }
+.lcard .pm span { display: inline-flex; gap: 4px; align-items: center; }
+.lcard .lo { display: flex; gap: 4px; align-items: center; font-weight: 500; font-size: 12px; line-height: 18px; white-space: nowrap; overflow: hidden; }
+.lcard .lo .t3 { flex: none; }
+.lcard .sl { display: flex; gap: 5px; align-items: center; font-size: 12px; line-height: 18px; white-space: nowrap; }
+.lcard .sl img.a { width: 16px; height: 16px; border-radius: 999px; border: 1px solid var(--border-divider); }
+.lcard .sl .w5 { color: var(--text-primary); }
+.lcard .pc { text-align: right; }
+.lcard .pc b { font-weight: 600; font-size: 16px; line-height: 24px; color: var(--text-error); }
+.lcard .pc small { display: block; font-weight: 600; font-size: 12px; line-height: 18px; }
+
+/* ---------- Bottom action bar ---------- */
+.bottombar {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 30; background: var(--background-primary); border-top: 1px solid var(--border-thin);
+}
+.bottombar .row { display: flex; gap: 6px; align-items: center; padding: 8px 12px; }
+.act-btn { min-width: 50px; padding: 6px 12px; border: 1px solid var(--border-thin); border-radius: 10px; display: flex; flex-direction: column; align-items: center; font-weight: 700; font-size: 12px; line-height: 18px; background: var(--background-primary); transition: background .15s, transform .1s; white-space: nowrap; }
+.act-btn.narrow { width: 50px; padding: 6px 0; }
+.act-btn:hover { background: var(--interaction-hover); }
+.act-btn:active { transform: scale(.95); }
+.call-btn { flex: 1; height: 48px; border-radius: 8px; background: var(--background-brand); color: var(--text-on-background); font-weight: 700; font-size: 16px; line-height: 24px; padding: 12px 16px; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background .15s, transform .1s; white-space: nowrap; overflow: hidden; }
+.call-btn:hover { background: var(--interaction-brand-hover); }
+.call-btn:active { background: var(--interaction-brand-pressed); transform: scale(.98); }
+.home-ind { height: 34px; position: relative; }
+.home-ind::after { content: ""; position: absolute; left: 50%; bottom: 8px; transform: translateX(-50%); width: 134px; height: 5px; border-radius: 100px; background: var(--icon-primary); }
+
+/* ---------- Toast ---------- */
+.toast {
+  position: absolute; left: 50%; bottom: 118px; z-index: 40; transform: translate(-50%, 12px); opacity: 0; pointer-events: none;
+  background: var(--background-inverted); color: var(--text-blank); border-radius: 12px; padding: 10px 14px;
+  font-weight: 500; font-size: 14px; line-height: 20px; display: flex; gap: 8px; align-items: center; white-space: nowrap;
+  transition: opacity .25s, transform .25s; box-shadow: 0 8px 24px rgba(0,0,0,.2);
+}
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+.toast .ok { width: 18px; height: 18px; border-radius: 50%; background: var(--text-success); display: grid; place-items: center; }
+.toast .ok::after { content: ""; width: 8px; height: 4px; border: 2px solid #fff; border-top: 0; border-right: 0; transform: rotate(-45deg) translate(1px,-1px); }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+<div class="iphone" aria-label="Nhà Tốt — chi tiết tin đăng (iPhone 14 Pro)">
+  <div class="island" aria-hidden="true"></div>
+  <div class="iphone-screen">
+
+    <!-- Floating header -->
+    <header class="topbar" id="topbar">
+      <div class="statusbar" aria-hidden="true">
+        <span class="time">09:41</span>
+        <span class="sys">
+          <img src="assets/i69.png" width="17" height="10.67" alt="">
+          <img src="assets/i68.png" width="15.33" height="11" alt="">
+          <img src="assets/i67.png" width="24.33" height="11.33" alt="">
+        </span>
+      </div>
+      <div class="navrow">
+        <button class="glass-btn" aria-label="Quay lại"><img src="assets/i70.png" width="20" height="20" alt=""></button>
+        <span class="nav-title">Bán gấp căn nhà ở ngay chợ Bờ Ngựa, hưng nhơn, 5mx19,2m, giá 1 tỷ1</span>
+        <div class="grp">
+          <button class="glass-btn" aria-label="Chia sẻ" data-share><img src="assets/i71.png" width="20" height="20" alt=""></button>
+          <button class="glass-btn" aria-label="Thêm tuỳ chọn"><img src="assets/i72.png" width="20" height="20" alt=""></button>
+        </div>
+      </div>
+      <nav class="sticky-tabs" aria-label="Điều hướng nhanh (dính)"><div class="tabs" data-tabs></div></nav>
+    </header>
+
+    <main class="app-scroll" id="scroller">
+      <!-- Hero gallery -->
+      <section class="hero" aria-label="Thư viện ảnh">
+        <img class="photo" src="assets/hero.jpg" alt="Phòng khách căn hộ">
+        <button class="play" aria-label="Xem video"><img src="assets/i1.png" width="20" height="20" alt=""></button>
+        <div class="chips">
+          <span class="pill-dark">3 giờ trước</span>
+          <button class="pill-dark" aria-label="Xem 15 hình ảnh"><img src="assets/i0.png" width="12" height="12" alt="">Xem 15 hình ảnh</button>
+        </div>
+      </section>
+
+      <div class="sections">
+        <!-- Overview & description -->
+        <div>
+          <nav aria-label="Điều hướng nhanh"><div class="tabs" id="tabs" data-tabs>
+            <button class="tab active" data-target="sec-addr">Địa chỉ</button>
+            <button class="tab" data-target="sec-desc">Mô tả</button>
+            <button class="tab" data-target="sec-seller">Người đăng</button>
+            <button class="tab" data-target="sec-price">Tham khảo giá</button>
+            <button class="tab" data-target="sec-area">Khu vực</button>
+            <button class="tab" data-target="sec-similar">Tin tương tự</button>
+          </div></nav>
+          <section class="sec ov" id="sec-addr">
+            <div>
+              <div class="ov-title">
+                <div style="flex:1">
+                  <div class="badges">
+                    <span class="badge-partner"><img src="assets/i2.png" width="13" height="13" alt="">Đối Tác</span>
+                    <span class="badge-p5"><img src="assets/i3.png" width="12" height="12" alt="">PHÒNG <b>5 TỐT</b></span>
+                  </div>
+                  <h1>Bán gấp căn nhà ở ngay chợ Bờ Ngựa, hưng nhơn, 5mx19,2m, giá 1 tỷ1</h1>
+                </div>
+                <button class="save-btn" data-save aria-pressed="true">
+                  <img data-save-icon src="assets/i4.png" width="18" height="18" alt="">
+                  <span data-save-label>Đã lưu</span>
+                </button>
+              </div>
+              <div class="meta">
+                <span><img src="assets/i58.png" width="18" height="18" alt="Phòng ngủ">3</span>
+                <span><img src="assets/i62.png" width="18" height="18" alt="Phòng vệ sinh">2</span>
+                <span><img src="assets/i5.png" width="18" height="18" alt="Diện tích"><span>50m<sup>2</sup></span></span>
+                <span><img src="assets/i6.png" width="18" height="18" alt="Loại hình">Nhà mặt phố, mặt tiền</span>
+              </div>
+            </div>
+            <div>
+              <div class="price-row">
+                <div class="l">
+                  <span class="price">3,25 tỷ</span>
+                  <span class="strike">3,4 tỷ</span>
+                  <i class="vsep"></i>
+                  <span class="w6" style="font-size:14px;line-height:20px">45,69 tr/m²</span>
+                </div>
+                <span class="discount">Đã giảm 150tr</span>
+              </div>
+              <button class="trend" data-goto="sec-price"><span class="arr"><img src="assets/i7.png" width="8.33" height="8.33" alt=""></span>Giá đang thấp hơn trung bình khu vực<img src="assets/i8.png" width="16" height="16" alt=""></button>
+            </div>
+            <div class="divider"></div>
+            <div style="display:flex;flex-direction:column;gap:0">
+              <div class="addr">
+                <p>Đường Lê Quang Hòa, Phường Thạnh Xuân, Quận 12, Tp. Hồ Chí Minh. <span class="muted">(P. Thạnh Xuân, TP Hồ Chí Minh mới).</span></p>
+                <img class="thumb" src="assets/listthumb.png" alt="Bản đồ vị trí">
+              </div>
+              <button class="more-link medium" data-goto="sec-area" style="align-self:flex-start">Xem thông tin khu vực<img src="assets/i9.png" width="14" height="14" alt=""></button>
+            </div>
+            <div class="divider"></div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div class="subhead"><span class="t">Đặc điểm bất động sản</span><button class="more-link medium">Xem thêm<img src="assets/i9.png" width="14" height="14" alt=""></button></div>
+              <div class="hscroll attr-row">
+                <span class="chip-attr"><img src="assets/i5.png" width="18" height="18" alt=""><span>4x12m</span></span>
+                <span class="chip-attr"><img src="assets/i10.png" width="18" height="18" alt=""><span>Sổ chung / Công chứng vi bằng</span></span>
+                <span class="chip-attr"><img src="assets/i11.png" width="18" height="18" alt=""><span>Tầng 17</span></span>
+                <span class="chip-attr"><img src="assets/i12.png" width="18" height="18" alt=""><span>Nội thất cơ bản</span></span>
+                <span class="chip-attr"><img src="assets/i13.png" width="18" height="18" alt=""><span>Cửa: Đông Nam</span></span>
+                <span class="chip-attr"><img src="assets/i15.png" width="18" height="18" alt=""><span>Đã bàn giao</span></span>
+                <span class="chip-attr"><img src="assets/i13.png" width="18" height="18" alt=""><span>Ban công: Tây Bắc</span></span>
+                <span class="chip-attr"><img src="assets/i14.png" width="18" height="18" alt=""><span>Căn góc</span></span>
+                <span class="chip-attr"><img src="assets/i13.png" width="18" height="18" alt=""><span>Block B</span></span>
+                <span class="chip-attr"><img src="assets/i15.png" width="18" height="18" alt=""><span>B.207</span></span>
+                <button class="chip-attr">Xem thêm</button>
+              </div>
+            </div>
+            <div class="divider"></div>
+            <div style="display:flex;flex-direction:column;gap:12px" id="sec-desc">
+              <div style="display:flex;flex-direction:column;gap:2px">
+                <div class="subhead"><span class="t">Mô tả chi tiết</span></div>
+                <div class="desc" id="desc">
+                  <div class="body">
+                    <p>Chủ nhà thiện chí bán nhanh căn hộ 2PN 2WC với giá rất tốt:</p>
+                    <p>- Diện tích: 84m2</p>
+                    <p>- Có sổ hồng ( <a href="#" data-ask="Cho em xin hình sổ hồng ạ">Hỏi xem sổ</a> )</p>
+                    <p>- Tầng cao đẹp</p>
+                    <p>- Layout hợp lý, phòng khách và phòng ngủ rộng rãi, ban công phơi đồ riêng</p>
+                    <p>- Xem nhà ( <a href="#" data-ask="Em muốn hẹn lịch xem nhà ạ">Hẹn lịch xem nhà</a> ) dễ dàng</p>
+                    <p></p>
+                    <p>GIÁ BÁN TRONG THÁNG 4: Chỉ 7.700.000.000 VNĐ, thuế phí bên nào bên đó chịu. Tin thật 100%. Với cùng diện tích này, đảm bảo không có căn thứ 2 giá này, rẻ hơn thị trường.</p>
+                  </div>
+                  <button class="toggle" data-desc-toggle aria-expanded="false">Xem thêm</button>
+                </div>
+              </div>
+              <div class="contact-card">
+                <div class="top">
+                  <div class="who"><img src="assets/i16.png" width="24" height="24" alt="">Liên hệ: <span data-phone-mask>098765****</span></div>
+                  <a class="lnk" href="#" data-toast="Đang mở Zalo…">Zalo</a>
+                  <a class="lnk" href="#" data-call>Gọi ngay</a>
+                </div>
+                <div class="promo">
+                  <div class="txt"><span class="tk"><img src="assets/i17.png" width="14" height="14" alt=""></span><span><b>Tặng 100K</b> khi chốt giao dịch qua Chợ Tốt</span><img src="assets/i18.png" width="14" height="14" alt="Thông tin ưu đãi"></div>
+                  <button class="save" data-toast="Đã lưu ưu đãi Tặng 100K">Lưu</button>
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column">
+                <div class="hesitate"><span>Bạn còn đắn đo?</span></div>
+                <div class="nudge first">
+                  <img src="assets/i19.png" width="24" height="24" alt="">
+                  <div class="r"><div class="tx"><div class="h">Lưu tin để so sánh, cân nhắc sau</div><div class="s">Nhận thông báo khi chủ tin giảm giá</div></div><button class="act" data-save-text>Lưu tin</button></div>
+                </div>
+                <div class="nudge">
+                  <img src="assets/i20.png" width="24" height="24" alt="">
+                  <div class="r"><div class="tx"><div class="h">Hỏi bạn bè và người thân</div><div class="s">Hỏi thêm ý kiến trước khi liên hệ</div></div><button class="act" data-share>Chia sẻ</button></div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Seller & inquiry -->
+        <section class="sec seller" id="sec-seller">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div class="sec-head"><span class="title">Người đăng</span><button class="more-link">Xem trang<img src="assets/i9.png" width="14" height="14" alt=""></button></div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div class="profile">
+                <div class="ava-wrap">
+                  <img class="ava" src="assets/avatar.png" alt="Hiếu Nhà Đất Quận 12">
+                  <button class="ava-follow" data-follow aria-label="Theo dõi người đăng" aria-pressed="false"><img src="assets/i21.png" width="16" height="16" alt=""></button>
+                </div>
+                <div class="agent">
+                  <div class="nm">Hiếu Nhà Đất Quận 12</div>
+                  <div class="co"><p>Chi nhánh công Ty TNHH Thương Mại Dịch Vụ Bất Động Sản Mỹ Gia Hưng</p><img src="assets/badge.png" alt="Gia Hưng Property"></div>
+                  <div class="status"><i></i>Đang hoạt động</div>
+                </div>
+              </div>
+              <div class="proof">
+                <span><img src="assets/i22.png" width="16" height="16" alt="Facebook"><b data-followers>230</b><small>Followers</small></span>
+                <span><img src="assets/i23.png" width="16" height="16" alt="Đánh giá"><b>4.3</b><small>(12)</small></span>
+                <span><img src="assets/i24.png" width="16" height="16" alt="Tin đăng"><b>8 tin</b><small>(30 ngày)</small></span>
+              </div>
+              <div class="joined">
+                <span><span class="k">Tham gia:</span><span>Tháng 2, 2025</span></span>
+                <span style="flex:1"><span class="k">Chuyên:</span><span class="v">Quận Bình Tân, Quận 12, Quận Gò Vấp</span></span>
+              </div>
+              <div class="hscroll gap12">
+                <button class="post-card"><img src="assets/post1.png" alt=""><span class="d"><b>Nhà phố Quận 12</b><small>7 bài viết</small></span></button>
+                <button class="post-card"><img src="assets/post2.png" alt=""><span class="d"><b>Nhà phố Quận 12</b><small>7 bài viết</small></span></button>
+              </div>
+            </div>
+          </div>
+          <div class="divider" style="background:var(--border-thin)"></div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div class="ask-head"><b>Còn gì chưa rõ về căn này?</b><small>Hỏi thêm người bán</small></div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <div class="ask-box" id="askbox">
+                <div class="ask-who">
+                  <img src="assets/avatar.png" alt="">
+                  <div><b>Hiếu Nhà Đất Quận 7</b><small>Liên hệ tới {buyer_number}</small></div>
+                </div>
+                <div class="qchips" id="qchips">
+                  <button class="qchip on" aria-pressed="true">+ Sổ chung hay riêng z ạ?<img class="x" src="assets/i25.png" width="16" height="16" alt="Bỏ chọn"></button>
+                  <button class="qchip" aria-pressed="false">+ Có hỗ trợ trả góp ko sốp?<img class="x" src="assets/i25.png" width="16" height="16" alt="Bỏ chọn"></button>
+                  <button class="qchip" aria-pressed="false">+ Xin video/hình thực tế ạ<img class="x" src="assets/i25.png" width="16" height="16" alt="Bỏ chọn"></button>
+                  <button class="qchip" aria-pressed="false">+ Xin vị trí cụ thể nhé sốp<img class="x" src="assets/i25.png" width="16" height="16" alt="Bỏ chọn"></button>
+                  <button class="qchip" aria-pressed="false">+ Giá còn thương lượng ko ạ?<img class="x" src="assets/i25.png" width="16" height="16" alt="Bỏ chọn"></button>
+                </div>
+                <div class="ask-input">
+                  <input id="askinput" type="text" placeholder="Nhập câu hỏi khác..." aria-label="Nhập câu hỏi khác">
+                  <button class="btn-primary" id="asksend">Gửi câu hỏi</button>
+                </div>
+              </div>
+              <div class="privacy"><img src="assets/i26.png" width="20" height="20" alt=""><span>Khi gửi câu hỏi, thông tin SDT của bạn chỉ được gửi cho người đăng này. <a href="#">Điều khoản</a>.</span></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Price reference -->
+        <section class="sec" id="sec-price">
+          <div class="sec-head"><span class="title">Tham khảo giá</span></div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div class="proj"><div class="t"><b>Vinhomes Grand Park</b><small>Quận Bình Tân, Tp Hồ Chí Minh</small></div><img src="assets/map.png" alt="Vinhomes Grand Park"></div>
+            <div style="display:flex;flex-direction:column;gap:2px">
+              <div class="range">
+                <div class="ind"><span class="tip">45,69 tr/m²</span><i class="tip-arrow"></i><i class="dash"></i></div>
+                <div class="bar"><i></i><i class="mid"></i><i></i></div>
+                <div class="minmax"><span>40,5</span><span>51,7</span></div>
+              </div>
+              <p class="price-note">Đơn giá đang <b>thấp hơn</b> khoảng giá phổ biến tại Vinhome Grand Park</p>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <div class="ptabs" role="tablist">
+                <button class="ptab active" role="tab" aria-selected="true" data-ptab="0"><span>Lịch sử giá 1 năm qua</span></button>
+                <button class="ptab" role="tab" aria-selected="false" data-ptab="1"><span>Giá khu vực lân cận</span></button>
+              </div>
+              <div class="chart" id="chart">
+                <div class="main">
+                  <span class="tt" id="charttip">96.23 T10</span>
+                  <div class="plot">
+                    <div class="yax"><span>100</span><span>80</span><span>60</span><span>40</span><span>20</span><span>0</span></div>
+                    <svg id="chartsvg" width="297" height="130" viewBox="0 0 297 130" role="img" aria-label="Biểu đồ chỉ số giá 12 tháng, tăng từ T11 đến T10"></svg>
+                  </div>
+                  <div class="xax"><span>T11</span><span>T12</span><span>T1</span><span>T2</span><span>T3</span><span>T4</span><span>T5</span><span>T6</span><span>T7</span><span>T8</span><span>T9</span><span>T10</span></div>
+                </div>
+                <div class="alt" data-ds-speculative="true">Chưa có thiết kế cho tab “Giá khu vực lân cận”</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Locality reviews & amenities -->
+        <section class="sec loc" id="sec-area">
+          <div class="sec-head"><span class="title">Thông tin khu vực</span></div>
+          <div class="divider"></div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div>
+              <div class="rate-row">
+                <div class="l">Đánh giá từ cư dân · <big>4.0<img src="assets/i29.png" width="16" height="16" alt="sao"></big></div>
+                <button class="more-link">1.259 đánh giá<img src="assets/i30.png" width="14" height="14" alt=""></button>
+              </div>
+              <p class="ellip" style="font-size:14px;line-height:20px">P. Thạnh Xuân, Quận 12, Tp. Hồ Chí Minh.</p>
+            </div>
+            <div class="hscroll" style="gap:8px">
+              <button class="cat-chip">🚦 Giao thông <span class="t3">16</span></button>
+              <button class="cat-chip">👮‍♂️ An ninh <span class="t3">12</span></button>
+              <button class="cat-chip">🏬 Tiện ích <span class="t3">7</span></button>
+            </div>
+            <div class="review" id="review">
+              <img src="assets/resident.png" alt="">
+              <div style="flex:1;min-width:0">
+                <div class="n">Lê văn vũ</div>
+                <p>Khu phố này yên tĩnh, đường xá rộng rãi, tuy nhiên thường xuyên ngập nặng mỗi mùa mưa, đường sá xuống cấp trầm trọng. Tiếng ồn từ công trường xây dựng gần đó kéo dài vào buổi tối, ảnh hưởng tới sinh hoạt của các hộ gia đình xung quanh.</p>
+                <button class="more" data-review-toggle>Xem thêm</button>
+              </div>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div class="subhead"><span class="t w7">Tiện ích xung quanh · 72</span><button class="more-link medium">Xem thêm<img src="assets/i30.png" width="14" height="14" alt=""></button></div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <div class="hscroll" style="gap:8px" id="amchips">
+                <button class="am-chip" data-am="school"><img src="assets/i31.png" width="20" height="20" alt="">Trường học</button>
+                <button class="am-chip" data-am="market"><img src="assets/i32.png" width="20" height="20" alt="">Chợ, siêu thị</button>
+                <button class="am-chip on" data-am="hospital"><img src="assets/i34.png" width="20" height="20" alt="">Bệnh viện</button>
+                <button class="am-chip" data-am="pharmacy"><img src="assets/i34.png" width="20" height="20" alt="">Nhà thuốc</button>
+              </div>
+              <div class="am-list" id="amlist"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Buyer feedback -->
+        <section class="sec fb" id="sec-fb">
+          <div class="q">Tin rõ ràng và đáng tin cậy với bạn không?<button aria-label="Đóng khảo sát" data-close-fb><img src="assets/i36.png" width="20" height="20" alt=""></button></div>
+          <div class="emos" id="emos" role="radiogroup" aria-label="Mức độ tin cậy">
+            <button class="emo" role="radio" aria-checked="false" aria-label="Rất không tin cậy"><img src="assets/i37.png" width="28" height="28" alt=""></button>
+            <button class="emo" role="radio" aria-checked="false" aria-label="Không tin cậy"><img src="assets/i38.png" width="28" height="28" alt=""></button>
+            <button class="emo" role="radio" aria-checked="false" aria-label="Bình thường"><img src="assets/i39.png" width="28" height="28" alt=""></button>
+            <button class="emo" role="radio" aria-checked="false" aria-label="Tin cậy"><img src="assets/i40.png" width="28" height="28" alt=""></button>
+            <button class="emo" role="radio" aria-checked="false" aria-label="Rất tin cậy"><img src="assets/i41.png" width="28" height="28" alt=""></button>
+          </div>
+          <span class="thanks" data-ds-speculative="true">Cảm ơn bạn đã đánh giá!</span>
+          <div class="divider"></div>
+          <div class="report">
+            <span class="l"><img src="assets/i42.png" width="14" height="14" alt="">Báo cáo tin:</span>
+            <span class="r"><button data-toast="Đã gửi báo cáo: Tin không đúng mô tả">Tin không đúng mô tả</button><button data-toast="Đã gửi báo cáo: Tin đã bán">Tin đã bán</button></span>
+          </div>
+        </section>
+
+        <!-- Other ads from seller -->
+        <section class="sec">
+          <div class="sec-head"><i class="accent"></i><span class="title sm">Tin đăng khác từ người bán</span><button class="more-link medium">Xem thêm<img src="assets/i30.png" width="14" height="14" alt=""></button></div>
+          <div class="hscroll gap12" id="otherads"></div>
+        </section>
+
+        <!-- Social posts -->
+        <section class="sec">
+          <div class="sec-head"><i class="accent"></i><span class="title sm">Bài đăng từ mạng xã hội</span><button class="more-link medium">Xem thêm<img src="assets/i30.png" width="14" height="14" alt=""></button></div>
+          <div class="hscroll gap12" id="social"></div>
+        </section>
+
+        <!-- Top agents -->
+        <section class="sec">
+          <div class="agents-head">
+            <div class="t"><b>Top môi giới hoạt động tại Quận 7</b><small>Kết nối với môi giới có tin đăng phù hợp với bạn</small></div>
+            <div class="laurel" aria-hidden="true"><img src="assets/laurel.png" width="16" height="28" alt=""><img src="assets/laurel.png" width="16" height="28" alt=""></div>
+          </div>
+          <div class="hscroll" style="gap:8px" id="agents"></div>
+        </section>
+
+        <!-- Similar searches -->
+        <section class="sec">
+          <div class="sec-head"><span class="title sm">Tìm kiếm tương tự</span></div>
+          <div class="srch">
+            <div class="row">
+              <button class="s-chip"><img src="assets/i50.png" width="16" height="16" alt="">mua nhà q12</button>
+              <button class="s-chip"><img src="assets/i50.png" width="16" height="16" alt="">nhà hẻm phường Thạnh Xuân</button>
+              <button class="s-chip"><img src="assets/i50.png" width="16" height="16" alt="">nhà hẻm phường Thạnh Xuân</button>
+            </div>
+            <div class="row">
+              <button class="s-chip"><img src="assets/i50.png" width="16" height="16" alt="">Nhà quận 12 dưới 3 tỷ</button>
+              <button class="s-chip"><img src="assets/i50.png" width="16" height="16" alt="">Căn hộ quận 12 gần chợ</button>
+              <button class="s-chip">Có chỉnh chủ không ?</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Similar properties -->
+        <section class="sec similar" id="sec-similar">
+          <div class="sec-head"><i class="accent"></i><span class="title sm">Bất động sản tương tự</span><button class="more-link medium">Xem thêm<img src="assets/i30.png" width="14" height="14" alt=""></button></div>
+          <div class="lcards" id="similar"></div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Bottom action bar -->
+    <footer class="bottombar">
+      <div class="row">
+        <button class="act-btn" data-save aria-pressed="true"><img data-save-icon src="assets/i4.png" width="20" height="20" alt=""><span>Lưu</span></button>
+        <button class="act-btn narrow" data-toast="Đang kết nối tư vấn viên…"><img src="assets/i64.png" width="20" height="20" alt=""><span>Tư vấn</span></button>
+        <button class="act-btn" data-toast="Đang mở Zalo…"><img src="assets/i65.png" width="20" height="20" alt=""><span>Zalo</span></button>
+        <button class="act-btn" data-goto="sec-seller" data-focus-ask><img src="assets/i66.png" width="20" height="20" alt=""><span>Chat</span></button>
+        <button class="call-btn" data-call><span data-phone-btn>0908483***</span></button>
+      </div>
+      <div class="home-ind" aria-hidden="true"></div>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"><span class="ok"></span><span id="toasttxt"></span></div>
+  </div>
+</div>
+
+<script>
+(function () {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+  const scroller = $('#scroller'), topbar = $('#topbar');
+
+  /* ---------- Toast ---------- */
+  let tt;
+  function toast(msg) {
+    $('#toasttxt').textContent = msg;
+    $('#toast').classList.add('show');
+    clearTimeout(tt); tt = setTimeout(() => $('#toast').classList.remove('show'), 2000);
+  }
+  $$('[data-toast]').forEach(b => b.addEventListener('click', e => { e.preventDefault(); toast(b.dataset.toast); }));
+
+  /* ---------- Data-driven lists ---------- */
+  const ads = [
+    { img: 'ad1.jpg', title: 'Bán gấp căn hộ Sky Garden, giá siêu tốt', partner: false, params: ['2 PN', 'Chung cư'], price: '2,9 tỷ', extra: ['68 tr/m²', '47 m²'] },
+    { img: 'ad2.jpg', title: 'Bán gấp căn hộ Sky Garden, giá siêu tốt', partner: true, params: ['2 PN', 'Chung cư'], price: '2,9 tỷ', extra: ['68 tr/m²', '47 m²'] },
+    { img: 'ad3.jpg', title: 'Bán gấp căn hộ Sky Garden, giá siêu tốt', partner: false, params: ['2 PN', '256 GB', 'Còn bảo hành'], price: '2,9 tỷ', extra: ['68 tr/m²', '47 m²'] },
+    { img: 'ad4.jpg', title: 'Iphone 12 Promax 128 GB quốc tế', partner: true, params: ['iPhone 12 Promax', '128 GB', 'Còn bảo hành'], price: '6.800.000 đ', extra: [] }
+  ];
+  $('#otherads').innerHTML = ads.map(a => `
+    <a class="gcard" href="#" aria-label="${a.title}">
+      <div class="im">
+        <img class="ph" src="assets/${a.img}" alt="">
+        <div class="ov2"><span>2 giờ trước</span><span class="cnt"><span>6<img src="assets/i0.png" width="12" height="12" alt=""></span><img src="assets/i43.png" width="12" height="12" alt=""></span></div>
+        <button class="heart${a.liked ? ' liked' : ''}" aria-label="Lưu tin" aria-pressed="${!!a.liked}" data-heart><img class="off" src="assets/i45.png" width="20" height="20" alt=""><img class="on" src="assets/i4.png" width="20" height="20" alt=""></button>
+      </div>
+      <div class="info">
+        <div style="display:flex;flex-direction:column;gap:2px">
+          <p class="ttl">${a.partner ? '<span class="badge-partner"><img src="assets/i47.png" width="13" height="13" alt="">Đối Tác</span>' : ''}${a.title}</p>
+          <div class="params">${a.params.map(p => `<span>${p}</span>`).join('')}</div>
+          <div class="pr"><b>${a.price}</b>${a.extra.map(x => `<small>${x}</small>`).join('')}</div>
+        </div>
+        <div class="lc"><img src="assets/i46.png" width="12" height="12" alt="">Quận Bình Thạnh</div>
+      </div>
+    </a>`).join('');
+
+  $('#social').innerHTML = [0, 1].map(() => `
+    <a class="spost" href="#">
+      <div class="hd"><img src="assets/socav.png" alt=""><div style="min-width:0"><b class="ellip">Hiếu - Nhà Bình Thạnh</b><small>Facebook • 2 giờ trước</small></div></div>
+      <div class="bd"><p>Một cái máy ảnh không thể miêu tả hết vẻ đẹp choáng ngợp của <span class="t3">...Xem thêm</span></p><img src="assets/socimg.png" alt=""></div>
+      <div class="ft"><b>3,2 tỷ</b><span class="a">72 m<span class="sup">2</span></span><i class="vs"></i><span class="lc"><img src="assets/i48.png" width="16" height="16" alt="">Thành phố Thủ Đức</span></div>
+    </a>`).join('');
+
+  const agents = [
+    ['ag1.png', 'Vũ Thị Thảo', '18 tin đăng phù hợp', false],
+    ['ag2.png', 'Lê Mỹ Linh', '2 tin đăng phù hợp', false],
+    ['ag3.png', 'Võ Thành Đạt - Tư vấn viên Bất Động Sản', '18 tin đăng', false],
+    ['ag3.png', 'Võ Thành Đạt - Tư vấn viên Bất Động Sản', '18 tin đăng', true],
+    ['ag2.png', 'Lê Mỹ Linh', '18 tin đăng phù hợp', true],
+    ['ag1.png', 'Lê Văn C - Đại lý Bất Động Sản', '18 tin đăng', true]
+  ];
+  $('#agents').innerHTML = agents.map(([img, n, s, v]) => `
+    <a class="agent-card" href="#">
+      <span class="av"><img class="p" src="assets/${img}" alt="">${v ? '<span class="vf"><img src="assets/i49.png" width="10.5" height="10.5" alt="Đã xác thực"></span>' : ''}</span>
+      <span class="tx"><b>${n}</b><small>${s}</small></span>
+    </a>`).join('');
+
+  const params = {
+    type: (ic, t) => `<span><img src="assets/${ic}" width="14" height="14" alt="">${t}</span>`,
+    txt: t => `<span>${t}</span>`
+  };
+  const similar = [
+    { img: 'sp1.jpg', h: 158, title: '🍕 SANG NHƯỢNG GẤP QUÁN PIZZA KIỂU MỸ – DO CHỦ ĐI NƯỚC NGOÀI', proj: '',
+      pm: [params.type('i54.png', 'Officetel'), params.txt('5x14m'), params.txt('NT Cơ bản'), params.txt('Đã có sổ'), params.txt('Hướng Đông')],
+      seller: ['Hoàng Vinh', 'Cá nhân', '123 tin'] },
+    { img: 'sp2.jpg', h: 176, title: 'Đất An Phú Đông Bán Từ Xử Lý Nợ dư nợ 12ty bán 11ty Gấp', proj: 'Sunrise Riverside',
+      pm: [params.type('i56.png', 'Đất thổ cư'), params.txt('Ngang 5m'), params.txt('Đã có sổ'), params.txt('Hướng Đông')],
+      seller: ['Nguyễn Ngọc Land', 'Môi giới', '124 tin', true] },
+    { img: 'sp3.jpg', h: 174, title: 'Cần bán gấp Sunrise Riverside 2PN', proj: 'Sunrise Riverside',
+      pm: [params.type('i58.png', '2'), params.type('i62.png', '2'), params.type('i59.png', 'Duplex'), params.txt('NT Cơ bản'), params.txt('Đã có sổ'), params.txt('Hướng Đông')],
+      seller: ['Hoàng Vinh', 'Cá nhân', '123 tin'], shop: true },
+    { img: 'sp4.jpg', h: 176, title: 'CHÍNH CHỦ BÁN BIỆT THỰ SONG LẬP 186M2 SẴN SỔ CÔNG CHỨNG NGAY', proj: 'Sunrise Riverside',
+      pm: [params.type('i58.png', '2'), params.type('i62.png', '2'), params.txt('Nhà biệt thự'), params.txt('5x14m'), params.txt('Đã có sổ'), params.txt('NT Cơ bản'), params.txt('Hướng Đông')],
+      seller: ['Hoàng Vinh', 'Cá nhân', '123 tin'] }
+  ];
+  $('#similar').innerHTML = similar.map(s => `
+    <a class="lcard" href="#">
+      <div class="im" style="min-height:${s.h}px">
+        <img class="ph" src="assets/${s.img}" alt="">
+        <span class="pl"><img src="assets/i52.png" width="12" height="12" alt=""></span>
+        <div class="bt"><span>1 tuần trước</span><span>7<img src="assets/i51.png" width="12" height="12" alt=""></span></div>
+      </div>
+      <div class="bd">
+        <div class="tl"><p>${s.title}</p><button class="fav-sm" data-fav aria-pressed="false" aria-label="Lưu tin"><img src="assets/i53.png" width="16" height="16" alt="">Lưu</button></div>
+        ${s.proj ? `<div class="proj-n">${s.shop ? '<img src="assets/i60.png" width="14" height="14" alt="" style="display:inline;vertical-align:-2px;margin-right:4px">' : ''}${s.proj}</div>` : ''}
+        <div class="pm">${s.pm.join('')}</div>
+        <div class="lo"><img src="assets/i55.png" width="16" height="16" alt=""><span class="ellip">Tp. Thủ Đức (P. Bình Trưng)</span><span class="t3">· 400m</span></div>
+        <div class="sl"><img class="a" src="assets/spbadge.png" alt=""><span class="w5">${s.seller[0]}</span>${s.seller[3] ? '<img src="assets/i57.png" width="12" height="12" alt="" style="filter:invert(.55)">' : ''}<span class="t3">${s.seller[1]}</span><span class="t3">${s.seller[2]}</span></div>
+        <div class="pc"><b>50m<span class="sup">2</span> - 3,6 tỷ</b><small>73 tr/m²</small></div>
+      </div>
+    </a>`).join('');
+
+  /* ---------- Amenities ---------- */
+  const amenities = {
+    school: ['Trường THPT Thạnh Lộc', 'Trường Tiểu học Nguyễn Trãi', 'Trường Mầm non Hoa Mai'],
+    market: ['Chợ Bờ Ngựa', 'Bách Hoá Xanh Lê Quang Hoà', 'Co.opmart Quận 12'],
+    hospital: ['Bệnh viện Nam Sài Gòn', 'Bệnh viện Tâm Anh', 'Bệnh viện Quận 7'],
+    pharmacy: ['Nhà thuốc Long Châu', 'Nhà thuốc Pharmacity', 'Nhà thuốc An Khang']
+  };
+  const dists = { school: ['320m', '510m', '780m'], market: ['150m', '420m', '1,2km'], hospital: ['456m', '456m', '456m'], pharmacy: ['90m', '260m', '600m'] };
+  function renderAm(k) {
+    const el = $('#amlist');
+    el.innerHTML = amenities[k].map((n, i) => `<div class="am-row"><img src="assets/i35.png" width="16" height="16" alt=""><span class="nm ellip">${n}</span><a class="ds" href="#">${dists[k][i]}</a></div>`).join('');
+    el.classList.remove('am-list'); void el.offsetWidth; el.classList.add('am-list');
+  }
+  renderAm('hospital');
+  $$('#amchips .am-chip').forEach(c => c.addEventListener('click', () => {
+    $$('#amchips .am-chip').forEach(x => x.classList.toggle('on', x === c));
+    renderAm(c.dataset.am);
+  }));
+
+  /* ---------- Saved state (synced across 3 controls) ---------- */
+  let saved = true;
+  function setSaved(v, announce) {
+    saved = v;
+    $$('[data-save]').forEach(b => {
+      b.setAttribute('aria-pressed', v);
+      const ic = b.querySelector('[data-save-icon]');
+      ic.src = v ? 'assets/i4.png' : (b.classList.contains('act-btn') ? 'assets/i63.png' : 'assets/i53.png');
+      const lb = b.querySelector('[data-save-label]'); if (lb) lb.textContent = v ? 'Đã lưu' : 'Lưu';
+    });
+    $$('[data-save-text]').forEach(b => b.textContent = v ? 'Đã lưu' : 'Lưu tin');
+    if (announce) toast(v ? 'Đã lưu tin. Bạn sẽ nhận thông báo khi giảm giá' : 'Đã bỏ lưu tin');
+  }
+  $$('[data-save], [data-save-text]').forEach(b => b.addEventListener('click', () => setSaved(!saved, true)));
+
+  document.addEventListener('click', e => {
+    const h = e.target.closest('[data-heart]');
+    if (h) { e.preventDefault(); e.stopPropagation(); const on = h.classList.toggle('liked'); h.setAttribute('aria-pressed', on); toast(on ? 'Đã lưu tin' : 'Đã bỏ lưu tin'); return; }
+    const f = e.target.closest('[data-fav]');
+    if (f) {
+      e.preventDefault(); e.stopPropagation();
+      const on = f.getAttribute('aria-pressed') !== 'true';
+      f.setAttribute('aria-pressed', on); f.querySelector('img').src = on ? 'assets/i4.png' : 'assets/i53.png';
+      f.lastChild.textContent = on ? 'Đã lưu' : 'Lưu'; toast(on ? 'Đã lưu tin' : 'Đã bỏ lưu tin'); return;
+    }
+    const a = e.target.closest('a[href="#"]');
+    if (a && !a.dataset.ask && !a.dataset.toast && !a.hasAttribute('data-call')) e.preventDefault();
+  });
+
+  /* ---------- Follow ---------- */
+  $('[data-follow]').addEventListener('click', e => {
+    const b = e.currentTarget, on = b.getAttribute('aria-pressed') !== 'true';
+    b.setAttribute('aria-pressed', on); b.classList.toggle('on', on);
+    $('[data-followers]').textContent = on ? '231' : '230';
+    toast(on ? 'Đã theo dõi Hiếu Nhà Đất Quận 12' : 'Đã bỏ theo dõi');
+  });
+
+  /* ---------- Share ---------- */
+  $$('[data-share]').forEach(b => b.addEventListener('click', () => toast('Đã sao chép liên kết tin đăng')));
+
+  /* ---------- Phone reveal ---------- */
+  let revealed = false;
+  $$('[data-call]').forEach(b => b.addEventListener('click', e => {
+    e.preventDefault();
+    if (!revealed) {
+      revealed = true;
+      $('[data-phone-btn]').textContent = 'Gọi 0908483126';
+      $('[data-phone-mask]').textContent = '0987654321';
+      toast('Đã hiện số điện thoại người bán');
+    } else toast('Đang gọi 0908483126…');
+  }));
+
+  /* ---------- Description expand ---------- */
+  $('[data-desc-toggle]').addEventListener('click', e => {
+    const open = $('#desc').classList.toggle('open');
+    e.currentTarget.textContent = open ? 'Thu gọn' : 'Xem thêm';
+    e.currentTarget.setAttribute('aria-expanded', open);
+  });
+  $('[data-review-toggle]').addEventListener('click', e => {
+    const open = $('#review').classList.toggle('open');
+    e.currentTarget.textContent = open ? 'Thu gọn' : 'Xem thêm';
+  });
+
+  /* ---------- Ask seller ---------- */
+  const input = $('#askinput'), send = $('#asksend');
+  $$('#qchips .qchip').forEach(c => c.addEventListener('click', () => {
+    const on = !c.classList.contains('on');
+    c.classList.toggle('on', on); c.setAttribute('aria-pressed', on);
+  }));
+  $$('[data-ask]').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault(); input.value = a.dataset.ask; goTo('sec-seller'); setTimeout(() => input.focus({ preventScroll: true }), 450);
+  }));
+  send.addEventListener('click', () => {
+    const qs = $$('#qchips .qchip.on').map(c => c.textContent.trim());
+    if (input.value.trim()) qs.push(input.value.trim());
+    if (!qs.length) {
+      $('#askbox').classList.remove('shake'); void $('#askbox').offsetWidth; $('#askbox').classList.add('shake');
+      input.placeholder = 'Chọn câu hỏi gợi ý hoặc nhập câu hỏi'; input.focus(); return;
+    }
+    send.disabled = true; send.innerHTML = '<span class="spinner"></span>Đang gửi';
+    setTimeout(() => {
+      send.disabled = false; send.textContent = 'Gửi câu hỏi'; input.value = ''; input.placeholder = 'Nhập câu hỏi khác...';
+      $$('#qchips .qchip').forEach(c => { c.classList.remove('on'); c.setAttribute('aria-pressed', false); });
+      toast(`Đã gửi ${qs.length} câu hỏi tới người bán`);
+    }, 1100);
+  });
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') send.click(); });
+
+  /* ---------- Price tabs + chart ---------- */
+  const pts = [[0,26],[25,22],[49,33],[74,55],[98,62],[123,57],[147,42],[172,29],[196,17],[221,12],[245,9],[270,5]];
+  const vals = ['80.12','83.40','74.90','57.70','52.31','56.10','67.80','77.65','86.92','90.70','93.05','96.23'];
+  const months = ['T11','T12','T1','T2','T3','T4','T5','T6','T7','T8','T9','T10'];
+  const svg = $('#chartsvg');
+  const line = pts.map((p, i) => (i ? 'L' : 'M') + p.join(' ')).join(' ');
+  svg.innerHTML = `
+    <defs><linearGradient id="ga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--chart-area)"/><stop offset="1" stop-color="var(--chart-area-end)"/></linearGradient></defs>
+    ${[0,1,2,3,4,5].map(i => `<line x1="0" x2="297" y1="${i*26}" y2="${i*26}" stroke="var(--border-divider)"/>`).join('')}
+    <path d="${line} L297 1 L297 130 L0 130 Z" fill="url(#ga)"/>
+    <path d="${line} L297 1" fill="none" stroke="var(--background-brand)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+    <line id="cl" x1="270" x2="270" y1="5" y2="130" stroke="var(--border-regular)" stroke-dasharray="3 3"/>
+    <circle id="cdot" cx="270" cy="5" r="8" fill="var(--background-brand)" fill-opacity=".2"/><circle id="cdot2" cx="270" cy="5" r="4" fill="var(--background-brand)" stroke="#fff" stroke-width="1.5"/>
+    <rect x="0" y="0" width="297" height="130" fill="transparent" id="chit"/>`;
+  const tip = $('#charttip');
+  function setPt(i) {
+    const [x, y] = pts[i];
+    ['cl'].forEach(id => { svg.getElementById(id).setAttribute('x1', x); svg.getElementById(id).setAttribute('x2', x); svg.getElementById(id).setAttribute('y1', y); });
+    ['cdot', 'cdot2'].forEach(id => { svg.getElementById(id).setAttribute('cx', x); svg.getElementById(id).setAttribute('cy', y); });
+    tip.textContent = `${vals[i]} ${months[i]}`;
+    tip.style.right = 'auto'; tip.style.left = Math.min(36 + x - tip.offsetWidth / 2, 343 - tip.offsetWidth) + 'px';
+    $$('.xax span').forEach((s, j) => s.style.color = j === i ? 'var(--text-primary)' : '');
+  }
+  function onMove(e) {
+    const r = svg.getBoundingClientRect(), sc = r.width / 297;
+    const x = ((e.touches ? e.touches[0].clientX : e.clientX) - r.left) / sc;
+    let best = 0; pts.forEach((p, i) => { if (Math.abs(p[0] - x) < Math.abs(pts[best][0] - x)) best = i; });
+    setPt(best);
+  }
+  svg.addEventListener('mousemove', onMove); svg.addEventListener('touchmove', onMove, { passive: true });
+  svg.addEventListener('mouseleave', () => setPt(11));
+  requestAnimationFrame(() => setPt(11));
+  $$('[data-ptab]').forEach(t => t.addEventListener('click', () => {
+    $$('[data-ptab]').forEach(x => { x.classList.toggle('active', x === t); x.setAttribute('aria-selected', x === t); });
+    $('#chart').classList.toggle('alt-on', t.dataset.ptab === '1');
+  }));
+
+  /* ---------- Feedback ---------- */
+  $$('#emos .emo').forEach(b => b.addEventListener('click', () => {
+    $('#emos').classList.add('picked');
+    $$('#emos .emo').forEach(x => { x.classList.toggle('on', x === b); x.setAttribute('aria-checked', x === b); });
+  }));
+  $('[data-close-fb]').addEventListener('click', () => {
+    const s = $('#sec-fb'); s.style.transition = 'opacity .25s'; s.style.opacity = 0;
+    setTimeout(() => s.remove(), 250);
+  });
+
+  /* ---------- Tabs: anchor scroll + scrollspy + sticky header ---------- */
+  const stickyTabs = $('.sticky-tabs .tabs');
+  stickyTabs.innerHTML = $('#tabs').innerHTML;
+  const allTabs = () => $$('[data-tabs] .tab');
+  function goTo(id) {
+    const el = document.getElementById(id); if (!el) return;
+    const offset = 92 + 36 + 4;
+    scroller.scrollTo({ top: el.getBoundingClientRect().top - scroller.getBoundingClientRect().top + scroller.scrollTop - offset, behavior: 'smooth' });
+  }
+  allTabs().forEach(t => t.addEventListener('click', () => goTo(t.dataset.target)));
+  $$('[data-goto]').forEach(b => b.addEventListener('click', () => {
+    goTo(b.dataset.goto);
+    if (b.hasAttribute('data-focus-ask')) setTimeout(() => input.focus({ preventScroll: true }), 450);
+  }));
+  const ids = ['sec-addr', 'sec-desc', 'sec-seller', 'sec-price', 'sec-area', 'sec-similar'];
+  let lastActive = '';
+  function onScroll() {
+    const st = scroller.scrollTop;
+    topbar.classList.toggle('solid', st > 292 - 92);
+    const base = scroller.getBoundingClientRect().top + 92 + 36 + 12;
+    let cur = ids[0];
+    ids.forEach(id => { const el = document.getElementById(id); if (el && el.getBoundingClientRect().top <= base) cur = id; });
+    if (st + scroller.clientHeight >= scroller.scrollHeight - 4) cur = ids[ids.length - 1];
+    if (cur !== lastActive) {
+      lastActive = cur;
+      allTabs().forEach(t => t.classList.toggle('active', t.dataset.target === cur));
+      const at = stickyTabs.querySelector('.tab.active');
+      if (at && topbar.classList.contains('solid')) stickyTabs.scrollTo({ left: at.offsetLeft - 16, behavior: 'smooth' });
+    }
+  }
+  scroller.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+</body>
+</html>
