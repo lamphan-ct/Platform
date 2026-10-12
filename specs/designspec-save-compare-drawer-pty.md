@@ -12,7 +12,7 @@
 **Loading:** DS platform default — decided by design owner.
 
 > **Decisions vs PRD (design owner, 2026-10-12)** — PRD cần cập nhật theo các điểm này:
-> 1. Header: **không có nút X**; đóng bằng nút **“Đóng”**, chạm vùng tối, vuốt xuống, Back (Android). Link đổi thành **“Xem tin đã lưu”**.
+> 1. Header: **không có nút X**; đóng bằng nút **“Đóng”**, chạm vùng tối, vuốt xuống, Back (Android). Link đổi thành **“Xem tất cả”** (gạch chân, text-primary).
 > 2. **Bỏ tag “Tin vừa lưu”** — tin vừa lưu chỉ nằm đầu danh sách, chọn sẵn.
 > 3. Danh sách gợi ý chia **3 section có tiêu đề** (đã lưu → đã xem → tin khác trên Nhà Tốt), mỗi tin có **dòng nguồn + thời gian**.
 > 4. Đạt 4 tin: tin còn lại **không bị disable**; chạm → snackbar giới hạn.
@@ -42,7 +42,7 @@ checkpoints:
   - id: CP-04
     blocking: true
     topic: Icon DS names
-    detail: "[ICON: confirm DS name] cho: success circle (header), chevron-right (link), heart-fill / heart-outline (nguồn trên thumbnail), checkbox tick."
+    detail: "[ICON: confirm DS name] cho: success circle (header), heart-fill / heart-outline (nguồn trên thumbnail), checkbox tick."
   - id: CP-05
     blocking: false
     topic: Checkbox override
@@ -108,7 +108,7 @@ Screens:
 |---|---|---|
 | Nút Lưu (overview / bottom bar / nudge “Lưu tin”) | Tap khi chưa lưu | Gọi API lưu → thành công & có gợi ý → mở drawer; chặn tap lặp tới khi có kết quả |
 | Nút Đã lưu | Tap | Bỏ lưu → snackbar “Đã bỏ lưu.” + action “Đến trang Đã lưu” |
-| Link “Xem tin đã lưu” | Tap | Đóng drawer → mở Hoạt động › tab **Đã lưu** (`chotot-app://www.chotot.com/activity/da-luu`) |
+| Link “Xem tất cả” | Tap | Đóng drawer → mở Hoạt động › tab **Đã lưu** (`chotot-app://www.chotot.com/activity/da-luu`) |
 | Item row (toàn hàng) | Tap | Toggle chọn/bỏ chọn checkbox. **Không** mở AdView |
 | Item row khi đã chọn 4 | Tap tin chưa chọn | Không đổi trạng thái, không animation → snackbar “Chỉ được chọn tối đa 4 tin để so sánh” |
 | Nút “Đóng” | Tap | Đóng drawer (animation đóng) |
@@ -150,7 +150,7 @@ container:
         children:
           - icon: "[ICON: confirm DS name] success-circle-fill"   # 24, text-success (#12A154)
           - text: { value: "Đã lưu thành công", typo: display-annotation (18/26/700), color: text-primary (#222222), flex: 1 }
-          - link: { value: "Xem tin đã lưu", typo: header-caption (14/20/600), color: text-link (#306BD9), trailing-icon: "[ICON: confirm DS name] chevron-right 16" }
+          - link: { value: "Xem tất cả", typo: header-caption (14/20/600), color: text-primary (#222222), decoration: underline }
     - body:                          # source: .sh-body — scroll vertical
         children:
           - item-row: just-saved     # selected by default, no section header
@@ -223,10 +223,9 @@ item-row:                             # source: .pk-item
 | Scrim | background-overlay | rgba(34,34,34,0.50) |
 | Sheet, item bg | background-primary | #FFFFFF |
 | Thumbnail placeholder | background-tertiary | #E8E8E8 |
-| Title, ppm, Tertiary label | text-primary | #222222 |
+| Title, ppm, Tertiary label, header link | text-primary | #222222 |
 | Params, source, section header | text-secondary | #595959 |
 | Price | text-error | #F0325E |
-| Header link | text-link | #306BD9 |
 | Header success icon | text-success | #12A154 |
 | Dividers, Tertiary border | border-thin | #E8E8E8 |
 | Grabber | border-regular | #DDDDDD |
@@ -321,7 +320,7 @@ Proposal — CP-09 (PM/Data chốt tên & schema):
 | `save_ad_compare_drawer_item_select` / `_unselect` | Toggle tin | ad_id, source (saved/viewed/other), position |
 | `save_ad_compare_drawer_limit_reached` | Chạm tin thứ 5 | ad_id |
 | `save_ad_compare_drawer_submit` | Tap “So sánh (n/4)” | ad_ids, n |
-| `save_ad_compare_drawer_view_saved` | Tap “Xem tin đã lưu” | — |
+| `save_ad_compare_drawer_view_saved` | Tap “Xem tất cả” | — |
 | `save_ad_compare_drawer_close` | Đóng | method (button/scrim/swipe/back) |
 
 Màn So sánh dùng lại event STORY-002 (`screen_view_compare_result`, `save_ad_compare_result_*`).
