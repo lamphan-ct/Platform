@@ -231,8 +231,8 @@ item-row:                             # source: .pk-item
 | Grabber | border-regular | #DDDDDD |
 | Primary button bg (PTY) | button-primary | #FA6819 |
 | Primary button label | text-on-background | #FFFFFF |
-| Primary hover | interaction-brand-hover | #FB7328 |
-| Primary pressed | interaction-brand-pressed | #D14200 |
+| Primary hover | interaction-brand-hover | #FB8F4A |
+| Primary pressed | interaction-brand-pressed | #E05A10 |
 | Primary disabled bg | button-disabled | #C0C0C0 (label #FFFFFF) |
 | Tertiary hover / pressed | interaction-neutral-light-hover / -pressed | #E8E8E8 / #DADADA |
 | Checkbox checked bg + border | icon-brand (PTY) | #FA6819 |
@@ -265,8 +265,8 @@ Không có asset mới. Thumbnail = ảnh tin (user content). Icon dùng DS icon
 | State | Bg | Label |
 |---|---|---|
 | Default | button-primary #FA6819 | #FFFFFF |
-| Hover | interaction-brand-hover #FB7328 | #FFFFFF |
-| Pressed | interaction-brand-pressed #D14200 | #FFFFFF |
+| Hover | interaction-brand-hover #FB8F4A | #FFFFFF |
+| Pressed | interaction-brand-pressed #E05A10 | #FFFFFF |
 | Disabled (n < 2) | button-disabled #C0C0C0 | #FFFFFF |
 
 ### Button “Đóng” — Tertiary
