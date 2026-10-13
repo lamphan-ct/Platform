@@ -445,11 +445,11 @@ button{font:inherit;border:0;background:none;cursor:pointer;color:inherit}
 .sk-cb{width:20px;height:20px;margin:2px} .sk-th{width:64px;height:64px;border-radius:var(--radius-card-small)}
 .sk-l1{height:14px;width:90%} .sk-l2{height:14px;width:60%;margin-top:6px} .sk-l3{height:10px;width:40%;margin-top:6px}
 /* snackbar */
-.snack{position:absolute;left:16px;right:16px;bottom:34px;z-index:60;display:flex;align-items:center;gap:var(--gap-small-12);min-height:48px;padding:var(--padding-small-12) var(--padding-medium-16);border-radius:var(--radius-card-small);background:var(--background-inverted);opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .2s,transform .2s var(--ease-out)}
-.snack.up{bottom:92px}
+.snack{position:absolute;left:16px;right:16px;bottom:92px;z-index:60;display:flex;align-items:center;gap:var(--gap-small-12);min-height:48px;padding:var(--padding-small-12) var(--padding-medium-16);border-radius:var(--radius-card-small);background:var(--background-inverted);opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .2s,transform .2s var(--ease-out)}
+.snack.up{bottom:92px} /* above the sheet footer and the AdView bottom bar */
 .snack.show{opacity:1;transform:none;pointer-events:auto}
 .snack-msg{flex:1}
-.snack-act{text-decoration:underline;text-underline-offset:2px;min-height:44px;white-space:nowrap}
+.snack-act{text-decoration:underline;text-underline-offset:2px;min-height:48px;margin:-12px 0;white-space:nowrap}
 /* compare */
 .cmp{display:flex;flex-direction:column;flex:1;background:var(--background-primary);animation:slidein .3s var(--ease-out) both}
 .cmp-head{position:sticky;top:50px;z-index:5;display:flex;align-items:center;height:48px;padding-right:var(--padding-medium-16);background:var(--background-primary);border-bottom:var(--stroke-divider) solid var(--border-thin)}
