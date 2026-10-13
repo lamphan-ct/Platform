@@ -12,11 +12,13 @@
 **Loading:** DS platform default — decided by design owner.
 
 > **Decisions vs PRD (design owner, 2026-10-12)** — PRD cần cập nhật theo các điểm này:
-> 1. Header: **không có nút X**; đóng bằng nút **“Đóng”**, chạm vùng tối, vuốt xuống, Back (Android). Link đổi thành **“Xem tất cả”** (gạch chân, text-primary).
+> 1. Header: **không có nút X**, footer **không có nút “Đóng”** (feedback v2, 2026-10-13); đóng bằng chạm vùng tối, vuốt xuống, Back (Android). Link đổi thành **“Xem tất cả”** (gạch chân, text-primary).
 > 2. **Bỏ tag “Tin vừa lưu”** — tin vừa lưu chỉ nằm đầu danh sách, chọn sẵn.
-> 3. Danh sách gợi ý chia **3 section có tiêu đề** (đã lưu → đã xem → tin khác trên Nhà Tốt), mỗi tin có **dòng nguồn + thời gian**.
+> 3. Dưới tin vừa lưu có tiêu đề **“So sánh với tin tương tự”** + dòng filter (vd “Nhà ở • Mua bán • Quận 12, TP HCM • 3–4 tỷ”). Thứ tự: tin đã lưu (**không có tiêu đề riêng** — tim đỏ là đủ) → section “Chọn thêm tin đã xem - chưa lưu” → section “Tin khác trên Nhà Tốt”. Mỗi tin có **dòng nguồn + thời gian**.
 > 4. Đạt 4 tin: tin còn lại **không bị disable**; chạm → snackbar giới hạn.
-> 5. CTA label **“So sánh (n/4)”**.
+> 5. CTA label **“So sánh (n/4)”**, full width.
+> 6. Mỗi tin là **card** (viền, bo 12), checkbox bên phải, tin vừa lưu dùng chung bố cục (có tim). **Card được chọn**: viền cam brand + nền cam nhạt — phân biệt rõ với card chưa chọn.
+> 7. **Chạm bất kỳ đâu trên card** đều chọn/bỏ chọn (không cần chạm đúng ô tick).
 
 ---
 
@@ -109,9 +111,8 @@ Screens:
 | Nút Lưu (overview / bottom bar / nudge “Lưu tin”) | Tap khi chưa lưu | Gọi API lưu → thành công & có gợi ý → mở drawer; chặn tap lặp tới khi có kết quả |
 | Nút Đã lưu | Tap | Bỏ lưu → snackbar “Đã bỏ lưu.” + action “Đến trang Đã lưu” |
 | Link “Xem tất cả” | Tap | Đóng drawer → mở Hoạt động › tab **Đã lưu** (`chotot-app://www.chotot.com/activity/da-luu`) |
-| Item row (toàn hàng) | Tap | Toggle chọn/bỏ chọn checkbox. **Không** mở AdView |
+| Ad card (bất kỳ điểm nào trên card) | Tap | Toggle chọn/bỏ chọn — không cần chạm đúng ô tick. **Không** mở AdView |
 | Item row khi đã chọn 4 | Tap tin chưa chọn | Không đổi trạng thái, không animation → snackbar “Chỉ được chọn tối đa 4 tin để so sánh” |
-| Nút “Đóng” | Tap | Đóng drawer (animation đóng) |
 | Scrim | Tap | Đóng drawer |
 | Sheet | Vuốt xuống | Đóng drawer |
 | Back (Android) | Press | Đóng drawer |
@@ -154,8 +155,10 @@ container:
     - body:                          # source: .sh-body — scroll vertical
         children:
           - item-row: just-saved     # selected by default, no section header
-          - section-header: "Chọn thêm tin đã lưu"
-          - item-row[]: saved
+          - similar-header:          # source: .pk-sim — border-top 8px background-secondary, padding 16 16 8
+              - title:   { value: "So sánh với tin tương tự", typo: header-section (16/24/600), color: text-primary }
+              - filters: { value: "{category} • {ad_type} • {district}, {city} • {price_range}", typo: body-caption (12/18/400), color: text-secondary, separator: " • ", max-lines: 1 }
+          - item-row[]: saved        # no section header (red heart marks them)
           - section-header: "Chọn thêm tin đã xem - chưa lưu"
           - item-row[]: viewed
           - section-header: "Tin khác trên Nhà Tốt"
@@ -164,25 +167,28 @@ container:
         border-top: 1px border-thin (#E8E8E8)
         padding: 10 spacing-16 0      # checkpoint CP-03
         actions:
-          layout: row, gap: spacing-8, ratio: 30/70
-          - Button: { props: { type: Tertiary, size: Large, label: "Đóng" } }
-          - Button: { props: { type: Primary, size: Large, label: "So sánh (n/4)", disabled: "n < 2" } }
+          - Button: { props: { type: Primary, size: Large, label: "So sánh (n/4)", disabled: "n < 2" }, width: fill }   # no “Đóng” button
 
 section-header:                       # source: .pk-head
-  padding: spacing-20 spacing-16 spacing-4
+  padding: spacing-12 spacing-16 spacing-8
   typo: header-section (16/24/600)   # CP-01 resolved: mọi title đầu section dùng Header 16px
   color: text-secondary (#595959)
   divider: none (dùng divider dưới của item phía trên)
 
-item-row:                             # source: .pk-item
-  layout: row, align-start, gap: spacing-12
-  padding: spacing-12 spacing-16
-  background: background-primary (#FFFFFF)
-  divider-bottom: 1px border-thin (#E8E8E8)
-  hit-area: full row → toggles checkbox
+item-row:                             # source: .pk-item — card
+  layout: row, align-center, gap: spacing-12   # thumbnail · info · checkbox (right)
+  margin: 0 spacing-16 spacing-8
+  padding: spacing-12
+  radius: radius-card (12)
+  states:
+    unselected: { bg: background-primary (#FFFFFF), border: 1px border-thin (#E8E8E8) }
+    hover:      { border: 1px border-regular (#DDDDDD) }
+    selected:   { bg: "#FFF4EC (PTY brand-light — confirm DS token)", border: 1px border-brand (#FA6819) }
+  hit-area: TOÀN BỘ card → toggle chọn/bỏ chọn (thumbnail, text, khoảng trống, checkbox đều được). Không mở AdView.
+  a11y: cả card là 1 control role=checkbox
   children:
     - thumbnail:
-        size: 100x100
+        size: 88x88
         radius: radius-card-small (8)
         fit: cover
         placeholder: background-tertiary (#E8E8E8)
@@ -213,7 +219,6 @@ item-row:                             # source: .pk-item
 | Drawer | bottom sheet, grabber, scrim | Header/footer cố định, body cuộn |
 | Checkbox | override 24×24, radius 6 | CP-05 |
 | Button | Primary · Large · radius 8 | “So sánh (n/4)” — PTY brand |
-| Button | Tertiary · Large · radius 8 | “Đóng” |
 | SnackBar | full width, có/không action | Xem §Content Rules |
 
 ## Design Tokens Map
@@ -269,13 +274,6 @@ Không có asset mới. Thumbnail = ảnh tin (user content). Icon dùng DS icon
 | Pressed | interaction-brand-pressed #E05A10 | #FFFFFF |
 | Disabled (n < 2) | button-disabled #C0C0C0 | #FFFFFF |
 
-### Button “Đóng” — Tertiary
-| State | Bg | Border | Label |
-|---|---|---|---|
-| Default | #FFFFFF | border-thin #E8E8E8 | #222222 |
-| Hover | #E8E8E8 | #E8E8E8 | #222222 |
-| Pressed | #DADADA | #DADADA | #222222 |
-
 ## Content Rules
 
 | Field | Rule |
@@ -293,7 +291,7 @@ Không có asset mới. Thumbnail = ảnh tin (user content). Icon dùng DS icon
 | Chọn tin thứ 5 | Chỉ được chọn tối đa 4 tin để so sánh | — | none | 2s |
 | Bỏ lưu | Đã bỏ lưu. | Đến trang Đã lưu | none | 4s |
 
-Style: bg background-inverted (#222222), radius 12, padding spacing-12 × 14, label tagline-caption (14/20/500) #FFFFFF, action label-section (14/20/700) — action color: confirm DS SnackBar action token (prototype dùng #FFD400).
+Style: bg background-inverted (#222222), radius 8, min-height 48, padding spacing-12 × spacing-16, **không icon**, message body-section (14/20/400) text-blank #FFFFFF, action label-section (14/20/700) **#FFFFFF gạch chân** (đồng bộ link “Xem tất cả”; bỏ màu vàng #FFD400). Áp dụng cho mọi snackbar lưu/bỏ lưu trên AdView.
 
 ## Edge Cases
 
@@ -321,7 +319,7 @@ Proposal — CP-09 (PM/Data chốt tên & schema):
 | `save_ad_compare_drawer_limit_reached` | Chạm tin thứ 5 | ad_id |
 | `save_ad_compare_drawer_submit` | Tap “So sánh (n/4)” | ad_ids, n |
 | `save_ad_compare_drawer_view_saved` | Tap “Xem tất cả” | — |
-| `save_ad_compare_drawer_close` | Đóng | method (button/scrim/swipe/back) |
+| `save_ad_compare_drawer_close` | Đóng | method (scrim/swipe/back) |
 
 Màn So sánh dùng lại event STORY-002 (`screen_view_compare_result`, `save_ad_compare_result_*`).
 
@@ -390,7 +388,9 @@ Motion reference: prototype trên canvas (Play `Compare1Tap.dc.html`).
 - [ ] Dòng nguồn đúng copy + thời gian.
 - [ ] CTA “So sánh (n/4)” disabled khi n < 2; mở màn So sánh với tin đã chọn; Back giữ lựa chọn.
 - [ ] Đạt 4 tin: tin khác không disable, tap → snackbar giới hạn, không animation.
-- [ ] Đóng drawer bằng Đóng / scrim / vuốt / Back, có animation đóng.
+- [ ] Không có nút Đóng; đóng drawer bằng scrim / vuốt / Back, có animation đóng.
+- [ ] Chạm bất kỳ đâu trên card đều toggle chọn; card được chọn có viền cam + nền cam nhạt.
+- [ ] Có tiêu đề “So sánh với tin tương tự” + dòng filter; tin đã lưu không có tiêu đề section.
 - [ ] Bỏ lưu → snackbar “Đã bỏ lưu.” + “Đến trang Đã lưu”.
 - [ ] Màu Primary/Checkbox theo PTY; snackbar full width margin 16.
 - [ ] Motion đúng token; Reduce Motion tắt animation.
