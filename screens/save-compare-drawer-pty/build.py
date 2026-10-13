@@ -175,7 +175,7 @@ def drawer(c, sel=(0,), history=True, cta_bump='', dyn=False, closing=False, sho
         items = [p for p in POOL if p['src'] == src]
         if not history and src != 'other':
             continue
-        rows.append(f'<div class="pk-sec" {ds(ds="Section header", visible_if="section has ≥1 matching ad (PM/BE define)")}>{T("span", "header-caption", "text-secondary", title)}</div>')
+        rows.append(f'<div class="pk-sec" {ds(ds="Section header", visible_if="section has ≥1 matching ad (PM/BE define)")}>{T("span", "header-section", "text-secondary", title)}</div>')
         for p in items:
             k += 1
             rows.append(pick_item(c, p, p['id'] in sel, k * 25, ('{{v.c%d}}' % p['id'], '{{v.t%d}}' % p['id']) if dyn else None))
@@ -253,7 +253,7 @@ def compare(c, sel, dyn=False, proto=False):
     body = []
     labels = {'price': 'Giá', 'ppm': 'Đơn giá', 'area': 'Diện tích', 'legal': 'Pháp lý', 'type': 'Loại hình', 'bed': 'Phòng ngủ', 'wc': 'Phòng vệ sinh', 'furn': 'Nội thất', 'floors': 'Số tầng', 'dir': 'Hướng'}
     for title, keys in CMP_SECTIONS:
-        body.append(f'<div class="cmp-sec">{T("span", "header-caption", "text-primary", title)}</div>')
+        body.append(f'<div class="cmp-sec">{T("span", "header-section", "text-primary", title)}</div>')
         for key in keys:
             cells = []
             for p in shown:
@@ -410,7 +410,7 @@ button{font:inherit;border:0;background:none;cursor:pointer;color:inherit}
 .sh-link{text-decoration:underline;text-underline-offset:2px;min-height:48px;padding:0 4px;margin-right:-4px}
 .sh-body{overflow-y:auto;flex:1;scrollbar-width:none;padding-bottom:var(--padding-x-small-8)}
 .sh-body::-webkit-scrollbar{display:none}
-.pk-sec{display:flex;align-items:center;min-height:36px;padding:var(--padding-small-12) var(--padding-medium-16) var(--padding-2x-small-4);border-top:8px solid var(--background-secondary);margin-top:var(--padding-x-small-8)}
+.pk-sec{display:flex;align-items:center;min-height:40px;padding:var(--padding-small-12) var(--padding-medium-16) var(--padding-2x-small-4);border-top:8px solid var(--background-secondary);margin-top:var(--padding-x-small-8)}
 .pk-item{display:flex;align-items:center;gap:var(--gap-small-12);padding:var(--padding-small-12) var(--padding-medium-16);cursor:pointer;transition:background .15s,transform .12s;animation:cbenter .24s var(--ease-out) both;animation-delay:var(--d,0ms);outline:none}
 .pk-item:hover{background:var(--interaction-primary-hover)}
 .pk-item:active{transform:scale(.98)}
