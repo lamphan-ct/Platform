@@ -27,8 +27,8 @@ checkpoints:
   - id: CP-01
     blocking: false
     topic: Section header typography
-    detail: Prototype dùng 17/24 Medium (#595959) — không có trong DS scale.
-    proposal: body-page (16/24/400) + text-secondary
+    detail: RESOLVED — mọi title đầu section (drawer + màn So sánh) dùng header-section 16/24/600.
+    proposal: header-section (16/24/600) + text-secondary
   - id: CP-02
     blocking: false
     topic: Price-per-m² typography
@@ -170,7 +170,7 @@ container:
 
 section-header:                       # source: .pk-head
   padding: spacing-20 spacing-16 spacing-4
-  typo: "17/24/500 — checkpoint CP-01 (proposal body-page)"
+  typo: header-section (16/24/600)   # CP-01 resolved: mọi title đầu section dùng Header 16px
   color: text-secondary (#595959)
   divider: none (dùng divider dưới của item phía trên)
 
