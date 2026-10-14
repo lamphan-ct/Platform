@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Khách — Chợ Tốt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ds-tokens:start */
+/* DS tokens: Chợ Tốt (GDS), Figma export 2026-10-14. Inserted by scripts/ds_tokens.py inline; do not edit. */
+:root {
+  --logo-primary: #ffba00;
+  --logo-secondary: #ffba00;
+  --logo-on-black: #ffffff;
+  --border-divider: #f4f4f4;
+  --border-thin: #e8e8e8;
+  --border-overlay: #ffffff80;
+  --border-regular: #dddddd;
+  --border-bold: #8c8c8c;
+  --border-active: #ffd400;
+  --border-blank: #ffffff;
+  --border-brand: #ffd400;
+  --border-info: #306bd9;
+  --border-success: #12a154;
+  --border-error: #f0325e;
+  --border-warning: #fb7328;
+  --border-disabled: #c0c0c0;
+  --border-black: #222222;
+  --background-brand-light: #fff8d6;
+  --background-chotot-light: #fff8d6;
+  --background-primary: #ffffff;
+  --background-app: #f7f7f7;
+  --background-secondary: #f4f4f4;
+  --background-tertiary: #e8e8e8;
+  --background-disable: #c0c0c0;
+  --background-error-light: #feebef;
+  --background-info-light: #f2f6fc;
+  --background-success-light: #ecf9f1;
+  --background-warning-light: #fff4ec;
+  --background-brand: #ffd400;
+  --background-appwrapper: #ffd400;
+  --background-chotot: #ffd400;
+  --background-info: #306bd9;
+  --background-error: #f0325e;
+  --background-success: #12a154;
+  --background-warning: #fb7328;
+  --background-inverted: #222222;
+  --background-overlay: #22222280;
+  --background-overlay-inverted: #ffffff1a;
+  --text-brand: #cc8f00;
+  --text-on-background: #222222;
+  --text-primary: #222222;
+  --text-secondary: #595959;
+  --text-tertiary: #8c8c8c;
+  --text-link: #306bd9;
+  --text-error: #f0325e;
+  --text-success: #12a154;
+  --text-info: #306bd9;
+  --text-warning: #fb7328;
+  --text-chotot: #ffd400;
+  --text-disabled: #c0c0c0;
+  --text-blank: #ffffff;
+  --text-overlay: #ffffffbf;
+  --text-overlay-secondary: #ffffff80;
+  --icon-brand: #ffba00;
+  --icon-chotot: #ffba00;
+  --icon-chotot-bold: #cc8f00;
+  --icon-on-background: #222222;
+  --icon-primary: #222222;
+  --icon-secondary: #595959;
+  --icon-tertiary: #8c8c8c;
+  --icon-blank: #ffffff;
+  --icon-info: #306bd9;
+  --icon-success: #12a154;
+  --icon-error: #f0325e;
+  --icon-warning: #fb7328;
+  --icon-disabled: #c0c0c0;
+  --interaction-chotot-hover: #ffe884;
+  --interaction-chotot-pressed: #ffc800;
+  --interaction-brand-hover: #ffe884;
+  --interaction-brand-pressed: #ffba00;
+  --interaction-error-hover: #f35b7e;
+  --interaction-error-pressed: #cb294e;
+  --interaction-info-hover: #548af0;
+  --interaction-info-pressed: #1952ba;
+  --interaction-success-hover: #26c06e;
+  --interaction-success-pressed: #108446;
+  --interaction-warning-hover: #ffa97b;
+  --interaction-warning-pressed: #e16725;
+  --interaction-neutral-hover: #595959;
+  --interaction-neutral-pressed: #404040;
+  --interaction-primary-hover: #f4f4f4;
+  --interaction-brand-light-hover: #fff8d6;
+  --interaction-brand-light-pressed: #ffd400;
+  --interaction-error-light-hover: #fcd6df;
+  --interaction-error-light-pressed: #fbc2cf;
+  --interaction-info-light-hover: #e4ecfb;
+  --interaction-info-light-pressed: #cadbf7;
+  --interaction-success-light-hover: #d9f2e4;
+  --interaction-success-light-pressed: #abe7c5;
+  --interaction-warning-light-hover: #ffe4d5;
+  --interaction-warning-light-pressed: #ffceb4;
+  --interaction-neutral-light-hover: #e8e8e8;
+  --interaction-neutral-light-pressed: #dddddd;
+  --button-primary: #ffd400;
+  --button-info: #306bd9;
+  --button-success: #12a154;
+  --button-error: #f0325e;
+  --button-chotot: #ffd400;
+  --button-blank: #ffffff;
+  --button-disabled: #c0c0c0;
+  --button-appwrapper: #ffd400;
+  --button-neutral: #222222;
+  --button-secondary: #fff8d6;
+  --button-tonal-success: #ecf9f1;
+  --button-tonal-error: #feebef;
+  --button-tonal-info: #f2f6fc;
+  --button-tonal-neutral: #f4f4f4;
+  --skeleton-background: #f4f4f4;
+  --skeleton-item: #e8e8e8;
+  --gap-min-2: 2px;
+  --gap-2x-small-4: 4px;
+  --gap-2x-small-6: 6px;
+  --gap-x-small-8: 8px;
+  --gap-small-12: 12px;
+  --gap-medium-16: 16px;
+  --gap-large-20: 20px;
+  --padding-min-2: 2px;
+  --padding-2x-small-4: 4px;
+  --padding-2x-small-6: 6px;
+  --padding-x-small-8: 8px;
+  --padding-small-12: 12px;
+  --padding-medium-16: 16px;
+  --padding-large-20: 20px;
+  --radius-ad-small: 4px;
+  --radius-ad: 6px;
+  --radius-card-small: 8px;
+  --radius-card: 12px;
+  --radius-decoration: 16px;
+  --radius-modal: 20px;
+  --radius-pill: 999px;
+  --stroke-divider: 1px;
+  --stroke-action: 2px;
+  --stroke-emphasize: 3px;
+}
+.t-display-page { font: 700 32px/40px 'Reddit Sans', sans-serif; }
+.t-display-section { font: 700 24px/32px 'Reddit Sans', sans-serif; }
+.t-display-caption { font: 700 20px/28px 'Reddit Sans', sans-serif; }
+.t-header-page { font: 600 20px/28px 'Reddit Sans', sans-serif; }
+.t-display-annotation { font: 700 18px/26px 'Reddit Sans', sans-serif; }
+.t-display-price { font: 600 18px/26px 'Reddit Sans', sans-serif; }
+.t-label-page { font: 700 16px/24px 'Reddit Sans', sans-serif; }
+.t-header-section { font: 600 16px/24px 'Reddit Sans', sans-serif; }
+.t-tagline-section { font: 500 16px/20px 'Reddit Sans', sans-serif; }
+.t-body-page { font: 400 16px/24px 'Reddit Sans', sans-serif; }
+.t-label-section { font: 700 14px/20px 'Reddit Sans', sans-serif; }
+.t-header-caption { font: 600 14px/20px 'Reddit Sans', sans-serif; }
+.t-tagline-caption { font: 500 14px/20px 'Reddit Sans', sans-serif; }
+.t-body-section { font: 400 14px/20px 'Reddit Sans', sans-serif; }
+.t-label-caption { font: 700 12px/18px 'Reddit Sans', sans-serif; }
+.t-header-annotation { font: 600 12px/18px 'Reddit Sans', sans-serif; }
+.t-tagline-annotation { font: 500 12px/18px 'Reddit Sans', sans-serif; }
+.t-body-caption { font: 400 12px/18px 'Reddit Sans', sans-serif; }
+.t-label-annotation { font: 700 10px/16px 'Reddit Sans', sans-serif; }
+.t-tagline-footext { font: 500 10px/16px 'Reddit Sans', sans-serif; }
+.t-body-annotation { font: 400 10px/16px 'Reddit Sans', sans-serif; }
+/* ds-tokens:end */
+
+*{box-sizing:border-box;margin:0}
+html,body{background:var(--background-app);color:var(--text-primary);font-family:'Reddit Sans',system-ui,sans-serif}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+button:focus-visible,[tabindex]:focus-visible,textarea:focus-visible{outline:2px solid var(--border-info);outline-offset:2px}
+.ds-icon{width:24px;height:24px;flex:none;color:var(--icon-primary);vertical-align:middle}
+.ds-icon--20{width:20px;height:20px}.ds-icon--16{width:16px;height:16px}
+.ds-icon--12{width:12px;height:12px} /* ds-raw: tag-fill 12px trong nhãn, theo Figma */
+
+/* ---------- NavBar Desktop (DS) ---------- */
+.nav{position:sticky;top:0;z-index:30;height:64px;display:flex;align-items:center;gap:var(--gap-medium-16);padding:0 var(--padding-medium-16);background:var(--background-primary);border-bottom:1px solid var(--border-divider)}
+.nav-left{display:flex;align-items:center;gap:var(--gap-x-small-8)}
+.nav-left img{height:32px;display:block} /* ds-raw: chiều cao logo navbar */
+.icon-btn{position:relative;width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;border-radius:var(--radius-pill);transition:background .2s}
+.icon-btn:hover{background:var(--interaction-neutral-light-hover)}
+.icon-btn:active{background:var(--interaction-neutral-light-pressed)}
+.loc{height:40px;display:inline-flex;align-items:center;gap:var(--gap-2x-small-4);padding:0 var(--padding-small-12);background:var(--button-secondary);border:var(--stroke-action) solid var(--border-brand);border-radius:var(--radius-pill)}
+.loc:hover{background:var(--interaction-neutral-light-hover)}
+.loc .ds-icon{color:var(--icon-brand)}
+.search{flex:1;max-width:560px;height:40px;display:flex;align-items:center;gap:var(--gap-x-small-8);padding:0 var(--padding-2x-small-4) 0 var(--padding-small-12);background:var(--background-secondary);border-radius:var(--radius-pill)}
+.search input{flex:1;border:0;background:transparent;font:inherit;color:var(--text-primary);outline:0}
+.search input::placeholder{color:var(--text-tertiary)}
+.search .ds-icon{color:var(--icon-tertiary)}
+.search-go{width:32px;height:32px;border-radius:var(--radius-pill);background:var(--button-primary);display:inline-flex;align-items:center;justify-content:center}
+.search-go:hover{background:var(--interaction-brand-hover)}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:var(--gap-x-small-8)}
+.badge{position:absolute;top:2px;right:0;min-width:20px;padding:0 var(--padding-2x-small-4);background:var(--background-error);border:var(--stroke-action) solid var(--border-blank);border-radius:var(--radius-pill);color:var(--text-blank);text-align:center}
+.avatar-pill{height:40px;display:inline-flex;align-items:center;gap:var(--gap-2x-small-4);padding:0 var(--padding-x-small-8) 0 var(--padding-2x-small-4);border:1px solid var(--border-thin);border-radius:var(--radius-pill);background:var(--button-blank)}
+.avatar-pill:hover{background:var(--interaction-primary-hover)}
+
+/* ---------- Button (DS) ---------- */
+.btn{height:32px;display:inline-flex;align-items:center;justify-content:center;gap:var(--gap-2x-small-4);padding:var(--padding-2x-small-4) var(--padding-small-12);border-radius:var(--radius-pill);white-space:nowrap;transition:background .2s,opacity .2s}
+.btn--l{height:40px}
+.btn--wide{padding-left:var(--padding-medium-16);padding-right:var(--padding-medium-16)}
+.btn--primary{background:var(--button-primary);color:var(--text-on-background)}
+.btn--primary:hover{background:var(--interaction-brand-hover)}
+.btn--primary:active{background:var(--interaction-brand-pressed)}
+.btn--tertiary{background:var(--button-blank);border:1px solid var(--border-regular)}
+.btn--tertiary:hover{background:var(--interaction-primary-hover)}
+.btn--tertiary:active{background:var(--interaction-neutral-light-pressed)}
+.btn--secondary{background:var(--button-tonal-neutral)}
+.btn--secondary:hover{background:var(--interaction-neutral-light-hover)}
+.btn--danger{background:var(--button-error);color:var(--text-blank)}
+.btn--danger:hover{background:var(--interaction-error-hover)}
+.btn[disabled]{background:var(--button-disabled);color:var(--text-disabled);border-color:transparent;cursor:not-allowed}
+.btn.is-loading{pointer-events:none;opacity:.7}
+.spinner{width:16px;height:16px;border:2px solid currentColor;border-right-color:transparent;border-radius:var(--radius-pill);animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------- Layout ---------- */
+.shell{display:flex;min-height:calc(100vh - 64px)}
+.rail{position:sticky;top:64px;align-self:flex-start;width:100px;height:calc(100vh - 64px);flex:none;display:flex;flex-direction:column;gap:var(--gap-x-small-8);padding:var(--padding-large-20) var(--padding-medium-16);background:var(--background-primary)}
+.rail-item{position:relative;display:flex;flex-direction:column;align-items:center;gap:var(--gap-2x-small-4);padding:var(--padding-small-12) var(--padding-x-small-8);border-radius:var(--radius-card);color:var(--text-secondary);transition:background .2s}
+.rail-item:hover{background:var(--interaction-primary-hover)}
+.rail-item .ds-icon{color:var(--icon-secondary)}
+.rail-item.is-active{background:var(--background-app);color:var(--text-brand)}
+.rail-item.is-active .ds-icon{color:var(--icon-brand)}
+.rail-item .badge{top:4px;right:auto;left:34px}
+.main{flex:1;min-width:0;padding:var(--padding-x-small-8)}
+
+.board-head{position:sticky;top:72px;z-index:10;background:var(--background-primary);border-radius:var(--radius-card);box-shadow:0 4px 8px 0 rgba(89,89,89,.15)} /* ds-raw: shadow + offset sticky theo Figma */
+.title-bar{display:flex;flex-direction:column;gap:var(--gap-x-small-8);padding:var(--padding-medium-16) var(--padding-large-20);border-bottom:1px solid var(--border-divider)}
+.title-row{display:flex;align-items:baseline;gap:var(--gap-2x-small-6)}
+.title-row .sub{color:var(--text-secondary)}
+.filter-row{display:flex;align-items:center;gap:var(--gap-x-small-8)}
+.filter-row .icon-btn{margin-left:auto}
+
+/* Chip M-32 Outline (DS) */
+.chip{position:relative;height:32px;max-width:200px;display:inline-flex;align-items:center;gap:var(--gap-2x-small-4);padding:var(--padding-2x-small-4) var(--padding-small-12);background:var(--background-primary);border:1px solid var(--border-regular);border-radius:var(--radius-pill);transition:background .2s}
+.chip:hover{background:var(--interaction-neutral-light-hover)}
+.chip.is-selected{background:var(--background-secondary);border-color:var(--border-black)}
+.chip .count{color:var(--text-secondary)}
+
+.grid{display:grid;grid-template-columns:330px minmax(0,1fr) 250px 250px}
+.thead > div{padding:var(--padding-medium-16);text-align:center;border-right:1px solid var(--border-divider)}
+.thead > div:last-child{border-right:0}
+
+.list{display:flex;flex-direction:column;gap:var(--gap-x-small-8);margin-top:var(--gap-x-small-8)}
+.row{background:var(--background-primary);border-radius:var(--radius-decoration);cursor:pointer;transition:background .25s,box-shadow .2s,opacity .3s,transform .3s}
+.row:hover{box-shadow:0 2px 8px 0 rgba(34,34,34,.08)} /* ds-raw: hover elevation, DS chưa có */
+.row.is-unread{background:var(--background-brand-light)}
+.row.is-removing{opacity:0;transform:translateX(24px)}
+.row > div{padding:var(--padding-small-12);border-right:1px solid var(--border-divider);display:flex;flex-direction:column;gap:var(--gap-x-small-8);min-width:0}
+.row > div:last-child{border-right:0}
+
+.seller-top{display:flex;align-items:center;gap:var(--gap-x-small-8)}
+.ava{width:48px;height:48px;flex:none;border-radius:var(--radius-pill);background:var(--background-brand);color:var(--text-on-background);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.ava img{width:100%;height:100%;object-fit:cover}
+.seller-meta{flex:1;min-width:0;display:flex;flex-direction:column;gap:var(--gap-2x-small-4)}
+.name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.labels{display:flex;flex-wrap:wrap;gap:var(--gap-x-small-8)}
+.label{display:inline-flex;align-items:center;gap:var(--gap-2x-small-4);padding:var(--padding-min-2) var(--padding-2x-small-4);background:var(--background-tertiary);border-radius:var(--radius-pill)}
+.label[data-k="new"] .ds-icon{color:var(--icon-error)}
+.label[data-k="meet"] .ds-icon{color:var(--icon-info)}
+.label[data-k="won"] .ds-icon{color:var(--icon-success)}
+.more-btn{width:24px;height:24px;border-radius:var(--radius-pill);display:inline-flex;align-items:center;justify-content:center;flex:none}
+.more-btn:hover{background:var(--interaction-neutral-light-hover)}
+.meta-line{display:flex;align-items:center;gap:var(--gap-2x-small-4);color:var(--text-secondary)}
+.meta-line .ds-icon{color:var(--icon-secondary)}
+.meta-line .star{color:var(--icon-brand)}
+.vdiv{width:1px;height:20px;background:var(--border-regular);margin:0 var(--gap-2x-small-4)}
+.actions{display:flex;gap:var(--gap-2x-small-6);margin-top:auto}
+.actions .btn--primary{flex:1}
+.phone-shown{flex:1;background:var(--button-tonal-success);color:var(--text-success)}
+.phone-shown .ds-icon{color:var(--icon-success)}
+
+.need-top{display:flex;justify-content:flex-end;align-items:center;gap:var(--gap-x-small-8);min-height:20px}
+.new-badge{padding:0 var(--padding-2x-small-4);min-width:20px;background:var(--background-error);border:var(--stroke-action) solid var(--border-blank);border-radius:var(--radius-pill);color:var(--text-blank)}
+.time{color:var(--text-tertiary)}
+.need{display:flex;flex-direction:column;gap:var(--gap-2x-small-6)}
+
+.post{display:flex;gap:var(--gap-x-small-8);align-items:center;border-radius:var(--radius-card-small)}
+.post:hover .post-title{color:var(--text-link)}
+.thumb{width:40px;height:40px;flex:none;border-radius:var(--radius-card-small);background:var(--background-tertiary);display:flex;align-items:center;justify-content:center}
+.thumb .ds-icon{color:var(--icon-tertiary)}
+.post-info{min-width:0;display:flex;flex-direction:column;gap:var(--gap-min-2)}
+.post-title{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.post-price{color:var(--text-secondary)}
+
+.note-ph{color:var(--text-secondary);text-align:left;border-radius:var(--radius-ad-small)}
+.note-ph:hover{color:var(--text-link)}
+.note-text{white-space:pre-wrap;word-break:break-word}
+.note-edit{display:flex;flex-direction:column;gap:var(--gap-x-small-8)}
+.note-edit textarea{width:100%;min-height:72px;resize:vertical;padding:var(--padding-x-small-8);border:1px solid var(--border-regular);border-radius:var(--radius-card-small);font:inherit;color:var(--text-primary);background:var(--background-primary)}
+.note-edit textarea:focus{outline:0;border-color:var(--border-active)}
+.note-edit .btns{display:flex;justify-content:flex-end;gap:var(--gap-2x-small-6)}
+.note-edit .btn{height:24px}
+
+/* ---------- Popover / menu (custom: DS chưa có) ---------- */
+.pop{position:absolute;z-index:40;min-width:220px;padding:var(--padding-x-small-8);background:var(--background-primary);border-radius:var(--radius-card);box-shadow:0 4px 16px 0 rgba(34,34,34,.12);display:none;flex-direction:column;gap:var(--gap-min-2)} /* ds-raw: shadow theo Drawer DS */
+.pop.is-open{display:flex;animation:pop .15s ease-out}
+@keyframes pop{from{opacity:0;transform:translateY(-4px)}}
+.pop-item{display:flex;align-items:center;gap:var(--gap-x-small-8);padding:var(--padding-x-small-8) var(--padding-small-12);border-radius:var(--radius-card-small);text-align:left;width:100%}
+.pop-item:hover{background:var(--interaction-primary-hover)}
+.pop-item.danger{color:var(--text-error)}
+.pop-item.danger .ds-icon{color:var(--icon-error)}
+.pop-sep{height:1px;background:var(--border-divider);margin:var(--gap-2x-small-4) 0}
+.check{width:20px;height:20px;flex:none;border:2px solid var(--border-bold);border-radius:var(--radius-ad-small);display:inline-flex;align-items:center;justify-content:center}
+.check .ds-icon{display:none;color:var(--icon-on-background)}
+.is-checked .check{background:var(--background-brand);border-color:var(--border-brand)}
+.is-checked .check .ds-icon{display:block}
+
+/* ---------- Drawer desktop (DS) ---------- */
+.overlay{position:fixed;inset:0;z-index:50;background:var(--background-overlay);display:none;align-items:center;justify-content:center}
+.overlay.is-open{display:flex;animation:fade .3s ease}
+@keyframes fade{from{opacity:0}}
+.drawer{width:480px;background:var(--background-primary);border-radius:var(--radius-modal);box-shadow:0 4px 16px 0 rgba(34,34,34,.12);overflow:hidden;animation:up .3s ease}
+@keyframes up{from{transform:translateY(16px)}}
+.drawer-head{height:48px;display:flex;align-items:center;padding:var(--padding-small-12) var(--padding-large-20);border-bottom:1px solid var(--border-thin);position:relative}
+.drawer-head h2{position:absolute;left:0;right:0;text-align:center;pointer-events:none}
+.drawer-body{padding:var(--padding-medium-16) var(--padding-large-20);color:var(--text-secondary)}
+.drawer-foot{display:flex;gap:var(--gap-x-small-8);padding:var(--padding-small-12) var(--padding-large-20) var(--padding-large-20)}
+.drawer-foot .btn{flex:1}
+
+/* ---------- Empty ---------- */
+.empty{display:none;flex-direction:column;align-items:center;gap:var(--gap-x-small-8);padding:64px var(--padding-medium-16);background:var(--background-primary);border-radius:var(--radius-decoration);text-align:center} /* ds-raw: 64px offset layout */
+.empty.is-on{display:flex}
+.empty .ds-icon{width:64px;height:64px;color:var(--icon-tertiary)} /* ds-raw: icon minh hoạ */
+.empty p{color:var(--text-secondary)}
+
+/* ---------- Toast (Announcer Success) ---------- */
+.toast{position:fixed;left:50%;bottom:24px;z-index:60;transform:translate(-50%,16px);opacity:0;pointer-events:none;display:flex;align-items:center;gap:var(--gap-x-small-8);padding:var(--padding-small-12) var(--padding-large-20);background:var(--background-success-light);border-radius:var(--radius-card);box-shadow:0 4px 16px 0 rgba(34,34,34,.12);transition:.3s ease}
+.toast.is-on{opacity:1;transform:translate(-50%,0)}
+.toast .ds-icon{color:var(--icon-success)}
+</style>
+</head>
+<body>
+<svg id="ds-icon-sprite" xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+<symbol id="ds-Menu-outline" viewBox="0 0 24 24"><path d="M20 17C20.552 17 21 17.447 21 18C21 18.552 20.552 19 20 19H4C3.447 19 3 18.552 3 18C3 17.447 3.447 17 4 17H20ZM20 11C20.552 11 21 11.447 21 12C21 12.552 20.552 13 20 13H4C3.447 13 3 12.552 3 12C3 11.447 3.447 11 4 11H20ZM20 5C20.552 5 21 5.447 21 6C21 6.552 20.552 7 20 7H4C3.447 7 3 6.552 3 6C3 5.447 3.447 5 4 5H20Z" fill="currentColor"/></symbol>
+<symbol id="ds-Location-fill" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M20 10.043C20 11.449 19.482 12.888 18.791 14.202C18.093 15.528 17.174 16.807 16.275 17.913C15.374 19.021 14.475 19.976 13.803 20.653C13.466 20.992 13.185 21.262 12.986 21.449C12.887 21.542 12.808 21.616 12.754 21.666L12.719 21.697L12.691 21.723L12.674 21.739L12 22.341L11.326 21.739L11.309 21.723L11.281 21.697L11.246 21.666C11.192 21.616 11.113 21.542 11.014 21.449C10.815 21.262 10.534 20.992 10.197 20.653C9.525 19.976 8.626 19.021 7.725 17.913C6.826 16.807 5.907 15.528 5.209 14.202C4.518 12.888 4 11.449 4 10.043C4 5.607 7.576 2 12 2C16.424 2 20 5.607 20 10.043ZM12 13C13.793 13 15.236 11.539 15.236 9.75C15.236 7.96 13.793 6.5 12 6.5C10.207 6.5 8.765 7.961 8.765 9.75C8.765 11.539 10.207 12.999 12 13Z" fill="currentColor"/></symbol>
+<symbol id="ds-Chevrondown-fill" viewBox="0 0 24 24"><path d="M7.432 10C7.047 10 6.855 10.464 7.127 10.736L11.264 14.873C11.432 15.042 11.705 15.042 11.874 14.873L16.011 10.736C16.283 10.464 16.09 10 15.706 10H7.432Z" fill="currentColor"/></symbol>
+<symbol id="ds-Search-outline" viewBox="0 0 24 24"><path d="M18.279 11.439C18.279 7.662 15.217 4.6 11.439 4.6C7.662 4.6 4.6 7.662 4.6 11.439C4.6 15.217 7.662 18.279 11.439 18.279C15.217 18.279 18.279 15.217 18.279 11.439ZM20.279 11.439C20.279 13.543 19.543 15.474 18.315 16.992L21.095 19.681L21.165 19.756C21.492 20.143 21.478 20.723 21.118 21.095C20.758 21.467 20.179 21.5 19.781 21.186L19.704 21.118L16.89 18.396C15.388 19.574 13.497 20.279 11.439 20.279C6.557 20.279 2.6 16.322 2.6 11.439C2.6 6.557 6.557 2.6 11.439 2.6C16.322 2.6 20.279 6.557 20.279 11.439Z" fill="currentColor"/></symbol>
+<symbol id="ds-Heart-outline" viewBox="0 0 24 24"><path d="M16.807 3C17.577 2.993 18.341 3.14 19.054 3.431C19.767 3.723 20.414 4.154 20.959 4.699C21.503 5.243 21.934 5.891 22.226 6.603C22.517 7.316 22.664 8.08 22.657 8.85C22.651 9.62 22.49 10.381 22.187 11.089C21.885 11.791 21.447 12.426 20.898 12.959L20.899 12.96L12.705 21.154C12.518 21.342 12.263 21.447 11.998 21.447C11.733 21.447 11.479 21.342 11.291 21.154L3.098 12.96C2.01 11.872 1.4 10.397 1.399 8.859C1.399 7.321 2.01 5.846 3.098 4.759C4.185 3.671 5.66 3.059 7.198 3.059C8.736 3.059 10.211 3.67 11.299 4.758L11.998 5.457L12.698 4.758C13.231 4.21 13.866 3.772 14.568 3.47C15.276 3.167 16.037 3.006 16.807 3ZM3.399 8.859C3.4 9.867 3.799 10.833 4.512 11.546L11.998 19.032L19.497 11.533L19.63 11.398C19.931 11.077 20.174 10.705 20.349 10.3C20.548 9.836 20.653 9.337 20.657 8.833C20.662 8.328 20.565 7.828 20.374 7.361C20.183 6.894 19.901 6.47 19.544 6.113C19.187 5.756 18.763 5.474 18.296 5.283C17.829 5.092 17.329 4.995 16.824 5C16.32 5.004 15.821 5.109 15.357 5.308C14.952 5.483 14.58 5.726 14.259 6.027L14.124 6.16C14.12 6.164 14.116 6.168 14.111 6.173L12.705 7.578C12.315 7.968 11.682 7.968 11.292 7.578L9.885 6.173C9.172 5.46 8.206 5.059 7.198 5.059C6.254 5.059 5.345 5.412 4.648 6.043L4.512 6.173C3.8 6.885 3.399 7.852 3.399 8.859Z" fill="currentColor"/></symbol>
+<symbol id="ds-Notification-outline" viewBox="0 0 24 24"><path d="M14.042 19.309C14.474 18.965 15.103 19.035 15.447 19.466C15.792 19.898 15.722 20.527 15.29 20.872C14.403 21.58 13.247 22 11.999 22C10.829 22 9.741 21.631 8.878 21.002L8.708 20.872L8.632 20.804C8.27 20.45 8.228 19.871 8.551 19.466C8.874 19.062 9.447 18.975 9.873 19.25L9.956 19.309L10.163 19.46C10.665 19.794 11.298 20 11.999 20C12.8 20 13.514 19.731 14.042 19.309ZM11.999 2C16.395 2 19.805 5.876 19.805 10.46V10.471L19.78 12.548C19.783 13.818 20.246 14.883 20.733 15.615L20.793 15.713C21.074 16.212 21.032 16.774 20.876 17.175C20.716 17.588 20.277 18.181 19.492 18.181H4.507C3.71 18.181 3.272 17.57 3.116 17.157C2.954 16.727 2.92 16.105 3.282 15.582L3.471 15.292C3.903 14.58 4.268 13.633 4.268 12.537V12.525L4.292 10.34C4.298 5.821 7.662 2 11.999 2ZM11.999 4C8.932 4 6.292 6.755 6.292 10.351V10.363L6.268 12.547C6.265 14.005 5.808 15.246 5.268 16.181H18.739C18.22 15.243 17.781 13.998 17.78 12.537V12.525L17.805 10.46L17.797 10.12C17.637 6.631 15.024 4 11.999 4Z" fill="currentColor"/></symbol>
+<symbol id="ds-Chat-outline" viewBox="0 0 24 24"><path d="M20.599 11.999C20.599 7.25 16.748 3.399 11.999 3.399C7.249 3.4 3.399 7.25 3.399 11.999C3.399 16.749 7.249 20.599 11.999 20.6C13.529 20.6 14.964 20.2 16.208 19.501L16.293 19.458C16.495 19.368 16.723 19.348 16.94 19.402L20.4 20.267L19.793 16.019C19.767 15.833 19.793 15.644 19.869 15.473C20.338 14.412 20.599 13.237 20.599 11.999ZM12.599 12.199L12.701 12.204C13.205 12.255 13.599 12.681 13.599 13.199C13.599 13.717 13.205 14.143 12.701 14.194L12.599 14.199H8.399C7.847 14.199 7.399 13.752 7.399 13.199C7.399 12.647 7.847 12.199 8.399 12.199H12.599ZM15.599 7.399L15.701 7.404C16.205 7.455 16.599 7.881 16.599 8.399C16.599 8.917 16.205 9.344 15.701 9.395L15.599 9.399H8.399C7.847 9.399 7.399 8.952 7.399 8.399C7.399 7.847 7.847 7.399 8.399 7.399H15.599ZM22.599 11.999C22.599 13.415 22.317 14.768 21.811 16.005L22.59 21.457C22.637 21.787 22.517 22.118 22.27 22.341C22.023 22.564 21.681 22.649 21.358 22.568L16.829 21.436C15.379 22.179 13.737 22.6 11.999 22.6C6.144 22.599 1.399 17.853 1.399 11.999C1.399 6.145 6.145 1.4 11.999 1.399C17.853 1.399 22.599 6.145 22.599 11.999Z" fill="currentColor"/></symbol>
+<symbol id="ds-Chevrondown-outline" viewBox="0 0 24 24"><path d="M6.262 9.324C6.612 8.942 7.19 8.894 7.596 9.197L7.675 9.262L12 13.223L16.324 9.262L16.403 9.197C16.809 8.894 17.387 8.942 17.737 9.324C18.087 9.706 18.084 10.285 17.747 10.664L17.675 10.737L12.676 15.317C12.294 15.667 11.707 15.667 11.325 15.317L6.324 10.737L6.252 10.665C5.915 10.286 5.912 9.706 6.262 9.324Z" fill="currentColor"/></symbol>
+<symbol id="ds-Groupofuser-outline" viewBox="0 0 24 24"><path d="M9.843 14.191C7.665 14.191 6.166 14.719 5.234 15.456C4.369 16.141 3.933 17.05 3.891 18.075H15.796C15.754 17.05 15.317 16.141 14.452 15.456C13.52 14.719 12.021 14.191 9.843 14.191ZM11.488 7.601C11.488 6.675 10.751 5.924 9.843 5.924C8.935 5.924 8.199 6.675 8.199 7.601C8.199 8.527 8.935 9.277 9.843 9.277C10.751 9.277 11.488 8.527 11.488 7.601ZM15.746 7.601C15.746 6.982 15.417 6.439 14.923 6.147C14.472 5.881 14.318 5.293 14.579 4.833C14.84 4.373 15.417 4.215 15.868 4.482C16.921 5.103 17.633 6.267 17.633 7.601C17.633 8.935 16.921 10.099 15.868 10.72L15.782 10.765C15.346 10.965 14.823 10.8 14.579 10.368C14.318 9.908 14.472 9.32 14.923 9.054L15.1 8.933C15.494 8.626 15.746 8.143 15.746 7.601ZM17.687 18.24C17.687 19.113 17.04 20 16.04 20H3.647C2.646 20 2 19.113 2 18.24C2 16.564 2.696 15.029 4.077 13.936C5.437 12.86 7.388 12.266 9.843 12.266C12.298 12.266 14.249 12.86 15.609 13.936C16.989 15.029 17.687 16.564 17.687 18.24ZM22 18.24C22 19.113 21.353 20 20.352 20H19.924C19.403 20 18.981 19.569 18.981 19.037C18.981 18.506 19.403 18.075 19.924 18.075H20.104C20.067 17.576 19.869 16.878 19.526 16.167C19.191 15.473 18.778 14.886 18.391 14.53L18.227 14.392L18.153 14.329C17.801 13.999 17.744 13.444 18.036 13.045C18.329 12.646 18.866 12.545 19.276 12.795L19.356 12.851L19.498 12.964C20.2 13.551 20.797 14.441 21.219 15.317C21.67 16.252 22 17.33 22 18.24ZM13.375 7.601C13.374 9.59 11.793 11.202 9.843 11.202C7.893 11.202 6.312 9.59 6.312 7.601C6.312 5.612 7.893 4 9.843 4C11.793 4 13.375 5.612 13.375 7.601Z" fill="currentColor"/></symbol>
+<symbol id="ds-Suitcase-outline" viewBox="0 0 24 24"><path d="M20.5 10.433C20.499 9.771 19.925 9.16 19.125 9.16H4.875C4.074 9.16 3.5 9.771 3.5 10.433V17.253L3.506 17.377C3.572 17.991 4.124 18.527 4.875 18.527H19.125C19.926 18.527 20.5 17.916 20.5 17.253V10.433ZM13.968 5.886C13.968 5.863 13.96 5.835 13.929 5.805C13.897 5.775 13.847 5.75 13.781 5.75H9.625C9.558 5.75 9.508 5.775 9.476 5.805C9.445 5.835 9.437 5.863 9.437 5.886V7.16H13.968V5.886ZM15.968 7.16H19.125C20.947 7.16 22.499 8.585 22.5 10.433V17.253C22.5 19.102 20.947 20.527 19.125 20.527H4.875C3.109 20.527 1.597 19.19 1.504 17.426L1.5 17.253V10.433C1.5 8.585 3.052 7.16 4.875 7.16H7.437V5.886C7.437 4.665 8.458 3.75 9.625 3.75H13.781C14.947 3.75 15.968 4.665 15.968 5.886V7.16Z" fill="currentColor"/><path d="M13.2 11C13.752 11 14.2 11.447 14.2 12C14.2 12.552 13.752 13 13.2 13H10.2C9.647 13 9.2 12.552 9.2 12C9.2 11.447 9.647 11 10.2 11H13.2Z" fill="currentColor"/></symbol>
+<symbol id="ds-Setting-outline" viewBox="0 0 24 24"><path d="M9.424 20.172C10.27 22.69 13.993 22.606 14.647 19.92V19.918L14.671 19.837C14.701 19.757 14.745 19.683 14.8 19.618C14.874 19.531 14.967 19.463 15.073 19.42C15.178 19.376 15.292 19.358 15.406 19.367C15.519 19.376 15.63 19.411 15.727 19.47L15.956 19.597C18.336 20.783 20.911 18.09 19.471 15.727L19.47 15.726C19.411 15.629 19.375 15.519 19.367 15.406C19.358 15.292 19.376 15.178 19.419 15.073C19.463 14.968 19.531 14.875 19.618 14.801C19.704 14.727 19.807 14.673 19.917 14.646L20.17 14.574C22.692 13.73 22.605 10.005 19.918 9.352V9.353C19.808 9.326 19.705 9.273 19.619 9.199C19.532 9.125 19.464 9.031 19.42 8.926C19.377 8.82 19.359 8.706 19.368 8.593C19.376 8.479 19.411 8.369 19.47 8.272H19.471C20.911 5.91 18.336 3.216 15.956 4.401L15.727 4.528C15.63 4.587 15.52 4.623 15.407 4.632C15.293 4.64 15.179 4.622 15.074 4.579C14.968 4.535 14.874 4.467 14.8 4.381C14.726 4.295 14.673 4.193 14.646 4.083L14.647 4.082C13.974 1.305 10.026 1.307 9.353 4.081L9.352 4.082C9.325 4.192 9.273 4.295 9.199 4.382C9.125 4.468 9.031 4.536 8.926 4.58C8.821 4.623 8.707 4.641 8.593 4.633C8.479 4.624 8.369 4.588 8.272 4.529V4.528C5.833 3.042 3.042 5.833 4.528 8.272H4.529L4.569 8.347C4.604 8.425 4.626 8.508 4.632 8.594C4.641 8.707 4.623 8.821 4.579 8.927C4.536 9.032 4.468 9.125 4.381 9.199C4.316 9.255 4.242 9.298 4.162 9.328L4.081 9.352C1.304 10.025 1.307 13.973 4.08 14.646L4.166 14.674C4.555 14.82 4.742 15.269 4.571 15.647L4.528 15.727C3.042 18.166 5.832 20.956 8.271 19.471H8.272C8.369 19.412 8.479 19.377 8.592 19.368C8.706 19.359 8.82 19.377 8.925 19.421C9.03 19.464 9.124 19.532 9.198 19.619C9.272 19.705 9.324 19.808 9.351 19.919L9.352 19.92L9.424 20.172ZM12.697 19.47C12.501 20.183 11.473 20.176 11.294 19.449L11.295 19.448C11.194 19.031 10.996 18.645 10.717 18.319C10.438 17.993 10.087 17.737 9.691 17.573C9.295 17.409 8.866 17.341 8.439 17.374C8.011 17.407 7.597 17.539 7.231 17.762V17.763C6.583 18.158 5.841 17.416 6.236 16.768L6.321 16.619C7.142 15.066 6.288 13.125 4.553 12.703H4.552C3.814 12.523 3.817 11.475 4.552 11.297L4.706 11.254C5.064 11.144 5.397 10.963 5.682 10.719C6.008 10.44 6.263 10.087 6.427 9.691C6.591 9.295 6.66 8.866 6.626 8.438C6.593 8.011 6.459 7.596 6.236 7.23C5.842 6.583 6.582 5.842 7.23 6.236L7.369 6.315C7.7 6.491 8.064 6.598 8.438 6.627C8.865 6.66 9.295 6.591 9.691 6.427C10.087 6.263 10.439 6.008 10.718 5.682C10.997 5.357 11.195 4.969 11.296 4.552L11.339 4.423C11.603 3.817 12.536 3.863 12.703 4.552V4.553L12.745 4.708C12.855 5.065 13.038 5.397 13.282 5.682C13.56 6.008 13.912 6.263 14.308 6.427C14.704 6.591 15.134 6.659 15.561 6.626C15.988 6.593 16.402 6.459 16.768 6.236L16.89 6.176C17.464 5.95 18.049 6.536 17.824 7.109L17.763 7.231C17.54 7.597 17.407 8.011 17.373 8.438C17.34 8.866 17.409 9.295 17.573 9.691C17.737 10.087 17.991 10.439 18.317 10.718C18.642 10.996 19.029 11.194 19.446 11.296L19.447 11.297L19.577 11.34C20.142 11.586 20.139 12.415 19.577 12.66L19.447 12.703C19.03 12.804 18.643 13.002 18.317 13.281C17.991 13.56 17.736 13.912 17.572 14.308C17.408 14.705 17.339 15.134 17.372 15.561C17.406 15.989 17.54 16.402 17.763 16.768L17.824 16.89C18.065 17.504 17.376 18.134 16.768 17.764L16.769 17.763C16.403 17.54 15.989 17.406 15.561 17.373C15.133 17.34 14.704 17.408 14.308 17.572C13.912 17.736 13.56 17.991 13.281 18.317C13.002 18.643 12.804 19.03 12.703 19.447L12.697 19.47ZM12.999 12C12.999 12.552 12.552 13 11.999 13C11.447 13 10.999 12.552 10.999 12C10.999 11.448 11.447 11 11.999 11C12.552 11 12.999 11.448 12.999 12ZM14.999 12C14.999 10.343 13.656 9 11.999 9C10.343 9 8.999 10.343 8.999 12C8.999 13.657 10.343 15 11.999 15C13.656 15 14.999 13.657 14.999 12Z" fill="currentColor"/></symbol>
+<symbol id="ds-Unhide-outline" viewBox="0 0 24 24"><path d="M11.999 4.142C16.068 4.142 18.729 6.073 20.344 7.985C21.145 8.934 21.693 9.88 22.04 10.589C22.214 10.944 22.34 11.242 22.423 11.456C22.465 11.563 22.496 11.649 22.518 11.711C22.528 11.742 22.536 11.767 22.542 11.785C22.545 11.794 22.548 11.802 22.55 11.807C22.551 11.81 22.551 11.813 22.552 11.815L22.554 11.819C22.554 11.819 22.52 11.831 21.6 12.119L22.548 12.434L22.547 12.438C22.546 12.44 22.545 12.443 22.544 12.446C22.542 12.452 22.54 12.459 22.537 12.468C22.531 12.486 22.522 12.51 22.511 12.541C22.488 12.602 22.456 12.687 22.413 12.792C22.327 13.002 22.198 13.295 22.02 13.643C21.664 14.338 21.107 15.264 20.299 16.189C18.67 18.054 16.006 19.921 11.983 19.855C7.982 19.79 5.332 17.935 3.706 16.106C2.899 15.198 2.342 14.297 1.985 13.621C1.807 13.282 1.677 12.997 1.591 12.793C1.548 12.691 1.515 12.608 1.492 12.549C1.481 12.519 1.472 12.495 1.466 12.477C1.463 12.469 1.46 12.461 1.458 12.456C1.457 12.453 1.456 12.451 1.455 12.449L1.454 12.446L2.399 12.119C1.492 11.835 1.447 11.82 1.445 11.819V11.817L1.446 11.815C1.447 11.813 1.448 11.81 1.449 11.807C1.451 11.802 1.453 11.794 1.456 11.785C1.462 11.767 1.471 11.742 1.481 11.711C1.503 11.649 1.535 11.563 1.576 11.456C1.659 11.242 1.785 10.944 1.959 10.589C2.306 9.88 2.853 8.934 3.654 7.985C5.269 6.073 7.93 4.142 11.999 4.142ZM11.999 6.142C8.653 6.142 6.514 7.7 5.183 9.276C4.511 10.071 4.049 10.869 3.755 11.469C3.63 11.723 3.537 11.939 3.472 12.101C3.538 12.253 3.63 12.454 3.754 12.688C4.053 13.257 4.523 14.016 5.2 14.777C6.543 16.287 8.694 17.801 12.016 17.855C15.316 17.909 17.453 16.407 18.793 14.874C19.469 14.1 19.939 13.319 20.239 12.732C20.368 12.481 20.462 12.267 20.529 12.108C20.464 11.945 20.371 11.726 20.244 11.469C19.95 10.869 19.488 10.071 18.816 9.276C17.485 7.7 15.345 6.142 11.999 6.142ZM13.399 12.029C13.399 11.317 12.798 10.693 11.999 10.693C11.2 10.693 10.6 11.317 10.6 12.029C10.6 12.741 11.2 13.364 11.999 13.364C12.798 13.364 13.399 12.741 13.399 12.029ZM2.399 12.119L1.454 12.444L1.347 12.134L1.445 11.819L2.399 12.119ZM22.65 12.128L22.549 12.433L21.6 12.119L22.554 11.819L22.65 12.128ZM3.353 12.42L3.354 12.419L3.353 12.417V12.42ZM15.399 12.029C15.399 13.897 13.851 15.364 11.999 15.364C10.148 15.364 8.6 13.896 8.6 12.029C8.6 10.162 10.147 8.693 11.999 8.693C13.851 8.693 15.399 10.161 15.399 12.029Z" fill="currentColor"/></symbol>
+<symbol id="ds-Check-outline" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M18.395 6.575C18.953 7.237 18.84 8.203 18.142 8.732C16.976 9.615 15.753 11.141 14.658 12.81C13.582 14.449 12.712 16.096 12.224 17.104C11.974 17.622 11.442 17.966 10.841 17.997C10.241 18.029 9.672 17.743 9.363 17.255C9.039 16.744 8.42 16.031 7.709 15.325C7.001 14.623 6.314 14.04 5.917 13.766C5.193 13.267 5.033 12.308 5.559 11.622C6.086 10.937 7.099 10.785 7.822 11.284C8.442 11.711 9.28 12.44 10.051 13.205C10.181 13.334 10.313 13.467 10.444 13.603C10.869 12.845 11.362 12.018 11.906 11.189C13.052 9.444 14.51 7.554 16.118 6.336C16.816 5.806 17.836 5.914 18.395 6.575Z" fill="currentColor"/></symbol>
+<symbol id="ds-Trashbin-outline" viewBox="0 0 24 24"><path d="M20 5.176L20.102 5.181C20.606 5.232 21 5.659 21 6.176C20.999 6.694 20.606 7.119 20.102 7.17L20 7.176H18.955L18.956 7.318L18.499 18.921L18.498 18.92C18.478 20.571 17.196 22 15.5 22H8.5C6.803 22 5.52 20.571 5.5 18.92V18.921L5.043 7.318C5.042 7.27 5.043 7.223 5.044 7.176H4C3.447 7.176 3 6.728 3 6.176C3 5.624 3.447 5.176 4 5.176H20ZM7.059 7.176C7.051 7.187 7.041 7.207 7.042 7.24L7.499 18.842L7.5 18.862V18.882C7.5 19.554 8 20 8.5 20H15.5C15.999 20 16.499 19.554 16.5 18.882V18.862L16.501 18.842L16.957 7.24L16.951 7.197C16.947 7.188 16.944 7.181 16.94 7.176H7.059ZM9 16.764V10.412C9 9.859 9.447 9.412 10 9.412C10.552 9.412 11 9.859 11 10.412V16.764C11 17.316 10.552 17.764 10 17.764C9.447 17.764 9 17.316 9 16.764ZM13 16.764V10.412C13 9.859 13.447 9.412 14 9.412C14.552 9.412 15 9.859 15 10.412V16.764C15 17.316 14.552 17.764 14 17.764C13.447 17.764 13 17.316 13 16.764ZM15 2C15.552 2 16 2.447 16 3C16 3.552 15.552 4 15 4H9C8.447 4 8 3.552 8 3C8 2.447 8.447 2 9 2H15Z" fill="currentColor"/></symbol>
+<symbol id="ds-Close-outline" viewBox="0 0 24 24"><path d="M15.292 7.293C15.683 6.902 16.316 6.902 16.707 7.293C17.097 7.683 17.097 8.316 16.707 8.707L13.414 12L16.707 15.293L16.775 15.369C17.095 15.762 17.073 16.341 16.707 16.707C16.34 17.073 15.761 17.095 15.369 16.775L15.292 16.707L11.999 13.414L8.706 16.707C8.316 17.097 7.683 17.097 7.292 16.707C6.902 16.316 6.902 15.683 7.292 15.293L10.585 12L7.292 8.707L7.224 8.63C6.904 8.238 6.926 7.659 7.292 7.293C7.659 6.926 8.238 6.904 8.63 7.224L8.706 7.293L11.999 10.586L15.292 7.293Z" fill="currentColor"/></symbol>
+<symbol id="ds-CircleCheck-fill" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.522 22 22 17.522 22 12C22 6.477 17.522 2 12 2C6.477 2 2 6.477 2 12C2 17.522 6.477 22 12 22ZM16.831 9.823C17.297 9.47 17.372 8.826 17 8.385C16.627 7.944 15.947 7.872 15.482 8.225C14.41 9.038 13.438 10.297 12.674 11.461C12.311 12.014 11.982 12.565 11.699 13.07C11.612 12.979 11.524 12.891 11.438 12.805C10.923 12.295 10.365 11.809 9.951 11.524C9.469 11.192 8.794 11.293 8.443 11.75C8.092 12.207 8.199 12.846 8.681 13.179C8.946 13.361 9.404 13.75 9.876 14.218C10.35 14.689 10.763 15.164 10.978 15.504C11.184 15.83 11.564 16.021 11.964 16C12.364 15.979 12.719 15.749 12.886 15.404C13.211 14.732 13.791 13.634 14.508 12.541C15.239 11.429 16.054 10.412 16.831 9.823Z" fill="currentColor"/></symbol>
+<symbol id="ds-tag-fill" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.714 2.678C12.252 2.196 12.966 1.952 13.691 2.007L19.128 2.425L19.37 2.456C20.561 2.657 21.479 3.646 21.573 4.871L21.991 10.308L21.998 10.453C22.014 11.175 21.735 11.876 21.221 12.39L12.39 21.221C11.417 22.194 9.879 22.255 8.835 21.404L8.633 21.221L2.778 15.366C1.74 14.328 1.74 12.646 2.778 11.609L11.609 2.778L11.714 2.678ZM16.189 6.929L16.086 6.923C15.534 6.921 15.078 7.366 15.075 7.918C15.073 8.471 15.519 8.92 16.071 8.923L16.178 8.919C16.683 8.871 17.078 8.447 17.081 7.929C17.084 7.412 16.693 6.983 16.189 6.929Z" fill="currentColor"/></symbol>
+<symbol id="ds-Star-fill" viewBox="0 0 24 24"><path d="M10.697 2.763C11.27 1.745 12.73 1.745 13.302 2.763L13.357 2.867L15.638 7.71L20.722 8.484L20.84 8.506C21.989 8.767 22.341 10.162 21.639 10.99L21.566 11.071L17.858 14.855L18.737 20.209L18.749 20.316C18.845 21.385 17.767 22.375 16.647 21.859L16.535 21.801L12 19.303L7.464 21.801C6.267 22.46 5.075 21.352 5.263 20.209L6.14 14.855L2.434 11.071C1.61 10.23 1.995 8.679 3.278 8.484L8.361 7.71L10.643 2.867L10.697 2.763Z" fill="currentColor"/></symbol>
+<symbol id="ds-Clock-outline" viewBox="0 0 24 24"><path d="M20 12C20 7.581 16.418 4 12 4C7.581 4 4 7.581 4 12C4 16.418 7.581 20 12 20C16.418 20 20 16.418 20 12ZM11 8.42C11 7.868 11.447 7.42 12 7.42C12.552 7.42 13 7.868 13 8.42V12.404L15.691 13.301L15.786 13.338C16.248 13.546 16.487 14.075 16.323 14.566C16.159 15.057 15.651 15.337 15.157 15.226L15.058 15.198L11.683 14.073C11.275 13.937 11 13.555 11 13.125V8.42ZM22 12C22 17.522 17.522 22 12 22C6.477 22 2 17.522 2 12C2 6.477 6.477 2 12 2C17.522 2 22 6.477 22 12Z" fill="currentColor"/></symbol>
+<symbol id="ds-Morevertical-outline" viewBox="0 0 24 24"><path d="M13.781 11.992C13.781 11.008 12.984 10.211 12 10.211C11.015 10.211 10.218 11.008 10.218 11.992C10.218 12.976 11.015 13.773 12 13.773C12.984 13.773 13.781 12.976 13.781 11.992Z" fill="currentColor"/><path d="M13.781 4.781C13.781 3.797 12.984 3 12 3C11.015 3 10.218 3.797 10.218 4.781C10.218 5.765 11.015 6.562 12 6.562C12.984 6.562 13.781 5.765 13.781 4.781Z" fill="currentColor"/><path d="M13.781 19.219C13.781 18.234 12.984 17.437 12 17.437C11.015 17.437 10.218 18.234 10.218 19.219C10.218 20.203 11.015 21 12 21C12.984 21 13.781 20.203 13.781 19.219Z" fill="currentColor"/></symbol>
+<symbol id="ds-Image-outline" viewBox="0 0 24 24"><path d="M20 17.397C19.932 17.364 19.867 17.324 19.806 17.275L19.73 17.207L15.937 13.414L11.582 17.769C11.191 18.16 10.558 18.16 10.168 17.769L8.625 16.226L5.177 19.672C5.529 19.879 5.937 20 6.375 20H17.625C18.936 20 20 18.936 20 17.625V17.397ZM8.75 8.062C8.75 7.682 8.442 7.375 8.062 7.375C7.682 7.375 7.375 7.682 7.375 8.062C7.375 8.442 7.682 8.75 8.062 8.75C8.442 8.75 8.75 8.442 8.75 8.062ZM20 6.375C20 5.063 18.936 4 17.625 4H6.375C5.063 4 4 5.063 4 6.375V17.625C4 17.75 4.011 17.872 4.03 17.992L7.917 14.105L7.994 14.037C8.386 13.716 8.965 13.739 9.332 14.105L10.875 15.648L15.23 11.293L15.306 11.224C15.699 10.904 16.278 10.926 16.644 11.293L20 14.648V6.375ZM10.75 8.062C10.75 9.546 9.546 10.75 8.062 10.75C6.578 10.75 5.375 9.546 5.375 8.062C5.375 6.578 6.578 5.375 8.062 5.375C9.546 5.375 10.75 6.578 10.75 8.062ZM22 17.625C22 20.041 20.041 22 17.625 22H6.375C3.958 22 2 20.041 2 17.625V6.375C2 3.958 3.958 2 6.375 2H17.625C20.041 2 22 3.958 22 6.375V17.625Z" fill="currentColor"/></symbol>
+<symbol id="ds-Phone-outline" viewBox="0 0 24 24"><path d="M6.162 2.41C6.783 2.455 7.214 2.822 7.41 3.018L7.417 3.024C7.709 3.298 7.984 3.576 8.26 3.86L8.47 4.074C8.539 4.144 8.611 4.218 8.683 4.293L9.933 5.54L10.059 5.673C10.346 5.997 10.592 6.426 10.592 6.956C10.592 7.487 10.346 7.916 10.059 8.24L9.933 8.373C9.818 8.488 9.667 8.643 9.527 8.778C9.448 8.86 9.394 8.915 9.365 8.944C9.339 8.971 9.291 9.02 9.231 9.069C9.219 9.08 9.208 9.088 9.203 9.092C9.195 9.098 9.197 9.097 9.193 9.1C9.193 9.1 9.188 9.104 9.181 9.11C9.161 9.126 9.12 9.161 9.036 9.235C9.037 9.24 9.038 9.244 9.04 9.249C9.317 9.912 9.713 10.563 10.355 11.379C10.358 11.383 10.362 11.386 10.365 11.39L10.819 11.929C11.733 12.976 12.679 13.833 13.683 14.531L14.189 14.867L14.19 14.868L14.409 14.994C14.487 15.036 14.571 15.078 14.666 15.125L14.923 15.255C15.002 15.297 15.084 15.343 15.163 15.391C15.165 15.389 15.168 15.387 15.171 15.385L16.068 14.489L16.272 14.306C16.529 14.099 16.939 13.854 17.466 13.854L17.595 13.858C18.202 13.904 18.63 14.265 18.841 14.489L21.361 17.004L21.469 17.12C21.967 17.714 21.885 18.456 21.819 18.795C21.777 19.015 21.714 19.205 21.665 19.337C21.64 19.404 21.617 19.461 21.6 19.502C21.591 19.523 21.582 19.539 21.576 19.553C21.573 19.559 21.571 19.566 21.568 19.57C21.567 19.573 21.565 19.576 21.565 19.576L21.563 19.579V19.581C21.538 19.633 21.509 19.682 21.476 19.729L21.363 19.859L21.36 19.862C21.358 19.864 21.355 19.867 21.351 19.871C21.342 19.879 21.33 19.892 21.314 19.907C21.283 19.939 21.237 19.984 21.181 20.039C21.069 20.15 20.916 20.301 20.756 20.462C20.588 20.631 20.422 20.799 20.284 20.941L19.981 21.266C19.971 21.278 19.961 21.289 19.95 21.301C19.29 22.005 18.477 22.344 17.498 22.344C17.436 22.344 17.329 22.344 17.222 22.337C15.662 22.237 14.255 21.635 13.285 21.172L13.28 21.17C10.558 19.855 8.17 17.989 6.189 15.63L6.186 15.626C4.569 13.68 3.46 11.848 2.722 9.857L2.562 9.407C2.219 8.375 2.074 7.466 2.148 6.563L2.149 6.561L2.185 6.276C2.296 5.626 2.592 5.058 3.071 4.58L4.633 3.021L4.655 3L4.789 2.883C5.114 2.617 5.536 2.405 6.035 2.405L6.162 2.41ZM4.483 5.996C4.272 6.207 4.168 6.429 4.141 6.727L4.142 6.728C4.096 7.289 4.175 7.921 4.46 8.775L4.595 9.156L4.596 9.159L4.721 9.483C5.364 11.101 6.312 12.648 7.722 14.344L8.063 14.741C9.794 16.699 11.84 18.252 14.146 19.367L14.502 19.533C15.352 19.918 16.337 20.277 17.351 20.342H17.353L17.498 20.344C17.948 20.344 18.225 20.216 18.49 19.934C18.676 19.721 19.043 19.347 19.34 19.05C19.504 18.885 19.659 18.731 19.773 18.618C19.786 18.606 19.798 18.593 19.81 18.581C19.826 18.53 19.844 18.472 19.855 18.415C19.861 18.385 19.863 18.358 19.865 18.336L17.454 15.93L16.583 16.801C16.486 16.897 15.994 17.408 15.181 17.408C14.936 17.408 14.707 17.362 14.492 17.281L14.281 17.189C14.248 17.172 14.221 17.157 14.204 17.147L14.177 17.13L14.226 17.156L14.145 17.112C14.103 17.086 14.053 17.058 13.993 17.026L13.772 16.914C13.595 16.826 13.358 16.709 13.121 16.559C11.547 15.565 10.135 14.276 8.813 12.651L8.8 12.636C8.157 11.822 7.684 11.092 7.327 10.322L7.182 9.989L7.157 9.924C7.155 9.917 7.152 9.91 7.149 9.903L7.138 9.868C7.082 9.691 6.994 9.369 7.039 8.981C7.085 8.586 7.259 8.205 7.577 7.869C7.603 7.84 7.628 7.817 7.647 7.799L7.646 7.798L7.685 7.761L7.902 7.571C7.917 7.559 7.93 7.548 7.941 7.539C7.974 7.506 8.021 7.459 8.119 7.358L8.52 6.957L7.27 5.708C7.267 5.704 7.263 5.701 7.26 5.697C7.19 5.625 7.119 5.554 7.046 5.479C6.974 5.406 6.898 5.33 6.824 5.254C6.686 5.111 6.554 4.975 6.424 4.846L6.036 4.471C6.032 4.467 6.027 4.462 6.023 4.458L4.483 5.996Z" fill="currentColor"/></symbol>
+<symbol id="ds-Hide-outline" viewBox="0 0 24 24"><path d="M4.692 3.792C5.058 3.426 5.637 3.404 6.03 3.724L6.106 3.792L21.106 18.793L21.175 18.869C21.495 19.261 21.473 19.84 21.106 20.207C20.74 20.573 20.161 20.595 19.769 20.275L19.692 20.207L17.776 18.291C16.364 19.156 14.6 19.767 12.438 19.811L11.983 19.812C7.982 19.747 5.332 17.893 3.706 16.064C2.898 15.156 2.342 14.254 1.985 13.578C1.807 13.239 1.677 12.954 1.591 12.75C1.548 12.647 1.515 12.565 1.492 12.505C1.481 12.476 1.472 12.453 1.466 12.435C1.463 12.426 1.46 12.419 1.458 12.414C1.457 12.411 1.456 12.408 1.455 12.406L1.454 12.403V12.402L2.399 12.076C1.445 11.777 1.445 11.776 1.445 11.776V11.775L1.446 11.774C1.447 11.773 1.447 11.771 1.447 11.769C1.448 11.766 1.45 11.761 1.451 11.756C1.454 11.747 1.459 11.733 1.465 11.717C1.476 11.685 1.491 11.64 1.512 11.585C1.552 11.473 1.612 11.316 1.693 11.125C1.856 10.741 2.106 10.213 2.462 9.618C3.107 8.537 4.117 7.205 5.604 6.118L4.692 5.207L4.624 5.13C4.304 4.738 4.326 4.159 4.692 3.792ZM7.039 7.553C5.692 8.464 4.77 9.652 4.18 10.642C3.878 11.147 3.668 11.592 3.534 11.907C3.511 11.962 3.491 12.014 3.473 12.061C3.539 12.212 3.631 12.412 3.754 12.645C4.053 13.213 4.523 13.974 5.2 14.735C6.543 16.245 8.694 17.758 12.016 17.812H12.394C13.97 17.781 15.259 17.388 16.312 16.826L14.095 14.609C13.515 15.055 12.787 15.321 11.999 15.321C10.147 15.321 8.6 13.853 8.6 11.986C8.6 11.185 8.891 10.452 9.366 9.88L7.039 7.553ZM21.27 14.877C20.963 15.336 20.342 15.46 19.883 15.153C19.424 14.846 19.3 14.225 19.606 13.766L21.27 14.877ZM11.999 4.099C16.068 4.099 18.729 6.03 20.344 7.942C21.145 8.891 21.693 9.837 22.04 10.545C22.214 10.901 22.34 11.2 22.423 11.414C22.465 11.521 22.496 11.607 22.518 11.669C22.528 11.699 22.536 11.724 22.542 11.742C22.545 11.751 22.548 11.758 22.55 11.764C22.551 11.767 22.551 11.77 22.552 11.772C22.552 11.773 22.553 11.774 22.553 11.775L22.554 11.776C22.554 11.776 22.539 11.782 21.6 12.076L22.548 12.391V12.392L22.547 12.394C22.546 12.395 22.547 12.397 22.546 12.399C22.545 12.403 22.543 12.408 22.541 12.414C22.537 12.425 22.531 12.441 22.524 12.46C22.511 12.497 22.491 12.55 22.466 12.615C22.415 12.746 22.34 12.929 22.237 13.152C22.033 13.597 21.717 14.207 21.27 14.877L20.439 14.321L19.606 13.766C19.985 13.199 20.251 12.685 20.42 12.317C20.463 12.222 20.498 12.136 20.528 12.063C20.463 11.901 20.37 11.683 20.244 11.426C19.95 10.827 19.488 10.028 18.816 9.233C17.485 7.657 15.345 6.099 11.999 6.099C11.618 6.099 11.255 6.119 10.907 6.157C10.358 6.216 9.865 5.819 9.806 5.27C9.747 4.721 10.143 4.228 10.692 4.168C11.112 4.123 11.548 4.099 11.999 4.099ZM2.399 12.076L1.454 12.401L1.347 12.09L1.445 11.777L2.399 12.076ZM22.65 12.085L22.549 12.391L21.6 12.076L22.554 11.777L22.65 12.085ZM3.353 12.377L3.354 12.377V12.376C3.354 12.376 3.354 12.375 3.353 12.375C3.352 12.376 3.353 12.377 3.353 12.377ZM10.6 11.986C10.6 12.698 11.2 13.321 11.999 13.321C12.237 13.321 12.459 13.264 12.652 13.167L10.793 11.307C10.669 11.507 10.6 11.739 10.6 11.986Z" fill="currentColor"/></symbol>
+</svg>
+
+
+<!-- NavBar Desktop · Uni/Scrolling · Chợ Tốt -->
+<header class="nav" data-ds="NavBar Desktop">
+  <div class="nav-left">
+    <button class="icon-btn" aria-label="Menu"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Menu-outline"/></svg></button>
+    <img src="logo.png" alt="Chợ Tốt">
+  </div>
+  <button class="loc t-header-caption" aria-label="Chọn khu vực">
+    <svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Location-fill"/></svg>
+    Tp. Hồ Chí Minh
+    <svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-Chevrondown-fill"/></svg>
+  </button>
+  <label class="search">
+    <svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Search-outline"/></svg>
+    <input class="t-body-section" placeholder="Tìm kiếm sản phẩm..." aria-label="Tìm kiếm sản phẩm">
+    <button class="search-go" aria-label="Tìm"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Search-outline"/></svg></button>
+  </label>
+  <div class="nav-right">
+    <button class="icon-btn" aria-label="Tin đã lưu"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Heart-outline"/></svg></button>
+    <button class="icon-btn" aria-label="Thông báo, 23 mới"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Notification-outline"/></svg><span class="badge t-label-annotation">23</span></button>
+    <button class="btn btn--tertiary btn--l t-label-section" style="position:relative"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Chat-outline"/></svg>Liên hệ<span class="badge t-label-annotation" style="top:-6px;right:-6px">22</span></button><!-- ds-raw: badge offset -->
+    <button class="btn btn--tertiary btn--l t-label-section">Quản lý tin</button>
+    <button class="btn btn--primary btn--l t-label-section">Đăng bán</button>
+    <button class="avatar-pill" aria-label="Tài khoản">
+      <span class="ava" style="width:32px;height:32px"><span class="t-label-caption">LP</span></span>
+      <svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Chevrondown-outline"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="shell">
+  <!-- Side rail (custom: DS chưa có) -->
+  <nav class="rail" aria-label="Điều hướng phụ" data-ds-raw="custom: DS chưa có side rail dọc">
+    <a class="rail-item t-tagline-annotation" href="#" tabindex="0"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Chat-outline"/></svg>Tin nhắn<span class="badge t-label-annotation">2</span></a>
+    <a class="rail-item is-active t-label-caption" href="#" aria-current="page"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Groupofuser-outline"/></svg>Khách<span class="badge t-label-annotation" id="railBadge">12</span></a>
+    <a class="rail-item t-tagline-annotation" href="#"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Suitcase-outline"/></svg>Ứng viên<span class="badge t-label-annotation">2</span></a>
+  </nav>
+
+  <main class="main">
+    <section class="board-head">
+      <div class="title-bar">
+        <div class="title-row">
+          <h1 class="t-header-page">Khách</h1>
+          <span class="sub t-body-page">(Quản lý và cập nhật nhu cầu khách hàng)</span>
+        </div>
+        <div class="filter-row">
+          <button class="chip t-tagline-caption" data-pop="popPosts" aria-haspopup="true" aria-expanded="false" data-ds="Chip" data-ds-size="M-32">
+            <span id="postsLabel">Tin đăng</span>
+            <svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Chevrondown-fill"/></svg>
+          </button>
+          <button class="chip t-tagline-caption" data-pop="popTags" aria-haspopup="true" aria-expanded="false" data-ds="Chip" data-ds-size="M-32">
+            <span id="tagsLabel">Phân loại</span>
+            <svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Chevrondown-fill"/></svg>
+          </button>
+          <button class="chip t-tagline-caption" id="unreadChip" aria-pressed="false" data-ds="Chip" data-ds-size="M-32">Chưa đọc</button>
+          <button class="icon-btn" aria-label="Cài đặt"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Setting-outline"/></svg></button>
+        </div>
+      </div>
+      <div class="grid thead t-header-caption" data-ds-raw="custom: DS chưa có table header">
+        <div>Khách hàng</div><div>Nhu cầu</div><div>Tin khách quan tâm</div><div>Ghi chú</div>
+      </div>
+    </section>
+
+    <div class="list" id="list"></div>
+    <div class="empty" id="empty">
+      <svg class="ds-icon" aria-hidden="true"><use href="#ds-Groupofuser-outline"/></svg>
+      <h2 class="t-display-annotation">Không có khách phù hợp</h2>
+      <p class="t-body-section">Thử bỏ bớt bộ lọc để xem thêm khách hàng.</p>
+      <button class="btn btn--primary btn--l t-label-section" id="clearFilter">Xoá bộ lọc</button>
+    </div>
+  </main>
+</div>
+
+<!-- Popovers (custom: DS chưa có menu nổi) -->
+<div class="pop" id="popPosts" role="menu" data-ds-speculative="true"></div>
+<div class="pop" id="popTags" role="menu" data-ds-speculative="true"></div>
+<div class="pop" id="popMore" role="menu" data-ds-speculative="true">
+  <button class="pop-item t-body-section" data-act="toggleRead"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Unhide-outline"/></svg><span>Đánh dấu đã đọc</span></button>
+  <div class="pop-sep"></div>
+  <button class="pop-item t-body-section" data-act="tag" data-k="new"><span class="check"><svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-Check-outline"/></svg></span>Khách mới</button>
+  <button class="pop-item t-body-section" data-act="tag" data-k="meet"><span class="check"><svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-Check-outline"/></svg></span>Hẹn gặp</button>
+  <button class="pop-item t-body-section" data-act="tag" data-k="won"><span class="check"><svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-Check-outline"/></svg></span>Đã chốt</button>
+  <div class="pop-sep"></div>
+  <button class="pop-item danger t-body-section" data-act="delete"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Trashbin-outline"/></svg>Xoá khách</button>
+</div>
+
+<!-- Drawer xác nhận (DS · Desktop) -->
+<div class="overlay" id="confirm" role="dialog" aria-modal="true" aria-labelledby="cfTitle" data-ds="Drawer">
+  <div class="drawer">
+    <div class="drawer-head">
+      <button class="more-btn" id="cfClose" aria-label="Đóng"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Close-outline"/></svg></button>
+      <h2 class="t-header-section" id="cfTitle">Xoá khách hàng?</h2>
+    </div>
+    <div class="drawer-body t-body-section" id="cfBody"></div>
+    <div class="drawer-foot">
+      <button class="btn btn--secondary btn--l t-label-page" id="cfCancel">Huỷ</button>
+      <button class="btn btn--danger btn--l t-label-page" id="cfOk">Xoá khách</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast t-body-section" id="toast" role="status" aria-live="polite"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-CircleCheck-fill"/></svg><span id="toastText"></span></div>
+
+<!-- icon templates referenced from JS (giữ để ds_icons.py nhúng symbol) -->
+<template id="tplIcons">
+  <use href="#ds-tag-fill"/><use href="#ds-Star-fill"/><use href="#ds-Clock-outline"/><use href="#ds-Morevertical-outline"/>
+  <use href="#ds-Image-outline"/><use href="#ds-Phone-outline"/><use href="#ds-Hide-outline"/>
+</template>
+
+<script>
+const TAGS={new:'Khách mới',meet:'Hẹn gặp',won:'Đã chốt'};
+const POSTS=[
+  {id:'p1',title:'TUDIO BANCOL THOÁNG MÁT NGAY PHAN ĐĂNG LƯU GIÁP BÌNH THẠNH',price:'7 tỷ'},
+  {id:'p2',title:'CĂN HỘ STUDIO BANCOL FULL NỘI THẤT QUẬN 3',price:'5 triệu/tháng'},
+  {id:'p3',title:'VinFast VF e34 2023 lướt 8.000 km',price:'520 triệu'}
+];
+const NEED=['Mua Ô tô (Điện) cũ, khu vực TPHCM, Vũng Tàu, Bình Dương','Thương hiệu Vinfast, Honda, Porsche đời 2024, 2023, 2022','Ngân sách từ 450 - 550 triệu','Khách đã xem 10 tin đăng, đã liên hệ 5 người bán ở khu vực TPHCM, Vũng Tàu, Bình Dương trong 7 ngày qua','Khách đã lấy SĐT để liên hệ trực tiếp'];
+let rows=[
+  {id:1,name:'Nguyễn Thị Mobu',ini:'NM',rating:'4.5',reviews:12,joined:'3 năm trước',unread:true,time:'11:45',phone:'0987654321',tags:['new','meet','won'],noteTags:false,posts:['p1','p2'],note:''},
+  {id:2,name:'Nguyễn Thị Mobu',ini:'NM',rating:'4.5',reviews:12,joined:'3 năm trước',unread:false,time:'11:45',phone:null,tags:['new','meet','won'],noteTags:true,posts:['p1','p2'],note:''},
+  {id:3,name:'Nguyễn Thị Mobu',ini:'NM',rating:'4.5',reviews:12,joined:'3 năm trước',unread:true,time:'11:45',phone:'0987651234',tags:['new','meet','won'],noteTags:true,posts:['p1','p2'],note:''},
+  {id:4,name:'Trần Văn Bình',ini:'TB',rating:'4.8',reviews:30,joined:'5 năm trước',unread:false,time:'Hôm qua',phone:'0912345678',tags:['meet'],noteTags:false,posts:['p3'],note:'Hẹn xem xe thứ 7, 9h sáng'},
+  {id:5,name:'Lê Hoàng Anh',ini:'LA',rating:'4.2',reviews:5,joined:'1 năm trước',unread:false,time:'12/10',phone:null,tags:['won'],noteTags:false,posts:['p2','p3'],note:''}
+];
+const f={posts:new Set(),tags:new Set(),unread:false};
+const $=s=>document.querySelector(s);
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const mask=p=>p.slice(0,6)+'****';
+
+function labels(t){return `<div class="labels" data-ds-raw="custom: DS chưa có nhãn trạng thái">${t.map(k=>`<span class="label t-label-annotation" data-k="${k}"><svg class="ds-icon ds-icon--12" aria-hidden="true"><use href="#ds-tag-fill"/></svg>${TAGS[k]}</span>`).join('')}</div>`}
+function postHtml(id){const p=POSTS.find(x=>x.id===id);return `<a class="post" href="#" title="${esc(p.title)}"><span class="thumb"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Image-outline"/></svg></span><span class="post-info"><span class="post-title t-tagline-caption">${esc(p.title)}</span><span class="post-price t-body-section">${p.price}</span></span></a>`}
+function phoneBtn(r){
+  if(!r.phone) return '';
+  if(r.revealed) return `<a class="btn phone-shown t-label-section" href="tel:${r.phone}"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Phone-outline"/></svg>${r.phone}</a>`;
+  return `<button class="btn btn--primary btn--wide t-label-section" data-act="reveal">${mask(r.phone)} Hiện số</button>`;
+}
+function noteHtml(r){
+  if(r.editing) return `<div class="note-edit"><textarea class="t-body-caption" maxlength="300" placeholder="Nhập ghi chú về khách này">${esc(r.note)}</textarea><div class="btns"><button class="btn btn--secondary t-label-caption" data-act="noteCancel">Huỷ</button><button class="btn btn--primary t-label-caption" data-act="noteSave">Lưu</button></div></div>`;
+  return (r.noteTags?labels(r.tags):'')+(r.note?`<button class="note-text t-body-caption" style="text-align:left" data-act="noteEdit">${esc(r.note)}</button>`:`<button class="note-ph t-body-caption" data-act="noteEdit">Nhấn để thêm ghi chú</button>`);
+}
+function rowHtml(r){
+  return `<article class="row grid ${r.unread?'is-unread':''}" data-id="${r.id}" tabindex="0" aria-label="${esc(r.name)}${r.unread?', chưa đọc':''}" data-ds="Intent Row" data-ds-composite="Avatar 48 + Label + Button M-32 + Post item">
+    <div>
+      <div class="seller-top">
+        <span class="ava"><span class="t-label-page">${r.ini}</span></span>
+        <div class="seller-meta">${labels(r.tags)}<p class="name t-header-caption">${esc(r.name)}</p></div>
+        <button class="more-btn" data-act="more" aria-label="Thêm tuỳ chọn" aria-haspopup="true"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Morevertical-outline"/></svg></button>
+      </div>
+      <div class="meta-line t-body-section"><svg class="ds-icon ds-icon--20 star" aria-hidden="true"><use href="#ds-Star-fill"/></svg>${r.rating}<span class="vdiv"></span>${r.reviews} đánh giá</div>
+      <div class="meta-line t-body-section"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Clock-outline"/></svg>Đã tham gia: ${r.joined}</div>
+      <div class="actions"><button class="btn btn--tertiary btn--wide t-label-section" data-act="chat"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Chat-outline"/></svg>Nhắn tin</button>${phoneBtn(r)}</div>
+    </div>
+    <div>
+      <div class="need-top">${r.unread?'<span class="new-badge t-label-annotation">Mới</span>':''}<span class="time t-body-caption">${r.time}</span></div>
+      <div class="need">${NEED.map(n=>`<p class="t-tagline-caption">${n}</p>`).join('')}</div>
+    </div>
+    <div>${r.posts.map(postHtml).join('')}</div>
+    <div>${noteHtml(r)}</div>
+  </article>`;
+}
+function visible(){return rows.filter(r=>(!f.unread||r.unread)&&(!f.posts.size||r.posts.some(p=>f.posts.has(p)))&&(!f.tags.size||r.tags.some(t=>f.tags.has(t))))}
+function render(){
+  const v=visible();
+  $('#list').innerHTML=v.map(rowHtml).join('');
+  $('#empty').classList.toggle('is-on',!v.length);
+  const n=rows.filter(r=>r.unread).length;
+  $('#railBadge').textContent=n+10; /* 10 = khách chưa đọc ở trang khác (mẫu) */ 
+  const ed=$('.note-edit textarea'); if(ed){ed.focus();ed.setSelectionRange(ed.value.length,ed.value.length)}
+}
+function chipState(){
+  $('#postsLabel').textContent=f.posts.size?`Tin đăng (${f.posts.size})`:'Tin đăng';
+  $('#tagsLabel').textContent=f.tags.size?`Phân loại (${f.tags.size})`:'Phân loại';
+  document.querySelector('[data-pop="popPosts"]').classList.toggle('is-selected',!!f.posts.size);
+  document.querySelector('[data-pop="popTags"]').classList.toggle('is-selected',!!f.tags.size);
+  $('#unreadChip').classList.toggle('is-selected',f.unread);
+  $('#unreadChip').setAttribute('aria-pressed',f.unread);
+}
+let toastT;function toast(m){$('#toastText').textContent=m;$('#toast').classList.add('is-on');clearTimeout(toastT);toastT=setTimeout(()=>$('#toast').classList.remove('is-on'),2400)}
+
+/* popovers */
+let openPop=null,moreRow=null;
+function closePop(){if(openPop){openPop.classList.remove('is-open');document.querySelectorAll('[aria-expanded="true"]').forEach(b=>b.setAttribute('aria-expanded','false'));openPop=null}}
+function place(pop,anchor,alignRight){const r=anchor.getBoundingClientRect();pop.classList.add('is-open');const w=pop.offsetWidth;pop.style.top=(r.bottom+window.scrollY+4)+'px';pop.style.left=(alignRight?r.right-w:r.left)+window.scrollX+'px';openPop=pop}
+function buildFilterPop(id){
+  const pop=$('#'+id),isPosts=id==='popPosts';
+  const items=isPosts?POSTS.map(p=>[p.id,p.title]):Object.entries(TAGS);
+  const set=isPosts?f.posts:f.tags;
+  pop.innerHTML=items.map(([k,t])=>`<button class="pop-item t-body-section ${set.has(k)?'is-checked':''}" data-k="${k}" role="menuitemcheckbox" aria-checked="${set.has(k)}"><span class="check"><svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-Check-outline"/></svg></span><span class="post-title" style="max-width:260px">${esc(t)}</span></button>`).join('');
+  pop.onclick=e=>{const b=e.target.closest('.pop-item');if(!b)return;const k=b.dataset.k;set.has(k)?set.delete(k):set.add(k);b.classList.toggle('is-checked');b.setAttribute('aria-checked',set.has(k));chipState();render()};
+}
+document.querySelectorAll('[data-pop]').forEach(btn=>btn.addEventListener('click',e=>{
+  e.stopPropagation();const id=btn.dataset.pop,was=openPop&&openPop.id===id;closePop();if(was)return;
+  buildFilterPop(id);place($('#'+id),btn);btn.setAttribute('aria-expanded','true');
+}));
+$('#unreadChip').onclick=()=>{f.unread=!f.unread;chipState();render()};
+$('#clearFilter').onclick=()=>{f.posts.clear();f.tags.clear();f.unread=false;chipState();render()};
+document.addEventListener('click',e=>{if(openPop&&!openPop.contains(e.target))closePop()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePop();closeConfirm()}});
+
+$('#popMore').addEventListener('click',e=>{
+  const b=e.target.closest('.pop-item');if(!b||!moreRow)return;const r=moreRow;
+  if(b.dataset.act==='toggleRead'){r.unread=!r.unread;closePop();render();toast(r.unread?'Đã đánh dấu chưa đọc':'Đã đánh dấu đã đọc')}
+  if(b.dataset.act==='tag'){const k=b.dataset.k,i=r.tags.indexOf(k);i>-1?r.tags.splice(i,1):r.tags.push(k);r.tags.sort((a,c)=>Object.keys(TAGS).indexOf(a)-Object.keys(TAGS).indexOf(c));b.classList.toggle('is-checked');render()}
+  if(b.dataset.act==='delete'){closePop();openConfirm(r)}
+});
+
+/* row actions */
+$('#list').addEventListener('click',e=>{
+  const rowEl=e.target.closest('.row');if(!rowEl)return;
+  const r=rows.find(x=>x.id==rowEl.dataset.id);const a=e.target.closest('[data-act]');
+  if(e.target.closest('.post')){e.preventDefault();toast('Mở tin: '+e.target.closest('.post').title);return}
+  if(e.target.closest('textarea'))return;
+  if(!a){if(r.unread){r.unread=false;render()}return}
+  e.stopPropagation();
+  const act=a.dataset.act;
+  if(act==='more'){
+    const was=openPop&&openPop.id==='popMore'&&moreRow===r;closePop();if(was)return;moreRow=r;
+    const pm=$('#popMore');pm.querySelector('[data-act="toggleRead"] span').textContent=r.unread?'Đánh dấu đã đọc':'Đánh dấu chưa đọc';
+    pm.querySelector('[data-act="toggleRead"] use').setAttribute('href',r.unread?'#ds-Unhide-outline':'#ds-Hide-outline');
+    pm.querySelectorAll('[data-act="tag"]').forEach(x=>x.classList.toggle('is-checked',r.tags.includes(x.dataset.k)));
+    place(pm,a,true);a.setAttribute('aria-expanded','true');return;
+  }
+  if(r.unread){r.unread=false}
+  if(act==='reveal'){a.classList.add('is-loading');a.innerHTML='<span class="spinner"></span>Đang hiện số';setTimeout(()=>{r.revealed=true;render();toast('Đã hiện số điện thoại của khách')},700);return}
+  if(act==='chat'){render();toast('Đang mở cuộc trò chuyện với '+r.name);return}
+  if(act==='noteEdit'){rows.forEach(x=>x.editing=false);r.editing=true;render();return}
+  if(act==='noteCancel'){r.editing=false;render();return}
+  if(act==='noteSave'){r.note=rowEl.querySelector('textarea').value.trim();r.editing=false;render();toast(r.note?'Đã lưu ghi chú':'Đã xoá ghi chú');return}
+});
+$('#list').addEventListener('keydown',e=>{
+  if(e.target.matches('textarea')&&e.key==='Enter'&&(e.metaKey||e.ctrlKey)){e.target.closest('.row').querySelector('[data-act="noteSave"]').click()}
+  if(e.target.classList.contains('row')&&e.key==='Enter'){e.target.click()}
+});
+
+/* confirm drawer */
+let pending=null,lastFocus=null;
+function openConfirm(r){pending=r;lastFocus=document.activeElement;$('#cfBody').textContent=`Khách “${r.name}” cùng nhu cầu và ghi chú sẽ bị xoá khỏi danh sách. Bạn không thể hoàn tác thao tác này.`;$('#confirm').classList.add('is-open');$('#cfCancel').focus()}
+function closeConfirm(){$('#confirm').classList.remove('is-open');pending=null;lastFocus&&lastFocus.focus&&lastFocus.focus()}
+$('#cfClose').onclick=$('#cfCancel').onclick=closeConfirm;
+$('#confirm').onclick=e=>{if(e.target.id==='confirm')closeConfirm()};
+$('#cfOk').onclick=()=>{const r=pending;if(!r)return;const el=document.querySelector(`.row[data-id="${r.id}"]`);closeConfirm();el&&el.classList.add('is-removing');setTimeout(()=>{rows=rows.filter(x=>x!==r);render();toast('Đã xoá khách hàng')},300)};
+
+chipState();render();
+</script>
+</body>
+</html>
