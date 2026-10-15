@@ -227,7 +227,9 @@ button:focus-visible,[tabindex]:focus-visible,textarea:focus-visible{outline:2px
 .rail-item .badge{top:4px;right:auto;left:34px}
 .main{flex:1;min-width:0;padding:var(--padding-x-small-8)}
 
-.board-head{position:sticky;top:72px;z-index:10;background:var(--background-primary);border-radius:var(--radius-card);box-shadow:0 4px 8px 0 rgba(89,89,89,.15)} /* ds-raw: shadow + offset sticky theo Figma */
+.board-head{position:sticky;top:72px;z-index:10;border-radius:var(--radius-card)}
+.board-head::after{content:"";position:absolute;z-index:-1;inset:0;background:var(--background-primary);border-radius:var(--radius-card);box-shadow:0 4px 8px 0 rgba(89,89,89,.15);pointer-events:none} /* ds-raw: shadow + offset sticky theo Figma */
+.board-head::before{content:"";position:absolute;z-index:-1;top:-8px;left:-8px;right:-8px;bottom:0;background:color-mix(in srgb,var(--background-app) 88%,transparent);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);pointer-events:none} /* ds-raw: lớp blur che list khi scroll, phủ khe 8px dưới navbar + góc bo của header */
 .title-bar{display:flex;flex-direction:column;gap:var(--gap-x-small-8);padding:var(--padding-medium-16) var(--padding-large-20);border-bottom:1px solid var(--border-divider)}
 .title-row{display:flex;align-items:baseline;gap:var(--gap-2x-small-6)}
 .title-row .sub{color:var(--text-secondary)}
