@@ -259,12 +259,13 @@ button:focus-visible,[tabindex]:focus-visible,textarea:focus-visible{outline:2px
 .name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .labels{display:flex;flex-wrap:wrap;align-items:center;gap:var(--gap-x-small-8)}
 .labels--chip{gap:var(--gap-2x-small-6)}
-.labels.is-scroll{flex-wrap:nowrap;overflow-x:auto;max-width:100%;scrollbar-width:none;overscroll-behavior-x:contain;scroll-snap-type:x proximity;-webkit-mask-image:linear-gradient(to right,black calc(100% - 24px),transparent);mask-image:linear-gradient(to right,black calc(100% - 24px),transparent)} /* ds-raw: fade mép phải báo còn nhãn */
+.labels.is-scroll{flex-wrap:nowrap;overflow-x:auto;max-width:100%;scrollbar-width:none;overscroll-behavior-x:contain;scroll-snap-type:x proximity}
 .labels.is-scroll::-webkit-scrollbar{display:none}
-.labels.is-scroll.at-end{-webkit-mask-image:none;mask-image:none}
 .labels.is-scroll > *{scroll-snap-align:start}
 .label--chip{height:20px;gap:var(--gap-min-2);padding:0 var(--padding-x-small-8);background:var(--background-secondary)}
-.label-more{color:var(--text-secondary);cursor:default}
+.label{cursor:pointer;transition:background .2s}
+.label:hover,.label.is-active{background:var(--interaction-neutral-light-hover)}
+.label:active{background:var(--interaction-neutral-light-pressed)}
 /* Chip S-24 Fill "+ Phân loại" (DS) */
 .tag-add{height:20px;flex:none;white-space:nowrap;display:inline-flex;align-items:center;gap:var(--gap-min-2);padding:0 var(--padding-x-small-8);background:var(--background-secondary);border-radius:var(--radius-pill);transition:background .2s}
 .tag-add:hover{background:var(--interaction-neutral-light-hover)}
@@ -358,6 +359,14 @@ button:focus-visible,[tabindex]:focus-visible,textarea:focus-visible{outline:2px
 /* Panel Gắn phân loại */
 .tagpanel{width:320px;padding:0;gap:0;border-radius:var(--radius-modal);overflow:hidden}
 .tagpanel-head{height:48px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border-thin)}
+.tagpanel-hint{padding:var(--padding-x-small-8) var(--padding-large-20) 0;color:var(--text-secondary)}
+.tagpanel-hint.is-full{color:var(--text-warning)}
+.shake{animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.tagopt[aria-disabled="true"]{cursor:not-allowed;color:var(--text-disabled)}
+.tagopt[aria-disabled="true"]:hover{background:transparent}
+.tagopt[aria-disabled="true"] .tag-ic{opacity:.4}
+.tagopt[aria-disabled="true"] .check,.tagopt[aria-disabled="true"]:hover .check{background:var(--background-secondary);border-color:var(--border-disabled)}
 .tagpanel-list{max-height:288px;overflow-y:auto;padding:var(--padding-x-small-8) 0}
 .tagopt{width:100%;display:flex;align-items:center;gap:var(--gap-small-12);padding:var(--padding-small-12) var(--padding-large-20);text-align:left}
 .tagopt:hover{background:var(--interaction-primary-hover)}
@@ -505,6 +514,7 @@ button:focus-visible,[tabindex]:focus-visible,textarea:focus-visible{outline:2px
 </div>
 <div class="pop tagpanel" id="popTag" role="dialog" aria-labelledby="tagTitle" data-ds-raw="custom: DS chưa có popover chọn phân loại">
   <div class="tagpanel-head"><h2 class="t-header-section" id="tagTitle">Gắn phân loại</h2></div>
+  <p class="tagpanel-hint t-body-caption" id="tagHint" aria-live="polite"></p>
   <div class="tagpanel-list" id="tagList"></div>
   <div class="tagpanel-foot">
     <button class="btn btn--tertiary btn--l t-label-page" id="tagManage" data-ds="Button" data-ds-type="Tertiary" data-ds-size="L-40">Quản lý</button>
@@ -534,8 +544,6 @@ button:focus-visible,[tabindex]:focus-visible,textarea:focus-visible{outline:2px
   <div class="cfg-body">
     <div class="cfg-group" id="cfgPos"><span class="t-label-caption">Vị trí đặt nhãn</span></div>
     <div class="cfg-group"><span class="t-label-caption">Kiểu nhãn</span><div class="seg" id="cfgStyle"></div></div>
-    <div class="cfg-group"><span class="t-label-caption">Khi nhiều nhãn</span><div class="seg" id="cfgOverflow"></div></div>
-    <div class="cfg-group"><span class="t-label-caption">Số nhãn hiện tối đa (còn lại gộp “+N”)</span><div class="seg" id="cfgMax"></div></div>
     <div class="cfg-group"><span class="t-label-caption">Card chưa có nhãn</span><div class="seg" id="cfgEmpty"></div></div>
     <div class="cfg-group"><span class="t-label-caption">Config hiện tại (copy vào LABEL_CONFIG hoặc dùng URL)</span><div class="cfg-code t-body-caption" id="cfgCode"></div>
       <button class="btn btn--tertiary t-label-section" id="cfgCopy"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Duplicate-outline"/></svg>Copy link với config này</button></div>
@@ -561,7 +569,7 @@ const NEED=['Mua Ô tô (Điện) cũ, khu vực TPHCM, Vũng Tàu, Bình Dươn
 let rows=[
   {id:1,name:'Nguyễn Thị Mobu',ini:'NM',rating:'4.5',reviews:12,joined:'3 năm trước',unread:true,time:'11:45',phone:'0987654321',tags:['new','meet','won'],noteTags:false,posts:['p1','p2'],note:''},
   {id:2,name:'Nguyễn Thị Mobu',ini:'NM',rating:'4.5',reviews:12,joined:'3 năm trước',unread:false,time:'11:45',phone:null,tags:['new','meet','won'],noteTags:false,posts:['p1','p2'],note:''},
-  {id:3,name:'Nguyễn Thị Mobu',ini:'NM',rating:'4.5',reviews:12,joined:'3 năm trước',unread:true,time:'11:45',phone:'0987651234',tags:['new','meet','won','hot','vip'],noteTags:false,posts:['p1','p2'],note:''},
+  {id:3,name:'Nguyễn Thị Mobu',ini:'NM',rating:'4.5',reviews:12,joined:'3 năm trước',unread:true,time:'11:45',phone:'0987651234',tags:['new','meet','hot'],noteTags:false,posts:['p1','p2'],note:''},
   {id:4,name:'Trần Văn Bình',ini:'TB',rating:'4.8',reviews:30,joined:'5 năm trước',unread:false,time:'Hôm qua',phone:'0912345678',tags:['meet','hot'],noteTags:false,posts:['p3'],note:'Hẹn xem xe thứ 7, 9h sáng'},
   {id:5,name:'Lê Hoàng Anh',ini:'LA',rating:'4.2',reviews:5,joined:'1 năm trước',unread:false,time:'12/10',phone:null,tags:['won'],noteTags:false,posts:['p2','p3'],note:''},
   {id:6,name:'Phạm Minh Châu',ini:'MC',rating:'4.6',reviews:8,joined:'2 tháng trước',unread:true,time:'10:20',phone:'0938112233',tags:[],noteTags:false,posts:['p1'],note:''}
@@ -574,10 +582,10 @@ const mask=p=>p.slice(0,6)+'****';
 /* ===== LABEL_CONFIG — chỉnh ở đây, hoặc qua nút “Cấu hình nhãn”, hoặc URL ?pos=&style=&max=&empty= =====
    pos   : 'card-top' | 'above-name' | 'below-name' | 'footer'   (đều trong cột Khách hàng)
    style : 'label'  (nhãn 10px như Figma) | 'chip' (Chip S-24 Fill)
-   max   : 0 = hiện hết; n = hiện n nhãn, còn lại gộp “+N”
-   overflow : 'wrap' (xuống dòng) | 'scroll' (1 dòng, scroll ngang)
+   Luật cố định: nhãn luôn 1 dòng, crop + scroll ngang; mỗi khách tối đa MAX_TAGS nhãn; bấm nhãn mở popover Gắn phân loại.
    empty : 'add' (hiện chip “+ Phân loại”) | 'hide' (không hiện gì)                                      */
-const LABEL_CONFIG={pos:'above-name',style:'label',max:0,overflow:'wrap',empty:'add'};
+const LABEL_CONFIG={pos:'above-name',style:'label',empty:'add'};
+const MAX_TAGS=3;
 const POSITIONS={
   'card-top':['Hàng đầu card, avatar 32','Nhãn chạy hết chiều ngang cột, avatar thu về 32 cạnh tên. Chứa được nhiều nhãn nhất. Đi kèm Chip S-24.'],
   'above-name':['Trên tên khách','Như Figma hiện tại. Nhãn đọc trước tên, đẩy tên xuống.'],
@@ -585,7 +593,7 @@ const POSITIONS={
   'footer':['Cuối cột Khách hàng','Dưới cụm nút. Tách hẳn khỏi thông tin khách, ít nổi nhất.']
 };
 const cfg=(()=>{const c={...LABEL_CONFIG};try{Object.assign(c,JSON.parse(localStorage.getItem('khach-label-cfg')||'{}'))}catch(e){}
-  const q=new URLSearchParams(location.search);['pos','style','empty','overflow'].forEach(k=>q.get(k)&&(c[k]=q.get(k)));q.get('max')&&(c.max=+q.get('max'));
+  const q=new URLSearchParams(location.search);['pos','style','empty'].forEach(k=>q.get(k)&&(c[k]=q.get(k)));
   if(!POSITIONS[c.pos])c.pos=LABEL_CONFIG.pos;return c})();
 function saveCfg(){try{localStorage.setItem('khach-label-cfg',JSON.stringify(cfg))}catch(e){}}
 function labelSlot(r,pos){
@@ -595,9 +603,9 @@ function labelSlot(r,pos){
   return pos==='footer'?`<div class="foot-labels">${inner}</div>`:inner;
 }
 function labels(t){
-  const chip=cfg.style==='chip',max=cfg.max>0?cfg.max:t.length,shown=t.slice(0,max),rest=t.slice(max);
-  const one=k=>chip?`<span class="label label--chip t-tagline-annotation" data-k="${k}"><svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-tag-fill"/></svg>${TAGS[k]}</span>`:`<span class="label t-label-annotation" data-k="${k}"><svg class="ds-icon ds-icon--12" aria-hidden="true"><use href="#ds-tag-fill"/></svg>${TAGS[k]}</span>`;
-  return `<div class="labels ${chip?'labels--chip':''} ${cfg.overflow==='scroll'?'is-scroll':''}" data-ds-raw="custom: DS chưa có nhãn trạng thái">${shown.map(one).join('')}${rest.length?`<span class="label ${chip?'label--chip t-tagline-annotation':'t-label-annotation'} label-more" title="${rest.map(k=>TAGS[k]).join(', ')}">+${rest.length}</span>`:''}</div>`;
+  const chip=cfg.style==='chip';
+  const one=k=>`<button class="label ${chip?'label--chip t-tagline-annotation':'t-label-annotation'}" data-k="${k}" data-act="addTag" aria-haspopup="dialog" aria-label="${TAGS[k]} — sửa phân loại"><svg class="ds-icon ${chip?'ds-icon--16':'ds-icon--12'}" aria-hidden="true"><use href="#ds-tag-fill"/></svg>${TAGS[k]}</button>`;
+  return `<div class="labels is-scroll ${chip?'labels--chip':''}" data-ds-raw="custom: DS chưa có nhãn trạng thái">${t.map(one).join('')}</div>`;
 }
 function postHtml(id){const p=POSTS.find(x=>x.id===id);return `<a class="post" href="#" title="${esc(p.title)}"><span class="thumb"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Image-outline"/></svg></span><span class="post-info"><span class="post-title t-tagline-caption">${esc(p.title)}</span><span class="post-price t-body-section">${p.price}</span></span></a>`}
 function phoneBtn(r){
@@ -633,8 +641,6 @@ function rowHtml(r){
 }
 function visible(){return rows.filter(r=>(!f.unread||r.unread)&&(!f.posts.size||r.posts.some(p=>f.posts.has(p)))&&(!f.tags.size||r.tags.some(t=>f.tags.has(t))))}
 function bindScroll(){document.querySelectorAll('.labels.is-scroll').forEach(el=>{
-  const upd=()=>el.classList.toggle('at-end',el.scrollLeft+el.clientWidth>=el.scrollWidth-1);upd();
-  el.addEventListener('scroll',upd,{passive:true});
   el.addEventListener('wheel',e=>{if(el.scrollWidth>el.clientWidth&&Math.abs(e.deltaY)>Math.abs(e.deltaX)){el.scrollLeft+=e.deltaY;e.preventDefault()}},{passive:false});
 })}
 function render(){
@@ -676,9 +682,11 @@ document.addEventListener('click',e=>{if(openPop&&!openPop.contains(e.target))cl
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePop();closeConfirm()}});
 
 let draft=null;
-function closeTag(){$('#popTag').classList.remove('is-open');document.querySelectorAll('#popMore .is-active,.tag-add.is-active').forEach(x=>x.classList.remove('is-active'))}
+function closeTag(){$('#popTag').classList.remove('is-open');document.querySelectorAll('#popMore .is-active,[data-act="addTag"].is-active').forEach(x=>x.classList.remove('is-active'))}
 function renderTagList(){
-  $('#tagList').innerHTML=Object.entries(TAGS).map(([k,t])=>`<button class="tagopt t-body-page ${draft.has(k)?'is-checked':''}" data-k="${k}" role="checkbox" aria-checked="${draft.has(k)}"><svg class="ds-icon tag-ic" aria-hidden="true"><use href="#ds-tag-fill"/></svg><span class="name">${t}</span><span class="check"><svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-Check-outline"/></svg></span></button>`).join('');
+  const full=draft.size>=MAX_TAGS;
+  $('#tagList').innerHTML=Object.entries(TAGS).map(([k,t])=>{const on=draft.has(k),dis=full&&!on;return `<button class="tagopt t-body-page ${on?'is-checked':''}" data-k="${k}" role="checkbox" aria-checked="${on}" aria-disabled="${dis}"><svg class="ds-icon tag-ic" aria-hidden="true"><use href="#ds-tag-fill"/></svg><span class="name">${t}</span><span class="check"><svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-Check-outline"/></svg></span></button>`}).join('');
+  const h=$('#tagHint');h.textContent=full?`Đã chọn ${draft.size}/${MAX_TAGS}. Bỏ bớt một phân loại để chọn cái khác.`:`Chọn tối đa ${MAX_TAGS} phân loại (${draft.size}/${MAX_TAGS})`;h.classList.toggle('is-full',full);
 }
 function openTag(item,below){
   draft=new Set(moreRow.tags);renderTagList();
@@ -695,10 +703,10 @@ $('#popMore').addEventListener('click',e=>{
   if(b.dataset.act==='openTag'){$('#popTag').classList.contains('is-open')?closeTag():openTag(b)}
   if(b.dataset.act==='delete'){const r=moreRow;closePop();openConfirm(r)}
 });
-$('#tagList').addEventListener('click',e=>{const b=e.target.closest('.tagopt');if(!b)return;const k=b.dataset.k;draft.has(k)?draft.delete(k):draft.add(k);b.classList.toggle('is-checked');b.setAttribute('aria-checked',draft.has(k))});
+$('#tagList').addEventListener('click',e=>{const b=e.target.closest('.tagopt');if(!b)return;if(b.getAttribute('aria-disabled')==='true'){const h=$('#tagHint');h.classList.remove('shake');void h.offsetWidth;h.classList.add('shake');return}const k=b.dataset.k;draft.has(k)?draft.delete(k):draft.add(k);renderTagList();$(`.tagopt[data-k="${k}"]`).focus()});
 $('#popTag').addEventListener('click',e=>e.stopPropagation());
 $('#tagSave').onclick=()=>{const r=moreRow,el=$('#tagSave');el.classList.add('is-loading');el.innerHTML='<span class="spinner"></span>Đang lưu';
-  setTimeout(()=>{r.tags=Object.keys(TAGS).filter(k=>draft.has(k));el.classList.remove('is-loading');el.textContent='Lưu';closePop();render();toast(r.tags.length?`Đã gắn ${r.tags.length} phân loại cho ${r.name}`:`Đã bỏ phân loại của ${r.name}`)},500)};
+  setTimeout(()=>{r.tags=Object.keys(TAGS).filter(k=>draft.has(k)).slice(0,MAX_TAGS);el.classList.remove('is-loading');el.textContent='Lưu';closePop();render();toast(r.tags.length?`Đã gắn ${r.tags.length} phân loại cho ${r.name}`:`Đã bỏ phân loại của ${r.name}`)},500)};
 $('#tagManage').onclick=()=>{closePop();toast('Mở trang Quản lý phân loại (chưa thiết kế)')};
 /* row actions */
 $('#list').addEventListener('click',e=>{
@@ -738,17 +746,15 @@ function renderCfg(){
   $('#cfgPos').innerHTML='<span class="t-label-caption">Vị trí đặt nhãn</span>'+Object.entries(POSITIONS).map(([k,[t,d]],i)=>`<label class="opt ${cfg.pos===k?'is-on':''}"><input type="radio" name="pos" value="${k}" ${cfg.pos===k?'checked':''}><span><span class="t-header-caption">${i+1}. ${t}</span><small class="t-body-caption">${d}</small></span></label>`).join('');
   const seg=(id,key,opts)=>{$(id).innerHTML=opts.map(([v,t])=>`<button class="t-tagline-caption ${cfg[key]==v?'is-on':''}" data-v="${v}" aria-pressed="${cfg[key]==v}">${t}</button>`).join('');$(id).onclick=e=>{const b=e.target.closest('button');if(!b)return;cfg[key]=key==='max'?+b.dataset.v:b.dataset.v;applyCfg()}};
   seg('#cfgStyle','style',[['label','Nhãn 10px (Figma)'],['chip','Chip S-24']]);
-  seg('#cfgOverflow','overflow',[['wrap','Xuống dòng'],['scroll','Scroll ngang, 1 dòng']]);
-  seg('#cfgMax','max',[[0,'Tất cả'],[1,'1'],[2,'2'],[3,'3']]);
   seg('#cfgEmpty','empty',[['add','Hiện “+ Phân loại”'],['hide','Ẩn']]);
   $('#cfgCode').textContent='LABEL_CONFIG = '+JSON.stringify(cfg,null,1).replace(/\n\s*/g,' ');
 }
-function cfgUrl(){const u=new URL(location.href);['pos','style','max','overflow','empty'].forEach(k=>u.searchParams.set(k,cfg[k]));return u.toString()}
+function cfgUrl(){const u=new URL(location.href);['pos','style','empty'].forEach(k=>u.searchParams.set(k,cfg[k]));return u.toString()}
 function applyCfg(){saveCfg();renderCfg();render()}
 $('#cfgPos').addEventListener('change',e=>{cfg.pos=e.target.value;if(cfg.pos==='card-top')cfg.style='chip';applyCfg()});
 $('#cfgFab').onclick=()=>{const o=$('#cfg').classList.toggle('is-open');$('#cfgFab').setAttribute('aria-expanded',o)};
 $('#cfgClose').onclick=()=>{$('#cfg').classList.remove('is-open');$('#cfgFab').setAttribute('aria-expanded','false')};
-$('#cfgCopy').onclick=async()=>{try{await navigator.clipboard.writeText(cfgUrl());toast('Đã copy link kèm config')}catch(e){toast('Không copy được — dùng URL: ?pos='+cfg.pos+'&style='+cfg.style+'&max='+cfg.max+'&overflow='+cfg.overflow+'&empty='+cfg.empty)}};
+$('#cfgCopy').onclick=async()=>{try{await navigator.clipboard.writeText(cfgUrl());toast('Đã copy link kèm config')}catch(e){toast('Không copy được — dùng URL: ?pos='+cfg.pos+'&style='+cfg.style+'&empty='+cfg.empty)}};
 renderCfg();chipState();render();
 </script>
 </body>
