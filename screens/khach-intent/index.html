@@ -594,7 +594,7 @@ const POSITIONS={
   'card-top':['Hàng đầu card, avatar 20','Nhãn chạy hết chiều ngang cột, avatar thu về 20 cạnh tên. Dòng nhãn rộng nhất.'],
   'above-name':['Trên tên khách','Như Figma hiện tại. Nhãn đọc trước tên, đẩy tên xuống.'],
   'below-name':['Dưới tên khách','Tên đọc trước, nhãn là thông tin phụ. Card cao thêm 1 dòng khi có nhãn.'],
-  'footer':['Cuối cột Khách hàng','Dưới cụm nút. Tách hẳn khỏi thông tin khách, ít nổi nhất.']
+  'footer':['Cuối cột Khách hàng, avatar 20','Avatar thu về 20 cạnh tên. Dưới cụm nút. Tách hẳn khỏi thông tin khách, ít nổi nhất.']
 };
 const cfg=(()=>{const c={...LABEL_CONFIG};try{Object.assign(c,JSON.parse(localStorage.getItem('khach-label-cfg')||'{}'))}catch(e){}
   const q=new URLSearchParams(location.search);['pos','empty'].forEach(k=>q.get(k)&&(c[k]=q.get(k)));
@@ -625,7 +625,7 @@ function rowHtml(r){
     <div>
       ${labelSlot(r,'card-top')}
       <div class="seller-top">
-        ${cfg.pos==='card-top'?`<span class="ava ava--20" data-ds="Avatar" data-ds-size="20"><span class="t-label-annotation">${r.ini[0]}</span></span>`:`<span class="ava"><span class="t-label-page">${r.ini}</span></span>`}
+        ${['card-top','footer'].includes(cfg.pos)?`<span class="ava ava--20" data-ds="Avatar" data-ds-size="20"><span class="t-label-annotation">${r.ini[0]}</span></span>`:`<span class="ava"><span class="t-label-page">${r.ini}</span></span>`}
         <div class="seller-meta">${labelSlot(r,'above-name')}<div class="name-row"><p class="name t-header-caption">${esc(r.name)}</p></div>${labelSlot(r,'below-name')}</div>
         <button class="more-btn" data-act="more" aria-label="Thêm tuỳ chọn" aria-haspopup="true"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Morevertical-outline"/></svg></button>
       </div>
