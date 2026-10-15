@@ -258,16 +258,14 @@ button:focus-visible,[tabindex]:focus-visible,textarea:focus-visible{outline:2px
 .seller-meta{flex:1;min-width:0;display:flex;flex-direction:column;gap:var(--gap-2x-small-4)}
 .name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .labels{display:flex;flex-wrap:wrap;align-items:center;gap:var(--gap-x-small-8)}
-.labels--chip{gap:var(--gap-2x-small-6)}
 .labels.is-scroll{flex-wrap:nowrap;overflow-x:auto;max-width:100%;scrollbar-width:none;overscroll-behavior-x:contain;scroll-snap-type:x proximity}
 .labels.is-scroll::-webkit-scrollbar{display:none}
 .labels.is-scroll > *{scroll-snap-align:start}
-.label--chip{height:20px;gap:var(--gap-min-2);padding:0 var(--padding-x-small-8);background:var(--background-secondary)}
 .label{cursor:pointer;transition:background .2s}
 .label:hover,.label.is-active{background:var(--interaction-neutral-light-hover)}
 .label:active{background:var(--interaction-neutral-light-pressed)}
 /* Chip S-24 Fill "+ Phân loại" (DS) */
-.tag-add{height:20px;flex:none;white-space:nowrap;display:inline-flex;align-items:center;gap:var(--gap-min-2);padding:0 var(--padding-x-small-8);background:var(--background-secondary);border-radius:var(--radius-pill);transition:background .2s}
+.tag-add{height:20px;flex:none;white-space:nowrap;display:inline-flex;align-items:center;gap:var(--gap-2x-small-4);padding:var(--padding-min-2) var(--padding-2x-small-4);background:var(--background-tertiary);border-radius:var(--radius-pill);color:var(--text-primary);transition:background .2s}
 .tag-add:hover{background:var(--interaction-neutral-light-hover)}
 .tag-add:active{background:var(--interaction-neutral-light-pressed)}
 .tag-add.is-active{background:var(--interaction-neutral-light-hover)}
@@ -543,7 +541,6 @@ button:focus-visible,[tabindex]:focus-visible,textarea:focus-visible{outline:2px
   <div class="cfg-head"><h2 class="t-header-section">Cấu hình nhãn phân loại</h2><button class="more-btn" id="cfgClose" aria-label="Đóng"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Close-outline"/></svg></button></div>
   <div class="cfg-body">
     <div class="cfg-group" id="cfgPos"><span class="t-label-caption">Vị trí đặt nhãn</span></div>
-    <div class="cfg-group"><span class="t-label-caption">Kiểu nhãn</span><div class="seg" id="cfgStyle"></div></div>
     <div class="cfg-group"><span class="t-label-caption">Card chưa có nhãn</span><div class="seg" id="cfgEmpty"></div></div>
     <div class="cfg-group"><span class="t-label-caption">Config hiện tại (copy vào LABEL_CONFIG hoặc dùng URL)</span><div class="cfg-code t-body-caption" id="cfgCode"></div>
       <button class="btn btn--tertiary t-label-section" id="cfgCopy"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Duplicate-outline"/></svg>Copy link với config này</button></div>
@@ -581,31 +578,30 @@ const mask=p=>p.slice(0,6)+'****';
 
 /* ===== LABEL_CONFIG — chỉnh ở đây, hoặc qua nút “Cấu hình nhãn”, hoặc URL ?pos=&style=&max=&empty= =====
    pos   : 'card-top' | 'above-name' | 'below-name' | 'footer'   (đều trong cột Khách hàng)
-   style : 'label'  (nhãn 10px như Figma) | 'chip' (Chip S-24 Fill)
+   Nhãn: cao 20 = padding 2/4 + chữ label-annotation 10/16 Bold, nền background-tertiary, bo pill, gap 4, icon tag-fill 12.
    Luật cố định: nhãn luôn 1 dòng, crop + scroll ngang; mỗi khách tối đa MAX_TAGS nhãn; bấm nhãn mở popover Gắn phân loại.
    empty : 'add' (hiện chip “+ Phân loại”) | 'hide' (không hiện gì)                                      */
-const LABEL_CONFIG={pos:'above-name',style:'label',empty:'add'};
+const LABEL_CONFIG={pos:'above-name',empty:'add'};
 const MAX_TAGS=3;
 const POSITIONS={
-  'card-top':['Hàng đầu card, avatar 32','Nhãn chạy hết chiều ngang cột, avatar thu về 32 cạnh tên. Chứa được nhiều nhãn nhất. Đi kèm Chip S-24.'],
+  'card-top':['Hàng đầu card, avatar 32','Nhãn chạy hết chiều ngang cột, avatar thu về 32 cạnh tên. Dòng nhãn rộng nhất.'],
   'above-name':['Trên tên khách','Như Figma hiện tại. Nhãn đọc trước tên, đẩy tên xuống.'],
   'below-name':['Dưới tên khách','Tên đọc trước, nhãn là thông tin phụ. Card cao thêm 1 dòng khi có nhãn.'],
   'footer':['Cuối cột Khách hàng','Dưới cụm nút. Tách hẳn khỏi thông tin khách, ít nổi nhất.']
 };
 const cfg=(()=>{const c={...LABEL_CONFIG};try{Object.assign(c,JSON.parse(localStorage.getItem('khach-label-cfg')||'{}'))}catch(e){}
-  const q=new URLSearchParams(location.search);['pos','style','empty'].forEach(k=>q.get(k)&&(c[k]=q.get(k)));
+  const q=new URLSearchParams(location.search);['pos','empty'].forEach(k=>q.get(k)&&(c[k]=q.get(k)));
   if(!POSITIONS[c.pos])c.pos=LABEL_CONFIG.pos;return c})();
 function saveCfg(){try{localStorage.setItem('khach-label-cfg',JSON.stringify(cfg))}catch(e){}}
 function labelSlot(r,pos){
   if(cfg.pos!==pos)return '';
-  const inner=r.tags.length?labels(r.tags):(cfg.empty==='add'?`<div class="labels"><button class="tag-add t-tagline-annotation" data-act="addTag" aria-haspopup="dialog" data-ds="Chip" data-ds-size="S-24" data-ds-type="Fill"><svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-Plus-outline"/></svg>Phân loại</button></div>`:'');
+  const inner=r.tags.length?labels(r.tags):(cfg.empty==='add'?`<div class="labels"><button class="tag-add t-label-annotation" data-act="addTag" aria-haspopup="dialog" data-ds="Labelling" data-ds-raw="cùng spec với nhãn"><svg class="ds-icon ds-icon--12" aria-hidden="true"><use href="#ds-Plus-outline"/></svg>Phân loại</button></div>`:'');
   if(!inner)return '';
   return pos==='footer'?`<div class="foot-labels">${inner}</div>`:inner;
 }
 function labels(t){
-  const chip=cfg.style==='chip';
-  const one=k=>`<button class="label ${chip?'label--chip t-tagline-annotation':'t-label-annotation'}" data-k="${k}" data-act="addTag" aria-haspopup="dialog" aria-label="${TAGS[k]} — sửa phân loại"><svg class="ds-icon ${chip?'ds-icon--16':'ds-icon--12'}" aria-hidden="true"><use href="#ds-tag-fill"/></svg>${TAGS[k]}</button>`;
-  return `<div class="labels is-scroll ${chip?'labels--chip':''}" data-ds-raw="custom: DS chưa có nhãn trạng thái">${t.map(one).join('')}</div>`;
+  const one=k=>`<button class="label t-label-annotation" data-k="${k}" data-labelling-type="${TAGS[k]}" data-act="addTag" aria-haspopup="dialog" aria-label="${TAGS[k]} — sửa phân loại" data-ds="Labelling"><svg class="ds-icon ds-icon--12" aria-hidden="true"><use href="#ds-tag-fill"/></svg><span>${TAGS[k]}</span></button>`;
+  return `<div class="labels is-scroll" data-ds-raw="custom: DS chưa có nhãn trạng thái">${t.map(one).join('')}</div>`;
 }
 function postHtml(id){const p=POSTS.find(x=>x.id===id);return `<a class="post" href="#" title="${esc(p.title)}"><span class="thumb"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Image-outline"/></svg></span><span class="post-info"><span class="post-title t-tagline-caption">${esc(p.title)}</span><span class="post-price t-body-section">${p.price}</span></span></a>`}
 function phoneBtn(r){
@@ -745,16 +741,15 @@ $('#cfOk').onclick=()=>{const r=pending;if(!r)return;const el=document.querySele
 function renderCfg(){
   $('#cfgPos').innerHTML='<span class="t-label-caption">Vị trí đặt nhãn</span>'+Object.entries(POSITIONS).map(([k,[t,d]],i)=>`<label class="opt ${cfg.pos===k?'is-on':''}"><input type="radio" name="pos" value="${k}" ${cfg.pos===k?'checked':''}><span><span class="t-header-caption">${i+1}. ${t}</span><small class="t-body-caption">${d}</small></span></label>`).join('');
   const seg=(id,key,opts)=>{$(id).innerHTML=opts.map(([v,t])=>`<button class="t-tagline-caption ${cfg[key]==v?'is-on':''}" data-v="${v}" aria-pressed="${cfg[key]==v}">${t}</button>`).join('');$(id).onclick=e=>{const b=e.target.closest('button');if(!b)return;cfg[key]=key==='max'?+b.dataset.v:b.dataset.v;applyCfg()}};
-  seg('#cfgStyle','style',[['label','Nhãn 10px (Figma)'],['chip','Chip S-24']]);
   seg('#cfgEmpty','empty',[['add','Hiện “+ Phân loại”'],['hide','Ẩn']]);
   $('#cfgCode').textContent='LABEL_CONFIG = '+JSON.stringify(cfg,null,1).replace(/\n\s*/g,' ');
 }
-function cfgUrl(){const u=new URL(location.href);['pos','style','empty'].forEach(k=>u.searchParams.set(k,cfg[k]));return u.toString()}
+function cfgUrl(){const u=new URL(location.href);['pos','empty'].forEach(k=>u.searchParams.set(k,cfg[k]));return u.toString()}
 function applyCfg(){saveCfg();renderCfg();render()}
-$('#cfgPos').addEventListener('change',e=>{cfg.pos=e.target.value;if(cfg.pos==='card-top')cfg.style='chip';applyCfg()});
+$('#cfgPos').addEventListener('change',e=>{cfg.pos=e.target.value;applyCfg()});
 $('#cfgFab').onclick=()=>{const o=$('#cfg').classList.toggle('is-open');$('#cfgFab').setAttribute('aria-expanded',o)};
 $('#cfgClose').onclick=()=>{$('#cfg').classList.remove('is-open');$('#cfgFab').setAttribute('aria-expanded','false')};
-$('#cfgCopy').onclick=async()=>{try{await navigator.clipboard.writeText(cfgUrl());toast('Đã copy link kèm config')}catch(e){toast('Không copy được — dùng URL: ?pos='+cfg.pos+'&style='+cfg.style+'&empty='+cfg.empty)}};
+$('#cfgCopy').onclick=async()=>{try{await navigator.clipboard.writeText(cfgUrl());toast('Đã copy link kèm config')}catch(e){toast('Không copy được — dùng URL: ?pos='+cfg.pos+'&empty='+cfg.empty)}};
 renderCfg();chipState();render();
 </script>
 </body>
