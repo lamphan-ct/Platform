@@ -242,7 +242,7 @@ button:focus-visible,[tabindex]:focus-visible,textarea:focus-visible{outline:2px
 .chip.is-selected{background:var(--background-secondary);border-color:var(--border-black)}
 .chip .count{color:var(--text-secondary)}
 
-.grid{display:grid;grid-template-columns:330px minmax(0,1fr) 250px 250px}
+.grid{display:grid;grid-template-columns:310px minmax(0,1fr) 250px 250px}
 .thead > div{padding:var(--padding-medium-16);text-align:center;border-right:1px solid var(--border-divider)}
 .thead > div:last-child{border-right:0}
 
@@ -300,17 +300,21 @@ button:focus-visible,[tabindex]:focus-visible,textarea:focus-visible{outline:2px
 .label[data-k="new"] .ds-icon{color:var(--icon-error)}
 .label[data-k="meet"] .ds-icon{color:var(--icon-info)}
 .label[data-k="won"] .ds-icon{color:var(--icon-success)}
-.more-btn{width:24px;height:24px;border-radius:var(--radius-pill);display:inline-flex;align-items:center;justify-content:center;flex:none}
+.more-btn{width:20px;height:20px;color:var(--icon-secondary);border-radius:var(--radius-pill);display:inline-flex;align-items:center;justify-content:center;flex:none}
 .more-btn:hover{background:var(--interaction-neutral-light-hover)}
 .meta-line{display:flex;align-items:center;gap:var(--gap-2x-small-4);color:var(--text-secondary)}
-.meta-line .ds-icon{color:var(--icon-secondary)}
+.meta-line .ds-icon{color:var(--icon-tertiary)}
+.meta-rating{gap:var(--gap-x-small-8)}
+.meta-rating .rg{display:inline-flex;align-items:center;gap:var(--gap-2x-small-4)}
+.more-btn .ds-icon{color:var(--icon-secondary)}
 .meta-line .star{color:var(--icon-brand)}
-.vdiv{width:1px;height:20px;background:var(--border-regular);margin:0 var(--gap-2x-small-4)}
-.actions{display:flex;gap:var(--gap-2x-small-6)}
+.vdiv{width:1px;height:20px;background:var(--border-thin)}
+.actions{display:flex;justify-content:flex-start;gap:var(--gap-2x-small-6)}
 .actions .btn--primary{flex:1}
 .phone-shown{flex:1;background:var(--button-tonal-success);color:var(--text-success)}
 .phone-shown .ds-icon{color:var(--icon-success)}
 
+.row > div.col-need{gap:var(--gap-2x-small-6)}
 .need-top{display:flex;justify-content:flex-end;align-items:center;gap:var(--gap-x-small-8);min-height:20px}
 .new-badge{padding:0 var(--padding-2x-small-4);min-width:20px;background:var(--background-error);border:var(--stroke-action) solid var(--border-blank);border-radius:var(--radius-pill);color:var(--text-blank)}
 .time{color:var(--text-tertiary)}
@@ -320,7 +324,8 @@ button:focus-visible,[tabindex]:focus-visible,textarea:focus-visible{outline:2px
 .post:hover .post-title{color:var(--text-link)}
 .thumb{width:40px;height:40px;flex:none;border-radius:var(--radius-card-small);background:var(--background-tertiary);display:flex;align-items:center;justify-content:center}
 .thumb .ds-icon{color:var(--icon-tertiary)}
-.post-info{min-width:0;display:flex;flex-direction:column;gap:var(--gap-min-2)}
+.post:first-child .thumb{width:44px;height:44px}
+.post-info{flex:1;min-width:0;display:flex;flex-direction:column;gap:var(--gap-min-2)}
 .post-title{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .post-price{color:var(--text-secondary)}
 
@@ -605,15 +610,15 @@ function labels(t){
   const one=k=>`<button class="label t-label-annotation" data-k="${k}" data-labelling-type="${TAGS[k]}" data-act="addTag" aria-haspopup="dialog" aria-label="${TAGS[k]} — sửa phân loại" data-ds="Labelling"><svg class="ds-icon ds-icon--12" aria-hidden="true"><use href="#ds-tag-fill"/></svg><span>${TAGS[k]}</span></button>`;
   return `<div class="labels is-scroll" data-ds-raw="custom: DS chưa có nhãn trạng thái">${t.map(one).join('')}</div>`;
 }
-function postHtml(id){const p=POSTS.find(x=>x.id===id);return `<a class="post" href="#" title="${esc(p.title)}"><span class="thumb"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Image-outline"/></svg></span><span class="post-info"><span class="post-title t-tagline-caption">${esc(p.title)}</span><span class="post-price t-body-section">${p.price}</span></span></a>`}
+function postHtml(id){const p=POSTS.find(x=>x.id===id);return `<a class="post" href="#" title="${esc(p.title)}"><span class="thumb"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Image-outline"/></svg></span><span class="post-info"><span class="post-title t-body-section">${esc(p.title)}</span><span class="post-price t-tagline-caption">${p.price}</span></span></a>`}
 function phoneBtn(r){
   if(!r.phone) return '';
   if(r.revealed) return `<a class="btn phone-shown t-label-section" href="tel:${r.phone}"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Phone-outline"/></svg>${r.phone}</a>`;
   return `<button class="btn btn--primary btn--wide t-label-section" data-act="reveal">${mask(r.phone)} Hiện số</button>`;
 }
 function noteHtml(r){
-  if(r.editing) return `<div class="note-edit"><textarea class="t-body-caption" maxlength="300" placeholder="Nhập ghi chú về khách này">${esc(r.note)}</textarea><div class="btns"><button class="btn btn--secondary t-label-caption" data-act="noteCancel">Huỷ</button><button class="btn btn--primary t-label-caption" data-act="noteSave">Lưu</button></div></div>`;
-  return (r.note?`<button class="note-text t-body-caption" style="text-align:left" data-act="noteEdit">${esc(r.note)}</button>`:`<button class="note-ph t-body-caption" data-act="noteEdit">Nhấn để thêm ghi chú</button>`);
+  if(r.editing) return `<div class="note-edit"><textarea class="t-body-section" maxlength="300" placeholder="Nhập ghi chú về khách này">${esc(r.note)}</textarea><div class="btns"><button class="btn btn--secondary t-label-caption" data-act="noteCancel">Huỷ</button><button class="btn btn--primary t-label-caption" data-act="noteSave">Lưu</button></div></div>`;
+  return (r.note?`<button class="note-text t-body-section" style="text-align:left" data-act="noteEdit">${esc(r.note)}</button>`:`<button class="note-ph t-body-section" data-act="noteEdit">Nhấn để thêm ghi chú</button>`);
 }
 function rowHtml(r){
   return `<article class="row grid ${r.unread?'is-unread':''}" data-id="${r.id}" tabindex="0" aria-label="${esc(r.name)}${r.unread?', chưa đọc':''}" data-ds="Intent Row" data-ds-composite="Avatar 48 + Label + Button M-32 + Post item">
@@ -624,14 +629,14 @@ function rowHtml(r){
         <div class="seller-meta">${labelSlot(r,'above-name')}<div class="name-row"><p class="name t-header-caption">${esc(r.name)}</p></div>${labelSlot(r,'below-name')}</div>
         <button class="more-btn" data-act="more" aria-label="Thêm tuỳ chọn" aria-haspopup="true"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Morevertical-outline"/></svg></button>
       </div>
-      <div class="meta-line t-body-section"><svg class="ds-icon ds-icon--20 star" aria-hidden="true"><use href="#ds-Star-fill"/></svg>${r.rating}<span class="vdiv"></span>${r.reviews} đánh giá</div>
-      <div class="meta-line t-body-section"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Clock-outline"/></svg>Đã tham gia: ${r.joined}</div>
+      <div class="meta-line meta-rating t-body-section"><span class="rg"><svg class="ds-icon ds-icon--20 star" aria-hidden="true"><use href="#ds-Star-fill"/></svg>${r.rating}</span><span class="vdiv"></span>${r.reviews} đánh giá</div>
+      <div class="meta-line t-body-section"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Clock-outline"/></svg><span>Đã tham gia:</span><span>${r.joined}</span></div>
       <div class="actions"><button class="btn btn--tertiary btn--wide t-label-section" data-act="chat"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Chat-outline"/></svg>Nhắn tin</button>${phoneBtn(r)}</div>
       ${labelSlot(r,'footer')}
     </div>
-    <div>
+    <div class="col-need">
       <div class="need-top">${r.unread?'<span class="new-badge t-label-annotation">Mới</span>':''}<span class="time t-body-caption">${r.time}</span></div>
-      <div class="need">${NEED.map(n=>`<p class="t-tagline-caption">${n}</p>`).join('')}</div>
+      ${NEED.map(n=>`<p class="t-tagline-caption">${n}</p>`).join('')}
     </div>
     <div>${r.posts.map(postHtml).join('')}</div>
     <div>${noteHtml(r)}</div>
