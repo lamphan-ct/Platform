@@ -269,7 +269,7 @@ button:focus-visible,[tabindex]:focus-visible,textarea:focus-visible{outline:2px
 .name-row{display:flex;align-items:center;gap:var(--gap-x-small-8);min-width:0}
 .name-row .name{flex:0 1 auto}
 .name-row .labels{flex-wrap:nowrap;flex:none}
-.need-top .labels{margin-right:auto}
+.ava--32{width:32px;height:32px}
 .foot-labels{padding-top:var(--padding-x-small-8);border-top:1px dashed var(--border-thin)}
 
 /* ---------- Prototype tool: cấu hình nhãn (không thuộc màn) ---------- */
@@ -568,17 +568,16 @@ const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&qu
 const mask=p=>p.slice(0,6)+'****';
 
 /* ===== LABEL_CONFIG — chỉnh ở đây, hoặc qua nút “Cấu hình nhãn”, hoặc URL ?pos=&style=&max=&empty= =====
-   pos   : 'above-name' | 'below-name' | 'inline-name' | 'need' | 'note' | 'footer'
+   pos   : 'card-top' | 'above-name' | 'below-name' | 'inline-name' | 'footer'   (đều trong cột Khách hàng)
    style : 'label'  (nhãn 10px như Figma) | 'chip' (Chip S-24 Fill)
    max   : 0 = hiện hết; n = hiện n nhãn, còn lại gộp “+N”
    empty : 'add' (hiện chip “+ Phân loại”) | 'hide' (không hiện gì)                                      */
 const LABEL_CONFIG={pos:'above-name',style:'label',max:0,empty:'add'};
 const POSITIONS={
+  'card-top':['Hàng đầu card, avatar 32','Nhãn chạy hết chiều ngang cột, avatar thu về 32 cạnh tên. Chứa được nhiều nhãn nhất. Đi kèm Chip S-24.'],
   'above-name':['Trên tên khách','Như Figma hiện tại. Nhãn đọc trước tên, đẩy tên xuống.'],
   'below-name':['Dưới tên khách','Tên đọc trước, nhãn là thông tin phụ. Card cao thêm 1 dòng khi có nhãn.'],
   'inline-name':['Cùng dòng với tên','Gọn nhất, không tăng chiều cao. Nên đặt max = 1–2 vì cột 330px.'],
-  'need':['Đầu cột Nhu cầu','Thay vào chỗ trống bên trái giờ “11:45”. Nhãn gắn với nhu cầu, cột Khách hàng gọn.'],
-  'note':['Cột Ghi chú','Gom nhãn + ghi chú là “dữ liệu người bán tự thêm”. Dễ quét theo cột.'],
   'footer':['Cuối cột Khách hàng','Dưới cụm nút. Tách hẳn khỏi thông tin khách, ít nổi nhất.']
 };
 const cfg=(()=>{const c={...LABEL_CONFIG};try{Object.assign(c,JSON.parse(localStorage.getItem('khach-label-cfg')||'{}'))}catch(e){}
@@ -604,13 +603,14 @@ function phoneBtn(r){
 }
 function noteHtml(r){
   if(r.editing) return `<div class="note-edit"><textarea class="t-body-caption" maxlength="300" placeholder="Nhập ghi chú về khách này">${esc(r.note)}</textarea><div class="btns"><button class="btn btn--secondary t-label-caption" data-act="noteCancel">Huỷ</button><button class="btn btn--primary t-label-caption" data-act="noteSave">Lưu</button></div></div>`;
-  return labelSlot(r,'note')+(r.note?`<button class="note-text t-body-caption" style="text-align:left" data-act="noteEdit">${esc(r.note)}</button>`:`<button class="note-ph t-body-caption" data-act="noteEdit">Nhấn để thêm ghi chú</button>`);
+  return (r.note?`<button class="note-text t-body-caption" style="text-align:left" data-act="noteEdit">${esc(r.note)}</button>`:`<button class="note-ph t-body-caption" data-act="noteEdit">Nhấn để thêm ghi chú</button>`);
 }
 function rowHtml(r){
   return `<article class="row grid ${r.unread?'is-unread':''}" data-id="${r.id}" tabindex="0" aria-label="${esc(r.name)}${r.unread?', chưa đọc':''}" data-ds="Intent Row" data-ds-composite="Avatar 48 + Label + Button M-32 + Post item">
     <div>
+      ${labelSlot(r,'card-top')}
       <div class="seller-top">
-        <span class="ava"><span class="t-label-page">${r.ini}</span></span>
+        ${cfg.pos==='card-top'?`<span class="ava ava--32"><span class="t-label-caption">${r.ini}</span></span>`:`<span class="ava"><span class="t-label-page">${r.ini}</span></span>`}
         <div class="seller-meta">${labelSlot(r,'above-name')}<div class="name-row"><p class="name t-header-caption">${esc(r.name)}</p>${labelSlot(r,'inline-name')}</div>${labelSlot(r,'below-name')}</div>
         <button class="more-btn" data-act="more" aria-label="Thêm tuỳ chọn" aria-haspopup="true"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Morevertical-outline"/></svg></button>
       </div>
@@ -620,7 +620,7 @@ function rowHtml(r){
       ${labelSlot(r,'footer')}
     </div>
     <div>
-      <div class="need-top">${labelSlot(r,'need')}${r.unread?'<span class="new-badge t-label-annotation">Mới</span>':''}<span class="time t-body-caption">${r.time}</span></div>
+      <div class="need-top">${r.unread?'<span class="new-badge t-label-annotation">Mới</span>':''}<span class="time t-body-caption">${r.time}</span></div>
       <div class="need">${NEED.map(n=>`<p class="t-tagline-caption">${n}</p>`).join('')}</div>
     </div>
     <div>${r.posts.map(postHtml).join('')}</div>
@@ -735,7 +735,7 @@ function renderCfg(){
 }
 function cfgUrl(){const u=new URL(location.href);['pos','style','max','empty'].forEach(k=>u.searchParams.set(k,cfg[k]));return u.toString()}
 function applyCfg(){saveCfg();renderCfg();render()}
-$('#cfgPos').addEventListener('change',e=>{cfg.pos=e.target.value;applyCfg()});
+$('#cfgPos').addEventListener('change',e=>{cfg.pos=e.target.value;if(cfg.pos==='card-top')cfg.style='chip';applyCfg()});
 $('#cfgFab').onclick=()=>{const o=$('#cfg').classList.toggle('is-open');$('#cfgFab').setAttribute('aria-expanded',o)};
 $('#cfgClose').onclick=()=>{$('#cfg').classList.remove('is-open');$('#cfgFab').setAttribute('aria-expanded','false')};
 $('#cfgCopy').onclick=async()=>{try{await navigator.clipboard.writeText(cfgUrl());toast('Đã copy link kèm config')}catch(e){toast('Không copy được — dùng URL: ?pos='+cfg.pos+'&style='+cfg.style+'&max='+cfg.max+'&empty='+cfg.empty)}};
