@@ -548,6 +548,7 @@ button:focus-visible,[tabindex]:focus-visible,textarea:focus-visible{outline:2px
   <div class="cfg-head"><h2 class="t-header-section">Cấu hình nhãn phân loại</h2><button class="more-btn" id="cfgClose" aria-label="Đóng"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Close-outline"/></svg></button></div>
   <div class="cfg-body">
     <div class="cfg-group" id="cfgPos"><span class="t-label-caption">Vị trí đặt nhãn</span></div>
+    <div class="cfg-group" id="cfgOverflowGroup"><span class="t-label-caption">Khi nhiều nhãn (chỉ cho vị trí 2 và 3)</span><div class="seg" id="cfgOverflow"></div></div>
     <div class="cfg-group"><span class="t-label-caption">Card chưa có nhãn</span><div class="seg" id="cfgEmpty"></div></div>
     <div class="cfg-group"><span class="t-label-caption">Config hiện tại (copy vào LABEL_CONFIG hoặc dùng URL)</span><div class="cfg-code t-body-caption" id="cfgCode"></div>
       <button class="btn btn--tertiary t-label-section" id="cfgCopy"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Duplicate-outline"/></svg>Copy link với config này</button></div>
@@ -586,9 +587,11 @@ const mask=p=>p.slice(0,6)+'****';
 /* ===== LABEL_CONFIG — chỉnh ở đây, hoặc qua nút “Cấu hình nhãn”, hoặc URL ?pos=&style=&max=&empty= =====
    pos   : 'card-top' | 'above-name' | 'below-name' | 'footer'   (đều trong cột Khách hàng)
    Nhãn: cao 20 = padding 2/4 + chữ label-annotation 10/16 Bold, nền background-tertiary, bo pill, gap 4, icon tag-fill 12.
-   Luật cố định: nhãn luôn 1 dòng, crop + scroll ngang; mỗi khách tối đa MAX_TAGS nhãn; bấm nhãn mở popover Gắn phân loại.
+   overflow : 'scroll' (1 dòng, crop + scroll ngang) | 'wrap' (xuống dòng) — 'wrap' chỉ áp cho above-name / below-name
+   Luật cố định: mỗi khách tối đa MAX_TAGS nhãn; bấm nhãn mở popover Gắn phân loại.
    empty : 'add' (hiện chip “+ Phân loại”) | 'hide' (không hiện gì)                                      */
-const LABEL_CONFIG={pos:'above-name',empty:'add'};
+const LABEL_CONFIG={pos:'above-name',empty:'add',overflow:'scroll'};
+const WRAP_POS=['above-name','below-name']; /* chỉ 2 vị trí này cho phép overflow:'wrap' */
 const MAX_TAGS=3;
 const POSITIONS={
   'card-top':['Hàng đầu card, avatar 20','Nhãn chạy hết chiều ngang cột, avatar thu về 20 cạnh tên. Dòng nhãn rộng nhất.'],
@@ -597,7 +600,7 @@ const POSITIONS={
   'footer':['Cuối cột Khách hàng, avatar 20','Avatar thu về 20 cạnh tên. Dưới cụm nút. Tách hẳn khỏi thông tin khách, ít nổi nhất.']
 };
 const cfg=(()=>{const c={...LABEL_CONFIG};try{Object.assign(c,JSON.parse(localStorage.getItem('khach-label-cfg')||'{}'))}catch(e){}
-  const q=new URLSearchParams(location.search);['pos','empty'].forEach(k=>q.get(k)&&(c[k]=q.get(k)));
+  const q=new URLSearchParams(location.search);['pos','empty','overflow'].forEach(k=>q.get(k)&&(c[k]=q.get(k)));
   if(!POSITIONS[c.pos])c.pos=LABEL_CONFIG.pos;return c})();
 function saveCfg(){try{localStorage.setItem('khach-label-cfg',JSON.stringify(cfg))}catch(e){}}
 function labelSlot(r,pos){
@@ -608,7 +611,8 @@ function labelSlot(r,pos){
 }
 function labels(t){
   const one=k=>`<button class="label t-label-annotation" data-k="${k}" data-labelling-type="${TAGS[k]}" data-act="addTag" aria-haspopup="dialog" aria-label="${TAGS[k]} — sửa phân loại" data-ds="Labelling"><svg class="ds-icon ds-icon--12" aria-hidden="true"><use href="#ds-tag-fill"/></svg><span>${TAGS[k]}</span></button>`;
-  return `<div class="labels is-scroll" data-ds-raw="custom: DS chưa có nhãn trạng thái">${t.map(one).join('')}</div>`;
+  const wrap=cfg.overflow==='wrap'&&WRAP_POS.includes(cfg.pos);
+  return `<div class="labels ${wrap?'':'is-scroll'}" data-ds-raw="custom: DS chưa có nhãn trạng thái">${t.map(one).join('')}</div>`;
 }
 function postHtml(id){const p=POSTS.find(x=>x.id===id);return `<a class="post" href="#" title="${esc(p.title)}"><span class="thumb"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Image-outline"/></svg></span><span class="post-info"><span class="post-title t-body-section">${esc(p.title)}</span><span class="post-price t-tagline-caption">${p.price}</span></span></a>`}
 function phoneBtn(r){
@@ -748,10 +752,12 @@ $('#cfOk').onclick=()=>{const r=pending;if(!r)return;const el=document.querySele
 function renderCfg(){
   $('#cfgPos').innerHTML='<span class="t-label-caption">Vị trí đặt nhãn</span>'+Object.entries(POSITIONS).map(([k,[t,d]],i)=>`<label class="opt ${cfg.pos===k?'is-on':''}"><input type="radio" name="pos" value="${k}" ${cfg.pos===k?'checked':''}><span><span class="t-header-caption">${i+1}. ${t}</span><small class="t-body-caption">${d}</small></span></label>`).join('');
   const seg=(id,key,opts)=>{$(id).innerHTML=opts.map(([v,t])=>`<button class="t-tagline-caption ${cfg[key]==v?'is-on':''}" data-v="${v}" aria-pressed="${cfg[key]==v}">${t}</button>`).join('');$(id).onclick=e=>{const b=e.target.closest('button');if(!b)return;cfg[key]=key==='max'?+b.dataset.v:b.dataset.v;applyCfg()}};
+  seg('#cfgOverflow','overflow',[['scroll','1 dòng, scroll ngang'],['wrap','Xuống dòng']]);
+  $('#cfgOverflowGroup').hidden=!WRAP_POS.includes(cfg.pos);
   seg('#cfgEmpty','empty',[['add','Hiện “+ Phân loại”'],['hide','Ẩn']]);
   $('#cfgCode').textContent='LABEL_CONFIG = '+JSON.stringify(cfg,null,1).replace(/\n\s*/g,' ');
 }
-function cfgUrl(){const u=new URL(location.href);['pos','empty'].forEach(k=>u.searchParams.set(k,cfg[k]));return u.toString()}
+function cfgUrl(){const u=new URL(location.href);['pos','empty','overflow'].forEach(k=>u.searchParams.set(k,cfg[k]));return u.toString()}
 function applyCfg(){saveCfg();renderCfg();render()}
 $('#cfgPos').addEventListener('change',e=>{cfg.pos=e.target.value;applyCfg()});
 $('#cfgFab').onclick=()=>{const o=$('#cfg').classList.toggle('is-open');$('#cfgFab').setAttribute('aria-expanded',o)};
