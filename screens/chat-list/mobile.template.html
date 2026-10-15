@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chợ Tốt Chat List Mobile</title>
+<link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ds-tokens:start */
+/* DS tokens: Chợ Tốt (GDS), Figma export 2026-10-14. Inserted by scripts/ds_tokens.py inline; do not edit. */
+:root {
+  --logo-primary: #ffba00;
+  --logo-secondary: #ffba00;
+  --logo-on-black: #ffffff;
+  --border-divider: #f4f4f4;
+  --border-thin: #e8e8e8;
+  --border-overlay: #ffffff80;
+  --border-regular: #dddddd;
+  --border-bold: #8c8c8c;
+  --border-active: #ffd400;
+  --border-blank: #ffffff;
+  --border-brand: #ffd400;
+  --border-info: #306bd9;
+  --border-success: #12a154;
+  --border-error: #f0325e;
+  --border-warning: #fb7328;
+  --border-disabled: #c0c0c0;
+  --border-black: #222222;
+  --background-brand-light: #fff8d6;
+  --background-chotot-light: #fff8d6;
+  --background-primary: #ffffff;
+  --background-app: #f7f7f7;
+  --background-secondary: #f4f4f4;
+  --background-tertiary: #e8e8e8;
+  --background-disable: #c0c0c0;
+  --background-error-light: #feebef;
+  --background-info-light: #f2f6fc;
+  --background-success-light: #ecf9f1;
+  --background-warning-light: #fff4ec;
+  --background-brand: #ffd400;
+  --background-appwrapper: #ffd400;
+  --background-chotot: #ffd400;
+  --background-info: #306bd9;
+  --background-error: #f0325e;
+  --background-success: #12a154;
+  --background-warning: #fb7328;
+  --background-inverted: #222222;
+  --background-overlay: #22222280;
+  --background-overlay-inverted: #ffffff1a;
+  --text-brand: #cc8f00;
+  --text-on-background: #222222;
+  --text-primary: #222222;
+  --text-secondary: #595959;
+  --text-tertiary: #8c8c8c;
+  --text-link: #306bd9;
+  --text-error: #f0325e;
+  --text-success: #12a154;
+  --text-info: #306bd9;
+  --text-warning: #fb7328;
+  --text-chotot: #ffd400;
+  --text-disabled: #c0c0c0;
+  --text-blank: #ffffff;
+  --text-overlay: #ffffffbf;
+  --text-overlay-secondary: #ffffff80;
+  --icon-brand: #ffba00;
+  --icon-chotot: #ffba00;
+  --icon-chotot-bold: #cc8f00;
+  --icon-on-background: #222222;
+  --icon-primary: #222222;
+  --icon-secondary: #595959;
+  --icon-tertiary: #8c8c8c;
+  --icon-blank: #ffffff;
+  --icon-info: #306bd9;
+  --icon-success: #12a154;
+  --icon-error: #f0325e;
+  --icon-warning: #fb7328;
+  --icon-disabled: #c0c0c0;
+  --interaction-chotot-hover: #ffe884;
+  --interaction-chotot-pressed: #ffc800;
+  --interaction-brand-hover: #ffe884;
+  --interaction-brand-pressed: #ffba00;
+  --interaction-error-hover: #f35b7e;
+  --interaction-error-pressed: #cb294e;
+  --interaction-info-hover: #548af0;
+  --interaction-info-pressed: #1952ba;
+  --interaction-success-hover: #26c06e;
+  --interaction-success-pressed: #108446;
+  --interaction-warning-hover: #ffa97b;
+  --interaction-warning-pressed: #e16725;
+  --interaction-neutral-hover: #595959;
+  --interaction-neutral-pressed: #404040;
+  --interaction-primary-hover: #f4f4f4;
+  --interaction-brand-light-hover: #fff8d6;
+  --interaction-brand-light-pressed: #ffd400;
+  --interaction-error-light-hover: #fcd6df;
+  --interaction-error-light-pressed: #fbc2cf;
+  --interaction-info-light-hover: #e4ecfb;
+  --interaction-info-light-pressed: #cadbf7;
+  --interaction-success-light-hover: #d9f2e4;
+  --interaction-success-light-pressed: #abe7c5;
+  --interaction-warning-light-hover: #ffe4d5;
+  --interaction-warning-light-pressed: #ffceb4;
+  --interaction-neutral-light-hover: #e8e8e8;
+  --interaction-neutral-light-pressed: #dddddd;
+  --button-primary: #ffd400;
+  --button-info: #306bd9;
+  --button-success: #12a154;
+  --button-error: #f0325e;
+  --button-chotot: #ffd400;
+  --button-blank: #ffffff;
+  --button-disabled: #c0c0c0;
+  --button-appwrapper: #ffd400;
+  --button-neutral: #222222;
+  --button-secondary: #fff8d6;
+  --button-tonal-success: #ecf9f1;
+  --button-tonal-error: #feebef;
+  --button-tonal-info: #f2f6fc;
+  --button-tonal-neutral: #f4f4f4;
+  --skeleton-background: #f4f4f4;
+  --skeleton-item: #e8e8e8;
+  --gap-min-2: 2px;
+  --gap-2x-small-4: 4px;
+  --gap-2x-small-6: 6px;
+  --gap-x-small-8: 8px;
+  --gap-small-12: 12px;
+  --gap-medium-16: 16px;
+  --gap-large-20: 20px;
+  --padding-min-2: 2px;
+  --padding-2x-small-4: 4px;
+  --padding-2x-small-6: 6px;
+  --padding-x-small-8: 8px;
+  --padding-small-12: 12px;
+  --padding-medium-16: 16px;
+  --padding-large-20: 20px;
+  --radius-ad-small: 4px;
+  --radius-ad: 6px;
+  --radius-card-small: 8px;
+  --radius-card: 12px;
+  --radius-decoration: 16px;
+  --radius-modal: 20px;
+  --radius-pill: 999px;
+  --stroke-divider: 1px;
+  --stroke-action: 2px;
+  --stroke-emphasize: 3px;
+}
+.t-display-page { font: 700 32px/40px 'Reddit Sans', sans-serif; }
+.t-display-section { font: 700 24px/32px 'Reddit Sans', sans-serif; }
+.t-display-caption { font: 700 20px/28px 'Reddit Sans', sans-serif; }
+.t-header-page { font: 600 20px/28px 'Reddit Sans', sans-serif; }
+.t-display-annotation { font: 700 18px/26px 'Reddit Sans', sans-serif; }
+.t-display-price { font: 600 18px/26px 'Reddit Sans', sans-serif; }
+.t-label-page { font: 700 16px/24px 'Reddit Sans', sans-serif; }
+.t-header-section { font: 600 16px/24px 'Reddit Sans', sans-serif; }
+.t-tagline-section { font: 500 16px/20px 'Reddit Sans', sans-serif; }
+.t-body-page { font: 400 16px/24px 'Reddit Sans', sans-serif; }
+.t-label-section { font: 700 14px/20px 'Reddit Sans', sans-serif; }
+.t-header-caption { font: 600 14px/20px 'Reddit Sans', sans-serif; }
+.t-tagline-caption { font: 500 14px/20px 'Reddit Sans', sans-serif; }
+.t-body-section { font: 400 14px/20px 'Reddit Sans', sans-serif; }
+.t-label-caption { font: 700 12px/18px 'Reddit Sans', sans-serif; }
+.t-header-annotation { font: 600 12px/18px 'Reddit Sans', sans-serif; }
+.t-tagline-annotation { font: 500 12px/18px 'Reddit Sans', sans-serif; }
+.t-body-caption { font: 400 12px/18px 'Reddit Sans', sans-serif; }
+.t-label-annotation { font: 700 10px/16px 'Reddit Sans', sans-serif; }
+.t-tagline-footext { font: 500 10px/16px 'Reddit Sans', sans-serif; }
+.t-body-annotation { font: 400 10px/16px 'Reddit Sans', sans-serif; }
+/* ds-tokens:end */
+
+
+/* ---------- Frame (iPhone 14 Pro) ---------- */
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { height:100%; }
+body { display:flex; justify-content:center; align-items:flex-start; padding:40px 0;
+       background:var(--background-tertiary); font-family:'Reddit Sans', system-ui, sans-serif;
+       color:var(--text-primary); -webkit-font-smoothing:antialiased; overflow:hidden; }
+html.embed body { background:transparent; }
+button { font:inherit; color:inherit; background:none; border:0; cursor:pointer; }
+a { color:inherit; text-decoration:none; }
+button:focus-visible, [tabindex]:focus-visible { outline:var(--stroke-action) solid var(--border-info); outline-offset:var(--padding-min-2); }
+.iphone { position:relative; width:393px; height:806px; flex-shrink:0; background:#1c1c1e; border-radius:56px; padding:9px;
+          box-shadow:0 0 0 2px #3a3a3c, 0 24px 60px rgba(0,0,0,.35); }
+.iphone-screen { position:relative; width:375px; height:788px; border-radius:47px; overflow:hidden; background:var(--background-primary); }
+.dynamic-island { position:absolute; top:11px; left:50%; transform:translateX(-50%); width:120px; height:34px; background:#000; border-radius:20px; z-index:9999; }
+.app-scroll { position:absolute; inset:0; overflow-y:auto; overflow-x:hidden; display:flex; flex-direction:column; scrollbar-width:none; }
+.app-scroll::-webkit-scrollbar { display:none; }
+.ios-statusbar { position:sticky; top:0; z-index:20; height:50px; flex-shrink:0; display:flex; align-items:flex-end; justify-content:space-between;
+                 padding:0 26px 7px 32px; background:var(--background-primary); color:var(--text-primary); font-size:17px; font-weight:600; }
+.ios-statusbar .icons { display:flex; gap:5px; align-items:center; }
+.home-indicator { width:134px; height:5px; margin:6px auto 8px; border-radius:3px; background:rgba(0,0,0,.85); }
+
+/* ---------- Icons ---------- */
+.ds-icon { width:24px; height:24px; flex:none; color:var(--icon-primary); vertical-align:middle; }
+.ds-icon--20 { width:20px; height:20px; }
+.ds-icon--16 { width:16px; height:16px; }
+
+/* ---------- Header ---------- */
+.top { position:sticky; top:50px; z-index:15; background:var(--background-primary); }
+.header { height:46px; display:flex; align-items:center; justify-content:center; position:relative; }
+.header .icon-btn { position:absolute; right:var(--padding-x-small-8); }
+.icon-btn { width:40px; height:40px; border-radius:var(--radius-pill); display:grid; place-items:center; }
+.icon-btn:hover { background:var(--interaction-primary-hover); }
+.icon-btn:active { background:var(--interaction-neutral-light-pressed); }
+
+/* Segment: Tin nhắn / Khách */
+.segment { margin:var(--padding-small-12) var(--padding-medium-16) 0; display:flex; background:var(--background-secondary); border-radius:var(--radius-pill); }
+.seg { flex:1; height:40px; border-radius:var(--radius-pill); display:flex; align-items:center; justify-content:center; gap:var(--gap-x-small-8);
+       color:var(--text-primary); transition:background .2s ease; }
+.seg:hover { background:var(--interaction-neutral-light-hover); }
+.seg[aria-selected="true"] { background:var(--background-brand); }
+.seg[aria-selected="true"]:hover { background:var(--interaction-brand-hover); }
+
+/* Filter chips */
+.filters { display:flex; gap:var(--gap-2x-small-6); padding:var(--padding-small-12) var(--padding-medium-16) 0; overflow-x:auto; scrollbar-width:none; }
+.filters::-webkit-scrollbar { display:none; }
+.chip { flex:none; height:32px; padding:0 var(--padding-small-12); border-radius:var(--radius-pill); display:inline-flex; align-items:center; gap:var(--gap-2x-small-4);
+        background:var(--background-primary); border:1px solid var(--border-regular); color:var(--text-primary); white-space:nowrap; }
+.chip:hover { background:var(--interaction-neutral-light-hover); }
+.chip[aria-pressed="true"] { background:var(--background-secondary); border-color:var(--border-black); }
+.chip .ds-icon { color:var(--icon-info); }
+.chip .ds-icon.y { color:var(--icon-chotot); }
+.chip .ds-icon.g { color:var(--icon-secondary); }
+
+/* ---------- Badge ---------- */
+.badge { min-width:18px; height:16px; padding:0 var(--padding-2x-small-4); border-radius:var(--radius-pill); background:var(--background-error);
+         color:var(--text-blank); display:inline-flex; align-items:center; justify-content:center; flex:none; }
+
+/* ---------- Chat list ---------- */
+.list { padding-top:var(--padding-small-12); flex:1; }
+.row { display:block; padding:var(--padding-small-12) var(--padding-medium-16); border-bottom:1px solid var(--border-thin); cursor:pointer; transition:background .15s ease; }
+.row:hover { background:var(--interaction-primary-hover); }
+.row:active { background:var(--interaction-neutral-light-hover); }
+.row-main { display:flex; gap:var(--gap-medium-16); align-items:center; }
+.ava { position:relative; width:52px; height:60px; flex:none; align-self:center; }
+.ava img { position:absolute; left:0; top:0; display:block; }
+.ava.solo { height:52px; }
+.ava.solo img { width:52px; height:52px; border-radius:var(--radius-pill); }
+.content { flex:1; min-width:0; display:flex; flex-direction:column; gap:var(--gap-2x-small-4); }
+.line { display:flex; align-items:center; gap:var(--gap-2x-small-4); min-width:0; }
+.line .grow { flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.name { color:var(--text-primary); }
+.msg { color:var(--text-primary); }
+.msg.read { color:var(--text-tertiary); }
+.wait { color:var(--text-link); flex:none; }
+.time { color:var(--text-tertiary); flex:none; }
+.verify { color:var(--icon-info); }
+
+.label { align-self:flex-start; height:20px; padding:0 var(--padding-2x-small-6) 0 var(--padding-2x-small-4); border-radius:var(--radius-ad-small);
+         background:var(--background-secondary); display:inline-flex; align-items:center; gap:var(--gap-min-2); color:var(--text-primary); }
+.label .ds-icon { color:var(--icon-info); }
+.label.offer .ds-icon { color:var(--icon-chotot); }
+
+.actions { display:flex; gap:var(--gap-x-small-8); }
+.btn { height:32px; padding:0 var(--padding-small-12); border-radius:var(--radius-pill); display:inline-flex; align-items:center; gap:var(--gap-2x-small-4);
+       color:var(--text-primary); white-space:nowrap; transition:background .15s ease; }
+.btn.secondary { background:var(--button-tonal-neutral); }
+.btn.secondary:hover { background:var(--interaction-neutral-light-hover); }
+.btn.secondary:active { background:var(--interaction-neutral-light-pressed); }
+.btn.tertiary { background:var(--button-blank); border:1px solid var(--border-regular); }
+.btn.tertiary:hover { background:var(--interaction-primary-hover); }
+.btn.tertiary:active { background:var(--interaction-neutral-light-pressed); }
+.btn .link { color:var(--text-link); }
+
+.hint { margin-top:var(--padding-x-small-8); height:36px; padding:0 var(--padding-small-12); border-radius:var(--radius-card-small); background:var(--background-info-light);
+        display:flex; align-items:center; gap:var(--gap-2x-small-4); }
+.hint .grow { flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--text-primary); }
+
+.row[hidden] { display:none; }
+.empty { padding:var(--padding-large-20) var(--padding-medium-16); text-align:center; color:var(--text-tertiary); }
+
+/* ---------- Bottom navigation (app) ---------- */
+.bottom-nav { position:sticky; bottom:0; z-index:20; background:var(--background-primary); box-shadow:0 -1px 0 var(--border-thin); flex-shrink:0; }
+.nav-items { display:grid; grid-template-columns:repeat(5, 1fr); height:54px; align-items:end; }
+.nav-item { display:flex; flex-direction:column; align-items:center; gap:var(--gap-min-2); color:var(--text-secondary); position:relative; padding-bottom:var(--padding-min-2); }
+.nav-item .ds-icon { color:var(--icon-secondary); }
+.nav-item.on { color:var(--text-primary); }
+.nav-item.on .ds-icon { color:var(--icon-chotot); }
+.nav-item .badge { position:absolute; top:calc(-1 * var(--padding-2x-small-4)); left:calc(50% + var(--padding-2x-small-4)); }
+.nav-item img { width:24px; height:24px; border-radius:var(--radius-pill); display:block; }
+.cta { display:flex; flex-direction:column; align-items:center; gap:var(--gap-min-2); }
+.cta-circle { width:48px; height:48px; margin-top:-20px; border-radius:var(--radius-pill); background:var(--button-primary); display:grid; place-items:center;
+              box-shadow:0 0 0 4px var(--background-primary); transition:background .15s ease; }
+.cta:hover .cta-circle { background:var(--interaction-brand-hover); }
+.cta:active .cta-circle { background:var(--interaction-brand-pressed); }
+.cta-label { padding:0 var(--padding-2x-small-6); border-radius:var(--radius-pill); background:var(--background-brand); color:var(--text-primary); }
+</style>
+</head>
+<body>
+<svg id="ds-icon-sprite" xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+<symbol id="ds-Setting-outline" viewBox="0 0 24 24"><path d="M9.424 20.172C10.27 22.69 13.993 22.606 14.647 19.92V19.918L14.671 19.837C14.701 19.757 14.745 19.683 14.8 19.618C14.874 19.531 14.967 19.463 15.073 19.42C15.178 19.376 15.292 19.358 15.406 19.367C15.519 19.376 15.63 19.411 15.727 19.47L15.956 19.597C18.336 20.783 20.911 18.09 19.471 15.727L19.47 15.726C19.411 15.629 19.375 15.519 19.367 15.406C19.358 15.292 19.376 15.178 19.419 15.073C19.463 14.968 19.531 14.875 19.618 14.801C19.704 14.727 19.807 14.673 19.917 14.646L20.17 14.574C22.692 13.73 22.605 10.005 19.918 9.352V9.353C19.808 9.326 19.705 9.273 19.619 9.199C19.532 9.125 19.464 9.031 19.42 8.926C19.377 8.82 19.359 8.706 19.368 8.593C19.376 8.479 19.411 8.369 19.47 8.272H19.471C20.911 5.91 18.336 3.216 15.956 4.401L15.727 4.528C15.63 4.587 15.52 4.623 15.407 4.632C15.293 4.64 15.179 4.622 15.074 4.579C14.968 4.535 14.874 4.467 14.8 4.381C14.726 4.295 14.673 4.193 14.646 4.083L14.647 4.082C13.974 1.305 10.026 1.307 9.353 4.081L9.352 4.082C9.325 4.192 9.273 4.295 9.199 4.382C9.125 4.468 9.031 4.536 8.926 4.58C8.821 4.623 8.707 4.641 8.593 4.633C8.479 4.624 8.369 4.588 8.272 4.529V4.528C5.833 3.042 3.042 5.833 4.528 8.272H4.529L4.569 8.347C4.604 8.425 4.626 8.508 4.632 8.594C4.641 8.707 4.623 8.821 4.579 8.927C4.536 9.032 4.468 9.125 4.381 9.199C4.316 9.255 4.242 9.298 4.162 9.328L4.081 9.352C1.304 10.025 1.307 13.973 4.08 14.646L4.166 14.674C4.555 14.82 4.742 15.269 4.571 15.647L4.528 15.727C3.042 18.166 5.832 20.956 8.271 19.471H8.272C8.369 19.412 8.479 19.377 8.592 19.368C8.706 19.359 8.82 19.377 8.925 19.421C9.03 19.464 9.124 19.532 9.198 19.619C9.272 19.705 9.324 19.808 9.351 19.919L9.352 19.92L9.424 20.172ZM12.697 19.47C12.501 20.183 11.473 20.176 11.294 19.449L11.295 19.448C11.194 19.031 10.996 18.645 10.717 18.319C10.438 17.993 10.087 17.737 9.691 17.573C9.295 17.409 8.866 17.341 8.439 17.374C8.011 17.407 7.597 17.539 7.231 17.762V17.763C6.583 18.158 5.841 17.416 6.236 16.768L6.321 16.619C7.142 15.066 6.288 13.125 4.553 12.703H4.552C3.814 12.523 3.817 11.475 4.552 11.297L4.706 11.254C5.064 11.144 5.397 10.963 5.682 10.719C6.008 10.44 6.263 10.087 6.427 9.691C6.591 9.295 6.66 8.866 6.626 8.438C6.593 8.011 6.459 7.596 6.236 7.23C5.842 6.583 6.582 5.842 7.23 6.236L7.369 6.315C7.7 6.491 8.064 6.598 8.438 6.627C8.865 6.66 9.295 6.591 9.691 6.427C10.087 6.263 10.439 6.008 10.718 5.682C10.997 5.357 11.195 4.969 11.296 4.552L11.339 4.423C11.603 3.817 12.536 3.863 12.703 4.552V4.553L12.745 4.708C12.855 5.065 13.038 5.397 13.282 5.682C13.56 6.008 13.912 6.263 14.308 6.427C14.704 6.591 15.134 6.659 15.561 6.626C15.988 6.593 16.402 6.459 16.768 6.236L16.89 6.176C17.464 5.95 18.049 6.536 17.824 7.109L17.763 7.231C17.54 7.597 17.407 8.011 17.373 8.438C17.34 8.866 17.409 9.295 17.573 9.691C17.737 10.087 17.991 10.439 18.317 10.718C18.642 10.996 19.029 11.194 19.446 11.296L19.447 11.297L19.577 11.34C20.142 11.586 20.139 12.415 19.577 12.66L19.447 12.703C19.03 12.804 18.643 13.002 18.317 13.281C17.991 13.56 17.736 13.912 17.572 14.308C17.408 14.705 17.339 15.134 17.372 15.561C17.406 15.989 17.54 16.402 17.763 16.768L17.824 16.89C18.065 17.504 17.376 18.134 16.768 17.764L16.769 17.763C16.403 17.54 15.989 17.406 15.561 17.373C15.133 17.34 14.704 17.408 14.308 17.572C13.912 17.736 13.56 17.991 13.281 18.317C13.002 18.643 12.804 19.03 12.703 19.447L12.697 19.47ZM12.999 12C12.999 12.552 12.552 13 11.999 13C11.447 13 10.999 12.552 10.999 12C10.999 11.448 11.447 11 11.999 11C12.552 11 12.999 11.448 12.999 12ZM14.999 12C14.999 10.343 13.656 9 11.999 9C10.343 9 8.999 10.343 8.999 12C8.999 13.657 10.343 15 11.999 15C13.656 15 14.999 13.657 14.999 12Z" fill="currentColor"/></symbol>
+<symbol id="ds-tag-fill" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.714 2.678C12.252 2.196 12.966 1.952 13.691 2.007L19.128 2.425L19.37 2.456C20.561 2.657 21.479 3.646 21.573 4.871L21.991 10.308L21.998 10.453C22.014 11.175 21.735 11.876 21.221 12.39L12.39 21.221C11.417 22.194 9.879 22.255 8.835 21.404L8.633 21.221L2.778 15.366C1.74 14.328 1.74 12.646 2.778 11.609L11.609 2.778L11.714 2.678ZM16.189 6.929L16.086 6.923C15.534 6.921 15.078 7.366 15.075 7.918C15.073 8.471 15.519 8.92 16.071 8.923L16.178 8.919C16.683 8.871 17.078 8.447 17.081 7.929C17.084 7.412 16.693 6.983 16.189 6.929Z" fill="currentColor"/></symbol>
+<symbol id="ds-Report-outline" viewBox="0 0 24 24"><path d="M21 2L21.129 2.008C21.428 2.047 21.696 2.22 21.855 2.482C22.013 2.744 22.042 3.061 21.938 3.344L21.885 3.462L19.672 7.695L21.885 11.927C22.047 12.237 22.036 12.61 21.855 12.909C21.674 13.208 21.349 13.391 21 13.391H6.454V20H7.909L8.011 20.004C8.515 20.056 8.909 20.482 8.909 21C8.909 21.517 8.515 21.943 8.011 21.995L7.909 22H3C2.447 22 2 21.552 2 21C2 20.447 2.447 20 3 20H4.454V3L4.459 2.897C4.511 2.393 4.936 2 5.454 2H21ZM6.454 11.391H19.349L17.659 8.159C17.507 7.868 17.507 7.522 17.659 7.232L19.349 4H6.454V11.391Z" fill="currentColor"/></symbol>
+<symbol id="ds-Arrowright-fill" viewBox="0 0 24 24"><path d="M12.143 7.275C12.518 6.918 13.098 6.91 13.483 7.24L13.557 7.31L17.724 11.685C18.092 12.071 18.092 12.678 17.724 13.064L13.557 17.439L13.483 17.509C13.098 17.839 12.518 17.831 12.143 17.474C11.743 17.093 11.728 16.46 12.109 16.06L14.667 13.375H7C6.447 13.375 6 12.927 6 12.375C6 11.822 6.447 11.375 7 11.375H14.667L12.109 8.689L12.042 8.612C11.731 8.211 11.768 7.632 12.143 7.275Z" fill="currentColor"/></symbol>
+<symbol id="ds-Verify-fill" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.129 2.367C12.498 1.908 11.656 1.879 10.998 2.281L10.87 2.367L8.712 3.934C8.699 3.944 8.684 3.952 8.669 3.958L8.62 3.972L5.987 4.389C5.165 4.519 4.519 5.165 4.389 5.987L3.972 8.621C3.969 8.637 3.965 8.654 3.958 8.669L3.934 8.712L2.366 10.87C1.877 11.544 1.877 12.456 2.366 13.129L3.934 15.287L3.958 15.33C3.965 15.346 3.969 15.362 3.972 15.379L4.389 18.012C4.519 18.834 5.165 19.48 5.987 19.61L8.62 20.027L8.669 20.041C8.684 20.047 8.699 20.055 8.712 20.065L10.87 21.633C11.543 22.122 12.456 22.122 13.129 21.633L15.287 20.065L15.33 20.041C15.346 20.034 15.362 20.03 15.378 20.027L18.012 19.61C18.834 19.48 19.48 18.834 19.61 18.012L20.027 15.379L20.041 15.33C20.047 15.315 20.055 15.3 20.065 15.287L21.632 13.129L21.718 13.001C22.12 12.343 22.091 11.502 21.632 10.87L20.065 8.712C20.055 8.699 20.047 8.684 20.041 8.669L20.027 8.621L19.61 5.987C19.48 5.165 18.834 4.519 18.012 4.389L15.378 3.972C15.362 3.969 15.346 3.965 15.33 3.958L15.287 3.934L13.129 2.367ZM16.831 9.823C17.297 9.47 17.372 8.826 17 8.385C16.627 7.944 15.947 7.872 15.482 8.225C14.41 9.037 13.438 10.297 12.674 11.461C12.311 12.014 11.983 12.565 11.699 13.07C11.612 12.979 11.524 12.891 11.438 12.805C10.924 12.295 10.365 11.808 9.952 11.524C9.469 11.192 8.794 11.293 8.443 11.75C8.092 12.206 8.199 12.846 8.681 13.179C8.946 13.361 9.404 13.75 9.876 14.218C10.35 14.688 10.763 15.164 10.978 15.504C11.185 15.83 11.564 16.02 11.964 15.999C12.364 15.978 12.719 15.749 12.886 15.404C13.212 14.732 13.791 13.634 14.509 12.541C15.239 11.428 16.054 10.412 16.831 9.823Z" fill="currentColor"/></symbol>
+<symbol id="ds-House-outline" viewBox="0 0 24 24"><path d="M20 9.416C20 9.398 19.993 9.369 19.967 9.341L19.935 9.314L12.134 4.039C12.076 3.999 11.997 3.99 11.928 4.009L11.865 4.039L4.064 9.314C4.011 9.35 4 9.392 4 9.416V19.288C4 19.634 4.31 20 4.799 20H19.2C19.689 20 20 19.634 20 19.288V9.416ZM22 19.288C22 20.832 20.698 21.999 19.2 22H4.799C3.301 21.999 2 20.832 2 19.288V9.416C2 8.701 2.364 8.049 2.944 7.657L10.744 2.382L10.888 2.293C11.623 1.874 12.548 1.904 13.255 2.382L21.055 7.657L21.162 7.734C21.68 8.131 22 8.745 22 9.416V19.288Z" fill="currentColor"/></symbol>
+<symbol id="ds-tag-outline" viewBox="0 0 24 24"><path d="M11.714 2.678C12.252 2.196 12.966 1.952 13.691 2.007L19.128 2.425L19.37 2.456C20.561 2.657 21.479 3.646 21.573 4.871L21.991 10.308L21.998 10.453C22.014 11.175 21.735 11.876 21.221 12.39L12.39 21.221C11.417 22.194 9.879 22.255 8.835 21.404L8.633 21.221L2.778 15.366C1.74 14.328 1.74 12.646 2.778 11.609L11.609 2.778L11.714 2.678ZM13.537 4.001C13.37 3.989 13.205 4.04 13.075 4.144L13.023 4.192L4.192 13.023C3.935 13.279 3.935 13.694 4.192 13.951L10.048 19.807L10.151 19.891C10.405 20.059 10.752 20.031 10.976 19.807L19.807 10.976C19.926 10.857 19.994 10.699 19.999 10.533L19.997 10.461L19.579 5.024C19.558 4.742 19.358 4.51 19.093 4.44L18.975 4.419L13.537 4.001ZM16.086 6.923L16.189 6.929C16.693 6.983 17.084 7.412 17.081 7.929C17.078 8.447 16.683 8.871 16.178 8.919L16.076 8.923H16.07C15.517 8.92 15.073 8.471 15.075 7.918C15.078 7.366 15.528 6.921 16.08 6.923H16.086Z" fill="currentColor"/></symbol>
+<symbol id="ds-Plus-outline" viewBox="0 0 24 24"><path d="M11 16.799V12.999H7.2C6.647 12.999 6.2 12.552 6.2 11.999C6.2 11.447 6.647 10.999 7.2 10.999H11V7.199C11 6.647 11.447 6.2 12 6.199C12.552 6.199 13 6.647 13 7.199V10.999H16.799L16.902 11.004C17.406 11.055 17.799 11.482 17.799 11.999C17.799 12.517 17.406 12.943 16.902 12.994L16.799 12.999H13V16.799C13 17.351 12.552 17.799 12 17.799C11.447 17.799 11 17.351 11 16.799Z" fill="currentColor"/></symbol>
+<symbol id="ds-Chat-fill" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.999 1.399C17.853 1.399 22.599 6.145 22.6 11.999C22.6 13.415 22.317 14.768 21.812 16.005L22.591 21.457C22.638 21.787 22.518 22.118 22.271 22.341C22.023 22.564 21.681 22.649 21.358 22.568L16.829 21.436C15.38 22.179 13.737 22.6 11.999 22.6C6.145 22.599 1.399 17.853 1.399 11.999C1.4 6.145 6.145 1.4 11.999 1.399ZM8.401 12.198C7.849 12.198 7.401 12.646 7.401 13.198C7.401 13.751 7.849 14.198 8.401 14.198H12.602L12.703 14.193C13.208 14.142 13.602 13.716 13.602 13.198C13.602 12.68 13.208 12.254 12.703 12.203L12.602 12.198H8.401ZM8.401 7.399C7.849 7.399 7.401 7.847 7.401 8.399C7.401 8.952 7.849 9.399 8.401 9.399H15.602L15.703 9.395C16.208 9.344 16.602 8.917 16.602 8.399C16.602 7.881 16.208 7.455 15.703 7.404L15.602 7.399H8.401Z" fill="currentColor"/></symbol>
+</svg>
+
+<div class="iphone" data-ds-context="reference">
+  <div class="iphone-screen">
+    <div class="dynamic-island" data-ds-context="reference"></div>
+    <div class="app-scroll" data-ds-screen="chat-list-messages" data-ds-platform="app" data-ds-vertical="GDS" data-ds-surface="page" data-ds-size="375x812">
+      <div class="ios-statusbar" data-ds-context="reference">
+        <span>9:41</span>
+        <span class="icons">
+          <svg width="18" height="12" viewBox="0 0 18 12" fill="none"><rect y="7" width="3" height="5" rx="1" fill="currentColor"/><rect x="5" y="5" width="3" height="7" rx="1" fill="currentColor"/><rect x="10" y="2.5" width="3" height="9.5" rx="1" fill="currentColor"/><rect x="15" width="3" height="12" rx="1" fill="currentColor"/></svg>
+          <svg width="17" height="12" viewBox="0 0 17 12" fill="none"><path d="M8.5 2.7c2.4 0 4.6.9 6.3 2.5l1.6-1.7C14.3 1.5 11.5.3 8.5.3S2.7 1.5.6 3.5l1.6 1.7C3.9 3.6 6.1 2.7 8.5 2.7Zm0 4.1c1.3 0 2.5.5 3.4 1.4l1.7-1.7c-1.4-1.3-3.2-2.1-5.1-2.1s-3.7.8-5.1 2.1l1.7 1.7c.9-.9 2.1-1.4 3.4-1.4Zm2 3.4L8.5 12l-2-1.8c.5-.6 1.2-.9 2-.9s1.5.3 2 .9Z" fill="currentColor"/></svg>
+          <svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x=".5" y=".5" width="21" height="11" rx="3" stroke="currentColor" stroke-opacity=".4"/><rect x="2" y="2" width="15" height="8" rx="1.6" fill="currentColor"/><path d="M23.5 4v4c.8-.3 1.3-1.1 1.3-2s-.5-1.7-1.3-2Z" fill="currentColor" fill-opacity=".4"/></svg>
+        </span>
+      </div>
+
+      <div class="top">
+        <div class="header">
+          <h1 class="t-header-section">Liên hệ</h1>
+          <button class="icon-btn" aria-label="Cài đặt"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Setting-outline"/></svg></button>
+        </div>
+
+        <div class="segment" role="tablist" aria-label="Loại liên hệ" data-ds-raw="custom: Chip L-40 chọn dùng nền brand thay vì nền inverted của DS">
+          <button class="seg" role="tab" aria-selected="true"><span class="t-label-page">Tin nhắn</span><span class="badge t-label-annotation">12</span></button>
+          <button class="seg" role="tab" aria-selected="false"><span class="t-label-page">Khách</span><span class="badge t-label-annotation">3</span></button>
+        </div>
+
+        <div class="filters" role="group" aria-label="Lọc hội thoại">
+          <button class="chip t-tagline-caption" aria-pressed="true" data-f="all">Tất cả</button>
+          <button class="chip t-tagline-caption" aria-pressed="false" data-f="unread">Chưa đọc</button>
+          <button class="chip t-tagline-caption" aria-pressed="false" data-f="meet"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-tag-fill"/></svg>Hẹn gặp (10)</button>
+          <button class="chip t-tagline-caption" aria-pressed="false" data-f="offer"><svg class="ds-icon ds-icon--20 y" aria-hidden="true"><use href="#ds-tag-fill"/></svg>Đang trả giá (2)</button>
+          <button class="chip t-tagline-caption" aria-pressed="false" data-f="spam"><svg class="ds-icon ds-icon--20 g" aria-hidden="true"><use href="#ds-Report-outline"/></svg>Tin rác/Bỏ qua</button>
+        </div>
+      </div>
+
+      <div class="list" id="list">
+        <!-- 1 · Nhung Phạm: hẹn gặp, chưa đọc, có SĐT + đánh giá + gợi ý tìm kiếm -->
+        <div class="row" tabindex="0" data-tags="unread meet">
+          <div class="row-main">
+            <div class="ava" data-ds-raw="Avatar 52 + ảnh tin 32 theo Figma; DS Avatar không có size 52"><img src="assets/row-nhung.png" width="76" height="80" alt=""></div>
+            <div class="content">
+              <span class="label t-tagline-annotation"><svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-tag-fill"/></svg>Hẹn gặp</span>
+              <div class="line"><span class="grow name t-header-caption">Nhung Phạm</span><span class="badge t-label-annotation">12</span></div>
+              <div class="line"><span class="grow msg t-body-section">Gọi lại cho tôi 0987654321</span><span class="wait t-tagline-caption">Chờ trả lời</span><span class="time t-body-section">11:30</span></div>
+              <div class="actions">
+                <button class="btn secondary"><span class="t-label-section">0987654321</span><span class="link t-label-section">Bấm gọi</span></button>
+                <button class="btn tertiary t-label-section">Đánh giá</button>
+              </div>
+            </div>
+          </div>
+          <div class="hint"><span class="t-label-section">Tìm:</span><span class="grow t-body-section">Mua nhà/chung cư, từ 7-10 tỷ, Tp Hồ Chí Minh</span><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Arrowright-fill"/></svg></div>
+        </div>
+
+        <!-- 2 · Bánh É: đang trả giá, đã đọc -->
+        <div class="row" tabindex="0" data-tags="offer">
+          <div class="row-main">
+            <div class="ava"><img src="assets/row-banh.png" width="76" height="80" alt=""></div>
+            <div class="content">
+              <span class="label offer t-tagline-annotation"><svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-tag-fill"/></svg>Đang trả giá</span>
+              <div class="line"><span class="grow name t-header-caption">Bánh É</span></div>
+              <div class="line"><span class="grow msg read t-body-section" style="flex:0 1 auto">Mình bán rồi nhé</span><span class="wait t-tagline-caption">Chờ trả lời</span><span class="grow"></span><span class="time t-body-section">17/06/25</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 · Nguyen Le Xuan Yen: hẹn gặp, chưa đọc -->
+        <div class="row" tabindex="0" data-tags="unread meet">
+          <div class="row-main">
+            <div class="ava"><img src="assets/row-yen.png" width="76" height="80" alt=""></div>
+            <div class="content">
+              <span class="label t-tagline-annotation"><svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-tag-fill"/></svg>Hẹn gặp</span>
+              <div class="line"><span class="grow name t-header-caption">Nguyen Le Xuan Yen</span><span class="badge t-label-annotation">12</span></div>
+              <div class="line"><span class="grow msg t-body-section">Nhà này hướng nào thế bạn?</span><span class="time t-body-section">11:30</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 · Khánh Lê: chưa đọc, có nút đánh giá -->
+        <div class="row" tabindex="0" data-tags="unread">
+          <div class="row-main">
+            <div class="ava"><img src="assets/row-khanh.png" width="76" height="80" alt=""></div>
+            <div class="content">
+              <div class="line"><span class="grow name t-header-caption">Khánh Lê</span><span class="badge t-label-annotation">12</span></div>
+              <div class="line"><span class="grow msg t-body-section">Còn xài tốt không bạn ơi</span><span class="time t-body-section">11:30</span></div>
+              <div class="actions"><button class="btn tertiary t-label-section">Đánh giá</button></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5 · Chợ Tốt Official Account -->
+        <div class="row" tabindex="0" data-tags="unread">
+          <div class="row-main">
+            <div class="ava solo"><img src="assets/oa.png" alt=""></div>
+            <div class="content">
+              <div class="line"><span class="name t-header-caption" style="flex:0 1 auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Chợ Tốt Official Account</span><svg class="ds-icon ds-icon--20 verify" aria-label="Đã xác thực"><use href="#ds-Verify-fill"/></svg><span class="grow"></span><span class="badge t-label-annotation">12</span></div>
+              <div class="line"><span class="grow msg t-body-section">Đây là nội dung tin nhắn gửi từ Chợ Tốt Official Account</span><span class="time t-body-section">11:30</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6 · Pham Thi Cam Nhung: đang trả giá, chưa đọc -->
+        <div class="row" tabindex="0" data-tags="unread offer">
+          <div class="row-main">
+            <div class="ava"><img src="assets/row-camnhung.png" width="76" height="68" alt=""></div>
+            <div class="content">
+              <span class="label offer t-tagline-annotation"><svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-tag-fill"/></svg>Đang trả giá</span>
+              <div class="line"><span class="grow name t-header-caption">Pham Thi Cam Nhung</span><span class="badge t-label-annotation">12</span></div>
+              <div class="line"><span class="grow msg t-body-section">Cho mình xin giá phòng trọ full điện nước</span><span class="wait t-tagline-caption">Chờ trả lời</span><span class="time t-body-section">11:30</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7, 8 · đã đọc -->
+        <div class="row" tabindex="0" data-tags="">
+          <div class="row-main">
+            <div class="ava"><img src="assets/row-banh.png" width="76" height="80" alt=""></div>
+            <div class="content">
+              <div class="line"><span class="grow name t-header-caption">Trần Bao Nguyen</span></div>
+              <div class="line"><span class="grow msg read t-body-section">Bạn: Điện thoại hết bảo hành ạ</span><span class="time t-body-section">17/06/25</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="row" tabindex="0" data-tags="">
+          <div class="row-main">
+            <div class="ava"><img src="assets/row-khanh.png" width="76" height="80" alt=""></div>
+            <div class="content">
+              <div class="line"><span class="grow name t-header-caption">Nguyen Van Thao</span></div>
+              <div class="line"><span class="grow msg read t-body-section">Bạn: Cần kiểm tra tình trạng hàng</span><span class="time t-body-section">16/06/25</span></div>
+            </div>
+          </div>
+        </div>
+        <p class="empty t-body-section" id="empty" hidden>Không có hội thoại nào trong mục này</p>
+      </div>
+
+      <nav class="bottom-nav" aria-label="Điều hướng chính">
+        <div class="nav-items">
+          <a class="nav-item" href="#"><svg class="ds-icon" aria-hidden="true"><use href="#ds-House-outline"/></svg><span class="t-tagline-footext">Trang chủ</span></a>
+          <a class="nav-item" href="#"><svg class="ds-icon" aria-hidden="true"><use href="#ds-tag-outline"/></svg><span class="t-tagline-footext">Quản lý tin</span></a>
+          <a class="cta" href="#" aria-label="Đăng tin"><span class="cta-circle"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Plus-outline"/></svg></span><span class="cta-label t-label-annotation">Đăng tin</span></a>
+          <a class="nav-item on" href="#" aria-current="page"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Chat-fill"/></svg><span class="badge t-label-annotation">12</span><span class="t-label-annotation">Liên hệ</span></a>
+          <a class="nav-item" href="#"><img src="assets/me.png" alt=""><span class="t-tagline-footext">Tài khoản</span></a>
+        </div>
+        <div class="home-indicator" data-ds-context="reference"></div>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  const chips = document.querySelectorAll('.chip');
+  const rows = document.querySelectorAll('#list .row');
+  chips.forEach(c => c.addEventListener('click', () => {
+    chips.forEach(x => x.setAttribute('aria-pressed', x === c));
+    const f = c.dataset.f; let n = 0;
+    rows.forEach(r => { const show = f === 'all' || r.dataset.tags.split(' ').includes(f); r.hidden = !show; n += show; });
+    document.getElementById('empty').hidden = n > 0;
+  }));
+  const segs = document.querySelectorAll('.seg');
+  segs.forEach(s => s.addEventListener('click', () => segs.forEach(x => x.setAttribute('aria-selected', x === s))));
+  document.querySelectorAll('a[href="#"]').forEach(a => a.addEventListener('click', e => e.preventDefault()));
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chợ Tốt Chat Desktop</title>
+<link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ds-tokens:start */
+/* DS tokens: Chợ Tốt (GDS), Figma export 2026-10-14. Inserted by scripts/ds_tokens.py inline; do not edit. */
+:root {
+  --logo-primary: #ffba00;
+  --logo-secondary: #ffba00;
+  --logo-on-black: #ffffff;
+  --border-divider: #f4f4f4;
+  --border-thin: #e8e8e8;
+  --border-overlay: #ffffff80;
+  --border-regular: #dddddd;
+  --border-bold: #8c8c8c;
+  --border-active: #ffd400;
+  --border-blank: #ffffff;
+  --border-brand: #ffd400;
+  --border-info: #306bd9;
+  --border-success: #12a154;
+  --border-error: #f0325e;
+  --border-warning: #fb7328;
+  --border-disabled: #c0c0c0;
+  --border-black: #222222;
+  --background-brand-light: #fff8d6;
+  --background-chotot-light: #fff8d6;
+  --background-primary: #ffffff;
+  --background-app: #f7f7f7;
+  --background-secondary: #f4f4f4;
+  --background-tertiary: #e8e8e8;
+  --background-disable: #c0c0c0;
+  --background-error-light: #feebef;
+  --background-info-light: #f2f6fc;
+  --background-success-light: #ecf9f1;
+  --background-warning-light: #fff4ec;
+  --background-brand: #ffd400;
+  --background-appwrapper: #ffd400;
+  --background-chotot: #ffd400;
+  --background-info: #306bd9;
+  --background-error: #f0325e;
+  --background-success: #12a154;
+  --background-warning: #fb7328;
+  --background-inverted: #222222;
+  --background-overlay: #22222280;
+  --background-overlay-inverted: #ffffff1a;
+  --text-brand: #cc8f00;
+  --text-on-background: #222222;
+  --text-primary: #222222;
+  --text-secondary: #595959;
+  --text-tertiary: #8c8c8c;
+  --text-link: #306bd9;
+  --text-error: #f0325e;
+  --text-success: #12a154;
+  --text-info: #306bd9;
+  --text-warning: #fb7328;
+  --text-chotot: #ffd400;
+  --text-disabled: #c0c0c0;
+  --text-blank: #ffffff;
+  --text-overlay: #ffffffbf;
+  --text-overlay-secondary: #ffffff80;
+  --icon-brand: #ffba00;
+  --icon-chotot: #ffba00;
+  --icon-chotot-bold: #cc8f00;
+  --icon-on-background: #222222;
+  --icon-primary: #222222;
+  --icon-secondary: #595959;
+  --icon-tertiary: #8c8c8c;
+  --icon-blank: #ffffff;
+  --icon-info: #306bd9;
+  --icon-success: #12a154;
+  --icon-error: #f0325e;
+  --icon-warning: #fb7328;
+  --icon-disabled: #c0c0c0;
+  --interaction-chotot-hover: #ffe884;
+  --interaction-chotot-pressed: #ffc800;
+  --interaction-brand-hover: #ffe884;
+  --interaction-brand-pressed: #ffba00;
+  --interaction-error-hover: #f35b7e;
+  --interaction-error-pressed: #cb294e;
+  --interaction-info-hover: #548af0;
+  --interaction-info-pressed: #1952ba;
+  --interaction-success-hover: #26c06e;
+  --interaction-success-pressed: #108446;
+  --interaction-warning-hover: #ffa97b;
+  --interaction-warning-pressed: #e16725;
+  --interaction-neutral-hover: #595959;
+  --interaction-neutral-pressed: #404040;
+  --interaction-primary-hover: #f4f4f4;
+  --interaction-brand-light-hover: #fff8d6;
+  --interaction-brand-light-pressed: #ffd400;
+  --interaction-error-light-hover: #fcd6df;
+  --interaction-error-light-pressed: #fbc2cf;
+  --interaction-info-light-hover: #e4ecfb;
+  --interaction-info-light-pressed: #cadbf7;
+  --interaction-success-light-hover: #d9f2e4;
+  --interaction-success-light-pressed: #abe7c5;
+  --interaction-warning-light-hover: #ffe4d5;
+  --interaction-warning-light-pressed: #ffceb4;
+  --interaction-neutral-light-hover: #e8e8e8;
+  --interaction-neutral-light-pressed: #dddddd;
+  --button-primary: #ffd400;
+  --button-info: #306bd9;
+  --button-success: #12a154;
+  --button-error: #f0325e;
+  --button-chotot: #ffd400;
+  --button-blank: #ffffff;
+  --button-disabled: #c0c0c0;
+  --button-appwrapper: #ffd400;
+  --button-neutral: #222222;
+  --button-secondary: #fff8d6;
+  --button-tonal-success: #ecf9f1;
+  --button-tonal-error: #feebef;
+  --button-tonal-info: #f2f6fc;
+  --button-tonal-neutral: #f4f4f4;
+  --skeleton-background: #f4f4f4;
+  --skeleton-item: #e8e8e8;
+  --gap-min-2: 2px;
+  --gap-2x-small-4: 4px;
+  --gap-2x-small-6: 6px;
+  --gap-x-small-8: 8px;
+  --gap-small-12: 12px;
+  --gap-medium-16: 16px;
+  --gap-large-20: 20px;
+  --padding-min-2: 2px;
+  --padding-2x-small-4: 4px;
+  --padding-2x-small-6: 6px;
+  --padding-x-small-8: 8px;
+  --padding-small-12: 12px;
+  --padding-medium-16: 16px;
+  --padding-large-20: 20px;
+  --radius-ad-small: 4px;
+  --radius-ad: 6px;
+  --radius-card-small: 8px;
+  --radius-card: 12px;
+  --radius-decoration: 16px;
+  --radius-modal: 20px;
+  --radius-pill: 999px;
+  --stroke-divider: 1px;
+  --stroke-action: 2px;
+  --stroke-emphasize: 3px;
+}
+.t-display-page { font: 700 32px/40px 'Reddit Sans', sans-serif; }
+.t-display-section { font: 700 24px/32px 'Reddit Sans', sans-serif; }
+.t-display-caption { font: 700 20px/28px 'Reddit Sans', sans-serif; }
+.t-header-page { font: 600 20px/28px 'Reddit Sans', sans-serif; }
+.t-display-annotation { font: 700 18px/26px 'Reddit Sans', sans-serif; }
+.t-display-price { font: 600 18px/26px 'Reddit Sans', sans-serif; }
+.t-label-page { font: 700 16px/24px 'Reddit Sans', sans-serif; }
+.t-header-section { font: 600 16px/24px 'Reddit Sans', sans-serif; }
+.t-tagline-section { font: 500 16px/20px 'Reddit Sans', sans-serif; }
+.t-body-page { font: 400 16px/24px 'Reddit Sans', sans-serif; }
+.t-label-section { font: 700 14px/20px 'Reddit Sans', sans-serif; }
+.t-header-caption { font: 600 14px/20px 'Reddit Sans', sans-serif; }
+.t-tagline-caption { font: 500 14px/20px 'Reddit Sans', sans-serif; }
+.t-body-section { font: 400 14px/20px 'Reddit Sans', sans-serif; }
+.t-label-caption { font: 700 12px/18px 'Reddit Sans', sans-serif; }
+.t-header-annotation { font: 600 12px/18px 'Reddit Sans', sans-serif; }
+.t-tagline-annotation { font: 500 12px/18px 'Reddit Sans', sans-serif; }
+.t-body-caption { font: 400 12px/18px 'Reddit Sans', sans-serif; }
+.t-label-annotation { font: 700 10px/16px 'Reddit Sans', sans-serif; }
+.t-tagline-footext { font: 500 10px/16px 'Reddit Sans', sans-serif; }
+.t-body-annotation { font: 400 10px/16px 'Reddit Sans', sans-serif; }
+/* ds-tokens:end */
+
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { height:100%; }
+body { font-family:'Reddit Sans', system-ui, sans-serif; color:var(--text-primary); background:var(--background-app);
+       -webkit-font-smoothing:antialiased; min-width:1280px; overflow:hidden; }
+button, input { font:inherit; color:inherit; background:none; border:0; }
+button { cursor:pointer; }
+a { color:inherit; text-decoration:none; }
+button:focus-visible, a:focus-visible, [tabindex]:focus-visible { outline:var(--stroke-action) solid var(--border-info); outline-offset:var(--padding-min-2); }
+.ds-icon { width:24px; height:24px; flex:none; color:var(--icon-primary); vertical-align:middle; }
+.ds-icon--20 { width:20px; height:20px; }
+.ds-icon--16 { width:16px; height:16px; }
+.ds-icon--12 { width:12px; height:12px; }
+.ellipsis { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; min-width:0; }
+
+.app { height:100vh; min-height:720px; display:flex; flex-direction:column; }
+
+/* ---------- Navbar ---------- */
+.navbar { height:64px; flex:none; display:flex; align-items:center; gap:var(--gap-large-20); padding:0 24px; background:var(--background-primary);
+          border-bottom:1px solid var(--border-divider); }
+.logo { display:flex; align-items:center; gap:var(--gap-medium-16); flex:none; }
+.logo img { height:36px; display:block; }
+.icon-btn { width:40px; height:40px; border-radius:var(--radius-pill); display:grid; place-items:center; position:relative; flex:none; transition:background .15s ease; }
+.icon-btn:hover { background:var(--interaction-primary-hover); }
+.icon-btn:active { background:var(--interaction-neutral-light-pressed); }
+.search-feature { flex:1; display:flex; gap:var(--gap-x-small-8); max-width:744px; }
+.loc { height:40px; flex:none; display:flex; align-items:center; gap:var(--gap-x-small-8); padding:0 var(--padding-small-12); border-radius:var(--radius-pill);
+       background:var(--background-chotot-light); border:1px solid var(--border-brand); }
+.loc:hover { background:var(--interaction-brand-light-hover); }
+.loc .pin { color:var(--icon-chotot-bold); }
+.search { flex:1; height:40px; display:flex; align-items:center; gap:var(--gap-x-small-8); padding:0 var(--padding-2x-small-4) 0 var(--padding-medium-16);
+          border-radius:var(--radius-pill); background:var(--background-secondary); border:1px solid var(--border-thin); }
+.search:focus-within { border-color:var(--border-black); background:var(--background-primary); }
+.search input { flex:1; outline:0; min-width:0; }
+.search input::placeholder { color:var(--text-tertiary); }
+.search .go { width:32px; height:32px; border-radius:var(--radius-pill); background:var(--button-primary); display:grid; place-items:center; }
+.search .go:hover { background:var(--interaction-brand-hover); }
+.functions { margin-left:auto; display:flex; align-items:center; gap:var(--gap-x-small-8); flex:none; }
+.btn { height:40px; padding:0 var(--padding-small-12); border-radius:var(--radius-pill); display:inline-flex; align-items:center; justify-content:center;
+       gap:var(--gap-2x-small-4); white-space:nowrap; position:relative; transition:background .15s ease; }
+.btn.primary { background:var(--button-primary); }
+.btn.primary:hover { background:var(--interaction-brand-hover); }
+.btn.primary:active { background:var(--interaction-brand-pressed); }
+.btn.tertiary { background:var(--button-blank); border:1px solid var(--border-regular); }
+.btn.tertiary:hover { background:var(--interaction-primary-hover); }
+.btn.tertiary:active { background:var(--interaction-neutral-light-pressed); }
+.btn.secondary { background:var(--button-tonal-neutral); }
+.btn.secondary:hover { background:var(--interaction-neutral-light-hover); }
+.btn.secondary:active { background:var(--interaction-neutral-light-pressed); }
+.btn.m { height:32px; }
+.btn.s { height:24px; }
+.btn.block { width:100%; border-radius:var(--radius-card-small); }
+.badge { min-width:18px; height:16px; padding:0 var(--padding-2x-small-4); border-radius:var(--radius-pill); background:var(--background-error);
+         color:var(--text-blank); display:inline-flex; align-items:center; justify-content:center; flex:none; }
+.badge.top { position:absolute; top:0; right:0; transform:translate(30%, -20%); box-shadow:0 0 0 2px var(--background-primary); }
+.me { display:flex; align-items:center; gap:var(--gap-x-small-8); padding:var(--padding-2x-small-4); border-radius:var(--radius-pill); }
+.me:hover { background:var(--interaction-primary-hover); }
+.me img { width:32px; height:32px; border-radius:var(--radius-pill); display:block; }
+
+/* ---------- Body: rail + list + room + profile ---------- */
+.body { flex:1; min-height:0; display:grid; grid-template-columns:100px 360px minmax(480px, 1fr) 360px; gap:var(--gap-x-small-8);
+        padding:var(--padding-x-small-8) var(--padding-x-small-8) var(--padding-x-small-8) 0; }
+.panel { background:var(--background-primary); border-radius:var(--radius-card); min-height:0; display:flex; flex-direction:column; overflow:hidden; }
+
+/* Rail */
+.rail { display:flex; flex-direction:column; align-items:center; gap:0; padding-top:var(--padding-medium-16); }
+.rail a { width:68px; height:72px; border-radius:var(--radius-card); display:flex; flex-direction:column; align-items:center; justify-content:center;
+          gap:var(--gap-2x-small-4); color:var(--text-secondary); position:relative; transition:background .15s ease; }
+.rail a:hover { background:var(--interaction-neutral-light-hover); }
+.rail a .ds-icon { color:var(--icon-secondary); }
+.rail a.on { background:var(--background-primary); color:var(--text-brand); }
+.rail a.on .ds-icon { color:var(--icon-chotot); }
+.rail .badge { position:absolute; top:var(--padding-2x-small-4); left:34px; }
+
+/* List panel */
+.list-head { padding:var(--padding-medium-16) var(--padding-large-20) 0; }
+.list-tools { display:flex; align-items:center; gap:var(--gap-medium-16); padding:var(--padding-medium-16) var(--padding-large-20); }
+.search-input { flex:1; height:48px; display:flex; align-items:center; gap:var(--gap-x-small-8); padding:0 var(--padding-small-12);
+                border:var(--stroke-action) solid var(--border-thin); border-radius:var(--radius-card); transition:border-color .15s ease; }
+.search-input:hover, .search-input:focus-within { border-color:var(--border-black); }
+.search-input input { flex:1; outline:0; min-width:0; }
+.search-input input::placeholder { color:var(--text-secondary); }
+.chips { display:flex; gap:var(--gap-x-small-8); padding:var(--padding-small-12) var(--padding-medium-16); overflow-x:auto; scrollbar-width:none; flex:none; }
+.chips::-webkit-scrollbar { display:none; }
+.chip { flex:none; height:32px; padding:0 var(--padding-small-12); border-radius:var(--radius-pill); display:inline-flex; align-items:center; gap:var(--gap-2x-small-4);
+        background:var(--background-secondary); color:var(--text-primary); white-space:nowrap; transition:background .15s ease; }
+.chip:hover { background:var(--interaction-neutral-light-hover); }
+.chip[aria-pressed="true"] { background:var(--background-inverted); color:var(--text-blank); }
+.chip[aria-pressed="true"]:hover { background:var(--interaction-neutral-hover); }
+.chip.outline { background:var(--background-primary); border:1px solid var(--border-regular); }
+.chip.outline:hover { background:var(--interaction-neutral-light-hover); }
+.rows { flex:1; overflow-y:auto; scrollbar-width:thin; }
+.row { display:flex; gap:var(--gap-medium-16); align-items:center; padding:var(--padding-medium-16) var(--padding-large-20); cursor:pointer; transition:background .15s ease; }
+.row:hover { background:var(--interaction-primary-hover); }
+.row[aria-selected="true"] { background:var(--background-secondary); }
+.row[hidden] { display:none; }
+.ava { position:relative; width:52px; height:60px; flex:none; }
+.ava img { position:absolute; left:0; top:0; display:block; }
+.ava.solo { height:52px; }
+.ava.solo img { width:52px; height:52px; border-radius:var(--radius-pill); }
+.content { flex:1; min-width:0; display:flex; flex-direction:column; gap:var(--gap-2x-small-4); }
+.line { display:flex; align-items:center; gap:var(--gap-2x-small-4); min-width:0; }
+.line .grow { flex:1; }
+.msg.read { color:var(--text-tertiary); }
+.time { color:var(--text-tertiary); flex:none; }
+.labels { display:flex; gap:var(--gap-2x-small-4); }
+.label { height:20px; padding:0 var(--padding-2x-small-6) 0 var(--padding-2x-small-4); border-radius:var(--radius-ad-small); background:var(--background-secondary);
+         display:inline-flex; align-items:center; gap:var(--gap-min-2); }
+.label .ds-icon { color:var(--icon-info); }
+.label.offer .ds-icon { color:var(--icon-chotot); }
+.label.done .ds-icon { color:var(--icon-success); }
+.verify { color:var(--icon-info); }
+.empty { padding:var(--padding-large-20); text-align:center; color:var(--text-tertiary); }
+
+/* Chat room */
+.room-head { height:52px; flex:none; display:flex; align-items:center; gap:var(--gap-x-small-8); padding:0 var(--padding-large-20); }
+.room-head img { width:20px; height:20px; border-radius:var(--radius-pill); }
+.online { display:inline-flex; align-items:center; gap:var(--gap-2x-small-4); color:var(--text-success); }
+.online::before { content:""; width:8px; height:8px; border-radius:var(--radius-pill); background:var(--background-success); }
+.room-ad { flex:none; display:flex; gap:var(--gap-x-small-8); align-items:center; padding:var(--padding-small-12) var(--padding-medium-16);
+           border-top:1px solid var(--border-divider); border-bottom:1px solid var(--border-thin); }
+.room-ad img { width:44px; height:44px; border-radius:var(--radius-ad-small); flex:none; object-fit:cover; }
+.room-ad .info { min-width:0; display:flex; flex-direction:column; gap:var(--gap-2x-small-4); }
+.conv { flex:1; overflow-y:auto; padding:var(--padding-large-20) var(--padding-medium-16); display:flex; flex-direction:column; gap:var(--gap-x-small-8); }
+.msg-out { align-self:flex-end; width:267px; max-width:45%; display:flex; flex-direction:column; align-items:stretch; gap:var(--gap-x-small-8); }
+.msg-out .meta { align-self:flex-end; }
+.bubble { min-width:0; background:var(--background-chotot-light); border-radius:var(--radius-card); padding:var(--padding-x-small-8) var(--padding-small-12);
+          display:flex; flex-direction:column; gap:var(--gap-x-small-8); }
+.quote { min-width:0; display:flex; gap:var(--gap-x-small-8); align-items:center; padding-left:var(--padding-small-12); border-left:var(--stroke-action) solid var(--border-brand); }
+.quote img { width:32px; height:32px; border-radius:var(--radius-ad-small); flex:none; }
+.quote .t { color:var(--text-secondary); }
+.quote .p { color:var(--text-tertiary); }
+.bubble ul { padding-left:var(--padding-large-20); }
+.meta { display:flex; align-items:center; gap:var(--gap-2x-small-4); color:var(--text-tertiary); }
+.meta .sep { width:1px; height:8px; background:var(--border-regular); }
+.meta .ds-icon { color:var(--icon-tertiary); }
+.composer { flex:none; border-top:1px solid var(--border-thin); padding:var(--padding-medium-16); display:flex; flex-direction:column; gap:var(--gap-small-12); }
+.composer input { outline:0; width:100%; }
+.composer input::placeholder { color:var(--text-tertiary); }
+.composer .tools { display:flex; gap:var(--gap-x-small-8); }
+.composer .row-in { display:flex; align-items:center; gap:var(--gap-x-small-8); }
+.send { width:32px; height:32px; border-radius:var(--radius-pill); display:grid; place-items:center; background:var(--button-primary); flex:none; }
+.send[hidden] { display:none; }
+.send:hover { background:var(--interaction-brand-hover); }
+
+/* Profile column */
+.profile { display:flex; flex-direction:column; gap:var(--gap-x-small-8); min-height:0; overflow-y:auto; scrollbar-width:none; }
+.profile::-webkit-scrollbar { display:none; }
+.card { background:var(--background-primary); border-radius:var(--radius-card); padding:var(--padding-small-12); flex:none; }
+.seller { display:flex; gap:var(--gap-small-12); align-items:center; margin-bottom:var(--padding-x-small-8); }
+.seller > img { width:64px; height:64px; border-radius:var(--radius-pill); flex:none; }
+.seller .info { display:flex; flex-direction:column; gap:var(--gap-2x-small-4); min-width:0; }
+.seller .meta-row { display:flex; align-items:center; gap:var(--gap-2x-small-4); color:var(--text-secondary); }
+.seller .meta-row .ds-icon { color:var(--icon-secondary); }
+.seller .meta-row .star { color:var(--icon-chotot); }
+.seller u { color:var(--text-secondary); }
+.sec-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:var(--padding-small-12); }
+.sec-head a { display:grid; place-items:center; border-radius:var(--radius-pill); }
+.sec-head a:hover { background:var(--interaction-primary-hover); }
+.carousel { position:relative; }
+.strip { display:flex; gap:var(--gap-x-small-8); overflow:hidden; scroll-behavior:smooth; }
+.strip .m { width:72px; height:72px; flex:none; border-radius:var(--radius-card-small); overflow:hidden; position:relative; }
+.strip .m img { width:100%; height:100%; object-fit:cover; display:block; }
+.strip .m.video::after { content:""; position:absolute; inset:0; background:var(--background-overlay); opacity:.4; }
+.strip .m .play { position:absolute; left:50%; top:50%; transform:translate(-50%, -50%); color:var(--icon-blank); z-index:1; }
+.next { position:absolute; right:0; top:50%; transform:translateY(-50%); width:40px; height:40px; border-radius:var(--radius-pill);
+        background:var(--background-primary); display:grid; place-items:center; box-shadow:0 2px 8px rgba(34,34,34,.16); z-index:2; }
+.next:hover { background:var(--interaction-primary-hover); }
+.ads { display:flex; gap:var(--gap-small-12); overflow:hidden; scroll-behavior:smooth; }
+.ad { width:156px; flex:none; display:flex; flex-direction:column; }
+.ad > img { width:156px; height:156px; border-radius:var(--radius-card-small); object-fit:cover; display:block; }
+.ad .pi { padding:var(--padding-x-small-8) var(--padding-2x-small-4) 0; display:flex; flex-direction:column; gap:var(--gap-min-2); }
+.ad .ttl { display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; height:40px; }
+.ad .price { color:var(--text-error); }
+.ad .acts { display:flex; gap:var(--gap-2x-small-4); margin-top:var(--padding-x-small-8); }
+.ad .acts .btn { flex:1; padding:0 var(--padding-x-small-8); }
+.ads-wrap { position:relative; }
+.ads-wrap .next { top:78px; }
+.menu { padding:0; overflow:hidden; }
+.menu button { width:100%; height:48px; display:flex; align-items:center; gap:var(--gap-small-12); padding:0 var(--padding-medium-16); text-align:left; transition:background .15s ease; }
+.menu button + button { border-top:1px solid var(--border-divider); }
+.menu button:hover { background:var(--interaction-primary-hover); }
+.menu button:active { background:var(--interaction-neutral-light-pressed); }
+
+/* ---------- Confirm drawer (DS Drawer, desktop) ---------- */
+.overlay { position:fixed; inset:0; background:var(--background-overlay); display:grid; place-items:center; z-index:50; opacity:0; pointer-events:none; transition:opacity .2s ease; }
+.overlay.open { opacity:1; pointer-events:auto; }
+.drawer { width:480px; background:var(--background-primary); border-radius:var(--radius-modal); box-shadow:0 4px 16px rgba(34,34,34,.12); overflow:hidden;
+          transform:translateY(12px) scale(.98); transition:transform .25s ease; }
+.overlay.open .drawer { transform:none; }
+.drawer-head { height:48px; display:grid; grid-template-columns:40px 1fr 40px; align-items:center; padding:0 var(--padding-x-small-8); border-bottom:1px solid var(--border-thin); text-align:center; }
+.drawer-body { padding:var(--padding-medium-16) var(--padding-large-20); color:var(--text-secondary); }
+.drawer-foot { display:flex; gap:var(--gap-x-small-8); padding:var(--padding-small-12) var(--padding-large-20) var(--padding-large-20); }
+.drawer-foot .btn { flex:1; border-radius:var(--radius-card-small); }
+.toast { position:fixed; left:50%; bottom:24px; transform:translate(-50%, 16px); background:var(--background-inverted); color:var(--text-blank);
+         padding:var(--padding-small-12) var(--padding-medium-16); border-radius:var(--radius-card-small); display:flex; gap:var(--gap-x-small-8); align-items:center;
+         opacity:0; pointer-events:none; transition:opacity .2s ease, transform .2s ease; z-index:60; }
+.toast.show { opacity:1; transform:translate(-50%, 0); }
+.toast .ds-icon { color:var(--icon-success); }
+</style>
+</head>
+<body>
+<svg id="ds-icon-sprite" xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+<symbol id="ds-Menu-outline" viewBox="0 0 24 24"><path d="M20 17C20.552 17 21 17.447 21 18C21 18.552 20.552 19 20 19H4C3.447 19 3 18.552 3 18C3 17.447 3.447 17 4 17H20ZM20 11C20.552 11 21 11.447 21 12C21 12.552 20.552 13 20 13H4C3.447 13 3 12.552 3 12C3 11.447 3.447 11 4 11H20ZM20 5C20.552 5 21 5.447 21 6C21 6.552 20.552 7 20 7H4C3.447 7 3 6.552 3 6C3 5.447 3.447 5 4 5H20Z" fill="currentColor"/></symbol>
+<symbol id="ds-Location-fill" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M20 10.043C20 11.449 19.482 12.888 18.791 14.202C18.093 15.528 17.174 16.807 16.275 17.913C15.374 19.021 14.475 19.976 13.803 20.653C13.466 20.992 13.185 21.262 12.986 21.449C12.887 21.542 12.808 21.616 12.754 21.666L12.719 21.697L12.691 21.723L12.674 21.739L12 22.341L11.326 21.739L11.309 21.723L11.281 21.697L11.246 21.666C11.192 21.616 11.113 21.542 11.014 21.449C10.815 21.262 10.534 20.992 10.197 20.653C9.525 19.976 8.626 19.021 7.725 17.913C6.826 16.807 5.907 15.528 5.209 14.202C4.518 12.888 4 11.449 4 10.043C4 5.607 7.576 2 12 2C16.424 2 20 5.607 20 10.043ZM12 13C13.793 13 15.236 11.539 15.236 9.75C15.236 7.96 13.793 6.5 12 6.5C10.207 6.5 8.765 7.961 8.765 9.75C8.765 11.539 10.207 12.999 12 13Z" fill="currentColor"/></symbol>
+<symbol id="ds-Chevrondown-fill" viewBox="0 0 24 24"><path d="M7.432 10C7.047 10 6.855 10.464 7.127 10.736L11.264 14.873C11.432 15.042 11.705 15.042 11.874 14.873L16.011 10.736C16.283 10.464 16.09 10 15.706 10H7.432Z" fill="currentColor"/></symbol>
+<symbol id="ds-Search-outline" viewBox="0 0 24 24"><path d="M18.279 11.439C18.279 7.662 15.217 4.6 11.439 4.6C7.662 4.6 4.6 7.662 4.6 11.439C4.6 15.217 7.662 18.279 11.439 18.279C15.217 18.279 18.279 15.217 18.279 11.439ZM20.279 11.439C20.279 13.543 19.543 15.474 18.315 16.992L21.095 19.681L21.165 19.756C21.492 20.143 21.478 20.723 21.118 21.095C20.758 21.467 20.179 21.5 19.781 21.186L19.704 21.118L16.89 18.396C15.388 19.574 13.497 20.279 11.439 20.279C6.557 20.279 2.6 16.322 2.6 11.439C2.6 6.557 6.557 2.6 11.439 2.6C16.322 2.6 20.279 6.557 20.279 11.439Z" fill="currentColor"/></symbol>
+<symbol id="ds-Heart-outline" viewBox="0 0 24 24"><path d="M16.807 3C17.577 2.993 18.341 3.14 19.054 3.431C19.767 3.723 20.414 4.154 20.959 4.699C21.503 5.243 21.934 5.891 22.226 6.603C22.517 7.316 22.664 8.08 22.657 8.85C22.651 9.62 22.49 10.381 22.187 11.089C21.885 11.791 21.447 12.426 20.898 12.959L20.899 12.96L12.705 21.154C12.518 21.342 12.263 21.447 11.998 21.447C11.733 21.447 11.479 21.342 11.291 21.154L3.098 12.96C2.01 11.872 1.4 10.397 1.399 8.859C1.399 7.321 2.01 5.846 3.098 4.759C4.185 3.671 5.66 3.059 7.198 3.059C8.736 3.059 10.211 3.67 11.299 4.758L11.998 5.457L12.698 4.758C13.231 4.21 13.866 3.772 14.568 3.47C15.276 3.167 16.037 3.006 16.807 3ZM3.399 8.859C3.4 9.867 3.799 10.833 4.512 11.546L11.998 19.032L19.497 11.533L19.63 11.398C19.931 11.077 20.174 10.705 20.349 10.3C20.548 9.836 20.653 9.337 20.657 8.833C20.662 8.328 20.565 7.828 20.374 7.361C20.183 6.894 19.901 6.47 19.544 6.113C19.187 5.756 18.763 5.474 18.296 5.283C17.829 5.092 17.329 4.995 16.824 5C16.32 5.004 15.821 5.109 15.357 5.308C14.952 5.483 14.58 5.726 14.259 6.027L14.124 6.16C14.12 6.164 14.116 6.168 14.111 6.173L12.705 7.578C12.315 7.968 11.682 7.968 11.292 7.578L9.885 6.173C9.172 5.46 8.206 5.059 7.198 5.059C6.254 5.059 5.345 5.412 4.648 6.043L4.512 6.173C3.8 6.885 3.399 7.852 3.399 8.859Z" fill="currentColor"/></symbol>
+<symbol id="ds-Notification-outline" viewBox="0 0 24 24"><path d="M14.042 19.309C14.474 18.965 15.103 19.035 15.447 19.466C15.792 19.898 15.722 20.527 15.29 20.872C14.403 21.58 13.247 22 11.999 22C10.829 22 9.741 21.631 8.878 21.002L8.708 20.872L8.632 20.804C8.27 20.45 8.228 19.871 8.551 19.466C8.874 19.062 9.447 18.975 9.873 19.25L9.956 19.309L10.163 19.46C10.665 19.794 11.298 20 11.999 20C12.8 20 13.514 19.731 14.042 19.309ZM11.999 2C16.395 2 19.805 5.876 19.805 10.46V10.471L19.78 12.548C19.783 13.818 20.246 14.883 20.733 15.615L20.793 15.713C21.074 16.212 21.032 16.774 20.876 17.175C20.716 17.588 20.277 18.181 19.492 18.181H4.507C3.71 18.181 3.272 17.57 3.116 17.157C2.954 16.727 2.92 16.105 3.282 15.582L3.471 15.292C3.903 14.58 4.268 13.633 4.268 12.537V12.525L4.292 10.34C4.298 5.821 7.662 2 11.999 2ZM11.999 4C8.932 4 6.292 6.755 6.292 10.351V10.363L6.268 12.547C6.265 14.005 5.808 15.246 5.268 16.181H18.739C18.22 15.243 17.781 13.998 17.78 12.537V12.525L17.805 10.46L17.797 10.12C17.637 6.631 15.024 4 11.999 4Z" fill="currentColor"/></symbol>
+<symbol id="ds-Chat-outline" viewBox="0 0 24 24"><path d="M20.599 11.999C20.599 7.25 16.748 3.399 11.999 3.399C7.249 3.4 3.399 7.25 3.399 11.999C3.399 16.749 7.249 20.599 11.999 20.6C13.529 20.6 14.964 20.2 16.208 19.501L16.293 19.458C16.495 19.368 16.723 19.348 16.94 19.402L20.4 20.267L19.793 16.019C19.767 15.833 19.793 15.644 19.869 15.473C20.338 14.412 20.599 13.237 20.599 11.999ZM12.599 12.199L12.701 12.204C13.205 12.255 13.599 12.681 13.599 13.199C13.599 13.717 13.205 14.143 12.701 14.194L12.599 14.199H8.399C7.847 14.199 7.399 13.752 7.399 13.199C7.399 12.647 7.847 12.199 8.399 12.199H12.599ZM15.599 7.399L15.701 7.404C16.205 7.455 16.599 7.881 16.599 8.399C16.599 8.917 16.205 9.344 15.701 9.395L15.599 9.399H8.399C7.847 9.399 7.399 8.952 7.399 8.399C7.399 7.847 7.847 7.399 8.399 7.399H15.599ZM22.599 11.999C22.599 13.415 22.317 14.768 21.811 16.005L22.59 21.457C22.637 21.787 22.517 22.118 22.27 22.341C22.023 22.564 21.681 22.649 21.358 22.568L16.829 21.436C15.379 22.179 13.737 22.6 11.999 22.6C6.144 22.599 1.399 17.853 1.399 11.999C1.399 6.145 6.145 1.4 11.999 1.399C17.853 1.399 22.599 6.145 22.599 11.999Z" fill="currentColor"/></symbol>
+<symbol id="ds-Chevrondown-outline" viewBox="0 0 24 24"><path d="M6.262 9.324C6.612 8.942 7.19 8.894 7.596 9.197L7.675 9.262L12 13.223L16.324 9.262L16.403 9.197C16.809 8.894 17.387 8.942 17.737 9.324C18.087 9.706 18.084 10.285 17.747 10.664L17.675 10.737L12.676 15.317C12.294 15.667 11.707 15.667 11.325 15.317L6.324 10.737L6.252 10.665C5.915 10.286 5.912 9.706 6.262 9.324Z" fill="currentColor"/></symbol>
+<symbol id="ds-Chat-fill" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.999 1.399C17.853 1.399 22.599 6.145 22.6 11.999C22.6 13.415 22.317 14.768 21.812 16.005L22.591 21.457C22.638 21.787 22.518 22.118 22.271 22.341C22.023 22.564 21.681 22.649 21.358 22.568L16.829 21.436C15.38 22.179 13.737 22.6 11.999 22.6C6.145 22.599 1.399 17.853 1.399 11.999C1.4 6.145 6.145 1.4 11.999 1.399ZM8.401 12.198C7.849 12.198 7.401 12.646 7.401 13.198C7.401 13.751 7.849 14.198 8.401 14.198H12.602L12.703 14.193C13.208 14.142 13.602 13.716 13.602 13.198C13.602 12.68 13.208 12.254 12.703 12.203L12.602 12.198H8.401ZM8.401 7.399C7.849 7.399 7.401 7.847 7.401 8.399C7.401 8.952 7.849 9.399 8.401 9.399H15.602L15.703 9.395C16.208 9.344 16.602 8.917 16.602 8.399C16.602 7.881 16.208 7.455 15.703 7.404L15.602 7.399H8.401Z" fill="currentColor"/></symbol>
+<symbol id="ds-Groupofuser-outline" viewBox="0 0 24 24"><path d="M9.843 14.191C7.665 14.191 6.166 14.719 5.234 15.456C4.369 16.141 3.933 17.05 3.891 18.075H15.796C15.754 17.05 15.317 16.141 14.452 15.456C13.52 14.719 12.021 14.191 9.843 14.191ZM11.488 7.601C11.488 6.675 10.751 5.924 9.843 5.924C8.935 5.924 8.199 6.675 8.199 7.601C8.199 8.527 8.935 9.277 9.843 9.277C10.751 9.277 11.488 8.527 11.488 7.601ZM15.746 7.601C15.746 6.982 15.417 6.439 14.923 6.147C14.472 5.881 14.318 5.293 14.579 4.833C14.84 4.373 15.417 4.215 15.868 4.482C16.921 5.103 17.633 6.267 17.633 7.601C17.633 8.935 16.921 10.099 15.868 10.72L15.782 10.765C15.346 10.965 14.823 10.8 14.579 10.368C14.318 9.908 14.472 9.32 14.923 9.054L15.1 8.933C15.494 8.626 15.746 8.143 15.746 7.601ZM17.687 18.24C17.687 19.113 17.04 20 16.04 20H3.647C2.646 20 2 19.113 2 18.24C2 16.564 2.696 15.029 4.077 13.936C5.437 12.86 7.388 12.266 9.843 12.266C12.298 12.266 14.249 12.86 15.609 13.936C16.989 15.029 17.687 16.564 17.687 18.24ZM22 18.24C22 19.113 21.353 20 20.352 20H19.924C19.403 20 18.981 19.569 18.981 19.037C18.981 18.506 19.403 18.075 19.924 18.075H20.104C20.067 17.576 19.869 16.878 19.526 16.167C19.191 15.473 18.778 14.886 18.391 14.53L18.227 14.392L18.153 14.329C17.801 13.999 17.744 13.444 18.036 13.045C18.329 12.646 18.866 12.545 19.276 12.795L19.356 12.851L19.498 12.964C20.2 13.551 20.797 14.441 21.219 15.317C21.67 16.252 22 17.33 22 18.24ZM13.375 7.601C13.374 9.59 11.793 11.202 9.843 11.202C7.893 11.202 6.312 9.59 6.312 7.601C6.312 5.612 7.893 4 9.843 4C11.793 4 13.375 5.612 13.375 7.601Z" fill="currentColor"/></symbol>
+<symbol id="ds-Suitcase-outline" viewBox="0 0 24 24"><path d="M20.5 10.433C20.499 9.771 19.925 9.16 19.125 9.16H4.875C4.074 9.16 3.5 9.771 3.5 10.433V17.253L3.506 17.377C3.572 17.991 4.124 18.527 4.875 18.527H19.125C19.926 18.527 20.5 17.916 20.5 17.253V10.433ZM13.968 5.886C13.968 5.863 13.96 5.835 13.929 5.805C13.897 5.775 13.847 5.75 13.781 5.75H9.625C9.558 5.75 9.508 5.775 9.476 5.805C9.445 5.835 9.437 5.863 9.437 5.886V7.16H13.968V5.886ZM15.968 7.16H19.125C20.947 7.16 22.499 8.585 22.5 10.433V17.253C22.5 19.102 20.947 20.527 19.125 20.527H4.875C3.109 20.527 1.597 19.19 1.504 17.426L1.5 17.253V10.433C1.5 8.585 3.052 7.16 4.875 7.16H7.437V5.886C7.437 4.665 8.458 3.75 9.625 3.75H13.781C14.947 3.75 15.968 4.665 15.968 5.886V7.16Z" fill="currentColor"/><path d="M13.2 11C13.752 11 14.2 11.447 14.2 12C14.2 12.552 13.752 13 13.2 13H10.2C9.647 13 9.2 12.552 9.2 12C9.2 11.447 9.647 11 10.2 11H13.2Z" fill="currentColor"/></symbol>
+<symbol id="ds-Morevertical-fill" viewBox="0 0 24 24"><path d="M13.781 11.992C13.781 11.008 12.984 10.211 12 10.211C11.015 10.211 10.218 11.008 10.218 11.992C10.218 12.976 11.015 13.773 12 13.773C12.984 13.773 13.781 12.976 13.781 11.992Z" fill="currentColor"/><path d="M13.781 4.781C13.781 3.797 12.984 3 12 3C11.015 3 10.218 3.797 10.218 4.781C10.218 5.765 11.015 6.562 12 6.562C12.984 6.562 13.781 5.765 13.781 4.781Z" fill="currentColor"/><path d="M13.781 19.219C13.781 18.234 12.984 17.437 12 17.437C11.015 17.437 10.218 18.234 10.218 19.219C10.218 20.203 11.015 21 12 21C12.984 21 13.781 20.203 13.781 19.219Z" fill="currentColor"/></symbol>
+<symbol id="ds-tag-fill" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.714 2.678C12.252 2.196 12.966 1.952 13.691 2.007L19.128 2.425L19.37 2.456C20.561 2.657 21.479 3.646 21.573 4.871L21.991 10.308L21.998 10.453C22.014 11.175 21.735 11.876 21.221 12.39L12.39 21.221C11.417 22.194 9.879 22.255 8.835 21.404L8.633 21.221L2.778 15.366C1.74 14.328 1.74 12.646 2.778 11.609L11.609 2.778L11.714 2.678ZM16.189 6.929L16.086 6.923C15.534 6.921 15.078 7.366 15.075 7.918C15.073 8.471 15.519 8.92 16.071 8.923L16.178 8.919C16.683 8.871 17.078 8.447 17.081 7.929C17.084 7.412 16.693 6.983 16.189 6.929Z" fill="currentColor"/></symbol>
+<symbol id="ds-Verify-fill" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.129 2.367C12.498 1.908 11.656 1.879 10.998 2.281L10.87 2.367L8.712 3.934C8.699 3.944 8.684 3.952 8.669 3.958L8.62 3.972L5.987 4.389C5.165 4.519 4.519 5.165 4.389 5.987L3.972 8.621C3.969 8.637 3.965 8.654 3.958 8.669L3.934 8.712L2.366 10.87C1.877 11.544 1.877 12.456 2.366 13.129L3.934 15.287L3.958 15.33C3.965 15.346 3.969 15.362 3.972 15.379L4.389 18.012C4.519 18.834 5.165 19.48 5.987 19.61L8.62 20.027L8.669 20.041C8.684 20.047 8.699 20.055 8.712 20.065L10.87 21.633C11.543 22.122 12.456 22.122 13.129 21.633L15.287 20.065L15.33 20.041C15.346 20.034 15.362 20.03 15.378 20.027L18.012 19.61C18.834 19.48 19.48 18.834 19.61 18.012L20.027 15.379L20.041 15.33C20.047 15.315 20.055 15.3 20.065 15.287L21.632 13.129L21.718 13.001C22.12 12.343 22.091 11.502 21.632 10.87L20.065 8.712C20.055 8.699 20.047 8.684 20.041 8.669L20.027 8.621L19.61 5.987C19.48 5.165 18.834 4.519 18.012 4.389L15.378 3.972C15.362 3.969 15.346 3.965 15.33 3.958L15.287 3.934L13.129 2.367ZM16.831 9.823C17.297 9.47 17.372 8.826 17 8.385C16.627 7.944 15.947 7.872 15.482 8.225C14.41 9.037 13.438 10.297 12.674 11.461C12.311 12.014 11.983 12.565 11.699 13.07C11.612 12.979 11.524 12.891 11.438 12.805C10.924 12.295 10.365 11.808 9.952 11.524C9.469 11.192 8.794 11.293 8.443 11.75C8.092 12.206 8.199 12.846 8.681 13.179C8.946 13.361 9.404 13.75 9.876 14.218C10.35 14.688 10.763 15.164 10.978 15.504C11.185 15.83 11.564 16.02 11.964 15.999C12.364 15.978 12.719 15.749 12.886 15.404C13.212 14.732 13.791 13.634 14.509 12.541C15.239 11.428 16.054 10.412 16.831 9.823Z" fill="currentColor"/></symbol>
+<symbol id="ds-Listview-fill" viewBox="0 0 24 24"><path d="M2 18.487V18.474C2 17.922 2.447 17.474 3 17.474C3.552 17.474 3.999 17.922 4 18.474V18.487C4 19.039 3.552 19.487 3 19.487C2.447 19.487 2 19.039 2 18.487ZM21 17.474L21.102 17.479C21.606 17.531 22 17.957 22 18.474C22 18.992 21.606 19.418 21.102 19.47L21 19.474H8.12C7.567 19.474 7.12 19.027 7.12 18.474C7.12 17.922 7.567 17.474 8.12 17.474H21ZM2 12.008V11.995C2 11.443 2.447 10.995 3 10.995C3.552 10.995 4 11.443 4 11.995V12.008C3.999 12.56 3.552 13.008 3 13.008C2.447 13.008 2 12.56 2 12.008ZM21 10.995L21.102 11C21.606 11.051 22 11.477 22 11.995C21.999 12.512 21.606 12.938 21.102 12.989L21 12.995H8.12C7.567 12.995 7.12 12.547 7.12 11.995C7.12 11.443 7.567 10.995 8.12 10.995H21ZM2 5.527V5.514C2 4.962 2.447 4.514 3 4.514C3.552 4.514 4 4.962 4 5.514V5.527C4 6.079 3.552 6.527 3 6.527C2.447 6.527 2 6.079 2 5.527ZM21 4.514L21.102 4.519C21.606 4.571 22 4.997 22 5.514C22 6.032 21.606 6.458 21.102 6.51L21 6.514H8.12C7.567 6.514 7.12 6.067 7.12 5.514C7.12 4.962 7.567 4.514 8.12 4.514H21Z" fill="currentColor"/></symbol>
+<symbol id="ds-CircleCheck-fill" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.522 22 22 17.522 22 12C22 6.477 17.522 2 12 2C6.477 2 2 6.477 2 12C2 17.522 6.477 22 12 22ZM16.831 9.823C17.297 9.47 17.372 8.826 17 8.385C16.627 7.944 15.947 7.872 15.482 8.225C14.41 9.038 13.438 10.297 12.674 11.461C12.311 12.014 11.982 12.565 11.699 13.07C11.612 12.979 11.524 12.891 11.438 12.805C10.923 12.295 10.365 11.809 9.951 11.524C9.469 11.192 8.794 11.293 8.443 11.75C8.092 12.207 8.199 12.846 8.681 13.179C8.946 13.361 9.404 13.75 9.876 14.218C10.35 14.689 10.763 15.164 10.978 15.504C11.184 15.83 11.564 16.021 11.964 16C12.364 15.979 12.719 15.749 12.886 15.404C13.211 14.732 13.791 13.634 14.508 12.541C15.239 11.429 16.054 10.412 16.831 9.823Z" fill="currentColor"/></symbol>
+<symbol id="ds-send-fill" viewBox="0 0 24 24"><path d="M4.961 2.675C2.956 1.756 0.885 3.82 1.798 5.828L4.149 11H9.999C10.552 11 10.999 11.448 10.999 12C10.999 12.552 10.551 13 9.999 13H4.279L1.898 17.897C0.933 19.882 2.952 22 4.981 21.131L20.838 14.335L21.011 14.254C22.684 13.385 22.714 10.975 21.064 10.063L20.893 9.978L4.961 2.675Z" fill="currentColor"/></symbol>
+<symbol id="ds-Image-outline" viewBox="0 0 24 24"><path d="M20 17.397C19.932 17.364 19.867 17.324 19.806 17.275L19.73 17.207L15.937 13.414L11.582 17.769C11.191 18.16 10.558 18.16 10.168 17.769L8.625 16.226L5.177 19.672C5.529 19.879 5.937 20 6.375 20H17.625C18.936 20 20 18.936 20 17.625V17.397ZM8.75 8.062C8.75 7.682 8.442 7.375 8.062 7.375C7.682 7.375 7.375 7.682 7.375 8.062C7.375 8.442 7.682 8.75 8.062 8.75C8.442 8.75 8.75 8.442 8.75 8.062ZM20 6.375C20 5.063 18.936 4 17.625 4H6.375C5.063 4 4 5.063 4 6.375V17.625C4 17.75 4.011 17.872 4.03 17.992L7.917 14.105L7.994 14.037C8.386 13.716 8.965 13.739 9.332 14.105L10.875 15.648L15.23 11.293L15.306 11.224C15.699 10.904 16.278 10.926 16.644 11.293L20 14.648V6.375ZM10.75 8.062C10.75 9.546 9.546 10.75 8.062 10.75C6.578 10.75 5.375 9.546 5.375 8.062C5.375 6.578 6.578 5.375 8.062 5.375C9.546 5.375 10.75 6.578 10.75 8.062ZM22 17.625C22 20.041 20.041 22 17.625 22H6.375C3.958 22 2 20.041 2 17.625V6.375C2 3.958 3.958 2 6.375 2H17.625C20.041 2 22 3.958 22 6.375V17.625Z" fill="currentColor"/></symbol>
+<symbol id="ds-Location-outline" viewBox="0 0 24 24"><path d="M18 10.043C18 6.7 15.308 4 12 4C8.692 4 6 6.7 6 10.043C6 10.986 6.357 12.089 6.979 13.27C7.593 14.438 8.425 15.604 9.275 16.651C10.124 17.694 10.975 18.599 11.615 19.243C11.754 19.382 11.884 19.509 12 19.623C12.116 19.509 12.246 19.382 12.385 19.243C13.025 18.599 13.876 17.694 14.725 16.651C15.575 15.604 16.407 14.438 17.022 13.27C17.643 12.089 18 10.986 18 10.043ZM13.236 9.75C13.236 9.053 12.677 8.5 12 8.5C11.323 8.5 10.765 9.053 10.765 9.75C10.765 10.446 11.323 10.999 12 11C12.677 11 13.236 10.446 13.236 9.75ZM20 10.043C20 11.449 19.482 12.888 18.791 14.202C18.093 15.528 17.174 16.807 16.275 17.913C15.374 19.021 14.475 19.976 13.803 20.653C13.466 20.992 13.185 21.262 12.986 21.449C12.887 21.542 12.808 21.616 12.754 21.666C12.727 21.69 12.706 21.71 12.691 21.723C12.684 21.73 12.678 21.735 12.674 21.739C12.672 21.741 12.67 21.742 12.669 21.743L12.667 21.745L12 22.341L11.333 21.745L11.331 21.743C11.33 21.742 11.328 21.741 11.326 21.739C11.322 21.735 11.316 21.73 11.309 21.723C11.294 21.71 11.273 21.69 11.246 21.666C11.192 21.616 11.113 21.542 11.014 21.449C10.815 21.262 10.534 20.992 10.197 20.653C9.525 19.976 8.626 19.021 7.725 17.913C6.826 16.807 5.907 15.528 5.209 14.202C4.518 12.888 4 11.449 4 10.043C4 5.607 7.576 2 12 2C16.424 2 20 5.607 20 10.043ZM15.236 9.75C15.236 11.539 13.793 13 12 13C10.207 12.999 8.765 11.539 8.765 9.75C8.765 7.961 10.207 6.5 12 6.5C13.793 6.5 15.236 7.96 15.236 9.75Z" fill="currentColor"/></symbol>
+<symbol id="ds-Calendar-outline" viewBox="0 0 24 24"><path d="M19 7.542C19 6.507 18.212 5.654 17.204 5.552L17 5.542H7C5.895 5.542 5 6.438 5 7.542V18C5 19.104 5.895 20 7 20H17C18.035 20 18.887 19.212 18.989 18.204L19 18V7.542ZM16.5 7.142L16.602 7.148C17.106 7.199 17.499 7.625 17.5 8.142C17.5 8.66 17.106 9.086 16.602 9.137L16.5 9.142H7.428C6.876 9.142 6.428 8.694 6.428 8.142C6.428 7.59 6.876 7.142 7.428 7.142H16.5ZM21 18L20.995 18.206C20.887 20.319 19.14 22 17 22H7C4.79 22 3 20.209 3 18V7.542C3 5.748 4.181 4.229 5.809 3.722V3C5.809 2.447 6.257 2 6.809 2C7.361 2 7.809 2.447 7.809 3V3.542H16V3C16 2.447 16.447 2 17 2C17.552 2 18 2.447 18 3V3.668C19.725 4.113 21 5.679 21 7.542V18Z" fill="currentColor"/></symbol>
+<symbol id="ds-Star-fill" viewBox="0 0 24 24"><path d="M10.697 2.763C11.27 1.745 12.73 1.745 13.302 2.763L13.357 2.867L15.638 7.71L20.722 8.484L20.84 8.506C21.989 8.767 22.341 10.162 21.639 10.99L21.566 11.071L17.858 14.855L18.737 20.209L18.749 20.316C18.845 21.385 17.767 22.375 16.647 21.859L16.535 21.801L12 19.303L7.464 21.801C6.267 22.46 5.075 21.352 5.263 20.209L6.14 14.855L2.434 11.071C1.61 10.23 1.995 8.679 3.278 8.484L8.361 7.71L10.643 2.867L10.697 2.763Z" fill="currentColor"/></symbol>
+<symbol id="ds-Chevronright-outline" viewBox="0 0 24 24"><path d="M16 11.999C16 12.265 15.894 12.519 15.707 12.707L10.707 17.707L10.63 17.775C10.238 18.095 9.659 18.073 9.292 17.707C8.926 17.34 8.904 16.761 9.224 16.369L9.292 16.292L13.585 11.999L9.292 7.706C8.902 7.316 8.902 6.683 9.292 6.292C9.683 5.902 10.316 5.902 10.707 6.292L15.707 11.292L15.773 11.366C15.919 11.544 16 11.767 16 11.999Z" fill="currentColor"/></symbol>
+<symbol id="ds-play-fill" viewBox="0 0 24 24"><path d="M6.286 2.193C7.054 1.847 7.916 1.995 8.629 2.387L8.77 2.468L8.799 2.487L8.828 2.506L19.522 10.101C20.27 10.532 20.998 11.209 21 12.188C21.001 13.16 20.279 13.87 19.531 14.345L19.532 14.346L8.935 21.493L8.892 21.522L8.846 21.547C8.077 21.957 7.132 22.208 6.289 21.773C5.528 21.381 5.191 20.614 5.081 19.82L5.047 19.479L5.045 19.45V19.421L5 4.462L5.001 4.462C4.986 3.472 5.406 2.589 6.286 2.193Z" fill="currentColor"/></symbol>
+<symbol id="ds-Report-outline" viewBox="0 0 24 24"><path d="M21 2L21.129 2.008C21.428 2.047 21.696 2.22 21.855 2.482C22.013 2.744 22.042 3.061 21.938 3.344L21.885 3.462L19.672 7.695L21.885 11.927C22.047 12.237 22.036 12.61 21.855 12.909C21.674 13.208 21.349 13.391 21 13.391H6.454V20H7.909L8.011 20.004C8.515 20.056 8.909 20.482 8.909 21C8.909 21.517 8.515 21.943 8.011 21.995L7.909 22H3C2.447 22 2 21.552 2 21C2 20.447 2.447 20 3 20H4.454V3L4.459 2.897C4.511 2.393 4.936 2 5.454 2H21ZM6.454 11.391H19.349L17.659 8.159C17.507 7.868 17.507 7.522 17.659 7.232L19.349 4H6.454V11.391Z" fill="currentColor"/></symbol>
+<symbol id="ds-Close-outline" viewBox="0 0 24 24"><path d="M15.292 7.293C15.683 6.902 16.316 6.902 16.707 7.293C17.097 7.683 17.097 8.316 16.707 8.707L13.414 12L16.707 15.293L16.775 15.369C17.095 15.762 17.073 16.341 16.707 16.707C16.34 17.073 15.761 17.095 15.369 16.775L15.292 16.707L11.999 13.414L8.706 16.707C8.316 17.097 7.683 17.097 7.292 16.707C6.902 16.316 6.902 15.683 7.292 15.293L10.585 12L7.292 8.707L7.224 8.63C6.904 8.238 6.926 7.659 7.292 7.293C7.659 6.926 8.238 6.904 8.63 7.224L8.706 7.293L11.999 10.586L15.292 7.293Z" fill="currentColor"/></symbol>
+<symbol id="ds-Warning-outline" viewBox="0 0 24 24"><path d="M8.422 4.821C10.166 2.392 13.833 2.392 15.578 4.821L15.746 5.072L15.771 5.116L21.441 15.339C21.796 15.924 22.138 16.761 21.944 17.669L21.896 17.857C21.361 19.678 19.668 21 17.67 21H6.33C4.456 21 2.85 19.838 2.216 18.192L2.103 17.857C1.815 16.877 2.179 15.963 2.558 15.339L8.228 5.116L8.254 5.072L8.422 4.821ZM14.038 6.114C13.098 4.628 10.9 4.628 9.961 6.114L4.307 16.309L4.282 16.353C4.011 16.789 3.965 17.1 4.022 17.293L4.083 17.474C4.425 18.362 5.299 19 6.33 19H17.67C18.769 19 19.689 18.274 19.977 17.293L19.994 17.215C20.019 17.02 19.955 16.734 19.717 16.353L19.692 16.309L14.038 6.114ZM11 16.264V16.224C11 15.672 11.447 15.224 12 15.224C12.552 15.224 13 15.672 13 16.224V16.264C12.999 16.816 12.552 17.264 12 17.264C11.448 17.264 11 16.816 11 16.264ZM11 12.9V8.414C11 7.861 11.448 7.414 12 7.414C12.552 7.414 12.999 7.861 13 8.414V12.9C13 13.452 12.552 13.9 12 13.9C11.448 13.9 11 13.452 11 12.9Z" fill="currentColor"/></symbol>
+<symbol id="ds-Hide-outline" viewBox="0 0 24 24"><path d="M4.692 3.792C5.058 3.426 5.637 3.404 6.03 3.724L6.106 3.792L21.106 18.793L21.175 18.869C21.495 19.261 21.473 19.84 21.106 20.207C20.74 20.573 20.161 20.595 19.769 20.275L19.692 20.207L17.776 18.291C16.364 19.156 14.6 19.767 12.438 19.811L11.983 19.812C7.982 19.747 5.332 17.893 3.706 16.064C2.898 15.156 2.342 14.254 1.985 13.578C1.807 13.239 1.677 12.954 1.591 12.75C1.548 12.647 1.515 12.565 1.492 12.505C1.481 12.476 1.472 12.453 1.466 12.435C1.463 12.426 1.46 12.419 1.458 12.414C1.457 12.411 1.456 12.408 1.455 12.406L1.454 12.403V12.402L2.399 12.076C1.445 11.777 1.445 11.776 1.445 11.776V11.775L1.446 11.774C1.447 11.773 1.447 11.771 1.447 11.769C1.448 11.766 1.45 11.761 1.451 11.756C1.454 11.747 1.459 11.733 1.465 11.717C1.476 11.685 1.491 11.64 1.512 11.585C1.552 11.473 1.612 11.316 1.693 11.125C1.856 10.741 2.106 10.213 2.462 9.618C3.107 8.537 4.117 7.205 5.604 6.118L4.692 5.207L4.624 5.13C4.304 4.738 4.326 4.159 4.692 3.792ZM7.039 7.553C5.692 8.464 4.77 9.652 4.18 10.642C3.878 11.147 3.668 11.592 3.534 11.907C3.511 11.962 3.491 12.014 3.473 12.061C3.539 12.212 3.631 12.412 3.754 12.645C4.053 13.213 4.523 13.974 5.2 14.735C6.543 16.245 8.694 17.758 12.016 17.812H12.394C13.97 17.781 15.259 17.388 16.312 16.826L14.095 14.609C13.515 15.055 12.787 15.321 11.999 15.321C10.147 15.321 8.6 13.853 8.6 11.986C8.6 11.185 8.891 10.452 9.366 9.88L7.039 7.553ZM21.27 14.877C20.963 15.336 20.342 15.46 19.883 15.153C19.424 14.846 19.3 14.225 19.606 13.766L21.27 14.877ZM11.999 4.099C16.068 4.099 18.729 6.03 20.344 7.942C21.145 8.891 21.693 9.837 22.04 10.545C22.214 10.901 22.34 11.2 22.423 11.414C22.465 11.521 22.496 11.607 22.518 11.669C22.528 11.699 22.536 11.724 22.542 11.742C22.545 11.751 22.548 11.758 22.55 11.764C22.551 11.767 22.551 11.77 22.552 11.772C22.552 11.773 22.553 11.774 22.553 11.775L22.554 11.776C22.554 11.776 22.539 11.782 21.6 12.076L22.548 12.391V12.392L22.547 12.394C22.546 12.395 22.547 12.397 22.546 12.399C22.545 12.403 22.543 12.408 22.541 12.414C22.537 12.425 22.531 12.441 22.524 12.46C22.511 12.497 22.491 12.55 22.466 12.615C22.415 12.746 22.34 12.929 22.237 13.152C22.033 13.597 21.717 14.207 21.27 14.877L20.439 14.321L19.606 13.766C19.985 13.199 20.251 12.685 20.42 12.317C20.463 12.222 20.498 12.136 20.528 12.063C20.463 11.901 20.37 11.683 20.244 11.426C19.95 10.827 19.488 10.028 18.816 9.233C17.485 7.657 15.345 6.099 11.999 6.099C11.618 6.099 11.255 6.119 10.907 6.157C10.358 6.216 9.865 5.819 9.806 5.27C9.747 4.721 10.143 4.228 10.692 4.168C11.112 4.123 11.548 4.099 11.999 4.099ZM2.399 12.076L1.454 12.401L1.347 12.09L1.445 11.777L2.399 12.076ZM22.65 12.085L22.549 12.391L21.6 12.076L22.554 11.777L22.65 12.085ZM3.353 12.377L3.354 12.377V12.376C3.354 12.376 3.354 12.375 3.353 12.375C3.352 12.376 3.353 12.377 3.353 12.377ZM10.6 11.986C10.6 12.698 11.2 13.321 11.999 13.321C12.237 13.321 12.459 13.264 12.652 13.167L10.793 11.307C10.669 11.507 10.6 11.739 10.6 11.986Z" fill="currentColor"/></symbol>
+</svg>
+
+<div class="app" data-ds-screen="chat-desktop" data-ds-platform="desktop" data-ds-vertical="GDS" data-ds-surface="page" data-ds-size="1512x961">
+
+  <!-- ===== Navbar (reuse Chợ Tốt desktop) ===== -->
+  <header class="navbar">
+    <div class="logo">
+      <button class="icon-btn" aria-label="Menu"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Menu-outline"/></svg></button>
+      <a href="#" aria-label="Chợ Tốt — Trang chủ"><img src="logo.png" alt="Chợ Tốt"></a>
+    </div>
+    <div class="search-feature">
+      <button class="loc"><svg class="ds-icon ds-icon--20 pin" aria-hidden="true"><use href="#ds-Location-fill"/></svg><span class="t-tagline-caption">Tp. Hồ Chí Minh</span><svg class="ds-icon" aria-hidden="true"><use href="#ds-Chevrondown-fill"/></svg></button>
+      <label class="search"><svg class="ds-icon ds-icon--20" style="color:var(--icon-tertiary)" aria-hidden="true"><use href="#ds-Search-outline"/></svg><input class="t-body-section" placeholder="Tìm kiếm sản phẩm..." aria-label="Tìm kiếm sản phẩm"><button class="go" aria-label="Tìm"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Search-outline"/></svg></button></label>
+    </div>
+    <div class="functions">
+      <button class="icon-btn" aria-label="Tin đã lưu"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Heart-outline"/></svg></button>
+      <button class="icon-btn" aria-label="Thông báo, 22 mới"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Notification-outline"/></svg><span class="badge top t-label-annotation">22</span></button>
+      <button class="btn tertiary"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Chat-outline"/></svg><span class="t-label-section">Liên hệ</span><span class="badge top t-label-annotation">22</span></button>
+      <button class="btn tertiary t-label-section">Quản lý tin</button>
+      <button class="btn primary t-label-section">Đăng bán</button>
+      <button class="me" aria-label="Tài khoản"><img src="assets/me.png" alt=""><svg class="ds-icon" aria-hidden="true"><use href="#ds-Chevrondown-outline"/></svg></button>
+    </div>
+  </header>
+
+  <div class="body">
+    <!-- ===== Rail ===== -->
+    <nav class="rail" aria-label="Loại liên hệ">
+      <a href="#" class="on" aria-current="page"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Chat-fill"/></svg><span class="t-label-section">Tin nhắn</span></a>
+      <a href="#"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Groupofuser-outline"/></svg><span class="t-tagline-caption">Khách</span></a>
+      <a href="#"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Suitcase-outline"/></svg><span class="badge t-label-annotation">2</span><span class="t-tagline-caption">Ứng viên</span></a>
+    </nav>
+
+    <!-- ===== Conversation list ===== -->
+    <section class="panel" aria-label="Danh sách hội thoại">
+      <h1 class="list-head t-header-page">Nhắn tin</h1>
+      <div class="list-tools">
+        <label class="search-input"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Search-outline"/></svg><input class="t-body-section" id="q" placeholder="Nhập 3 ký tự để tìm kiếm" aria-label="Tìm hội thoại"></label>
+        <button class="icon-btn" aria-label="Tuỳ chọn khác"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Morevertical-fill"/></svg></button>
+      </div>
+      <div class="chips" role="group" aria-label="Lọc hội thoại">
+        <button class="chip t-tagline-caption" aria-pressed="true" data-f="all">Tất cả</button>
+        <button class="chip t-tagline-caption" aria-pressed="false" data-f="unread">Chưa đọc</button>
+        <button class="chip t-tagline-caption" aria-pressed="false" data-f="meet">Hẹn gặp</button>
+        <button class="chip t-tagline-caption" aria-pressed="false" data-f="offer">Đang trả giá</button>
+        <button class="chip t-tagline-caption" aria-pressed="false" data-f="done">Đã chốt</button>
+        <button class="chip t-tagline-caption" aria-pressed="false" data-f="spam">Tin rác/Bỏ qua</button>
+      </div>
+      <div class="rows" id="rows" role="listbox" aria-label="Hội thoại">
+        <div class="row" role="option" tabindex="0" aria-selected="true" data-tags="unread meet" data-name="An Tran">
+          <div class="ava" data-ds-raw="Avatar 52 + ảnh tin 32 theo Figma; DS Avatar không có size 52"><img src="assets/row-nhung.png" width="76" height="80" alt=""></div>
+          <div class="content">
+            <div class="labels"><span class="label t-tagline-annotation"><svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-tag-fill"/></svg>Hẹn gặp</span></div>
+            <div class="line"><span class="grow ellipsis t-header-caption">An Tran</span><span class="badge t-label-annotation">12</span></div>
+            <div class="line"><span class="grow ellipsis msg t-body-section">Bạn gửi mình địa chỉ để qua lấy nhé</span><span class="time t-body-section">11:30</span></div>
+          </div>
+        </div>
+        <div class="row" role="option" tabindex="0" aria-selected="false" data-tags="unread" data-name="Khánh Lê">
+          <div class="ava"><img src="assets/row-khanh.png" width="76" height="80" alt=""></div>
+          <div class="content">
+            <div class="line"><span class="grow ellipsis t-header-caption">Khánh Lê</span><span class="badge t-label-annotation">12</span></div>
+            <div class="line"><span class="grow ellipsis msg t-body-section">Còn xài tốt không bạn ơi</span><span class="time t-body-section">11:30</span></div>
+          </div>
+        </div>
+        <div class="row" role="option" tabindex="0" aria-selected="false" data-tags="unread done" data-name="Uyên Nguyễn">
+          <div class="ava solo"><img src="assets/ava-uyen.png" alt=""></div>
+          <div class="content">
+            <div class="labels"><span class="label done t-tagline-annotation"><svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-tag-fill"/></svg>Đã chốt</span></div>
+            <div class="line"><span class="grow ellipsis t-header-caption">Uyên Nguyễn</span><span class="badge t-label-annotation">12</span></div>
+            <div class="line"><span class="grow ellipsis msg t-body-section">Bạn gửi mình địa chỉ để qua lấy nhé</span><span class="time t-body-section">11:30</span></div>
+          </div>
+        </div>
+        <div class="row" role="option" tabindex="0" aria-selected="false" data-tags="unread" data-name="Chợ Tốt Official Account">
+          <div class="ava solo"><img src="assets/oa.png" alt=""></div>
+          <div class="content">
+            <div class="line"><span class="ellipsis t-header-caption">Chợ Tốt Official Account</span><svg class="ds-icon ds-icon--20 verify" aria-label="Đã xác thực"><use href="#ds-Verify-fill"/></svg><span class="grow"></span><span class="badge t-label-annotation">12</span></div>
+            <div class="line"><span class="grow ellipsis msg t-body-section">Đây là nội dung tin nhắn gửi từ Chợ Tốt Official Account</span><span class="time t-body-section">11:30</span></div>
+          </div>
+        </div>
+        <div class="row" role="option" tabindex="0" aria-selected="false" data-tags="unread offer" data-name="Pham Thi Cam Nhung">
+          <div class="ava"><img src="assets/row-camnhung.png" width="76" height="68" alt=""></div>
+          <div class="content">
+            <div class="labels"><span class="label offer t-tagline-annotation"><svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-tag-fill"/></svg>Đang trả giá</span></div>
+            <div class="line"><span class="grow ellipsis t-header-caption">Pham Thi Cam Nhung</span><span class="badge t-label-annotation">12</span></div>
+            <div class="line"><span class="grow ellipsis msg t-body-section">Cho mình xin giá phòng trọ full điện nước</span><span class="time t-body-section">11:30</span></div>
+          </div>
+        </div>
+        <div class="row" role="option" tabindex="0" aria-selected="false" data-tags="offer done" data-name="Bánh É">
+          <div class="ava"><img src="assets/row-banh.png" width="76" height="80" alt=""></div>
+          <div class="content">
+            <div class="labels">
+              <span class="label offer t-tagline-annotation"><svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-tag-fill"/></svg>Đang trả giá</span>
+              <span class="label done t-tagline-annotation"><svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-tag-fill"/></svg>Đã chốt</span>
+            </div>
+            <div class="line"><span class="grow ellipsis t-header-caption">Bánh É</span></div>
+            <div class="line"><span class="grow ellipsis msg read t-body-section">Bạn: Mình bán rồi nhé</span><span class="time t-body-section">17/06/25</span></div>
+          </div>
+        </div>
+        <div class="row" role="option" tabindex="0" aria-selected="false" data-tags="" data-name="Trần Bao Nguyen">
+          <div class="ava"><img src="assets/row-banh.png" width="76" height="80" alt=""></div>
+          <div class="content">
+            <div class="line"><span class="grow ellipsis t-header-caption">Trần Bao Nguyen</span></div>
+            <div class="line"><span class="grow ellipsis msg read t-body-section">Bạn: Điện thoại hết bảo hành ạ</span><span class="time t-body-section">17/06/25</span></div>
+          </div>
+        </div>
+        <div class="row" role="option" tabindex="0" aria-selected="false" data-tags="" data-name="Nguyen Van Thao">
+          <div class="ava"><img src="assets/row-banh.png" width="76" height="80" alt=""></div>
+          <div class="content">
+            <div class="line"><span class="grow ellipsis t-header-caption">Nguyen Van Thao</span></div>
+            <div class="line"><span class="grow ellipsis msg read t-body-section">Bạn: Cần kiểm tra tình trạng hàng</span><span class="time t-body-section">16/06/25</span></div>
+          </div>
+        </div>
+        <p class="empty t-body-section" id="empty" hidden>Không tìm thấy hội thoại phù hợp</p>
+      </div>
+    </section>
+
+    <!-- ===== Chat room ===== -->
+    <section class="panel" aria-label="Hội thoại">
+      <div class="room-head">
+        <img src="assets/ava-an-64.png" alt="">
+        <b class="t-label-page" id="roomName">An Tran</b>
+        <span class="online t-body-caption">Đang hoạt động</span>
+        <span style="flex:1"></span>
+        <button class="icon-btn" aria-label="Danh sách tin"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Listview-fill"/></svg></button>
+      </div>
+      <div class="room-ad">
+        <img src="assets/ad-thumb.png" alt="">
+        <div class="info">
+          <span class="ellipsis t-body-section">CHO THUÊ CĂN HỘ MINI FULL NỘI THẤT SIÊU RỘNG THOÁNG MÁT NGAY CMT8</span>
+          <span class="t-label-page">5,5 triệu/tháng</span>
+        </div>
+      </div>
+      <div class="conv" id="conv">
+        <div class="msg-out" data-ds-raw="custom: Bubble tin nhắn + quote tin đăng chưa có trong DS">
+          <div class="bubble">
+            <div class="quote">
+              <img src="assets/ad-thumb-sm.png" alt="">
+              <div style="min-width:0">
+                <div class="t ellipsis t-body-section">CHO THUÊ CĂN HỘ MINI FULL NỘI THẤT SIÊU RỘNG THOÁNG MÁT NGAY CMT8</div>
+                <div class="p t-body-section">5,3 triệu/tháng</div>
+              </div>
+            </div>
+            <div class="t-body-section">Cho mình hỏi:<ul><li>Sổ chung hay riêng z ạ?</li><li>Có hỗ trợ trả góp ko sốp?</li><li>Xin video/hình thực tế ạ</li></ul></div>
+            <div class="t-body-section">Gọi lại cho mình số 0987654321</div>
+          </div>
+          <div class="meta t-body-annotation"><span>14:23</span><i class="sep"></i><span>Đã đọc</span><svg class="ds-icon ds-icon--12" aria-hidden="true"><use href="#ds-CircleCheck-fill"/></svg></div>
+        </div>
+      </div>
+      <form class="composer" id="composer">
+        <div class="row-in">
+          <input class="t-body-section" id="msgIn" placeholder="Nhập tin nhắn..." aria-label="Nhập tin nhắn" autocomplete="off">
+          <button class="send" id="send" type="submit" aria-label="Gửi" hidden><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-send-fill"/></svg></button>
+        </div>
+        <div class="tools">
+          <button type="button" class="chip outline t-tagline-caption"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Image-outline"/></svg>Hình/Video</button>
+          <button type="button" class="chip outline t-tagline-caption"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Location-outline"/></svg>Địa chỉ</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- ===== Profile ===== -->
+    <aside class="profile" aria-label="Thông tin người dùng">
+      <div class="card">
+        <div class="seller">
+          <img src="assets/ava-an-64.png" alt="">
+          <div class="info">
+            <b class="t-label-page ellipsis">An Tran</b>
+            <span class="meta-row t-body-section"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Calendar-outline"/></svg>Đã tham gia: 2 năm trước</span>
+            <span class="meta-row t-body-section"><svg class="ds-icon ds-icon--20 star" aria-hidden="true"><use href="#ds-Star-fill"/></svg><span style="color:var(--text-primary)">4.7</span><u>(12 đánh giá)</u></span>
+          </div>
+        </div>
+        <button class="btn secondary m block t-label-section">Xem trang</button>
+      </div>
+
+      <div class="card">
+        <div class="sec-head"><b class="t-header-caption">Ảnh và video</b><a href="#" aria-label="Xem tất cả ảnh và video"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Chevronright-outline"/></svg></a></div>
+        <div class="carousel">
+          <div class="strip" id="strip">
+            <div class="m"><img src="assets/media1.png" alt=""></div>
+            <div class="m video"><img src="assets/media2.png" alt=""><svg class="ds-icon play" aria-hidden="true"><use href="#ds-play-fill"/></svg></div>
+            <div class="m"><img src="assets/media3.png" alt=""></div>
+            <div class="m"><img src="assets/media4.png" alt=""></div>
+            <div class="m"><img src="assets/media1.png" alt=""></div>
+          </div>
+          <button class="next" aria-label="Xem thêm" data-scroll="strip"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Chevronright-outline"/></svg></button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="sec-head"><b class="t-header-caption">Tin đang trao đổi</b><a href="#" aria-label="Xem tất cả tin"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Chevronright-outline"/></svg></a></div>
+        <div class="ads-wrap">
+          <div class="ads" id="ads">
+            <div class="ad">
+              <img src="assets/prod1.png" alt="">
+              <div class="pi"><span class="ttl t-body-section">Honda Lead 125 Fi Biển số TP Có bảo hành</span><span class="price t-label-section">16.700.000 đ</span>
+                <div class="acts"><button class="btn secondary s t-label-section">Nhắn</button></div></div>
+            </div>
+            <div class="ad">
+              <img src="assets/prod2.png" alt="">
+              <div class="pi"><span class="ttl t-body-section">Xiaomi 13 Ultra 16/512 GB rom quốc tế</span><span class="price t-label-section">16.700.000 đ</span>
+                <div class="acts"><button class="btn secondary s t-label-section">Nhắn</button></div></div>
+            </div>
+            <div class="ad">
+              <img src="assets/ad-thumb.png" alt="">
+              <div class="pi"><span class="ttl t-body-section">CHO THUÊ 2 PHÒNG NGỦ 2 WC GẦN ĐẠI HỌC KINH TẾ UEH TRỐNG SẴN</span><span class="price t-label-section">9,9 triệu/tháng</span>
+                <div class="acts"><button class="btn secondary s t-label-section">Đã bán</button><button class="btn secondary s t-label-section">Nhắn</button></div></div>
+            </div>
+          </div>
+          <button class="next" aria-label="Xem thêm tin" data-scroll="ads"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Chevronright-outline"/></svg></button>
+        </div>
+      </div>
+
+      <div class="card menu">
+        <button data-act="report" class="t-body-section"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Report-outline"/></svg>Báo xấu</button>
+        <button data-act="block" class="t-body-section"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Close-outline"/></svg>Chặn người dùng</button>
+        <button data-act="spam" class="t-body-section"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Warning-outline"/></svg>Đánh dấu tin nhắn rác</button>
+        <button data-act="hide" class="t-body-section"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Hide-outline"/></svg>Ẩn hội thoại</button>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- Confirm drawer (DS Drawer · Desktop) -->
+<div class="overlay" id="overlay" aria-hidden="true">
+  <div class="drawer" role="dialog" aria-modal="true" aria-labelledby="dTitle">
+    <div class="drawer-head">
+      <button class="icon-btn" id="dClose" aria-label="Đóng"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Close-outline"/></svg></button>
+      <h2 class="t-header-section" id="dTitle">Chặn người dùng?</h2><span></span>
+    </div>
+    <p class="drawer-body t-body-section" id="dBody"></p>
+    <div class="drawer-foot">
+      <button class="btn tertiary t-label-page" id="dCancel">Huỷ</button>
+      <button class="btn primary t-label-page" id="dOk">Chặn</button>
+    </div>
+  </div>
+</div>
+<div class="toast t-body-section" id="toast" role="status"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-CircleCheck-fill"/></svg><span id="toastText"></span></div>
+
+<script>
+(function () {
+  const $ = s => document.querySelector(s), $$ = s => document.querySelectorAll(s);
+  document.querySelectorAll('a[href="#"]').forEach(a => a.addEventListener('click', e => e.preventDefault()));
+
+  /* Filter chips + search */
+  let filter = 'all';
+  const rows = () => $$('#rows .row');
+  function applyFilter() {
+    const q = $('#q').value.trim().toLowerCase(); let n = 0;
+    rows().forEach(r => {
+      const tagOk = filter === 'all' || r.dataset.tags.split(' ').includes(filter);
+      const qOk = q.length < 3 || r.dataset.name.toLowerCase().includes(q) || r.textContent.toLowerCase().includes(q);
+      r.hidden = !(tagOk && qOk); n += !r.hidden;
+    });
+    $('#empty').hidden = n > 0;
+  }
+  $$('.chips .chip').forEach(c => c.addEventListener('click', () => {
+    $$('.chips .chip').forEach(x => x.setAttribute('aria-pressed', x === c)); filter = c.dataset.f; applyFilter();
+  }));
+  $('#q').addEventListener('input', applyFilter);
+
+  /* Select conversation */
+  function selectRow(r) {
+    rows().forEach(x => x.setAttribute('aria-selected', x === r));
+    $('#roomName').textContent = r.dataset.name;
+    $$('.seller .info b')[0].textContent = r.dataset.name;
+    const b = r.querySelector('.badge'); if (b) b.remove();
+    r.querySelector('.msg') && r.querySelector('.msg').classList.add('read');
+  }
+  rows().forEach(r => {
+    r.addEventListener('click', () => selectRow(r));
+    r.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectRow(r); } });
+  });
+
+  /* Composer */
+  const inp = $('#msgIn'), send = $('#send');
+  inp.addEventListener('input', () => { send.hidden = !inp.value.trim(); });
+  $('#composer').addEventListener('submit', e => {
+    e.preventDefault(); const v = inp.value.trim(); if (!v) return;
+    const now = new Date(), t = String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0');
+    const m = document.createElement('div'); m.className = 'msg-out';
+    m.innerHTML = '<div class="bubble"><div class="t-body-section"></div></div><div class="meta t-body-annotation"><span>' + t + '</span><i class="sep"></i><span>Đã gửi</span></div>';
+    m.querySelector('.bubble div').textContent = v;
+    $('#conv').appendChild(m); $('#conv').scrollTop = 1e6; inp.value = ''; send.hidden = true;
+  });
+
+  /* Carousels */
+  $$('.next').forEach(b => b.addEventListener('click', () => {
+    const el = document.getElementById(b.dataset.scroll);
+    el.scrollLeft = el.scrollLeft + el.clientWidth >= el.scrollWidth - 4 ? 0 : el.scrollLeft + 160;
+  }));
+
+  /* Destructive actions → DS confirm drawer */
+  const ACTS = {
+    report: { t: 'Báo xấu người dùng?', b: 'Chợ Tốt sẽ xem xét hội thoại này. Người dùng sẽ không biết bạn đã báo xấu.', ok: 'Báo xấu', done: 'Đã gửi báo xấu' },
+    block:  { t: 'Chặn người dùng?', b: 'Bạn sẽ không nhận được tin nhắn từ người này nữa. Bạn có thể bỏ chặn trong Cài đặt.', ok: 'Chặn', done: 'Đã chặn người dùng' },
+    spam:   { t: 'Đánh dấu tin nhắn rác?', b: 'Hội thoại sẽ được chuyển vào mục Tin rác/Bỏ qua.', ok: 'Đánh dấu', done: 'Đã chuyển vào Tin rác/Bỏ qua' },
+    hide:   { t: 'Ẩn hội thoại?', b: 'Hội thoại sẽ bị ẩn khỏi danh sách cho đến khi có tin nhắn mới.', ok: 'Ẩn', done: 'Đã ẩn hội thoại' }
+  };
+  const ov = $('#overlay'); let cur = null, lastFocus = null;
+  function open(k) {
+    cur = k; const a = ACTS[k]; $('#dTitle').textContent = a.t; $('#dBody').textContent = a.b; $('#dOk').textContent = a.ok;
+    lastFocus = document.activeElement; ov.classList.add('open'); ov.setAttribute('aria-hidden', 'false'); $('#dCancel').focus();
+  }
+  function close() { ov.classList.remove('open'); ov.setAttribute('aria-hidden', 'true'); lastFocus && lastFocus.focus(); }
+  function toast(msg) { $('#toastText').textContent = msg; const t = $('#toast'); t.classList.add('show'); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 2400); }
+  $$('.menu button').forEach(b => b.addEventListener('click', () => open(b.dataset.act)));
+  $('#dClose').onclick = close; $('#dCancel').onclick = close;
+  ov.addEventListener('click', e => { if (e.target === ov) close(); });
+  addEventListener('keydown', e => { if (e.key === 'Escape' && ov.classList.contains('open')) close(); });
+  $('#dOk').onclick = () => {
+    const sel = $('#rows .row[aria-selected="true"]');
+    if ((cur === 'hide' || cur === 'spam' || cur === 'block') && sel) {
+      if (cur === 'spam') sel.dataset.tags = 'spam';
+      sel.hidden = !(cur === 'spam' && filter === 'spam');
+      const next = [...rows()].find(r => !r.hidden && r !== sel); if (next) selectRow(next);
+    }
+    toast(ACTS[cur].done); close();
+  };
+})();
+</script>
+</body>
+</html>

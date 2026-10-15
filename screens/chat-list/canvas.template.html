@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chợ Tốt Chat Canvas</title>
+<link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --canvas-bg: #f0efed;
+  --canvas-dot: #d6d3cf;
+  --chrome-bg: #ffffff;
+  --chrome-border: #e8e8e8;
+  --chrome-text: #222222;
+  --chrome-muted: #8c8c8c;
+  --chrome-hover: rgba(34,34,34,.06);
+  --accent: #ffd400;
+  --frame-select: #306bd9;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --canvas-bg: #1e1e1f; --canvas-dot: #343436; --chrome-bg: #2a2a2c; --chrome-border: #3a3a3d;
+    --chrome-text: #f2f2f2; --chrome-muted: #9a9a9e; --chrome-hover: rgba(255,255,255,.08);
+  }
+}
+:root[data-theme="dark"] {
+  --canvas-bg: #1e1e1f; --canvas-dot: #343436; --chrome-bg: #2a2a2c; --chrome-border: #3a3a3d;
+  --chrome-text: #f2f2f2; --chrome-muted: #9a9a9e; --chrome-hover: rgba(255,255,255,.08);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  font-family: 'Reddit Sans', system-ui, sans-serif; color: var(--chrome-text);
+  background: var(--canvas-bg); overflow: hidden; -webkit-font-smoothing: antialiased;
+  user-select: none; -webkit-user-select: none;
+}
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+button:focus-visible { outline: 2px solid var(--frame-select); outline-offset: 2px; }
+
+/* ---------- Viewport ---------- */
+.viewport {
+  position: fixed; inset: 0; overflow: hidden; cursor: default; touch-action: none;
+  background-color: var(--canvas-bg);
+  background-image: radial-gradient(var(--canvas-dot) 1px, transparent 1px);
+}
+.viewport.panning, .viewport.hand { cursor: grab; }
+.viewport.panning.dragging { cursor: grabbing; }
+.viewport.panning iframe { pointer-events: none; }
+.world { position: absolute; left: 0; top: 0; transform-origin: 0 0; will-change: transform; }
+
+/* ---------- Frames ---------- */
+.frame { position: absolute; }
+.frame-label {
+  position: absolute; left: 0; bottom: 100%; padding-bottom: 8px; white-space: nowrap;
+  display: flex; gap: 8px; align-items: baseline; transform-origin: 0 100%;
+  font-size: 13px; line-height: 18px;
+}
+.frame-label b { font-weight: 600; }
+.frame-label span { color: var(--chrome-muted); }
+.frame-label .tag {
+  font-size: 11px; font-weight: 600; padding: 1px 6px; border-radius: 4px; color: #fff; align-self: center;
+}
+.tag.proto { background: var(--accent); color: #222; }
+.tag.board { background: var(--frame-select); }
+.frame iframe { display: block; border: 0; background: transparent; }
+.frame.board iframe { background: #fff; pointer-events: none; box-shadow: 0 1px 3px rgba(0,0,0,.08), 0 8px 24px rgba(0,0,0,.06); }
+.frame.sel::after {
+  content: ""; position: absolute; inset: -1px; border: 1.5px solid var(--frame-select); pointer-events: none;
+}
+.fold {
+  position: absolute; left: -12px; right: -12px; border-top: 1px dashed var(--frame-select); pointer-events: none;
+}
+.fold span {
+  position: absolute; right: 0; top: 4px; transform-origin: 100% 0;
+  font-size: 11px; line-height: 14px; color: var(--frame-select); background: var(--canvas-bg); padding: 0 4px; white-space: nowrap;
+}
+.loading { position: absolute; inset: 0; display: grid; place-items: center; color: var(--chrome-muted); font-size: 13px; }
+
+/* ---------- Chrome ---------- */
+.topbar {
+  position: fixed; left: 16px; top: 16px; z-index: 10; display: flex; gap: 10px; align-items: center;
+  background: var(--chrome-bg); border: 1px solid var(--chrome-border); border-radius: 12px; padding: 8px 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.06); max-width: calc(100vw - 32px);
+}
+.topbar .dot { width: 10px; height: 10px; border-radius: 3px; background: var(--accent); flex: none; }
+.topbar b { font-weight: 600; font-size: 14px; white-space: nowrap; }
+.topbar span { color: var(--chrome-muted); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.toolbar {
+  position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); z-index: 10;
+  display: flex; gap: 2px; align-items: center; padding: 4px;
+  background: var(--chrome-bg); border: 1px solid var(--chrome-border); border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,.08);
+}
+.toolbar button {
+  height: 32px; min-width: 32px; padding: 0 10px; border-radius: 8px; font-size: 13px; font-weight: 500;
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px; white-space: nowrap;
+}
+.toolbar button:hover { background: var(--chrome-hover); }
+.toolbar button.on { background: var(--chrome-text); color: var(--chrome-bg); }
+.toolbar .sep { width: 1px; height: 20px; background: var(--chrome-border); margin: 0 4px; }
+.toolbar .zoom { min-width: 56px; font-variant-numeric: tabular-nums; }
+.toolbar svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.hint {
+  position: fixed; right: 16px; bottom: 20px; z-index: 10; font-size: 12px; line-height: 18px; color: var(--chrome-muted);
+  text-align: right;
+}
+@media (max-width: 720px) { .hint { display: none; } .toolbar .lbl { display: none; } }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <i class="dot"></i><b>Chat list · Tab Tin nhắn</b><span>Chợ Tốt · Platform Handoff 2026</span>
+</div>
+
+<div class="viewport" id="vp">
+  <div class="world" id="world">
+    <div class="frame proto" id="fMob">
+      <div class="frame-label" style="left:40px;bottom:calc(100% - 30px)"><span class="tag proto">Mobile</span><b>Liên hệ › Tin nhắn — iPhone 14 Pro</b><span>Figma 9898:117245</span></div>
+      <iframe id="ifMob" title="Mobile — Chat list" width="473" height="886"></iframe>
+    </div>
+    <div class="frame board" id="fDesk">
+      <div class="frame-label"><span class="tag board">Desktop</span><b>Nhắn tin — 3 cột</b><span>Figma 9898:117581 · 1512 × 961 · tương tác</span></div>
+      <iframe id="ifDesk" title="Desktop — Chat" width="1512" height="961"></iframe>
+    </div>
+  </div>
+</div>
+
+<div class="toolbar" role="toolbar" aria-label="Điều khiển canvas">
+  <button id="tHand" title="Kéo canvas (H / giữ Space)" aria-pressed="false">
+    <svg viewBox="0 0 24 24"><path d="M18 11V6a2 2 0 0 0-4 0v5M14 10V4a2 2 0 0 0-4 0v6M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.9-6-2.4l-3.6-3.6a2 2 0 0 1 2.8-2.8L7 15"/></svg><span class="lbl">Kéo</span>
+  </button>
+  <span class="sep"></span>
+  <button id="tOut" title="Thu nhỏ (−)" aria-label="Thu nhỏ"><svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg></button>
+  <button id="tZoom" class="zoom" title="Về 100% (Shift+0)">100%</button>
+  <button id="tIn" title="Phóng to (+)" aria-label="Phóng to"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+  <span class="sep"></span>
+  <button id="tFit" title="Vừa màn hình (Shift+1)"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg><span class="lbl">Vừa màn</span></button>
+  <button id="tMob" title="Xem mobile (1)"><span class="lbl">Mobile</span><span aria-hidden="true" class="k">1</span></button>
+  <button id="tDesk" title="Xem desktop (2)"><span class="lbl">Desktop</span><span aria-hidden="true" class="k">2</span></button>
+</div>
+<div class="hint">Cuộn để di chuyển · Ctrl/⌘ + cuộn để zoom<br>Giữ Space + kéo để pan · Bấm vào frame để tương tác</div>
+
+<script id="mob-src" type="application/json">/*__MOBILE__*/</script>
+<script id="desk-src" type="application/json">/*__DESKTOP__*/</script>
+<script>
+(function () {
+  const vp = document.getElementById('vp'), world = document.getElementById('world');
+  const fMob = document.getElementById('fMob'), fDesk = document.getElementById('fDesk');
+  const ifMob = document.getElementById('ifMob'), ifDesk = document.getElementById('ifDesk');
+  const zoomBtn = document.getElementById('tZoom');
+
+  /* ---------- Frames ---------- */
+  const GAP = 200;
+  const layout = { mob: { x: 0, y: 0, w: 473, h: 886 }, desk: { x: 473 + GAP - 40, y: 40, w: 1512, h: 961 } };
+  for (const [k, el] of [['mob', fMob], ['desk', fDesk]]) {
+    const r = layout[k]; el.style.left = r.x + 'px'; el.style.top = r.y + 'px'; el.style.width = r.w + 'px'; el.style.height = r.h + 'px';
+  }
+  ifMob.srcdoc = JSON.parse(document.getElementById('mob-src').textContent).replace('<html lang="vi">', '<html lang="vi" class="embed">');
+  ifDesk.srcdoc = JSON.parse(document.getElementById('desk-src').textContent);
+
+  /* ---------- Camera ---------- */
+  const cam = { x: 0, y: 0, z: 1 };
+  const MIN = 0.1, MAX = 4;
+  function apply() {
+    world.style.transform = `translate(${cam.x}px, ${cam.y}px) scale(${cam.z})`;
+    const g = 24 * cam.z;
+    vp.style.backgroundSize = `${g}px ${g}px`;
+    vp.style.backgroundPosition = `${cam.x}px ${cam.y}px`;
+    zoomBtn.textContent = Math.round(cam.z * 100) + '%';
+    document.querySelectorAll('.frame-label').forEach(l => l.style.transform = `scale(${1 / cam.z})`);
+  }
+  function zoomAt(z, cx, cy) {
+    z = Math.min(MAX, Math.max(MIN, z));
+    cam.x = cx - (cx - cam.x) * (z / cam.z);
+    cam.y = cy - (cy - cam.y) * (z / cam.z);
+    cam.z = z; apply();
+  }
+  let anim;
+  function animateTo(t) {
+    cancelAnimationFrame(anim);
+    const s = { ...cam }, t0 = performance.now(), D = 320;
+    const step = now => {
+      const k = Math.min(1, (now - t0) / D), e = 1 - Math.pow(1 - k, 3);
+      cam.x = s.x + (t.x - s.x) * e; cam.y = s.y + (t.y - s.y) * e; cam.z = s.z + (t.z - s.z) * e; apply();
+      if (k < 1) anim = requestAnimationFrame(step);
+    };
+    anim = requestAnimationFrame(step);
+  }
+  function fitRect(r, pad = 72, maxZ = 1) {
+    const W = innerWidth, H = innerHeight - 70;
+    const z = Math.min(maxZ, (W - pad * 2) / r.w, (H - pad * 2) / r.h);
+    return { z, x: (W - r.w * z) / 2 - r.x * z, y: 40 + (H - r.h * z) / 2 - r.y * z };
+  }
+  function bounds() {
+    const p = layout.mob, b = layout.desk;
+    const x = Math.min(p.x, b.x), y = Math.min(p.y, b.y) - 30;
+    return { x, y, w: Math.max(p.x + p.w, b.x + b.w) - x, h: Math.max(p.y + p.h, b.y + b.h) - y };
+  }
+  const fitAll = () => animateTo(fitRect(bounds(), 40));
+  const focusMob = () => { const p = layout.mob; animateTo(fitRect({ x: p.x, y: p.y + 10, w: p.w, h: p.h - 20 }, 24)); select(fMob); };
+  const focusDesk = () => { const b = layout.desk; animateTo(fitRect({ x: b.x, y: b.y - 30, w: b.w, h: b.h + 30 }, 24)); select(fDesk); };
+  function select(el) { [fMob, fDesk].forEach(f => f.classList.toggle('sel', f === el)); }
+
+  /* ---------- Input: wheel ---------- */
+  vp.addEventListener('wheel', e => {
+    e.preventDefault();
+    if (e.ctrlKey || e.metaKey) zoomAt(cam.z * Math.exp(-e.deltaY * 0.01), e.clientX, e.clientY);
+    else { cam.x -= e.deltaX; cam.y -= e.deltaY; apply(); }
+  }, { passive: false });
+
+  /* ---------- Input: pan ---------- */
+  let space = false, hand = false, drag = null, pinch = null;
+  const handBtn = document.getElementById('tHand');
+  function setPanMode() { vp.classList.toggle('panning', space || hand); handBtn.classList.toggle('on', hand); handBtn.setAttribute('aria-pressed', hand); }
+  vp.addEventListener('pointerdown', e => {
+    const onFrame = e.target.closest('.frame');
+    if (onFrame && !(space || hand)) { select(onFrame); return; }
+    if (!onFrame) select(null);
+    drag = { id: e.pointerId, x: e.clientX, y: e.clientY, cx: cam.x, cy: cam.y };
+    vp.setPointerCapture(e.pointerId); vp.classList.add('panning', 'dragging');
+  });
+  vp.addEventListener('pointermove', e => {
+    if (!drag || e.pointerId !== drag.id || pinch) return;
+    cam.x = drag.cx + e.clientX - drag.x; cam.y = drag.cy + e.clientY - drag.y; apply();
+  });
+  const endDrag = () => { drag = null; vp.classList.remove('dragging'); setPanMode(); };
+  vp.addEventListener('pointerup', endDrag); vp.addEventListener('pointercancel', endDrag);
+
+  /* ---------- Input: pinch (touch) ---------- */
+  vp.addEventListener('touchstart', e => {
+    if (e.touches.length === 2) { const [a, b] = e.touches; pinch = { d: Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY), z: cam.z }; }
+  }, { passive: true });
+  vp.addEventListener('touchmove', e => {
+    if (!pinch || e.touches.length !== 2) return;
+    const [a, b] = e.touches, d = Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY);
+    zoomAt(pinch.z * d / pinch.d, (a.clientX + b.clientX) / 2, (a.clientY + b.clientY) / 2);
+  }, { passive: true });
+  vp.addEventListener('touchend', e => { if (e.touches.length < 2) pinch = null; });
+
+  /* ---------- Keyboard ---------- */
+  function onKey(e, down) {
+    if (e.target.closest && e.target.closest('input, textarea')) return;
+    if (e.code === 'Space') { space = down; setPanMode(); if (down) e.preventDefault(); return; }
+    if (!down) return;
+    const c = [innerWidth / 2, innerHeight / 2];
+    if (e.key === '+' || e.key === '=') zoomAt(cam.z * 1.25, ...c);
+    else if (e.key === '-' || e.key === '_') zoomAt(cam.z / 1.25, ...c);
+    else if (e.shiftKey && e.code === 'Digit0') zoomAt(1, ...c);
+    else if (e.shiftKey && e.code === 'Digit1') fitAll();
+    else if (e.key === '1') focusMob();
+    else if (e.key === '2') focusDesk();
+    else if (e.key === 'h' || e.key === 'H') { hand = !hand; setPanMode(); }
+    else return;
+    e.preventDefault();
+  }
+  addEventListener('keydown', e => onKey(e, true));
+  addEventListener('keyup', e => onKey(e, false));
+  for (const f of [ifMob, ifDesk]) f.addEventListener('load', () => {
+    const w = f.contentWindow;
+    w.addEventListener('keydown', e => { if (!e.target.closest('input')) onKey(e, true); });
+    w.addEventListener('keyup', e => { if (e.code === 'Space') onKey(e, false); });
+  });
+
+  /* ---------- Toolbar ---------- */
+  handBtn.onclick = () => { hand = !hand; setPanMode(); };
+  document.getElementById('tIn').onclick = () => zoomAt(cam.z * 1.25, innerWidth / 2, innerHeight / 2);
+  document.getElementById('tOut').onclick = () => zoomAt(cam.z / 1.25, innerWidth / 2, innerHeight / 2);
+  zoomBtn.onclick = () => zoomAt(1, innerWidth / 2, innerHeight / 2);
+  document.getElementById('tFit').onclick = fitAll;
+  document.getElementById('tMob').onclick = focusMob;
+  document.getElementById('tDesk').onclick = focusDesk;
+
+  Object.assign(cam, fitRect(bounds(), 40)); apply();
+})();
+</script>
+</body>
+</html>
