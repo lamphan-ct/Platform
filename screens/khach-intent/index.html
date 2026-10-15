@@ -273,7 +273,7 @@ button:focus-visible,[tabindex]:focus-visible,textarea:focus-visible{outline:2px
 .tag-add.is-active{background:var(--interaction-neutral-light-hover)}
 .name-row{display:flex;align-items:center;gap:var(--gap-x-small-8);min-width:0}
 .name-row .name{flex:0 1 auto}
-.ava--32{width:32px;height:32px}
+.ava--20{width:20px;height:20px}
 .foot-labels{padding-top:var(--padding-x-small-8);border-top:1px dashed var(--border-thin)}
 
 /* ---------- Prototype tool: cấu hình nhãn (không thuộc màn) ---------- */
@@ -586,7 +586,7 @@ const mask=p=>p.slice(0,6)+'****';
 const LABEL_CONFIG={pos:'above-name',empty:'add'};
 const MAX_TAGS=3;
 const POSITIONS={
-  'card-top':['Hàng đầu card, avatar 32','Nhãn chạy hết chiều ngang cột, avatar thu về 32 cạnh tên. Dòng nhãn rộng nhất.'],
+  'card-top':['Hàng đầu card, avatar 20','Nhãn chạy hết chiều ngang cột, avatar thu về 20 cạnh tên. Dòng nhãn rộng nhất.'],
   'above-name':['Trên tên khách','Như Figma hiện tại. Nhãn đọc trước tên, đẩy tên xuống.'],
   'below-name':['Dưới tên khách','Tên đọc trước, nhãn là thông tin phụ. Card cao thêm 1 dòng khi có nhãn.'],
   'footer':['Cuối cột Khách hàng','Dưới cụm nút. Tách hẳn khỏi thông tin khách, ít nổi nhất.']
@@ -620,7 +620,7 @@ function rowHtml(r){
     <div>
       ${labelSlot(r,'card-top')}
       <div class="seller-top">
-        ${cfg.pos==='card-top'?`<span class="ava ava--32"><span class="t-label-caption">${r.ini}</span></span>`:`<span class="ava"><span class="t-label-page">${r.ini}</span></span>`}
+        ${cfg.pos==='card-top'?`<span class="ava ava--20" data-ds="Avatar" data-ds-size="20"><span class="t-label-annotation">${r.ini[0]}</span></span>`:`<span class="ava"><span class="t-label-page">${r.ini}</span></span>`}
         <div class="seller-meta">${labelSlot(r,'above-name')}<div class="name-row"><p class="name t-header-caption">${esc(r.name)}</p></div>${labelSlot(r,'below-name')}</div>
         <button class="more-btn" data-act="more" aria-label="Thêm tuỳ chọn" aria-haspopup="true"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Morevertical-outline"/></svg></button>
       </div>
