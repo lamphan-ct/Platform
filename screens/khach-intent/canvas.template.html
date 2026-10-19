@@ -27,7 +27,7 @@ body { font-family: 'Reddit Sans', system-ui, sans-serif; color: var(--chrome-te
 button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
 button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
 
-.viewport { position: fixed; inset: 0; overflow: hidden; touch-action: none; background-color: var(--canvas-bg); background-image: radial-gradient(var(--canvas-dot) 1px, transparent 1px); }
+.viewport { position: fixed; inset: 0; right: 420px; overflow: hidden; touch-action: none; background-color: var(--canvas-bg); background-image: radial-gradient(var(--canvas-dot) 1px, transparent 1px); }
 .viewport.panning { cursor: grab; } .viewport.panning.dragging { cursor: grabbing; }
 .viewport.panning iframe { pointer-events: none; }
 .world { position: absolute; left: 0; top: 0; transform-origin: 0 0; will-change: transform; }
@@ -45,17 +45,17 @@ button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
 .col-title small { display: block; font-size: 20px; line-height: 28px; font-weight: 400; color: var(--chrome-muted); }
 
 .mark { position: absolute; pointer-events: none; }
-.mark .box { position: absolute; inset: 0; border: 2px solid var(--new); border-radius: 6px; background: transparent; opacity: 0; transition: opacity .2s; }
+.mark .box { position: absolute; inset: 0; border: 2px solid var(--new); border-radius: 8px; background: transparent; opacity: .9; transition: opacity .2s; }
 .mark.old .box { border-color: var(--old); border-style: dashed; }
 .mark .pin { position: absolute; right: -14px; top: -14px; min-width: 28px; height: 28px; padding: 0 6px; border-radius: 999px; background: var(--new); color: #fff; font-size: 14px; font-weight: 700; display: grid; place-items: center; box-shadow: 0 2px 6px rgba(0,0,0,.2); transform-origin: 14px 14px; pointer-events: auto; cursor: pointer; }
 .mark.old .pin { background: var(--old); }
-.mark.on .box { opacity: 1; background: var(--new-soft); }
+.mark.on .box { opacity: 1; border-width: 3px; background: var(--new-soft); }
 .mark.old.on .box { background: rgba(140,140,140,.12); }
 .mark.on .pin { outline: 3px solid var(--chrome-bg); }
 .marks-off .mark:not(.on) { display: none; }
 
 /* ---------- Panel ---------- */
-.panel { position: fixed; top: 0; right: 0; bottom: 0; width: 380px; z-index: 20; background: var(--chrome-bg); border-left: 1px solid var(--chrome-border); display: flex; flex-direction: column; }
+.panel { position: fixed; top: 0; right: 0; bottom: 0; width: 420px; z-index: 20; background: var(--chrome-bg); border-left: 1px solid var(--chrome-border); display: flex; flex-direction: column; }
 .panel-head { padding: 20px 20px 12px; border-bottom: 1px solid var(--chrome-border); }
 .panel-head h1 { font-size: 20px; line-height: 28px; font-weight: 600; }
 .panel-head p { font-size: 13px; line-height: 18px; color: var(--chrome-muted); margin-top: 4px; }
@@ -72,23 +72,40 @@ button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
 .item .diff dt.o { color: var(--old); } .item .diff dt.w { color: var(--new); }
 .item .diff dd { color: var(--chrome-text); }
 .item .diff dd.o { color: var(--chrome-muted); }
+.item .spec { margin-top: 8px; display: grid; grid-template-columns: 96px 1fr; gap: 4px 10px; font-size: 12px; line-height: 18px; }
+.item .spec dt { color: var(--chrome-muted); }
+.item .spec dd { color: var(--chrome-text); }
+.item .spec code { font-family: ui-monospace, Menlo, monospace; font-size: 11px; background: var(--chrome-hover); padding: 0 4px; border-radius: 4px; }
+.item .flag { display: inline-block; margin-left: 6px; font-size: 11px; font-weight: 600; color: #fb7328; }
 .panel-foot { padding: 12px 20px; border-top: 1px solid var(--chrome-border); font-size: 12px; line-height: 18px; color: var(--chrome-muted); display: flex; justify-content: space-between; gap: 8px; align-items: center; }
 .panel-foot label { display: inline-flex; gap: 6px; align-items: center; cursor: pointer; color: var(--chrome-text); }
 
-.toolbar { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); z-index: 10; display: flex; gap: 2px; align-items: center; padding: 4px; background: var(--chrome-bg); border: 1px solid var(--chrome-border); border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+.toolbar { position: fixed; left: calc((100vw - 420px) / 2); bottom: 20px; transform: translateX(-50%); z-index: 10; display: flex; gap: 2px; align-items: center; padding: 4px; background: var(--chrome-bg); border: 1px solid var(--chrome-border); border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,.08); }
 .toolbar button { height: 32px; min-width: 32px; padding: 0 10px; border-radius: 8px; font-size: 13px; font-weight: 500; display: inline-flex; align-items: center; justify-content: center; gap: 6px; white-space: nowrap; }
 .toolbar button:hover { background: var(--chrome-hover); }
 .toolbar .sep { width: 1px; height: 20px; background: var(--chrome-border); margin: 0 4px; }
 .toolbar .zoom { min-width: 56px; font-variant-numeric: tabular-nums; }
 .toolbar svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 
+@media (max-width: 900px) {
+  .viewport { right: 0; bottom: 45vh; }
+  .panel { top: auto; left: 0; width: auto; height: 45vh; border-left: 0; border-top: 1px solid var(--chrome-border); }
+  .toolbar { left: 50%; bottom: calc(45vh + 12px); }
 }
 </style>
 </head>
 <body>
 <div class="viewport" id="vp"><div class="world" id="world"></div></div>
 
-
+<aside class="panel" aria-label="Danh sách thay đổi">
+  <div class="panel-head">
+    <h1>Khách: Current → New</h1>
+    <p>Khoanh vùng và spec từng thay đổi. Trái: Current (UI đang chạy). Phải: New. Bấm một mục để canvas bay tới chỗ đó.</p>
+    <div class="legend"><span><i style="background:var(--old)"></i>Current</span><span><i style="background:var(--new)"></i>New</span></div>
+  </div>
+  <div class="list" id="list"></div>
+  <div class="panel-foot"><label><input type="checkbox" id="allPins" checked> Hiện tất cả số</label><span id="count"></span></div>
+</aside>
 
 <div class="toolbar" role="toolbar" aria-label="Điều khiển canvas">
   <button id="tOut" aria-label="Thu nhỏ"><svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg></button>
@@ -96,6 +113,8 @@ button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
   <button id="tIn" aria-label="Phóng to"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
   <span class="sep"></span>
   <button id="tFit"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>Vừa màn</button>
+  <button id="tPrev" aria-label="Thay đổi trước">‹</button>
+  <button id="tNext" aria-label="Thay đổi sau">›</button>
 </div>
 
 <script id="src-old" type="application/json">/*__OLD__*/</script>
@@ -112,7 +131,39 @@ button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
     { id: 'newA', v: 'new', w: 1512, h: 812, row: 0, title: 'New', note: '1512 × 812' }
   ];
   /* toạ độ trên ảnh chụp tính theo CSS px (ảnh 2000px ÷ 1.3228) */
-  const CHANGES = []; /* không đánh dấu */
+  const C = s => s.replace(/`([^`]+)`/g, '<code>$1</code>');
+  const CHANGES = [
+    { t: 'Nhãn phân loại: từ cột Ghi chú → dưới tên khách', o: 'Nhãn nằm ở cột Ghi chú, trên “Nhấn để thêm ghi chú”.',
+      s: [['Vị trí', 'Cột Khách hàng, cụm 1, ngay dưới tên (cách tên `gap-2x-small-6` 6)'], ['Component', 'Labelling: cao 20, padding `padding-min-2` 2 / `padding-2x-small-4` 4, nền `background-tertiary`, bo `radius-pill`, gap `gap-2x-small-4` 4'], ['Icon / chữ', '`tag-fill` 12 · `label-annotation` 10/16 Bold `text-primary`'], ['Màu icon', 'Khách mới `icon-error` · Hẹn gặp `icon-info` · Đã chốt `icon-success`'], ['Nhiều nhãn', 'Ngang `gap-x-small-8` 8 · xuống dòng, dọc `gap-2x-small-6` 6 · không crop'], ['Giới hạn', 'Tối đa 3 nhãn / khách']],
+      m: [['oldA', { x: 1266, y: 249, w: 212, h: 18 }], ['newA', '.row[data-id="1"] .seller-meta .labels']] },
+    { t: 'Avatar 20 → 48, avatar & ⋮ bám top', o: 'Avatar 20 cùng dòng với tên.',
+      s: [['Avatar', 'DS Avatar 48 (Person)'], ['Tên', '`header-caption` 14/20 SemiBold `text-primary`, 1 dòng, ellipsis'], ['⋮', '`Morevertical-outline` 20 `icon-secondary`, vùng bấm 20'], ['Căn', 'Avatar · cụm tên–nhãn · ⋮ canh top (`align-items: flex-start`), gap 6']],
+      m: [['oldA', { x: 120, y: 248, w: 20, h: 20 }], ['newA', '.row[data-id="1"] .seller-top']] },
+    { t: 'Chip “+ Phân loại”', o: 'Không có.',
+      s: [['Hiện khi', 'Khách có < 3 nhãn (đứng cuối dòng nhãn) · khách chưa có nhãn (chip duy nhất)'], ['Ẩn khi', 'Đủ 3 nhãn'], ['Spec', 'Giống Labelling: cao 20, padding 2/4, nền `background-tertiary`, icon `Plus-outline` 12, chữ `label-annotation`'], ['State', 'Hover `interaction-neutral-light-hover` · Pressed `interaction-neutral-light-pressed`'], ['Tap', 'Mở popover “Gắn phân loại” ngay dưới chip']],
+      m: [['newA', '.row[data-id="2"] .tag-add']] },
+    { t: 'Popover “Gắn phân loại” (bấm nhãn / chip / menu)', o: 'Không có.',
+      s: [['Mở từ', 'Bấm 1 nhãn · chip “+ Phân loại” · menu ⋮ → Phân loại khách'], ['Khung', 'Rộng 320 · bo `radius-modal` 20 · header 48 `header-section` căn giữa'], ['Dòng nhắc', '`body-caption` `text-secondary`: “Chọn tối đa 3 phân loại (n/3)”'], ['Item', 'Icon `tag-fill` 24 theo màu nhãn · tên `body-page` · Checkbox DS 24 bên phải · padding 12/20'], ['Giới hạn', 'Đủ 3 → item chưa chọn disabled (`text-disabled`, checkbox `border-disabled`)'], ['Footer', 'Quản lý (Tertiary L-40) · Lưu (Primary L-40, có loading)'], ['Đóng', 'Lưu mới áp dụng · Esc / bấm ngoài = huỷ'], ['Vị trí', 'Dưới anchor 8px, thiếu chỗ thì lật lên; từ menu: bên phải menu 20px']],
+      m: [['newA', '.row[data-id="1"] .label']] },
+    { t: 'Menu ⋮: Phân loại khách · Xoá', o: 'Ảnh chụp không có trạng thái menu mở — cần đối chiếu.',
+      s: [['Khung', 'Min-width 240 · bo `radius-decoration` 16 · item ngăn bằng `border-divider`'], ['Item', 'Icon 24 + `body-page` 16 · padding 12/16'], ['Phân loại khách', '`tag-outline` → mở popover “Gắn phân loại”'], ['Xoá', '`Trashbin-outline` → Drawer xác nhận (Huỷ / Xoá khách)']],
+      m: [['oldA', { x: 378, y: 248, w: 22, h: 22 }], ['newA', '.row[data-id="1"] .more-btn']] },
+    { t: 'Bốn cột chia đều 25%', o: '≈ 300 · 597 · 250 · 250 px (đo trên ảnh).',
+      s: [['Grid', '`repeat(4, minmax(0, 1fr))` cho header và từng hàng'], ['Header cột', '`header-caption` 14/20 SemiBold, padding `padding-medium-16`, căn giữa'], ['Ngăn cột', '1px `border-divider`']],
+      m: [['oldA', { x: 108, y: 172, w: 1395, h: 55 }], ['newA', '.thead']] },
+    { t: 'Cột Khách hàng: 3 cụm, 6 trong · 12 giữa', o: 'Tên · đánh giá · năm tham gia · nút xếp đều một nhịp.',
+      s: [['Padding', '`padding-small-12` 12'], ['Giữa cụm', '`gap-small-12` 12'], ['Trong cụm', '`gap-2x-small-6` 6'], ['Cụm 2', 'Đánh giá: sao `Star-fill` 20 `icon-brand` + “4.5”, vạch 1×20 `border-thin`, gap 8 · Năm tham gia: `Clock-outline` 20 `icon-tertiary`, gap 4 · chữ `body-section` `text-secondary`'], ['Cụm 3', 'Nhắn tin: Tertiary M-32 pill, padding 16, icon `Chat-outline` 20 · Hiện số: Primary M-32 pill, flex 1 · gap 6']],
+      m: [['oldA', { x: 110, y: 238, w: 297, h: 190 }], ['newA', '.row[data-id="1"] .col-cust']] },
+    { t: 'Nút cài đặt ở mép phải hàng lọc', flag: 'theo Figma, cần chốt', o: 'Nằm ngay sau chip “Chưa đọc”.',
+      s: [['Spec', 'Icon Button 40, `Setting-outline` 24 `icon-primary`, `margin-left: auto`']],
+      m: [['oldA', { x: 452, y: 128, w: 26, h: 26 }], ['newA', '.filter-row .icon-btn']] },
+    { t: 'Thanh bên thêm “Ứng viên”', flag: 'theo Figma, cần chốt', o: 'Tin nhắn · Khách.',
+      s: [['Spec', 'Rộng 100 · item `Suitcase-outline` 24 + `tagline-annotation` · badge đỏ']],
+      m: [['oldA', { x: 14, y: 76, w: 72, h: 152 }], ['newA', '.rail']] },
+    { t: 'Lớp blur dưới navbar', o: 'Khe 8px dưới navbar lộ list khi cuộn.',
+      s: [['Phủ', 'Khe 8px trên header + 2 mép bên 8px + 4 góc bo của header'], ['Nền', '`background-app` 88% + `backdrop-filter: blur(16px)`'], ['Header', 'Nền `background-primary`, bo `radius-card` 12, shadow 0 4 8 rgba(89,89,89,.15) — giữ nguyên']],
+      m: [['oldA', { x: 100, y: 64, w: 1412, h: 8 }], ['newA', '.board-head']] }
+  ];
   function click(d, sel) { const el = d.querySelector(sel); el && el.click(); }
 
   /* build frame DOM */
@@ -185,7 +236,22 @@ button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
     scalePins();
   }
 
-  function select() {}
+  /* ---------- Panel ---------- */
+  const list = document.getElementById('list');
+  list.innerHTML = CHANGES.map((c, i) => `<button class="item" data-i="${i}"><span class="n">${i + 1}</span><span><h3>${c.t}${c.flag ? `<span class="flag">${c.flag}</span>` : ''}</h3><dl class="diff"><dt class="o">Current</dt><dd class="o">${c.o}</dd></dl><dl class="spec">${c.s.map(([k, v]) => `<dt>${k}</dt><dd>${C(v)}</dd>`).join('')}</dl></span></button>`).join('');
+  list.addEventListener('click', e => { const b = e.target.closest('.item'); b && select(+b.dataset.i); });
+  document.getElementById('count').textContent = CHANGES.length + ' thay đổi · spec';
+  document.getElementById('allPins').addEventListener('change', e => vp.classList.toggle('marks-off', !e.target.checked));
+  function select(i) {
+    active = i; drawMarks();
+    list.querySelectorAll('.item').forEach(b => b.classList.toggle('on', +b.dataset.i === i));
+    list.querySelector(`.item[data-i="${i}"]`).scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    const rs = CHANGES[i].m.map(([f, s]) => rectOf(f, s)).filter(Boolean); if (!rs.length) return;
+    const x0 = Math.min(...rs.map(r => r.x)), y0 = Math.min(...rs.map(r => r.y)), x1 = Math.max(...rs.map(r => r.x + r.w)), y1 = Math.max(...rs.map(r => r.y + r.h));
+    fitBox(x0, y0, x1 - x0, y1 - y0, 160, 1.2);
+  }
+  document.getElementById('tPrev').onclick = () => select((active - 1 + CHANGES.length) % CHANGES.length);
+  document.getElementById('tNext').onclick = () => select((active + 1) % CHANGES.length);
 
   /* ---------- Camera ---------- */
   const cam = { x: 40, y: 200, z: .3 }, MIN = .05, MAX = 3;
@@ -227,6 +293,8 @@ button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
   function setPan(on) { pan = on; vp.classList.toggle('panning', on); }
   window.addEventListener('keydown', e => {
     if (e.key === ' ') { e.preventDefault(); setPan(true); }
+    if (e.key === 'ArrowRight' || e.key === 'j') document.getElementById('tNext').click();
+    if (e.key === 'ArrowLeft' || e.key === 'k') document.getElementById('tPrev').click();
   });
   window.addEventListener('keyup', e => { if (e.key === ' ') setPan(false); });
   vp.addEventListener('pointerdown', e => {
