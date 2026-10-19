@@ -62,9 +62,9 @@ button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
 .legend { display: flex; gap: 12px; margin-top: 12px; font-size: 12px; color: var(--chrome-muted); align-items: center; flex-wrap: wrap; }
 .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 999px; margin-right: 4px; vertical-align: -1px; }
 .list { flex: 1; overflow-y: auto; padding: 8px; }
-.item { width: 100%; text-align: left; display: grid; grid-template-columns: 28px 1fr; gap: 10px; padding: 12px; border-radius: 12px; transition: background .15s; }
-.item:hover { background: var(--chrome-hover); }
-.item.on { background: var(--new-soft); }
+.item { width: 100%; text-align: left; cursor: default; display: grid; grid-template-columns: 28px 1fr; gap: 10px; padding: 12px; border-radius: 12px; transition: background .15s; }
+.item:hover { background: transparent; }
+.item.on { background: transparent; }
 .item .n { width: 28px; height: 28px; border-radius: 999px; background: var(--new); color: #fff; font-weight: 700; font-size: 14px; display: grid; place-items: center; }
 .item h3 { font-size: 14px; line-height: 20px; font-weight: 600; }
 .item .diff { margin-top: 4px; font-size: 13px; line-height: 18px; display: grid; grid-template-columns: auto 1fr; gap: 2px 8px; }
@@ -100,11 +100,11 @@ button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
 <aside class="panel" aria-label="Danh sách thay đổi">
   <div class="panel-head">
     <h1>Khách: Current → New</h1>
-    <p>Khoanh vùng và spec từng thay đổi. Trái: Current (UI đang chạy). Phải: New. Bấm một mục để canvas bay tới chỗ đó.</p>
-    <div class="legend"><span><i style="background:var(--old)"></i>Current</span><span><i style="background:var(--new)"></i>New</span></div>
+    <p>Ghi chú những thứ thay đổi từ Current (trái) sang New (phải), kèm spec.</p>
+    
   </div>
   <div class="list" id="list"></div>
-  <div class="panel-foot"><label><input type="checkbox" id="allPins" checked> Hiện tất cả số</label><span id="count"></span></div>
+  <div class="panel-foot"><span></span><span id="count"></span></div>
 </aside>
 
 <div class="toolbar" role="toolbar" aria-label="Điều khiển canvas">
@@ -113,8 +113,7 @@ button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
   <button id="tIn" aria-label="Phóng to"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
   <span class="sep"></span>
   <button id="tFit"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>Vừa màn</button>
-  <button id="tPrev" aria-label="Thay đổi trước">‹</button>
-  <button id="tNext" aria-label="Thay đổi sau">›</button>
+  
 </div>
 
 <script id="src-old" type="application/json">/*__OLD__*/</script>
@@ -164,6 +163,7 @@ button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
       s: [['Phủ', 'Khe 8px trên header + 2 mép bên 8px + 4 góc bo của header'], ['Nền', '`background-app` 88% + `backdrop-filter: blur(16px)`'], ['Header', 'Nền `background-primary`, bo `radius-card` 12, shadow 0 4 8 rgba(89,89,89,.15) — giữ nguyên']],
       m: [['oldA', { x: 100, y: 64, w: 1412, h: 8 }], ['newA', '.board-head']] }
   ];
+  CHANGES.forEach(c => c.m = []); /* không khoanh — chỉ ghi chú */
   function click(d, sel) { const el = d.querySelector(sel); el && el.click(); }
 
   /* build frame DOM */
@@ -240,8 +240,8 @@ button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
   const list = document.getElementById('list');
   list.innerHTML = CHANGES.map((c, i) => `<button class="item" data-i="${i}"><span class="n">${i + 1}</span><span><h3>${c.t}${c.flag ? `<span class="flag">${c.flag}</span>` : ''}</h3><dl class="diff"><dt class="o">Current</dt><dd class="o">${c.o}</dd></dl><dl class="spec">${c.s.map(([k, v]) => `<dt>${k}</dt><dd>${C(v)}</dd>`).join('')}</dl></span></button>`).join('');
   list.addEventListener('click', e => { const b = e.target.closest('.item'); b && select(+b.dataset.i); });
-  document.getElementById('count').textContent = CHANGES.length + ' thay đổi · spec';
-  document.getElementById('allPins').addEventListener('change', e => vp.classList.toggle('marks-off', !e.target.checked));
+  document.getElementById('count').textContent = CHANGES.length + ' thay đổi';
+  
   function select(i) {
     active = i; drawMarks();
     list.querySelectorAll('.item').forEach(b => b.classList.toggle('on', +b.dataset.i === i));
@@ -250,8 +250,8 @@ button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
     const x0 = Math.min(...rs.map(r => r.x)), y0 = Math.min(...rs.map(r => r.y)), x1 = Math.max(...rs.map(r => r.x + r.w)), y1 = Math.max(...rs.map(r => r.y + r.h));
     fitBox(x0, y0, x1 - x0, y1 - y0, 160, 1.2);
   }
-  document.getElementById('tPrev').onclick = () => select((active - 1 + CHANGES.length) % CHANGES.length);
-  document.getElementById('tNext').onclick = () => select((active + 1) % CHANGES.length);
+  
+  
 
   /* ---------- Camera ---------- */
   const cam = { x: 40, y: 200, z: .3 }, MIN = .05, MAX = 3;
@@ -293,8 +293,6 @@ button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
   function setPan(on) { pan = on; vp.classList.toggle('panning', on); }
   window.addEventListener('keydown', e => {
     if (e.key === ' ') { e.preventDefault(); setPan(true); }
-    if (e.key === 'ArrowRight' || e.key === 'j') document.getElementById('tNext').click();
-    if (e.key === 'ArrowLeft' || e.key === 'k') document.getElementById('tPrev').click();
   });
   window.addEventListener('keyup', e => { if (e.key === ' ') setPan(false); });
   vp.addEventListener('pointerdown', e => {
