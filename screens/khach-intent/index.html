@@ -243,7 +243,7 @@ button:focus-visible,[tabindex]:focus-visible,textarea:focus-visible{outline:2px
 .chip.is-selected{background:var(--background-secondary);border-color:var(--border-black)}
 .chip .count{color:var(--text-secondary)}
 
-.grid{display:grid;grid-template-columns:minmax(0,20fr) minmax(0,35fr) minmax(0,35fr) minmax(0,20fr)} /* 20 : 35 : 35 : 20 */
+.grid{display:grid;grid-template-columns:var(--cols,minmax(0,20fr) minmax(0,35fr) minmax(0,35fr) minmax(0,20fr))} /* mặc định 20 : 35 : 35 : 20, chỉnh qua “Tỷ lệ cột” */
 .thead > div{padding:var(--padding-medium-16);text-align:center;border-right:1px solid var(--border-divider)}
 .thead > div:last-child{border-right:0}
 
@@ -300,6 +300,11 @@ button:focus-visible,[tabindex]:focus-visible,textarea:focus-visible{outline:2px
 .seg button{height:32px;padding:0 var(--padding-small-12);border:1px solid var(--border-regular);border-radius:var(--radius-pill)}
 .seg button:hover{background:var(--interaction-neutral-light-hover)}
 .seg button.is-on{background:var(--background-inverted);color:var(--text-blank);border-color:var(--border-black)}
+.colcfg-row{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap-x-small-8);align-items:end}
+.colcfg-row label{display:flex;flex-direction:column;gap:var(--gap-2x-small-4);color:var(--text-secondary)}
+.colcfg-row input{width:100%;height:40px;padding:0 var(--padding-small-12);border:1px solid var(--border-regular);border-radius:var(--radius-card-small);font:inherit;color:var(--text-primary);background:var(--background-primary)}
+.colcfg-row input:focus{outline:0;border-color:var(--border-active)}
+.colcfg-px{color:var(--text-tertiary)}
 .cfg-code{padding:var(--padding-x-small-8) var(--padding-small-12);background:var(--background-secondary);border-radius:var(--radius-card-small);font-family:ui-monospace,Menlo,monospace;white-space:pre;overflow-x:auto;color:var(--text-primary)}
 .label{height:20px;flex:none;white-space:nowrap;display:inline-flex;align-items:center;gap:var(--gap-2x-small-4);padding:var(--padding-min-2) var(--padding-2x-small-4);background:var(--background-tertiary);border-radius:var(--radius-pill)}
 .label[data-k="new"] .ds-icon{color:var(--icon-error)}
@@ -443,6 +448,7 @@ button:focus-visible,[tabindex]:focus-visible,textarea:focus-visible{outline:2px
 
 
 
+
 <!-- NavBar Desktop · Uni/Scrolling · Chợ Tốt -->
 <header class="nav" data-ds="NavBar Desktop">
   <div class="nav-left">
@@ -557,6 +563,18 @@ button:focus-visible,[tabindex]:focus-visible,textarea:focus-visible{outline:2px
     <div class="cfg-group"><span class="t-label-caption">Card chưa có nhãn</span><div class="seg" id="cfgEmpty"></div></div>
     <div class="cfg-group"><span class="t-label-caption">Config hiện tại (copy vào LABEL_CONFIG hoặc dùng URL)</span><div class="cfg-code t-body-caption" id="cfgCode"></div>
       <button class="btn btn--tertiary t-label-section" id="cfgCopy"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Duplicate-outline"/></svg>Copy link với config này</button></div>
+  </div>
+</section>
+
+<!-- Prototype tool: tỷ lệ cột (không thuộc màn, ẩn khi nhúng vào canvas) -->
+<button class="cfg-fab t-label-section" id="colFab" aria-expanded="false" aria-controls="colCfg" data-ds-context="reference"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Setting-outline"/></svg>Tỷ lệ cột</button>
+<section class="cfg" id="colCfg" aria-label="Tỷ lệ cột" data-ds-context="reference">
+  <div class="cfg-head"><h2 class="t-header-section">Tỷ lệ cột</h2><button class="more-btn" id="colClose" aria-label="Đóng"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Close-outline"/></svg></button></div>
+  <div class="cfg-body">
+    <div class="cfg-group"><span class="t-label-caption">Nhập số cho từng cột (tỷ lệ tương đối, không cần cộng đủ 100)</span>
+      <div class="colcfg-row" id="colInputs"></div></div>
+    <div class="cfg-group"><span class="t-label-caption">Kết quả</span><div class="cfg-code t-body-caption" id="colOut"></div></div>
+    <div class="seg"><button class="t-tagline-caption" id="colReset">Về 20 : 35 : 35 : 20</button><button class="t-tagline-caption" id="colCopy">Copy link</button></div>
   </div>
 </section>
 
@@ -772,7 +790,27 @@ $('#cfgPos').addEventListener('change',e=>{cfg.pos=e.target.value;applyCfg()});
 $('#cfgFab').onclick=()=>{const o=$('#cfg').classList.toggle('is-open');$('#cfgFab').setAttribute('aria-expanded',o)};
 $('#cfgClose').onclick=()=>{$('#cfg').classList.remove('is-open');$('#cfgFab').setAttribute('aria-expanded','false')};
 $('#cfgCopy').onclick=async()=>{try{await navigator.clipboard.writeText(cfgUrl());toast('Đã copy link kèm config')}catch(e){toast('Không copy được — dùng URL: ?pos='+cfg.pos+'&empty='+cfg.empty)}};
-renderCfg();chipState();render();
+/* ===== Tỷ lệ cột — điền trực tiếp, lưu theo trình duyệt, chia sẻ qua ?cols=20,35,35,20 ===== */
+const COL_NAMES=['Khách hàng','Nhu cầu','Tin khách quan tâm','Ghi chú'],COL_DEFAULT=[20,35,35,20];
+let cols=(()=>{const q=new URLSearchParams(location.search).get('cols');let v=q?q.split(',').map(Number):null;
+  if(!v){try{v=JSON.parse(localStorage.getItem('khach-cols')||'null')}catch(e){}}
+  return Array.isArray(v)&&v.length===4&&v.every(n=>n>0)?v:COL_DEFAULT.slice()})();
+function applyCols(){
+  document.documentElement.style.setProperty('--cols',cols.map(n=>`minmax(0,${n}fr)`).join(' '));
+  try{localStorage.setItem('khach-cols',JSON.stringify(cols))}catch(e){}
+  requestAnimationFrame(()=>{const w=[...document.querySelectorAll('.thead > div')].map(d=>Math.round(d.getBoundingClientRect().width)),t=cols.reduce((a,b)=>a+b,0);
+    $('#colOut').textContent=COL_NAMES.map((n,i)=>`${n}: ${cols[i]} (${Math.round(cols[i]/t*100)}% · ${w[i]}px)`).join('\n');
+    document.querySelectorAll('.colcfg-px').forEach((el,i)=>el.textContent=w[i]+'px')});
+}
+$('#colInputs').innerHTML=COL_NAMES.map((n,i)=>`<label class="t-body-caption">${n}<input type="number" min="1" step="1" inputmode="numeric" class="t-body-section" data-i="${i}" value="${cols[i]}" aria-label="Tỷ lệ cột ${n}"><span class="colcfg-px t-body-caption"></span></label>`).join('');
+$('#colInputs').addEventListener('input',e=>{const i=+e.target.dataset.i,v=parseFloat(e.target.value);if(v>0){cols[i]=v;applyCols()}});
+$('#colReset').onclick=()=>{cols=COL_DEFAULT.slice();document.querySelectorAll('#colInputs input').forEach((el,i)=>el.value=cols[i]);applyCols()};
+$('#colCopy').onclick=async()=>{const u=new URL(location.href);u.searchParams.set('cols',cols.join(','));try{await navigator.clipboard.writeText(u.toString());toast('Đã copy link kèm tỷ lệ cột')}catch(e){toast('Thêm ?cols='+cols.join(',')+' vào cuối link')}};
+$('#colFab').onclick=()=>{const o=$('#colCfg').classList.toggle('is-open');$('#colFab').setAttribute('aria-expanded',o);if(o)$('#colInputs input').focus()};
+$('#colClose').onclick=()=>{$('#colCfg').classList.remove('is-open');$('#colFab').setAttribute('aria-expanded','false')};
+if(window.self!==window.top){$('#colFab').hidden=true;$('#colCfg').hidden=true} /* nhúng trong canvas: ẩn tool */
+addEventListener('resize',applyCols);
+renderCfg();chipState();render();applyCols();
 </script>
 </body>
 </html>
