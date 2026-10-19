@@ -168,6 +168,7 @@
 /* ds-tokens:end */
 
 *{box-sizing:border-box;margin:0}
+[hidden]{display:none!important}
 html,body{background:var(--background-app);color:var(--text-primary);font-family:'Reddit Sans',system-ui,sans-serif}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
@@ -547,8 +548,8 @@ button:focus-visible,[tabindex]:focus-visible,textarea:focus-visible{outline:2px
 </div>
 
 <!-- Prototype tool: cấu hình vị trí nhãn (data-ds-context=reference, không bàn giao) -->
-<button class="cfg-fab t-label-section" id="cfgFab" aria-expanded="false" aria-controls="cfg" data-ds-context="reference"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Setting-outline"/></svg>Cấu hình nhãn</button>
-<section class="cfg" id="cfg" aria-label="Cấu hình nhãn phân loại" data-ds-context="reference">
+<button class="cfg-fab t-label-section" id="cfgFab" hidden aria-expanded="false" aria-controls="cfg" data-ds-context="reference"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Setting-outline"/></svg>Cấu hình nhãn</button>
+<section class="cfg" id="cfg" hidden aria-label="Cấu hình nhãn phân loại" data-ds-context="reference">
   <div class="cfg-head"><h2 class="t-header-section">Cấu hình nhãn phân loại</h2><button class="more-btn" id="cfgClose" aria-label="Đóng"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Close-outline"/></svg></button></div>
   <div class="cfg-body">
     <div class="cfg-group" id="cfgPos"><span class="t-label-caption">Vị trí đặt nhãn</span></div>
@@ -594,7 +595,7 @@ const mask=p=>p.slice(0,6)+'****';
    overflow : 'scroll' (1 dòng, crop + scroll ngang) | 'wrap' (xuống dòng) — 'wrap' chỉ áp cho above-name / below-name
    Luật cố định: mỗi khách tối đa MAX_TAGS nhãn; bấm nhãn mở popover Gắn phân loại.
    empty : 'add' (hiện chip “+ Phân loại”) | 'hide' (không hiện gì)                                      */
-const LABEL_CONFIG={pos:'above-name',empty:'add',overflow:'scroll'};
+const LABEL_CONFIG={pos:'below-name',empty:'add',overflow:'wrap'}; /* chốt: option 3 — dưới tên, xuống dòng */
 const WRAP_POS=['above-name','below-name']; /* chỉ 2 vị trí này cho phép overflow:'wrap' */
 const MAX_TAGS=3;
 const POSITIONS={
@@ -603,10 +604,8 @@ const POSITIONS={
   'below-name':['Dưới tên khách','Tên đọc trước, nhãn là thông tin phụ. Card cao thêm 1 dòng khi có nhãn.'],
   'footer':['Cuối cột Khách hàng, avatar 20','Avatar thu về 20 cạnh tên. Dưới cụm nút. Tách hẳn khỏi thông tin khách, ít nổi nhất.']
 };
-const cfg=(()=>{const c={...LABEL_CONFIG};try{Object.assign(c,JSON.parse(localStorage.getItem('khach-label-cfg')||'{}'))}catch(e){}
-  const q=new URLSearchParams(location.search);['pos','empty','overflow'].forEach(k=>q.get(k)&&(c[k]=q.get(k)));
-  if(!POSITIONS[c.pos])c.pos=LABEL_CONFIG.pos;return c})();
-function saveCfg(){try{localStorage.setItem('khach-label-cfg',JSON.stringify(cfg))}catch(e){}}
+const cfg={...LABEL_CONFIG}; /* các option khác đã ẩn — chỉ còn option 3 */
+function saveCfg(){return;try{localStorage.setItem('khach-label-cfg',JSON.stringify(cfg))}catch(e){}}
 const ADD_CHIP=`<button class="tag-add t-label-annotation" data-act="addTag" aria-haspopup="dialog" data-ds="Labelling" data-ds-raw="cùng spec với nhãn"><svg class="ds-icon ds-icon--12" aria-hidden="true"><use href="#ds-Plus-outline"/></svg>Phân loại</button>`;
 const isWrap=()=>cfg.overflow==='wrap'&&WRAP_POS.includes(cfg.pos);
 function labelSlot(r,pos){

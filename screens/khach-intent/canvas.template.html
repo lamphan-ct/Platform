@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Khách: Cũ và Mới</title>
+<link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --canvas-bg: #f0efed; --canvas-dot: #d6d3cf;
+  --chrome-bg: #ffffff; --chrome-border: #e8e8e8; --chrome-text: #222222; --chrome-muted: #8c8c8c; --chrome-hover: rgba(34,34,34,.06);
+  --old: #8c8c8c; --new: #306bd9; --new-soft: rgba(48,107,217,.12); --accent: #ffd400;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --canvas-bg: #1e1e1f; --canvas-dot: #343436; --chrome-bg: #2a2a2c; --chrome-border: #3a3a3d;
+    --chrome-text: #f2f2f2; --chrome-muted: #9a9a9e; --chrome-hover: rgba(255,255,255,.08); --old: #9a9a9e; --new: #6b9bf0; --new-soft: rgba(107,155,240,.16);
+  }
+}
+:root[data-theme="dark"] {
+  --canvas-bg: #1e1e1f; --canvas-dot: #343436; --chrome-bg: #2a2a2c; --chrome-border: #3a3a3d;
+  --chrome-text: #f2f2f2; --chrome-muted: #9a9a9e; --chrome-hover: rgba(255,255,255,.08); --old: #9a9a9e; --new: #6b9bf0; --new-soft: rgba(107,155,240,.16);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body { font-family: 'Reddit Sans', system-ui, sans-serif; color: var(--chrome-text); background: var(--canvas-bg); overflow: hidden; -webkit-font-smoothing: antialiased; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
+
+.viewport { position: fixed; inset: 0; right: 380px; overflow: hidden; touch-action: none; background-color: var(--canvas-bg); background-image: radial-gradient(var(--canvas-dot) 1px, transparent 1px); }
+.viewport.panning { cursor: grab; } .viewport.panning.dragging { cursor: grabbing; }
+.viewport.panning iframe { pointer-events: none; }
+.world { position: absolute; left: 0; top: 0; transform-origin: 0 0; will-change: transform; }
+
+.frame { position: absolute; }
+.frame iframe { display: block; border: 0; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.08), 0 8px 24px rgba(0,0,0,.06); }
+.frame-label { position: absolute; left: 0; bottom: 100%; padding-bottom: 10px; white-space: nowrap; display: flex; gap: 8px; align-items: center; transform-origin: 0 100%; font-size: 14px; line-height: 20px; }
+.frame-label b { font-weight: 600; }
+.frame-label span { color: var(--chrome-muted); }
+.tag { font-size: 11px; font-weight: 700; padding: 1px 8px; border-radius: 999px; color: #fff; }
+.tag.old { background: var(--old); } .tag.new { background: var(--new); }
+.col-title { position: absolute; transform-origin: 0 100%; font-size: 40px; line-height: 48px; font-weight: 700; white-space: nowrap; }
+.col-title small { display: block; font-size: 20px; line-height: 28px; font-weight: 400; color: var(--chrome-muted); }
+
+.mark { position: absolute; pointer-events: none; }
+.mark .box { position: absolute; inset: 0; border: 2px solid var(--new); border-radius: 6px; background: transparent; opacity: 0; transition: opacity .2s; }
+.mark.old .box { border-color: var(--old); border-style: dashed; }
+.mark .pin { position: absolute; right: -14px; top: -14px; min-width: 28px; height: 28px; padding: 0 6px; border-radius: 999px; background: var(--new); color: #fff; font-size: 14px; font-weight: 700; display: grid; place-items: center; box-shadow: 0 2px 6px rgba(0,0,0,.2); transform-origin: 14px 14px; pointer-events: auto; cursor: pointer; }
+.mark.old .pin { background: var(--old); }
+.mark.on .box { opacity: 1; background: var(--new-soft); }
+.mark.old.on .box { background: rgba(140,140,140,.12); }
+.mark.on .pin { outline: 3px solid var(--chrome-bg); }
+.marks-off .mark:not(.on) { display: none; }
+
+/* ---------- Panel ---------- */
+.panel { position: fixed; top: 0; right: 0; bottom: 0; width: 380px; z-index: 20; background: var(--chrome-bg); border-left: 1px solid var(--chrome-border); display: flex; flex-direction: column; }
+.panel-head { padding: 20px 20px 12px; border-bottom: 1px solid var(--chrome-border); }
+.panel-head h1 { font-size: 20px; line-height: 28px; font-weight: 600; }
+.panel-head p { font-size: 13px; line-height: 18px; color: var(--chrome-muted); margin-top: 4px; }
+.legend { display: flex; gap: 12px; margin-top: 12px; font-size: 12px; color: var(--chrome-muted); align-items: center; flex-wrap: wrap; }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 999px; margin-right: 4px; vertical-align: -1px; }
+.list { flex: 1; overflow-y: auto; padding: 8px; }
+.item { width: 100%; text-align: left; display: grid; grid-template-columns: 28px 1fr; gap: 10px; padding: 12px; border-radius: 12px; transition: background .15s; }
+.item:hover { background: var(--chrome-hover); }
+.item.on { background: var(--new-soft); }
+.item .n { width: 28px; height: 28px; border-radius: 999px; background: var(--new); color: #fff; font-weight: 700; font-size: 14px; display: grid; place-items: center; }
+.item h3 { font-size: 14px; line-height: 20px; font-weight: 600; }
+.item .diff { margin-top: 4px; font-size: 13px; line-height: 18px; display: grid; grid-template-columns: auto 1fr; gap: 2px 8px; }
+.item .diff dt { font-weight: 600; font-size: 11px; line-height: 18px; text-transform: uppercase; letter-spacing: .02em; }
+.item .diff dt.o { color: var(--old); } .item .diff dt.w { color: var(--new); }
+.item .diff dd { color: var(--chrome-text); }
+.item .diff dd.o { color: var(--chrome-muted); }
+.panel-foot { padding: 12px 20px; border-top: 1px solid var(--chrome-border); font-size: 12px; line-height: 18px; color: var(--chrome-muted); display: flex; justify-content: space-between; gap: 8px; align-items: center; }
+.panel-foot label { display: inline-flex; gap: 6px; align-items: center; cursor: pointer; color: var(--chrome-text); }
+
+.toolbar { position: fixed; left: calc((100vw - 380px) / 2); bottom: 20px; transform: translateX(-50%); z-index: 10; display: flex; gap: 2px; align-items: center; padding: 4px; background: var(--chrome-bg); border: 1px solid var(--chrome-border); border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+.toolbar button { height: 32px; min-width: 32px; padding: 0 10px; border-radius: 8px; font-size: 13px; font-weight: 500; display: inline-flex; align-items: center; justify-content: center; gap: 6px; white-space: nowrap; }
+.toolbar button:hover { background: var(--chrome-hover); }
+.toolbar .sep { width: 1px; height: 20px; background: var(--chrome-border); margin: 0 4px; }
+.toolbar .zoom { min-width: 56px; font-variant-numeric: tabular-nums; }
+.toolbar svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+@media (max-width: 900px) {
+  .viewport { right: 0; bottom: 45vh; }
+  .panel { top: auto; left: 0; width: auto; height: 45vh; border-left: 0; border-top: 1px solid var(--chrome-border); }
+  .toolbar { left: 50%; bottom: calc(45vh + 12px); }
+}
+</style>
+</head>
+<body>
+<div class="viewport" id="vp"><div class="world" id="world"></div></div>
+
+<aside class="panel" aria-label="Danh sách thay đổi">
+  <div class="panel-head">
+    <h1>Khách: bản cũ → bản mới</h1>
+    <p>Trái: bản dựng đầu tiên theo Figma. Phải: bản mới (nhãn dưới tên, cho xuống dòng). Bấm một thay đổi để canvas bay tới chỗ đó.</p>
+    <div class="legend"><span><i style="background:var(--old)"></i>Cũ</span><span><i style="background:var(--new)"></i>Mới</span></div>
+  </div>
+  <div class="list" id="list"></div>
+  <div class="panel-foot"><label><input type="checkbox" id="allPins" checked> Hiện tất cả số</label><span id="count"></span></div>
+</aside>
+
+<div class="toolbar" role="toolbar" aria-label="Điều khiển canvas">
+  <button id="tOut" aria-label="Thu nhỏ"><svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg></button>
+  <button id="tZoom" class="zoom" title="Về 100%">100%</button>
+  <button id="tIn" aria-label="Phóng to"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+  <span class="sep"></span>
+  <button id="tFit"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>Vừa màn</button>
+  <button id="tPrev" aria-label="Thay đổi trước">‹</button>
+  <button id="tNext" aria-label="Thay đổi sau">›</button>
+</div>
+
+<script id="src-old" type="application/json">/*__OLD__*/</script>
+<script id="src-new" type="application/json">/*__NEW__*/</script>
+<script>
+(function () {
+  const vp = document.getElementById('vp'), world = document.getElementById('world');
+  const SRC = { old: JSON.parse(document.getElementById('src-old').textContent), new: JSON.parse(document.getElementById('src-new').textContent) };
+
+  /* ---------- Frames: cột trái = Cũ, cột phải = Mới ---------- */
+  const COLX = { old: 0, new: 1512 + 240 };
+  const FRAMES = [
+    { id: 'oldA', v: 'old', w: 1512, h: 0, row: 0, title: 'Mặc định', note: '1512 · toàn trang' },
+    { id: 'newA', v: 'new', w: 1512, h: 0, row: 0, title: 'Mặc định', note: '1512 · toàn trang' },
+    { id: 'oldB', v: 'old', w: 1512, h: 760, row: 1, title: 'Menu ⋮ đang mở', note: '1512 × 760', setup: d => click(d, '.row[data-id="1"] [data-act="more"]') },
+    { id: 'newB', v: 'new', w: 1512, h: 760, row: 1, title: 'Menu ⋮ → Gắn phân loại', note: '1512 × 760', setup: d => { click(d, '.row[data-id="1"] [data-act="more"]'); setTimeout(() => click(d, '[data-act="openTag"]'), 120); } },
+    { id: 'newC', v: 'new', w: 1280, h: 0, row: 2, title: 'Màn 1280: nhãn xuống dòng', note: '1280 · toàn trang' }
+  ];
+  const CHANGES = [
+    { t: 'Nhãn phân loại dời xuống dưới tên', o: 'Nằm trên tên khách, đẩy tên xuống.', n: 'Dưới tên, theo spec Labelling: cao 20, padding 2/4, chữ 10/16 Bold, nền tertiary, icon 12.', m: [['oldA', '.row[data-id="1"] .seller-meta .labels'], ['newA', '.row[data-id="1"] .seller-meta .labels']] },
+    { t: 'Chip “+ Phân loại”', o: 'Không có. Muốn gắn nhãn phải mở menu ⋮.', n: 'Hiện khi khách có dưới 3 nhãn, và trên card chưa có nhãn nào.', m: [['newA', '.row[data-id="4"] .tag-add'], ['newA', '.row[data-id="6"] .tag-add']] },
+    { t: 'Bấm nhãn mở “Gắn phân loại”, tối đa 3', o: 'Nhãn chỉ để xem. Gắn nhãn bằng checkbox trong menu ⋮, không giới hạn.', n: 'Bấm nhãn hoặc chip mở popover. Đủ 3 thì các lựa chọn còn lại bị khoá; bấm Lưu mới áp dụng.', m: [['newB', '#popTag'], ['newA', '.row[data-id="1"] .label']] },
+    { t: 'Menu ⋮ còn 2 mục', o: 'Đánh dấu đã đọc · 3 checkbox nhãn · Xoá khách.', n: 'Phân loại khách · Xoá.', m: [['oldB', '#popMore'], ['newB', '#popMore']] },
+    { t: 'Bỏ nhãn lặp ở cột Ghi chú', o: 'Hàng 2–3 hiện nhãn ở cả cột Khách hàng lẫn Ghi chú.', n: 'Nhãn chỉ nằm ở cột Khách hàng.', m: [['oldA', '.row[data-id="2"] > div:last-child .labels'], ['newA', '.row[data-id="2"] > div:last-child']] },
+    { t: 'Bốn cột chia đều 25%', o: '330 · co giãn · 250 · 250 px.', n: '25% · 25% · 25% · 25%.', m: [['oldA', '.thead'], ['newA', '.thead']] },
+    { t: 'Cột Khách hàng: 3 cụm, 6 trong · 12 giữa', o: 'Mọi dòng cách 8px; nút bị đẩy xuống đáy ô.', n: 'Cụm avatar–tên–nhãn · cụm đánh giá–năm tham gia · cụm nút: trong cụm 6px, giữa cụm 12px. Nút đi theo nội dung.', m: [['oldA', '.row[data-id="1"] > div:first-child'], ['newA', '.row[data-id="1"] .col-cust']] },
+    { t: 'Chi tiết cột Khách hàng', o: '⋮ 24px màu primary · đồng hồ icon-secondary · vạch ngăn border-regular.', n: '⋮ 20px icon-secondary · đồng hồ icon-tertiary · đánh giá gap 8, vạch ngăn border-thin.', m: [['oldA', '.row[data-id="1"] .meta-line'], ['newA', '.row[data-id="1"] .meta-rating']] },
+    { t: 'Tin quan tâm & Ghi chú', o: 'Tên tin 14 Medium, giá 14 Regular, thumbnail 40/40. Ghi chú 12px.', n: 'Tên tin 14 Regular, giá 14 Medium, thumbnail 44/40. Ghi chú 14 Regular.', m: [['oldA', '.row[data-id="1"] > div:nth-child(3)'], ['newA', '.row[data-id="1"] > div:nth-child(3)']] },
+    { t: 'Nhãn xuống dòng, avatar & ⋮ bám top', o: '—', n: 'Khi cột hẹp, nhãn xuống dòng (cách 6px) thay vì bị cắt; avatar và ⋮ canh theo dòng tên.', m: [['newC', '.row[data-id="3"] .seller-top'], ['newC', '.row[data-id="1"] .seller-top']] },
+    { t: 'Lớp blur dưới navbar', o: 'Khe 8px giữa navbar và header lộ list khi cuộn.', n: 'Lớp blur 16px + nền app 88% phủ khe và góc bo của header.', m: [['newA', '.board-head']] }
+  ];
+  function click(d, sel) { const el = d.querySelector(sel); el && el.click(); }
+
+  /* build frame DOM */
+  const rowsY = [0, 0, 0];
+  FRAMES.forEach(f => {
+    const el = document.createElement('div'); el.className = 'frame'; el.id = 'f-' + f.id;
+    el.innerHTML = `<div class="frame-label"><span class="tag ${f.v}">${f.v === 'old' ? 'Cũ' : 'Mới'}</span><b>${f.title}</b><span>${f.note}</span></div><iframe title="${f.v === 'old' ? 'Bản cũ' : 'Bản mới'}: ${f.title}" width="${f.w}" height="${f.h || 900}"></iframe>`;
+    world.appendChild(el); f.el = el; f.ifr = el.querySelector('iframe');
+  });
+  for (const v of ['old', 'new']) {
+    const t = document.createElement('div'); t.className = 'col-title'; t.style.left = COLX[v] + 'px'; t.style.top = '-200px';
+    t.innerHTML = v === 'old' ? 'Bản cũ<small>Dựng theo Figma Platform Handoff · node 9854:112773</small>' : 'Bản mới<small>Option 3: nhãn dưới tên, xuống dòng · tối đa 3 nhãn</small>';
+    world.appendChild(t);
+  }
+  function layout() {
+    const GAPY = 200;
+    let y = 0;
+    for (let r = 0; r < 3; r++) {
+      const fs = FRAMES.filter(f => f.row === r);
+      fs.forEach(f => { f.x = COLX[f.v]; f.y = y; f.el.style.left = f.x + 'px'; f.el.style.top = y + 'px'; });
+      y += Math.max(...fs.map(f => f.hh || f.h || 900)) + GAPY;
+    }
+    drawMarks();
+  }
+
+  /* load iframes */
+  let loaded = 0;
+  FRAMES.forEach(f => {
+    f.ifr.addEventListener('load', () => {
+      const d = f.ifr.contentDocument;
+      const size = () => {
+        if (!f.h) { const h = Math.max(900, d.documentElement.scrollHeight); if (h !== f.hh) { f.hh = h; f.ifr.height = h; } }
+        else f.hh = f.h;
+        layout();
+      };
+      setTimeout(() => { f.setup && f.setup(d); }, 300);
+      (d.fonts ? d.fonts.ready : Promise.resolve()).then(() => setTimeout(() => { size(); if (++loaded === FRAMES.length) fit(); }, 500));
+      d.addEventListener('click', () => setTimeout(drawMarks, 450), true);
+      d.addEventListener('keydown', e => { if (e.key === ' ' && !/input|textarea/i.test(e.target.tagName)) { e.preventDefault(); setPan(true); } }, true);
+      d.addEventListener('keyup', e => { if (e.key === ' ') setPan(false); }, true);
+    });
+    f.ifr.srcdoc = SRC[f.v];
+  });
+
+  /* ---------- Marks ---------- */
+  let active = -1;
+  const markLayer = document.createElement('div'); world.appendChild(markLayer);
+  function rectOf(fid, sel) {
+    const f = FRAMES.find(x => x.id === fid); if (!f || f.x == null) return null;
+    let el; try { el = f.ifr.contentDocument.querySelector(sel); } catch (e) { return null; }
+    if (!el) return null; const r = el.getBoundingClientRect(); if (!r.width && !r.height) return null;
+    return { x: f.x + r.left, y: f.y + r.top, w: r.width, h: r.height, v: f.v };
+  }
+  function drawMarks() {
+    markLayer.innerHTML = '';
+    CHANGES.forEach((c, i) => c.m.forEach(([fid, sel]) => {
+      const r = rectOf(fid, sel); if (!r) return;
+      const m = document.createElement('div'); m.className = 'mark ' + r.v + (i === active ? ' on' : '');
+      m.style.cssText = `left:${r.x - 4}px;top:${r.y - 4}px;width:${r.w + 8}px;height:${r.h + 8}px`;
+      m.innerHTML = `<div class="box"></div><button class="pin" aria-label="Thay đổi ${i + 1}">${i + 1}</button>`;
+      m.querySelector('.pin').addEventListener('click', e => { e.stopPropagation(); select(i); });
+      markLayer.appendChild(m);
+    }));
+    scalePins();
+  }
+
+  /* ---------- Panel ---------- */
+  const list = document.getElementById('list');
+  list.innerHTML = CHANGES.map((c, i) => `<button class="item" data-i="${i}"><span class="n">${i + 1}</span><span><h3>${c.t}</h3><dl class="diff"><dt class="o">Cũ</dt><dd class="o">${c.o}</dd><dt class="w">Mới</dt><dd>${c.n}</dd></dl></span></button>`).join('');
+  list.addEventListener('click', e => { const b = e.target.closest('.item'); b && select(+b.dataset.i); });
+  document.getElementById('count').textContent = CHANGES.length + ' thay đổi';
+  document.getElementById('allPins').addEventListener('change', e => vp.classList.toggle('marks-off', !e.target.checked));
+  function select(i) {
+    active = i; drawMarks();
+    list.querySelectorAll('.item').forEach(b => b.classList.toggle('on', +b.dataset.i === i));
+    list.querySelector(`.item[data-i="${i}"]`).scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    const rs = CHANGES[i].m.map(([f, s]) => rectOf(f, s)).filter(Boolean); if (!rs.length) return;
+    const x0 = Math.min(...rs.map(r => r.x)), y0 = Math.min(...rs.map(r => r.y)), x1 = Math.max(...rs.map(r => r.x + r.w)), y1 = Math.max(...rs.map(r => r.y + r.h));
+    fitBox(x0, y0, x1 - x0, y1 - y0, 160, 1.2);
+  }
+  document.getElementById('tPrev').onclick = () => select((active - 1 + CHANGES.length) % CHANGES.length);
+  document.getElementById('tNext').onclick = () => select((active + 1) % CHANGES.length);
+
+  /* ---------- Camera ---------- */
+  const cam = { x: 40, y: 200, z: .3 }, MIN = .05, MAX = 3;
+  const zoomBtn = document.getElementById('tZoom');
+  function apply() {
+    world.style.transform = `translate(${cam.x}px,${cam.y}px) scale(${cam.z})`;
+    const g = 24 * cam.z; vp.style.backgroundSize = `${g}px ${g}px`; vp.style.backgroundPosition = `${cam.x}px ${cam.y}px`;
+    zoomBtn.textContent = Math.round(cam.z * 100) + '%';
+    document.querySelectorAll('.frame-label').forEach(l => l.style.transform = `scale(${Math.min(4, 1 / cam.z)})`);
+    document.querySelectorAll('.col-title').forEach(l => l.style.transform = `scale(${Math.min(3, Math.max(1, .6 / cam.z))})`);
+    scalePins();
+  }
+  function scalePins() { const s = Math.min(6, 1 / cam.z); document.querySelectorAll('.pin').forEach(p => p.style.transform = `scale(${s})`); }
+  function zoomAt(z, cx, cy) { z = Math.min(MAX, Math.max(MIN, z)); cam.x = cx - (cx - cam.x) * (z / cam.z); cam.y = cy - (cy - cam.y) * (z / cam.z); cam.z = z; apply(); }
+  let anim;
+  function animateTo(t) {
+    cancelAnimationFrame(anim); const s = { ...cam }, t0 = performance.now(), D = 380;
+    const step = now => { const k = Math.min(1, (now - t0) / D), e = 1 - Math.pow(1 - k, 3);
+      cam.x = s.x + (t.x - s.x) * e; cam.y = s.y + (t.y - s.y) * e; cam.z = s.z + (t.z - s.z) * e; apply(); if (k < 1) anim = requestAnimationFrame(step); };
+    anim = requestAnimationFrame(step);
+  }
+  function fitBox(x, y, w, h, pad, maxZ) {
+    const W = vp.clientWidth, H = vp.clientHeight - 80;
+    const z = Math.min(maxZ || MAX, (W - pad * 2 / 4) / (w + pad), (H) / (h + pad));
+    animateTo({ z, x: (W - w * z) / 2 - x * z, y: (H - h * z) / 2 - y * z + 10 });
+  }
+  function fit() {
+    const xs = FRAMES.map(f => f.x), ys = FRAMES.map(f => f.y);
+    const x1 = Math.max(...FRAMES.map(f => f.x + f.w)), y1 = Math.max(...FRAMES.map(f => f.y + (f.hh || f.h || 900)));
+    fitBox(Math.min(...xs), Math.min(...ys) - 420, x1 - Math.min(...xs), y1 - Math.min(...ys) + 420, 120);
+  }
+  apply();
+  vp.addEventListener('wheel', e => {
+    e.preventDefault();
+    if (e.ctrlKey || e.metaKey) { const r = vp.getBoundingClientRect(); zoomAt(cam.z * Math.exp(-e.deltaY * 0.01), e.clientX - r.left, e.clientY - r.top); }
+    else { cam.x -= e.deltaX; cam.y -= e.deltaY; apply(); }
+  }, { passive: false });
+  let pan = false, drag = null;
+  function setPan(on) { pan = on; vp.classList.toggle('panning', on); }
+  window.addEventListener('keydown', e => {
+    if (e.key === ' ') { e.preventDefault(); setPan(true); }
+    if (e.key === 'ArrowRight' || e.key === 'j') document.getElementById('tNext').click();
+    if (e.key === 'ArrowLeft' || e.key === 'k') document.getElementById('tPrev').click();
+  });
+  window.addEventListener('keyup', e => { if (e.key === ' ') setPan(false); });
+  vp.addEventListener('pointerdown', e => {
+    if (!(pan || e.button === 1 || e.target === vp || e.target === world)) return;
+    drag = { x: e.clientX, y: e.clientY, cx: cam.x, cy: cam.y }; vp.classList.add('panning', 'dragging'); vp.setPointerCapture(e.pointerId);
+  });
+  vp.addEventListener('pointermove', e => { if (!drag) return; cam.x = drag.cx + e.clientX - drag.x; cam.y = drag.cy + e.clientY - drag.y; apply(); });
+  vp.addEventListener('pointerup', () => { drag = null; vp.classList.remove('dragging'); if (!pan) vp.classList.remove('panning'); });
+  const c = () => ({ x: vp.clientWidth / 2, y: vp.clientHeight / 2 });
+  document.getElementById('tIn').onclick = () => zoomAt(cam.z * 1.25, c().x, c().y);
+  document.getElementById('tOut').onclick = () => zoomAt(cam.z / 1.25, c().x, c().y);
+  zoomBtn.onclick = () => zoomAt(1, c().x, c().y);
+  document.getElementById('tFit').onclick = fit;
+  window.addEventListener('resize', fit);
+})();
+</script>
+</body>
+</html>
