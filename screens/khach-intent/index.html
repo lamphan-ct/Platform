@@ -243,7 +243,7 @@ button:focus-visible,[tabindex]:focus-visible,textarea:focus-visible{outline:2px
 .chip.is-selected{background:var(--background-secondary);border-color:var(--border-black)}
 .chip .count{color:var(--text-secondary)}
 
-.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))} /* 4 cột 25% */
+.grid{display:grid;grid-template-columns:minmax(0,20fr) minmax(0,35fr) minmax(0,35fr) minmax(0,20fr)} /* 20 : 35 : 35 : 20 */
 .thead > div{padding:var(--padding-medium-16);text-align:center;border-right:1px solid var(--border-divider)}
 .thead > div:last-child{border-right:0}
 
@@ -314,9 +314,9 @@ button:focus-visible,[tabindex]:focus-visible,textarea:focus-visible{outline:2px
 .more-btn .ds-icon{color:var(--icon-secondary)}
 .meta-line .star{color:var(--icon-brand)}
 .vdiv{width:1px;height:20px;background:var(--border-thin)}
-.actions{display:flex;justify-content:flex-start;gap:var(--gap-2x-small-6)}
-.actions .btn--primary{flex:1}
-.phone-shown{flex:1;background:var(--button-tonal-success);color:var(--text-success)}
+.actions{display:flex;flex-wrap:wrap;justify-content:flex-start;gap:var(--gap-2x-small-6)} /* cột hẹp: Hiện số xuống dòng, full width */
+.actions .btn--primary,.actions .phone-shown{flex:1 0 auto}
+.phone-shown{background:var(--button-tonal-success);color:var(--text-success)}
 .phone-shown .ds-icon{color:var(--icon-success)}
 
 .row > div.col-need{gap:var(--gap-2x-small-6)}
