@@ -254,13 +254,16 @@ button:focus-visible,[tabindex]:focus-visible,textarea:focus-visible{outline:2px
 .row > div{padding:var(--padding-small-12);border-right:1px solid var(--border-divider);display:flex;flex-direction:column;gap:var(--gap-x-small-8);min-width:0}
 .row > div:last-child{border-right:0}
 
-.seller-top{display:flex;align-items:center;gap:var(--gap-x-small-8)}
+.seller-top{display:flex;align-items:center;gap:var(--gap-2x-small-6)}
+/* Cột Khách hàng: 3 cụm cách nhau 12, trong mỗi cụm 6 */
+.row > div.col-cust{gap:var(--gap-small-12)}
+.grp{display:flex;flex-direction:column;gap:var(--gap-2x-small-6)}
 .seller-top.is-top{align-items:flex-start} /* nhãn xuống dòng: avatar + ⋮ bám top */
 .ava{width:48px;height:48px;flex:none;border-radius:var(--radius-pill);background:var(--background-brand);color:var(--text-on-background);display:flex;align-items:center;justify-content:center;overflow:hidden}
 .ava img{width:100%;height:100%;object-fit:cover}
-.seller-meta{flex:1;min-width:0;display:flex;flex-direction:column;gap:var(--gap-2x-small-4)}
+.seller-meta{flex:1;min-width:0;display:flex;flex-direction:column;gap:var(--gap-2x-small-6)}
 .name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.labels{display:flex;flex-wrap:wrap;align-items:center;gap:var(--gap-x-small-8)}
+.labels{display:flex;flex-wrap:wrap;align-items:center;column-gap:var(--gap-x-small-8);row-gap:var(--gap-2x-small-6)}
 .labels.is-scroll{flex-wrap:nowrap;overflow-x:auto;max-width:100%;scrollbar-width:none;overscroll-behavior-x:contain;scroll-snap-type:x proximity}
 .labels.is-scroll::-webkit-scrollbar{display:none}
 .labels.is-scroll > *{scroll-snap-align:start}
@@ -629,16 +632,20 @@ function noteHtml(r){
 }
 function rowHtml(r){
   return `<article class="row grid ${r.unread?'is-unread':''}" data-id="${r.id}" tabindex="0" aria-label="${esc(r.name)}${r.unread?', chưa đọc':''}" data-ds="Intent Row" data-ds-composite="Avatar 48 + Label + Button M-32 + Post item">
-    <div>
+    <div class="col-cust">
+      <div class="grp grp-seller">
       ${labelSlot(r,'card-top')}
       <div class="seller-top ${isWrap()?'is-top':''}">
         ${['card-top','footer'].includes(cfg.pos)?`<span class="ava ava--20" data-ds="Avatar" data-ds-size="20"><span class="t-label-annotation">${r.ini[0]}</span></span>`:`<span class="ava"><span class="t-label-page">${r.ini}</span></span>`}
         <div class="seller-meta">${labelSlot(r,'above-name')}<div class="name-row"><p class="name t-header-caption">${esc(r.name)}</p></div>${labelSlot(r,'below-name')}</div>
         <button class="more-btn" data-act="more" aria-label="Thêm tuỳ chọn" aria-haspopup="true"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Morevertical-outline"/></svg></button>
       </div>
+      </div>
+      <div class="grp grp-meta">
       <div class="meta-line meta-rating t-body-section"><span class="rg"><svg class="ds-icon ds-icon--20 star" aria-hidden="true"><use href="#ds-Star-fill"/></svg>${r.rating}</span><span class="vdiv"></span>${r.reviews} đánh giá</div>
       <div class="meta-line t-body-section"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Clock-outline"/></svg><span>Đã tham gia:</span><span>${r.joined}</span></div>
-      <div class="actions"><button class="btn btn--tertiary btn--wide t-label-section" data-act="chat"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Chat-outline"/></svg>Nhắn tin</button>${phoneBtn(r)}</div>
+      </div>
+      <div class="actions grp-actions"><button class="btn btn--tertiary btn--wide t-label-section" data-act="chat"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Chat-outline"/></svg>Nhắn tin</button>${phoneBtn(r)}</div>
       ${labelSlot(r,'footer')}
     </div>
     <div class="col-need">
