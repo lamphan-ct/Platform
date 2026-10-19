@@ -1,4 +1,4 @@
-"""Build canvas.html: bản cũ (before.html) và bản mới (index.html) trên một canvas so sánh.
+"""Build canvas.html: UI cũ (ảnh chụp assets/ui-cu-1512x812.webp) và bản mới (index.html) trên một canvas so sánh.
 
 Chạy: python3 screens/khach-intent/build_canvas.py
 Logo PNG được nhúng base64 để canvas.html tự chạy được (artifact một file).
@@ -18,6 +18,7 @@ def embed(name):
 
 
 tpl = (HERE / "canvas.template.html").read_text(encoding="utf-8")
-out = tpl.replace("/*__OLD__*/", embed("before.html")).replace("/*__NEW__*/", embed("index.html"))
+shot = "data:image/webp;base64," + base64.b64encode((HERE / "assets" / "ui-cu-1512x812.webp").read_bytes()).decode()
+out = tpl.replace("/*__OLD__*/", json.dumps(shot)).replace("/*__NEW__*/", embed("index.html"))
 (HERE / "canvas.html").write_text(out, encoding="utf-8")
 print("wrote", HERE / "canvas.html", len(out), "bytes")
