@@ -89,6 +89,14 @@ button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
 .toolbar .zoom { min-width: 56px; font-variant-numeric: tabular-nums; }
 .toolbar svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 
+.colbox { position: fixed; top: 16px; right: 16px; z-index: 30; width: 300px; padding: 12px 14px; background: var(--chrome-bg); border: 1px solid var(--chrome-border); border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,.08); font-size: 12px; line-height: 16px; }
+.colbox h2 { font-size: 13px; line-height: 18px; font-weight: 600; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+.colbox h2 button { font-size: 12px; font-weight: 500; color: var(--new); }
+.colbox .row4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; align-items: end; }
+.colbox label { display: flex; flex-direction: column; gap: 4px; color: var(--chrome-muted); }
+.colbox input { width: 100%; height: 32px; padding: 0 8px; border: 1px solid var(--chrome-border); border-radius: 8px; font: inherit; font-size: 14px; color: var(--chrome-text); background: var(--chrome-bg); }
+.colbox input:focus { outline: 2px solid var(--new); outline-offset: -1px; }
+.colbox .px { color: var(--chrome-muted); font-variant-numeric: tabular-nums; }
 </style>
 </head>
 <body>
@@ -103,6 +111,11 @@ button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
   <div class="list" id="list"></div>
   <div class="panel-foot"><span></span><span id="count"></span></div>
 </aside>
+
+<div class="colbox" aria-label="Tỷ lệ cột">
+  <h2>Tỷ lệ cột · New <button id="colReset" title="Về mặc định">20:35:35:20</button></h2>
+  <div class="row4" id="colInputs"></div>
+</div>
 
 <div class="toolbar" role="toolbar" aria-label="Điều khiển canvas">
   <button id="tOut" aria-label="Thu nhỏ"><svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg></button>
@@ -280,6 +293,28 @@ button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
     const bd = document.querySelector('.panel'), bx1 = bd ? COLX.new + 1512 + 120 + bd.offsetWidth * 1.5 : x1, by1 = bd ? bd.offsetHeight * 1.5 : y1;
     fitBox(Math.min(...xs), Math.min(...ys) - 120, Math.max(x1, bx1) - Math.min(...xs), Math.max(y1, by1) - Math.min(...ys) + 120, 120);
   }
+  /* ---------- Tỷ lệ cột cho artboard New ---------- */
+  const COL_NAMES = ['Khách hàng', 'Nhu cầu', 'Tin quan tâm', 'Ghi chú'], COL_DEF = [20, 35, 35, 20];
+  let cols = (() => { const q = new URLSearchParams(location.search).get('cols'); let v = q ? q.split(',').map(Number) : null;
+    if (!v) { try { v = JSON.parse(localStorage.getItem('canvas-khach-cols') || 'null'); } catch (e) {} }
+    return Array.isArray(v) && v.length === 4 && v.every(n => n > 0) ? v : COL_DEF.slice(); })();
+  const colInputs = document.getElementById('colInputs');
+  colInputs.innerHTML = COL_NAMES.map((n, i) => `<label>${n}<input type="number" min="1" step="1" inputmode="numeric" data-i="${i}" value="${cols[i]}" aria-label="Tỷ lệ cột ${n}"><span class="px" data-px="${i}">–</span></label>`).join('');
+  function applyCols() {
+    try { localStorage.setItem('canvas-khach-cols', JSON.stringify(cols)); } catch (e) {}
+    FRAMES.filter(f => f.v === 'new' && f.ifr).forEach(f => {
+      try {
+        const d = f.ifr.contentDocument; if (!d || !d.documentElement) return;
+        d.documentElement.style.setProperty('--cols', cols.map(n => `minmax(0,${n}fr)`).join(' '));
+        const w = [...d.querySelectorAll('.thead > div')].map(x => Math.round(x.getBoundingClientRect().width));
+        colInputs.querySelectorAll('[data-px]').forEach((el, i) => el.textContent = (w[i] || '–') + 'px');
+      } catch (e) {}
+    });
+  }
+  colInputs.addEventListener('input', e => { const i = +e.target.dataset.i, v = parseFloat(e.target.value); if (v > 0) { cols[i] = v; applyCols(); } });
+  document.getElementById('colReset').onclick = () => { cols = COL_DEF.slice(); colInputs.querySelectorAll('input').forEach((el, i) => el.value = cols[i]); applyCols(); };
+  FRAMES.filter(f => f.v === 'new' && f.ifr).forEach(f => f.ifr.addEventListener('load', () => { applyCols(); setTimeout(applyCols, 700); setTimeout(applyCols, 1500); }));
+
   apply();
   vp.addEventListener('wheel', e => {
     e.preventDefault();
