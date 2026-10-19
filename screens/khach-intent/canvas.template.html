@@ -27,7 +27,7 @@ body { font-family: 'Reddit Sans', system-ui, sans-serif; color: var(--chrome-te
 button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
 button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
 
-.viewport { position: fixed; inset: 0; right: 420px; overflow: hidden; touch-action: none; background-color: var(--canvas-bg); background-image: radial-gradient(var(--canvas-dot) 1px, transparent 1px); }
+.viewport { position: fixed; inset: 0; overflow: hidden; touch-action: none; background-color: var(--canvas-bg); background-image: radial-gradient(var(--canvas-dot) 1px, transparent 1px); }
 .viewport.panning { cursor: grab; } .viewport.panning.dragging { cursor: grabbing; }
 .viewport.panning iframe { pointer-events: none; }
 .world { position: absolute; left: 0; top: 0; transform-origin: 0 0; will-change: transform; }
@@ -55,13 +55,15 @@ button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
 .marks-off .mark:not(.on) { display: none; }
 
 /* ---------- Panel ---------- */
-.panel { position: fixed; top: 0; right: 0; bottom: 0; width: 420px; z-index: 20; background: var(--chrome-bg); border-left: 1px solid var(--chrome-border); display: flex; flex-direction: column; }
+/* bảng ghi chú nằm trên canvas, cạnh artboard New */
+.panel { position: absolute; width: 1240px; zoom: 1.5; background: var(--chrome-bg); border: 1px solid var(--chrome-border); border-radius: 16px; box-shadow: 0 1px 3px rgba(0,0,0,.08), 0 8px 24px rgba(0,0,0,.06); display: flex; flex-direction: column; overflow: hidden; }
 .panel-head { padding: 20px 20px 12px; border-bottom: 1px solid var(--chrome-border); }
 .panel-head h1 { font-size: 20px; line-height: 28px; font-weight: 600; }
 .panel-head p { font-size: 13px; line-height: 18px; color: var(--chrome-muted); margin-top: 4px; }
 .legend { display: flex; gap: 12px; margin-top: 12px; font-size: 12px; color: var(--chrome-muted); align-items: center; flex-wrap: wrap; }
 .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 999px; margin-right: 4px; vertical-align: -1px; }
-.list { flex: 1; overflow-y: auto; padding: 8px; }
+.list { padding: 8px; columns: 2; column-gap: 16px; }
+.list .item { break-inside: avoid; }
 .item { width: 100%; text-align: left; cursor: default; display: grid; grid-template-columns: 28px 1fr; gap: 10px; padding: 12px; border-radius: 12px; transition: background .15s; }
 .item:hover { background: transparent; }
 .item.on { background: transparent; }
@@ -72,7 +74,7 @@ button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
 .item .diff dt.o { color: var(--old); } .item .diff dt.w { color: var(--new); }
 .item .diff dd { color: var(--chrome-text); }
 .item .diff dd.o { color: var(--chrome-muted); }
-.item .spec { margin-top: 8px; display: grid; grid-template-columns: 96px 1fr; gap: 4px 10px; font-size: 12px; line-height: 18px; }
+.item .spec { margin-top: 8px; display: grid; grid-template-columns: 110px 1fr; gap: 4px 10px; font-size: 12px; line-height: 18px; }
 .item .spec dt { color: var(--chrome-muted); }
 .item .spec dd { color: var(--chrome-text); }
 .item .spec code { font-family: ui-monospace, Menlo, monospace; font-size: 11px; background: var(--chrome-hover); padding: 0 4px; border-radius: 4px; }
@@ -80,18 +82,13 @@ button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
 .panel-foot { padding: 12px 20px; border-top: 1px solid var(--chrome-border); font-size: 12px; line-height: 18px; color: var(--chrome-muted); display: flex; justify-content: space-between; gap: 8px; align-items: center; }
 .panel-foot label { display: inline-flex; gap: 6px; align-items: center; cursor: pointer; color: var(--chrome-text); }
 
-.toolbar { position: fixed; left: calc((100vw - 420px) / 2); bottom: 20px; transform: translateX(-50%); z-index: 10; display: flex; gap: 2px; align-items: center; padding: 4px; background: var(--chrome-bg); border: 1px solid var(--chrome-border); border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+.toolbar { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); z-index: 10; display: flex; gap: 2px; align-items: center; padding: 4px; background: var(--chrome-bg); border: 1px solid var(--chrome-border); border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,.08); }
 .toolbar button { height: 32px; min-width: 32px; padding: 0 10px; border-radius: 8px; font-size: 13px; font-weight: 500; display: inline-flex; align-items: center; justify-content: center; gap: 6px; white-space: nowrap; }
 .toolbar button:hover { background: var(--chrome-hover); }
 .toolbar .sep { width: 1px; height: 20px; background: var(--chrome-border); margin: 0 4px; }
 .toolbar .zoom { min-width: 56px; font-variant-numeric: tabular-nums; }
 .toolbar svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 
-@media (max-width: 900px) {
-  .viewport { right: 0; bottom: 45vh; }
-  .panel { top: auto; left: 0; width: auto; height: 45vh; border-left: 0; border-top: 1px solid var(--chrome-border); }
-  .toolbar { left: 50%; bottom: calc(45vh + 12px); }
-}
 </style>
 </head>
 <body>
@@ -99,8 +96,8 @@ button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
 
 <aside class="panel" aria-label="Danh sách thay đổi">
   <div class="panel-head">
-    <h1>Khách: Current → New</h1>
-    <p>Ghi chú những thứ thay đổi từ Current (trái) sang New (phải), kèm spec.</p>
+    <h1>Ghi chú thay đổi</h1>
+    <p>Màn Khách · Current → New</p>
     
   </div>
   <div class="list" id="list"></div>
@@ -193,6 +190,7 @@ button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
       fs.forEach(f => { f.x = COLX[f.v]; f.y = y; f.el.style.left = f.x + 'px'; f.el.style.top = y + 'px'; });
       y += Math.max(...fs.map(f => f.hh || f.h || 900)) + GAPY;
     }
+    const bd = document.querySelector('.panel'); if (bd) { bd.style.left = (COLX.new + 1512 + 120) / 1.5 + 'px'; bd.style.top = '0px'; }
     drawMarks();
   }
   /* load iframes */
@@ -237,6 +235,7 @@ button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
   }
 
   /* ---------- Panel ---------- */
+  const board = document.querySelector('.panel'); world.appendChild(board);
   const list = document.getElementById('list');
   list.innerHTML = CHANGES.map((c, i) => `<button class="item" data-i="${i}"><span class="n">${i + 1}</span><span><h3>${c.t}${c.flag ? `<span class="flag">${c.flag}</span>` : ''}</h3><dl class="diff"><dt class="o">Current</dt><dd class="o">${c.o}</dd></dl><dl class="spec">${c.s.map(([k, v]) => `<dt>${k}</dt><dd>${C(v)}</dd>`).join('')}</dl></span></button>`).join('');
   list.addEventListener('click', e => { const b = e.target.closest('.item'); b && select(+b.dataset.i); });
@@ -281,7 +280,8 @@ button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
   function fit() {
     const xs = FRAMES.map(f => f.x), ys = FRAMES.map(f => f.y);
     const top2 = FRAMES.filter(f => f.row < 2); const x1 = Math.max(...FRAMES.map(f => f.x + f.w)), y1 = Math.max(...top2.map(f => f.y + (f.hh || f.h || 900)));
-    fitBox(Math.min(...xs), Math.min(...ys) - 120, x1 - Math.min(...xs), y1 - Math.min(...ys) + 120, 120);
+    const bd = document.querySelector('.panel'), bx1 = bd ? COLX.new + 1512 + 120 + bd.offsetWidth * 1.5 : x1, by1 = bd ? bd.offsetHeight * 1.5 : y1;
+    fitBox(Math.min(...xs), Math.min(...ys) - 120, Math.max(x1, bx1) - Math.min(...xs), Math.max(y1, by1) - Math.min(...ys) + 120, 120);
   }
   apply();
   vp.addEventListener('wheel', e => {
