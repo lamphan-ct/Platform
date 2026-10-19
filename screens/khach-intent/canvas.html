@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Khách: Cũ và Mới</title>
+<title>Khách: Current và New</title>
 <link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -27,7 +27,7 @@ body { font-family: 'Reddit Sans', system-ui, sans-serif; color: var(--chrome-te
 button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
 button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
 
-.viewport { position: fixed; inset: 0; right: 380px; overflow: hidden; touch-action: none; background-color: var(--canvas-bg); background-image: radial-gradient(var(--canvas-dot) 1px, transparent 1px); }
+.viewport { position: fixed; inset: 0; overflow: hidden; touch-action: none; background-color: var(--canvas-bg); background-image: radial-gradient(var(--canvas-dot) 1px, transparent 1px); }
 .viewport.panning { cursor: grab; } .viewport.panning.dragging { cursor: grabbing; }
 .viewport.panning iframe { pointer-events: none; }
 .world { position: absolute; left: 0; top: 0; transform-origin: 0 0; will-change: transform; }
@@ -75,32 +75,20 @@ button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
 .panel-foot { padding: 12px 20px; border-top: 1px solid var(--chrome-border); font-size: 12px; line-height: 18px; color: var(--chrome-muted); display: flex; justify-content: space-between; gap: 8px; align-items: center; }
 .panel-foot label { display: inline-flex; gap: 6px; align-items: center; cursor: pointer; color: var(--chrome-text); }
 
-.toolbar { position: fixed; left: calc((100vw - 380px) / 2); bottom: 20px; transform: translateX(-50%); z-index: 10; display: flex; gap: 2px; align-items: center; padding: 4px; background: var(--chrome-bg); border: 1px solid var(--chrome-border); border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+.toolbar { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); z-index: 10; display: flex; gap: 2px; align-items: center; padding: 4px; background: var(--chrome-bg); border: 1px solid var(--chrome-border); border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,.08); }
 .toolbar button { height: 32px; min-width: 32px; padding: 0 10px; border-radius: 8px; font-size: 13px; font-weight: 500; display: inline-flex; align-items: center; justify-content: center; gap: 6px; white-space: nowrap; }
 .toolbar button:hover { background: var(--chrome-hover); }
 .toolbar .sep { width: 1px; height: 20px; background: var(--chrome-border); margin: 0 4px; }
 .toolbar .zoom { min-width: 56px; font-variant-numeric: tabular-nums; }
 .toolbar svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 
-@media (max-width: 900px) {
-  .viewport { right: 0; bottom: 45vh; }
-  .panel { top: auto; left: 0; width: auto; height: 45vh; border-left: 0; border-top: 1px solid var(--chrome-border); }
-  .toolbar { left: 50%; bottom: calc(45vh + 12px); }
 }
 </style>
 </head>
 <body>
 <div class="viewport" id="vp"><div class="world" id="world"></div></div>
 
-<aside class="panel" aria-label="Danh sách thay đổi">
-  <div class="panel-head">
-    <h1>Khách: UI cũ → UI mới</h1>
-    <p>Trái: UI đang chạy (ảnh chụp, 1512 × 812). Phải: bản mới, cùng khung 1512 × 812. Bấm một thay đổi để canvas bay tới chỗ đó.</p>
-    <div class="legend"><span><i style="background:var(--old)"></i>Cũ</span><span><i style="background:var(--new)"></i>Mới</span></div>
-  </div>
-  <div class="list" id="list"></div>
-  <div class="panel-foot"><label><input type="checkbox" id="allPins" checked> Hiện tất cả số</label><span id="count"></span></div>
-</aside>
+
 
 <div class="toolbar" role="toolbar" aria-label="Điều khiển canvas">
   <button id="tOut" aria-label="Thu nhỏ"><svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg></button>
@@ -108,8 +96,6 @@ button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
   <button id="tIn" aria-label="Phóng to"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
   <span class="sep"></span>
   <button id="tFit"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>Vừa màn</button>
-  <button id="tPrev" aria-label="Thay đổi trước">‹</button>
-  <button id="tNext" aria-label="Thay đổi sau">›</button>
 </div>
 
 <script id="src-old" type="application/json">"assets/ui-cu-1512x812.webp"</script>
@@ -122,40 +108,22 @@ button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
   /* ---------- Artboards: cột trái = UI cũ (ảnh chụp), cột phải = bản mới ---------- */
   const COLX = { old: 0, new: 1512 + 240 };
   const FRAMES = [
-    { id: 'oldA', v: 'old', kind: 'img', w: 1512, h: 812, row: 0, title: 'UI đang chạy', note: 'ảnh chụp · 1512 × 812' },
-    { id: 'newA', v: 'new', w: 1512, h: 812, row: 0, title: 'Mặc định', note: '1512 × 812' },
-    { id: 'newB', v: 'new', w: 1512, h: 812, row: 1, title: 'Menu ⋮ → Gắn phân loại', note: '1512 × 812', setup: d => { click(d, '.row[data-id="1"] [data-act="more"]'); setTimeout(() => click(d, '[data-act="openTag"]'), 120); } },
-    { id: 'newF', v: 'new', w: 1512, h: 0, row: 2, title: 'Toàn trang', note: '1512 · đủ 6 khách mẫu' }
+    { id: 'oldA', v: 'old', kind: 'img', w: 1512, h: 812, row: 0, title: 'Current', note: '1512 × 812' },
+    { id: 'newA', v: 'new', w: 1512, h: 812, row: 0, title: 'New', note: '1512 × 812' }
   ];
   /* toạ độ trên ảnh chụp tính theo CSS px (ảnh 2000px ÷ 1.3228) */
-  const CHANGES = [
-    { t: 'Nhãn chuyển từ cột Ghi chú sang dưới tên khách', o: 'Nhãn nằm ở cột Ghi chú, trên dòng “Nhấn để thêm ghi chú”.', n: 'Nhãn nằm dưới tên trong cột Khách hàng, cho xuống dòng; theo spec Labelling cao 20.', m: [['oldA', { x: 1266, y: 249, w: 212, h: 18 }], ['newA', '.row[data-id="1"] .seller-meta .labels']] },
-    { t: 'Avatar 20 → 48', o: 'Avatar 20px cùng dòng với tên.', n: 'Avatar 48px, tên và nhãn xếp bên phải; avatar và ⋮ bám top khi nhãn xuống dòng.', m: [['oldA', { x: 120, y: 248, w: 20, h: 20 }], ['newA', '.row[data-id="1"] .ava']] },
-    { t: 'Chip “+ Phân loại”', o: 'Không có.', n: 'Hiện khi khách có dưới 3 nhãn, và trên card chưa có nhãn nào.', m: [['newF', '.row[data-id="4"] .tag-add'], ['newF', '.row[data-id="6"] .tag-add']] },
-    { t: 'Bấm nhãn mở “Gắn phân loại”, tối đa 3', o: 'Nhãn chỉ để xem.', n: 'Bấm nhãn hoặc chip mở popover. Đủ 3 thì các lựa chọn còn lại bị khoá; bấm Lưu mới áp dụng.', m: [['newB', '#popTag'], ['newA', '.row[data-id="1"] .label']] },
-    { t: 'Menu ⋮: Phân loại khách · Xoá', o: 'Ảnh chụp không có trạng thái menu mở — cần đối chiếu.', n: 'Phân loại khách (mở “Gắn phân loại”) · Xoá (mở hộp xác nhận).', m: [['oldA', { x: 378, y: 248, w: 22, h: 22 }], ['newB', '#popMore']] },
-    { t: 'Bốn cột chia đều 25%', o: '≈ 300 · 597 · 250 · 250 px (đo trên ảnh).', n: '25% · 25% · 25% · 25%.', m: [['oldA', { x: 108, y: 172, w: 1395, h: 55 }], ['newA', '.thead']] },
-    { t: 'Cột Khách hàng: 3 cụm, 6 trong · 12 giữa', o: 'Tên · đánh giá · năm tham gia · nút xếp đều một nhịp.', n: 'Cụm avatar–tên–nhãn · cụm đánh giá–năm tham gia · cụm nút: trong cụm 6px, giữa cụm 12px.', m: [['oldA', { x: 110, y: 238, w: 297, h: 190 }], ['newA', '.row[data-id="1"] .col-cust']] },
-    { t: 'Nút cài đặt ở cuối hàng lọc (theo Figma, cần chốt)', o: 'Nằm ngay sau chip “Chưa đọc”.', n: 'Đẩy về mép phải header.', m: [['oldA', { x: 452, y: 128, w: 26, h: 26 }], ['newA', '.filter-row .icon-btn']] },
-    { t: 'Thanh bên thêm “Ứng viên” (theo Figma, cần chốt)', o: 'Tin nhắn · Khách.', n: 'Tin nhắn · Khách · Ứng viên.', m: [['oldA', { x: 14, y: 76, w: 72, h: 152 }], ['newA', '.rail']] },
-    { t: 'Lớp blur dưới navbar', o: 'Khe 8px dưới navbar lộ list khi cuộn.', n: 'Lớp blur 16px + nền app 88% phủ khe và góc bo của header.', m: [['oldA', { x: 100, y: 64, w: 1412, h: 8 }], ['newA', '.board-head']] }
-  ];
+  const CHANGES = []; /* không đánh dấu */
   function click(d, sel) { const el = d.querySelector(sel); el && el.click(); }
 
   /* build frame DOM */
   FRAMES.forEach(f => {
     const el = document.createElement('div'); el.className = 'frame board'; el.id = 'f-' + f.id;
-    const lbl = `<div class="frame-label"><span class="tag ${f.v}">${f.v === 'old' ? 'Cũ' : 'Mới'}</span><b>${f.title}</b><span>${f.note}</span></div>`;
+    const lbl = `<div class="frame-label"><b>${f.title}</b><span>${f.note}</span></div>`;
     el.innerHTML = lbl + (f.kind === 'img'
       ? `<img class="shot" src="${SRC.old}" width="${f.w}" height="${f.h}" alt="Ảnh chụp UI cũ màn Khách">`
       : `<iframe title="Bản mới: ${f.title}" width="${f.w}" height="${f.h || 900}" tabindex="-1"></iframe>`);
     world.appendChild(el); f.el = el; f.ifr = el.querySelector('iframe');
   });
-  for (const v of ['old', 'new']) {
-    const t = document.createElement('div'); t.className = 'col-title'; t.style.left = COLX[v] + 'px'; t.style.top = '-200px';
-    t.innerHTML = v === 'old' ? 'UI cũ<small>Đang chạy · ảnh chụp người dùng gửi</small>' : 'UI mới<small>Nhãn dưới tên, xuống dòng · tối đa 3 nhãn</small>';
-    world.appendChild(t);
-  }
   function layout() {
     const GAPY = 200;
     let y = 0;
@@ -207,22 +175,7 @@ button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
     scalePins();
   }
 
-  /* ---------- Panel ---------- */
-  const list = document.getElementById('list');
-  list.innerHTML = CHANGES.map((c, i) => `<button class="item" data-i="${i}"><span class="n">${i + 1}</span><span><h3>${c.t}</h3><dl class="diff"><dt class="o">Cũ</dt><dd class="o">${c.o}</dd><dt class="w">Mới</dt><dd>${c.n}</dd></dl></span></button>`).join('');
-  list.addEventListener('click', e => { const b = e.target.closest('.item'); b && select(+b.dataset.i); });
-  document.getElementById('count').textContent = CHANGES.length + ' thay đổi';
-  document.getElementById('allPins').addEventListener('change', e => vp.classList.toggle('marks-off', !e.target.checked));
-  function select(i) {
-    active = i; drawMarks();
-    list.querySelectorAll('.item').forEach(b => b.classList.toggle('on', +b.dataset.i === i));
-    list.querySelector(`.item[data-i="${i}"]`).scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-    const rs = CHANGES[i].m.map(([f, s]) => rectOf(f, s)).filter(Boolean); if (!rs.length) return;
-    const x0 = Math.min(...rs.map(r => r.x)), y0 = Math.min(...rs.map(r => r.y)), x1 = Math.max(...rs.map(r => r.x + r.w)), y1 = Math.max(...rs.map(r => r.y + r.h));
-    fitBox(x0, y0, x1 - x0, y1 - y0, 160, 1.2);
-  }
-  document.getElementById('tPrev').onclick = () => select((active - 1 + CHANGES.length) % CHANGES.length);
-  document.getElementById('tNext').onclick = () => select((active + 1) % CHANGES.length);
+  function select() {}
 
   /* ---------- Camera ---------- */
   const cam = { x: 40, y: 200, z: .3 }, MIN = .05, MAX = 3;
@@ -252,7 +205,7 @@ button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
   function fit() {
     const xs = FRAMES.map(f => f.x), ys = FRAMES.map(f => f.y);
     const top2 = FRAMES.filter(f => f.row < 2); const x1 = Math.max(...FRAMES.map(f => f.x + f.w)), y1 = Math.max(...top2.map(f => f.y + (f.hh || f.h || 900)));
-    fitBox(Math.min(...xs), Math.min(...ys) - 420, x1 - Math.min(...xs), y1 - Math.min(...ys) + 420, 120);
+    fitBox(Math.min(...xs), Math.min(...ys) - 120, x1 - Math.min(...xs), y1 - Math.min(...ys) + 120, 120);
   }
   apply();
   vp.addEventListener('wheel', e => {
@@ -264,8 +217,6 @@ button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
   function setPan(on) { pan = on; vp.classList.toggle('panning', on); }
   window.addEventListener('keydown', e => {
     if (e.key === ' ') { e.preventDefault(); setPan(true); }
-    if (e.key === 'ArrowRight' || e.key === 'j') document.getElementById('tNext').click();
-    if (e.key === 'ArrowLeft' || e.key === 'k') document.getElementById('tPrev').click();
   });
   window.addEventListener('keyup', e => { if (e.key === ' ') setPan(false); });
   vp.addEventListener('pointerdown', e => {
