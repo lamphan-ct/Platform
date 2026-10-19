@@ -120,10 +120,20 @@ button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
     const el = document.createElement('div'); el.className = 'frame board'; el.id = 'f-' + f.id;
     const lbl = `<div class="frame-label"><b>${f.title}</b><span>${f.note}</span></div>`;
     el.innerHTML = lbl + (f.kind === 'img'
-      ? `<img class="shot" src="${SRC.old}" width="${f.w}" height="${f.h}" alt="Ảnh chụp UI cũ màn Khách">`
+      ? `<canvas class="shot" width="2000" height="1074" style="width:${f.w}px;height:${f.h}px" role="img" aria-label="Ảnh chụp UI hiện tại màn Khách"></canvas>`
       : `<iframe title="Bản mới: ${f.title}" width="${f.w}" height="${f.h || 900}" tabindex="-1"></iframe>`);
     world.appendChild(el); f.el = el; f.ifr = el.querySelector('iframe');
   });
+  /* vẽ ảnh Current lên <canvas> từ dữ liệu nhúng (không cần tải ảnh qua mạng) */
+  (function drawShot() {
+    const cv = world.querySelector('canvas.shot'); if (!cv) return;
+    const bin = atob(SRC.old), u8 = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) u8[i] = bin.charCodeAt(i);
+    const blob = new Blob([u8], { type: 'image/jpeg' }), ctx = cv.getContext('2d');
+    const done = img => ctx.drawImage(img, 0, 0, cv.width, cv.height);
+    if (window.createImageBitmap) createImageBitmap(blob).then(done).catch(viaImg); else viaImg();
+    function viaImg() { const im = new Image(); im.onload = () => done(im); im.src = URL.createObjectURL(blob); }
+  })();
   function layout() {
     const GAPY = 200;
     let y = 0;
