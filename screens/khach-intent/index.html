@@ -696,7 +696,7 @@ function closeTag(){$('#popTag').classList.remove('is-open');document.querySelec
 function renderTagList(){
   const full=draft.size>=MAX_TAGS;
   $('#tagList').innerHTML=Object.entries(TAGS).map(([k,t])=>{const on=draft.has(k),dis=full&&!on;return `<button class="tagopt t-body-page ${on?'is-checked':''}" data-k="${k}" role="checkbox" aria-checked="${on}" aria-disabled="${dis}"><svg class="ds-icon tag-ic" aria-hidden="true"><use href="#ds-tag-fill"/></svg><span class="name">${t}</span><span class="check"><svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-Check-outline"/></svg></span></button>`}).join('');
-  const h=$('#tagHint');h.textContent=full?`Đã chọn ${draft.size}/${MAX_TAGS}. Bỏ bớt một phân loại để chọn cái khác.`:`Chọn tối đa ${MAX_TAGS} phân loại (${draft.size}/${MAX_TAGS})`;h.classList.toggle('is-full',full);
+  const h=$('#tagHint');h.textContent=`Chọn tối đa ${MAX_TAGS} phân loại (${draft.size}/${MAX_TAGS})`;
 }
 function openTag(item,below){
   draft=new Set(moreRow.tags);renderTagList();
