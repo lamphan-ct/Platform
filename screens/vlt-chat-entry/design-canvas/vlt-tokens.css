@@ -1,0 +1,109 @@
+/* CHOTOT DS v3.0 tokens, Việc Làm Tốt (JOB) theme, Figma export 2026-10-14. */
+:root {
+  --logo-primary: #306bd9;
+  --border-divider: #f4f4f4;
+  --border-thin: #e8e8e8;
+  --border-regular: #dddddd;
+  --border-bold: #8c8c8c;
+  --border-active: #306bd9;
+  --border-brand: #306bd9;
+  --border-error: #f0325e;
+  --border-disabled: #c0c0c0;
+  --border-black: #222222;
+  --background-brand-light: #f2f6fc;
+  --background-primary: #ffffff;
+  --background-app: #f7f7f7;
+  --background-secondary: #f4f4f4;
+  --background-tertiary: #e8e8e8;
+  --background-info-light: #f2f6fc;
+  --background-success-light: #ecf9f1;
+  --background-brand: #306bd9;
+  --background-success: #12a154;
+  --background-error: #f0325e;
+  --background-inverted: #222222;
+  --background-overlay: #22222280;
+  --text-brand: #306bd9;
+  --text-on-background: #ffffff;
+  --text-primary: #222222;
+  --text-secondary: #595959;
+  --text-tertiary: #8c8c8c;
+  --text-link: #306bd9;
+  --text-error: #f0325e;
+  --text-success: #12a154;
+  --text-disabled: #c0c0c0;
+  --text-blank: #ffffff;
+  --icon-brand: #306bd9;
+  --icon-on-background: #ffffff;
+  --icon-primary: #222222;
+  --icon-secondary: #595959;
+  --icon-tertiary: #8c8c8c;
+  --icon-blank: #ffffff;
+  --icon-success: #12a154;
+  --icon-disabled: #c0c0c0;
+  --interaction-brand-hover: #548af0;
+  --interaction-brand-pressed: #1952ba;
+  --interaction-primary-hover: #f4f4f4;
+  --interaction-neutral-light-hover: #e8e8e8;
+  --interaction-neutral-light-pressed: #dddddd;
+  --button-primary: #306bd9;
+  --button-blank: #ffffff;
+  --button-disabled: #c0c0c0;
+  --gap-min-2: 2px;
+  --gap-2x-small-4: 4px;
+  --gap-2x-small-6: 6px;
+  --gap-x-small-8: 8px;
+  --gap-small-12: 12px;
+  --gap-medium-16: 16px;
+  --gap-large-20: 20px;
+  --padding-min-2: 2px;
+  --padding-2x-small-4: 4px;
+  --padding-2x-small-6: 6px;
+  --padding-x-small-8: 8px;
+  --padding-small-12: 12px;
+  --padding-medium-16: 16px;
+  --padding-large-20: 20px;
+  --radius-ad-small: 4px;
+  --radius-ad: 6px;
+  --radius-card-small: 8px;
+  --radius-card: 12px;
+  --radius-decoration: 16px;
+  --radius-modal: 20px;
+  --radius-pill: 999px;
+}
+
+/* Typography: the 21 DS text styles */
+.t-display-page { font: 700 32px/40px 'Reddit Sans', sans-serif; }
+.t-display-section { font: 700 24px/32px 'Reddit Sans', sans-serif; }
+.t-display-caption { font: 700 20px/28px 'Reddit Sans', sans-serif; }
+.t-header-page { font: 600 20px/28px 'Reddit Sans', sans-serif; }
+.t-display-annotation { font: 700 18px/26px 'Reddit Sans', sans-serif; }
+.t-display-price { font: 600 18px/26px 'Reddit Sans', sans-serif; }
+.t-label-page { font: 700 16px/24px 'Reddit Sans', sans-serif; }
+.t-header-section { font: 600 16px/24px 'Reddit Sans', sans-serif; }
+.t-tagline-section { font: 500 16px/20px 'Reddit Sans', sans-serif; }
+.t-body-page { font: 400 16px/24px 'Reddit Sans', sans-serif; }
+.t-label-section { font: 700 14px/20px 'Reddit Sans', sans-serif; }
+.t-header-caption { font: 600 14px/20px 'Reddit Sans', sans-serif; }
+.t-tagline-caption { font: 500 14px/20px 'Reddit Sans', sans-serif; }
+.t-body-section { font: 400 14px/20px 'Reddit Sans', sans-serif; }
+.t-label-caption { font: 700 12px/18px 'Reddit Sans', sans-serif; }
+.t-header-annotation { font: 600 12px/18px 'Reddit Sans', sans-serif; }
+.t-tagline-annotation { font: 500 12px/18px 'Reddit Sans', sans-serif; }
+.t-body-caption { font: 400 12px/18px 'Reddit Sans', sans-serif; }
+.t-label-annotation { font: 700 10px/16px 'Reddit Sans', sans-serif; }
+.t-tagline-footext { font: 500 10px/16px 'Reddit Sans', sans-serif; }
+.t-body-annotation { font: 400 10px/16px 'Reddit Sans', sans-serif; }
+
+/* Interaction states (DS interaction-* tokens) */
+button { font: inherit; color: inherit; cursor: pointer; }
+button:disabled { cursor: not-allowed; }
+textarea, input { font: inherit; color: inherit; }
+textarea::placeholder, input::placeholder { color: var(--text-tertiary); }
+.h-neutral:hover { background: var(--interaction-primary-hover) !important; }
+.h-neutral:active { background: var(--interaction-neutral-light-pressed) !important; }
+.h-chip:hover { background: var(--interaction-neutral-light-hover) !important; }
+.h-brand:not(:disabled):hover { background: var(--interaction-brand-hover) !important; }
+.h-brand:not(:disabled):active { background: var(--interaction-brand-pressed) !important; }
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.clip1 { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }

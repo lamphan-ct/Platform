@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Screen</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="vlt-tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<div style="position: relative; width: 375px; height: 788px; overflow: hidden; font-family: 'Reddit Sans', sans-serif; color: var(--text-primary); background: var(--background-primary)">
+  <sc-if value="{{isAd}}" hint-placeholder-val="{{true}}">
+    <dc-import name="AdView" hot="{{hot}}" toast="{{toast}}" on-chat="{{onChat}}" on-view="{{onView}}" hint-size="375px,788px"></dc-import>
+  </sc-if>
+  <sc-if value="{{isChat}}" hint-placeholder-val="{{false}}">
+    <dc-import name="ChatRoom" msgs="{{msgs}}" on-back="{{onBack}}" hint-size="375px,788px"></dc-import>
+  </sc-if>
+  <sc-if value="{{sheet}}" hint-placeholder-val="{{false}}">
+    <button aria-label="Đóng" onClick="{{onClose}}" style="position: absolute; inset: 0; border: 0; padding: 0; background: var(--background-overlay); cursor: default"></button>
+    <div style="position: absolute; left: 0; right: 0; bottom: {{sheetBottom}}px">
+      <dc-import name="ChatSheet" t="{{t}}" sel="{{sel}}" text="{{text}}" callback="{{callback}}" has-phone="{{hasPhone}}" kb="{{kb}}" on-add="{{onAdd}}" on-remove="{{onRemove}}" on-text="{{onText}}" on-focus="{{onFocus}}" on-toggle-cb="{{onToggleCb}}" on-send="{{onSend}}" hint-size="375px,320px"></dc-import>
+    </div>
+  </sc-if>
+  <sc-if value="{{showKb}}" hint-placeholder-val="{{false}}">
+    <div style="position: absolute; left: 0; right: 0; bottom: 0">
+      <dc-import name="Keyboard" on-key="{{onKey}}" hint-size="375px,291px"></dc-import>
+    </div>
+  </sc-if>
+  <div aria-hidden="true" style="position: absolute; left: 120px; bottom: 8px; width: 134px; height: 5px; border-radius: 3px; background: var(--background-inverted); pointer-events: none"></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"t":{"editor":"enum","options":[1,2],"default":1},"screen":{"editor":"enum","options":["ad","chat"],"default":"ad"},"sheet":{"editor":"boolean","default":false},"kb":{"editor":"boolean","default":false},"hot":{"editor":"boolean","default":false},"toast":{"editor":"boolean","default":false},"sel":{"editor":null},"text":{"editor":null},"callback":{"editor":null},"hasPhone":{"editor":null},"msgs":{"editor":null},"onChat":{"editor":null},"onView":{"editor":null},"onBack":{"editor":null},"onClose":{"editor":null},"onAdd":{"editor":null},"onRemove":{"editor":null},"onText":{"editor":null},"onFocus":{"editor":null},"onToggleCb":{"editor":null},"onSend":{"editor":null},"onKey":{"editor":null},"$preview":{"width":375,"height":788}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props;
+    const screen = p.screen ?? 'ad';
+    const sheet = !!p.sheet, kb = !!p.kb;
+    return {
+      t: p.t ?? 1, isAd: screen === 'ad', isChat: screen === 'chat', hot: !!p.hot, toast: !!p.toast,
+      sheet, showKb: sheet && kb, kb, sheetBottom: sheet && kb ? 291 : 0,
+      sel: p.sel ?? [0, 1, 2], text: p.text ?? '', callback: p.callback ?? true, hasPhone: p.hasPhone ?? true, msgs: p.msgs ?? [],
+      onChat: p.onChat, onView: p.onView, onBack: p.onBack, onClose: p.onClose, onAdd: p.onAdd, onRemove: p.onRemove,
+      onText: p.onText, onFocus: p.onFocus, onToggleCb: p.onToggleCb, onSend: p.onSend, onKey: p.onKey,
+    };
+  }
+}
+</script>
+</body>
+</html>

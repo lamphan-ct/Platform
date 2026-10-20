@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Phòng chat</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="vlt-tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<div style="position: relative; width: 375px; height: 788px; display: flex; flex-direction: column; overflow: hidden; font-family: 'Reddit Sans', sans-serif; color: var(--text-primary); background: var(--background-primary)">
+  <header style="flex: none; padding-top: 50px; background: var(--background-primary); border-bottom: 1px solid var(--border-thin); position: relative">
+    <div aria-hidden="true" style="position: absolute; top: 0; left: 0; right: 0; height: 50px; display: flex; align-items: flex-end; justify-content: space-between; padding: 0 26px 7px 32px; font-size: 14px; font-weight: 600">
+      <span>9:41</span>
+      <span style="display: flex; gap: 5px; align-items: center">
+        <svg width="18" height="12" viewBox="0 0 18 12" fill="none"><rect y="7" width="3" height="5" rx="1" fill="currentColor"></rect><rect x="5" y="5" width="3" height="7" rx="1" fill="currentColor"></rect><rect x="10" y="2.5" width="3" height="9.5" rx="1" fill="currentColor"></rect><rect x="15" width="3" height="12" rx="1" fill="currentColor"></rect></svg>
+        <svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x=".5" y=".5" width="21" height="11" rx="3" stroke="currentColor" stroke-opacity=".4"></rect><rect x="2" y="2" width="15" height="8" rx="1.6" fill="currentColor"></rect></svg>
+      </span>
+    </div>
+    <div style="height: 56px; display: flex; align-items: center; gap: var(--gap-2x-small-4); padding: 0 var(--padding-2x-small-4)">
+      <button class="h-neutral" aria-label="Quay lại" onClick="{{onBack}}" style="width: 40px; height: 40px; border: 0; border-radius: var(--radius-pill); background: transparent; display: grid; place-items: center; flex: none">
+        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--icon-primary)"><path d="M10.516 7.24C10.901 6.91 11.481 6.918 11.856 7.275C12.256 7.656 12.271 8.289 11.89 8.689L9.333 11.375H17L17.102 11.38C17.606 11.431 18 11.857 18 12.375C18 12.892 17.606 13.318 17.102 13.37L17 13.375H9.333L11.89 16.06L11.958 16.137C12.268 16.538 12.231 17.117 11.856 17.474C11.481 17.831 10.901 17.839 10.516 17.509L10.442 17.439L6.275 13.064C5.908 12.678 5.908 12.071 6.275 11.685L10.442 7.31L10.516 7.24Z" fill="currentColor"></path></svg>
+      </button>
+      <div style="flex: 1; min-width: 0; display: flex; align-items: center; gap: var(--gap-x-small-8)">
+        <span class="t-label-section" style="width: 40px; height: 40px; flex: none; border-radius: var(--radius-pill); display: grid; place-items: center; background: var(--background-brand-light); color: var(--text-brand)">NP</span>
+        <div style="min-width: 0">
+          <div class="t-label-section clip1">Nhung Phan</div>
+          <div class="t-body-annotation" style="display: flex; align-items: center; gap: var(--gap-2x-small-4); color: var(--text-success)"><span style="width: 6px; height: 6px; border-radius: var(--radius-pill); background: var(--background-success)"></span>Đang hoạt động</div>
+        </div>
+      </div>
+      <button class="h-neutral" aria-label="Gọi" style="width: 40px; height: 40px; border: 0; border-radius: var(--radius-pill); background: transparent; display: grid; place-items: center; flex: none">
+        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--icon-primary)"><path d="M6.162 2.41C6.783 2.455 7.214 2.822 7.41 3.018L7.417 3.024C7.709 3.298 7.984 3.576 8.26 3.86L8.47 4.074C8.539 4.144 8.611 4.218 8.683 4.293L9.933 5.54L10.059 5.673C10.346 5.997 10.592 6.426 10.592 6.956C10.592 7.487 10.346 7.916 10.059 8.24L9.933 8.373C9.818 8.488 9.667 8.643 9.527 8.778C9.448 8.86 9.394 8.915 9.365 8.944C9.339 8.971 9.291 9.02 9.231 9.069C9.219 9.08 9.208 9.088 9.203 9.092C9.195 9.098 9.197 9.097 9.193 9.1C9.193 9.1 9.188 9.104 9.181 9.11C9.161 9.126 9.12 9.161 9.036 9.235C9.037 9.24 9.038 9.244 9.04 9.249C9.317 9.912 9.713 10.563 10.355 11.379C10.358 11.383 10.362 11.386 10.365 11.39L10.819 11.929C11.733 12.976 12.679 13.833 13.683 14.531L14.189 14.867L14.19 14.868L14.409 14.994C14.487 15.036 14.571 15.078 14.666 15.125L14.923 15.255C15.002 15.297 15.084 15.343 15.163 15.391C15.165 15.389 15.168 15.387 15.171 15.385L16.068 14.489L16.272 14.306C16.529 14.099 16.939 13.854 17.466 13.854L17.595 13.858C18.202 13.904 18.63 14.265 18.841 14.489L21.361 17.004L21.469 17.12C21.967 17.714 21.885 18.456 21.819 18.795C21.777 19.015 21.714 19.205 21.665 19.337C21.64 19.404 21.617 19.461 21.6 19.502C21.591 19.523 21.582 19.539 21.576 19.553C21.573 19.559 21.571 19.566 21.568 19.57C21.567 19.573 21.565 19.576 21.565 19.576L21.563 19.579V19.581C21.538 19.633 21.509 19.682 21.476 19.729L21.363 19.859L21.36 19.862C21.358 19.864 21.355 19.867 21.351 19.871C21.342 19.879 21.33 19.892 21.314 19.907C21.283 19.939 21.237 19.984 21.181 20.039C21.069 20.15 20.916 20.301 20.756 20.462C20.588 20.631 20.422 20.799 20.284 20.941L19.981 21.266C19.971 21.278 19.961 21.289 19.95 21.301C19.29 22.005 18.477 22.344 17.498 22.344C17.436 22.344 17.329 22.344 17.222 22.337C15.662 22.237 14.255 21.635 13.285 21.172L13.28 21.17C10.558 19.855 8.17 17.989 6.189 15.63L6.186 15.626C4.569 13.68 3.46 11.848 2.722 9.857L2.562 9.407C2.219 8.375 2.074 7.466 2.148 6.563L2.149 6.561L2.185 6.276C2.296 5.626 2.592 5.058 3.071 4.58L4.633 3.021L4.655 3L4.789 2.883C5.114 2.617 5.536 2.405 6.035 2.405L6.162 2.41ZM4.483 5.996C4.272 6.207 4.168 6.429 4.141 6.727L4.142 6.728C4.096 7.289 4.175 7.921 4.46 8.775L4.595 9.156L4.596 9.159L4.721 9.483C5.364 11.101 6.312 12.648 7.722 14.344L8.063 14.741C9.794 16.699 11.84 18.252 14.146 19.367L14.502 19.533C15.352 19.918 16.337 20.277 17.351 20.342H17.353L17.498 20.344C17.948 20.344 18.225 20.216 18.49 19.934C18.676 19.721 19.043 19.347 19.34 19.05C19.504 18.885 19.659 18.731 19.773 18.618C19.786 18.606 19.798 18.593 19.81 18.581C19.826 18.53 19.844 18.472 19.855 18.415C19.861 18.385 19.863 18.358 19.865 18.336L17.454 15.93L16.583 16.801C16.486 16.897 15.994 17.408 15.181 17.408C14.936 17.408 14.707 17.362 14.492 17.281L14.281 17.189C14.248 17.172 14.221 17.157 14.204 17.147L14.177 17.13L14.226 17.156L14.145 17.112C14.103 17.086 14.053 17.058 13.993 17.026L13.772 16.914C13.595 16.826 13.358 16.709 13.121 16.559C11.547 15.565 10.135 14.276 8.813 12.651L8.8 12.636C8.157 11.822 7.684 11.092 7.327 10.322L7.182 9.989L7.157 9.924C7.155 9.917 7.152 9.91 7.149 9.903L7.138 9.868C7.082 9.691 6.994 9.369 7.039 8.981C7.085 8.586 7.259 8.205 7.577 7.869C7.603 7.84 7.628 7.817 7.647 7.799L7.646 7.798L7.685 7.761L7.902 7.571C7.917 7.559 7.93 7.548 7.941 7.539C7.974 7.506 8.021 7.459 8.119 7.358L8.52 6.957L7.27 5.708C7.267 5.704 7.263 5.701 7.26 5.697C7.19 5.625 7.119 5.554 7.046 5.479C6.974 5.406 6.898 5.33 6.824 5.254C6.686 5.111 6.554 4.975 6.424 4.846L6.036 4.471C6.032 4.467 6.027 4.462 6.023 4.458L4.483 5.996Z" fill="currentColor"></path></svg>
+      </button>
+      <button class="h-neutral" aria-label="Thêm" style="width: 40px; height: 40px; border: 0; border-radius: var(--radius-pill); background: transparent; display: grid; place-items: center; flex: none">
+        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--icon-primary)"><path d="M13.781 11.992C13.781 11.008 12.984 10.211 12 10.211C11.015 10.211 10.218 11.008 10.218 11.992C10.218 12.976 11.015 13.773 12 13.773C12.984 13.773 13.781 12.976 13.781 11.992Z" fill="currentColor"></path><path d="M13.781 4.781C13.781 3.797 12.984 3 12 3C11.015 3 10.218 3.797 10.218 4.781C10.218 5.765 11.015 6.562 12 6.562C12.984 6.562 13.781 5.765 13.781 4.781Z" fill="currentColor"></path><path d="M13.781 19.219C13.781 18.234 12.984 17.437 12 17.437C11.015 17.437 10.218 18.234 10.218 19.219C10.218 20.203 11.015 21 12 21C12.984 21 13.781 20.203 13.781 19.219Z" fill="currentColor"></path></svg>
+      </button>
+    </div>
+  </header>
+
+  <div style="flex: none; display: flex; gap: var(--gap-x-small-8); align-items: center; padding: var(--padding-x-small-8) var(--padding-medium-16); border-bottom: 1px solid var(--border-thin); background: var(--background-primary)">
+    <span style="width: 40px; height: 40px; flex: none; display: grid; place-items: center; border-radius: var(--radius-ad); background: var(--background-info-light); color: var(--icon-brand)">
+      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 10.433C20.499 9.771 19.925 9.16 19.125 9.16H4.875C4.074 9.16 3.5 9.771 3.5 10.433V17.253L3.506 17.377C3.572 17.991 4.124 18.527 4.875 18.527H19.125C19.926 18.527 20.5 17.916 20.5 17.253V10.433ZM13.968 5.886C13.968 5.863 13.96 5.835 13.929 5.805C13.897 5.775 13.847 5.75 13.781 5.75H9.625C9.558 5.75 9.508 5.775 9.476 5.805C9.445 5.835 9.437 5.863 9.437 5.886V7.16H13.968V5.886ZM15.968 7.16H19.125C20.947 7.16 22.499 8.585 22.5 10.433V17.253C22.5 19.102 20.947 20.527 19.125 20.527H4.875C3.109 20.527 1.597 19.19 1.504 17.426L1.5 17.253V10.433C1.5 8.585 3.052 7.16 4.875 7.16H7.437V5.886C7.437 4.665 8.458 3.75 9.625 3.75H13.781C14.947 3.75 15.968 4.665 15.968 5.886V7.16Z" fill="currentColor"></path><path d="M13.2 11C13.752 11 14.2 11.447 14.2 12C14.2 12.552 13.752 13 13.2 13H10.2C9.647 13 9.2 12.552 9.2 12C9.2 11.447 9.647 11 10.2 11H13.2Z" fill="currentColor"></path></svg>
+    </span>
+    <div style="min-width: 0; flex: 1">
+      <div class="t-header-caption clip1">GIÁM SÁT &amp; NV TẠP VỤ VỆ SINH BỆNH VIỆN</div>
+      <div class="t-header-annotation" style="color: var(--text-error)">6.000.000 - 9.000.000 đ/tháng</div>
+    </div>
+  </div>
+
+  <main class="no-scrollbar" style="flex: 1; overflow-y: auto; background: var(--background-app); padding: var(--padding-medium-16); display: flex; flex-direction: column; gap: var(--gap-small-12)">
+    <span class="t-body-annotation" style="align-self: center; color: var(--text-tertiary)">Hôm nay</span>
+    <sc-for list="{{items}}" as="m" hint-placeholder-count="1">
+      <div style="align-self: flex-end; max-width: 288px; display: flex; flex-direction: column; align-items: flex-end; gap: var(--gap-2x-small-4)">
+        <div style="background: var(--background-brand-light); border-radius: var(--radius-card) var(--radius-card) var(--radius-ad-small) var(--radius-card); padding: var(--padding-x-small-8) var(--padding-small-12); display: flex; flex-direction: column; gap: var(--gap-x-small-8)">
+          <div style="display: flex; gap: var(--gap-x-small-8); align-items: center; background: var(--background-primary); border-radius: var(--radius-card-small); padding: var(--padding-x-small-8)">
+            <span style="width: 32px; height: 32px; flex: none; display: grid; place-items: center; border-radius: var(--radius-ad); background: var(--background-info-light); color: var(--icon-brand)">
+              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 10.433C20.499 9.771 19.925 9.16 19.125 9.16H4.875C4.074 9.16 3.5 9.771 3.5 10.433V17.253L3.506 17.377C3.572 17.991 4.124 18.527 4.875 18.527H19.125C19.926 18.527 20.5 17.916 20.5 17.253V10.433ZM13.968 5.886C13.968 5.863 13.96 5.835 13.929 5.805C13.897 5.775 13.847 5.75 13.781 5.75H9.625C9.558 5.75 9.508 5.775 9.476 5.805C9.445 5.835 9.437 5.863 9.437 5.886V7.16H13.968V5.886ZM15.968 7.16H19.125C20.947 7.16 22.499 8.585 22.5 10.433V17.253C22.5 19.102 20.947 20.527 19.125 20.527H4.875C3.109 20.527 1.597 19.19 1.504 17.426L1.5 17.253V10.433C1.5 8.585 3.052 7.16 4.875 7.16H7.437V5.886C7.437 4.665 8.458 3.75 9.625 3.75H13.781C14.947 3.75 15.968 4.665 15.968 5.886V7.16Z" fill="currentColor"></path><path d="M13.2 11C13.752 11 14.2 11.447 14.2 12C14.2 12.552 13.752 13 13.2 13H10.2C9.647 13 9.2 12.552 9.2 12C9.2 11.447 9.647 11 10.2 11H13.2Z" fill="currentColor"></path></svg>
+            </span>
+            <div style="min-width: 0">
+              <div class="t-header-annotation clip1">GIÁM SÁT &amp; NV TẠP VỤ VỆ SINH BỆNH VIỆN</div>
+              <div class="t-body-annotation" style="color: var(--text-error)">6.000.000 - 9.000.000 đ/tháng</div>
+            </div>
+          </div>
+          <sc-if value="{{m.hasQs}}" hint-placeholder-val="{{true}}">
+            <div class="t-body-section">
+              <p style="margin: 0">Cho mình hỏi:</p>
+              <ul style="margin: 0; padding-left: var(--padding-large-20)">
+                <sc-for list="{{m.qs}}" as="q" hint-placeholder-count="3">
+                  <li>{{q}}</li>
+                </sc-for>
+              </ul>
+            </div>
+          </sc-if>
+          <sc-if value="{{m.hasText}}" hint-placeholder-val="{{true}}">
+            <p class="t-body-section" style="margin: 0; white-space: pre-line; word-break: break-word">{{m.text}}</p>
+          </sc-if>
+        </div>
+        <span class="t-body-annotation" style="color: var(--text-tertiary)">14:22 · Đã gửi</span>
+      </div>
+    </sc-for>
+  </main>
+
+  <footer style="flex: none; background: var(--background-primary); border-top: 1px solid var(--border-thin); padding: var(--padding-x-small-8) 0 34px">
+    <div class="no-scrollbar" style="display: flex; gap: var(--gap-x-small-8); overflow-x: auto; padding: 0 var(--padding-medium-16) var(--padding-x-small-8)">
+      <button class="t-tagline-annotation h-chip" style="flex: none; height: 24px; padding: 3px var(--padding-x-small-8); border-radius: var(--radius-pill); border: 1px solid var(--border-regular); background: var(--background-primary); white-space: nowrap">Việc này còn tuyển không ạ?</button>
+      <button class="t-tagline-annotation h-chip" style="flex: none; height: 24px; padding: 3px var(--padding-x-small-8); border-radius: var(--radius-pill); border: 1px solid var(--border-regular); background: var(--background-primary); white-space: nowrap">Khi nào phỏng vấn ạ?</button>
+      <button class="t-tagline-annotation h-chip" style="flex: none; height: 24px; padding: 3px var(--padding-x-small-8); border-radius: var(--radius-pill); border: 1px solid var(--border-regular); background: var(--background-primary); white-space: nowrap">Có cần kinh nghiệm không?</button>
+    </div>
+    <div style="display: flex; align-items: center; gap: var(--gap-2x-small-4); padding: 0 var(--padding-x-small-8)">
+      <button class="h-neutral" aria-label="Thêm tệp" style="width: 40px; height: 40px; border: 0; border-radius: var(--radius-pill); background: transparent; display: grid; place-items: center; flex: none">
+        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--icon-primary)"><path d="M11 16.799V12.999H7.2C6.647 12.999 6.2 12.552 6.2 11.999C6.2 11.447 6.647 10.999 7.2 10.999H11V7.199C11 6.647 11.447 6.2 12 6.199C12.552 6.199 13 6.647 13 7.199V10.999H16.799L16.902 11.004C17.406 11.055 17.799 11.482 17.799 11.999C17.799 12.517 17.406 12.943 16.902 12.994L16.799 12.999H13V16.799C13 17.351 12.552 17.799 12 17.799C11.447 17.799 11 17.351 11 16.799Z" fill="currentColor"></path></svg>
+      </button>
+      <button class="h-neutral" aria-label="Gửi ảnh" style="width: 40px; height: 40px; border: 0; border-radius: var(--radius-pill); background: transparent; display: grid; place-items: center; flex: none">
+        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" style="color: var(--icon-primary)"><path d="M20 17.397C19.932 17.364 19.867 17.324 19.806 17.275L19.73 17.207L15.937 13.414L11.582 17.769C11.191 18.16 10.558 18.16 10.168 17.769L8.625 16.226L5.177 19.672C5.529 19.879 5.937 20 6.375 20H17.625C18.936 20 20 18.936 20 17.625V17.397ZM8.75 8.062C8.75 7.682 8.442 7.375 8.062 7.375C7.682 7.375 7.375 7.682 7.375 8.062C7.375 8.442 7.682 8.75 8.062 8.75C8.442 8.75 8.75 8.442 8.75 8.062ZM20 6.375C20 5.063 18.936 4 17.625 4H6.375C5.063 4 4 5.063 4 6.375V17.625C4 17.75 4.011 17.872 4.03 17.992L7.917 14.105L7.994 14.037C8.386 13.716 8.965 13.739 9.332 14.105L10.875 15.648L15.23 11.293L15.306 11.224C15.699 10.904 16.278 10.926 16.644 11.293L20 14.648V6.375ZM10.75 8.062C10.75 9.546 9.546 10.75 8.062 10.75C6.578 10.75 5.375 9.546 5.375 8.062C5.375 6.578 6.578 5.375 8.062 5.375C9.546 5.375 10.75 6.578 10.75 8.062ZM22 17.625C22 20.041 20.041 22 17.625 22H6.375C3.958 22 2 20.041 2 17.625V6.375C2 3.958 3.958 2 6.375 2H17.625C20.041 2 22 3.958 22 6.375V17.625Z" fill="currentColor"></path></svg>
+      </button>
+      <input class="t-body-section" aria-label="Nhập tin nhắn" placeholder="Nhập tin nhắn..." style="flex: 1; min-width: 0; height: 40px; box-sizing: border-box; border: 1px solid var(--border-regular); border-radius: var(--radius-pill); padding: 0 var(--padding-medium-16); outline: 0">
+      <button class="h-brand" aria-label="Gửi" style="width: 32px; height: 32px; margin: 0 var(--padding-2x-small-4); flex: none; border: 0; border-radius: var(--radius-pill); display: grid; place-items: center; background: var(--button-primary); color: var(--icon-on-background)">
+        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.961 2.675C2.956 1.756 0.885 3.82 1.798 5.828L4.149 11H9.999C10.552 11 10.999 11.448 10.999 12C10.999 12.552 10.551 13 9.999 13H4.279L1.898 17.897C0.933 19.882 2.952 22 4.981 21.131L20.838 14.335L21.011 14.254C22.684 13.385 22.714 10.975 21.064 10.063L20.893 9.978L4.961 2.675Z" fill="currentColor"></path></svg>
+      </button>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"msgs":{"editor":null},"onBack":{"editor":null},"$preview":{"width":375,"height":788}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const msgs = this.props.msgs ?? [{ qs: ['Có hợp đồng lao động không?', 'Có đóng bảo hiểm không?', 'Xin video/hình thực tế ạ'], text: 'Gọi lại cho mình số 0987654321' }];
+    return {
+      items: msgs.map((m) => ({ qs: m.qs || [], hasQs: (m.qs || []).length > 0, text: m.text || '', hasText: !!m.text })),
+      onBack: this.props.onBack,
+    };
+  }
+}
+</script>
+</body>
+</html>

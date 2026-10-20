@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Bàn phím iOS</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="vlt-tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>body{margin:0}</style>
+</helmet>
+<div aria-hidden="true" style="width: 375px; height: 291px; box-sizing: border-box; padding: 6px 3px 0; background: #d1d4d9; font-family: -apple-system, system-ui, sans-serif; color: #222222">
+  <div style="height: 36px; display: flex; justify-content: space-around; align-items: center; font-size: 16px">
+    <span>Cho</span><span>mình</span><span>hỏi</span>
+  </div>
+  <sc-for list="{{rows}}" as="row" hint-placeholder-count="4">
+    <div style="display: flex; justify-content: center; gap: 6px; margin-bottom: 11px; padding: 0 {{row.pad}}px">
+      <sc-for list="{{row.keys}}" as="key" hint-placeholder-count="10">
+        <button tabindex="-1" onClick="{{key.press}}" style="height: 42px; flex: {{key.flex}}; max-width: {{key.max}}; border: 0; border-radius: 5px; background: {{key.bg}}; box-shadow: 0 1px 0 #898a8d; font-size: {{key.size}}px; padding: 0">{{key.label}}</button>
+      </sc-for>
+    </div>
+  </sc-for>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"onKey":{"editor":null},"$preview":{"width":375,"height":291}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const on = this.props.onKey;
+    const key = (k, o) => Object.assign({ label: k, flex: '1', max: '32px', bg: '#ffffff', size: 22, press: () => on && on(k) }, o || {});
+    const sys = { bg: '#abb0ba', max: '42px', size: 15 };
+    return {
+      rows: [
+        { pad: 3, keys: [...'qwertyuiop'].map((k) => key(k)) },
+        { pad: 20, keys: [...'asdfghjkl'].map((k) => key(k)) },
+        { pad: 3, keys: [key('⇧', sys)].concat([...'zxcvbnm'].map((k) => key(k)), [key('⌫', sys)]) },
+        { pad: 3, keys: [key('123', sys), key('space', { flex: '5', max: 'none', size: 15 }), key('return', { flex: '2', max: 'none', size: 15, bg: '#abb0ba' })] },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
