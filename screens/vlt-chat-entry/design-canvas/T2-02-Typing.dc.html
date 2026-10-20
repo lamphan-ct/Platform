@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>T2 · Đang nhập (tự điền SĐT)</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="vlt-tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width: 375px; height: 812px; overflow: hidden">
+<dc-import name="Screen" mode="sheet" kb="{{yes}}" cfg="{{cfg}}" hint-size="375px,812px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":375,"height":812}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { yes: true, cfg: {
+      variant: 't2',
+      selected: ['Có hợp đồng lao động không', 'Có đóng bảo hiểm không', 'Xin video/hình thực tế ạ', 'Xin vị trí cụ thể nhé sốp'],
+      suggest: ['Sổ chung hay riêng z ạ?', 'Có hỗ trợ trả góp ko sốp?', 'Xin video/hình thực tế ạ', 'Xin vị trí cụ thể nhé sốp', 'Giá còn thương lượng ko ạ?'],
+      text: 'Liên hệ mình qua SĐT 0987654321|',
+    } };
+  }
+}
+</script>
+</body>
+</html>

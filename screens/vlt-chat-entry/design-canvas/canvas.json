@@ -1,458 +1,102 @@
 {
   "v": 3,
   "attachments": {},
-  "boards": {
-    "Section-T1.dc.html": {
-      "h": 3096,
-      "title": "Treatment 1",
-      "w": 5165,
-      "x": -120,
-      "y": -460,
-      "radius": 32
-    },
-    "Section-T2.dc.html": {
-      "h": 3056,
-      "title": "Treatment 2",
-      "w": 5165,
-      "x": -120,
-      "y": 2780,
-      "radius": 32
-    },
-    "AdView.dc.html": {
-      "h": 788,
-      "title": "Component · AdView",
-      "w": 375,
-      "x": 5855,
-      "y": 0
-    },
-    "ChatRoom.dc.html": {
-      "h": 788,
-      "title": "Component · ChatRoom",
-      "w": 375,
-      "x": 6310,
-      "y": 0
-    },
-    "ChatSheet.dc.html": {
-      "h": 360,
-      "title": "Component · ChatSheet",
-      "w": 375,
-      "x": 6765,
-      "y": 0
-    },
-    "Keyboard.dc.html": {
-      "h": 291,
-      "title": "Component · Keyboard (iOS)",
-      "w": 375,
-      "x": 7220,
-      "y": 0
-    },
-    "Main.dc.html": {
-      "h": 788,
-      "is_interactive": true,
-      "radius": 40,
-      "title": "▶ Prototype · Treatment 1",
-      "w": 375,
-      "x": 2890,
-      "y": 0
-    },
-    "Screen.dc.html": {
-      "h": 788,
-      "title": "Component · Screen (ghép các lớp)",
-      "w": 375,
-      "x": 5400,
-      "y": 0
-    },
-    "T1-01-AdView.dc.html": {
-      "h": 788,
-      "title": "T1 · 1. Chi tiết tin → Tap Chat",
-      "w": 375,
-      "x": 0,
-      "y": 0
-    },
-    "T1-02-Sheet.dc.html": {
-      "h": 788,
-      "title": "T1 · 2. Sheet mặc định → Tap ô nhập",
-      "w": 375,
-      "x": 455,
-      "y": 0
-    },
-    "T1-03-Focus.dc.html": {
-      "h": 788,
-      "title": "T1 · 3. Focus ô nhập → Gõ tin",
-      "w": 375,
-      "x": 910,
-      "y": 0
-    },
-    "T1-04-Typing.dc.html": {
-      "h": 788,
-      "title": "T1 · 4. Đang nhập → Tap Gửi",
-      "w": 375,
-      "x": 1365,
-      "y": 0
-    },
-    "T1-05-Sent.dc.html": {
-      "h": 788,
-      "title": "T1 · 5. Gửi thành công → Xem tin nhắn",
-      "w": 375,
-      "x": 1820,
-      "y": 0
-    },
-    "T1-06-ChatRoom.dc.html": {
-      "h": 788,
-      "title": "T1 · 6. Phòng chat",
-      "w": 375,
-      "x": 2275,
-      "y": 0
-    },
-    "T1-E1-Empty.dc.html": {
-      "h": 788,
-      "title": "T1 · Xoá hết câu hỏi, chưa nhập → Gửi disabled",
-      "w": 375,
-      "x": 0,
-      "y": 1728
-    },
-    "T1-E2-Long-Result.dc.html": {
-      "h": 788,
-      "title": "T1 · Câu hỏi + text dài → tin đã gửi",
-      "w": 375,
-      "x": 910,
-      "y": 1728
-    },
-    "T1-E2-Long.dc.html": {
-      "h": 788,
-      "title": "T1 · Câu hỏi + text dài (tối đa 2 dòng)",
-      "w": 375,
-      "x": 455,
-      "y": 1728
-    },
-    "T1-E3-OnlyQ-Result.dc.html": {
-      "h": 788,
-      "title": "T1 · Chỉ câu hỏi → tin đã gửi",
-      "w": 375,
-      "x": 1820,
-      "y": 1728
-    },
-    "T1-E3-OnlyQ.dc.html": {
-      "h": 788,
-      "title": "T1 · Chỉ câu hỏi",
-      "w": 375,
-      "x": 1365,
-      "y": 1728
-    },
-    "T1-E4-OnlyText-Result.dc.html": {
-      "h": 788,
-      "title": "T1 · Chỉ text → tin đã gửi",
-      "w": 375,
-      "x": 2730,
-      "y": 1728
-    },
-    "T1-E4-OnlyText.dc.html": {
-      "h": 788,
-      "title": "T1 · Chỉ text",
-      "w": 375,
-      "x": 2275,
-      "y": 1728
-    },
-    "T1-E5-Uncheck-Result.dc.html": {
-      "h": 788,
-      "title": "T1 · Bỏ check → tin không kèm dòng gọi lại",
-      "w": 375,
-      "x": 3640,
-      "y": 1728
-    },
-    "T1-E5-Uncheck.dc.html": {
-      "h": 788,
-      "title": "T1 · Bỏ check “Gọi lại cho tôi qua SĐT”",
-      "w": 375,
-      "x": 3185,
-      "y": 1728
-    },
-    "T1-E6-AllSelected.dc.html": {
-      "h": 788,
-      "title": "T1 · Chọn hết câu hỏi → ẩn “Hỏi thêm”",
-      "w": 375,
-      "x": 4095,
-      "y": 1728
-    },
-    "T1-E7-NoPhone.dc.html": {
-      "h": 788,
-      "title": "T1 · Chưa có SĐT → ẩn checkbox",
-      "w": 375,
-      "x": 4550,
-      "y": 1728
-    },
-    "T2-01-AdView.dc.html": {
-      "h": 788,
-      "title": "T2 · 1. Chi tiết tin → Tap Chat",
-      "w": 375,
-      "x": 0,
-      "y": 3200
-    },
-    "T2-02-Sheet.dc.html": {
-      "h": 788,
-      "title": "T2 · 2. Sheet mặc định (tự điền SĐT) → Tap ô nhập",
-      "w": 375,
-      "x": 455,
-      "y": 3200
-    },
-    "T2-03-Focus.dc.html": {
-      "h": 788,
-      "title": "T2 · 3. Focus ô nhập → Tap Gửi",
-      "w": 375,
-      "x": 910,
-      "y": 3200
-    },
-    "T2-04-Sent.dc.html": {
-      "h": 788,
-      "title": "T2 · 4. Gửi thành công → Xem tin nhắn",
-      "w": 375,
-      "x": 1365,
-      "y": 3200
-    },
-    "T2-05-ChatRoom.dc.html": {
-      "h": 788,
-      "title": "T2 · 5. Phòng chat",
-      "w": 375,
-      "x": 1820,
-      "y": 3200
-    },
-    "T2-E1-Empty.dc.html": {
-      "h": 788,
-      "title": "T2 · Xoá text điền sẵn + hết câu hỏi → Gửi disabled",
-      "w": 375,
-      "x": 0,
-      "y": 4928
-    },
-    "T2-E2-Long-Result.dc.html": {
-      "h": 788,
-      "title": "T2 · Câu hỏi + text dài → tin đã gửi",
-      "w": 375,
-      "x": 910,
-      "y": 4928
-    },
-    "T2-E2-Long.dc.html": {
-      "h": 788,
-      "title": "T2 · Câu hỏi + text dài (tối đa 2 dòng)",
-      "w": 375,
-      "x": 455,
-      "y": 4928
-    },
-    "T2-E3-OnlyQ-Result.dc.html": {
-      "h": 788,
-      "title": "T2 · Chỉ câu hỏi → tin đã gửi",
-      "w": 375,
-      "x": 1820,
-      "y": 4928
-    },
-    "T2-E3-OnlyQ.dc.html": {
-      "h": 788,
-      "title": "T2 · Chỉ câu hỏi (xoá text điền sẵn)",
-      "w": 375,
-      "x": 1365,
-      "y": 4928
-    },
-    "T2-E4-OnlyText-Result.dc.html": {
-      "h": 788,
-      "title": "T2 · Chỉ text → tin đã gửi",
-      "w": 375,
-      "x": 2730,
-      "y": 4928
-    },
-    "T2-E4-OnlyText.dc.html": {
-      "h": 788,
-      "title": "T2 · Chỉ text",
-      "w": 375,
-      "x": 2275,
-      "y": 4928
-    },
-    "T2-E5-AddQuestion.dc.html": {
-      "h": 788,
-      "title": "T2 · Chọn thêm câu hỏi → lên ô nhập",
-      "w": 375,
-      "x": 3185,
-      "y": 4928
-    },
-    "T2-E6-AllSelected.dc.html": {
-      "h": 788,
-      "title": "T2 · Chọn hết câu hỏi → ẩn “Hỏi thêm”",
-      "w": 375,
-      "x": 3640,
-      "y": 4928
-    },
-    "T2-E7-NoPhone.dc.html": {
-      "h": 788,
-      "title": "T2 · Chưa có SĐT → không tự điền",
-      "w": 375,
-      "x": 4095,
-      "y": 4928
-    },
-    "T2-Prototype.dc.html": {
-      "h": 788,
-      "is_interactive": true,
-      "radius": 40,
-      "title": "▶ Prototype · Treatment 2",
-      "w": 375,
-      "x": 2435,
-      "y": 3200
-    }
-  },
-  "createdOnFiles": {
-    "at": "2026-10-20T09:00:00Z",
-    "v": 1
-  },
+  "createdOnFiles": {"at": "2026-10-20T09:00:00Z", "v": 1},
+  "title": "Chat Button Entry",
+  "launch": {"view": "canvas"},
+  "pages": [],
   "designSystems": [
-    {
-      "artifact": "https://claude.ai/artifact/K1LB4qPBwcCWTVgS2JrKi1",
-      "copiedAt": "2026-10-20T09:00:00Z",
-      "namespace": "chotot-platform",
-      "title": "Chợ Tốt Design System (Platform)",
-      "version": "1791969465-0230"
-    }
+    {"artifact": "https://claude.ai/artifact/K1LB4qPBwcCWTVgS2JrKi1", "copiedAt": "2026-10-20T09:00:00Z", "namespace": "chotot-platform", "title": "Chợ Tốt Design System (Platform)", "version": "1791969465-0230"}
   ],
-  "launch": {
-    "view": "canvas"
-  },
-  "notes": {
-    "cmptitle": {
-      "kind": "title1",
-      "maxW": 2195,
-      "text": "Components · sửa ở đây là mọi màn cập nhật theo",
-      "w": 240,
-      "x": 5400,
-      "y": -300
-    },
-    "t1edge": {
-      "kind": "title1",
-      "maxW": 4925,
-      "text": "Edge cases · Treatment 1",
-      "w": 240,
-      "x": 0,
-      "y": 1428
-    },
-    "t1n1": {
-      "fill": "orange",
-      "maxH": 420,
-      "text": "Note (*)\n• Mặc định chọn sẵn 3 câu hỏi đầu trong danh sách câu hỏi của Enquiry form\n• Checkbox “Gọi lại cho tôi qua SĐT…” mặc định bật\n• Người tìm việc chưa có SĐT → ẩn checkbox\n• Bottom sheet trượt lên 300ms; chạm nền tối để đóng",
-      "w": 375,
-      "x": 455,
-      "y": 908
-    },
-    "t1n2": {
-      "fill": "orange",
-      "maxH": 420,
-      "text": "Câu hỏi gợi ý (*)\n• Chọn câu ở “Hỏi thêm” → chip chuyển lên ô nhập, bỏ khỏi gợi ý\n• Bấm × trên chip → trả câu hỏi về đúng vị trí cũ trong gợi ý\n• Chọn hết → ẩn hàng “Hỏi thêm”; hàng gợi ý cuộn ngang",
-      "w": 375,
-      "x": 910,
-      "y": 908
-    },
-    "t1n3": {
-      "fill": "orange",
-      "maxH": 420,
-      "text": "Ô nhập (*)\n• Out focus: viền border-regular · In focus: viền border-black\n• Text dài → tối đa 2 dòng, cuộn trong ô\n• Không có câu hỏi và không có text → nút Gửi disabled",
-      "w": 375,
-      "x": 1365,
-      "y": 908
-    },
-    "t1n4": {
-      "fill": "pink",
-      "maxH": 420,
-      "text": "Trường hợp người tìm việc và nhà tuyển dụng đã có hội thoại với tin này → bấm Chat vào thẳng phòng chat (màn 6)",
-      "w": 375,
-      "x": 0,
-      "y": 908
-    },
-    "t1n5": {
-      "fill": "orange",
-      "maxH": 420,
-      "text": "Nội dung tin gửi đi (*)\n• Thẻ tin đăng\n• “Cho mình hỏi:” + danh sách câu hỏi đã chọn\n• “Gọi lại cho mình số 0987654321” (nếu checkbox bật)\n• Nội dung tự nhập",
-      "w": 375,
-      "x": 2275,
-      "y": 908
-    },
-    "t2edge": {
-      "kind": "title1",
-      "maxW": 4470,
-      "text": "Edge cases · Treatment 2",
-      "w": 240,
-      "x": 0,
-      "y": 4628
-    },
-    "t2n1": {
-      "fill": "orange",
-      "maxH": 420,
-      "text": "Note (*)\n• Tự điền “Liên hệ mình qua SĐT 0987654321” vào ô nhập\n• Mặc định chọn sẵn 3 câu hỏi đầu của Enquiry form\n• Không có checkbox gọi lại\n• Chưa có SĐT → không tự điền",
-      "w": 375,
-      "x": 455,
-      "y": 4108
-    },
-    "t2n2": {
-      "fill": "orange",
-      "maxH": 420,
-      "text": "Câu hỏi gợi ý (*)\n• Câu được chọn nằm trên ô nhập, bị xoá khỏi “Hỏi thêm”\n• Bấm × → trả về đúng vị trí ban đầu trong gợi ý\n• Chọn hết → ẩn hàng “Hỏi thêm”; hàng gợi ý cuộn ngang",
-      "w": 375,
-      "x": 910,
-      "y": 4108
-    },
-    "t2n4": {
-      "fill": "pink",
-      "maxH": 420,
-      "text": "Trường hợp người tìm việc và nhà tuyển dụng đã có hội thoại với tin này → bấm Chat vào thẳng phòng chat (màn 5)",
-      "w": 375,
-      "x": 0,
-      "y": 4108
-    },
-    "t2n5": {
-      "fill": "orange",
-      "maxH": 420,
-      "text": "Nội dung tin gửi đi (*)\n• Thẻ tin đăng\n• “Cho mình hỏi:” + danh sách câu hỏi đã chọn\n• Nội dung ô nhập (mặc định là dòng SĐT tự điền)",
-      "w": 375,
-      "x": 1820,
-      "y": 4108
-    }
+  "boards": {
+    "Section-T1.dc.html": {"x": 100, "y": 284, "w": 6256, "h": 1956, "title": "Treatment 1", "radius": 20},
+    "Section-T2.dc.html": {"x": 100, "y": 2468, "w": 6256, "h": 1947, "title": "Treatment 2", "radius": 20},
+    "Panel-T1-DefaultForm.dc.html": {"x": 2965, "y": 476, "w": 3391, "h": 812, "title": "Quick chat", "radius": 20},
+    "Panel-T1-Send.dc.html": {"x": 2000, "y": 1388, "w": 4356, "h": 812, "title": "Send", "radius": 20},
+    "Panel-T2-Questions.dc.html": {"x": 2015, "y": 2651, "w": 3391, "h": 812, "title": "Questions", "radius": 20},
+    "Panel-T2-Send.dc.html": {"x": 2015, "y": 3563, "w": 3391, "h": 812, "title": "Send", "radius": 20},
+
+    "T1-01-AdView.dc.html": {"x": 100, "y": 476, "w": 375, "h": 812, "title": "JOB"},
+    "T1-02-Sheet.dc.html": {"x": 575, "y": 476, "w": 375, "h": 812, "title": "JOB"},
+    "T1-03-Focus.dc.html": {"x": 1050, "y": 476, "w": 375, "h": 812, "title": "JOB"},
+    "T1-04-Typing.dc.html": {"x": 1525, "y": 476, "w": 375, "h": 812, "title": "JOB"},
+    "T1-05-Sent.dc.html": {"x": 2000, "y": 476, "w": 375, "h": 812, "title": "PTY Adview — Max content"},
+    "T1-06-ChatRoom.dc.html": {"x": 2475, "y": 476, "w": 390, "h": 812, "title": "Chat room", "radius": 20},
+    "T1-Input.dc.html": {"x": 1525, "y": 1388, "w": 375, "h": 812, "title": "Input", "radius": 20},
+    "T1-DF-Sheet1.dc.html": {"x": 4214, "y": 657, "w": 375, "h": 306, "title": "[PTY] Ask question - App / Prefilled"},
+    "T1-DF-Sheet2.dc.html": {"x": 5164, "y": 657, "w": 375, "h": 272, "title": "[PTY] Ask question - App / Prefilled"},
+    "T1-C1-Sheet.dc.html": {"x": 2080, "y": 1667, "w": 375, "h": 208, "title": "[PTY] Ask question - App / Prefilled"},
+    "T1-C2-Sheet.dc.html": {"x": 2549, "y": 1666, "w": 375, "h": 317, "title": "Body Content"},
+    "T1-C2-Msg.dc.html": {"x": 3017, "y": 1666, "w": 390, "h": 354, "title": "Container"},
+    "T1-C3-Sheet.dc.html": {"x": 3507, "y": 1666, "w": 375, "h": 306, "title": "Body Content"},
+    "T1-C3-Msg.dc.html": {"x": 3969, "y": 1666, "w": 390, "h": 343, "title": "Container"},
+    "T1-C4-Sheet.dc.html": {"x": 4459, "y": 1666, "w": 375, "h": 206, "title": "Body Content"},
+    "T1-C4-Msg.dc.html": {"x": 4921, "y": 1666, "w": 390, "h": 243, "title": "Container"},
+    "T1-C5-Sheet.dc.html": {"x": 5411, "y": 1666, "w": 375, "h": 310, "title": "Body Content"},
+    "T1-C5-Msg.dc.html": {"x": 5903, "y": 1666, "w": 390, "h": 343, "title": "Container"},
+
+    "T2-01-AdView.dc.html": {"x": 100, "y": 2651, "w": 375, "h": 812, "title": "JOB Adview — Max content"},
+    "T2-02-Typing.dc.html": {"x": 575, "y": 2651, "w": 375, "h": 812, "title": "JOB Adview — Max content"},
+    "T2-03-Sent.dc.html": {"x": 1050, "y": 2651, "w": 375, "h": 812, "title": "JOB"},
+    "T2-04-ChatRoom.dc.html": {"x": 1525, "y": 2651, "w": 390, "h": 812, "title": "Chat room", "radius": 20},
+    "T2-Input.dc.html": {"x": 1490, "y": 3563, "w": 425, "h": 812, "title": "Input", "radius": 20},
+    "T2-SQ-1.dc.html": {"x": 3264, "y": 2832, "w": 375, "h": 180, "title": "Typing-box"},
+    "T2-SQ-2.dc.html": {"x": 3706, "y": 2832, "w": 375, "h": 220, "title": "Typing-box"},
+    "T2-SQ-3.dc.html": {"x": 4148, "y": 2832, "w": 375, "h": 216, "title": "Typing-box"},
+    "T2-C1-Sheet.dc.html": {"x": 2095, "y": 3917, "w": 375, "h": 150, "title": "Typing-box"},
+    "T2-C2-Sheet.dc.html": {"x": 2570, "y": 3917, "w": 375, "h": 234, "title": "Typing-box"},
+    "T2-C2-Msg.dc.html": {"x": 3032, "y": 3917, "w": 390, "h": 268, "title": "Container"},
+    "T2-C3-Sheet.dc.html": {"x": 3522, "y": 3917, "w": 375, "h": 222, "title": "Typing-box"},
+    "T2-C3-Msg.dc.html": {"x": 3984, "y": 3917, "w": 390, "h": 228, "title": "Container"},
+    "T2-C4-Sheet.dc.html": {"x": 4474, "y": 3917, "w": 375, "h": 150, "title": "Typing-box"},
+    "T2-C4-Msg.dc.html": {"x": 4936, "y": 3917, "w": 390, "h": 148, "title": "Container"},
+
+    "Note-T1-Main.dc.html": {"x": 509, "y": 605, "w": 296, "h": 248, "title": "Handoff guide", "radius": 12},
+    "Note-T1-DF1.dc.html": {"x": 4689, "y": 671, "w": 375, "h": 296, "title": "Handoff guide", "radius": 12},
+    "Note-T1-DF2.dc.html": {"x": 5550, "y": 793, "w": 375, "h": 104, "title": "Handoff guide", "radius": 12},
+    "Note-T1-C1.dc.html": {"x": 2080, "y": 1523, "w": 375, "h": 104, "title": "Handoff guide", "radius": 12},
+    "Note-T1-C2.dc.html": {"x": 2555, "y": 1523, "w": 852, "h": 104, "title": "Handoff guide", "radius": 12},
+    "Note-T1-C3.dc.html": {"x": 3507, "y": 1523, "w": 852, "h": 70, "title": "Handoff guide", "radius": 12},
+    "Note-T1-C4.dc.html": {"x": 4459, "y": 1523, "w": 852, "h": 104, "title": "Handoff guide", "radius": 12},
+    "Note-T1-C5.dc.html": {"x": 5411, "y": 1523, "w": 882, "h": 104, "title": "Handoff guide", "radius": 12},
+    "Note-T2-Main.dc.html": {"x": 504, "y": 3124, "w": 296, "h": 128, "title": "Handoff guide", "radius": 12},
+    "Note-T2-SQ1.dc.html": {"x": 3706, "y": 3093, "w": 375, "h": 200, "title": "Handoff guide", "radius": 12},
+    "Note-T2-SQ2.dc.html": {"x": 4148, "y": 3093, "w": 375, "h": 152, "title": "Handoff guide", "radius": 12},
+    "Note-T2-C1.dc.html": {"x": 2095, "y": 3749, "w": 375, "h": 104, "title": "Handoff guide", "radius": 12},
+    "Note-T2-C2.dc.html": {"x": 2570, "y": 3749, "w": 852, "h": 104, "title": "Handoff guide", "radius": 12},
+    "Note-T2-C3.dc.html": {"x": 3522, "y": 3749, "w": 852, "h": 104, "title": "Handoff guide", "radius": 12},
+    "Note-T2-C4.dc.html": {"x": 4474, "y": 3749, "w": 852, "h": 104, "title": "Handoff guide", "radius": 12},
+
+    "Main.dc.html": {"x": 6500, "y": 476, "w": 375, "h": 812, "title": "▶ Prototype · Treatment 1", "is_interactive": true, "radius": 40},
+    "T2-Prototype.dc.html": {"x": 6500, "y": 2651, "w": 375, "h": 812, "title": "▶ Prototype · Treatment 2", "is_interactive": true, "radius": 40},
+
+    "Screen.dc.html": {"x": 100, "y": 4700, "w": 375, "h": 812, "title": "Component · Screen"},
+    "AdView.dc.html": {"x": 575, "y": 4700, "w": 375, "h": 812, "title": "Component · AdView"},
+    "ChatRoom.dc.html": {"x": 1050, "y": 4700, "w": 390, "h": 812, "title": "Component · ChatRoom"},
+    "ChatSheet.dc.html": {"x": 1540, "y": 4700, "w": 375, "h": 360, "title": "Component · ChatSheet"},
+    "Keyboard.dc.html": {"x": 2015, "y": 4700, "w": 375, "h": 336, "title": "Component · Keyboard (iOS)"},
+    "Bubble.dc.html": {"x": 2490, "y": 4700, "w": 267, "h": 240, "title": "Component · Bubble"}
   },
   "order": [
-    "Section-T1.dc.html",
-    "Section-T2.dc.html",
-    "Main.dc.html",
-    "T1-01-AdView.dc.html",
-    "T1-02-Sheet.dc.html",
-    "T1-03-Focus.dc.html",
-    "T1-04-Typing.dc.html",
-    "T1-05-Sent.dc.html",
-    "T1-06-ChatRoom.dc.html",
-    "T1-E1-Empty.dc.html",
-    "T1-E2-Long.dc.html",
-    "T1-E2-Long-Result.dc.html",
-    "T1-E3-OnlyQ.dc.html",
-    "T1-E3-OnlyQ-Result.dc.html",
-    "T1-E4-OnlyText.dc.html",
-    "T1-E4-OnlyText-Result.dc.html",
-    "T1-E5-Uncheck.dc.html",
-    "T1-E5-Uncheck-Result.dc.html",
-    "T1-E6-AllSelected.dc.html",
-    "T1-E7-NoPhone.dc.html",
-    "T2-Prototype.dc.html",
-    "T2-01-AdView.dc.html",
-    "T2-02-Sheet.dc.html",
-    "T2-03-Focus.dc.html",
-    "T2-04-Sent.dc.html",
-    "T2-05-ChatRoom.dc.html",
-    "T2-E1-Empty.dc.html",
-    "T2-E2-Long.dc.html",
-    "T2-E2-Long-Result.dc.html",
-    "T2-E3-OnlyQ.dc.html",
-    "T2-E3-OnlyQ-Result.dc.html",
-    "T2-E4-OnlyText.dc.html",
-    "T2-E4-OnlyText-Result.dc.html",
-    "T2-E5-AddQuestion.dc.html",
-    "T2-E6-AllSelected.dc.html",
-    "T2-E7-NoPhone.dc.html",
-    "Screen.dc.html",
-    "AdView.dc.html",
-    "ChatRoom.dc.html",
-    "ChatSheet.dc.html",
-    "Keyboard.dc.html"
+    "Section-T1.dc.html", "Section-T2.dc.html",
+    "Panel-T1-DefaultForm.dc.html", "Panel-T1-Send.dc.html", "Panel-T2-Questions.dc.html", "Panel-T2-Send.dc.html",
+    "T1-01-AdView.dc.html", "T1-02-Sheet.dc.html", "T1-03-Focus.dc.html", "T1-04-Typing.dc.html", "T1-05-Sent.dc.html", "T1-06-ChatRoom.dc.html",
+    "T1-Input.dc.html", "T1-DF-Sheet1.dc.html", "T1-DF-Sheet2.dc.html",
+    "T1-C1-Sheet.dc.html", "T1-C2-Sheet.dc.html", "T1-C2-Msg.dc.html", "T1-C3-Sheet.dc.html", "T1-C3-Msg.dc.html", "T1-C4-Sheet.dc.html", "T1-C4-Msg.dc.html", "T1-C5-Sheet.dc.html", "T1-C5-Msg.dc.html",
+    "T2-01-AdView.dc.html", "T2-02-Typing.dc.html", "T2-03-Sent.dc.html", "T2-04-ChatRoom.dc.html", "T2-Input.dc.html",
+    "T2-SQ-1.dc.html", "T2-SQ-2.dc.html", "T2-SQ-3.dc.html",
+    "T2-C1-Sheet.dc.html", "T2-C2-Sheet.dc.html", "T2-C2-Msg.dc.html", "T2-C3-Sheet.dc.html", "T2-C3-Msg.dc.html", "T2-C4-Sheet.dc.html", "T2-C4-Msg.dc.html",
+    "Note-T1-Main.dc.html", "Note-T1-DF1.dc.html", "Note-T1-DF2.dc.html", "Note-T1-C1.dc.html", "Note-T1-C2.dc.html", "Note-T1-C3.dc.html", "Note-T1-C4.dc.html", "Note-T1-C5.dc.html",
+    "Note-T2-Main.dc.html", "Note-T2-SQ1.dc.html", "Note-T2-SQ2.dc.html", "Note-T2-C1.dc.html", "Note-T2-C2.dc.html", "Note-T2-C3.dc.html", "Note-T2-C4.dc.html",
+    "Main.dc.html", "T2-Prototype.dc.html",
+    "Screen.dc.html", "AdView.dc.html", "ChatRoom.dc.html", "ChatSheet.dc.html", "Keyboard.dc.html", "Bubble.dc.html"
   ],
-  "pages": [],
-  "title": "Chat Button Entry"
+  "notes": {
+    "flowAnim": {"x": 560, "y": 1300, "w": 330, "maxH": 120, "fill": "pink", "size": "s", "text": "Bottom sheet animation mở trượt từ dưới lên"},
+    "flowFocus": {"x": 955, "y": 1300, "w": 120, "maxH": 80, "fill": "pink", "size": "s", "text": "focus typing"},
+    "flowChat1": {"x": 1120, "y": 1300, "w": 620, "maxH": 80, "fill": "pink", "size": "s", "text": "Trường hợp buyer và seller đã có nhắn tin với tin đăng này → đưa thẳng qua chat room"},
+    "flowChat2": {"x": 500, "y": 3480, "w": 620, "maxH": 80, "fill": "pink", "size": "s", "text": "Trường hợp buyer và seller đã có nhắn tin với tin đăng này → đưa thẳng qua chat room"},
+    "protoTitle": {"x": 6500, "y": 180, "text": "Prototype", "kind": "title1", "maxW": 375},
+    "cmptitle": {"x": 100, "y": 4440, "text": "Components · sửa ở đây là mọi màn cập nhật theo", "kind": "title1", "maxW": 2660}
+  }
 }

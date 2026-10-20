@@ -12,49 +12,49 @@
 <link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <style>body{margin:0}</style>
 </helmet>
-<div style="width: 375px; height: 788px; overflow: hidden; font-family: 'Reddit Sans', sans-serif; color: var(--text-primary); background: var(--background-primary)">
-<dc-import name="Screen" t="{{t}}" screen="{{screen}}" toast="{{toast}}" sheet="{{sheet}}" kb="{{kb}}" sel="{{sel}}" text="{{text}}" callback="{{callback}}" has-phone="{{hasPhone}}" msgs="{{msgs}}" on-chat="{{onChat}}" on-view="{{onView}}" on-back="{{onBack}}" on-close="{{onClose}}" on-add="{{onAdd}}" on-remove="{{onRemove}}" on-text="{{onText}}" on-focus="{{onFocus}}" on-toggle-cb="{{onToggleCb}}" on-send="{{onSend}}" on-key="{{onKey}}" hint-size="375px,788px"></dc-import>
+<div style="width: 375px; height: 812px; overflow: hidden; font-family: 'Reddit Sans', sans-serif; color: var(--text-primary); background: var(--background-primary)">
+<dc-import name="Screen" mode="{{mode}}" kb="{{kb}}" toast="{{toast}}" cfg="{{cfg}}" msgs="{{msgs}}" on-chat="{{onChat}}" on-view="{{onView}}" on-back="{{onBack}}" on-close="{{onClose}}" on-key="{{onKey}}" hint-size="375px,812px"></dc-import>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"hasPhone":{"editor":"boolean","default":true,"section":"Kịch bản"},"startChatted":{"editor":"boolean","default":false,"section":"Kịch bản"},"$preview":{"width":375,"height":788}}'>
+<script type="text/x-dc" data-dc-script data-props='{"hasPhone":{"editor":"boolean","default":true,"section":"Kịch bản"},"startChatted":{"editor":"boolean","default":false,"section":"Kịch bản"},"$preview":{"width":375,"height":812}}'>
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { screen: 'ad', sheet: false, kb: false, sel: [], text: '', callback: true, toast: false, chatted: false, msgs: [] };
+    this.state = { mode: 'ad', kb: false, sel: [], text: '', callback: true, toast: false, chatted: false, msgs: [] };
   }
   renderVals() {
-    const T = 1, PHONE = '0987654321';
-    const Q = ['Có hợp đồng lao động không?', 'Có đóng bảo hiểm không?', 'Xin video/hình thực tế ạ', 'Xin vị trí cụ thể nhé ạ', 'Giờ làm thế nào ạ?', 'Có hỗ trợ chỗ ở không?'];
+    const Q = ['Có hợp đồng lao động không', 'Có đóng bảo hiểm không', 'Xin video/hình thực tế ạ', 'Xin vị trí cụ thể nhé sốp', 'Giá còn thương lượng ko ạ?'];
     const hasPhone = this.props.hasPhone ?? true;
     const s = this.state;
     const chatted = s.chatted || (this.props.startChatted ?? false);
-    const autofill = T === 2 && hasPhone ? 'Liên hệ mình qua SĐT ' + PHONE : '';
     const canSend = s.sel.length > 0 || s.text.trim().length > 0;
     const send = () => {
       if (!canSend) return;
-      const lines = [];
-      if (T === 1 && s.callback && hasPhone) lines.push('Gọi lại cho mình số ' + PHONE);
-      if (s.text.trim()) lines.push(s.text.trim());
-      this.setState({ msgs: s.msgs.concat([{ qs: s.sel.map((i) => Q[i]), text: lines.join('\n') }]), sheet: false, kb: false, toast: true, chatted: true });
+      const msg = { header: s.sel.length > 0, qs: s.sel.slice(), after: s.callback && hasPhone ? ['Gọi lại cho mình số 0987654321'] : [], text: s.text.trim() };
+      this.setState({ msgs: s.msgs.concat([msg]), mode: 'ad', kb: false, toast: true, chatted: true });
       clearTimeout(this.tt);
       this.tt = setTimeout(() => this.setState({ toast: false }), 6000);
     };
-    return {
-      t: T, screen: s.screen, toast: s.toast, sheet: s.sheet, kb: s.kb, sel: s.sel, text: s.text, callback: s.callback, hasPhone, msgs: s.msgs,
-      onChat: () => chatted ? this.setState({ screen: 'chat', toast: false }) : this.setState({ sheet: true, kb: false, sel: [0, 1, 2], text: autofill, callback: true }),
-      onView: () => this.setState({ screen: 'chat', toast: false }),
-      onBack: () => this.setState({ screen: 'ad' }),
-      onClose: () => this.setState({ sheet: false, kb: false }),
-      onAdd: (i) => this.setState({ sel: s.sel.concat([i]) }),
-      onRemove: (i) => this.setState({ sel: s.sel.filter((x) => x !== i) }),
+    const cfg = {
+      variant: 't1', selected: s.sel, suggest: Q.filter((q) => !s.sel.includes(q)), text: s.text,
+      callback: s.callback, showCb: hasPhone, focus: s.kb,
+      onAdd: (q) => this.setState({ sel: s.sel.concat([q]) }),
+      onRemove: (q) => this.setState({ sel: s.sel.filter((x) => x !== q) }),
       onText: (e) => this.setState({ text: e.target.value }),
       onFocus: () => this.setState({ kb: true }),
       onToggleCb: () => this.setState({ callback: !s.callback }),
       onSend: send,
+    };
+    return {
+      mode: s.mode, kb: s.kb, toast: s.toast, cfg, msgs: s.msgs,
+      onChat: () => chatted ? this.setState({ mode: 'chat', toast: false }) : this.setState({ mode: 'sheet', kb: false, sel: Q.slice(0, 3), text: '', callback: true, toast: false }),
+      onView: () => this.setState({ mode: 'chat', toast: false }),
+      onBack: () => this.setState({ mode: 'ad' }),
+      onClose: () => this.setState({ mode: 'ad', kb: false }),
       onKey: (k) => {
         if (k === 'return') this.setState({ kb: false });
         else if (k === '⌫') this.setState({ text: s.text.slice(0, -1) });
-        else if (k === '⇧' || k === '123') return;
+        else if (k === '⇧') return;
         else this.setState({ text: s.text + (k === 'space' ? ' ' : k) });
       },
     };

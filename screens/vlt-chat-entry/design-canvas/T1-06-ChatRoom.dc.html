@@ -12,14 +12,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <style>body{margin:0}</style>
 </helmet>
-<div style="width: 375px; height: 788px; overflow: hidden">
-<dc-import name="Screen" t="{{s.t}}" screen="{{s.screen}}" hot="{{s.hot}}" toast="{{s.toast}}" sheet="{{s.sheet}}" kb="{{s.kb}}" sel="{{s.sel}}" text="{{s.text}}" callback="{{s.callback}}" has-phone="{{s.hasPhone}}" msgs="{{s.msgs}}" hint-size="375px,788px"></dc-import>
+<div style="width: 390px; height: 812px; overflow: hidden; border-radius: var(--radius-modal)">
+<dc-import name="Screen" mode="chat" msgs="{{msgs}}" hint-size="390px,812px"></dc-import>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":375,"height":788}}'>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":812}}'>
 class Component extends DCLogic {
   renderVals() {
-    return { s: { t: 1, screen: 'chat', msgs: [{ qs: ['Có hợp đồng lao động không?', 'Có đóng bảo hiểm không?', 'Xin video/hình thực tế ạ'], text: 'Gọi lại cho mình số 0987654321\nHi bạn ơi cho mình hỏi' }] } };
+    return { msgs: [{ header: true, qs: ['Sổ chung hay riêng z ạ?', 'Có đóng bảo hiểm không', 'Xin video/hình thực tế ạ'], after: ['Gọi lại cho mình số 0987654321'], text: 'Hi bạn ơi cho mình hỏi' }] };
   }
 }
 </script>

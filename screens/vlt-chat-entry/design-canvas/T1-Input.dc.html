@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Input · Out focus / In focus</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="vlt-tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<div style="position: relative; width: 375px; height: 812px; overflow: hidden; background: var(--background-primary); border-radius: var(--radius-modal); font-family: 'Reddit Sans', sans-serif; color: var(--text-primary)">
+  <span class="t-header-annotation" style="position: absolute; left: 16px; top: 132px">Out focus</span>
+  <div style="position: absolute; left: 16px; top: 150px; width: 343px; display: flex; gap: var(--gap-small-12); align-items: center">
+    <div class="t-body-section" style="flex: 1; min-width: 0; padding: var(--padding-2x-small-6) 0; border-bottom: 1px solid var(--border-regular); color: var(--text-tertiary)">Nhập tin nhắn ...</div>
+    <span style="position: relative; width: 40px; height: 40px; flex: none; border-radius: var(--radius-pill); background: var(--background-brand); color: var(--icon-primary)">
+      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="position: absolute; left: 10px; top: 10px"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.798 5.828C0.885 3.82 2.956 1.756 4.961 2.675L20.893 9.978L21.064 10.064C22.714 10.975 22.684 13.385 21.011 14.254L20.838 14.335L4.981 21.131C2.952 22 0.933 19.883 1.898 17.898L4.681 12.172L1.798 5.828ZM3.618 5C3.472 4.677 3.806 4.345 4.128 4.493L20.06 11.795L20.113 11.824C20.344 11.976 20.34 12.323 20.105 12.469L20.051 12.497L4.193 19.292C3.866 19.432 3.541 19.091 3.697 18.772L6.686 12.624L6.729 12.522C6.815 12.279 6.804 12.01 6.697 11.773L3.618 5Z" fill="currentColor"></path><path d="M3.618 5C3.472 4.677 3.806 4.345 4.128 4.493L20.06 11.795L20.113 11.824C20.344 11.976 20.34 12.323 20.105 12.469L20.051 12.497L4.193 19.292C3.866 19.432 3.541 19.091 3.697 18.772L6.686 12.624L6.729 12.522C6.815 12.279 6.804 12.01 6.697 11.773L3.618 5Z" fill="white"></path></svg>
+    </span>
+  </div>
+  <span class="t-header-annotation" style="position: absolute; left: 16px; top: 248px">In focus</span>
+  <div style="position: absolute; left: 16px; top: 271px; width: 343px; display: flex; gap: var(--gap-small-12); align-items: center">
+    <div class="t-body-section" style="flex: 1; min-width: 0; padding: var(--padding-2x-small-6) 0; border-bottom: 1px solid var(--border-bold); color: var(--text-primary)">Hi bạn ơi cho mình hỏi|</div>
+    <span style="position: relative; width: 40px; height: 40px; flex: none; border-radius: var(--radius-pill); background: var(--background-brand); color: var(--icon-primary)">
+      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="position: absolute; left: 10px; top: 10px"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.798 5.828C0.885 3.82 2.956 1.756 4.961 2.675L20.893 9.978L21.064 10.064C22.714 10.975 22.684 13.385 21.011 14.254L20.838 14.335L4.981 21.131C2.952 22 0.933 19.883 1.898 17.898L4.681 12.172L1.798 5.828ZM3.618 5C3.472 4.677 3.806 4.345 4.128 4.493L20.06 11.795L20.113 11.824C20.344 11.976 20.34 12.323 20.105 12.469L20.051 12.497L4.193 19.292C3.866 19.432 3.541 19.091 3.697 18.772L6.686 12.624L6.729 12.522C6.815 12.279 6.804 12.01 6.697 11.773L3.618 5Z" fill="currentColor"></path><path d="M3.618 5C3.472 4.677 3.806 4.345 4.128 4.493L20.06 11.795L20.113 11.824C20.344 11.976 20.34 12.323 20.105 12.469L20.051 12.497L4.193 19.292C3.866 19.432 3.541 19.091 3.697 18.772L6.686 12.624L6.729 12.522C6.815 12.279 6.804 12.01 6.697 11.773L3.618 5Z" fill="white"></path></svg>
+    </span>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":375,"height":812}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>T2 · Phòng chat</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="vlt-tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width: 390px; height: 812px; overflow: hidden; border-radius: var(--radius-modal)">
+<dc-import name="Screen" mode="chat" msgs="{{msgs}}" hint-size="390px,812px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":812}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { msgs: [{ price: '5,3 triệu/tháng', header: false, qs: ['Có hợp đồng lao động không', 'Có hỗ trợ trả góp ko sốp?', 'Xin video/hình thực tế ạ'], after: [], text: 'Liên hệ mình qua SĐT 0987654321' }] };
+  }
+}
+</script>
+</body>
+</html>

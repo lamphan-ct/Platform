@@ -12,13 +12,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <style>body{margin:0}</style>
 </helmet>
-<div style="width: 375px; height: 788px; overflow: hidden">
-<dc-import name="Screen" t="{{s.t}}" screen="ad" sheet="{{s.sheet}}" kb="{{s.kb}}" sel="{{s.sel}}" text="{{s.text}}" callback="{{s.callback}}" has-phone="{{s.hasPhone}}" hint-size="375px,788px"></dc-import>
+<div style="width: 375px; height: 812px; overflow: hidden">
+<dc-import name="Screen" mode="sheet" cfg="{{cfg}}" hint-size="375px,812px"></dc-import>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":375,"height":788}}'>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":375,"height":812}}'>
 class Component extends DCLogic {
-  renderVals() { return { s: { t: 1, sheet: true, kb: false, sel: [0, 1, 2], text: '', callback: true, hasPhone: true } }; }
+  renderVals() { return { cfg: { variant: 't1' } }; }
 }
 </script>
 </body>

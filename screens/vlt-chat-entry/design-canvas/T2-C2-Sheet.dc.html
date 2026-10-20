@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>T2 · Question + text</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="vlt-tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width: 375px; height: 234px; overflow: hidden">
+<dc-import name="ChatSheet" cfg="{{cfg}}" hint-size="375px,234px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":375,"height":234}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { cfg: { variant: 't2', grabber: false, padTop: 12,
+      selected: ['Có hợp đồng lao động không', 'Có hỗ trợ trả góp ko sốp?', 'Có đóng bảo hiểm không', 'Xin vị trí cụ thể nhé sốp'],
+      suggest: ['Có hợp đồng lao động không', 'Xin vị trí cụ thể nhé sốp'],
+      text: 'translation and scrambled it to make dummy text for Letraset’s Body Type sheets)' } };
+  }
+}
+</script>
+</body>
+</html>

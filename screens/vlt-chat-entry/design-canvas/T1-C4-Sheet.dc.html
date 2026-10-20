@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>T1 · Only text message</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="vlt-tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width: 375px; height: 206px; overflow: hidden">
+<dc-import name="ChatSheet" cfg="{{cfg}}" hint-size="375px,206px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":375,"height":206}}'>
+class Component extends DCLogic {
+  renderVals() { return { cfg: { variant: 't1', selected: [], suggest: ['Sổ chung hay riêng z ạ?', 'Có hỗ trợ trả góp ko sốp?'], text: 'Alo bạn ơi abcxyz|', focus: true } }; }
+}
+</script>
+</body>
+</html>
