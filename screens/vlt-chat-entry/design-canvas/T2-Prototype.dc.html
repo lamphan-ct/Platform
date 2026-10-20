@@ -23,7 +23,7 @@ class Component extends DCLogic {
     this.state = { mode: 'ad', kb: false, sel: [], text: '', toast: false, chatted: false, msgs: [] };
   }
   renderVals() {
-    const Q = ['Có hợp đồng lao động không', 'Có đóng bảo hiểm không', 'Xin video/hình thực tế ạ', 'Sổ chung hay riêng z ạ?', 'Có hỗ trợ trả góp ko sốp?', 'Xin vị trí cụ thể nhé sốp', 'Giá còn thương lượng ko ạ?'];
+    const Q = ['Có hợp đồng lao động không', 'Có đóng bảo hiểm không', 'Xin video/hình thực tế ạ', 'Xin vị trí cụ thể nhé sốp', 'Giá còn thương lượng ko ạ?'];
     const hasPhone = this.props.hasPhone ?? true;
     const s = this.state;
     const chatted = s.chatted || (this.props.startChatted ?? false);
@@ -31,7 +31,7 @@ class Component extends DCLogic {
     const canSend = s.sel.length > 0 || text.length > 0;
     const send = () => {
       if (!canSend) return;
-      const msg = { header: s.sel.length > 0 && !text, qs: s.sel.slice(), after: [], text };
+      const msg = { header: s.sel.length > 0, qs: s.sel.slice(), after: [], text };
       this.setState({ msgs: s.msgs.concat([msg]), mode: 'ad', kb: false, toast: true, chatted: true });
       clearTimeout(this.tt);
       this.tt = setTimeout(() => this.setState({ toast: false }), 6000);

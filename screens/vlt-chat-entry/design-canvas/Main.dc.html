@@ -30,7 +30,7 @@ class Component extends DCLogic {
     const canSend = s.sel.length > 0 || s.text.trim().length > 0;
     const send = () => {
       if (!canSend) return;
-      const msg = { header: s.sel.length > 0, qs: s.sel.slice(), after: s.callback && hasPhone ? ['Gọi lại cho mình số 0987654321'] : [], text: s.text.trim() };
+      const msg = { header: s.sel.length > 0, qs: s.sel.slice(), after: s.callback && hasPhone ? ['Gọi lại cho tôi qua SĐT 0987654321'] : [], text: s.text.trim() };
       this.setState({ msgs: s.msgs.concat([msg]), mode: 'ad', kb: false, toast: true, chatted: true });
       clearTimeout(this.tt);
       this.tt = setTimeout(() => this.setState({ toast: false }), 6000);

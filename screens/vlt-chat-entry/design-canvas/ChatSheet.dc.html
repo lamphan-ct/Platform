@@ -85,7 +85,7 @@
             <svg width="16" height="16" viewBox="0 0 24 24" style="position: absolute; left: 4px; top: 4px; color: var(--icon-on-background)"><path fill-rule="evenodd" clip-rule="evenodd" d="M18.395 6.575C18.953 7.237 18.84 8.203 18.142 8.732C16.976 9.615 15.753 11.141 14.658 12.81C13.582 14.449 12.712 16.096 12.224 17.104C11.974 17.622 11.442 17.966 10.841 17.997C10.241 18.029 9.672 17.743 9.363 17.255C9.039 16.744 8.42 16.031 7.709 15.325C7.001 14.623 6.314 14.04 5.917 13.766C5.193 13.267 5.033 12.308 5.559 11.622C6.086 10.937 7.099 10.785 7.822 11.284C8.442 11.711 9.28 12.44 10.051 13.205C10.181 13.334 10.313 13.467 10.444 13.603C10.869 12.845 11.362 12.018 11.906 11.189C13.052 9.444 14.51 7.554 16.118 6.336C16.816 5.806 17.836 5.914 18.395 6.575Z" fill="currentColor"></path></svg>
           </sc-if>
         </span>
-        <span>Gọi lại cho tôi qua SĐT 0987654321</span>
+        <span>Gọi lại cho tôi qua SĐT 0987654321 để tư vấn thêm.</span>
       </label>
     </sc-if>
 
@@ -110,7 +110,7 @@
             <svg width="16" height="16" viewBox="0 0 24 24" style="position: absolute; left: 4px; top: 4px; color: var(--icon-on-background)"><path fill-rule="evenodd" clip-rule="evenodd" d="M18.395 6.575C18.953 7.237 18.84 8.203 18.142 8.732C16.976 9.615 15.753 11.141 14.658 12.81C13.582 14.449 12.712 16.096 12.224 17.104C11.974 17.622 11.442 17.966 10.841 17.997C10.241 18.029 9.672 17.743 9.363 17.255C9.039 16.744 8.42 16.031 7.709 15.325C7.001 14.623 6.314 14.04 5.917 13.766C5.193 13.267 5.033 12.308 5.559 11.622C6.086 10.937 7.099 10.785 7.822 11.284C8.442 11.711 9.28 12.44 10.051 13.205C10.181 13.334 10.313 13.467 10.444 13.603C10.869 12.845 11.362 12.018 11.906 11.189C13.052 9.444 14.51 7.554 16.118 6.336C16.816 5.806 17.836 5.914 18.395 6.575Z" fill="currentColor"></path></svg>
           </sc-if>
         </span>
-        <span>Gọi lại cho tôi qua SĐT 0987654321</span>
+        <span>Gọi lại cho tôi qua SĐT 0987654321 để tư vấn thêm.</span>
       </label>
     </sc-if>
   </div>
@@ -149,13 +149,13 @@ class Component extends DCLogic {
       padTop: c.padTop ?? (variant === 'select' ? 12 : 8),
       padBottom: c.padBottom ?? (t1 ? 16 : 12),
       price: c.price || '8.000.000 đ - 9.000.000 đ/tháng',
-      showLabel: (c.label ?? t1) && selected.length > 0,
+      showLabel: (c.label ?? true) && selected.length > 0,
       hasSel: selected.length > 0,
       selRows,
       hasSug: suggest.length > 0,
       sugLabel: c.sugLabel || 'Hỏi thêm:',
       sugItems: suggest.map((label) => ({ label, add: () => c.onAdd && c.onAdd(label) })),
-      text, placeholder: c.placeholder || (t1 ? 'Nhập tin nhắn...' : 'Nhập tin nhắn ...'),
+      text, placeholder: c.placeholder || 'Nhập tin nhắn…',
       taH: twoLines ? 40 : 20,
       inputPy: twoLines || !t1 ? 6 : 10,
       rowPb: 0,

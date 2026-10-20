@@ -35,14 +35,14 @@
             </sc-for>
           </ul>
         </sc-if>
-        <sc-for list="{{after}}" as="line" hint-placeholder-count="1">
-          <p style="margin: 0">{{line}}</p>
-        </sc-for>
       </div>
     </sc-if>
     <sc-if value="{{hasText}}" hint-placeholder-val="{{true}}">
       <p class="t-tagline-caption" style="margin: 0; color: var(--text-primary); white-space: pre-line; word-break: break-word">{{text}}</p>
     </sc-if>
+    <sc-for list="{{after}}" as="line" hint-placeholder-count="1">
+      <p class="t-tagline-caption" style="margin: 0; color: var(--text-primary)">{{line}}</p>
+    </sc-for>
   </div>
   <div class="t-body-annotation" style="display: flex; gap: var(--gap-2x-small-4); align-items: center; color: var(--text-tertiary)">
     <span>14:23</span>
@@ -55,7 +55,7 @@
 <script type="text/x-dc" data-dc-script data-props='{"msg":{"editor":null},"$preview":{"width":267,"height":240}}'>
 class Component extends DCLogic {
   renderVals() {
-    const m = this.props.msg || { header: true, qs: ['Sổ chung hay riêng z ạ?', 'Có đóng bảo hiểm không', 'Xin video/hình thực tế ạ'], after: ['Gọi lại cho mình số 0987654321'], text: 'Hi bạn ơi cho mình hỏi' };
+    const m = this.props.msg || { header: true, qs: ['Sổ chung hay riêng z ạ?', 'Có đóng bảo hiểm không', 'Xin video/hình thực tế ạ'], after: ['Gọi lại cho tôi qua SĐT 0987654321'], text: 'Hi bạn ơi cho mình hỏi' };
     const qs = m.qs || [], after = m.after || [];
     const yellow = m.tone === 'yellow';
     return {
@@ -63,7 +63,7 @@ class Component extends DCLogic {
       accent: yellow ? 'var(--background-chotot)' : 'var(--border-active)',
       price: m.price || '8.000.000 đ - 9.000.000 đ/tháng',
       header: !!m.header, mark: m.markHeader ? '2px solid var(--border-active)' : 'none', qs, hasQs: qs.length > 0, after,
-      hasBlock: !!m.header || qs.length > 0 || after.length > 0,
+      hasBlock: !!m.header || qs.length > 0,
       text: m.text || '', hasText: !!m.text,
     };
   }
