@@ -41,12 +41,16 @@
     <sc-if value="{{hasSel}}" hint-placeholder-val="{{true}}">
       <div style="position: relative; margin-right: -16px">
       <div class="no-scrollbar" style="overflow-x: auto">
-      <div style="width: {{chipsW}}px; display: flex; flex-wrap: wrap; gap: var(--gap-x-small-8)">
-        <sc-for list="{{selItems}}" as="q" hint-placeholder-count="3">
-          <button class="t-header-annotation h-chip" onClick="{{q.remove}}" aria-label="Bỏ câu hỏi {{q.label}}" style="height: 28px; box-sizing: border-box; padding: 3px 10px; display: inline-flex; align-items: center; justify-content: center; gap: 3px; border-radius: var(--radius-pill); border: 1px solid var(--border-bold); background: var(--background-secondary); color: var(--text-primary); white-space: nowrap">
+      <div style="width: max-content; padding-right: {{chipsPr}}px; display: flex; flex-direction: column; gap: var(--gap-x-small-8)">
+        <sc-for list="{{selRows}}" as="row" hint-placeholder-count="2">
+        <div style="display: flex; flex-wrap: nowrap; gap: var(--gap-x-small-8)">
+        <sc-for list="{{row.items}}" as="q" hint-placeholder-count="2">
+          <button class="t-header-annotation h-chip" onClick="{{q.remove}}" aria-label="Bỏ câu hỏi {{q.label}}" style="height: 28px; box-sizing: border-box; padding: 3px 10px; display: inline-flex; align-items: center; justify-content: center; gap: 3px; border-radius: var(--radius-pill); border: 1px solid var(--border-bold); background: var(--background-secondary); color: var(--text-primary); flex: none; white-space: nowrap">
             {{q.label}}
             <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="flex: none; color: var(--icon-primary)"><path d="M15.292 7.293C15.683 6.902 16.316 6.902 16.707 7.293C17.097 7.683 17.097 8.316 16.707 8.707L13.414 12L16.707 15.293L16.775 15.369C17.095 15.762 17.073 16.341 16.707 16.707C16.34 17.073 15.761 17.095 15.369 16.775L15.292 16.707L11.999 13.414L8.706 16.707C8.316 17.097 7.683 17.097 7.292 16.707C6.902 16.316 6.902 15.683 7.292 15.293L10.585 12L7.292 8.707L7.224 8.63C6.904 8.238 6.926 7.659 7.292 7.293C7.659 6.926 8.238 6.904 8.63 7.224L8.706 7.293L11.999 10.586L15.292 7.293Z" fill="currentColor"></path></svg>
           </button>
+        </sc-for>
+        </div>
         </sc-for>
       </div>
       </div>
@@ -131,7 +135,13 @@ class Component extends DCLogic {
     const disabled = selected.length === 0 && text.replace('|', '').trim().length === 0;
     const noop = () => {};
     const twoLines = text.length > 44;
-    const chipsW = c.chipsWidth ?? (t1 ? 359 : 534);
+    // Rule: mỗi hàng 2 chip, hàng dài hơn khung thì scroll ngang
+    const selItems = selected.map((label) => ({ label, remove: () => c.onRemove && c.onRemove(label) }));
+    const selRows = [];
+    for (let i = 0; i < selItems.length; i += 2) selRows.push({ items: selItems.slice(i, i + 2) });
+    const chipW = (label) => label.length * 6.6 + 39;
+    const rowW = Math.max(0, ...selRows.map((r) => r.items.reduce((w, q) => w + chipW(q.label), 0) + (r.items.length - 1) * 8));
+    const chipsFade = rowW > 359;
     return {
       shadow: t1 ? '0 4px 16px rgba(34,34,34,.12)' : '0 -2px 8px rgba(89,89,89,.12)',
       grabber: c.grabber ?? variant !== 'select',
@@ -141,7 +151,7 @@ class Component extends DCLogic {
       price: c.price || '8.000.000 đ - 9.000.000 đ/tháng',
       showLabel: (c.label ?? t1) && selected.length > 0,
       hasSel: selected.length > 0,
-      selItems: selected.map((label) => ({ label, remove: () => c.onRemove && c.onRemove(label) })),
+      selRows,
       hasSug: suggest.length > 0,
       sugLabel: c.sugLabel || 'Hỏi thêm:',
       sugItems: suggest.map((label) => ({ label, add: () => c.onAdd && c.onAdd(label) })),
@@ -149,7 +159,7 @@ class Component extends DCLogic {
       taH: twoLines ? 40 : 20,
       inputPy: twoLines || !t1 ? 6 : 10,
       rowPb: 0,
-      chipsW, chipsFade: chipsW > 359,
+      chipsFade, chipsPr: chipsFade ? 40 : 16,
       lineColor: c.focus || c.kb ? 'var(--border-bold)' : (t1 ? 'var(--border-thin)' : 'var(--border-regular)'),
       disabled, enabled: !disabled, yes: true,
       callback,
