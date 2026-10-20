@@ -1,104 +1,579 @@
 {
   "v": 3,
   "attachments": {},
-  "createdOnFiles": {"at": "2026-10-20T09:00:00Z", "v": 1},
-  "title": "Chat Button Entry",
-  "launch": {"view": "canvas"},
-  "pages": [],
-  "designSystems": [
-    {"artifact": "https://claude.ai/artifact/K1LB4qPBwcCWTVgS2JrKi1", "copiedAt": "2026-10-20T09:00:00Z", "namespace": "chotot-platform", "title": "Chợ Tốt Design System (Platform)", "version": "1791969465-0230"}
-  ],
   "boards": {
-    "Section-T1.dc.html": {"x": 0, "y": 0, "w": 4213, "h": 2516, "title": "Treatment 1", "radius": 20},
-    "Panel-T1-Flow.dc.html": {"x": 80, "y": 172, "w": 4053, "h": 1036, "title": "T1 · Flow chính", "radius": 20},
-    "Panel-T1-DefaultForm.dc.html": {"x": 80, "y": 1288, "w": 4053, "h": 446, "title": "T1 · Quy tắc & trạng thái", "radius": 20},
-    "Panel-T1-Send.dc.html": {"x": 80, "y": 1814, "w": 4053, "h": 622, "title": "T1 · Edge cases", "radius": 20},
-
-    "T1-01-AdView.dc.html": {"x": 120, "y": 272, "w": 375, "h": 812, "title": "1 · Chi tiết tin → tap Chat"},
-    "T1-02-Sheet.dc.html": {"x": 575, "y": 272, "w": 375, "h": 812, "title": "2 · Sheet mặc định"},
-    "T1-03-Focus.dc.html": {"x": 1030, "y": 272, "w": 375, "h": 812, "title": "3 · Focus ô nhập"},
-    "T1-04-Typing.dc.html": {"x": 1485, "y": 272, "w": 375, "h": 812, "title": "4 · Đang nhập"},
-    "T1-05-Sent.dc.html": {"x": 1940, "y": 272, "w": 375, "h": 812, "title": "5 · Gửi thành công"},
-    "T1-06-ChatRoom.dc.html": {"x": 2395, "y": 272, "w": 390, "h": 812, "title": "6 · Phòng chat (theme Chợ Tốt)", "radius": 20},
-    "Main.dc.html": {"x": 2905, "y": 272, "w": 375, "h": 812, "title": "▶ Prototype · Treatment 1", "is_interactive": true, "radius": 40},
-
-    "Note-T1-Main.dc.html": {"x": 120, "y": 1388, "w": 296, "h": 248, "title": "Note", "radius": 12},
-    "T1-Input.dc.html": {"x": 456, "y": 1388, "w": 375, "h": 212, "title": "Ô nhập · Out focus / In focus", "radius": 20},
-    "T1-DF-Sheet1.dc.html": {"x": 871, "y": 1388, "w": 375, "h": 306, "title": "Default form"},
-    "Note-T1-DF1.dc.html": {"x": 1286, "y": 1388, "w": 375, "h": 296, "title": "Note · Remove question", "radius": 12},
-    "T1-DF-Sheet2.dc.html": {"x": 1701, "y": 1388, "w": 375, "h": 272, "title": "Default form · chọn hết gợi ý"},
-    "Note-T1-DF2.dc.html": {"x": 2116, "y": 1388, "w": 375, "h": 104, "title": "Note · Ẩn gợi ý", "radius": 12},
-
-    "Note-T1-C1.dc.html": {"x": 120, "y": 1914, "w": 375, "h": 104, "title": "Case 1", "radius": 12},
-    "T1-C1-Sheet.dc.html": {"x": 120, "y": 2042, "w": 375, "h": 208, "title": "Sheet"},
-    "Note-T1-C2.dc.html": {"x": 535, "y": 1914, "w": 852, "h": 104, "title": "Case 2", "radius": 12},
-    "T1-C2-Sheet.dc.html": {"x": 535, "y": 2042, "w": 375, "h": 317, "title": "Sheet"},
-    "T1-C2-Msg.dc.html": {"x": 950, "y": 2042, "w": 390, "h": 354, "title": "Tin đã gửi"},
-    "Note-T1-C3.dc.html": {"x": 1427, "y": 1914, "w": 852, "h": 70, "title": "Case 3", "radius": 12},
-    "T1-C3-Sheet.dc.html": {"x": 1427, "y": 2042, "w": 375, "h": 306, "title": "Sheet"},
-    "T1-C3-Msg.dc.html": {"x": 1842, "y": 2042, "w": 390, "h": 343, "title": "Tin đã gửi"},
-    "Note-T1-C4.dc.html": {"x": 2319, "y": 1914, "w": 852, "h": 104, "title": "Case 4", "radius": 12},
-    "T1-C4-Sheet.dc.html": {"x": 2319, "y": 2042, "w": 375, "h": 206, "title": "Sheet"},
-    "T1-C4-Msg.dc.html": {"x": 2734, "y": 2042, "w": 390, "h": 243, "title": "Tin đã gửi"},
-    "Note-T1-C5.dc.html": {"x": 3211, "y": 1914, "w": 882, "h": 104, "title": "Case 5", "radius": 12},
-    "T1-C5-Sheet.dc.html": {"x": 3211, "y": 2042, "w": 375, "h": 310, "title": "Sheet"},
-    "T1-C5-Msg.dc.html": {"x": 3626, "y": 2042, "w": 390, "h": 343, "title": "Tin đã gửi"},
-
-    "Section-T2.dc.html": {"x": 0, "y": 2716, "w": 4213, "h": 2344, "title": "Treatment 2", "radius": 20},
-    "Panel-T2-Flow.dc.html": {"x": 80, "y": 2888, "w": 4053, "h": 1036, "title": "T2 · Flow chính", "radius": 20},
-    "Panel-T2-Questions.dc.html": {"x": 80, "y": 4004, "w": 4053, "h": 360, "title": "T2 · Quy tắc & trạng thái", "radius": 20},
-    "Panel-T2-Send.dc.html": {"x": 80, "y": 4444, "w": 4053, "h": 536, "title": "T2 · Edge cases", "radius": 20},
-
-    "T2-01-AdView.dc.html": {"x": 120, "y": 2988, "w": 375, "h": 812, "title": "1 · Chi tiết tin → tap Chat"},
-    "T2-02-Typing.dc.html": {"x": 575, "y": 2988, "w": 375, "h": 812, "title": "2 · Sheet tự điền SĐT, đang nhập"},
-    "T2-03-Sent.dc.html": {"x": 1030, "y": 2988, "w": 375, "h": 812, "title": "3 · Gửi thành công"},
-    "T2-04-ChatRoom.dc.html": {"x": 1485, "y": 2988, "w": 390, "h": 812, "title": "4 · Phòng chat (theme Chợ Tốt)", "radius": 20},
-    "T2-Prototype.dc.html": {"x": 1995, "y": 2988, "w": 375, "h": 812, "title": "▶ Prototype · Treatment 2", "is_interactive": true, "radius": 40},
-
-    "Note-T2-Main.dc.html": {"x": 120, "y": 4104, "w": 296, "h": 128, "title": "Note", "radius": 12},
-    "T2-Input.dc.html": {"x": 456, "y": 4104, "w": 375, "h": 212, "title": "Ô nhập · Out focus / In focus", "radius": 20},
-    "T2-SQ-1.dc.html": {"x": 871, "y": 4104, "w": 375, "h": 180, "title": "Select question · 1"},
-    "T2-SQ-2.dc.html": {"x": 1286, "y": 4104, "w": 375, "h": 220, "title": "Select question · 2"},
-    "Note-T2-SQ1.dc.html": {"x": 1701, "y": 4104, "w": 375, "h": 200, "title": "Note · Chọn câu hỏi", "radius": 12},
-    "T2-SQ-3.dc.html": {"x": 2116, "y": 4104, "w": 375, "h": 216, "title": "Select question · 3"},
-    "Note-T2-SQ2.dc.html": {"x": 2531, "y": 4104, "w": 375, "h": 152, "title": "Note · Ẩn gợi ý", "radius": 12},
-
-    "Note-T2-C1.dc.html": {"x": 120, "y": 4544, "w": 375, "h": 104, "title": "Case 1", "radius": 12},
-    "T2-C1-Sheet.dc.html": {"x": 120, "y": 4672, "w": 375, "h": 150, "title": "Sheet"},
-    "Note-T2-C2.dc.html": {"x": 535, "y": 4544, "w": 852, "h": 104, "title": "Case 2", "radius": 12},
-    "T2-C2-Sheet.dc.html": {"x": 535, "y": 4672, "w": 375, "h": 234, "title": "Sheet"},
-    "T2-C2-Msg.dc.html": {"x": 950, "y": 4672, "w": 390, "h": 268, "title": "Tin đã gửi"},
-    "Note-T2-C3.dc.html": {"x": 1427, "y": 4544, "w": 852, "h": 104, "title": "Case 3", "radius": 12},
-    "T2-C3-Sheet.dc.html": {"x": 1427, "y": 4672, "w": 375, "h": 222, "title": "Sheet"},
-    "T2-C3-Msg.dc.html": {"x": 1842, "y": 4672, "w": 390, "h": 228, "title": "Tin đã gửi"},
-    "Note-T2-C4.dc.html": {"x": 2319, "y": 4544, "w": 852, "h": 104, "title": "Case 4", "radius": 12},
-    "T2-C4-Sheet.dc.html": {"x": 2319, "y": 4672, "w": 375, "h": 150, "title": "Sheet"},
-    "T2-C4-Msg.dc.html": {"x": 2734, "y": 4672, "w": 390, "h": 148, "title": "Tin đã gửi"},
-
-    "Screen.dc.html": {"x": 120, "y": 5440, "w": 375, "h": 812, "title": "Component · Screen"},
-    "AdView.dc.html": {"x": 575, "y": 5440, "w": 375, "h": 812, "title": "Component · AdView"},
-    "ChatRoom.dc.html": {"x": 1030, "y": 5440, "w": 390, "h": 812, "title": "Component · ChatRoom (Chợ Tốt)"},
-    "ChatSheet.dc.html": {"x": 1500, "y": 5440, "w": 375, "h": 360, "title": "Component · ChatSheet"},
-    "Keyboard.dc.html": {"x": 1955, "y": 5440, "w": 375, "h": 336, "title": "Component · Keyboard (iOS)"},
-    "Bubble.dc.html": {"x": 2410, "y": 5440, "w": 267, "h": 240, "title": "Component · Bubble"}
+    "AdView.dc.html": {
+      "h": 812,
+      "title": "Component · AdView",
+      "w": 375,
+      "x": 575,
+      "y": 5440
+    },
+    "Bubble.dc.html": {
+      "h": 240,
+      "title": "Component · Bubble",
+      "w": 267,
+      "x": 2410,
+      "y": 5440
+    },
+    "ChatRoom.dc.html": {
+      "h": 812,
+      "title": "Component · ChatRoom (Chợ Tốt)",
+      "w": 390,
+      "x": 1030,
+      "y": 5440
+    },
+    "ChatSheet.dc.html": {
+      "h": 360,
+      "title": "Component · ChatSheet",
+      "w": 375,
+      "x": 1500,
+      "y": 5440
+    },
+    "Keyboard.dc.html": {
+      "h": 336,
+      "title": "Component · Keyboard (iOS)",
+      "w": 375,
+      "x": 1955,
+      "y": 5440
+    },
+    "Main.dc.html": {
+      "h": 812,
+      "is_interactive": true,
+      "radius": 40,
+      "title": "▶ Prototype · Treatment 1",
+      "w": 375,
+      "x": 2905,
+      "y": 272
+    },
+    "Note-T1-C1.dc.html": {
+      "h": 104,
+      "radius": 12,
+      "title": "Case 1",
+      "w": 375,
+      "x": 120,
+      "y": 1914
+    },
+    "Note-T1-C2.dc.html": {
+      "h": 104,
+      "radius": 12,
+      "title": "Case 2",
+      "w": 852,
+      "x": 535,
+      "y": 1914
+    },
+    "Note-T1-C3.dc.html": {
+      "h": 70,
+      "radius": 12,
+      "title": "Case 3",
+      "w": 852,
+      "x": 1427,
+      "y": 1914
+    },
+    "Note-T1-C4.dc.html": {
+      "h": 104,
+      "radius": 12,
+      "title": "Case 4",
+      "w": 852,
+      "x": 2319,
+      "y": 1914
+    },
+    "Note-T1-C5.dc.html": {
+      "h": 104,
+      "radius": 12,
+      "title": "Case 5",
+      "w": 882,
+      "x": 3211,
+      "y": 1914
+    },
+    "Note-T1-DF1.dc.html": {
+      "h": 296,
+      "radius": 12,
+      "title": "Note · Remove question",
+      "w": 375,
+      "x": 1286,
+      "y": 1388
+    },
+    "Note-T1-DF2.dc.html": {
+      "h": 104,
+      "radius": 12,
+      "title": "Note · Ẩn gợi ý",
+      "w": 375,
+      "x": 2116,
+      "y": 1388
+    },
+    "Note-T1-Main.dc.html": {
+      "h": 248,
+      "radius": 12,
+      "title": "Note",
+      "w": 296,
+      "x": 120,
+      "y": 1388
+    },
+    "Note-T2-C1.dc.html": {
+      "h": 104,
+      "radius": 12,
+      "title": "Case 1",
+      "w": 375,
+      "x": 120,
+      "y": 4544
+    },
+    "Note-T2-C2.dc.html": {
+      "h": 104,
+      "radius": 12,
+      "title": "Case 2",
+      "w": 852,
+      "x": 535,
+      "y": 4544
+    },
+    "Note-T2-C3.dc.html": {
+      "h": 104,
+      "radius": 12,
+      "title": "Case 3",
+      "w": 852,
+      "x": 1427,
+      "y": 4544
+    },
+    "Note-T2-C4.dc.html": {
+      "h": 104,
+      "radius": 12,
+      "title": "Case 4",
+      "w": 852,
+      "x": 2319,
+      "y": 4544
+    },
+    "Note-T2-Main.dc.html": {
+      "h": 128,
+      "radius": 12,
+      "title": "Note",
+      "w": 296,
+      "x": 120,
+      "y": 4104
+    },
+    "Note-T2-SQ1.dc.html": {
+      "h": 200,
+      "radius": 12,
+      "title": "Note · Chọn câu hỏi",
+      "w": 375,
+      "x": 1701,
+      "y": 4104
+    },
+    "Note-T2-SQ2.dc.html": {
+      "h": 152,
+      "radius": 12,
+      "title": "Note · Ẩn gợi ý",
+      "w": 375,
+      "x": 2531,
+      "y": 4104
+    },
+    "Panel-T1-DefaultForm.dc.html": {
+      "h": 446,
+      "radius": 20,
+      "title": "T1 · Quy tắc & trạng thái",
+      "w": 4053,
+      "x": 80,
+      "y": 1288
+    },
+    "Panel-T1-Flow.dc.html": {
+      "h": 1036,
+      "radius": 20,
+      "title": "T1 · Flow chính",
+      "w": 4053,
+      "x": 80,
+      "y": 172
+    },
+    "Panel-T1-Send.dc.html": {
+      "h": 622,
+      "radius": 20,
+      "title": "T1 · Edge cases",
+      "w": 4053,
+      "x": 80,
+      "y": 1814
+    },
+    "Panel-T2-Flow.dc.html": {
+      "h": 1036,
+      "radius": 20,
+      "title": "T2 · Flow chính",
+      "w": 4053,
+      "x": 80,
+      "y": 2888
+    },
+    "Panel-T2-Questions.dc.html": {
+      "h": 360,
+      "radius": 20,
+      "title": "T2 · Quy tắc & trạng thái",
+      "w": 4053,
+      "x": 80,
+      "y": 4004
+    },
+    "Panel-T2-Send.dc.html": {
+      "h": 536,
+      "radius": 20,
+      "title": "T2 · Edge cases",
+      "w": 4053,
+      "x": 80,
+      "y": 4444
+    },
+    "Screen.dc.html": {
+      "h": 812,
+      "title": "Component · Screen",
+      "w": 375,
+      "x": 120,
+      "y": 5440
+    },
+    "Section-T1.dc.html": {
+      "h": 2516,
+      "radius": 20,
+      "title": "Treatment 1",
+      "w": 4213,
+      "x": 0,
+      "y": 0
+    },
+    "Section-T2.dc.html": {
+      "h": 2344,
+      "radius": 20,
+      "title": "Treatment 2",
+      "w": 4213,
+      "x": 0,
+      "y": 2716
+    },
+    "T1-01-AdView.dc.html": {
+      "h": 812,
+      "title": "1 · Chi tiết tin → tap Chat",
+      "w": 375,
+      "x": 120,
+      "y": 272
+    },
+    "T1-02-Sheet.dc.html": {
+      "h": 812,
+      "title": "2 · Sheet mặc định",
+      "w": 375,
+      "x": 575,
+      "y": 272
+    },
+    "T1-03-Focus.dc.html": {
+      "h": 812,
+      "title": "3 · Focus ô nhập",
+      "w": 375,
+      "x": 1030,
+      "y": 272
+    },
+    "T1-04-Typing.dc.html": {
+      "h": 812,
+      "title": "4 · Đang nhập",
+      "w": 375,
+      "x": 1485,
+      "y": 272
+    },
+    "T1-05-Sent.dc.html": {
+      "h": 812,
+      "title": "5 · Gửi thành công",
+      "w": 375,
+      "x": 1940,
+      "y": 272
+    },
+    "T1-06-ChatRoom.dc.html": {
+      "h": 812,
+      "radius": 20,
+      "title": "6 · Phòng chat (theme Chợ Tốt)",
+      "w": 390,
+      "x": 2395,
+      "y": 272
+    },
+    "T1-C1-Sheet.dc.html": {
+      "h": 208,
+      "title": "Sheet",
+      "w": 375,
+      "x": 120,
+      "y": 2042
+    },
+    "T1-C2-Msg.dc.html": {
+      "h": 354,
+      "title": "Tin đã gửi",
+      "w": 390,
+      "x": 950,
+      "y": 2042
+    },
+    "T1-C2-Sheet.dc.html": {
+      "h": 317,
+      "title": "Sheet",
+      "w": 375,
+      "x": 535,
+      "y": 2042
+    },
+    "T1-C3-Msg.dc.html": {
+      "h": 343,
+      "title": "Tin đã gửi",
+      "w": 390,
+      "x": 1842,
+      "y": 2042
+    },
+    "T1-C3-Sheet.dc.html": {
+      "h": 306,
+      "title": "Sheet",
+      "w": 375,
+      "x": 1427,
+      "y": 2042
+    },
+    "T1-C4-Msg.dc.html": {
+      "h": 243,
+      "title": "Tin đã gửi",
+      "w": 390,
+      "x": 2734,
+      "y": 2042
+    },
+    "T1-C4-Sheet.dc.html": {
+      "h": 206,
+      "title": "Sheet",
+      "w": 375,
+      "x": 2319,
+      "y": 2042
+    },
+    "T1-C5-Msg.dc.html": {
+      "h": 343,
+      "title": "Tin đã gửi",
+      "w": 390,
+      "x": 3626,
+      "y": 2042
+    },
+    "T1-C5-Sheet.dc.html": {
+      "h": 310,
+      "title": "Sheet",
+      "w": 375,
+      "x": 3211,
+      "y": 2042
+    },
+    "T1-DF-Sheet1.dc.html": {
+      "h": 306,
+      "title": "Default form",
+      "w": 375,
+      "x": 871,
+      "y": 1388
+    },
+    "T1-DF-Sheet2.dc.html": {
+      "h": 272,
+      "title": "Default form · chọn hết gợi ý",
+      "w": 375,
+      "x": 1701,
+      "y": 1388
+    },
+    "T1-Input.dc.html": {
+      "h": 212,
+      "radius": 20,
+      "title": "Ô nhập · Out focus / In focus",
+      "w": 375,
+      "x": 456,
+      "y": 1388
+    },
+    "T2-01-AdView.dc.html": {
+      "h": 812,
+      "title": "1 · Chi tiết tin → tap Chat",
+      "w": 375,
+      "x": 120,
+      "y": 2988
+    },
+    "T2-02-Typing.dc.html": {
+      "h": 812,
+      "title": "2 · Sheet tự điền SĐT, đang nhập",
+      "w": 375,
+      "x": 575,
+      "y": 2988
+    },
+    "T2-03-Sent.dc.html": {
+      "h": 812,
+      "title": "3 · Gửi thành công",
+      "w": 375,
+      "x": 1030,
+      "y": 2988
+    },
+    "T2-04-ChatRoom.dc.html": {
+      "h": 812,
+      "radius": 20,
+      "title": "4 · Phòng chat (theme Chợ Tốt)",
+      "w": 390,
+      "x": 1485,
+      "y": 2988
+    },
+    "T2-C1-Sheet.dc.html": {
+      "h": 158,
+      "title": "Sheet",
+      "w": 375,
+      "x": 120,
+      "y": 4672
+    },
+    "T2-C2-Msg.dc.html": {
+      "h": 268,
+      "title": "Tin đã gửi",
+      "w": 390,
+      "x": 950,
+      "y": 4672
+    },
+    "T2-C2-Sheet.dc.html": {
+      "h": 242,
+      "title": "Sheet",
+      "w": 375,
+      "x": 535,
+      "y": 4672
+    },
+    "T2-C3-Msg.dc.html": {
+      "h": 228,
+      "title": "Tin đã gửi",
+      "w": 390,
+      "x": 1842,
+      "y": 4672
+    },
+    "T2-C3-Sheet.dc.html": {
+      "h": 230,
+      "title": "Sheet",
+      "w": 375,
+      "x": 1427,
+      "y": 4672
+    },
+    "T2-C4-Msg.dc.html": {
+      "h": 148,
+      "title": "Tin đã gửi",
+      "w": 390,
+      "x": 2734,
+      "y": 4672
+    },
+    "T2-C4-Sheet.dc.html": {
+      "h": 158,
+      "title": "Sheet",
+      "w": 375,
+      "x": 2319,
+      "y": 4672
+    },
+    "T2-Input.dc.html": {
+      "h": 212,
+      "radius": 20,
+      "title": "Ô nhập · Out focus / In focus",
+      "w": 375,
+      "x": 456,
+      "y": 4104
+    },
+    "T2-Prototype.dc.html": {
+      "h": 812,
+      "is_interactive": true,
+      "radius": 40,
+      "title": "▶ Prototype · Treatment 2",
+      "w": 375,
+      "x": 1995,
+      "y": 2988
+    },
+    "T2-SQ-1.dc.html": {
+      "h": 180,
+      "title": "Select question · 1",
+      "w": 375,
+      "x": 871,
+      "y": 4104
+    },
+    "T2-SQ-2.dc.html": {
+      "h": 220,
+      "title": "Select question · 2",
+      "w": 375,
+      "x": 1286,
+      "y": 4104
+    },
+    "T2-SQ-3.dc.html": {
+      "h": 216,
+      "title": "Select question · 3",
+      "w": 375,
+      "x": 2116,
+      "y": 4104
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-10-20T09:00:00Z",
+    "v": 1
+  },
+  "designSystems": [
+    {
+      "artifact": "https://claude.ai/artifact/K1LB4qPBwcCWTVgS2JrKi1",
+      "copiedAt": "2026-10-20T09:00:00Z",
+      "namespace": "chotot-platform",
+      "title": "Chợ Tốt Design System (Platform)",
+      "version": "1791969465-0230"
+    }
+  ],
+  "launch": {
+    "view": "canvas"
+  },
+  "notes": {
+    "cmptitle": {
+      "kind": "title1",
+      "maxW": 2557,
+      "text": "Components · sửa ở đây là mọi màn cập nhật theo",
+      "w": 240,
+      "x": 120,
+      "y": 5160
+    }
   },
   "order": [
-    "Section-T1.dc.html", "Section-T2.dc.html",
-    "Panel-T1-Flow.dc.html", "Panel-T1-DefaultForm.dc.html", "Panel-T1-Send.dc.html",
-    "Panel-T2-Flow.dc.html", "Panel-T2-Questions.dc.html", "Panel-T2-Send.dc.html",
-    "T1-01-AdView.dc.html", "T1-02-Sheet.dc.html", "T1-03-Focus.dc.html", "T1-04-Typing.dc.html", "T1-05-Sent.dc.html", "T1-06-ChatRoom.dc.html", "Main.dc.html",
-    "Note-T1-Main.dc.html", "T1-Input.dc.html", "T1-DF-Sheet1.dc.html", "Note-T1-DF1.dc.html", "T1-DF-Sheet2.dc.html", "Note-T1-DF2.dc.html",
-    "Note-T1-C1.dc.html", "T1-C1-Sheet.dc.html", "Note-T1-C2.dc.html", "T1-C2-Sheet.dc.html", "T1-C2-Msg.dc.html", "Note-T1-C3.dc.html", "T1-C3-Sheet.dc.html", "T1-C3-Msg.dc.html", "Note-T1-C4.dc.html", "T1-C4-Sheet.dc.html", "T1-C4-Msg.dc.html", "Note-T1-C5.dc.html", "T1-C5-Sheet.dc.html", "T1-C5-Msg.dc.html",
-    "T2-01-AdView.dc.html", "T2-02-Typing.dc.html", "T2-03-Sent.dc.html", "T2-04-ChatRoom.dc.html", "T2-Prototype.dc.html",
-    "Note-T2-Main.dc.html", "T2-Input.dc.html", "T2-SQ-1.dc.html", "T2-SQ-2.dc.html", "Note-T2-SQ1.dc.html", "T2-SQ-3.dc.html", "Note-T2-SQ2.dc.html",
-    "Note-T2-C1.dc.html", "T2-C1-Sheet.dc.html", "Note-T2-C2.dc.html", "T2-C2-Sheet.dc.html", "T2-C2-Msg.dc.html", "Note-T2-C3.dc.html", "T2-C3-Sheet.dc.html", "T2-C3-Msg.dc.html", "Note-T2-C4.dc.html", "T2-C4-Sheet.dc.html", "T2-C4-Msg.dc.html",
-    "Screen.dc.html", "AdView.dc.html", "ChatRoom.dc.html", "ChatSheet.dc.html", "Keyboard.dc.html", "Bubble.dc.html"
+    "Section-T1.dc.html",
+    "Section-T2.dc.html",
+    "Panel-T1-Flow.dc.html",
+    "Panel-T1-DefaultForm.dc.html",
+    "Panel-T1-Send.dc.html",
+    "Panel-T2-Flow.dc.html",
+    "Panel-T2-Questions.dc.html",
+    "Panel-T2-Send.dc.html",
+    "T1-01-AdView.dc.html",
+    "T1-02-Sheet.dc.html",
+    "T1-03-Focus.dc.html",
+    "T1-04-Typing.dc.html",
+    "T1-05-Sent.dc.html",
+    "T1-06-ChatRoom.dc.html",
+    "Main.dc.html",
+    "Note-T1-Main.dc.html",
+    "T1-Input.dc.html",
+    "T1-DF-Sheet1.dc.html",
+    "Note-T1-DF1.dc.html",
+    "T1-DF-Sheet2.dc.html",
+    "Note-T1-DF2.dc.html",
+    "Note-T1-C1.dc.html",
+    "T1-C1-Sheet.dc.html",
+    "Note-T1-C2.dc.html",
+    "T1-C2-Sheet.dc.html",
+    "T1-C2-Msg.dc.html",
+    "Note-T1-C3.dc.html",
+    "T1-C3-Sheet.dc.html",
+    "T1-C3-Msg.dc.html",
+    "Note-T1-C4.dc.html",
+    "T1-C4-Sheet.dc.html",
+    "T1-C4-Msg.dc.html",
+    "Note-T1-C5.dc.html",
+    "T1-C5-Sheet.dc.html",
+    "T1-C5-Msg.dc.html",
+    "T2-01-AdView.dc.html",
+    "T2-02-Typing.dc.html",
+    "T2-03-Sent.dc.html",
+    "T2-04-ChatRoom.dc.html",
+    "T2-Prototype.dc.html",
+    "Note-T2-Main.dc.html",
+    "T2-Input.dc.html",
+    "T2-SQ-1.dc.html",
+    "T2-SQ-2.dc.html",
+    "Note-T2-SQ1.dc.html",
+    "T2-SQ-3.dc.html",
+    "Note-T2-SQ2.dc.html",
+    "Note-T2-C1.dc.html",
+    "T2-C1-Sheet.dc.html",
+    "Note-T2-C2.dc.html",
+    "T2-C2-Sheet.dc.html",
+    "T2-C2-Msg.dc.html",
+    "Note-T2-C3.dc.html",
+    "T2-C3-Sheet.dc.html",
+    "T2-C3-Msg.dc.html",
+    "Note-T2-C4.dc.html",
+    "T2-C4-Sheet.dc.html",
+    "T2-C4-Msg.dc.html",
+    "Screen.dc.html",
+    "AdView.dc.html",
+    "ChatRoom.dc.html",
+    "ChatSheet.dc.html",
+    "Keyboard.dc.html",
+    "Bubble.dc.html"
   ],
-  "notes": {
-    "flowAnim": {"x": 575, "y": 1108, "w": 375, "maxH": 60, "fill": "pink", "size": "s", "text": "Bottom sheet animation mở trượt từ dưới lên"},
-    "flowFocus": {"x": 1030, "y": 1108, "w": 375, "maxH": 60, "fill": "pink", "size": "s", "text": "Tap ô nhập → focus typing"},
-    "flowChat1": {"x": 2395, "y": 1108, "w": 390, "maxH": 80, "fill": "pink", "size": "s", "text": "Buyer và seller đã nhắn tin với tin đăng này → bấm Chat vào thẳng chat room"},
-    "flowChat2": {"x": 1485, "y": 3824, "w": 390, "maxH": 80, "fill": "pink", "size": "s", "text": "Buyer và seller đã nhắn tin với tin đăng này → bấm Chat vào thẳng chat room"},
-    "cmptitle": {"x": 120, "y": 5160, "text": "Components · sửa ở đây là mọi màn cập nhật theo", "kind": "title1", "maxW": 2557}
-  }
+  "pages": [],
+  "title": "Chat Button Entry"
 }
