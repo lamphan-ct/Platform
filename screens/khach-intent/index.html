@@ -502,6 +502,10 @@ button:focus-visible,[tabindex]:focus-visible,textarea:focus-visible{outline:2px
             <svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Chevrondown-fill"/></svg>
           </button>
           <button class="chip t-tagline-caption" id="unreadChip" aria-pressed="false" data-ds="Chip" data-ds-size="M-32">Chưa đọc</button>
+          <button class="chip t-tagline-caption" data-pop="popHi" aria-haspopup="true" aria-expanded="false" data-ds="Chip" data-ds-size="M-32">
+            <span id="hiLabel">Nổi bật</span>
+            <svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Chevrondown-fill"/></svg>
+          </button>
           <button class="icon-btn" aria-label="Cài đặt"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Setting-outline"/></svg></button>
         </div>
       </div>
@@ -523,6 +527,7 @@ button:focus-visible,[tabindex]:focus-visible,textarea:focus-visible{outline:2px
 <!-- Popovers (custom: DS chưa có menu nổi) -->
 <div class="pop" id="popPosts" role="menu" data-ds-speculative="true"></div>
 <div class="pop" id="popTags" role="menu" data-ds-speculative="true"></div>
+<div class="pop" id="popHi" role="menu" data-ds-speculative="true"></div>
 <div class="pop menu" id="popMore" role="menu" data-ds-speculative="true" data-ds-raw="custom: DS chưa có menu nổi">
   <button class="pop-item t-body-page" data-act="openTag" role="menuitem" aria-haspopup="dialog"><svg class="ds-icon" aria-hidden="true"><use href="#ds-tag-outline"/></svg>Phân loại khách</button>
   <button class="pop-item t-body-page" data-act="delete" role="menuitem"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Trashbin-outline"/></svg>Xoá</button>
@@ -594,14 +599,16 @@ const POSTS=[
 ];
 const NEED=['Mua Ô tô (Điện) cũ, khu vực TPHCM, Vũng Tàu, Bình Dương','Thương hiệu Vinfast, Honda, Porsche đời 2024, 2023, 2022','Ngân sách từ 450 - 550 triệu','Khách đã xem 10 tin đăng, đã liên hệ 5 người bán ở khu vực TPHCM, Vũng Tàu, Bình Dương trong 7 ngày qua','Khách đã lấy SĐT để liên hệ trực tiếp'];
 let rows=[
-  {id:1,name:'Nguyễn Thị Mobu',ini:'NM',rating:'4.5',reviews:12,joined:'3 năm trước',unread:true,time:'11:45',phone:'0987654321',tags:['new','meet','won'],noteTags:false,posts:['p1','p2'],note:''},
-  {id:2,name:'Nguyễn Thị Mobu',ini:'NM',rating:'4.5',reviews:12,joined:'3 năm trước',unread:false,time:'11:45',phone:null,tags:['new','meet'],noteTags:false,posts:['p1','p2'],note:''},
-  {id:3,name:'Nguyễn Thị Mobu',ini:'NM',rating:'4.5',reviews:12,joined:'3 năm trước',unread:true,time:'11:45',phone:'0987651234',tags:['new','meet','hot'],noteTags:false,posts:['p1','p2'],note:''},
-  {id:4,name:'Trần Văn Bình',ini:'TB',rating:'4.8',reviews:30,joined:'5 năm trước',unread:false,time:'Hôm qua',phone:'0912345678',tags:['meet','hot'],noteTags:false,posts:['p3'],note:'Hẹn xem xe thứ 7, 9h sáng'},
-  {id:5,name:'Lê Hoàng Anh',ini:'LA',rating:'4.2',reviews:5,joined:'1 năm trước',unread:false,time:'12/10',phone:null,tags:['won'],noteTags:false,posts:['p2','p3'],note:''},
-  {id:6,name:'Phạm Minh Châu',ini:'MC',rating:'4.6',reviews:8,joined:'2 tháng trước',unread:true,time:'10:20',phone:'0938112233',tags:[],noteTags:false,posts:['p1'],note:''}
+  {id:1,hi:['phone','active'],name:'Nguyễn Thị Mobu',ini:'NM',rating:'4.5',reviews:12,joined:'3 năm trước',unread:true,time:'11:45',phone:'0987654321',tags:['new','meet','won'],noteTags:false,posts:['p1','p2'],note:''},
+  {id:2,hi:['active'],name:'Nguyễn Thị Mobu',ini:'NM',rating:'4.5',reviews:12,joined:'3 năm trước',unread:false,time:'11:45',phone:null,tags:['new','meet'],noteTags:false,posts:['p1','p2'],note:''},
+  {id:3,hi:['phone','new24'],name:'Nguyễn Thị Mobu',ini:'NM',rating:'4.5',reviews:12,joined:'3 năm trước',unread:true,time:'11:45',phone:'0987651234',tags:['new','meet','hot'],noteTags:false,posts:['p1','p2'],note:''},
+  {id:4,hi:['back'],name:'Trần Văn Bình',ini:'TB',rating:'4.8',reviews:30,joined:'5 năm trước',unread:false,time:'Hôm qua',phone:'0912345678',tags:['meet','hot'],noteTags:false,posts:['p3'],note:'Hẹn xem xe thứ 7, 9h sáng'},
+  {id:5,hi:[],name:'Lê Hoàng Anh',ini:'LA',rating:'4.2',reviews:5,joined:'1 năm trước',unread:false,time:'12/10',phone:null,tags:['won'],noteTags:false,posts:['p2','p3'],note:''},
+  {id:6,hi:['new24'],name:'Phạm Minh Châu',ini:'MC',rating:'4.6',reviews:8,joined:'2 tháng trước',unread:true,time:'10:20',phone:'0938112233',tags:[],noteTags:false,posts:['p1'],note:''}
 ];
-const f={posts:new Set(),tags:new Set(),unread:false};
+/* Nổi bật: danh sách lựa chọn là đề xuất (data-ds-speculative) — cần PM/designer chốt */
+const HI={phone:'Đã lấy SĐT',active:'Liên hệ nhiều người bán',back:'Quay lại xem tin',new24:'Mới trong 24 giờ'};
+const f={posts:new Set(),tags:new Set(),hi:new Set(),unread:false};
 const $=s=>document.querySelector(s);
 const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const mask=p=>p.slice(0,6)+'****';
@@ -672,7 +679,7 @@ function rowHtml(r){
     <div>${noteHtml(r)}</div>
   </article>`;
 }
-function visible(){return rows.filter(r=>(!f.unread||r.unread)&&(!f.posts.size||r.posts.some(p=>f.posts.has(p)))&&(!f.tags.size||r.tags.some(t=>f.tags.has(t))))}
+function visible(){return rows.filter(r=>(!f.unread||r.unread)&&(!f.posts.size||r.posts.some(p=>f.posts.has(p)))&&(!f.tags.size||r.tags.some(t=>f.tags.has(t)))&&(!f.hi.size||(r.hi||[]).some(h=>f.hi.has(h))))}
 function bindScroll(){document.querySelectorAll('.labels.is-scroll').forEach(el=>{
   el.addEventListener('wheel',e=>{if(el.scrollWidth>el.clientWidth&&Math.abs(e.deltaY)>Math.abs(e.deltaX)){el.scrollLeft+=e.deltaY;e.preventDefault()}},{passive:false});
 })}
@@ -689,6 +696,8 @@ function chipState(){
   $('#tagsLabel').textContent=f.tags.size?`Phân loại (${f.tags.size})`:'Phân loại';
   document.querySelector('[data-pop="popPosts"]').classList.toggle('is-selected',!!f.posts.size);
   document.querySelector('[data-pop="popTags"]').classList.toggle('is-selected',!!f.tags.size);
+  $('#hiLabel').textContent=f.hi.size?`Nổi bật (${f.hi.size})`:'Nổi bật';
+  document.querySelector('[data-pop="popHi"]').classList.toggle('is-selected',!!f.hi.size);
   $('#unreadChip').classList.toggle('is-selected',f.unread);
   $('#unreadChip').setAttribute('aria-pressed',f.unread);
 }
@@ -699,9 +708,9 @@ let openPop=null,moreRow=null;
 function closePop(){closeTag();if(openPop){openPop.classList.remove('is-open');document.querySelectorAll('[aria-expanded="true"]').forEach(b=>b.setAttribute('aria-expanded','false'));openPop=null}}
 function place(pop,anchor,alignRight){const r=anchor.getBoundingClientRect();pop.classList.add('is-open');const w=pop.offsetWidth;pop.style.top=(r.bottom+window.scrollY+4)+'px';pop.style.left=(alignRight?r.right-w:r.left)+window.scrollX+'px';openPop=pop}
 function buildFilterPop(id){
-  const pop=$('#'+id),isPosts=id==='popPosts';
-  const items=isPosts?POSTS.map(p=>[p.id,p.title]):Object.entries(TAGS);
-  const set=isPosts?f.posts:f.tags;
+  const pop=$('#'+id),isPosts=id==='popPosts',isHi=id==='popHi';
+  const items=isPosts?POSTS.map(p=>[p.id,p.title]):Object.entries(isHi?HI:TAGS);
+  const set=isPosts?f.posts:isHi?f.hi:f.tags;
   pop.innerHTML=items.map(([k,t])=>`<button class="pop-item t-body-section ${set.has(k)?'is-checked':''}" data-k="${k}" role="menuitemcheckbox" aria-checked="${set.has(k)}"><span class="check"><svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-Check-outline"/></svg></span><span class="post-title" style="max-width:260px">${esc(t)}</span></button>`).join('');
   pop.onclick=e=>{const b=e.target.closest('.pop-item');if(!b)return;const k=b.dataset.k;set.has(k)?set.delete(k):set.add(k);b.classList.toggle('is-checked');b.setAttribute('aria-checked',set.has(k));chipState();render()};
 }
@@ -710,7 +719,7 @@ document.querySelectorAll('[data-pop]').forEach(btn=>btn.addEventListener('click
   buildFilterPop(id);place($('#'+id),btn);btn.setAttribute('aria-expanded','true');
 }));
 $('#unreadChip').onclick=()=>{f.unread=!f.unread;chipState();render()};
-$('#clearFilter').onclick=()=>{f.posts.clear();f.tags.clear();f.unread=false;chipState();render()};
+$('#clearFilter').onclick=()=>{f.posts.clear();f.tags.clear();f.hi.clear();f.unread=false;chipState();render()};
 document.addEventListener('click',e=>{if(openPop&&!openPop.contains(e.target))closePop()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePop();closeConfirm()}});
 
