@@ -242,7 +242,7 @@ button:focus-visible,[tabindex]:focus-visible,textarea:focus-visible{outline:2px
 .chip.is-selected{background:var(--background-secondary);border-color:var(--border-black)}
 .chip .count{color:var(--text-secondary)}
 
-.grid{display:grid;grid-template-columns:var(--cols,minmax(0,20fr) minmax(0,35fr) minmax(0,35fr) minmax(0,20fr))} /* mặc định 20 : 35 : 35 : 20, chỉnh qua “Tỷ lệ cột” */
+.grid{display:grid;grid-template-columns:var(--cols,minmax(0,25fr) minmax(0,30fr) minmax(0,25fr) minmax(0,20fr))} /* mặc định 25 : 30 : 25 : 20, chỉnh qua “Tỷ lệ cột” */
 .thead > div{padding:var(--padding-medium-16);text-align:center;border-right:1px solid var(--border-divider)}
 .thead > div:last-child{border-right:0}
 
@@ -573,7 +573,7 @@ button:focus-visible,[tabindex]:focus-visible,textarea:focus-visible{outline:2px
     <div class="cfg-group"><span class="t-label-caption">Nhập số cho từng cột (tỷ lệ tương đối, không cần cộng đủ 100)</span>
       <div class="colcfg-row" id="colInputs"></div></div>
     <div class="cfg-group"><span class="t-label-caption">Kết quả</span><div class="cfg-code t-body-caption" id="colOut"></div></div>
-    <div class="seg"><button class="t-tagline-caption" id="colReset">Về 20 : 35 : 35 : 20</button><button class="t-tagline-caption" id="colCopy">Copy link</button></div>
+    <div class="seg"><button class="t-tagline-caption" id="colReset">Về 25 : 30 : 25 : 20</button><button class="t-tagline-caption" id="colCopy">Copy link</button></div>
   </div>
 </section>
 
@@ -790,13 +790,13 @@ $('#cfgFab').onclick=()=>{const o=$('#cfg').classList.toggle('is-open');$('#cfgF
 $('#cfgClose').onclick=()=>{$('#cfg').classList.remove('is-open');$('#cfgFab').setAttribute('aria-expanded','false')};
 $('#cfgCopy').onclick=async()=>{try{await navigator.clipboard.writeText(cfgUrl());toast('Đã copy link kèm config')}catch(e){toast('Không copy được — dùng URL: ?pos='+cfg.pos+'&empty='+cfg.empty)}};
 /* ===== Tỷ lệ cột — điền trực tiếp, lưu theo trình duyệt, chia sẻ qua ?cols=20,35,35,20 ===== */
-const COL_NAMES=['Khách hàng','Nhu cầu','Tin khách quan tâm','Ghi chú'],COL_DEFAULT=[20,35,35,20];
+const COL_NAMES=['Khách hàng','Nhu cầu','Tin khách quan tâm','Ghi chú'],COL_DEFAULT=[25,30,25,20];
 let cols=(()=>{const q=new URLSearchParams(location.search).get('cols');let v=q?q.split(',').map(Number):null;
-  if(!v){try{v=JSON.parse(localStorage.getItem('khach-cols')||'null')}catch(e){}}
+  if(!v){try{v=JSON.parse(localStorage.getItem('khach-cols-v2')||'null')}catch(e){}}
   return Array.isArray(v)&&v.length===4&&v.every(n=>n>0)?v:COL_DEFAULT.slice()})();
 function applyCols(){
   document.documentElement.style.setProperty('--cols',cols.map(n=>`minmax(0,${n}fr)`).join(' '));
-  try{localStorage.setItem('khach-cols',JSON.stringify(cols))}catch(e){}
+  try{localStorage.setItem('khach-cols-v2',JSON.stringify(cols))}catch(e){}
   requestAnimationFrame(()=>{const w=[...document.querySelectorAll('.thead > div')].map(d=>Math.round(d.getBoundingClientRect().width)),t=cols.reduce((a,b)=>a+b,0);
     $('#colOut').textContent=COL_NAMES.map((n,i)=>`${n}: ${cols[i]} (${Math.round(cols[i]/t*100)}% · ${w[i]}px)`).join('\n');
     document.querySelectorAll('.colcfg-px').forEach((el,i)=>el.textContent=w[i]+'px')});
