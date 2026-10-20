@@ -102,10 +102,9 @@
   </main>
 
   <sc-if value="{{toast}}" hint-placeholder-val="{{false}}">
-    <div role="status" class="t-body-section" style="position: absolute; left: 16px; right: 16px; bottom: 96px; display: flex; align-items: center; gap: var(--gap-x-small-8); padding: var(--padding-small-12) var(--padding-medium-16); background: var(--background-inverted); color: var(--text-blank); border-radius: var(--radius-card-small); box-shadow: 0 4px 16px rgba(34,34,34,.2)">
-      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="flex: none; color: var(--icon-success)"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.522 22 22 17.522 22 12C22 6.477 17.522 2 12 2C6.477 2 2 6.477 2 12C2 17.522 6.477 22 12 22ZM16.831 9.823C17.297 9.47 17.372 8.826 17 8.385C16.627 7.944 15.947 7.872 15.482 8.225C14.41 9.038 13.438 10.297 12.674 11.461C12.311 12.014 11.982 12.565 11.699 13.07C11.612 12.979 11.524 12.891 11.438 12.805C10.923 12.295 10.365 11.809 9.951 11.524C9.469 11.192 8.794 11.293 8.443 11.75C8.092 12.207 8.199 12.846 8.681 13.179C8.946 13.361 9.404 13.75 9.876 14.218C10.35 14.689 10.763 15.164 10.978 15.504C11.184 15.83 11.564 16.021 11.964 16C12.364 15.979 12.719 15.749 12.886 15.404C13.211 14.732 13.791 13.634 14.508 12.541C15.239 11.429 16.054 10.412 16.831 9.823Z" fill="currentColor"></path></svg>
-      <span style="flex: 1">Tin nhắn đã được gửi thành công</span>
-      <button class="t-label-section" onClick="{{onView}}" style="border: 0; background: transparent; padding: var(--padding-2x-small-4) 0; color: var(--text-blank); text-decoration: underline; text-underline-offset: 3px">Xem tin nhắn</button>
+    <div role="status" class="t-body-section" style="position: absolute; left: 16px; right: 16px; bottom: 90px; display: flex; align-items: center; gap: var(--gap-x-small-8); padding: var(--padding-small-12) var(--padding-medium-16); background: var(--background-inverted); opacity: 0.9; color: var(--text-blank); border-radius: var(--radius-card)">
+      <span style="flex: 1; min-width: 0">Tin nhắn đã được gửi thành công</span>
+      <button class="t-label-section" onClick="{{onView}}" style="flex: none; border: 0; background: transparent; padding: 0; color: var(--text-chotot); text-align: right; white-space: nowrap">Xem tin nhắn</button>
     </div>
   </sc-if>
 

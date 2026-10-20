@@ -41,10 +41,10 @@
 
   <div style="display: flex; gap: var(--gap-small-12); align-items: center; padding-bottom: var(--padding-2x-small-4)">
     <div style="flex: 1; min-width: 0; padding: 10px 0; border-bottom: 1px solid {{lineColor}}; display: flex; align-items: center">
-      <textarea class="t-body-section no-scrollbar" aria-label="Nhập tin nhắn" placeholder="Nhập tin nhắn..." value="{{text}}" onChange="{{onText}}" onFocus="{{onFocus}}" readOnly="{{readOnly}}" style="display: block; width: 100%; height: {{taH}}px; padding: 0; border: 0; outline: 0; resize: none; background: transparent; color: var(--text-primary); overflow-y: auto"></textarea>
+      <textarea class="t-body-section no-scrollbar" aria-label="Nhập tin nhắn" placeholder="Nhập tin nhắn ..." value="{{text}}" onChange="{{onText}}" onFocus="{{onFocus}}" readOnly="{{readOnly}}" style="display: block; width: 100%; height: {{taH}}px; padding: 0; border: 0; outline: 0; resize: none; background: transparent; color: var(--text-primary); overflow-y: auto"></textarea>
     </div>
     <button class="h-brand" aria-label="Gửi" onClick="{{onSend}}" disabled="{{disabled}}" style="position: relative; width: 40px; height: 40px; flex: none; border: 0; padding: 0; border-radius: var(--radius-pill); background: {{sendBg}}; color: var(--icon-on-background)">
-      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="position: absolute; left: 10px; top: 10px"><path d="M4.961 2.675C2.956 1.756 0.885 3.82 1.798 5.828L4.149 11H9.999C10.552 11 10.999 11.448 10.999 12C10.999 12.552 10.551 13 9.999 13H4.279L1.898 17.897C0.933 19.882 2.952 22 4.981 21.131L20.838 14.335L21.011 14.254C22.684 13.385 22.714 10.975 21.064 10.063L20.893 9.978L4.961 2.675Z" fill="currentColor"></path></svg>
+      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="position: absolute; left: 10px; top: 10px; color: var(--icon-primary)"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.798 5.828C0.885 3.82 2.956 1.756 4.961 2.675L20.893 9.978L21.064 10.064C22.714 10.975 22.684 13.385 21.011 14.254L20.838 14.335L4.981 21.131C2.952 22 0.933 19.883 1.898 17.898L4.681 12.172L1.798 5.828ZM3.618 5C3.472 4.677 3.806 4.345 4.128 4.493L20.06 11.795L20.113 11.824C20.344 11.976 20.34 12.323 20.105 12.469L20.051 12.497L4.193 19.292C3.866 19.432 3.541 19.091 3.697 18.772L6.686 12.624L6.729 12.522C6.815 12.279 6.804 12.01 6.697 11.773L3.618 5Z" fill="currentColor"></path><path d="M3.618 5C3.472 4.677 3.806 4.345 4.128 4.493L20.06 11.795L20.113 11.824C20.344 11.976 20.34 12.323 20.105 12.469L20.051 12.497L4.193 19.292C3.866 19.432 3.541 19.091 3.697 18.772L6.686 12.624L6.729 12.522C6.815 12.279 6.804 12.01 6.697 11.773L3.618 5Z" fill="white"></path></svg>
     </button>
   </div>
 
@@ -96,7 +96,7 @@ class Component extends DCLogic {
       text, callback, disabled,
       readOnly: !p.onText,
       taH: text.length > 40 ? 40 : 20,
-      lineColor: kb ? 'var(--border-black)' : 'var(--border-thin)',
+      lineColor: kb ? 'var(--border-bold)' : 'var(--border-regular)',
       sendBg: disabled ? 'var(--button-disabled)' : 'var(--background-brand)',
       cbBg: callback ? 'var(--background-brand)' : 'var(--background-primary)',
       cbBorder: callback ? '0' : '2px solid var(--border-regular)',
