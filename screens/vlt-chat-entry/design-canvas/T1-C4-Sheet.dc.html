@@ -13,12 +13,53 @@
 <style>body{margin:0}</style>
 </helmet>
 <div style="width: 375px; height: 206px; overflow: hidden">
-<dc-import name="ChatSheet" cfg="{{cfg}}" hint-size="375px,206px"></dc-import>
+<div role="dialog" aria-label="Nhắn tin cho nhà tuyển dụng" style="width: 375px; box-sizing: border-box; overflow: hidden; background: var(--background-primary); border-radius: var(--radius-modal) var(--radius-modal) 0 0; box-shadow: 0 4px 16px rgba(34,34,34,.12); font-family: 'Reddit Sans', sans-serif; color: var(--text-primary)">
+  <div style="padding: 8px var(--padding-medium-16) 16px; display: flex; flex-direction: column; gap: var(--gap-x-small-8)">
+      <div style="display: flex; justify-content: center; padding-bottom: var(--padding-x-small-8)">
+        <div aria-hidden="true" style="width: 60px; height: 5px; border-radius: var(--radius-pill); background: var(--icon-tertiary)"></div>
+      </div>
+    <div style="display: flex; flex-direction: column; gap: var(--gap-2x-small-4)">
+      <div style="display: flex; gap: var(--gap-x-small-8); align-items: center; padding-left: var(--padding-small-12); border-left: 2px solid var(--border-active); background: var(--background-primary)">
+        <span style="width: 40px; height: 40px; flex: none; display: grid; place-items: center; border-radius: var(--radius-ad); background: var(--background-info-light); color: var(--icon-brand)">
+          <svg width="20" height="20" viewBox="0 0 24 24" role="img" aria-label="Ảnh tin đăng"><path d="M20.5 10.433C20.499 9.771 19.925 9.16 19.125 9.16H4.875C4.074 9.16 3.5 9.771 3.5 10.433V17.253L3.506 17.377C3.572 17.991 4.124 18.527 4.875 18.527H19.125C19.926 18.527 20.5 17.916 20.5 17.253V10.433ZM13.968 5.886C13.968 5.863 13.96 5.835 13.929 5.805C13.897 5.775 13.847 5.75 13.781 5.75H9.625C9.558 5.75 9.508 5.775 9.476 5.805C9.445 5.835 9.437 5.863 9.437 5.886V7.16H13.968V5.886ZM15.968 7.16H19.125C20.947 7.16 22.499 8.585 22.5 10.433V17.253C22.5 19.102 20.947 20.527 19.125 20.527H4.875C3.109 20.527 1.597 19.19 1.504 17.426L1.5 17.253V10.433C1.5 8.585 3.052 7.16 4.875 7.16H7.437V5.886C7.437 4.665 8.458 3.75 9.625 3.75H13.781C14.947 3.75 15.968 4.665 15.968 5.886V7.16Z" fill="currentColor"></path><path d="M13.2 11C13.752 11 14.2 11.447 14.2 12C14.2 12.552 13.752 13 13.2 13H10.2C9.647 13 9.2 12.552 9.2 12C9.2 11.447 9.647 11 10.2 11H13.2Z" fill="currentColor"></path></svg>
+        </span>
+        <div style="min-width: 0; flex: 1; display: flex; flex-direction: column; gap: var(--gap-min-2)">
+          <div class="t-tagline-caption clip1" style="color: var(--text-secondary)">GIÁM SÁT &amp; NV TẠP VỤ VỆ SINH BẾN LỨC LONG AN</div>
+          <div class="t-label-section clip1" style="color: var(--text-tertiary)">8.000.000 đ - 9.000.000 đ/tháng</div>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex; gap: var(--gap-small-12); align-items: center; padding-bottom: 0px">
+      <div style="flex: 1; min-width: 0; padding: 10px 0; border-bottom: 1px solid var(--border-bold); display: flex; align-items: center">
+        <textarea class="t-body-section no-scrollbar" aria-label="Nhập tin nhắn" placeholder="Nhập tin nhắn…" style="display: block; width: 100%; height: 20px; padding: 0; border: 0; outline: 0; resize: none; background: transparent; color: var(--text-primary); overflow-y: auto">Alo bạn ơi abcxyz|</textarea>
+      </div>
+        <button class="h-brand" aria-label="Gửi" style="position: relative; width: 40px; height: 40px; flex: none; border: 0; padding: 0; border-radius: var(--radius-pill); background: var(--background-brand); color: var(--icon-primary)">
+          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="position: absolute; left: 10px; top: 10px"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.798 5.828C0.885 3.82 2.956 1.756 4.961 2.675L20.893 9.978L21.064 10.064C22.714 10.975 22.684 13.385 21.011 14.254L20.838 14.335L4.981 21.131C2.952 22 0.933 19.883 1.898 17.898L4.681 12.172L1.798 5.828ZM3.618 5C3.472 4.677 3.806 4.345 4.128 4.493L20.06 11.795L20.113 11.824C20.344 11.976 20.34 12.323 20.105 12.469L20.051 12.497L4.193 19.292C3.866 19.432 3.541 19.091 3.697 18.772L6.686 12.624L6.729 12.522C6.815 12.279 6.804 12.01 6.697 11.773L3.618 5Z" fill="currentColor"></path><path d="M3.618 5C3.472 4.677 3.806 4.345 4.128 4.493L20.06 11.795L20.113 11.824C20.344 11.976 20.34 12.323 20.105 12.469L20.051 12.497L4.193 19.292C3.866 19.432 3.541 19.091 3.697 18.772L6.686 12.624L6.729 12.522C6.815 12.279 6.804 12.01 6.697 11.773L3.618 5Z" fill="white"></path></svg>
+        </button>
+    </div>
+      <div style="position: relative; display: flex; gap: var(--gap-x-small-8); align-items: center; overflow: hidden">
+        <span class="t-tagline-caption" style="flex: none; color: var(--text-primary)">Hỏi thêm:</span>
+        <div class="no-scrollbar" style="flex: 1; min-width: 0; display: flex; gap: var(--gap-2x-small-6); align-items: center; overflow-x: auto; padding-right: 36px">
+            <button class="t-header-annotation h-chip" style="flex: none; height: 28px; box-sizing: border-box; padding: 3px 10px; display: inline-flex; align-items: center; justify-content: center; gap: 3px; border-radius: var(--radius-pill); border: 1px solid var(--border-regular); background: var(--background-primary); color: var(--text-secondary); white-space: nowrap">Sổ chung hay riêng z ạ?</button>
+            <button class="t-header-annotation h-chip" style="flex: none; height: 28px; box-sizing: border-box; padding: 3px 10px; display: inline-flex; align-items: center; justify-content: center; gap: 3px; border-radius: var(--radius-pill); border: 1px solid var(--border-regular); background: var(--background-primary); color: var(--text-secondary); white-space: nowrap">Có hỗ trợ trả góp ko sốp?</button>
+        </div>
+        <div aria-hidden="true" style="position: absolute; top: 0; right: 0; width: 36px; height: 28px; background: linear-gradient(to left, var(--background-primary), rgba(255,255,255,0)); pointer-events: none"></div>
+      </div>
+      <label class="t-body-section" style="position: relative; display: flex; gap: var(--gap-x-small-8); align-items: center; cursor: pointer; color: var(--text-secondary)">
+        <input type="checkbox" checked="" style="position: absolute; left: 0; top: 0; width: 24px; height: 24px; margin: 0; opacity: 0; cursor: pointer">
+        <span aria-hidden="true" style="position: relative; width: 24px; height: 24px; flex: none; overflow: hidden; border-radius: var(--radius-ad-small)">
+          <span style="position: absolute; inset: 2px; box-sizing: border-box; border-radius: var(--radius-ad-small); border: 0; background: var(--background-brand)"></span>
+            <svg width="16" height="16" viewBox="0 0 24 24" style="position: absolute; left: 4px; top: 4px; color: var(--icon-on-background)"><path fill-rule="evenodd" clip-rule="evenodd" d="M18.395 6.575C18.953 7.237 18.84 8.203 18.142 8.732C16.976 9.615 15.753 11.141 14.658 12.81C13.582 14.449 12.712 16.096 12.224 17.104C11.974 17.622 11.442 17.966 10.841 17.997C10.241 18.029 9.672 17.743 9.363 17.255C9.039 16.744 8.42 16.031 7.709 15.325C7.001 14.623 6.314 14.04 5.917 13.766C5.193 13.267 5.033 12.308 5.559 11.622C6.086 10.937 7.099 10.785 7.822 11.284C8.442 11.711 9.28 12.44 10.051 13.205C10.181 13.334 10.313 13.467 10.444 13.603C10.869 12.845 11.362 12.018 11.906 11.189C13.052 9.444 14.51 7.554 16.118 6.336C16.816 5.806 17.836 5.914 18.395 6.575Z" fill="currentColor"></path></svg>
+        </span>
+        <span>Gọi lại cho tôi qua SĐT 0987654321 để tư vấn thêm.</span>
+      </label>
+  </div>
+</div>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":375,"height":206}}'>
 class Component extends DCLogic {
-  renderVals() { return { cfg: { variant: 't1', selected: [], suggest: ['Sổ chung hay riêng z ạ?', 'Có hỗ trợ trả góp ko sốp?'], text: 'Alo bạn ơi abcxyz|', focus: true } }; }
+  renderVals() { return {}; }
 }
 </script>
 </body>

@@ -13,12 +13,32 @@
 <style>body{margin:0}</style>
 </helmet>
 <div style="width: 390px; height: 243px; overflow: hidden; box-sizing: border-box; padding: var(--padding-medium-16); display: flex; justify-content: flex-end; align-items: flex-start; background: var(--background-app)">
-<dc-import name="Bubble" msg="{{msg}}" hint-size="267px,140px"></dc-import>
+<div style="width: 267px; display: flex; flex-direction: column; align-items: flex-end; gap: var(--gap-x-small-8); font-family: 'Reddit Sans', sans-serif; color: var(--text-primary)">
+  <div style="box-sizing: border-box; width: 100%; max-width: 284px; padding: var(--padding-x-small-8) var(--padding-small-12); display: flex; flex-direction: column; gap: var(--gap-2x-small-4); background: var(--background-chotot-light); border-radius: var(--radius-card-small)">
+    <div style="display: flex; gap: var(--gap-x-small-8); align-items: center; padding-left: var(--padding-small-12); border-left: 2px solid var(--background-chotot)">
+      <span style="width: 32px; height: 32px; flex: none; display: grid; place-items: center; border-radius: var(--radius-ad); background: var(--background-primary); color: var(--icon-brand)">
+        <svg width="16" height="16" viewBox="0 0 24 24" role="img" aria-label="Ảnh tin đăng"><path d="M20.5 10.433C20.499 9.771 19.925 9.16 19.125 9.16H4.875C4.074 9.16 3.5 9.771 3.5 10.433V17.253L3.506 17.377C3.572 17.991 4.124 18.527 4.875 18.527H19.125C19.926 18.527 20.5 17.916 20.5 17.253V10.433ZM13.968 5.886C13.968 5.863 13.96 5.835 13.929 5.805C13.897 5.775 13.847 5.75 13.781 5.75H9.625C9.558 5.75 9.508 5.775 9.476 5.805C9.445 5.835 9.437 5.863 9.437 5.886V7.16H13.968V5.886ZM15.968 7.16H19.125C20.947 7.16 22.499 8.585 22.5 10.433V17.253C22.5 19.102 20.947 20.527 19.125 20.527H4.875C3.109 20.527 1.597 19.19 1.504 17.426L1.5 17.253V10.433C1.5 8.585 3.052 7.16 4.875 7.16H7.437V5.886C7.437 4.665 8.458 3.75 9.625 3.75H13.781C14.947 3.75 15.968 4.665 15.968 5.886V7.16Z" fill="currentColor"></path><path d="M13.2 11C13.752 11 14.2 11.447 14.2 12C14.2 12.552 13.752 13 13.2 13H10.2C9.647 13 9.2 12.552 9.2 12C9.2 11.447 9.647 11 10.2 11H13.2Z" fill="currentColor"></path></svg>
+      </span>
+      <div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: var(--gap-2x-small-4)">
+        <span class="t-tagline-caption clip1" style="color: var(--text-secondary)">GIÁM SÁT &amp; NV TẠP VỤ VỆ SINH BẾN LỨC LONG AN</span>
+        <span class="t-label-section clip1" style="color: var(--text-tertiary)">8.000.000 đ - 9.000.000 đ/tháng</span>
+      </div>
+    </div>
+      <p class="t-tagline-caption" style="margin: 0; color: var(--text-primary); white-space: pre-line; word-break: break-word">Alo bạn ơi abcxyz</p>
+      <p class="t-tagline-caption" style="margin: 0; color: var(--text-primary)">Gọi lại cho tôi qua SĐT 0987654321</p>
+  </div>
+  <div class="t-body-annotation" style="display: flex; gap: var(--gap-2x-small-4); align-items: center; color: var(--text-tertiary)">
+    <span>14:23</span>
+    <span aria-hidden="true" style="width: 1px; height: 8px; background: var(--border-regular)"></span>
+    <span>Đã đọc</span>
+    <svg width="12" height="12" viewBox="0 0 24 24" role="img" aria-label="Đã đọc" style="color: var(--icon-tertiary)"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.522 22 22 17.522 22 12C22 6.477 17.522 2 12 2C6.477 2 2 6.477 2 12C2 17.522 6.477 22 12 22ZM16.831 9.823C17.297 9.47 17.372 8.826 17 8.385C16.627 7.944 15.947 7.872 15.482 8.225C14.41 9.038 13.438 10.297 12.674 11.461C12.311 12.014 11.982 12.565 11.699 13.07C11.612 12.979 11.524 12.891 11.438 12.805C10.923 12.295 10.365 11.809 9.951 11.524C9.469 11.192 8.794 11.293 8.443 11.75C8.092 12.207 8.199 12.846 8.681 13.179C8.946 13.361 9.404 13.75 9.876 14.218C10.35 14.689 10.763 15.164 10.978 15.504C11.184 15.83 11.564 16.021 11.964 16C12.364 15.979 12.719 15.749 12.886 15.404C13.211 14.732 13.791 13.634 14.508 12.541C15.239 11.429 16.054 10.412 16.831 9.823Z" fill="currentColor"></path></svg>
+  </div>
+</div>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":243}}'>
 class Component extends DCLogic {
-  renderVals() { return { msg: { tone: 'yellow', header: false, qs: [], text: 'Alo bạn ơi abcxyz', after: ['Gọi lại cho tôi qua SĐT 0987654321'] } }; }
+  renderVals() { return {}; }
 }
 </script>
 </body>
