@@ -110,3 +110,18 @@ textarea::placeholder, input::placeholder { color: var(--text-tertiary); }
 .no-scrollbar { scrollbar-width: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .clip1 { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* Chợ Tốt (GDS) theme: chat room is the shared Chợ Tốt inbox, not a Việc Làm Tốt surface */
+.theme-chotot {
+  --border-active: #ffd400;
+  --border-brand: #ffd400;
+  --background-brand: #ffd400;
+  --background-brand-light: #fff8d6;
+  --text-brand: #cc8f00;
+  --text-on-background: #222222;
+  --icon-brand: #ffba00;
+  --icon-on-background: #222222;
+  --interaction-brand-hover: #ffe884;
+  --interaction-brand-pressed: #ffba00;
+  --button-primary: #ffd400;
+}
