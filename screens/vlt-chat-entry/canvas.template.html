@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chat Button Entry</title>
+<link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --canvas-bg: #f0efed;
+  --canvas-dot: #d6d3cf;
+  --chrome-bg: #ffffff;
+  --chrome-border: #e8e8e8;
+  --chrome-text: #222222;
+  --chrome-muted: #8c8c8c;
+  --chrome-hover: rgba(34,34,34,.06);
+  --accent: #306bd9;
+  --flow: #e5197e;
+  --band: #1b2030;
+  --panel: rgba(255,255,255,.55);
+  --note: #fff6c7;
+  --note-border: #f1df84;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --canvas-bg: #1e1e1f; --canvas-dot: #343436; --chrome-bg: #2a2a2c; --chrome-border: #3a3a3d;
+    --chrome-text: #f2f2f2; --chrome-muted: #9a9a9e; --chrome-hover: rgba(255,255,255,.08);
+    --panel: rgba(255,255,255,.04); --band: #0e1018;
+  }
+}
+:root[data-theme="dark"] {
+  --canvas-bg: #1e1e1f; --canvas-dot: #343436; --chrome-bg: #2a2a2c; --chrome-border: #3a3a3d;
+  --chrome-text: #f2f2f2; --chrome-muted: #9a9a9e; --chrome-hover: rgba(255,255,255,.08);
+  --panel: rgba(255,255,255,.04); --band: #0e1018;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  font-family: 'Reddit Sans', system-ui, sans-serif; color: var(--chrome-text);
+  background: var(--canvas-bg); overflow: hidden; -webkit-font-smoothing: antialiased;
+  user-select: none; -webkit-user-select: none;
+}
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* ---------- Viewport ---------- */
+.viewport {
+  position: fixed; inset: 0; overflow: hidden; touch-action: none;
+  background-color: var(--canvas-bg);
+  background-image: radial-gradient(var(--canvas-dot) 1px, transparent 1px);
+}
+.viewport.panning { cursor: grab; }
+.viewport.panning.dragging { cursor: grabbing; }
+.viewport.panning iframe { pointer-events: none; }
+.world { position: absolute; left: 0; top: 0; transform-origin: 0 0; will-change: transform; }
+
+/* ---------- World items ---------- */
+.band {
+  position: absolute; height: 88px; border-radius: 16px; background: var(--band); color: #fff;
+  display: flex; align-items: center; gap: 24px; padding: 0 40px;
+}
+.band b { font-size: 36px; font-weight: 700; white-space: nowrap; }
+.band span { font-size: 20px; opacity: .75; }
+.zone { position: absolute; border-radius: 24px; background: var(--panel); border: 1px solid var(--chrome-border); }
+.zone-title { position: absolute; font-size: 28px; font-weight: 700; white-space: nowrap; }
+.frame { position: absolute; }
+.frame-label {
+  position: absolute; left: 0; bottom: 100%; padding-bottom: 10px; white-space: nowrap;
+  display: flex; gap: 8px; align-items: center; font-size: 16px; line-height: 22px;
+}
+.frame-label b { font-weight: 600; }
+.frame-label span { color: var(--chrome-muted); }
+.frame-label .no {
+  min-width: 24px; height: 24px; padding: 0 6px; border-radius: 12px; background: var(--chrome-text); color: var(--chrome-bg);
+  font-size: 13px; font-weight: 700; display: grid; place-items: center;
+}
+.frame-label .tag { font-size: 13px; font-weight: 700; padding: 2px 8px; border-radius: 6px; color: #fff; background: var(--accent); }
+.frame iframe { display: block; border: 0; background: transparent; }
+.frame.board iframe { background: #fff; pointer-events: none; box-shadow: 0 1px 3px rgba(0,0,0,.08), 0 8px 24px rgba(0,0,0,.06); }
+.frame.proto { border-radius: 28px; outline: 2px dashed var(--accent); outline-offset: 12px; }
+.frame.sel::after { content: ""; position: absolute; inset: -2px; border: 2px solid var(--accent); pointer-events: none; }
+.frame.proto.sel::after { display: none; }
+.pill {
+  position: absolute; transform: translate(-50%, -50%); white-space: nowrap; padding: 6px 12px; border-radius: 999px;
+  background: var(--flow); color: #fff; font-size: 15px; font-weight: 600; line-height: 20px;
+}
+.pill.wide { white-space: normal; width: max-content; max-width: 760px; text-align: center; }
+.note {
+  position: absolute; width: 375px; padding: 16px 20px; border-radius: 12px; background: var(--note); border: 1px solid var(--note-border);
+  color: #3b3200; font-size: 16px; line-height: 24px; box-shadow: 0 2px 8px rgba(0,0,0,.05);
+}
+.note b { display: block; margin-bottom: 4px; }
+.note b em { color: var(--flow); font-style: normal; }
+.note ul { padding-left: 20px; }
+.case {
+  position: absolute; padding: 14px 18px; border-radius: 12px; background: var(--chrome-bg); border: 1px solid var(--chrome-border);
+  font-size: 16px; line-height: 24px;
+}
+.case b { display: block; font-size: 18px; line-height: 26px; }
+.case span { color: var(--chrome-muted); }
+svg.links { position: absolute; left: 0; top: 0; overflow: visible; pointer-events: none; }
+svg.links path { fill: none; stroke: var(--flow); stroke-width: 3; }
+
+/* ---------- Chrome ---------- */
+.topbar {
+  position: fixed; left: 16px; top: 16px; z-index: 10; display: flex; gap: 10px; align-items: center;
+  background: var(--chrome-bg); border: 1px solid var(--chrome-border); border-radius: 12px; padding: 8px 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.06); max-width: calc(100vw - 32px);
+}
+.topbar .dot { width: 10px; height: 10px; border-radius: 3px; background: var(--accent); flex: none; }
+.topbar b { font-weight: 600; font-size: 14px; white-space: nowrap; }
+.topbar span { color: var(--chrome-muted); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.toolbar {
+  position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); z-index: 10; max-width: calc(100vw - 32px); overflow-x: auto;
+  display: flex; gap: 2px; align-items: center; padding: 4px;
+  background: var(--chrome-bg); border: 1px solid var(--chrome-border); border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,.08);
+}
+.toolbar button {
+  height: 32px; min-width: 32px; padding: 0 10px; border-radius: 8px; font-size: 13px; font-weight: 500;
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px; white-space: nowrap;
+}
+.toolbar button:hover { background: var(--chrome-hover); }
+.toolbar button.on { background: var(--chrome-text); color: var(--chrome-bg); }
+.toolbar .sep { width: 1px; height: 20px; background: var(--chrome-border); margin: 0 4px; flex: none; }
+.toolbar .zoom { min-width: 56px; font-variant-numeric: tabular-nums; }
+.toolbar .k { color: var(--chrome-muted); font-size: 11px; }
+.toolbar svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.hint { position: fixed; right: 16px; top: 20px; z-index: 10; font-size: 12px; line-height: 18px; color: var(--chrome-muted); text-align: right; }
+@media (max-width: 900px) { .hint { display: none; } .toolbar .lbl { display: none; } }
+</style>
+</head>
+<body>
+<div class="topbar"><i class="dot"></i><b>Chat Button Entry</b><span>Việc Làm Tốt · AB test 2 treatments</span></div>
+<div class="hint">Cuộn để di chuyển · Ctrl/⌘ + cuộn để zoom · Giữ Space + kéo để pan<br>Bấm vào prototype để chơi</div>
+
+<div class="viewport" id="vp"><div class="world" id="world"></div></div>
+
+<div class="toolbar" role="toolbar" aria-label="Điều khiển canvas">
+  <button id="tHand" title="Kéo canvas (H / giữ Space)" aria-pressed="false">
+    <svg viewBox="0 0 24 24"><path d="M18 11V6a2 2 0 0 0-4 0v5M14 10V4a2 2 0 0 0-4 0v6M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.9-6-2.4l-3.6-3.6a2 2 0 0 1 2.8-2.8L7 15"/></svg><span class="lbl">Kéo</span>
+  </button>
+  <span class="sep"></span>
+  <button id="tOut" aria-label="Thu nhỏ" title="Thu nhỏ (−)"><svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg></button>
+  <button id="tZoom" class="zoom" title="Về 100% (Shift+0)">100%</button>
+  <button id="tIn" aria-label="Phóng to" title="Phóng to (+)"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+  <span class="sep"></span>
+  <button id="tFit" title="Toàn bộ (Shift+1)"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg><span class="lbl">Toàn bộ</span></button>
+  <span class="sep"></span>
+  <button data-go="s1" title="Treatment 1 (1)"><span class="lbl">Treatment 1</span><span class="k">1</span></button>
+  <button data-go="p1" title="Play prototype T1 (2)"><svg viewBox="0 0 24 24"><path d="M7 5l12 7-12 7z"/></svg><span class="lbl">Play T1</span><span class="k">2</span></button>
+  <span class="sep"></span>
+  <button data-go="s2" title="Treatment 2 (3)"><span class="lbl">Treatment 2</span><span class="k">3</span></button>
+  <button data-go="p2" title="Play prototype T2 (4)"><svg viewBox="0 0 24 24"><path d="M7 5l12 7-12 7z"/></svg><span class="lbl">Play T2</span><span class="k">4</span></button>
+</div>
+
+<script id="app-src" type="application/json">/*__APP__*/</script>
+<script>
+(function () {
+  const APP = JSON.parse(document.getElementById('app-src').textContent);
+  const vp = document.getElementById('vp'), world = document.getElementById('world'), zoomBtn = document.getElementById('tZoom');
+  const BW = 375, BH = 788, GAP = 160, PW = 681, PH = 830;
+  const PHONE = '0987654321', AUTOFILL = `Liên hệ mình qua SĐT ${PHONE}`;
+  const LONG = 'Hi bạn ơi cho mình hỏi việc này làm ở bệnh viện nào, ca làm mấy giờ và có cần mặc đồng phục riêng không ạ? Mình ở gần Phú Nhuận.';
+  const ONLY = 'Alo bạn ơi, việc này còn tuyển không ạ?';
+  const ALL = [0, 1, 2, 3, 4, 5];
+
+  /* ---------- Content ---------- */
+  const TREATMENTS = [
+    {
+      t: 1, title: 'AB group = Treatment 1', sub: 'Chọn sẵn 3 câu hỏi + checkbox “Gọi lại cho tôi qua SĐT”',
+      flow: [
+        ['Chi tiết tin — bấm Chat', { hot: true }, 'Tap Chat'],
+        ['Sheet nhắn tin — mặc định', { sheet: true }, 'Tap ô nhập'],
+        ['Focus ô nhập', { sheet: true, kb: true }, 'Gõ tin nhắn'],
+        ['Đang nhập', { sheet: true, kb: true, text: 'Hi bạn ơi cho mình hỏi' }, 'Tap Gửi'],
+        ['Gửi thành công', { toast: true }, 'Xem tin nhắn'],
+        ['Phòng chat', { sendFrom: { text: 'Hi bạn ơi cho mình hỏi' } }],
+      ],
+      notes: [
+        [1, 'Note', ['Mặc định chọn sẵn 3 câu hỏi đầu trong danh sách câu hỏi của Enquiry form', 'Checkbox “Gọi lại cho tôi qua SĐT…” mặc định bật', 'Người tìm việc chưa có SĐT → ẩn checkbox', 'Bottom sheet trượt lên 300ms; chạm nền tối để đóng']],
+        [2, 'Câu hỏi gợi ý', ['Chọn câu ở “Hỏi thêm” → chip chuyển lên ô nhập, bỏ khỏi gợi ý', 'Bấm × trên chip → trả câu hỏi về đúng vị trí cũ trong gợi ý', 'Chọn hết → ẩn hàng “Hỏi thêm”; hàng gợi ý cuộn ngang']],
+        [3, 'Ô nhập', ['Out focus: viền border-regular · In focus: border-black', 'Text dài → tối đa 2 dòng (40px), cuộn trong ô', 'Không có câu hỏi và không có text → nút Gửi disabled']],
+        [5, 'Nội dung tin gửi đi', ['Thẻ tin đăng', '“Cho mình hỏi:” + danh sách câu hỏi đã chọn', '“Gọi lại cho mình số 0987654321” (nếu checkbox bật)', 'Nội dung tự nhập']],
+      ],
+      cases: [
+        ['Xoá hết câu hỏi, chưa nhập', 'Nút Gửi disabled → bấm không có action', { sheet: true, sel: [] }],
+        ['Câu hỏi + text dài', 'Ô nhập tối đa 2 dòng, cuộn trong ô', { sheet: true, text: LONG }, { sendFrom: { text: LONG } }],
+        ['Chỉ câu hỏi', 'Gửi các câu hỏi đã chọn + dòng gọi lại', { sheet: true }, { sendFrom: {} }],
+        ['Chỉ text', 'Bỏ hết câu hỏi, chỉ gửi nội dung tự nhập', { sheet: true, sel: [], text: ONLY }, { sendFrom: { sel: [], text: ONLY } }],
+        ['Bỏ check “Gọi lại cho tôi qua SĐT”', 'Tin gửi đi không kèm dòng “Gọi lại cho mình số…”', { sheet: true, callback: false }, { sendFrom: { callback: false } }],
+        ['Chọn hết câu hỏi gợi ý', 'Ẩn hàng “Hỏi thêm”', { sheet: true, sel: ALL }],
+        ['Chưa có SĐT', 'Ẩn checkbox gọi lại', { sheet: true, hasPhone: false }],
+      ],
+    },
+    {
+      t: 2, title: 'AB group = Treatment 2', sub: 'Chọn sẵn 3 câu hỏi + tự điền “Liên hệ mình qua SĐT…” vào ô nhập',
+      flow: [
+        ['Chi tiết tin — bấm Chat', { hot: true }, 'Tap Chat'],
+        ['Sheet nhắn tin — mặc định', { sheet: true }, 'Tap ô nhập'],
+        ['Focus ô nhập', { sheet: true, kb: true }, 'Tap Gửi'],
+        ['Gửi thành công', { toast: true }, 'Xem tin nhắn'],
+        ['Phòng chat', { sendFrom: { text: AUTOFILL } }],
+      ],
+      notes: [
+        [1, 'Note', ['Tự điền “Liên hệ mình qua SĐT 0987654321” vào ô nhập', 'Mặc định chọn sẵn 3 câu hỏi đầu của Enquiry form', 'Không có checkbox gọi lại', 'Chưa có SĐT → không tự điền']],
+        [2, 'Câu hỏi gợi ý', ['Câu được chọn nằm trên ô nhập, bị xoá khỏi “Hỏi thêm”', 'Bấm × → trả về đúng vị trí ban đầu trong gợi ý', 'Chọn hết → ẩn hàng “Hỏi thêm”; hàng gợi ý cuộn ngang']],
+        [4, 'Nội dung tin gửi đi', ['Thẻ tin đăng', '“Cho mình hỏi:” + danh sách câu hỏi đã chọn', 'Nội dung ô nhập (mặc định là dòng SĐT tự điền)']],
+      ],
+      cases: [
+        ['Xoá text điền sẵn + xoá hết câu hỏi', 'Nút Gửi disabled → bấm không có action', { sheet: true, sel: [], text: '' }],
+        ['Câu hỏi + text dài', 'Ô nhập tối đa 2 dòng, cuộn trong ô', { sheet: true, text: LONG }, { sendFrom: { text: LONG } }],
+        ['Chỉ câu hỏi', 'Xoá text điền sẵn → tin chỉ gồm “Cho mình hỏi:” + câu hỏi', { sheet: true, text: '' }, { sendFrom: { text: '' } }],
+        ['Chỉ text', 'Bỏ hết câu hỏi, gửi nội dung ô nhập', { sheet: true, sel: [] }, { sendFrom: { sel: [], text: AUTOFILL } }],
+        ['Chọn thêm câu hỏi', 'Câu vừa chọn lên ô nhập, rời khỏi gợi ý', { sheet: true, sel: [0, 1, 2, 3] }],
+        ['Chọn hết câu hỏi gợi ý', 'Ẩn hàng “Hỏi thêm”', { sheet: true, sel: ALL }],
+        ['Chưa có SĐT', 'Không tự điền dòng SĐT vào ô nhập', { sheet: true, hasPhone: false }],
+      ],
+    },
+  ];
+
+  /* ---------- Build world ---------- */
+  const frames = [], protos = {}, sections = {};
+  let maxX = 0;
+  const el = (cls, html, css) => { const d = document.createElement('div'); d.className = cls; if (html != null) d.innerHTML = html; Object.assign(d.style, css || {}); world.appendChild(d); return d; };
+  const px = v => v + 'px';
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('class', 'links'); svg.setAttribute('width', 1); svg.setAttribute('height', 1);
+  svg.innerHTML = '<defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#e5197e"/></marker></defs>';
+  const link = d => { const p = document.createElementNS('http://www.w3.org/2000/svg', 'path'); p.setAttribute('d', d); p.setAttribute('marker-end', 'url(#ah)'); svg.appendChild(p); };
+  const pill = (x, y, text, wide) => el('pill' + (wide ? ' wide' : ''), null, { left: px(x), top: px(y) }).textContent = text;
+  const doc = (t, mode, state) => APP.replace('<!--BOOT-->',
+    `<script>window.__BOOT=${JSON.stringify({ t, mode, state }).replace(/</g, '\\u003c')};document.documentElement.dataset.mode=${JSON.stringify(mode)}<\/script>`);
+
+  function board(x, y, t, state, no, name) {
+    const f = el('frame board', `<div class="frame-label">${no ? `<span class="no">${no}</span>` : ''}<b>${name}</b><span>375 × 788</span></div>`,
+      { left: px(x), top: px(y), width: px(BW), height: px(BH) });
+    const ifr = document.createElement('iframe'); ifr.width = BW; ifr.height = BH; ifr.tabIndex = -1; ifr.title = name;
+    ifr.srcdoc = doc(t, 'board', state); f.appendChild(ifr); frames.push(f);
+    maxX = Math.max(maxX, x + BW);
+  }
+
+  let Y = 0;
+  for (const tr of TREATMENTS) {
+    const top = Y, flowY = Y + 220;
+    // Main flow
+    tr.flow.forEach(([name, state, next], i) => {
+      const x = i * (BW + GAP);
+      board(x, flowY, tr.t, state, i + 1, name);
+      if (next) { const y = flowY + BH / 2; link(`M${x + BW + 12} ${y}H${x + BW + GAP - 14}`); pill(x + BW + GAP / 2, y - 26, next); }
+    });
+    const last = (tr.flow.length - 1) * (BW + GAP);
+    // Already-chatted shortcut
+    const sy = flowY + BH + 56;
+    link(`M${BW / 2} ${flowY + BH + 8}V${sy}H${last + BW / 2}V${flowY + BH + 14}`);
+    pill((BW / 2 + last + BW / 2) / 2, sy, 'Trường hợp người tìm việc và nhà tuyển dụng đã có hội thoại với tin này → bấm Chat vào thẳng phòng chat', true);
+    // Notes
+    const noteY = flowY + BH + 110;
+    let notesH = 0;
+    for (const [i, title, items] of tr.notes) {
+      const n = el('note', `<b>${title} <em>(*)</em></b><ul>${items.map(s => `<li>${s}</li>`).join('')}</ul>`, { left: px(i * (BW + GAP)), top: px(noteY) });
+      notesH = Math.max(notesH, n.offsetHeight || 200);
+    }
+    // Prototype frame next to the flow
+    const pX = last + BW + GAP + 80, pY = flowY - 21;
+    const pf = el('frame proto', `<div class="frame-label" style="padding-bottom:22px"><span class="tag">Prototype</span><b>Treatment ${tr.t} — iPhone 14 Pro</b><span>bấm để chơi</span></div>`,
+      { left: px(pX), top: px(pY), width: px(PW), height: px(PH) });
+    const pifr = document.createElement('iframe'); pifr.width = PW; pifr.height = PH; pifr.title = `Prototype Treatment ${tr.t}`;
+    pifr.srcdoc = doc(tr.t, 'proto', {}); pf.appendChild(pifr); frames.push(pf);
+    protos[tr.t] = { x: pX, y: pY, w: PW, h: PH, el: pf, ifr: pifr };
+    maxX = Math.max(maxX, pX + PW);
+    // Edge cases
+    const zoneY = noteY + Math.max(notesH, 220) + 120, caseY = zoneY + 120, bY = caseY + 170;
+    let x = 0;
+    for (const [title, desc, st, res] of tr.cases) {
+      const w = res ? BW * 2 + GAP : BW;
+      el('case', `<b>In case: ${title}</b><span>${desc}</span>`, { left: px(x), top: px(caseY), width: px(w) });
+      board(x, bY, tr.t, st, null, 'Sheet');
+      if (res) {
+        const y = bY + BH / 2; link(`M${x + BW + 12} ${y}H${x + BW + GAP - 14}`); pill(x + BW + GAP / 2, y - 26, 'Gửi');
+        board(x + BW + GAP, bY, tr.t, res, null, 'Tin nhắn đã gửi');
+      }
+      x += w + 100;
+    }
+    const zoneW = x - 100 + 120;
+    const zone = el('zone', null, { left: px(-60), top: px(zoneY), width: px(zoneW), height: px(bY + BH + 60 - zoneY) });
+    world.insertBefore(zone, world.firstChild);
+    el('zone-title', 'Edge cases', { left: px(0), top: px(zoneY + 40) });
+    maxX = Math.max(maxX, x);
+    const bottom = bY + BH + 60;
+    sections[tr.t] = { x: -80, y: top, w: 0, h: bottom - top };
+    tr._bandY = top;
+    Y = bottom + 360;
+  }
+  // Bands span the full world width
+  for (const tr of TREATMENTS) {
+    el('band', `<b>${tr.title}</b><span>${tr.sub}</span>`, { left: px(-80), top: px(tr._bandY), width: px(maxX + 160) });
+    sections[tr.t].w = maxX + 160;
+  }
+  world.appendChild(svg);
+
+  /* ---------- Camera ---------- */
+  const cam = { x: 0, y: 0, z: 1 }, MIN = 0.03, MAX = 4;
+  function apply() {
+    world.style.transform = `translate(${cam.x}px, ${cam.y}px) scale(${cam.z})`;
+    const g = 24 * cam.z; vp.style.backgroundSize = `${g}px ${g}px`; vp.style.backgroundPosition = `${cam.x}px ${cam.y}px`;
+    zoomBtn.textContent = Math.round(cam.z * 100) + '%';
+  }
+  function zoomAt(z, cx, cy) {
+    z = Math.min(MAX, Math.max(MIN, z));
+    cam.x = cx - (cx - cam.x) * (z / cam.z); cam.y = cy - (cy - cam.y) * (z / cam.z); cam.z = z; apply();
+  }
+  let anim;
+  function animateTo(t) {
+    cancelAnimationFrame(anim);
+    const s = { ...cam }, t0 = performance.now(), D = 360;
+    const step = now => {
+      const k = Math.min(1, (now - t0) / D), e = 1 - Math.pow(1 - k, 3);
+      cam.x = s.x + (t.x - s.x) * e; cam.y = s.y + (t.y - s.y) * e; cam.z = s.z + (t.z - s.z) * e; apply();
+      if (k < 1) anim = requestAnimationFrame(step);
+    };
+    anim = requestAnimationFrame(step);
+  }
+  function fitRect(r, pad = 48, maxZ = 1) {
+    const W = innerWidth, H = innerHeight - 80;
+    const z = Math.min(maxZ, (W - pad * 2) / r.w, (H - pad * 2) / r.h);
+    return { z, x: (W - r.w * z) / 2 - r.x * z, y: 10 + (H - r.h * z) / 2 - r.y * z };
+  }
+  const all = () => ({ x: -80, y: 0, w: maxX + 160, h: Y - 360 });
+  const select = f => frames.forEach(x => x.classList.toggle('sel', x === f));
+  const go = {
+    all: () => animateTo(fitRect(all())),
+    s1: () => animateTo(fitRect(sections[1])), s2: () => animateTo(fitRect(sections[2])),
+    p1: () => { const p = protos[1]; animateTo(fitRect({ x: p.x, y: p.y - 40, w: p.w, h: p.h + 40 }, 16)); select(p.el); },
+    p2: () => { const p = protos[2]; animateTo(fitRect({ x: p.x, y: p.y - 40, w: p.w, h: p.h + 40 }, 16)); select(p.el); },
+  };
+
+  /* ---------- Input ---------- */
+  vp.addEventListener('wheel', e => {
+    e.preventDefault();
+    if (e.ctrlKey || e.metaKey) zoomAt(cam.z * Math.exp(-e.deltaY * 0.01), e.clientX, e.clientY);
+    else { cam.x -= e.deltaX; cam.y -= e.deltaY; apply(); }
+  }, { passive: false });
+  let space = false, hand = false, drag = null, pinch = null;
+  const handBtn = document.getElementById('tHand');
+  function setPanMode() { vp.classList.toggle('panning', space || hand); handBtn.classList.toggle('on', hand); handBtn.setAttribute('aria-pressed', hand); }
+  vp.addEventListener('pointerdown', e => {
+    const f = e.target.closest('.frame');
+    if (f && f.classList.contains('proto') && !(space || hand)) { select(f); return; }
+    select(f || null);
+    drag = { id: e.pointerId, x: e.clientX, y: e.clientY, cx: cam.x, cy: cam.y };
+    vp.setPointerCapture(e.pointerId); vp.classList.add('panning', 'dragging');
+  });
+  vp.addEventListener('pointermove', e => {
+    if (!drag || e.pointerId !== drag.id || pinch) return;
+    cam.x = drag.cx + e.clientX - drag.x; cam.y = drag.cy + e.clientY - drag.y; apply();
+  });
+  const endDrag = () => { drag = null; vp.classList.remove('dragging'); setPanMode(); };
+  vp.addEventListener('pointerup', endDrag); vp.addEventListener('pointercancel', endDrag);
+  vp.addEventListener('touchstart', e => { if (e.touches.length === 2) { const [a, b] = e.touches; pinch = { d: Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY), z: cam.z }; } }, { passive: true });
+  vp.addEventListener('touchmove', e => {
+    if (!pinch || e.touches.length !== 2) return;
+    const [a, b] = e.touches; zoomAt(pinch.z * Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY) / pinch.d, (a.clientX + b.clientX) / 2, (a.clientY + b.clientY) / 2);
+  }, { passive: true });
+  vp.addEventListener('touchend', e => { if (e.touches.length < 2) pinch = null; });
+
+  function onKey(e, down) {
+    if (e.target.closest && e.target.closest('input, textarea')) return;
+    if (e.code === 'Space') { space = down; setPanMode(); if (down) e.preventDefault(); return; }
+    if (!down) return;
+    const c = [innerWidth / 2, innerHeight / 2];
+    if (e.key === '+' || e.key === '=') zoomAt(cam.z * 1.25, ...c);
+    else if (e.key === '-' || e.key === '_') zoomAt(cam.z / 1.25, ...c);
+    else if (e.shiftKey && e.code === 'Digit0') zoomAt(1, ...c);
+    else if (e.shiftKey && e.code === 'Digit1') go.all();
+    else if (e.key === '1') go.s1(); else if (e.key === '2') go.p1();
+    else if (e.key === '3') go.s2(); else if (e.key === '4') go.p2();
+    else if (e.key === 'h' || e.key === 'H') { hand = !hand; setPanMode(); }
+    else return;
+    e.preventDefault();
+  }
+  addEventListener('keydown', e => onKey(e, true));
+  addEventListener('keyup', e => onKey(e, false));
+  for (const p of Object.values(protos)) p.ifr.addEventListener('load', () => {
+    const w = p.ifr.contentWindow;
+    w.addEventListener('keydown', e => { if (e.code === 'Space' && !e.target.closest('input, textarea')) onKey(e, true); });
+    w.addEventListener('keyup', e => { if (e.code === 'Space') onKey(e, false); });
+  });
+
+  handBtn.onclick = () => { hand = !hand; setPanMode(); };
+  document.getElementById('tIn').onclick = () => zoomAt(cam.z * 1.25, innerWidth / 2, innerHeight / 2);
+  document.getElementById('tOut').onclick = () => zoomAt(cam.z / 1.25, innerWidth / 2, innerHeight / 2);
+  zoomBtn.onclick = () => zoomAt(1, innerWidth / 2, innerHeight / 2);
+  document.getElementById('tFit').onclick = go.all;
+  document.querySelectorAll('[data-go]').forEach(b => b.onclick = go[b.dataset.go]);
+
+  // Initial view: Treatment 1 main flow + its prototype
+  const p1 = protos[1];
+  Object.assign(cam, fitRect({ x: -40, y: p1.y - 60, w: p1.x + p1.w + 80, h: p1.h + 90 }, 24)); apply();
+})();
+</script>
+</body>
+</html>
