@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>InsertAd · Mã giới thiệu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ds-tokens:start */
+/* DS tokens: Chợ Tốt (GDS), Figma export 2026-10-14. Inserted by scripts/ds_tokens.py inline; do not edit. */
+:root {
+  --logo-primary: #ffba00;
+  --logo-secondary: #ffba00;
+  --logo-on-black: #ffffff;
+  --border-divider: #f4f4f4;
+  --border-thin: #e8e8e8;
+  --border-overlay: #ffffff80;
+  --border-regular: #dddddd;
+  --border-bold: #8c8c8c;
+  --border-active: #ffd400;
+  --border-blank: #ffffff;
+  --border-brand: #ffd400;
+  --border-info: #306bd9;
+  --border-success: #12a154;
+  --border-error: #f0325e;
+  --border-warning: #fb7328;
+  --border-disabled: #c0c0c0;
+  --border-black: #222222;
+  --background-brand-light: #fff8d6;
+  --background-chotot-light: #fff8d6;
+  --background-primary: #ffffff;
+  --background-app: #f7f7f7;
+  --background-secondary: #f4f4f4;
+  --background-tertiary: #e8e8e8;
+  --background-disable: #c0c0c0;
+  --background-error-light: #feebef;
+  --background-info-light: #f2f6fc;
+  --background-success-light: #ecf9f1;
+  --background-warning-light: #fff4ec;
+  --background-brand: #ffd400;
+  --background-appwrapper: #ffd400;
+  --background-chotot: #ffd400;
+  --background-info: #306bd9;
+  --background-error: #f0325e;
+  --background-success: #12a154;
+  --background-warning: #fb7328;
+  --background-inverted: #222222;
+  --background-overlay: #22222280;
+  --background-overlay-inverted: #ffffff1a;
+  --text-brand: #cc8f00;
+  --text-on-background: #222222;
+  --text-primary: #222222;
+  --text-secondary: #595959;
+  --text-tertiary: #8c8c8c;
+  --text-link: #306bd9;
+  --text-error: #f0325e;
+  --text-success: #12a154;
+  --text-info: #306bd9;
+  --text-warning: #fb7328;
+  --text-chotot: #ffd400;
+  --text-disabled: #c0c0c0;
+  --text-blank: #ffffff;
+  --text-overlay: #ffffffbf;
+  --text-overlay-secondary: #ffffff80;
+  --icon-brand: #ffba00;
+  --icon-chotot: #ffba00;
+  --icon-chotot-bold: #cc8f00;
+  --icon-on-background: #222222;
+  --icon-primary: #222222;
+  --icon-secondary: #595959;
+  --icon-tertiary: #8c8c8c;
+  --icon-blank: #ffffff;
+  --icon-info: #306bd9;
+  --icon-success: #12a154;
+  --icon-error: #f0325e;
+  --icon-warning: #fb7328;
+  --icon-disabled: #c0c0c0;
+  --interaction-chotot-hover: #ffe884;
+  --interaction-chotot-pressed: #ffc800;
+  --interaction-brand-hover: #ffe884;
+  --interaction-brand-pressed: #ffba00;
+  --interaction-error-hover: #f35b7e;
+  --interaction-error-pressed: #cb294e;
+  --interaction-info-hover: #548af0;
+  --interaction-info-pressed: #1952ba;
+  --interaction-success-hover: #26c06e;
+  --interaction-success-pressed: #108446;
+  --interaction-warning-hover: #ffa97b;
+  --interaction-warning-pressed: #e16725;
+  --interaction-neutral-hover: #595959;
+  --interaction-neutral-pressed: #404040;
+  --interaction-primary-hover: #f4f4f4;
+  --interaction-brand-light-hover: #fff8d6;
+  --interaction-brand-light-pressed: #ffd400;
+  --interaction-error-light-hover: #fcd6df;
+  --interaction-error-light-pressed: #fbc2cf;
+  --interaction-info-light-hover: #e4ecfb;
+  --interaction-info-light-pressed: #cadbf7;
+  --interaction-success-light-hover: #d9f2e4;
+  --interaction-success-light-pressed: #abe7c5;
+  --interaction-warning-light-hover: #ffe4d5;
+  --interaction-warning-light-pressed: #ffceb4;
+  --interaction-neutral-light-hover: #e8e8e8;
+  --interaction-neutral-light-pressed: #dddddd;
+  --button-primary: #ffd400;
+  --button-info: #306bd9;
+  --button-success: #12a154;
+  --button-error: #f0325e;
+  --button-chotot: #ffd400;
+  --button-blank: #ffffff;
+  --button-disabled: #c0c0c0;
+  --button-appwrapper: #ffd400;
+  --button-neutral: #222222;
+  --button-secondary: #fff8d6;
+  --button-tonal-success: #ecf9f1;
+  --button-tonal-error: #feebef;
+  --button-tonal-info: #f2f6fc;
+  --button-tonal-neutral: #f4f4f4;
+  --skeleton-background: #f4f4f4;
+  --skeleton-item: #e8e8e8;
+  --gap-min-2: 2px;
+  --gap-2x-small-4: 4px;
+  --gap-2x-small-6: 6px;
+  --gap-x-small-8: 8px;
+  --gap-small-12: 12px;
+  --gap-medium-16: 16px;
+  --gap-large-20: 20px;
+  --padding-min-2: 2px;
+  --padding-2x-small-4: 4px;
+  --padding-2x-small-6: 6px;
+  --padding-x-small-8: 8px;
+  --padding-small-12: 12px;
+  --padding-medium-16: 16px;
+  --padding-large-20: 20px;
+  --radius-ad-small: 4px;
+  --radius-ad: 6px;
+  --radius-card-small: 8px;
+  --radius-card: 12px;
+  --radius-decoration: 16px;
+  --radius-modal: 20px;
+  --radius-pill: 999px;
+  --stroke-divider: 1px;
+  --stroke-action: 2px;
+  --stroke-emphasize: 3px;
+}
+.t-display-page { font: 700 32px/40px 'Reddit Sans', sans-serif; }
+.t-display-section { font: 700 24px/32px 'Reddit Sans', sans-serif; }
+.t-display-caption { font: 700 20px/28px 'Reddit Sans', sans-serif; }
+.t-header-page { font: 600 20px/28px 'Reddit Sans', sans-serif; }
+.t-display-annotation { font: 700 18px/26px 'Reddit Sans', sans-serif; }
+.t-display-price { font: 600 18px/26px 'Reddit Sans', sans-serif; }
+.t-label-page { font: 700 16px/24px 'Reddit Sans', sans-serif; }
+.t-header-section { font: 600 16px/24px 'Reddit Sans', sans-serif; }
+.t-tagline-section { font: 500 16px/20px 'Reddit Sans', sans-serif; }
+.t-body-page { font: 400 16px/24px 'Reddit Sans', sans-serif; }
+.t-label-section { font: 700 14px/20px 'Reddit Sans', sans-serif; }
+.t-header-caption { font: 600 14px/20px 'Reddit Sans', sans-serif; }
+.t-tagline-caption { font: 500 14px/20px 'Reddit Sans', sans-serif; }
+.t-body-section { font: 400 14px/20px 'Reddit Sans', sans-serif; }
+.t-label-caption { font: 700 12px/18px 'Reddit Sans', sans-serif; }
+.t-header-annotation { font: 600 12px/18px 'Reddit Sans', sans-serif; }
+.t-tagline-annotation { font: 500 12px/18px 'Reddit Sans', sans-serif; }
+.t-body-caption { font: 400 12px/18px 'Reddit Sans', sans-serif; }
+.t-label-annotation { font: 700 10px/16px 'Reddit Sans', sans-serif; }
+.t-tagline-footext { font: 500 10px/16px 'Reddit Sans', sans-serif; }
+.t-body-annotation { font: 400 10px/16px 'Reddit Sans', sans-serif; }
+/* ds-tokens:end */
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { font-family:'Reddit Sans', system-ui, sans-serif; color:var(--text-primary); }
+body { min-height:100vh; background:var(--background-app); overflow-x:auto; }
+button, input { font:inherit; color:inherit; }
+button { cursor:pointer; border:none; background:none; }
+
+/* ---------- Canvas ---------- */
+.canvas-head { display:flex; align-items:flex-end; justify-content:space-between; gap:var(--gap-medium-16); padding:24px 40px 0; max-width:1840px; }
+.canvas-head p { color:var(--text-secondary); }
+.seg { display:inline-flex; gap:var(--gap-2x-small-4); padding:var(--padding-2x-small-4); border-radius:var(--radius-pill); background:var(--background-tertiary); }
+.seg button { height:32px; padding:var(--padding-2x-small-4) var(--padding-small-12); border-radius:var(--radius-pill); color:var(--text-secondary); }
+.seg button.on { background:var(--background-primary); color:var(--text-primary); }
+.flow { display:flex; align-items:flex-start; gap:40px; padding:32px 40px 48px; width:max-content; }
+.step { display:flex; flex-direction:column; align-items:center; gap:var(--gap-small-12); width:393px; }
+.step-label { display:flex; align-items:center; gap:var(--gap-x-small-8); }
+.step-label b { display:inline-flex; align-items:center; justify-content:center; height:24px; padding:0 var(--padding-x-small-8); border-radius:var(--radius-pill); background:var(--background-brand); color:var(--text-on-background); }
+.step-label b.ref { background:var(--background-tertiary); color:var(--text-secondary); }
+.metric { display:flex; gap:var(--gap-x-small-8); }
+.metric span { padding:var(--padding-min-2) var(--padding-x-small-8); border-radius:var(--radius-pill); background:var(--background-primary); border:1px solid var(--border-thin); color:var(--text-secondary); }
+.metric span strong { color:var(--text-primary); }
+.notes { width:100%; display:flex; flex-direction:column; gap:var(--gap-2x-small-4); padding:var(--padding-small-12); border-radius:var(--radius-card); background:var(--background-primary); border:1px solid var(--border-thin); }
+.notes li { margin-left:var(--padding-medium-16); color:var(--text-secondary); }
+.notes .pro::marker { color:var(--text-success); } .notes .con::marker { color:var(--text-error); }
+
+/* ---------- iPhone frame (chrome trình diễn) ---------- */
+.iphone { position:relative; width:393px; height:806px; flex-shrink:0; background:#1c1c1e; border-radius:56px; padding:9px; box-shadow:0 0 0 2px #3a3a3c, 0 24px 60px rgba(0,0,0,.35); transition:height .3s; } /* ds-raw: khung máy iPhone, không thuộc DS */
+.iphone-screen { position:relative; width:375px; height:788px; border-radius:47px; overflow:hidden; background:var(--background-app); transition:height .3s; } /* ds-raw: bo góc màn iPhone */
+.dynamic-island { position:absolute; top:11px; left:50%; transform:translateX(-50%); width:120px; height:34px; background:#000; border-radius:20px; z-index:9999; } /* ds-raw: Dynamic Island */
+body.small .iphone { height:685px; border-radius:40px; } /* ds-raw: mô phỏng màn nhỏ 375×667 (iPhone SE) */
+body.small .iphone-screen { height:667px; border-radius:32px; } /* ds-raw: mô phỏng màn nhỏ */
+body.small .dynamic-island { display:none; }
+.app-scroll { position:absolute; inset:0; overflow-y:auto; overflow-x:hidden; display:flex; flex-direction:column; scrollbar-width:none; background:var(--background-app); scroll-behavior:smooth; }
+.app-scroll > * { flex-shrink:0; }
+.app-scroll::-webkit-scrollbar { display:none; }
+.ios-statusbar { position:sticky; top:0; z-index:20; height:50px; display:flex; align-items:flex-end; justify-content:space-between; padding:0 26px 7px 32px; background:var(--background-primary); color:var(--text-primary); font-size:14px; font-weight:600; } /* ds-raw: status bar iOS */
+body.small .ios-statusbar { height:20px; align-items:center; padding:0 var(--padding-medium-16); font-size:12px; } /* ds-raw: status bar iOS SE */
+.ios-statusbar .icons { display:flex; gap:5px; align-items:center; } /* ds-raw: status bar iOS */
+.home-indicator { width:134px; height:5px; margin:6px auto 0; border-radius:3px; background:rgba(0,0,0,.85); } /* ds-raw: home indicator iOS */
+body.small .home-indicator { display:none; }
+
+.ds-icon { width:24px; height:24px; flex:none; color:var(--icon-primary); vertical-align:middle; }
+.ds-icon--20 { width:20px; height:20px; } .ds-icon--16 { width:16px; height:16px; }
+
+/* ---------- Header + form ngữ cảnh ---------- */
+.app-header { position:sticky; top:50px; z-index:15; display:flex; align-items:center; gap:var(--gap-x-small-8); height:56px; padding:0 var(--padding-x-small-8); background:var(--background-primary); }
+body.small .app-header { top:20px; }
+.app-header h1 { flex:1; text-align:right; }
+.app-header .link { padding:0 var(--padding-x-small-8); }
+.icon-btn { width:40px; height:40px; display:inline-flex; align-items:center; justify-content:center; border-radius:var(--radius-pill); }
+.icon-btn:hover { background:var(--interaction-neutral-light-hover); }
+.card { background:var(--background-primary); padding:var(--padding-medium-16); display:flex; flex-direction:column; gap:var(--gap-medium-16); }
+.card + .card { margin-top:var(--padding-small-12); }
+.ta { position:relative; padding:var(--padding-x-small-8) 40px var(--padding-x-small-8) var(--padding-medium-16); border:2px solid var(--border-thin); border-radius:var(--radius-card); } /* ds-raw: chừa chỗ icon xoá bên phải */
+.ta .clear { position:absolute; right:12px; top:50%; transform:translateY(-50%); }
+.ta .clear .ds-icon { color:var(--icon-tertiary); }
+.row-between { display:flex; align-items:center; justify-content:space-between; gap:var(--gap-x-small-8); }
+.req { color:var(--text-error); }
+.chips { display:flex; gap:var(--gap-x-small-8); }
+.chip { display:inline-flex; align-items:center; height:40px; padding:var(--padding-x-small-8) var(--padding-medium-16); border-radius:var(--radius-pill); background:var(--background-secondary); }
+.chip.on { background:var(--background-inverted); color:var(--text-blank); }
+.banner { height:120px; border-radius:var(--radius-card); background:var(--background-brand-light); padding:var(--padding-small-12); display:flex; flex-direction:column; gap:var(--gap-2x-small-4); }
+.banner .t-label-page { color:var(--text-brand); }
+.cbox { width:24px; height:24px; padding:2px; } .cbox i { display:block; width:20px; height:20px; border:2px solid var(--border-regular); border-radius:var(--radius-ad-small); }
+.muted { color:var(--text-secondary); }
+.fill { flex:1 0 24px; }
+
+/* ---------- Button ---------- */
+.btn { display:inline-flex; align-items:center; justify-content:center; gap:var(--gap-2x-small-4); padding:var(--padding-2x-small-4) var(--padding-small-12); border-radius:var(--radius-card-small); transition:background .2s; white-space:nowrap; }
+.btn-xl { height:48px; flex:1; } .btn-l { height:40px; } .btn-m { height:32px; }
+.btn-primary { background:var(--button-primary); color:var(--text-on-background); }
+.btn-primary:hover { background:var(--interaction-brand-hover); }
+.btn-primary:active { background:var(--interaction-brand-pressed); }
+.btn-secondary { background:var(--button-tonal-neutral); color:var(--text-primary); }
+.btn-secondary:hover { background:var(--interaction-neutral-light-hover); }
+.btn-secondary:active { background:var(--interaction-neutral-light-pressed); }
+.btn:disabled { background:var(--button-disabled); color:var(--text-blank); cursor:not-allowed; }
+.btn:focus-visible, .icon-btn:focus-visible, .ref-row:focus-visible, .hint:focus-visible { outline:2px solid var(--border-info); outline-offset:2px; }
+.spinner { width:16px; height:16px; border-radius:var(--radius-pill); border:2px solid var(--border-regular); border-top-color:var(--border-black); animation:spin .8s linear infinite; }
+@keyframes spin { to { transform:rotate(360deg); } }
+
+/* ---------- Input ---------- */
+.field { display:flex; align-items:center; gap:var(--gap-x-small-8); height:48px; padding:var(--padding-min-2) var(--padding-2x-small-4) var(--padding-min-2) var(--padding-medium-16); border:2px solid var(--border-thin); border-radius:var(--radius-card); background:var(--background-primary); transition:border-color .2s; }
+.field:hover, .field:focus-within { border-color:var(--border-black); }
+.field input { flex:1; min-width:0; border:none; outline:none; background:none; text-transform:uppercase; }
+.field input::placeholder { color:var(--text-secondary); text-transform:none; }
+.field.err { border-color:var(--border-error); animation:shake .35s; }
+.help { color:var(--text-secondary); padding-top:var(--padding-2x-small-4); }
+.help.err { color:var(--text-error); }
+@keyframes shake { 25% { transform:translateX(-4px); } 75% { transform:translateX(4px); } }
+
+/* ---------- Bottom bar ---------- */
+.bottom { position:sticky; bottom:0; z-index:15; background:var(--background-primary); padding:var(--padding-small-12) var(--padding-medium-16) var(--padding-x-small-8); display:flex; flex-direction:column; gap:var(--gap-small-12); box-shadow:0 -4px 12px rgba(0,0,0,.06); } /* ds-raw: bóng tách cụm đáy khỏi form */
+.btn-row { display:flex; gap:var(--gap-small-12); }
+
+/* Hiện tại */
+.cur-ref { padding:var(--padding-small-12); border:1px solid var(--border-brand); border-radius:var(--radius-card); background:var(--background-brand-light); display:flex; flex-direction:column; gap:var(--gap-x-small-8); }
+
+/* Phương án 1 + 2: dòng gọn */
+.ref-row { display:flex; align-items:center; gap:var(--gap-x-small-8); width:100%; min-height:24px; text-align:left; border-radius:var(--radius-card-small); } /* custom: DS chưa có dòng mở rộng */
+.ref-row { position:relative; }
+.ref-row::after { content:""; position:absolute; inset:-12px 0; } /* mở vùng chạm lên 48px mà không tăng chiều cao */
+.ref-row .ds-icon { color:var(--icon-brand); }
+.ref-row .grow { flex:1; }
+.ref-row .act { color:var(--text-link); display:inline-flex; align-items:center; gap:var(--gap-min-2); }
+.ref-row .act .ds-icon { color:var(--icon-info); width:16px; height:16px; transition:transform .25s; }
+.ref-row[aria-expanded="true"] .act .ds-icon { transform:rotate(90deg); }
+.ref-row.applied .ds-icon.lead { color:var(--icon-success); }
+.expand { display:grid; grid-template-rows:0fr; transition:grid-template-rows .25s ease; }
+.expand.open { grid-template-rows:1fr; }
+.expand:not(.open) { margin-top:calc(-1 * var(--gap-small-12)); } /* bỏ gap của hàng đang đóng */
+.expand > div { overflow:hidden; }
+.expand .inner { display:flex; flex-direction:column; padding-top:var(--padding-min-2); }
+
+/* Phương án 2: drawer */
+.scrim { position:absolute; inset:0; z-index:50; background:var(--background-overlay); opacity:0; pointer-events:none; transition:opacity .25s; }
+.drawer { position:absolute; left:0; right:0; bottom:0; z-index:60; background:var(--background-primary); border-radius:var(--radius-modal) var(--radius-modal) 0 0; box-shadow:0 4px 16px rgba(34,34,34,.12); transform:translateY(100%); transition:transform .3s ease; display:flex; flex-direction:column; } /* ds-raw: bóng Drawer theo spec DS */
+.sheet-open .scrim { opacity:1; pointer-events:auto; }
+.sheet-open .drawer { transform:none; }
+.drawer-head { display:flex; align-items:center; height:48px; padding:var(--padding-small-12) var(--padding-large-20); border-bottom:1px solid var(--border-thin); }
+.drawer-head h2 { flex:1; text-align:center; }
+.drawer-head .sp { width:24px; }
+.drawer-body { padding:var(--padding-medium-16) var(--padding-large-20); display:flex; flex-direction:column; gap:var(--gap-small-12); }
+.drawer-foot { padding:var(--padding-small-12) var(--padding-large-20) var(--padding-large-20); border-top:1px solid var(--border-thin); display:flex; }
+.drawer-foot .btn { flex:1; }
+.announcer { display:flex; gap:var(--gap-x-small-8); padding:var(--padding-small-12) var(--padding-medium-16); border-radius:var(--radius-card); background:var(--background-success-light); }
+.announcer .ds-icon { color:var(--icon-success); }
+.announcer.info { background:var(--background-info-light); } .announcer.info .ds-icon { color:var(--icon-info); }
+
+/* Phương án 3: section trong form + gợi ý */
+.hint { display:flex; align-items:center; justify-content:center; gap:var(--gap-2x-small-4); color:var(--text-secondary); } /* custom: DS chưa có dòng gợi ý trên CTA */
+.hint .ds-icon { color:var(--icon-brand); }
+.hint u { color:var(--text-link); text-decoration:none; }
+.hint.applied, .hint.applied .ds-icon { color:var(--text-success); }
+.ref-section.flash { animation:flash 1.2s ease; }
+@keyframes flash { 0%,100% { box-shadow:inset 0 0 0 0 transparent; } 30% { box-shadow:inset 0 0 0 2px var(--border-brand); } }
+.inline-apply { display:flex; gap:var(--gap-x-small-8); align-items:center; }
+.inline-apply .field { flex:1; }
+.success-text { color:var(--text-success); display:flex; align-items:center; gap:var(--gap-2x-small-4); }
+.success-text .ds-icon { color:var(--icon-success); }
+</style>
+</head>
+<body>
+<svg id="ds-icon-sprite" xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+<symbol id="ds-Gift-outline" viewBox="0 0 24 24"><path d="M20 14.88H13.164V20H18.75C19.481 20 20 19.442 20 18.845V14.88ZM16.206 4.364C16.018 4.054 15.573 3.901 15.186 4.067L15.109 4.104C15.107 4.105 15.099 4.111 15.085 4.121C15.068 4.133 15.045 4.152 15.016 4.178C14.957 4.231 14.885 4.302 14.803 4.394C14.638 4.579 14.459 4.814 14.279 5.069C14.168 5.226 14.062 5.386 13.963 5.539C14.171 5.533 14.392 5.525 14.614 5.51C14.937 5.488 15.244 5.455 15.498 5.411C15.624 5.388 15.727 5.365 15.806 5.342C15.882 5.32 15.915 5.304 15.919 5.302L15.988 5.26C16.267 5.069 16.354 4.75 16.261 4.483L16.206 4.364ZM8.926 4.104C8.549 3.895 8.091 4.016 7.871 4.304L7.83 4.364C7.647 4.667 7.736 5.092 8.116 5.302L8.144 5.314C8.165 5.322 8.195 5.333 8.234 5.344C8.313 5.368 8.416 5.391 8.542 5.414C8.796 5.458 9.102 5.491 9.424 5.512C9.644 5.527 9.865 5.535 10.071 5.541C9.971 5.387 9.864 5.226 9.752 5.068C9.572 4.812 9.392 4.576 9.227 4.391C9.145 4.299 9.074 4.228 9.015 4.175L8.926 4.104ZM4.005 18.957C4.065 19.51 4.563 20 5.25 20H11.164V14.88H4V18.845L4.005 18.957ZM20 9.153C20 8.593 19.544 8.068 18.884 8.004L18.75 7.999H13.164V12.88H20V9.153ZM4 12.88H11.164V7.999H5.25C4.518 7.999 3.999 8.556 4 9.153V12.88ZM22 18.845C22 20.628 20.503 22 18.75 22H5.25C3.551 22 2.093 20.712 2.003 19.011L2 18.845V9.153C1.999 7.37 3.496 5.999 5.25 5.999H6.085C5.633 5.198 5.598 4.192 6.117 3.332L6.274 3.099C7.107 1.993 8.674 1.68 9.894 2.354L10.013 2.425C10.288 2.603 10.531 2.848 10.721 3.062C10.955 3.324 11.183 3.626 11.387 3.916C11.626 4.254 11.844 4.597 12.017 4.878C12.189 4.598 12.406 4.256 12.643 3.918C12.847 3.629 13.076 3.327 13.31 3.064C13.529 2.818 13.816 2.534 14.142 2.354L14.39 2.232C15.652 1.688 17.188 2.12 17.918 3.332L18.052 3.583C18.427 4.383 18.359 5.275 17.95 5.999H18.75L18.914 6.002C20.595 6.085 22 7.426 22 9.153V18.845Z" fill="currentColor"/></symbol>
+<symbol id="ds-Chevronright-outline" viewBox="0 0 24 24"><path d="M16 11.999C16 12.265 15.894 12.519 15.707 12.707L10.707 17.707L10.63 17.775C10.238 18.095 9.659 18.073 9.292 17.707C8.926 17.34 8.904 16.761 9.224 16.369L9.292 16.292L13.585 11.999L9.292 7.706C8.902 7.316 8.902 6.683 9.292 6.292C9.683 5.902 10.316 5.902 10.707 6.292L15.707 11.292L15.773 11.366C15.919 11.544 16 11.767 16 11.999Z" fill="currentColor"/></symbol>
+<symbol id="ds-Close-outline" viewBox="0 0 24 24"><path d="M15.292 7.293C15.683 6.902 16.316 6.902 16.707 7.293C17.097 7.683 17.097 8.316 16.707 8.707L13.414 12L16.707 15.293L16.775 15.369C17.095 15.762 17.073 16.341 16.707 16.707C16.34 17.073 15.761 17.095 15.369 16.775L15.292 16.707L11.999 13.414L8.706 16.707C8.316 17.097 7.683 17.097 7.292 16.707C6.902 16.316 6.902 15.683 7.292 15.293L10.585 12L7.292 8.707L7.224 8.63C6.904 8.238 6.926 7.659 7.292 7.293C7.659 6.926 8.238 6.904 8.63 7.224L8.706 7.293L11.999 10.586L15.292 7.293Z" fill="currentColor"/></symbol>
+<symbol id="ds-Arrowleft-outline" viewBox="0 0 24 24"><path d="M10.516 7.24C10.901 6.91 11.481 6.918 11.856 7.275C12.256 7.656 12.271 8.289 11.89 8.689L9.333 11.375H17L17.102 11.38C17.606 11.431 18 11.857 18 12.375C18 12.892 17.606 13.318 17.102 13.37L17 13.375H9.333L11.89 16.06L11.958 16.137C12.268 16.538 12.231 17.117 11.856 17.474C11.481 17.831 10.901 17.839 10.516 17.509L10.442 17.439L6.275 13.064C5.908 12.678 5.908 12.071 6.275 11.685L10.442 7.31L10.516 7.24Z" fill="currentColor"/></symbol>
+<symbol id="ds-Close-fill" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.486 2 2 6.486 2 12C2 17.513 6.486 22 12 22C17.513 22 22 17.513 22 12C22 6.486 17.513 2 12 2ZM15.707 8.292C15.316 7.902 14.683 7.902 14.292 8.292L11.999 10.585L9.706 8.292L9.63 8.224C9.238 7.904 8.659 7.926 8.292 8.292C7.926 8.659 7.904 9.238 8.224 9.63L8.292 9.706L10.585 11.999L8.292 14.292C7.902 14.683 7.902 15.316 8.292 15.707C8.683 16.097 9.316 16.097 9.706 15.707L11.999 13.414L14.292 15.707L14.369 15.775C14.761 16.095 15.34 16.073 15.707 15.707C16.073 15.34 16.095 14.761 15.775 14.369L15.707 14.292L13.414 11.999L15.707 9.706C16.097 9.316 16.097 8.683 15.707 8.292Z" fill="currentColor"/></symbol>
+<symbol id="ds-CircleCheck-fill" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.522 22 22 17.522 22 12C22 6.477 17.522 2 12 2C6.477 2 2 6.477 2 12C2 17.522 6.477 22 12 22ZM16.831 9.823C17.297 9.47 17.372 8.826 17 8.385C16.627 7.944 15.947 7.872 15.482 8.225C14.41 9.038 13.438 10.297 12.674 11.461C12.311 12.014 11.982 12.565 11.699 13.07C11.612 12.979 11.524 12.891 11.438 12.805C10.923 12.295 10.365 11.809 9.951 11.524C9.469 11.192 8.794 11.293 8.443 11.75C8.092 12.207 8.199 12.846 8.681 13.179C8.946 13.361 9.404 13.75 9.876 14.218C10.35 14.689 10.763 15.164 10.978 15.504C11.184 15.83 11.564 16.021 11.964 16C12.364 15.979 12.719 15.749 12.886 15.404C13.211 14.732 13.791 13.634 14.508 12.541C15.239 11.429 16.054 10.412 16.831 9.823Z" fill="currentColor"/></symbol>
+</svg>
+
+<div class="canvas-head">
+  <div>
+    <h1 class="t-header-page">InsertAd · Mã giới thiệu trong cụm nút đáy</h1>
+    <p class="t-body-caption">Hiện tại + 3 phương án · Chợ Tốt / Bất động sản · bấm thử được · số đo cập nhật theo màn</p>
+  </div>
+  <div class="seg" role="group" aria-label="Kích thước màn">
+    <button class="on t-tagline-caption" data-size="pro">iPhone 14 Pro · 788</button>
+    <button class="t-tagline-caption" data-size="small">Màn nhỏ · 667</button>
+  </div>
+</div>
+
+<div class="flow">
+
+  <!-- ===== Hiện tại ===== -->
+  <div class="step" data-ds-context="reference">
+    <div class="step-label t-label-section"><b class="ref t-label-caption">Hiện tại</b>Ô nhập luôn mở</div>
+    <div class="metric t-body-caption"></div>
+    <div class="iphone"><div class="iphone-screen"><div class="dynamic-island"></div>
+      <div class="app-scroll">
+        <div class="slot-top"></div>
+        <div class="bottom">
+          <div class="cur-ref">
+            <p class="t-label-section">Nhập mã giới thiệu, nhận tin miễn phí!</p>
+            <label class="field"><input class="t-body-section" placeholder="Mã giới thiệu" aria-label="Mã giới thiệu"></label>
+          </div>
+          <div class="btn-row"><button class="btn btn-secondary btn-xl t-label-section">Lưu nháp</button><button class="btn btn-primary btn-xl t-label-section">Đăng tin</button></div>
+          <div class="home-indicator"></div>
+        </div>
+      </div>
+    </div></div>
+    <ul class="notes t-body-caption"><li class="con">Ô nhập luôn mở, chiếm gần 1/3 màn dù đa số người đăng không có mã</li><li class="con">Che mất trường Mô tả và PHÒNG 5 TỐT ngay lúc đang điền</li></ul>
+  </div>
+
+  <!-- ===== Phương án 1: dòng thu gọn, mở rộng tại chỗ ===== -->
+  <div class="step" data-ds-mode="partial" data-ds-screen="insertad-pty" data-ds-insert="before:bottom-cta">
+    <div class="step-label t-label-section"><b class="t-label-caption">Phương án 1</b>Dòng gọn, mở rộng tại chỗ</div>
+    <div class="metric t-body-caption"></div>
+    <div class="iphone"><div class="iphone-screen"><div class="dynamic-island"></div>
+      <div class="app-scroll">
+        <div class="slot-top"></div>
+        <div class="bottom" id="o1">
+          <button class="ref-row" aria-expanded="false" aria-controls="o1-exp">
+            <svg class="ds-icon ds-icon--20 lead" aria-hidden="true"><use href="#ds-Gift-outline"/></svg>
+            <span class="grow t-body-section">Có mã giới thiệu? <span class="t-label-section" data-ds-speculative="true">Đăng tin miễn phí</span></span>
+            <span class="act t-label-section"><span class="lbl">Nhập mã</span><svg class="ds-icon" aria-hidden="true"><use href="#ds-Chevronright-outline"/></svg></span>
+          </button>
+          <div class="expand" id="o1-exp"><div><div class="inner">
+            <label class="field">
+              <input class="t-body-section" placeholder="Nhập mã giới thiệu" aria-label="Mã giới thiệu">
+              <button class="btn btn-primary btn-l t-label-section apply">Áp dụng</button>
+            </label>
+            <p class="help t-body-annotation">Mã gồm 6 ký tự, vd: ABC123</p>
+          </div></div></div>
+          <div class="btn-row"><button class="btn btn-secondary btn-xl t-label-section">Lưu nháp</button><button class="btn btn-primary btn-xl t-label-section">Đăng tin</button></div>
+          <div class="home-indicator"></div>
+        </div>
+      </div>
+    </div></div>
+    <ul class="notes t-body-caption"><li class="pro">Cụm đáy chỉ thêm một dòng chữ; ưu đãi vẫn nằm trong tầm mắt</li><li class="pro">Nhập và áp dụng mã ngay tại chỗ, không rời màn</li><li class="con">Khi mở ô nhập và hiện bàn phím, cụm đáy vẫn cao như bản hiện tại</li></ul>
+  </div>
+
+  <!-- ===== Phương án 2: dòng gọn mở Drawer ===== -->
+  <div class="step" data-ds-mode="partial" data-ds-screen="insertad-pty" data-ds-insert="before:bottom-cta">
+    <div class="step-label t-label-section"><b class="t-label-caption">Phương án 2</b>Dòng gọn, nhập trong Drawer</div>
+    <div class="metric t-body-caption"></div>
+    <div class="iphone"><div class="iphone-screen" id="o2-screen"><div class="dynamic-island"></div>
+      <div class="app-scroll">
+        <div class="slot-top"></div>
+        <div class="bottom">
+          <button class="ref-row" id="o2-row" aria-haspopup="dialog">
+            <svg class="ds-icon ds-icon--20 lead" aria-hidden="true"><use href="#ds-Gift-outline"/></svg>
+            <span class="grow t-body-section">Có mã giới thiệu? <span class="t-label-section" data-ds-speculative="true">Đăng tin miễn phí</span></span>
+            <span class="act t-label-section"><span class="lbl">Nhập mã</span><svg class="ds-icon" aria-hidden="true"><use href="#ds-Chevronright-outline"/></svg></span>
+          </button>
+          <div class="btn-row"><button class="btn btn-secondary btn-xl t-label-section">Lưu nháp</button><button class="btn btn-primary btn-xl t-label-section">Đăng tin</button></div>
+          <div class="home-indicator"></div>
+        </div>
+      </div>
+      <div class="scrim" id="o2-scrim"></div>
+      <div class="drawer" role="dialog" aria-modal="true" aria-labelledby="o2-title" data-ds="Drawer">
+        <div class="drawer-head">
+          <button class="icon-btn" id="o2-close" aria-label="Đóng" style="width:24px;height:24px"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Close-outline"/></svg></button>
+          <h2 class="t-header-section" id="o2-title">Mã giới thiệu</h2><span class="sp"></span>
+        </div>
+        <div class="drawer-body">
+          <div class="announcer info" data-ds="Announcer" data-ds-speculative="true">
+            <svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Gift-outline"/></svg>
+            <p class="t-body-section">Nhập mã từ người giới thiệu để đăng tin này miễn phí.</p>
+          </div>
+          <div>
+            <label class="field"><input class="t-body-section" id="o2-input" placeholder="Nhập mã giới thiệu" aria-label="Mã giới thiệu"></label>
+            <p class="help t-body-annotation" id="o2-help">Mã gồm 6 ký tự, vd: ABC123</p>
+          </div>
+        </div>
+        <div class="drawer-foot"><button class="btn btn-primary btn-l t-label-page" id="o2-apply" disabled>Áp dụng</button></div>
+      </div>
+    </div></div>
+    <ul class="notes t-body-caption"><li class="pro">Cụm đáy luôn chỉ thêm một dòng, kể cả lúc nhập mã; bàn phím mở trong Drawer nên không đè lên form</li><li class="pro">Có chỗ cho trạng thái đang kiểm tra, lỗi, thành công và điều kiện ưu đãi</li><li class="con">Mất thêm một lần chạm để mở và đóng Drawer</li></ul>
+  </div>
+
+  <!-- ===== Phương án 3: đưa vào form ===== -->
+  <div class="step" data-ds-mode="partial" data-ds-screen="insertad-pty" data-ds-insert="after:phong-5-tot">
+    <div class="step-label t-label-section"><b class="t-label-caption">Phương án 3</b>Đưa vào form, gợi ý trên CTA</div>
+    <div class="metric t-body-caption"></div>
+    <div class="iphone"><div class="iphone-screen"><div class="dynamic-island"></div>
+      <div class="app-scroll" id="o3-scroll">
+        <div class="slot-top"></div>
+        <section class="card ref-section" id="o3-sec" style="margin-top:var(--padding-small-12)">
+          <h2 class="t-header-section">Mã giới thiệu</h2>
+          <div>
+            <div class="inline-apply">
+              <label class="field"><input class="t-body-section" id="o3-input" placeholder="Nhập mã giới thiệu" aria-label="Mã giới thiệu"></label>
+              <button class="btn btn-secondary btn-xl t-label-section" id="o3-apply" style="flex:none">Áp dụng</button>
+            </div>
+            <p class="help t-body-annotation" id="o3-help" data-ds-speculative="true">Có mã từ người giới thiệu? Nhập để đăng tin này miễn phí</p>
+          </div>
+        </section>
+        <div class="fill"></div>
+        <div class="bottom">
+          <button class="hint t-body-caption" id="o3-hint"><svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-Gift-outline"/></svg><span class="txt">Đăng miễn phí với <u class="t-label-caption">mã giới thiệu</u></span></button>
+          <div class="btn-row"><button class="btn btn-secondary btn-xl t-label-section">Lưu nháp</button><button class="btn btn-primary btn-xl t-label-section">Đăng tin</button></div>
+          <div class="home-indicator"></div>
+        </div>
+      </div>
+    </div></div>
+    <ul class="notes t-body-caption"><li class="pro">Cụm đáy thấp nhất; mã nằm cùng các trường khác của form</li><li class="pro">Dòng gợi ý giữ ưu đãi trong tầm mắt, chạm vào là cuộn tới ô nhập</li><li class="con">Người không cuộn hết form có thể bỏ lỡ ô nhập nếu bỏ qua dòng gợi ý</li></ul>
+  </div>
+
+</div>
+
+<!-- Form ngữ cảnh lấy từ app hiện tại (reference, không bàn giao) -->
+<template id="ctx">
+  <div class="ios-statusbar" data-ds-context="reference"><span>9:41</span><span class="icons"><svg width="18" height="12" viewBox="0 0 18 12" fill="none"><rect y="7" width="3" height="5" rx="1" fill="currentColor"/><rect x="5" y="5" width="3" height="7" rx="1" fill="currentColor"/><rect x="10" y="2.5" width="3" height="9.5" rx="1" fill="currentColor"/><rect x="15" width="3" height="12" rx="1" fill="currentColor"/></svg><svg width="17" height="12" viewBox="0 0 17 12" fill="none"><path d="M8.5 2.7c2.4 0 4.6.9 6.3 2.5l1.6-1.7C14.3 1.5 11.5.3 8.5.3S2.7 1.5.6 3.5l1.6 1.7C3.9 3.6 6.1 2.7 8.5 2.7Zm0 4.1c1.3 0 2.5.5 3.4 1.4l1.7-1.7c-1.4-1.3-3.2-2.1-5.1-2.1s-3.7.8-5.1 2.1l1.7 1.7c.9-.9 2.1-1.4 3.4-1.4Zm2 3.4L8.5 12l-2-1.8c.5-.6 1.2-.9 2-.9s1.5.3 2 .9Z" fill="currentColor"/></svg><svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x=".5" y=".5" width="21" height="11" rx="3" stroke="currentColor" stroke-opacity=".4"/><rect x="2" y="2" width="15" height="8" rx="1.6" fill="currentColor"/><path d="M23.5 4v4c.8-.3 1.3-1.1 1.3-2s-.5-1.7-1.3-2Z" fill="currentColor" fill-opacity=".4"/></svg></span></div>
+  <header class="app-header" data-ds-context="reference">
+    <button class="icon-btn" aria-label="Quay lại"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Arrowleft-outline"/></svg></button>
+    <h1 class="t-header-section">Đăng tin bất động sản</h1>
+    <button class="link t-header-section">Lưu nháp</button>
+  </header>
+  <section class="card" data-ds-context="reference">
+    <div class="ta t-body-section">Mặt tiền: 4m Xây: 6 tầng thang máy xịn<br>Vị trí đắc địa: Gần các trường đại học lớn: ĐH Mỏ, HV Tài Chính, HV Cảnh Sát… 300m đến BV Quốc tế Phương Đông, sát Công viên Hòa Bình, Chợ Cổ Nhuế.
+      <span class="clear"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Close-fill"/></svg></span></div>
+    <div class="row-between">
+      <span class="t-label-section muted">Bạn là <span class="req">*</span></span>
+      <span class="chips"><span class="chip on t-tagline-section">Cá nhân</span><span class="chip t-tagline-section">Môi giới</span></span>
+    </div>
+  </section>
+  <section class="card" data-ds-context="reference" style="margin-top:var(--padding-small-12)">
+    <h2 class="t-header-section">Đăng ký xác thực PHÒNG 5 TỐT</h2>
+    <div class="banner"><p class="t-label-page">TĂNG ĐẾN X3 LƯỢT XEM</p><p class="t-body-caption">Hiển thị trên trang quảng cáo độc quyền với nhãn <b>PHÒNG 5 TỐT</b></p></div>
+    <div class="row-between"><span class="t-body-section">Xác thực <b>PHÒNG 5 TỐT</b> cho tin đăng này</span><span class="cbox"><i></i></span></div>
+  </section>
+</template>
+
+<script>
+// Chèn form ngữ cảnh vào mỗi màn
+const ctx = document.getElementById('ctx');
+document.querySelectorAll('.slot-top').forEach(s => s.replaceWith(ctx.content.cloneNode(true)));
+// Màn không có section riêng: thêm khoảng đệm để cụm đáy dính đáy
+document.querySelectorAll('.app-scroll').forEach(a => { if (!a.querySelector('.fill')) a.querySelector('.bottom').insertAdjacentHTML('beforebegin','<div class="fill"></div>'); });
+
+// Số đo: chiều cao cụm đáy và phần form nhìn thấy
+const measure = () => document.querySelectorAll('.step').forEach(st => {
+  const scr = st.querySelector('.iphone-screen'), bottom = st.querySelector('.bottom');
+  const top = st.querySelector('.ios-statusbar').offsetHeight + st.querySelector('.app-header').offsetHeight;
+  const b = bottom.offsetHeight, vis = scr.offsetHeight - top - b;
+  st.querySelector('.metric').innerHTML = `<span>Cụm đáy <strong>${b}px</strong></span><span>Form nhìn thấy <strong>${vis}px</strong> (${Math.round(vis / (scr.offsetHeight - top) * 100)}%)</span>`;
+});
+measure();
+document.querySelectorAll('.expand').forEach(e => e.addEventListener('transitionend', measure));
+document.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('.seg button').forEach(x => x.classList.toggle('on', x === b));
+  document.body.classList.toggle('small', b.dataset.size === 'small');
+  setTimeout(measure, 320);
+}));
+
+// Kiểm tra mã giả lập: ABC123 hợp lệ, còn lại báo lỗi
+const check = code => new Promise(r => setTimeout(() => r(code.trim().toUpperCase() === 'ABC123'), 900));
+const applied = code => `Đã áp dụng mã <b>${code.toUpperCase()}</b> · tin này miễn phí`;
+const fail = (field, help) => { field.classList.remove('err'); void field.offsetWidth; field.classList.add('err'); help.classList.add('err'); help.textContent = 'Mã không đúng hoặc đã hết hạn. Kiểm tra lại với người giới thiệu.'; };
+const loading = btn => { btn.disabled = true; btn.dataset.t = btn.textContent; btn.innerHTML = '<span class="spinner"></span>'; };
+const done = btn => { btn.disabled = false; btn.textContent = btn.dataset.t; };
+
+// Phương án 1
+const o1 = document.getElementById('o1'), row1 = o1.querySelector('.ref-row'), exp1 = document.getElementById('o1-exp');
+const in1 = exp1.querySelector('input'), help1 = exp1.querySelector('.help'), ap1 = exp1.querySelector('.apply');
+row1.addEventListener('click', () => {
+  const open = row1.getAttribute('aria-expanded') !== 'true';
+  row1.setAttribute('aria-expanded', open); exp1.classList.toggle('open', open);
+  if (open) setTimeout(() => in1.focus(), 250);
+});
+ap1.addEventListener('click', async e => {
+  e.preventDefault(); if (!in1.value.trim()) return in1.focus();
+  loading(ap1); const ok = await check(in1.value); done(ap1);
+  if (!ok) return fail(in1.closest('.field'), help1);
+  row1.classList.add('applied'); row1.querySelector('.lead use').setAttribute('href', '#ds-CircleCheck-fill');
+  row1.querySelector('.grow').innerHTML = applied(in1.value); row1.querySelector('.lbl').textContent = 'Đổi';
+  row1.setAttribute('aria-expanded', false); exp1.classList.remove('open');
+});
+in1.addEventListener('input', () => { in1.closest('.field').classList.remove('err'); help1.classList.remove('err'); help1.textContent = 'Mã gồm 6 ký tự, vd: ABC123'; });
+
+// Phương án 2
+const scr2 = document.getElementById('o2-screen'), in2 = document.getElementById('o2-input'), help2 = document.getElementById('o2-help'), ap2 = document.getElementById('o2-apply'), row2 = document.getElementById('o2-row');
+const close2 = () => scr2.classList.remove('sheet-open');
+row2.addEventListener('click', () => { scr2.classList.add('sheet-open'); setTimeout(() => in2.focus(), 300); });
+document.getElementById('o2-scrim').addEventListener('click', close2);
+document.getElementById('o2-close').addEventListener('click', close2);
+scr2.addEventListener('keydown', e => { if (e.key === 'Escape') close2(); });
+in2.addEventListener('input', () => { ap2.disabled = !in2.value.trim(); in2.closest('.field').classList.remove('err'); help2.classList.remove('err'); help2.textContent = 'Mã gồm 6 ký tự, vd: ABC123'; });
+ap2.addEventListener('click', async () => {
+  loading(ap2); const ok = await check(in2.value); done(ap2);
+  if (!ok) return fail(in2.closest('.field'), help2);
+  close2();
+  row2.classList.add('applied'); row2.querySelector('.lead use').setAttribute('href', '#ds-CircleCheck-fill');
+  row2.querySelector('.grow').innerHTML = applied(in2.value); row2.querySelector('.lbl').textContent = 'Đổi';
+});
+
+// Phương án 3
+const sc3 = document.getElementById('o3-scroll'), sec3 = document.getElementById('o3-sec'), in3 = document.getElementById('o3-input'), help3 = document.getElementById('o3-help'), ap3 = document.getElementById('o3-apply'), hint3 = document.getElementById('o3-hint');
+hint3.addEventListener('click', () => {
+  const bh = sc3.querySelector('.bottom').offsetHeight;
+  sc3.scrollTop = sec3.offsetTop + sec3.offsetHeight - (sc3.clientHeight - bh) + 16;
+  sec3.classList.remove('flash'); void sec3.offsetWidth; sec3.classList.add('flash');
+  setTimeout(() => in3.focus({ preventScroll:true }), 400);
+});
+ap3.addEventListener('click', async () => {
+  if (!in3.value.trim()) return in3.focus();
+  loading(ap3); const ok = await check(in3.value); done(ap3);
+  if (!ok) return fail(in3.closest('.field'), help3);
+  help3.className = 'help t-body-annotation success-text'; help3.innerHTML = '<svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-CircleCheck-fill"/></svg>' + applied(in3.value);
+  hint3.classList.add('applied'); hint3.querySelector('use').setAttribute('href', '#ds-CircleCheck-fill');
+  hint3.querySelector('.txt').innerHTML = applied(in3.value);
+});
+in3.addEventListener('input', () => { in3.closest('.field').classList.remove('err'); });
+</script>
+</body>
+</html>
