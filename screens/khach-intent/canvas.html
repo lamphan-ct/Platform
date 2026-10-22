@@ -344,12 +344,22 @@ button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
   document.getElementById('tOut').onclick = () => zoomAt(cam.z / 1.25, c().x, c().y);
   zoomBtn.onclick = () => zoomAt(1, c().x, c().y);
   document.getElementById('tFit').onclick = fit;
-  document.getElementById('tSpec').onclick = () => {
+  /* Tải spec: trong claude.ai dùng capability `downloads`; mở file local thì tải trực tiếp */
+  const SPEC_NAME = 'designspec-crm-lead-list-revamp.md';
+  const specBtn = document.getElementById('tSpec');
+  const dlP = window.claude && window.claude.use ? window.claude.use('downloads').catch(() => null) : Promise.resolve(null);
+  specBtn.onclick = async () => {
     const md = JSON.parse(document.getElementById('src-spec').textContent);
+    const downloads = await dlP;
+    if (downloads) {
+      try { await downloads.save({ filename: SPEC_NAME, data: md }); }
+      catch (e) { if (e && (e.code === 'unavailable' || e.code === 'not_granted')) specBtn.hidden = true; }
+      return;
+    }
+    if (window.claude) { specBtn.hidden = true; return; }   /* trong viewer nhưng không có quyền tải */
     const a = document.createElement('a');
     a.href = URL.createObjectURL(new Blob([md], { type: 'text/markdown;charset=utf-8' }));
-    a.download = 'designspec-crm-lead-list-revamp.md';
-    document.body.appendChild(a); a.click(); a.remove();
+    a.download = SPEC_NAME; document.body.appendChild(a); a.click(); a.remove();
     setTimeout(() => URL.revokeObjectURL(a.href), 1000);
   };
   window.addEventListener('resize', fit);
