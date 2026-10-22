@@ -122,12 +122,15 @@ button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
   <button id="tZoom" class="zoom" title="Về 100%">100%</button>
   <button id="tIn" aria-label="Phóng to"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
   <span class="sep"></span>
+  <button id="tSpec" title="Tải designspec .md"><svg viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Tải spec</button>
+  <span class="sep"></span>
   <button id="tFit"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>Vừa màn</button>
   
 </div>
 
 <script id="src-old" type="application/json">/*__OLD__*/</script>
 <script id="src-new" type="application/json">/*__NEW__*/</script>
+<script id="src-spec" type="application/json">/*__SPEC__*/</script>
 <script>
 (function () {
   const vp = document.getElementById('vp'), world = document.getElementById('world');
@@ -341,6 +344,14 @@ button:focus-visible { outline: 2px solid var(--new); outline-offset: 2px; }
   document.getElementById('tOut').onclick = () => zoomAt(cam.z / 1.25, c().x, c().y);
   zoomBtn.onclick = () => zoomAt(1, c().x, c().y);
   document.getElementById('tFit').onclick = fit;
+  document.getElementById('tSpec').onclick = () => {
+    const md = JSON.parse(document.getElementById('src-spec').textContent);
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([md], { type: 'text/markdown;charset=utf-8' }));
+    a.download = 'designspec-crm-lead-list-revamp.md';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  };
   window.addEventListener('resize', fit);
 })();
 </script>

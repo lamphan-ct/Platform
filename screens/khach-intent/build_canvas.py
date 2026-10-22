@@ -20,6 +20,7 @@ def embed(name):
 tpl = (HERE / "canvas.template.html").read_text(encoding="utf-8")
 # ảnh Current: base64 JPEG, trang tự giải mã và vẽ lên <canvas> (không phụ thuộc img-src)
 shot = base64.b64encode((HERE / "assets" / "ui-current-1512x812.jpg").read_bytes()).decode()
-out = tpl.replace("/*__OLD__*/", json.dumps(shot)).replace("/*__NEW__*/", embed("index.html"))
+spec = json.dumps((HERE / "designspec-crm-lead-list-revamp.md").read_text(encoding="utf-8"), ensure_ascii=False).replace("</", "<\\/")
+out = tpl.replace("/*__OLD__*/", json.dumps(shot)).replace("/*__NEW__*/", embed("index.html")).replace("/*__SPEC__*/", spec)
 (HERE / "canvas.html").write_text(out, encoding="utf-8")
 print("wrote", HERE / "canvas.html", len(out), "bytes")
