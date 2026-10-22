@@ -1,0 +1,676 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chợ Tốt · Flow đăng tin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ds-tokens:start */
+/* DS tokens: Chợ Tốt (GDS), Figma export 2026-10-14. Inserted by scripts/ds_tokens.py inline; do not edit. */
+:root {
+  --logo-primary: #ffba00;
+  --logo-secondary: #ffba00;
+  --logo-on-black: #ffffff;
+  --border-divider: #f4f4f4;
+  --border-thin: #e8e8e8;
+  --border-overlay: #ffffff80;
+  --border-regular: #dddddd;
+  --border-bold: #8c8c8c;
+  --border-active: #ffd400;
+  --border-blank: #ffffff;
+  --border-brand: #ffd400;
+  --border-info: #306bd9;
+  --border-success: #12a154;
+  --border-error: #f0325e;
+  --border-warning: #fb7328;
+  --border-disabled: #c0c0c0;
+  --border-black: #222222;
+  --background-brand-light: #fff8d6;
+  --background-chotot-light: #fff8d6;
+  --background-primary: #ffffff;
+  --background-app: #f7f7f7;
+  --background-secondary: #f4f4f4;
+  --background-tertiary: #e8e8e8;
+  --background-disable: #c0c0c0;
+  --background-error-light: #feebef;
+  --background-info-light: #f2f6fc;
+  --background-success-light: #ecf9f1;
+  --background-warning-light: #fff4ec;
+  --background-brand: #ffd400;
+  --background-appwrapper: #ffd400;
+  --background-chotot: #ffd400;
+  --background-info: #306bd9;
+  --background-error: #f0325e;
+  --background-success: #12a154;
+  --background-warning: #fb7328;
+  --background-inverted: #222222;
+  --background-overlay: #22222280;
+  --background-overlay-inverted: #ffffff1a;
+  --text-brand: #cc8f00;
+  --text-on-background: #222222;
+  --text-primary: #222222;
+  --text-secondary: #595959;
+  --text-tertiary: #8c8c8c;
+  --text-link: #306bd9;
+  --text-error: #f0325e;
+  --text-success: #12a154;
+  --text-info: #306bd9;
+  --text-warning: #fb7328;
+  --text-chotot: #ffd400;
+  --text-disabled: #c0c0c0;
+  --text-blank: #ffffff;
+  --text-overlay: #ffffffbf;
+  --text-overlay-secondary: #ffffff80;
+  --icon-brand: #ffba00;
+  --icon-chotot: #ffba00;
+  --icon-chotot-bold: #cc8f00;
+  --icon-on-background: #222222;
+  --icon-primary: #222222;
+  --icon-secondary: #595959;
+  --icon-tertiary: #8c8c8c;
+  --icon-blank: #ffffff;
+  --icon-info: #306bd9;
+  --icon-success: #12a154;
+  --icon-error: #f0325e;
+  --icon-warning: #fb7328;
+  --icon-disabled: #c0c0c0;
+  --interaction-chotot-hover: #ffe884;
+  --interaction-chotot-pressed: #ffc800;
+  --interaction-brand-hover: #ffe884;
+  --interaction-brand-pressed: #ffba00;
+  --interaction-error-hover: #f35b7e;
+  --interaction-error-pressed: #cb294e;
+  --interaction-info-hover: #548af0;
+  --interaction-info-pressed: #1952ba;
+  --interaction-success-hover: #26c06e;
+  --interaction-success-pressed: #108446;
+  --interaction-warning-hover: #ffa97b;
+  --interaction-warning-pressed: #e16725;
+  --interaction-neutral-hover: #595959;
+  --interaction-neutral-pressed: #404040;
+  --interaction-primary-hover: #f4f4f4;
+  --interaction-brand-light-hover: #fff8d6;
+  --interaction-brand-light-pressed: #ffd400;
+  --interaction-error-light-hover: #fcd6df;
+  --interaction-error-light-pressed: #fbc2cf;
+  --interaction-info-light-hover: #e4ecfb;
+  --interaction-info-light-pressed: #cadbf7;
+  --interaction-success-light-hover: #d9f2e4;
+  --interaction-success-light-pressed: #abe7c5;
+  --interaction-warning-light-hover: #ffe4d5;
+  --interaction-warning-light-pressed: #ffceb4;
+  --interaction-neutral-light-hover: #e8e8e8;
+  --interaction-neutral-light-pressed: #dddddd;
+  --button-primary: #ffd400;
+  --button-info: #306bd9;
+  --button-success: #12a154;
+  --button-error: #f0325e;
+  --button-chotot: #ffd400;
+  --button-blank: #ffffff;
+  --button-disabled: #c0c0c0;
+  --button-appwrapper: #ffd400;
+  --button-neutral: #222222;
+  --button-secondary: #fff8d6;
+  --button-tonal-success: #ecf9f1;
+  --button-tonal-error: #feebef;
+  --button-tonal-info: #f2f6fc;
+  --button-tonal-neutral: #f4f4f4;
+  --skeleton-background: #f4f4f4;
+  --skeleton-item: #e8e8e8;
+  --gap-min-2: 2px;
+  --gap-2x-small-4: 4px;
+  --gap-2x-small-6: 6px;
+  --gap-x-small-8: 8px;
+  --gap-small-12: 12px;
+  --gap-medium-16: 16px;
+  --gap-large-20: 20px;
+  --padding-min-2: 2px;
+  --padding-2x-small-4: 4px;
+  --padding-2x-small-6: 6px;
+  --padding-x-small-8: 8px;
+  --padding-small-12: 12px;
+  --padding-medium-16: 16px;
+  --padding-large-20: 20px;
+  --radius-ad-small: 4px;
+  --radius-ad: 6px;
+  --radius-card-small: 8px;
+  --radius-card: 12px;
+  --radius-decoration: 16px;
+  --radius-modal: 20px;
+  --radius-pill: 999px;
+  --stroke-divider: 1px;
+  --stroke-action: 2px;
+  --stroke-emphasize: 3px;
+}
+.t-display-page { font: 700 32px/40px 'Reddit Sans', sans-serif; }
+.t-display-section { font: 700 24px/32px 'Reddit Sans', sans-serif; }
+.t-display-caption { font: 700 20px/28px 'Reddit Sans', sans-serif; }
+.t-header-page { font: 600 20px/28px 'Reddit Sans', sans-serif; }
+.t-display-annotation { font: 700 18px/26px 'Reddit Sans', sans-serif; }
+.t-display-price { font: 600 18px/26px 'Reddit Sans', sans-serif; }
+.t-label-page { font: 700 16px/24px 'Reddit Sans', sans-serif; }
+.t-header-section { font: 600 16px/24px 'Reddit Sans', sans-serif; }
+.t-tagline-section { font: 500 16px/20px 'Reddit Sans', sans-serif; }
+.t-body-page { font: 400 16px/24px 'Reddit Sans', sans-serif; }
+.t-label-section { font: 700 14px/20px 'Reddit Sans', sans-serif; }
+.t-header-caption { font: 600 14px/20px 'Reddit Sans', sans-serif; }
+.t-tagline-caption { font: 500 14px/20px 'Reddit Sans', sans-serif; }
+.t-body-section { font: 400 14px/20px 'Reddit Sans', sans-serif; }
+.t-label-caption { font: 700 12px/18px 'Reddit Sans', sans-serif; }
+.t-header-annotation { font: 600 12px/18px 'Reddit Sans', sans-serif; }
+.t-tagline-annotation { font: 500 12px/18px 'Reddit Sans', sans-serif; }
+.t-body-caption { font: 400 12px/18px 'Reddit Sans', sans-serif; }
+.t-label-annotation { font: 700 10px/16px 'Reddit Sans', sans-serif; }
+.t-tagline-footext { font: 500 10px/16px 'Reddit Sans', sans-serif; }
+.t-body-annotation { font: 400 10px/16px 'Reddit Sans', sans-serif; }
+/* ds-tokens:end */
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { font-family:'Reddit Sans', system-ui, sans-serif; color:var(--text-primary); }
+body { min-height:100vh; background:var(--background-app); overflow-x:auto; }
+button, input, textarea { font:inherit; color:inherit; }
+button { cursor:pointer; border:none; background:none; }
+
+/* ---------- Canvas ---------- */
+.canvas-head { display:flex; align-items:center; gap:var(--gap-small-12); padding:24px 40px 0; }
+.canvas-head img { height:32px; }
+.canvas-head p { color:var(--text-secondary); }
+.flow { display:flex; align-items:flex-start; gap:0; padding:32px 40px 48px; width:max-content; }
+.step { display:flex; flex-direction:column; align-items:center; gap:var(--gap-small-12); }
+.step-label { display:flex; align-items:center; gap:var(--gap-x-small-8); color:var(--text-secondary); }
+.step-label b { display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:var(--radius-pill); background:var(--background-brand); color:var(--text-on-background); }
+.arrow { align-self:center; display:flex; align-items:center; padding:0 var(--padding-medium-16); color:var(--icon-tertiary); margin-top:36px; }
+.arrow .ds-icon { width:32px; height:32px; color:var(--icon-tertiary); }
+
+/* ---------- iPhone frame (chrome trình diễn) ---------- */
+.iphone { position:relative; width:393px; height:806px; flex-shrink:0; background:#1c1c1e; border-radius:56px; padding:9px; box-shadow:0 0 0 2px #3a3a3c, 0 24px 60px rgba(0,0,0,.35); } /* ds-raw: khung máy iPhone, không thuộc DS */
+.iphone-screen { position:relative; width:375px; height:788px; border-radius:47px; overflow:hidden; background:var(--background-primary); } /* ds-raw: bo góc màn iPhone */
+.dynamic-island { position:absolute; top:11px; left:50%; transform:translateX(-50%); width:120px; height:34px; background:#000; border-radius:20px; z-index:9999; } /* ds-raw: Dynamic Island */
+.app-scroll { position:absolute; inset:0; overflow-y:auto; overflow-x:hidden; display:flex; flex-direction:column; scrollbar-width:none; background:var(--background-primary); }
+.app-scroll > * { flex-shrink:0; }
+.app-scroll::-webkit-scrollbar { display:none; }
+.ios-statusbar { position:sticky; top:0; z-index:20; height:50px; flex-shrink:0; display:flex; align-items:flex-end; justify-content:space-between; padding:0 26px 7px 32px; background:var(--background-primary); color:var(--text-primary); font-size:14px; font-weight:600; } /* ds-raw: status bar iOS */
+.ios-statusbar .icons { display:flex; gap:5px; align-items:center; } /* ds-raw: status bar iOS */
+.home-indicator { width:134px; height:5px; margin:6px auto 0; border-radius:3px; background:rgba(0,0,0,.85); } /* ds-raw: home indicator iOS */
+
+/* ---------- Icons ---------- */
+.ds-icon { width:24px; height:24px; flex:none; color:var(--icon-primary); vertical-align:middle; }
+.ds-icon--20 { width:20px; height:20px; }
+.ds-icon--16 { width:16px; height:16px; }
+
+/* ---------- App header + progress ---------- */
+.app-header { position:sticky; top:50px; z-index:15; display:flex; align-items:center; gap:var(--gap-x-small-8); height:56px; padding:0 var(--padding-x-small-8); background:var(--background-primary); border-bottom:1px solid var(--border-divider); }
+.app-header h1 { flex:1; text-align:center; }
+.app-header .spacer { width:40px; }
+.icon-btn { width:40px; height:40px; display:inline-flex; align-items:center; justify-content:center; border-radius:var(--radius-pill); transition:background .2s; }
+.icon-btn:hover { background:var(--interaction-neutral-light-hover); }
+.icon-btn:active { background:var(--interaction-neutral-light-pressed); }
+.icon-btn:focus-visible, .btn:focus-visible, .cat-row:focus-visible, .field:focus-within { outline:2px solid var(--border-info); outline-offset:2px; }
+
+.progress { display:flex; gap:var(--gap-2x-small-4); padding:var(--padding-small-12) var(--padding-medium-16) 0; } /* custom: DS chưa có step indicator */
+.progress span { flex:1; height:4px; border-radius:var(--radius-pill); background:var(--background-tertiary); }
+.progress span.on { background:var(--background-brand); }
+.progress-text { padding:var(--padding-2x-small-4) var(--padding-medium-16) 0; color:var(--text-tertiary); }
+
+.body { flex:1; padding:var(--padding-medium-16); display:flex; flex-direction:column; gap:var(--gap-medium-16); }
+.section-title { color:var(--text-primary); }
+.muted { color:var(--text-secondary); }
+
+/* ---------- Bottom bar ---------- */
+.bottom-bar { position:sticky; bottom:0; z-index:15; margin-top:auto; padding:var(--padding-small-12) var(--padding-medium-16) var(--padding-x-small-8); background:var(--background-primary); border-top:1px solid var(--border-divider); display:flex; flex-direction:column; }
+.bottom-bar .row { display:flex; gap:var(--gap-small-12); }
+
+/* ---------- Button ---------- */
+.btn { display:inline-flex; align-items:center; justify-content:center; gap:var(--gap-2x-small-4); padding:var(--padding-2x-small-4) var(--padding-small-12); border-radius:var(--radius-card-small); transition:background .2s, transform .1s; white-space:nowrap; }
+.btn-xl { height:48px; } .btn-l { height:40px; } .btn-m { height:32px; }
+.btn-block { width:100%; }
+.row .btn-block { flex:1; width:auto; }
+.btn-primary { background:var(--button-primary); color:var(--text-on-background); }
+.btn-primary:hover { background:var(--interaction-brand-hover); }
+.btn-primary:active { background:var(--interaction-brand-pressed); transform:scale(.99); }
+.btn-tertiary { background:var(--button-blank); border:1px solid var(--border-regular); color:var(--text-primary); }
+.btn-tertiary:hover { background:var(--interaction-primary-hover); }
+.btn-tertiary:active { background:var(--interaction-neutral-light-pressed); }
+.btn:disabled { background:var(--button-disabled); color:var(--text-blank); border-color:transparent; cursor:not-allowed; }
+.btn .ds-icon { width:20px; height:20px; color:currentColor; }
+.spinner { width:20px; height:20px; border-radius:var(--radius-pill); border:2px solid var(--border-regular); border-top-color:var(--border-black); animation:spin .8s linear infinite; }
+@keyframes spin { to { transform:rotate(360deg); } }
+
+/* ---------- Screen 1: danh mục ---------- */
+.search { display:flex; align-items:center; gap:var(--gap-x-small-8); height:48px; padding:0 var(--padding-medium-16); border:2px solid var(--border-thin); border-radius:var(--radius-card); transition:border-color .2s; }
+.search:hover, .search:focus-within { border-color:var(--border-black); }
+.search input { flex:1; border:none; outline:none; background:none; }
+.search input::placeholder { color:var(--text-secondary); }
+.search .ds-icon { color:var(--icon-secondary); }
+.cat-list { display:flex; flex-direction:column; }
+.cat-row { display:flex; align-items:center; gap:var(--gap-small-12); min-height:56px; padding:var(--padding-x-small-8) var(--padding-2x-small-4); border-bottom:1px solid var(--border-divider); text-align:left; border-radius:var(--radius-card-small); transition:background .2s; width:100%; }
+.cat-row:hover { background:var(--interaction-neutral-light-hover); }
+.cat-row.selected { background:var(--background-brand-light); }
+.cat-ico { width:40px; height:40px; display:flex; align-items:center; justify-content:center; border-radius:var(--radius-pill); background:var(--background-secondary); }
+.cat-row.selected .cat-ico { background:var(--background-brand); }
+.cat-row .txt { flex:1; display:flex; flex-direction:column; }
+.cat-row .chev { color:var(--icon-tertiary); }
+.chips { display:flex; flex-wrap:wrap; gap:var(--gap-x-small-8); }
+.chip { display:inline-flex; align-items:center; gap:var(--gap-2x-small-4); height:32px; padding:var(--padding-2x-small-4) var(--padding-small-12); border-radius:var(--radius-pill); background:var(--background-secondary); color:var(--text-primary); transition:background .2s; }
+.chip:hover { background:var(--interaction-neutral-light-hover); }
+.chip.on { background:var(--background-inverted); color:var(--text-blank); }
+.chip .ds-icon { width:20px; height:20px; color:currentColor; }
+
+/* ---------- Screen 2: ảnh ---------- */
+.upload { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:var(--gap-x-small-8); height:160px; border:2px dashed var(--border-regular); border-radius:var(--radius-card); background:var(--background-secondary); text-align:center; transition:border-color .2s, background .2s; } /* custom: DS chưa có vùng upload */
+.upload:hover { border-color:var(--border-brand); background:var(--background-brand-light); }
+.upload .ds-icon { width:40px; height:40px; color:var(--icon-brand); } /* ds-raw: icon minh hoạ vùng upload 40px */
+.thumbs { display:grid; grid-template-columns:repeat(3, 1fr); gap:var(--gap-x-small-8); }
+.thumb { position:relative; aspect-ratio:1; border-radius:var(--radius-card-small); overflow:hidden; display:flex; align-items:center; justify-content:center; transition:opacity .25s, transform .25s; }
+.thumb.removing { opacity:0; transform:scale(.8); }
+.thumb .ph { color:var(--icon-tertiary); width:32px; height:32px; }
+.thumb .rm { position:absolute; top:4px; right:4px; width:24px; height:24px; display:flex; align-items:center; justify-content:center; }
+.thumb .rm .ds-icon { width:20px; height:20px; color:var(--icon-primary); background:var(--background-primary); border-radius:var(--radius-pill); }
+.thumb .cover { position:absolute; left:0; right:0; bottom:0; padding:var(--padding-min-2) 0; text-align:center; background:var(--background-overlay); color:var(--text-blank); }
+.thumb.add { border:2px dashed var(--border-regular); background:var(--background-primary); flex-direction:column; gap:var(--gap-2x-small-4); color:var(--text-secondary); }
+.thumb.add:hover { border-color:var(--border-black); }
+.thumb.add .ds-icon { color:var(--icon-secondary); }
+.bg-a { background:var(--background-tertiary); } .bg-b { background:var(--background-brand-light); } .bg-c { background:var(--background-info-light); } .bg-d { background:var(--background-success-light); }
+.tip { display:flex; gap:var(--gap-x-small-8); padding:var(--padding-small-12); border-radius:var(--radius-card); background:var(--background-info-light); }
+.tip .ds-icon { color:var(--icon-info); width:20px; height:20px; }
+
+/* ---------- Screen 3: form ---------- */
+.form { display:flex; flex-direction:column; gap:var(--gap-medium-16); }
+.fgroup { display:flex; flex-direction:column; gap:var(--gap-2x-small-4); }
+.field { position:relative; display:flex; align-items:center; gap:var(--gap-small-12); min-height:48px; padding:var(--padding-min-2) var(--padding-medium-16); border:2px solid var(--border-thin); border-radius:var(--radius-card); background:var(--background-primary); transition:border-color .2s; }
+.field:hover { border-color:var(--border-black); }
+.field.filled:focus-within { border-color:var(--border-black); }
+.field .stack { flex:1; display:flex; flex-direction:column; min-width:0; }
+.field .flabel { color:var(--text-primary); }
+.field .flabel em { font-style:normal; color:var(--text-error); }
+.field input, .field textarea { border:none; outline:none; background:none; width:100%; resize:none; }
+.field input::placeholder, .field textarea::placeholder { color:var(--text-secondary); }
+.field.area { align-items:flex-start; padding:var(--padding-x-small-8) var(--padding-medium-16); }
+.field.area textarea { min-height:80px; }
+.field .unit { color:var(--text-primary); }
+.field .ds-icon { color:var(--icon-secondary); }
+.field .clear { display:none; }
+.field.filled .clear { display:flex; }
+.help { color:var(--text-secondary); display:flex; justify-content:space-between; }
+.fgroup.error .field { border-color:var(--border-error); animation:shake .35s; }
+.fgroup.error .flabel, .fgroup.error .help { color:var(--text-error); }
+@keyframes shake { 25% { transform:translateX(-4px); } 75% { transform:translateX(4px); } }
+.select { cursor:pointer; text-align:left; width:100%; }
+.popover { display:none; position:absolute; left:-2px; right:-2px; top:calc(100% + 4px); z-index:30; background:var(--background-primary); border:1px solid var(--border-thin); border-radius:var(--radius-card); box-shadow:0 8px 24px rgba(0,0,0,.12); overflow:hidden; } /* ds-raw: bóng popover theo pattern app */
+.fgroup.open .popover { display:block; }
+.popover button { display:block; width:100%; text-align:left; padding:var(--padding-small-12) var(--padding-medium-16); border-bottom:1px solid var(--border-divider); }
+.popover button:hover { background:var(--interaction-neutral-light-hover); }
+.check { display:flex; align-items:center; gap:var(--gap-x-small-8); cursor:pointer; min-height:48px; }
+.check input { position:absolute; opacity:0; pointer-events:none; }
+.cbox { width:24px; height:24px; padding:2px; flex:none; }
+.cbox i { display:flex; align-items:center; justify-content:center; width:20px; height:20px; border:2px solid var(--border-regular); border-radius:var(--radius-ad-small); background:var(--background-primary); transition:all .15s; }
+.check:hover .cbox i { border-color:var(--border-black); background:var(--background-tertiary); }
+.check input:checked + .cbox i { background:var(--background-brand); border-color:var(--border-brand); }
+.cbox .ds-icon { width:16px; height:16px; color:var(--icon-on-background); opacity:0; }
+.check input:checked + .cbox .ds-icon { opacity:1; }
+.check input:focus-visible + .cbox i { outline:2px solid var(--border-info); outline-offset:2px; }
+
+/* ---------- Screen 4: preview ---------- */
+.pcard { border:1px solid var(--border-thin); border-radius:var(--radius-card); overflow:hidden; }
+.pcard .hero { height:220px; position:relative; display:flex; align-items:center; justify-content:center; }
+.pcard .hero .ph { width:48px; height:48px; color:var(--icon-tertiary); }
+.pcard .count { position:absolute; right:8px; bottom:8px; display:flex; align-items:center; gap:var(--gap-2x-small-4); padding:var(--padding-min-2) var(--padding-x-small-8); border-radius:var(--radius-pill); background:var(--background-overlay); color:var(--text-blank); }
+.pcard .count .ds-icon { width:16px; height:16px; color:var(--icon-blank); }
+.pcard .info { padding:var(--padding-small-12); display:flex; flex-direction:column; gap:var(--gap-2x-small-4); }
+.pcard .price { color:var(--text-error); }
+.meta { display:flex; align-items:center; gap:var(--gap-2x-small-4); color:var(--text-tertiary); }
+.meta .ds-icon { width:16px; height:16px; color:var(--icon-tertiary); }
+.kv { display:flex; flex-direction:column; border:1px solid var(--border-thin); border-radius:var(--radius-card); }
+.kv div { display:flex; justify-content:space-between; gap:var(--gap-small-12); padding:var(--padding-small-12); border-bottom:1px solid var(--border-divider); }
+.kv div:last-child { border-bottom:none; }
+.kv dt { color:var(--text-secondary); } .kv dd { text-align:right; }
+.success { position:absolute; inset:0; z-index:9000; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:var(--gap-small-12); padding:var(--padding-large-20); background:var(--background-primary); text-align:center; opacity:0; pointer-events:none; transition:opacity .3s; }
+.success.show { opacity:1; pointer-events:auto; }
+.success .big { width:64px; height:64px; color:var(--icon-success); transform:scale(.4); transition:transform .4s cubic-bezier(.3,1.6,.6,1); } /* ds-raw: icon minh hoạ trạng thái thành công 64px */
+.success.show .big { transform:scale(1); }
+
+/* Chuyển màn trong cùng iPhone khi bấm thử */
+.app-scroll { transition:opacity .3s ease; }
+</style>
+</head>
+<body>
+<svg id="ds-icon-sprite" xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+<symbol id="ds-Close-outline" viewBox="0 0 24 24"><path d="M15.292 7.293C15.683 6.902 16.316 6.902 16.707 7.293C17.097 7.683 17.097 8.316 16.707 8.707L13.414 12L16.707 15.293L16.775 15.369C17.095 15.762 17.073 16.341 16.707 16.707C16.34 17.073 15.761 17.095 15.369 16.775L15.292 16.707L11.999 13.414L8.706 16.707C8.316 17.097 7.683 17.097 7.292 16.707C6.902 16.316 6.902 15.683 7.292 15.293L10.585 12L7.292 8.707L7.224 8.63C6.904 8.238 6.926 7.659 7.292 7.293C7.659 6.926 8.238 6.904 8.63 7.224L8.706 7.293L11.999 10.586L15.292 7.293Z" fill="currentColor"/></symbol>
+<symbol id="ds-Search-outline" viewBox="0 0 24 24"><path d="M18.279 11.439C18.279 7.662 15.217 4.6 11.439 4.6C7.662 4.6 4.6 7.662 4.6 11.439C4.6 15.217 7.662 18.279 11.439 18.279C15.217 18.279 18.279 15.217 18.279 11.439ZM20.279 11.439C20.279 13.543 19.543 15.474 18.315 16.992L21.095 19.681L21.165 19.756C21.492 20.143 21.478 20.723 21.118 21.095C20.758 21.467 20.179 21.5 19.781 21.186L19.704 21.118L16.89 18.396C15.388 19.574 13.497 20.279 11.439 20.279C6.557 20.279 2.6 16.322 2.6 11.439C2.6 6.557 6.557 2.6 11.439 2.6C16.322 2.6 20.279 6.557 20.279 11.439Z" fill="currentColor"/></symbol>
+<symbol id="ds-Smartphone-stroke" viewBox="0 0 24 24"><path d="M18.2 4.8C18.2 4.027 17.573 3.399 16.8 3.399H7.2C6.427 3.399 5.8 4.027 5.8 4.8V19.199C5.8 19.972 6.427 20.6 7.2 20.6H16.8C17.573 20.6 18.2 19.972 18.2 19.199V4.8ZM12.085 15.8C12.637 15.8 13.085 16.248 13.085 16.8V16.876C13.085 17.428 12.637 17.876 12.085 17.876H12C11.448 17.876 11 17.428 11 16.876V16.8C11 16.248 11.448 15.8 12 15.8H12.085ZM15 4.999C15.552 4.999 16 5.447 16 5.999C16 6.551 15.552 6.999 15 6.999H9C8.447 6.999 8 6.551 8 5.999C8 5.447 8.448 4.999 9 4.999H15ZM20.2 19.199C20.2 21.077 18.677 22.6 16.8 22.6H7.2C5.322 22.6 3.8 21.077 3.8 19.199V4.8C3.8 2.922 5.322 1.399 7.2 1.399H16.8C18.677 1.399 20.2 2.922 20.2 4.8V19.199Z" fill="currentColor"/></symbol>
+<symbol id="ds-Chevronright-outline" viewBox="0 0 24 24"><path d="M16 11.999C16 12.265 15.894 12.519 15.707 12.707L10.707 17.707L10.63 17.775C10.238 18.095 9.659 18.073 9.292 17.707C8.926 17.34 8.904 16.761 9.224 16.369L9.292 16.292L13.585 11.999L9.292 7.706C8.902 7.316 8.902 6.683 9.292 6.292C9.683 5.902 10.316 5.902 10.707 6.292L15.707 11.292L15.773 11.366C15.919 11.544 16 11.767 16 11.999Z" fill="currentColor"/></symbol>
+<symbol id="ds-car-outline" viewBox="0 0 24 24"><path d="M6 19V19.5C6 19.916 5.854 20.27 5.562 20.562C5.27 20.854 4.916 21 4.5 21C4.083 21 3.729 20.854 3.437 20.562C3.145 20.27 3 19.916 3 19.5V12.35C3 12.233 3.008 12.116 3.025 12C3.041 11.883 3.066 11.775 3.1 11.675L4.975 6.35C5.108 5.95 5.35 5.625 5.7 5.375C6.05 5.125 6.441 5 6.875 5H17.125C17.558 5 17.95 5.125 18.3 5.375C18.65 5.625 18.891 5.95 19.025 6.35L20.9 11.675C20.933 11.775 20.958 11.883 20.975 12C20.991 12.116 21 12.233 21 12.35V19.5C21 19.916 20.854 20.27 20.562 20.562C20.27 20.854 19.916 21 19.5 21C19.083 21 18.729 20.854 18.437 20.562C18.145 20.27 18 19.916 18 19.5V19H6ZM5.8 10H18.2L17.15 7H6.85L5.8 10ZM7.5 16C7.916 16 8.27 15.854 8.562 15.562C8.854 15.27 9 14.916 9 14.5C9 14.083 8.854 13.729 8.562 13.437C8.27 13.145 7.916 13 7.5 13C7.083 13 6.729 13.145 6.437 13.437C6.145 13.729 6 14.083 6 14.5C6 14.916 6.145 15.27 6.437 15.562C6.729 15.854 7.083 16 7.5 16ZM16.5 16C16.916 16 17.27 15.854 17.562 15.562C17.854 15.27 18 14.916 18 14.5C18 14.083 17.854 13.729 17.562 13.437C17.27 13.145 16.916 13 16.5 13C16.083 13 15.729 13.145 15.437 13.437C15.145 13.729 15 14.083 15 14.5C15 14.916 15.145 15.27 15.437 15.562C15.729 15.854 16.083 16 16.5 16ZM5 17H19V12H5V17Z" fill="currentColor"/></symbol>
+<symbol id="ds-Building-outline" viewBox="0 0 24 24"><path d="M14.097 17.617C14.097 17.556 14.046 17.506 13.982 17.506H10.018C9.954 17.506 9.902 17.556 9.902 17.617V19.972H14.097V17.617ZM18.061 5.011C18.061 4.467 17.595 4.027 17.021 4.027H6.98C6.405 4.027 5.938 4.467 5.938 5.011V19.972H7.756V17.617C7.756 16.437 8.769 15.479 10.018 15.479H13.982C15.231 15.479 16.243 16.437 16.243 17.617V19.972H18.061V5.011ZM11.487 12.749C11.487 13.308 11.007 13.762 10.415 13.762H8.829C8.237 13.762 7.756 13.309 7.756 12.749C7.756 12.189 8.237 11.735 8.829 11.735H10.415C11.007 11.735 11.487 12.189 11.487 12.749ZM16.243 12.749C16.243 13.308 15.763 13.762 15.171 13.762H13.585C12.993 13.762 12.512 13.309 12.512 12.749C12.512 12.189 12.993 11.735 13.585 11.735H15.171C15.763 11.735 16.243 12.189 16.243 12.749ZM11.487 9.753C11.487 10.313 11.007 10.766 10.415 10.767H8.829C8.237 10.767 7.756 10.313 7.756 9.753C7.756 9.194 8.237 8.739 8.829 8.739H10.415C11.007 8.739 11.487 9.194 11.487 9.753ZM16.243 9.753C16.243 10.313 15.763 10.766 15.171 10.767H13.585C12.993 10.767 12.512 10.313 12.512 9.753C12.512 9.194 12.993 8.739 13.585 8.739H15.171C15.763 8.739 16.243 9.194 16.243 9.753ZM11.487 6.758C11.487 7.317 11.007 7.771 10.415 7.771H8.829C8.237 7.771 7.756 7.318 7.756 6.758C7.756 6.198 8.237 5.744 8.829 5.744H10.415C11.007 5.744 11.487 6.198 11.487 6.758ZM16.243 6.758C16.243 7.317 15.763 7.771 15.171 7.771H13.585C12.993 7.771 12.512 7.318 12.512 6.758C12.512 6.198 12.993 5.744 13.585 5.744H15.171C15.763 5.744 16.243 6.198 16.243 6.758ZM20.207 20.008C20.663 20.125 21 20.518 21 20.986C20.999 21.546 20.519 21.999 19.927 22H4.073C3.481 22 3 21.546 3 20.986C3 20.518 3.336 20.125 3.792 20.008V5.011C3.792 3.348 5.22 2 6.98 2H17.021L17.185 2.003C18.868 2.084 20.207 3.4 20.207 5.011V20.008Z" fill="currentColor"/></symbol>
+<symbol id="ds-Handbag-outline" viewBox="0 0 24 24"><path d="M12.21 2.005C14.065 2.104 15.529 3.502 15.905 5.278H16.818C18.444 5.278 19.702 6.61 19.752 8.196L20.993 18.869L21 18.984C21 20.613 19.719 22 18.06 22H5.939C4.28 22 3 20.613 3 18.984L3.003 18.891L4.003 8.201C4.051 6.612 5.311 5.278 6.939 5.278H8.094C8.484 3.435 10.046 2 12 2L12.21 2.005ZM14 8.823V7.278H10V8.823C10 9.375 9.552 9.823 9 9.823C8.447 9.823 8 9.375 8 8.823V7.278H6.939C6.456 7.278 6 7.696 6 8.293L5.996 8.387L5 19.019C5.018 19.598 5.465 20 5.939 20H18.06C18.532 20 18.977 19.6 18.998 19.025L17.764 8.409C17.76 8.37 17.757 8.332 17.757 8.293C17.757 7.696 17.301 7.278 16.818 7.278H16V8.823C16 9.375 15.552 9.823 15 9.823C14.447 9.823 14 9.375 14 8.823ZM11.804 4.01C11.102 4.087 10.472 4.57 10.177 5.278H13.822C13.5 4.505 12.779 4 12 4L11.804 4.01Z" fill="currentColor"/><path d="M13.5 16C14.052 16 14.5 16.447 14.5 17C14.5 17.552 14.052 18 13.5 18H10.5C9.947 18 9.5 17.552 9.5 17C9.5 16.447 9.947 16 10.5 16H13.5Z" fill="currentColor"/></symbol>
+<symbol id="ds-Suitcase-outline" viewBox="0 0 24 24"><path d="M20.5 10.433C20.499 9.771 19.925 9.16 19.125 9.16H4.875C4.074 9.16 3.5 9.771 3.5 10.433V17.253L3.506 17.377C3.572 17.991 4.124 18.527 4.875 18.527H19.125C19.926 18.527 20.5 17.916 20.5 17.253V10.433ZM13.968 5.886C13.968 5.863 13.96 5.835 13.929 5.805C13.897 5.775 13.847 5.75 13.781 5.75H9.625C9.558 5.75 9.508 5.775 9.476 5.805C9.445 5.835 9.437 5.863 9.437 5.886V7.16H13.968V5.886ZM15.968 7.16H19.125C20.947 7.16 22.499 8.585 22.5 10.433V17.253C22.5 19.102 20.947 20.527 19.125 20.527H4.875C3.109 20.527 1.597 19.19 1.504 17.426L1.5 17.253V10.433C1.5 8.585 3.052 7.16 4.875 7.16H7.437V5.886C7.437 4.665 8.458 3.75 9.625 3.75H13.781C14.947 3.75 15.968 4.665 15.968 5.886V7.16Z" fill="currentColor"/><path d="M13.2 11C13.752 11 14.2 11.447 14.2 12C14.2 12.552 13.752 13 13.2 13H10.2C9.647 13 9.2 12.552 9.2 12C9.2 11.447 9.647 11 10.2 11H13.2Z" fill="currentColor"/></symbol>
+<symbol id="ds-Arrowright-outline" viewBox="0 0 24 24"><path d="M12.143 7.275C12.518 6.918 13.098 6.91 13.483 7.24L13.557 7.31L17.724 11.685C18.092 12.071 18.092 12.678 17.724 13.064L13.557 17.439L13.483 17.509C13.098 17.839 12.518 17.831 12.143 17.474C11.743 17.093 11.728 16.46 12.109 16.06L14.667 13.375H7C6.447 13.375 6 12.927 6 12.375C6 11.822 6.447 11.375 7 11.375H14.667L12.109 8.689L12.042 8.612C11.731 8.211 11.768 7.632 12.143 7.275Z" fill="currentColor"/></symbol>
+<symbol id="ds-Arrowleft-outline" viewBox="0 0 24 24"><path d="M10.516 7.24C10.901 6.91 11.481 6.918 11.856 7.275C12.256 7.656 12.271 8.289 11.89 8.689L9.333 11.375H17L17.102 11.38C17.606 11.431 18 11.857 18 12.375C18 12.892 17.606 13.318 17.102 13.37L17 13.375H9.333L11.89 16.06L11.958 16.137C12.268 16.538 12.231 17.117 11.856 17.474C11.481 17.831 10.901 17.839 10.516 17.509L10.442 17.439L6.275 13.064C5.908 12.678 5.908 12.071 6.275 11.685L10.442 7.31L10.516 7.24Z" fill="currentColor"/></symbol>
+<symbol id="ds-Camera-outline" viewBox="0 0 24 24"><path d="M20.113 8.791C20.113 8.078 19.521 7.499 18.792 7.499H16.528C16.193 7.499 15.882 7.325 15.713 7.042L14.401 4.844H9.598L8.286 7.042C8.117 7.325 7.807 7.499 7.471 7.499H5.207C4.478 7.499 3.886 8.078 3.886 8.791V17.865C3.886 18.577 4.478 19.155 5.207 19.155H18.792C19.521 19.155 20.113 18.577 20.113 17.865V8.791ZM14.452 12.774C14.452 11.45 13.354 10.377 11.999 10.377C10.645 10.377 9.547 11.45 9.547 12.774C9.547 14.098 10.645 15.172 11.999 15.172C13.354 15.172 14.452 14.098 14.452 12.774ZM16.339 12.774C16.339 15.117 14.396 17.016 11.999 17.016C9.603 17.016 7.66 15.116 7.66 12.774C7.66 10.431 9.603 8.532 11.999 8.532C14.396 8.532 16.339 10.431 16.339 12.774ZM22 17.865C21.999 19.596 20.563 20.999 18.792 20.999H5.207C3.436 20.999 2 19.596 2 17.865V8.791C2 7.059 3.436 5.655 5.207 5.655H6.929L8.241 3.457L8.311 3.356C8.488 3.133 8.763 2.999 9.056 2.999H14.943L15.067 3.007C15.354 3.045 15.61 3.209 15.758 3.457L17.07 5.655H18.792C20.563 5.655 22 7.059 22 8.791V17.865Z" fill="currentColor"/></symbol>
+<symbol id="ds-Image-outline" viewBox="0 0 24 24"><path d="M20 17.397C19.932 17.364 19.867 17.324 19.806 17.275L19.73 17.207L15.937 13.414L11.582 17.769C11.191 18.16 10.558 18.16 10.168 17.769L8.625 16.226L5.177 19.672C5.529 19.879 5.937 20 6.375 20H17.625C18.936 20 20 18.936 20 17.625V17.397ZM8.75 8.062C8.75 7.682 8.442 7.375 8.062 7.375C7.682 7.375 7.375 7.682 7.375 8.062C7.375 8.442 7.682 8.75 8.062 8.75C8.442 8.75 8.75 8.442 8.75 8.062ZM20 6.375C20 5.063 18.936 4 17.625 4H6.375C5.063 4 4 5.063 4 6.375V17.625C4 17.75 4.011 17.872 4.03 17.992L7.917 14.105L7.994 14.037C8.386 13.716 8.965 13.739 9.332 14.105L10.875 15.648L15.23 11.293L15.306 11.224C15.699 10.904 16.278 10.926 16.644 11.293L20 14.648V6.375ZM10.75 8.062C10.75 9.546 9.546 10.75 8.062 10.75C6.578 10.75 5.375 9.546 5.375 8.062C5.375 6.578 6.578 5.375 8.062 5.375C9.546 5.375 10.75 6.578 10.75 8.062ZM22 17.625C22 20.041 20.041 22 17.625 22H6.375C3.958 22 2 20.041 2 17.625V6.375C2 3.958 3.958 2 6.375 2H17.625C20.041 2 22 3.958 22 6.375V17.625Z" fill="currentColor"/></symbol>
+<symbol id="ds-Close-fill" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.486 2 2 6.486 2 12C2 17.513 6.486 22 12 22C17.513 22 22 17.513 22 12C22 6.486 17.513 2 12 2ZM15.707 8.292C15.316 7.902 14.683 7.902 14.292 8.292L11.999 10.585L9.706 8.292L9.63 8.224C9.238 7.904 8.659 7.926 8.292 8.292C7.926 8.659 7.904 9.238 8.224 9.63L8.292 9.706L10.585 11.999L8.292 14.292C7.902 14.683 7.902 15.316 8.292 15.707C8.683 16.097 9.316 16.097 9.706 15.707L11.999 13.414L14.292 15.707L14.369 15.775C14.761 16.095 15.34 16.073 15.707 15.707C16.073 15.34 16.095 14.761 15.775 14.369L15.707 14.292L13.414 11.999L15.707 9.706C16.097 9.316 16.097 8.683 15.707 8.292Z" fill="currentColor"/></symbol>
+<symbol id="ds-Plus-outline" viewBox="0 0 24 24"><path d="M11 16.799V12.999H7.2C6.647 12.999 6.2 12.552 6.2 11.999C6.2 11.447 6.647 10.999 7.2 10.999H11V7.199C11 6.647 11.447 6.2 12 6.199C12.552 6.199 13 6.647 13 7.199V10.999H16.799L16.902 11.004C17.406 11.055 17.799 11.482 17.799 11.999C17.799 12.517 17.406 12.943 16.902 12.994L16.799 12.999H13V16.799C13 17.351 12.552 17.799 12 17.799C11.447 17.799 11 17.351 11 16.799Z" fill="currentColor"/></symbol>
+<symbol id="ds-Info-outline" viewBox="0 0 24 24"><path d="M20 12C20 7.581 16.418 4 12 4C7.581 4 4 7.581 4 12C4 16.418 7.581 20 12 20C16.418 20 20 16.418 20 12ZM11 16.5V12C11 11.447 11.447 11 12 11C12.552 11 13 11.447 13 12V16.5C13 17.052 12.552 17.5 12 17.5C11.447 17.5 11 17.052 11 16.5ZM11 8.665V8.625C11 8.072 11.447 7.625 12 7.625C12.552 7.625 13 8.072 13 8.625V8.665C12.999 9.217 12.552 9.665 12 9.665C11.447 9.665 11 9.217 11 8.665ZM22 12C22 17.522 17.522 22 12 22C6.477 22 2 17.522 2 12C2 6.477 6.477 2 12 2C17.522 2 22 6.477 22 12Z" fill="currentColor"/></symbol>
+<symbol id="ds-Check-outline" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M18.395 6.575C18.953 7.237 18.84 8.203 18.142 8.732C16.976 9.615 15.753 11.141 14.658 12.81C13.582 14.449 12.712 16.096 12.224 17.104C11.974 17.622 11.442 17.966 10.841 17.997C10.241 18.029 9.672 17.743 9.363 17.255C9.039 16.744 8.42 16.031 7.709 15.325C7.001 14.623 6.314 14.04 5.917 13.766C5.193 13.267 5.033 12.308 5.559 11.622C6.086 10.937 7.099 10.785 7.822 11.284C8.442 11.711 9.28 12.44 10.051 13.205C10.181 13.334 10.313 13.467 10.444 13.603C10.869 12.845 11.362 12.018 11.906 11.189C13.052 9.444 14.51 7.554 16.118 6.336C16.816 5.806 17.836 5.914 18.395 6.575Z" fill="currentColor"/></symbol>
+<symbol id="ds-Chevrondown-outline" viewBox="0 0 24 24"><path d="M6.262 9.324C6.612 8.942 7.19 8.894 7.596 9.197L7.675 9.262L12 13.223L16.324 9.262L16.403 9.197C16.809 8.894 17.387 8.942 17.737 9.324C18.087 9.706 18.084 10.285 17.747 10.664L17.675 10.737L12.676 15.317C12.294 15.667 11.707 15.667 11.325 15.317L6.324 10.737L6.252 10.665C5.915 10.286 5.912 9.706 6.262 9.324Z" fill="currentColor"/></symbol>
+<symbol id="ds-Location-outline" viewBox="0 0 24 24"><path d="M18 10.043C18 6.7 15.308 4 12 4C8.692 4 6 6.7 6 10.043C6 10.986 6.357 12.089 6.979 13.27C7.593 14.438 8.425 15.604 9.275 16.651C10.124 17.694 10.975 18.599 11.615 19.243C11.754 19.382 11.884 19.509 12 19.623C12.116 19.509 12.246 19.382 12.385 19.243C13.025 18.599 13.876 17.694 14.725 16.651C15.575 15.604 16.407 14.438 17.022 13.27C17.643 12.089 18 10.986 18 10.043ZM13.236 9.75C13.236 9.053 12.677 8.5 12 8.5C11.323 8.5 10.765 9.053 10.765 9.75C10.765 10.446 11.323 10.999 12 11C12.677 11 13.236 10.446 13.236 9.75ZM20 10.043C20 11.449 19.482 12.888 18.791 14.202C18.093 15.528 17.174 16.807 16.275 17.913C15.374 19.021 14.475 19.976 13.803 20.653C13.466 20.992 13.185 21.262 12.986 21.449C12.887 21.542 12.808 21.616 12.754 21.666C12.727 21.69 12.706 21.71 12.691 21.723C12.684 21.73 12.678 21.735 12.674 21.739C12.672 21.741 12.67 21.742 12.669 21.743L12.667 21.745L12 22.341L11.333 21.745L11.331 21.743C11.33 21.742 11.328 21.741 11.326 21.739C11.322 21.735 11.316 21.73 11.309 21.723C11.294 21.71 11.273 21.69 11.246 21.666C11.192 21.616 11.113 21.542 11.014 21.449C10.815 21.262 10.534 20.992 10.197 20.653C9.525 19.976 8.626 19.021 7.725 17.913C6.826 16.807 5.907 15.528 5.209 14.202C4.518 12.888 4 11.449 4 10.043C4 5.607 7.576 2 12 2C16.424 2 20 5.607 20 10.043ZM15.236 9.75C15.236 11.539 13.793 13 12 13C10.207 12.999 8.765 11.539 8.765 9.75C8.765 7.961 10.207 6.5 12 6.5C13.793 6.5 15.236 7.96 15.236 9.75Z" fill="currentColor"/></symbol>
+<symbol id="ds-Edit-outline" viewBox="0 0 24 24"><path d="M20.151 20.256L20.237 20.261C20.665 20.305 20.999 20.677 21 21.128C21 21.579 20.665 21.951 20.237 21.995L20.151 22H11.999C11.53 21.999 11.15 21.609 11.15 21.128C11.15 20.647 11.53 20.257 11.999 20.256H20.151ZM14.822 4.087C16.235 2.637 18.527 2.637 19.94 4.087L20.068 4.226C21.31 5.637 21.31 7.792 20.068 9.203L19.94 9.341L19.929 9.352L9.533 19.663C9.436 19.76 9.317 19.831 9.187 19.871L4.092 21.44C3.793 21.532 3.469 21.448 3.248 21.222C3.028 20.995 2.946 20.662 3.035 20.355L4.563 15.126L4.598 15.028C4.639 14.933 4.696 14.845 4.766 14.77L14.812 4.099L14.822 4.087ZM5.115 19.305L8.027 18.408L5.919 16.552L5.115 19.305ZM18.738 5.32C17.989 4.55 16.773 4.55 16.023 5.32L6.844 15.071L9.427 17.343L18.738 8.108L18.87 7.958C19.445 7.236 19.445 6.192 18.87 5.47L18.738 5.32Z" fill="currentColor"/></symbol>
+<symbol id="ds-CircleCheck-fill" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.522 22 22 17.522 22 12C22 6.477 17.522 2 12 2C6.477 2 2 6.477 2 12C2 17.522 6.477 22 12 22ZM16.831 9.823C17.297 9.47 17.372 8.826 17 8.385C16.627 7.944 15.947 7.872 15.482 8.225C14.41 9.038 13.438 10.297 12.674 11.461C12.311 12.014 11.982 12.565 11.699 13.07C11.612 12.979 11.524 12.891 11.438 12.805C10.923 12.295 10.365 11.809 9.951 11.524C9.469 11.192 8.794 11.293 8.443 11.75C8.092 12.207 8.199 12.846 8.681 13.179C8.946 13.361 9.404 13.75 9.876 14.218C10.35 14.689 10.763 15.164 10.978 15.504C11.184 15.83 11.564 16.021 11.964 16C12.364 15.979 12.719 15.749 12.886 15.404C13.211 14.732 13.791 13.634 14.508 12.541C15.239 11.429 16.054 10.412 16.831 9.823Z" fill="currentColor"/></symbol>
+</svg>
+
+<div class="canvas-head">
+  <img src="logo.png" alt="Chợ Tốt">
+  <div>
+    <h1 class="t-header-page">Flow đăng tin · Chợ Tốt</h1>
+    <p class="t-body-caption">4 bước · iPhone 14 Pro · bấm thử được từng màn</p>
+  </div>
+</div>
+
+<div class="flow">
+
+  <!-- ===== ① Chọn danh mục ===== -->
+  <div class="step">
+    <div class="step-label t-label-section"><b class="t-label-caption">1</b>Chọn danh mục</div>
+    <div class="iphone"><div class="iphone-screen"><div class="dynamic-island"></div>
+      <div class="app-scroll" id="s1">
+        <div class="ios-statusbar"><span>9:41</span><span class="icons"><svg width="18" height="12" viewBox="0 0 18 12" fill="none"><rect y="7" width="3" height="5" rx="1" fill="currentColor"/><rect x="5" y="5" width="3" height="7" rx="1" fill="currentColor"/><rect x="10" y="2.5" width="3" height="9.5" rx="1" fill="currentColor"/><rect x="15" width="3" height="12" rx="1" fill="currentColor"/></svg><svg width="17" height="12" viewBox="0 0 17 12" fill="none"><path d="M8.5 2.7c2.4 0 4.6.9 6.3 2.5l1.6-1.7C14.3 1.5 11.5.3 8.5.3S2.7 1.5.6 3.5l1.6 1.7C3.9 3.6 6.1 2.7 8.5 2.7Zm0 4.1c1.3 0 2.5.5 3.4 1.4l1.7-1.7c-1.4-1.3-3.2-2.1-5.1-2.1s-3.7.8-5.1 2.1l1.7 1.7c.9-.9 2.1-1.4 3.4-1.4Zm2 3.4L8.5 12l-2-1.8c.5-.6 1.2-.9 2-.9s1.5.3 2 .9Z" fill="currentColor"/></svg><svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x=".5" y=".5" width="21" height="11" rx="3" stroke="currentColor" stroke-opacity=".4"/><rect x="2" y="2" width="15" height="8" rx="1.6" fill="currentColor"/><path d="M23.5 4v4c.8-.3 1.3-1.1 1.3-2s-.5-1.7-1.3-2Z" fill="currentColor" fill-opacity=".4"/></svg></span></div>
+        <header class="app-header">
+          <button class="icon-btn" aria-label="Đóng"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Close-outline"/></svg></button>
+          <h1 class="t-header-section">Đăng tin</h1><span class="spacer"></span>
+        </header>
+        <div class="progress" data-ds-raw="custom: DS chưa có step indicator"><span class="on"></span><span></span><span></span><span></span></div>
+        <p class="progress-text t-body-caption">Bước 1/4 · Danh mục</p>
+        <div class="body">
+          <h2 class="section-title t-header-section">Bạn muốn đăng bán gì?</h2>
+          <label class="search">
+            <svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Search-outline"/></svg>
+            <input class="t-body-section" placeholder="Tìm danh mục, vd: điện thoại" aria-label="Tìm danh mục">
+          </label>
+          <div class="fgroup">
+            <p class="muted t-header-caption">Gợi ý cho bạn</p>
+            <div class="chips" data-ds-speculative="true">
+              <button class="chip t-tagline-caption">Điện thoại</button>
+              <button class="chip t-tagline-caption">Xe máy</button>
+              <button class="chip t-tagline-caption">Laptop</button>
+            </div>
+          </div>
+          <div class="cat-list" role="radiogroup" aria-label="Danh mục">
+            <button class="cat-row" role="radio" data-cat="Đồ điện tử"><span class="cat-ico"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Smartphone-stroke"/></svg></span><span class="txt"><span class="t-label-section">Đồ điện tử</span><span class="t-body-caption muted">Điện thoại, laptop, máy tính bảng</span></span><svg class="ds-icon ds-icon--20 chev" aria-hidden="true"><use href="#ds-Chevronright-outline"/></svg></button>
+            <button class="cat-row" role="radio" data-cat="Xe cộ"><span class="cat-ico"><svg class="ds-icon" aria-hidden="true"><use href="#ds-car-outline"/></svg></span><span class="txt"><span class="t-label-section">Xe cộ</span><span class="t-body-caption muted">Ô tô, xe máy, xe đạp</span></span><svg class="ds-icon ds-icon--20 chev" aria-hidden="true"><use href="#ds-Chevronright-outline"/></svg></button>
+            <button class="cat-row" role="radio" data-cat="Bất động sản"><span class="cat-ico"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Building-outline"/></svg></span><span class="txt"><span class="t-label-section">Bất động sản</span><span class="t-body-caption muted">Căn hộ, nhà ở, đất</span></span><svg class="ds-icon ds-icon--20 chev" aria-hidden="true"><use href="#ds-Chevronright-outline"/></svg></button>
+            <button class="cat-row" role="radio" data-cat="Thời trang"><span class="cat-ico"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Handbag-outline"/></svg></span><span class="txt"><span class="t-label-section">Thời trang, đồ dùng cá nhân</span><span class="t-body-caption muted">Quần áo, giày dép, túi xách</span></span><svg class="ds-icon ds-icon--20 chev" aria-hidden="true"><use href="#ds-Chevronright-outline"/></svg></button>
+            <button class="cat-row" role="radio" data-cat="Việc làm"><span class="cat-ico"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Suitcase-outline"/></svg></span><span class="txt"><span class="t-label-section">Việc làm</span><span class="t-body-caption muted">Tuyển dụng, tìm việc</span></span><svg class="ds-icon ds-icon--20 chev" aria-hidden="true"><use href="#ds-Chevronright-outline"/></svg></button>
+          </div>
+        </div>
+        <div class="bottom-bar">
+          <button class="btn btn-primary btn-xl btn-block t-label-section" id="s1-next" disabled>Tiếp tục</button>
+          <div class="home-indicator"></div>
+        </div>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="arrow" aria-hidden="true"><svg class="ds-icon"><use href="#ds-Arrowright-outline"/></svg></div>
+
+  <!-- ===== ② Thêm ảnh ===== -->
+  <div class="step">
+    <div class="step-label t-label-section"><b class="t-label-caption">2</b>Thêm ảnh</div>
+    <div class="iphone"><div class="iphone-screen"><div class="dynamic-island"></div>
+      <div class="app-scroll">
+        <div class="ios-statusbar"><span>9:41</span><span class="icons"><svg width="18" height="12" viewBox="0 0 18 12" fill="none"><rect y="7" width="3" height="5" rx="1" fill="currentColor"/><rect x="5" y="5" width="3" height="7" rx="1" fill="currentColor"/><rect x="10" y="2.5" width="3" height="9.5" rx="1" fill="currentColor"/><rect x="15" width="3" height="12" rx="1" fill="currentColor"/></svg><svg width="17" height="12" viewBox="0 0 17 12" fill="none"><path d="M8.5 2.7c2.4 0 4.6.9 6.3 2.5l1.6-1.7C14.3 1.5 11.5.3 8.5.3S2.7 1.5.6 3.5l1.6 1.7C3.9 3.6 6.1 2.7 8.5 2.7Zm0 4.1c1.3 0 2.5.5 3.4 1.4l1.7-1.7c-1.4-1.3-3.2-2.1-5.1-2.1s-3.7.8-5.1 2.1l1.7 1.7c.9-.9 2.1-1.4 3.4-1.4Zm2 3.4L8.5 12l-2-1.8c.5-.6 1.2-.9 2-.9s1.5.3 2 .9Z" fill="currentColor"/></svg><svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x=".5" y=".5" width="21" height="11" rx="3" stroke="currentColor" stroke-opacity=".4"/><rect x="2" y="2" width="15" height="8" rx="1.6" fill="currentColor"/><path d="M23.5 4v4c.8-.3 1.3-1.1 1.3-2s-.5-1.7-1.3-2Z" fill="currentColor" fill-opacity=".4"/></svg></span></div>
+        <header class="app-header">
+          <button class="icon-btn" aria-label="Quay lại"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Arrowleft-outline"/></svg></button>
+          <h1 class="t-header-section">Đăng tin</h1><span class="spacer"></span>
+        </header>
+        <div class="progress" data-ds-raw="custom: DS chưa có step indicator"><span class="on"></span><span class="on"></span><span></span><span></span></div>
+        <p class="progress-text t-body-caption">Bước 2/4 · Hình ảnh</p>
+        <div class="body">
+          <div class="fgroup">
+            <h2 class="section-title t-header-section">Hình ảnh sản phẩm</h2>
+            <p class="muted t-body-caption">Đồ điện tử › Điện thoại</p>
+          </div>
+          <button class="upload" id="upload" data-ds-raw="custom: DS chưa có vùng upload ảnh">
+            <svg class="ds-icon" aria-hidden="true"><use href="#ds-Camera-outline"/></svg>
+            <span class="t-label-section">Chụp ảnh hoặc chọn từ thư viện</span>
+            <span class="t-body-caption muted">Tối đa 12 ảnh · ảnh đầu tiên là ảnh bìa</span>
+          </button>
+          <div class="fgroup">
+            <p class="help t-header-caption"><span style="color:var(--text-primary)">Đã chọn <span id="pcount">4</span>/12</span><span class="t-body-caption muted">Giữ và kéo để sắp xếp</span></p>
+            <div class="thumbs" id="thumbs" data-ds-speculative="true">
+              <div class="thumb bg-b"><svg class="ds-icon ph" aria-hidden="true"><use href="#ds-Image-outline"/></svg><button class="rm" aria-label="Xoá ảnh"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Close-fill"/></svg></button><span class="cover t-label-annotation">Ảnh bìa</span></div>
+              <div class="thumb bg-c"><svg class="ds-icon ph" aria-hidden="true"><use href="#ds-Image-outline"/></svg><button class="rm" aria-label="Xoá ảnh"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Close-fill"/></svg></button></div>
+              <div class="thumb bg-d"><svg class="ds-icon ph" aria-hidden="true"><use href="#ds-Image-outline"/></svg><button class="rm" aria-label="Xoá ảnh"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Close-fill"/></svg></button></div>
+              <div class="thumb bg-a"><svg class="ds-icon ph" aria-hidden="true"><use href="#ds-Image-outline"/></svg><button class="rm" aria-label="Xoá ảnh"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Close-fill"/></svg></button></div>
+              <button class="thumb add" id="addthumb"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Plus-outline"/></svg><span class="t-tagline-annotation">Thêm ảnh</span></button>
+            </div>
+          </div>
+          <div class="tip">
+            <svg class="ds-icon" aria-hidden="true"><use href="#ds-Info-outline"/></svg>
+            <p class="t-body-caption">Tin có từ 3 ảnh thật, rõ nét được xem nhiều hơn. Không chèn số điện thoại hay logo lên ảnh.</p>
+          </div>
+        </div>
+        <div class="bottom-bar">
+          <button class="btn btn-primary btn-xl btn-block t-label-section" id="s2-next">Tiếp tục</button>
+          <div class="home-indicator"></div>
+        </div>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="arrow" aria-hidden="true"><svg class="ds-icon"><use href="#ds-Arrowright-outline"/></svg></div>
+
+  <!-- ===== ③ Nhập thông tin ===== -->
+  <div class="step">
+    <div class="step-label t-label-section"><b class="t-label-caption">3</b>Nhập thông tin</div>
+    <div class="iphone"><div class="iphone-screen"><div class="dynamic-island"></div>
+      <div class="app-scroll">
+        <div class="ios-statusbar"><span>9:41</span><span class="icons"><svg width="18" height="12" viewBox="0 0 18 12" fill="none"><rect y="7" width="3" height="5" rx="1" fill="currentColor"/><rect x="5" y="5" width="3" height="7" rx="1" fill="currentColor"/><rect x="10" y="2.5" width="3" height="9.5" rx="1" fill="currentColor"/><rect x="15" width="3" height="12" rx="1" fill="currentColor"/></svg><svg width="17" height="12" viewBox="0 0 17 12" fill="none"><path d="M8.5 2.7c2.4 0 4.6.9 6.3 2.5l1.6-1.7C14.3 1.5 11.5.3 8.5.3S2.7 1.5.6 3.5l1.6 1.7C3.9 3.6 6.1 2.7 8.5 2.7Zm0 4.1c1.3 0 2.5.5 3.4 1.4l1.7-1.7c-1.4-1.3-3.2-2.1-5.1-2.1s-3.7.8-5.1 2.1l1.7 1.7c.9-.9 2.1-1.4 3.4-1.4Zm2 3.4L8.5 12l-2-1.8c.5-.6 1.2-.9 2-.9s1.5.3 2 .9Z" fill="currentColor"/></svg><svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x=".5" y=".5" width="21" height="11" rx="3" stroke="currentColor" stroke-opacity=".4"/><rect x="2" y="2" width="15" height="8" rx="1.6" fill="currentColor"/><path d="M23.5 4v4c.8-.3 1.3-1.1 1.3-2s-.5-1.7-1.3-2Z" fill="currentColor" fill-opacity=".4"/></svg></span></div>
+        <header class="app-header">
+          <button class="icon-btn" aria-label="Quay lại"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Arrowleft-outline"/></svg></button>
+          <h1 class="t-header-section">Đăng tin</h1><span class="spacer"></span>
+        </header>
+        <div class="progress" data-ds-raw="custom: DS chưa có step indicator"><span class="on"></span><span class="on"></span><span class="on"></span><span></span></div>
+        <p class="progress-text t-body-caption">Bước 3/4 · Thông tin chi tiết</p>
+        <div class="body">
+          <h2 class="section-title t-header-section">Thông tin chi tiết</h2>
+          <form class="form" id="form" novalidate>
+            <div class="fgroup" id="g-title">
+              <label class="field">
+                <span class="stack"><span class="flabel t-label-annotation">Tiêu đề tin <em>*</em></span>
+                <input id="title" class="t-body-section" maxlength="50" placeholder="Vd: iPhone 13 128GB xanh, máy zin"></span>
+                <button type="button" class="clear" aria-label="Xoá tiêu đề"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Close-fill"/></svg></button>
+              </label>
+              <p class="help t-body-annotation"><span id="title-help">Ghi rõ tên, dung lượng, màu sắc</span><span id="title-cnt">0/50</span></p>
+            </div>
+
+            <div class="fgroup" id="g-desc">
+              <label class="field area">
+                <span class="stack"><span class="flabel t-label-annotation">Mô tả chi tiết <em>*</em></span>
+                <textarea id="desc" class="t-body-section" maxlength="1500" placeholder="Tình trạng, phụ kiện đi kèm, bảo hành, lý do bán…"></textarea></span>
+              </label>
+              <p class="help t-body-annotation"><span>Tối thiểu 10 ký tự</span><span id="desc-cnt">0/1500</span></p>
+            </div>
+
+            <div class="fgroup" id="g-price">
+              <label class="field">
+                <span class="stack"><span class="flabel t-label-annotation">Giá bán <em>*</em></span>
+                <input id="price" class="t-body-section" inputmode="numeric" placeholder="0"></span>
+                <span class="unit t-header-caption">đ</span>
+              </label>
+              <label class="check">
+                <input type="checkbox" id="nego" checked>
+                <span class="cbox"><i><svg class="ds-icon" aria-hidden="true"><use href="#ds-Check-outline"/></svg></i></span>
+                <span class="t-body-section">Cho phép thương lượng</span>
+              </label>
+            </div>
+
+            <div class="fgroup dd" id="g-cond">
+              <button type="button" class="field select">
+                <span class="stack"><span class="flabel t-label-annotation">Tình trạng <em>*</em></span>
+                <span class="t-body-section val muted">Chọn tình trạng</span></span>
+                <svg class="ds-icon" aria-hidden="true"><use href="#ds-Chevrondown-outline"/></svg>
+              </button>
+              <div class="popover" role="listbox">
+                <button type="button" class="t-body-section">Mới</button>
+                <button type="button" class="t-body-section">Đã sử dụng (chưa sửa chữa)</button>
+                <button type="button" class="t-body-section">Đã sử dụng (qua sửa chữa)</button>
+              </div>
+            </div>
+
+            <div class="fgroup dd" id="g-addr">
+              <button type="button" class="field select">
+                <svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Location-outline"/></svg>
+                <span class="stack"><span class="flabel t-label-annotation">Địa chỉ <em>*</em></span>
+                <span class="t-body-section val muted">Chọn địa chỉ</span></span>
+                <svg class="ds-icon" aria-hidden="true"><use href="#ds-Chevrondown-outline"/></svg>
+              </button>
+              <div class="popover" role="listbox" data-ds-speculative="true">
+                <button type="button" class="t-body-section">Phường Bến Nghé, Quận 1, TP Hồ Chí Minh</button>
+                <button type="button" class="t-body-section">Phường 12, Quận Tân Bình, TP Hồ Chí Minh</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="bottom-bar">
+          <button class="btn btn-primary btn-xl btn-block t-label-section" id="s3-next">Xem trước</button>
+          <div class="home-indicator"></div>
+        </div>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="arrow" aria-hidden="true"><svg class="ds-icon"><use href="#ds-Arrowright-outline"/></svg></div>
+
+  <!-- ===== ④ Xem trước ===== -->
+  <div class="step">
+    <div class="step-label t-label-section"><b class="t-label-caption">4</b>Xem trước &amp; đăng</div>
+    <div class="iphone"><div class="iphone-screen"><div class="dynamic-island"></div>
+      <div class="app-scroll">
+        <div class="ios-statusbar"><span>9:41</span><span class="icons"><svg width="18" height="12" viewBox="0 0 18 12" fill="none"><rect y="7" width="3" height="5" rx="1" fill="currentColor"/><rect x="5" y="5" width="3" height="7" rx="1" fill="currentColor"/><rect x="10" y="2.5" width="3" height="9.5" rx="1" fill="currentColor"/><rect x="15" width="3" height="12" rx="1" fill="currentColor"/></svg><svg width="17" height="12" viewBox="0 0 17 12" fill="none"><path d="M8.5 2.7c2.4 0 4.6.9 6.3 2.5l1.6-1.7C14.3 1.5 11.5.3 8.5.3S2.7 1.5.6 3.5l1.6 1.7C3.9 3.6 6.1 2.7 8.5 2.7Zm0 4.1c1.3 0 2.5.5 3.4 1.4l1.7-1.7c-1.4-1.3-3.2-2.1-5.1-2.1s-3.7.8-5.1 2.1l1.7 1.7c.9-.9 2.1-1.4 3.4-1.4Zm2 3.4L8.5 12l-2-1.8c.5-.6 1.2-.9 2-.9s1.5.3 2 .9Z" fill="currentColor"/></svg><svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x=".5" y=".5" width="21" height="11" rx="3" stroke="currentColor" stroke-opacity=".4"/><rect x="2" y="2" width="15" height="8" rx="1.6" fill="currentColor"/><path d="M23.5 4v4c.8-.3 1.3-1.1 1.3-2s-.5-1.7-1.3-2Z" fill="currentColor" fill-opacity=".4"/></svg></span></div>
+        <header class="app-header">
+          <button class="icon-btn" aria-label="Quay lại"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Arrowleft-outline"/></svg></button>
+          <h1 class="t-header-section">Xem trước tin</h1><span class="spacer"></span>
+        </header>
+        <div class="progress" data-ds-raw="custom: DS chưa có step indicator"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></div>
+        <p class="progress-text t-body-caption">Bước 4/4 · Kiểm tra lại trước khi đăng</p>
+        <div class="body">
+          <article class="pcard" data-ds-speculative="true">
+            <div class="hero bg-b"><svg class="ds-icon ph" aria-hidden="true"><use href="#ds-Image-outline"/></svg>
+              <span class="count t-label-caption"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Image-outline"/></svg>4</span></div>
+            <div class="info">
+              <h3 class="t-header-section">iPhone 13 128GB xanh, máy zin, pin 89%</h3>
+              <p class="price t-display-price">9.500.000 đ</p>
+              <p class="meta t-body-caption"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Location-outline"/></svg>Quận 1, TP Hồ Chí Minh</p>
+            </div>
+          </article>
+          <dl class="kv t-body-section" data-ds-speculative="true">
+            <div><dt>Danh mục</dt><dd>Điện thoại</dd></div>
+            <div><dt>Tình trạng</dt><dd>Đã sử dụng (chưa sửa chữa)</dd></div>
+            <div><dt>Thương lượng</dt><dd>Có</dd></div>
+          </dl>
+          <div class="fgroup">
+            <h3 class="t-header-section">Mô tả</h3>
+            <p class="t-body-section muted" data-ds-speculative="true">Máy dùng kỹ, không trầy xước, đầy đủ hộp và cáp sạc. Còn bảo hành 3 tháng. Giao dịch trực tiếp tại Quận 1.</p>
+          </div>
+          <p class="t-body-caption muted">Bằng việc bấm Đăng tin, bạn đồng ý với <a href="#" style="color:var(--text-link)">Quy định đăng tin</a> của Chợ Tốt.</p>
+        </div>
+        <div class="bottom-bar">
+          <div class="row">
+            <button class="btn btn-tertiary btn-xl t-label-section"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Edit-outline"/></svg>Sửa</button>
+            <button class="btn btn-primary btn-xl btn-block t-label-section" id="post">Đăng tin</button>
+          </div>
+          <div class="home-indicator"></div>
+        </div>
+      </div>
+      <div class="success" id="success" role="status" aria-live="polite">
+        <svg class="ds-icon big" aria-hidden="true"><use href="#ds-CircleCheck-fill"/></svg>
+        <h2 class="t-display-annotation">Đã gửi tin, chờ duyệt</h2>
+        <p class="t-body-section muted">Tin của bạn sẽ được duyệt trong vài phút. Chúng tôi sẽ báo khi tin bắt đầu hiển thị.</p>
+        <button class="btn btn-primary btn-l t-label-section" id="back">Xem tin của tôi</button>
+      </div>
+    </div></div>
+  </div>
+
+</div>
+
+<script>
+// ① chọn danh mục → bật Tiếp tục
+const rows = document.querySelectorAll('.cat-row'), next1 = document.getElementById('s1-next');
+rows.forEach(r => r.addEventListener('click', () => {
+  rows.forEach(x => { x.classList.remove('selected'); x.setAttribute('aria-checked','false'); });
+  r.classList.add('selected'); r.setAttribute('aria-checked','true'); next1.disabled = false;
+}));
+document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => c.classList.toggle('on')));
+
+// ② xoá / thêm ảnh
+const thumbs = document.getElementById('thumbs'), pcount = document.getElementById('pcount');
+const count = () => pcount.textContent = thumbs.querySelectorAll('.thumb:not(.add)').length;
+thumbs.addEventListener('click', e => {
+  const rm = e.target.closest('.rm'); if (!rm) return;
+  const t = rm.closest('.thumb'); t.classList.add('removing');
+  setTimeout(() => { t.remove(); const first = thumbs.querySelector('.thumb:not(.add)');
+    if (first && !first.querySelector('.cover')) first.insertAdjacentHTML('beforeend','<span class="cover t-label-annotation">Ảnh bìa</span>'); count(); }, 250);
+});
+const addPhoto = () => {
+  if (thumbs.querySelectorAll('.thumb:not(.add)').length >= 12) return;
+  const bgs = ['bg-a','bg-b','bg-c','bg-d'];
+  document.getElementById('addthumb').insertAdjacentHTML('beforebegin',
+    `<div class="thumb ${bgs[Math.floor(Math.random()*4)]}"><svg class="ds-icon ph" aria-hidden="true"><use href="#ds-Image-outline"/></svg><button class="rm" aria-label="Xoá ảnh"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Close-fill"/></svg></button></div>`);
+  count();
+};
+document.getElementById('addthumb').addEventListener('click', addPhoto);
+document.getElementById('upload').addEventListener('click', addPhoto);
+
+// ③ form: đếm ký tự, clear, dropdown, validate
+const bind = (id, cntId, max) => {
+  const el = document.getElementById(id), cnt = document.getElementById(cntId);
+  el.addEventListener('input', () => {
+    cnt.textContent = el.value.length + '/' + max;
+    el.closest('.field').classList.toggle('filled', !!el.value);
+    el.closest('.fgroup').classList.remove('error');
+    if (id === 'title') document.getElementById('title-help').textContent = 'Ghi rõ tên, dung lượng, màu sắc';
+  });
+};
+bind('title','title-cnt',50); bind('desc','desc-cnt',1500);
+document.querySelector('#g-title .clear').addEventListener('click', e => {
+  e.preventDefault(); const t = document.getElementById('title'); t.value=''; t.dispatchEvent(new Event('input')); t.focus();
+});
+const price = document.getElementById('price');
+price.addEventListener('input', () => {
+  const d = price.value.replace(/\D/g,''); price.value = d ? Number(d).toLocaleString('vi-VN') : '';
+  price.closest('.field').classList.toggle('filled', !!d); price.closest('.fgroup').classList.remove('error');
+});
+document.querySelectorAll('.dd').forEach(g => {
+  g.querySelector('.select').addEventListener('click', () => {
+    document.querySelectorAll('.dd.open').forEach(o => o !== g && o.classList.remove('open'));
+    g.classList.toggle('open');
+  });
+  g.querySelectorAll('.popover button').forEach(b => b.addEventListener('click', () => {
+    const v = g.querySelector('.val'); v.textContent = b.textContent; v.classList.remove('muted');
+    g.querySelector('.field').classList.add('filled'); g.classList.remove('open','error');
+  }));
+});
+document.getElementById('s3-next').addEventListener('click', () => {
+  const t = document.getElementById('title');
+  const g = document.getElementById('g-title');
+  if (!t.value.trim()) {
+    g.classList.remove('error'); void g.offsetWidth; g.classList.add('error');
+    document.getElementById('title-help').textContent = 'Vui lòng nhập tiêu đề để người mua dễ tìm thấy tin';
+    t.focus();
+  }
+});
+
+// ④ đăng tin: loading → thành công
+const post = document.getElementById('post');
+post.addEventListener('click', () => {
+  post.disabled = true; post.innerHTML = '<span class="spinner" aria-hidden="true"></span>Đang đăng…';
+  setTimeout(() => document.getElementById('success').classList.add('show'), 1400);
+});
+document.getElementById('back').addEventListener('click', () => {
+  document.getElementById('success').classList.remove('show');
+  post.disabled = false; post.textContent = 'Đăng tin';
+});
+</script>
+</body>
+</html>
