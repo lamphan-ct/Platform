@@ -175,7 +175,7 @@ button { background: none; border: 0; cursor: pointer; }
 /* ---- Trang demo (ngoài khung máy) ---- */
 body { /* ds-raw: nền canvas trình diễn quanh khung iPhone, không thuộc màn */
   display:flex; justify-content:center; align-items:flex-start; gap:48px; flex-wrap:wrap;
-  min-height:100vh; padding:40px 16px; background:#dfe1e5;
+  min-height:100vh; padding-block:40px; padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px)); background:#dfe1e5;
   font-family:'Reddit Sans', sans-serif; color:var(--text-primary); -webkit-font-smoothing:antialiased; }
 
 .demo-panel { width:240px; display:flex; flex-direction:column; gap:var(--gap-x-small-8);
@@ -190,6 +190,7 @@ body { /* ds-raw: nền canvas trình diễn quanh khung iPhone, không thuộc 
 .iphone { position:relative; width:393px; height:806px; flex-shrink:0;
   background:#1c1c1e; border-radius:56px; padding:9px;
   box-shadow:0 0 0 2px #3a3a3c, 0 24px 60px rgba(0,0,0,.35); }
+@media (max-width:440px) { .iphone { zoom:.86; } }
 .iphone-screen { position:relative; width:375px; height:788px; border-radius:47px; overflow:hidden;
   background:var(--background-app); }
 .dynamic-island { position:absolute; top:11px; left:50%; transform:translateX(-50%);
@@ -951,21 +952,31 @@ body { /* ds-raw: nền canvas trình diễn quanh khung iPhone, không thuộc 
     var label = btn.innerHTML;
     btn.disabled = true; btn.setAttribute('data-ds-state', 'Loading');
     btn.innerHTML = '<span class="spin" aria-hidden="true"></span><span>Đang tạo file…</span>';
-    setTimeout(function () {
-      var box = $('dlMsg'), ok = true;
+    var csv = '\ufeff' + lines.join('\r\n'), name = 'lich-tra-gop-chi-tiet.csv';
+    function done(type, msg) {
+      var box = $('dlMsg');
+      box.className = 'ann ' + type; box.setAttribute('data-ds-type', type === 'success' ? 'Success' : 'Error');
+      $('dlText').textContent = msg; box.hidden = false;
+      btn.disabled = false; btn.setAttribute('data-ds-state', 'Active'); btn.innerHTML = label;
+    }
+    // Trong artifact: dùng quyền downloads (người xem xác nhận). Mở file cục bộ: tải bằng Blob.
+    var use = window.claude && window.claude.use ? window.claude.use('downloads') : Promise.resolve(undefined);
+    Promise.resolve(use).catch(function () { return null; }).then(function (d) {
+      if (d) {
+        return d.save({ filename: name, data: csv }).then(function () { done('success', 'Đã tạo file ' + name); }, function (e) {
+          if (e && e.code === 'declined') { btn.disabled = false; btn.setAttribute('data-ds-state', 'Active'); btn.innerHTML = label; return; }
+          done('error', 'Không tải được file. Vui lòng thử lại.');
+        });
+      }
+      if (d === null) { done('error', 'Chế độ xem này chưa hỗ trợ tải file. Hãy mở trang ở cửa sổ riêng để tải.'); return; }
       try {
-        var blob = new Blob(['﻿' + lines.join('\r\n')], { type: 'text/csv;charset=utf-8' });
         var link = document.createElement('a');
-        link.href = URL.createObjectURL(blob); link.download = 'lich-tra-gop-chi-tiet.csv';
+        link.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' })); link.download = name;
         document.body.appendChild(link); link.click(); link.remove();
         setTimeout(function () { URL.revokeObjectURL(link.href); }, 1000);
-      } catch (err) { ok = false; }
-      box.className = 'ann ' + (ok ? 'success' : 'error');
-      box.setAttribute('data-ds-type', ok ? 'Success' : 'Error');
-            $('dlText').textContent = ok ? 'Đã tạo file lich-tra-gop-chi-tiet.csv' : 'Không tải được file. Vui lòng thử lại.';
-      box.hidden = false;
-      btn.disabled = false; btn.setAttribute('data-ds-state', 'Active'); btn.innerHTML = label;
-    }, 600);
+        done('success', 'Đã tạo file ' + name);
+      } catch (err) { done('error', 'Không tải được file. Vui lòng thử lại.'); }
+    });
   }
 
   /* Trạng thái mẫu cho demo */
