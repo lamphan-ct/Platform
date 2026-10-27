@@ -18,7 +18,12 @@
       <dc-import name="AdView" hot="{{hot}}" toast="{{toast}}" on-chat="{{onChat}}" on-view="{{onView}}" hint-size="375px,812px"></dc-import>
     </sc-if>
     <sc-if value="{{adV}}" hint-placeholder-val="{{false}}">
-      <dc-import name="AdViewV" ad="{{ad}}" hot="{{hot}}" toast="{{toast}}" on-chat="{{onChat}}" on-view="{{onView}}" hint-size="375px,812px"></dc-import>
+      <sc-if value="{{adMarket}}" hint-placeholder-val="{{true}}">
+        <dc-import name="AdViewV" ad="{{ad}}" hot="{{hot}}" toast="{{toast}}" on-chat="{{onChat}}" on-view="{{onView}}" hint-size="375px,812px"></dc-import>
+      </sc-if>
+      <sc-if value="{{adPty}}" hint-placeholder-val="{{false}}">
+        <dc-import name="AdViewPTY" ad="{{ad}}" hot="{{hot}}" toast="{{toast}}" on-chat="{{onChat}}" on-view="{{onView}}" hint-size="375px,812px"></dc-import>
+      </sc-if>
     </sc-if>
   </sc-if>
   <sc-if value="{{isChat}}" hint-placeholder-val="{{false}}">
@@ -76,7 +81,7 @@ class Component extends DCLogic {
       w: mode === 'chat' ? 390 : 375,
       isAd: mode === 'ad', isChat: mode === 'chat', isSheet: mode === 'sheet',
       isR1: cfg.variant === 'r1', notR1: cfg.variant !== 'r1',
-      ad: p.ad, adJob: !p.ad, adV: !!p.ad,
+      ad: p.ad, adJob: !p.ad, adV: !!p.ad, adPty: !!p.ad && p.ad.layout === 'pty', adMarket: !!p.ad && p.ad.layout !== 'pty',
       hot: !!p.hot, toast: !!p.toast, kb, sheetBottom: kb ? 336 : 0, cfg, msgs: p.msgs ?? [],
       onChat: p.onChat, onView: p.onView, onBack: p.onBack, onClose: p.onClose, onKey: p.onKey,
     };

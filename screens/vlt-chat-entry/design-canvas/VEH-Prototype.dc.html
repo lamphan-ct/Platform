@@ -24,7 +24,7 @@ class Component extends DCLogic {
   }
   renderVals() {
     const Q = ["Xe còn không ạ?", "Xe chính chủ không ạ?", "Đã đi bao nhiêu km rồi ạ?", "Giá còn thương lượng không ạ?", "Xem xe ở đâu ạ?"];
-    const AD = {"title": "Toyota Vios 1.5G 2020, xe gia đình chính chủ", "price": "435.000.000 đ", "location": "Phường Tân Định, Quận 1, Tp Hồ Chí Minh", "time": "1 ngày trước • 8 lượt chat", "params": [{"label": "Năm SX", "value": "2020"}, {"label": "Số km", "value": "45.000 km"}, {"label": "Hộp số", "value": "Tự động"}], "desc": "Xe gia đình đi kỹ, bảo dưỡng định kỳ tại hãng, không đâm đụng ngập nước.", "cta": "Hẹn xem xe"};
+    const AD = {"title": "Toyota Vios 1.5G 2020 số tự động, xe gia đình chính chủ", "subtitle": "Vios • 2020 • 45.000 km", "price": "435.000.000 đ", "tags": ["Chính chủ", "Đã kiểm định", "Hỗ trợ trả góp"], "marketLow": "410 triệu", "marketHigh": "455 triệu", "marketCur": "435 triệu", "curPct": 55, "location": "Phường Tân Định, Quận 1, Tp Hồ Chí Minh", "location2": "Phường Tân Định, TP Hồ Chí Minh mới", "time": "15 phút trước", "photoCount": "1/8"};
     const hasPhone = this.props.hasPhone ?? true;
     const s = this.state;
     const chatted = s.chatted || (this.props.startChatted ?? false);

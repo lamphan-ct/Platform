@@ -1307,7 +1307,15 @@
       "y": 272,
       "w": 375,
       "h": 812,
-      "title": "Component · AdView (GDS/VEH/PTY)",
+      "title": "Component · AdView (GDS/VEH)",
+      "page": "revamp"
+    },
+    "AdViewPTY.dc.html": {
+      "x": 5323,
+      "y": 272,
+      "w": 375,
+      "h": 812,
+      "title": "Component · AdView (PTY)",
       "page": "revamp"
     }
   },
@@ -1499,7 +1507,8 @@
     "PTY-Note-C5.dc.html",
     "PTY-C5-Sheet.dc.html",
     "PTY-C5-Msg.dc.html",
-    "AdViewV.dc.html"
+    "AdViewV.dc.html",
+    "AdViewPTY.dc.html"
   ],
   "pages": [
     {
