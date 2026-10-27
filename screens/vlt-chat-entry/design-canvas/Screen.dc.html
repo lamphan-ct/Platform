@@ -14,10 +14,15 @@
 </helmet>
 <div style="position: relative; width: {{w}}px; height: 812px; overflow: hidden; font-family: 'Reddit Sans', sans-serif; color: var(--text-primary); background: var(--background-primary)">
   <sc-if value="{{isAd}}" hint-placeholder-val="{{true}}">
-    <dc-import name="AdView" hot="{{hot}}" toast="{{toast}}" on-chat="{{onChat}}" on-view="{{onView}}" hint-size="375px,812px"></dc-import>
+    <sc-if value="{{adJob}}" hint-placeholder-val="{{true}}">
+      <dc-import name="AdView" hot="{{hot}}" toast="{{toast}}" on-chat="{{onChat}}" on-view="{{onView}}" hint-size="375px,812px"></dc-import>
+    </sc-if>
+    <sc-if value="{{adV}}" hint-placeholder-val="{{false}}">
+      <dc-import name="AdViewV" ad="{{ad}}" hot="{{hot}}" toast="{{toast}}" on-chat="{{onChat}}" on-view="{{onView}}" hint-size="375px,812px"></dc-import>
+    </sc-if>
   </sc-if>
   <sc-if value="{{isChat}}" hint-placeholder-val="{{false}}">
-    <dc-import name="ChatRoom" msgs="{{msgs}}" on-back="{{onBack}}" hint-size="390px,812px"></dc-import>
+    <dc-import name="ChatRoom" msgs="{{msgs}}" ad="{{ad}}" on-back="{{onBack}}" hint-size="390px,812px"></dc-import>
   </sc-if>
   <sc-if value="{{isSheet}}" hint-placeholder-val="{{false}}">
     <button aria-label="Đóng" onClick="{{onClose}}" style="position: absolute; inset: 0; border: 0; padding: 0; background: var(--background-overlay); cursor: default"></button>
@@ -60,7 +65,7 @@
   </sc-if>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"mode":{"editor":"enum","options":["ad","sheet","chat"],"default":"ad"},"kb":{"editor":"boolean","default":false},"hot":{"editor":"boolean","default":false},"toast":{"editor":"boolean","default":false},"cfg":{"editor":null},"msgs":{"editor":null},"onChat":{"editor":null},"onView":{"editor":null},"onBack":{"editor":null},"onClose":{"editor":null},"onKey":{"editor":null},"$preview":{"width":375,"height":812}}'>
+<script type="text/x-dc" data-dc-script data-props='{"ad":{"editor":null},"mode":{"editor":"enum","options":["ad","sheet","chat"],"default":"ad"},"kb":{"editor":"boolean","default":false},"hot":{"editor":"boolean","default":false},"toast":{"editor":"boolean","default":false},"cfg":{"editor":null},"msgs":{"editor":null},"onChat":{"editor":null},"onView":{"editor":null},"onBack":{"editor":null},"onClose":{"editor":null},"onKey":{"editor":null},"$preview":{"width":375,"height":812}}'>
 class Component extends DCLogic {
   renderVals() {
     const p = this.props;
@@ -71,6 +76,7 @@ class Component extends DCLogic {
       w: mode === 'chat' ? 390 : 375,
       isAd: mode === 'ad', isChat: mode === 'chat', isSheet: mode === 'sheet',
       isR1: cfg.variant === 'r1', notR1: cfg.variant !== 'r1',
+      ad: p.ad, adJob: !p.ad, adV: !!p.ad,
       hot: !!p.hot, toast: !!p.toast, kb, sheetBottom: kb ? 336 : 0, cfg, msgs: p.msgs ?? [],
       onChat: p.onChat, onView: p.onView, onBack: p.onBack, onClose: p.onClose, onKey: p.onKey,
     };

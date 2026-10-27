@@ -482,119 +482,832 @@
       "y": 4104
     },
     "ChatSheetR1.dc.html": {
-      "x": 1640,
+      "x": 4868,
       "y": 272,
       "w": 375,
       "h": 317,
       "title": "Component · ChatSheet revamp",
       "page": "revamp"
     },
-    "Section-RV.dc.html": {
+    "Section-GDS.dc.html": {
       "x": 0,
       "y": 0,
-      "w": 1560,
-      "h": 3292,
-      "title": "Revamp T1 · GDS / VEH / PTY",
+      "w": 4213,
+      "h": 2516,
+      "title": "Chợ Tốt · Treatment 1",
       "page": "revamp",
       "radius": 20
     },
-    "Panel-RV-GDS.dc.html": {
+    "Panel-GDS-Flow.dc.html": {
       "x": 80,
       "y": 172,
-      "w": 1400,
-      "h": 960,
-      "title": "Revamp · Chợ Tốt",
+      "w": 4053,
+      "h": 1036,
+      "title": "GDS · Flow chính",
       "page": "revamp",
       "radius": 20
     },
-    "GDS-R1-02-Sheet.dc.html": {
-      "x": 120,
-      "y": 272,
-      "w": 375,
-      "h": 812,
-      "title": "GDS · Sheet mặc định",
-      "page": "revamp"
-    },
-    "GDS-R1-03-Focus.dc.html": {
-      "x": 575,
-      "y": 272,
-      "w": 375,
-      "h": 812,
-      "title": "GDS · Focus ô nhập",
-      "page": "revamp"
-    },
-    "GDS-R1-04-Typing.dc.html": {
-      "x": 1030,
-      "y": 272,
-      "w": 375,
-      "h": 812,
-      "title": "GDS · Đang nhập",
-      "page": "revamp"
-    },
-    "Panel-RV-VEH.dc.html": {
+    "Panel-GDS-Rules.dc.html": {
       "x": 80,
-      "y": 1212,
-      "w": 1400,
-      "h": 960,
-      "title": "Revamp · Chợ Tốt Xe",
+      "y": 1288,
+      "w": 4053,
+      "h": 446,
+      "title": "GDS · Quy tắc & trạng thái",
       "page": "revamp",
       "radius": 20
     },
-    "VEH-R1-02-Sheet.dc.html": {
-      "x": 120,
-      "y": 1312,
-      "w": 375,
-      "h": 812,
-      "title": "VEH · Sheet mặc định",
-      "page": "revamp"
-    },
-    "VEH-R1-03-Focus.dc.html": {
-      "x": 575,
-      "y": 1312,
-      "w": 375,
-      "h": 812,
-      "title": "VEH · Focus ô nhập",
-      "page": "revamp"
-    },
-    "VEH-R1-04-Typing.dc.html": {
-      "x": 1030,
-      "y": 1312,
-      "w": 375,
-      "h": 812,
-      "title": "VEH · Đang nhập",
-      "page": "revamp"
-    },
-    "Panel-RV-PTY.dc.html": {
+    "Panel-GDS-Edge.dc.html": {
       "x": 80,
-      "y": 2252,
-      "w": 1400,
-      "h": 960,
-      "title": "Revamp · Nhà Tốt",
+      "y": 1814,
+      "w": 4053,
+      "h": 622,
+      "title": "GDS · Edge cases",
       "page": "revamp",
       "radius": 20
     },
-    "PTY-R1-02-Sheet.dc.html": {
+    "GDS-01-AdView.dc.html": {
       "x": 120,
-      "y": 2352,
+      "y": 272,
       "w": 375,
       "h": 812,
-      "title": "PTY · Sheet mặc định",
+      "title": "1 · Chi tiết tin → tap Chat",
       "page": "revamp"
     },
-    "PTY-R1-03-Focus.dc.html": {
+    "GDS-02-Sheet.dc.html": {
       "x": 575,
-      "y": 2352,
+      "y": 272,
       "w": 375,
       "h": 812,
-      "title": "PTY · Focus ô nhập",
+      "title": "2 · Sheet mặc định",
       "page": "revamp"
     },
-    "PTY-R1-04-Typing.dc.html": {
+    "GDS-03-Focus.dc.html": {
       "x": 1030,
-      "y": 2352,
+      "y": 272,
       "w": 375,
       "h": 812,
-      "title": "PTY · Đang nhập",
+      "title": "3 · Focus ô nhập",
+      "page": "revamp"
+    },
+    "GDS-04-Typing.dc.html": {
+      "x": 1485,
+      "y": 272,
+      "w": 375,
+      "h": 812,
+      "title": "4 · Đang nhập",
+      "page": "revamp"
+    },
+    "GDS-05-Sent.dc.html": {
+      "x": 1940,
+      "y": 272,
+      "w": 375,
+      "h": 812,
+      "title": "5 · Gửi thành công",
+      "page": "revamp"
+    },
+    "GDS-06-ChatRoom.dc.html": {
+      "x": 2395,
+      "y": 272,
+      "w": 390,
+      "h": 812,
+      "title": "6 · Phòng chat (theme Chợ Tốt)",
+      "page": "revamp",
+      "radius": 20
+    },
+    "GDS-Prototype.dc.html": {
+      "x": 2905,
+      "y": 272,
+      "w": 375,
+      "h": 812,
+      "title": "▶ Prototype · Chợ Tốt",
+      "page": "revamp",
+      "is_interactive": true,
+      "radius": 40
+    },
+    "GDS-Note-Main.dc.html": {
+      "x": 120,
+      "y": 1388,
+      "w": 296,
+      "h": 312,
+      "title": "Note",
+      "page": "revamp",
+      "radius": 12
+    },
+    "GDS-DF-Sheet1.dc.html": {
+      "x": 456,
+      "y": 1388,
+      "w": 375,
+      "h": 317,
+      "title": "Default form",
+      "page": "revamp"
+    },
+    "GDS-Note-DF1.dc.html": {
+      "x": 871,
+      "y": 1388,
+      "w": 375,
+      "h": 152,
+      "title": "Note · Remove question",
+      "page": "revamp",
+      "radius": 12
+    },
+    "GDS-DF-Sheet2.dc.html": {
+      "x": 1286,
+      "y": 1388,
+      "w": 375,
+      "h": 317,
+      "title": "Default form · chọn hết gợi ý",
+      "page": "revamp"
+    },
+    "GDS-Note-DF2.dc.html": {
+      "x": 1701,
+      "y": 1388,
+      "w": 375,
+      "h": 152,
+      "title": "Note · Chọn câu hỏi",
+      "page": "revamp",
+      "radius": 12
+    },
+    "GDS-DF-Rows.dc.html": {
+      "x": 2116,
+      "y": 1388,
+      "w": 375,
+      "h": 317,
+      "title": "Chọn 4 câu · 2 chip/hàng",
+      "page": "revamp"
+    },
+    "GDS-DF-NoPhone.dc.html": {
+      "x": 2531,
+      "y": 1388,
+      "w": 375,
+      "h": 291,
+      "title": "SĐT chưa xác thực → ẩn checkbox",
+      "page": "revamp"
+    },
+    "GDS-Note-C1.dc.html": {
+      "x": 120,
+      "y": 1914,
+      "w": 375,
+      "h": 104,
+      "title": "Case 1",
+      "page": "revamp",
+      "radius": 12
+    },
+    "GDS-C1-Sheet.dc.html": {
+      "x": 120,
+      "y": 2042,
+      "w": 375,
+      "h": 219,
+      "title": "Sheet",
+      "page": "revamp"
+    },
+    "GDS-Note-C2.dc.html": {
+      "x": 535,
+      "y": 1914,
+      "w": 852,
+      "h": 104,
+      "title": "Case 2",
+      "page": "revamp",
+      "radius": 12
+    },
+    "GDS-C2-Sheet.dc.html": {
+      "x": 535,
+      "y": 2042,
+      "w": 375,
+      "h": 317,
+      "title": "Sheet",
+      "page": "revamp"
+    },
+    "GDS-C2-Msg.dc.html": {
+      "x": 950,
+      "y": 2042,
+      "w": 390,
+      "h": 288,
+      "title": "Tin đã gửi",
+      "page": "revamp"
+    },
+    "GDS-Note-C3.dc.html": {
+      "x": 1427,
+      "y": 1914,
+      "w": 852,
+      "h": 104,
+      "title": "Case 3",
+      "page": "revamp",
+      "radius": 12
+    },
+    "GDS-C3-Sheet.dc.html": {
+      "x": 1427,
+      "y": 2042,
+      "w": 375,
+      "h": 317,
+      "title": "Sheet",
+      "page": "revamp"
+    },
+    "GDS-C3-Msg.dc.html": {
+      "x": 1842,
+      "y": 2042,
+      "w": 390,
+      "h": 224,
+      "title": "Tin đã gửi",
+      "page": "revamp"
+    },
+    "GDS-Note-C4.dc.html": {
+      "x": 2319,
+      "y": 1914,
+      "w": 852,
+      "h": 104,
+      "title": "Case 4",
+      "page": "revamp",
+      "radius": 12
+    },
+    "GDS-C4-Sheet.dc.html": {
+      "x": 2319,
+      "y": 2042,
+      "w": 375,
+      "h": 219,
+      "title": "Sheet",
+      "page": "revamp"
+    },
+    "GDS-C4-Msg.dc.html": {
+      "x": 2734,
+      "y": 2042,
+      "w": 390,
+      "h": 184,
+      "title": "Tin đã gửi",
+      "page": "revamp"
+    },
+    "GDS-Note-C5.dc.html": {
+      "x": 3211,
+      "y": 1914,
+      "w": 882,
+      "h": 104,
+      "title": "Case 5",
+      "page": "revamp",
+      "radius": 12
+    },
+    "GDS-C5-Sheet.dc.html": {
+      "x": 3211,
+      "y": 2042,
+      "w": 375,
+      "h": 317,
+      "title": "Sheet",
+      "page": "revamp"
+    },
+    "GDS-C5-Msg.dc.html": {
+      "x": 3626,
+      "y": 2042,
+      "w": 390,
+      "h": 200,
+      "title": "Tin đã gửi",
+      "page": "revamp"
+    },
+    "Section-VEH.dc.html": {
+      "x": 0,
+      "y": 2716,
+      "w": 4213,
+      "h": 2516,
+      "title": "Chợ Tốt Xe · Treatment 1",
+      "page": "revamp",
+      "radius": 20
+    },
+    "Panel-VEH-Flow.dc.html": {
+      "x": 80,
+      "y": 2888,
+      "w": 4053,
+      "h": 1036,
+      "title": "VEH · Flow chính",
+      "page": "revamp",
+      "radius": 20
+    },
+    "Panel-VEH-Rules.dc.html": {
+      "x": 80,
+      "y": 4004,
+      "w": 4053,
+      "h": 446,
+      "title": "VEH · Quy tắc & trạng thái",
+      "page": "revamp",
+      "radius": 20
+    },
+    "Panel-VEH-Edge.dc.html": {
+      "x": 80,
+      "y": 4530,
+      "w": 4053,
+      "h": 622,
+      "title": "VEH · Edge cases",
+      "page": "revamp",
+      "radius": 20
+    },
+    "VEH-01-AdView.dc.html": {
+      "x": 120,
+      "y": 2988,
+      "w": 375,
+      "h": 812,
+      "title": "1 · Chi tiết tin → tap Chat",
+      "page": "revamp"
+    },
+    "VEH-02-Sheet.dc.html": {
+      "x": 575,
+      "y": 2988,
+      "w": 375,
+      "h": 812,
+      "title": "2 · Sheet mặc định",
+      "page": "revamp"
+    },
+    "VEH-03-Focus.dc.html": {
+      "x": 1030,
+      "y": 2988,
+      "w": 375,
+      "h": 812,
+      "title": "3 · Focus ô nhập",
+      "page": "revamp"
+    },
+    "VEH-04-Typing.dc.html": {
+      "x": 1485,
+      "y": 2988,
+      "w": 375,
+      "h": 812,
+      "title": "4 · Đang nhập",
+      "page": "revamp"
+    },
+    "VEH-05-Sent.dc.html": {
+      "x": 1940,
+      "y": 2988,
+      "w": 375,
+      "h": 812,
+      "title": "5 · Gửi thành công",
+      "page": "revamp"
+    },
+    "VEH-06-ChatRoom.dc.html": {
+      "x": 2395,
+      "y": 2988,
+      "w": 390,
+      "h": 812,
+      "title": "6 · Phòng chat (theme Chợ Tốt)",
+      "page": "revamp",
+      "radius": 20
+    },
+    "VEH-Prototype.dc.html": {
+      "x": 2905,
+      "y": 2988,
+      "w": 375,
+      "h": 812,
+      "title": "▶ Prototype · Chợ Tốt Xe",
+      "page": "revamp",
+      "is_interactive": true,
+      "radius": 40
+    },
+    "VEH-Note-Main.dc.html": {
+      "x": 120,
+      "y": 4104,
+      "w": 296,
+      "h": 312,
+      "title": "Note",
+      "page": "revamp",
+      "radius": 12
+    },
+    "VEH-DF-Sheet1.dc.html": {
+      "x": 456,
+      "y": 4104,
+      "w": 375,
+      "h": 317,
+      "title": "Default form",
+      "page": "revamp"
+    },
+    "VEH-Note-DF1.dc.html": {
+      "x": 871,
+      "y": 4104,
+      "w": 375,
+      "h": 152,
+      "title": "Note · Remove question",
+      "page": "revamp",
+      "radius": 12
+    },
+    "VEH-DF-Sheet2.dc.html": {
+      "x": 1286,
+      "y": 4104,
+      "w": 375,
+      "h": 317,
+      "title": "Default form · chọn hết gợi ý",
+      "page": "revamp"
+    },
+    "VEH-Note-DF2.dc.html": {
+      "x": 1701,
+      "y": 4104,
+      "w": 375,
+      "h": 152,
+      "title": "Note · Chọn câu hỏi",
+      "page": "revamp",
+      "radius": 12
+    },
+    "VEH-DF-Rows.dc.html": {
+      "x": 2116,
+      "y": 4104,
+      "w": 375,
+      "h": 317,
+      "title": "Chọn 4 câu · 2 chip/hàng",
+      "page": "revamp"
+    },
+    "VEH-DF-NoPhone.dc.html": {
+      "x": 2531,
+      "y": 4104,
+      "w": 375,
+      "h": 291,
+      "title": "SĐT chưa xác thực → ẩn checkbox",
+      "page": "revamp"
+    },
+    "VEH-Note-C1.dc.html": {
+      "x": 120,
+      "y": 4630,
+      "w": 375,
+      "h": 104,
+      "title": "Case 1",
+      "page": "revamp",
+      "radius": 12
+    },
+    "VEH-C1-Sheet.dc.html": {
+      "x": 120,
+      "y": 4758,
+      "w": 375,
+      "h": 219,
+      "title": "Sheet",
+      "page": "revamp"
+    },
+    "VEH-Note-C2.dc.html": {
+      "x": 535,
+      "y": 4630,
+      "w": 852,
+      "h": 104,
+      "title": "Case 2",
+      "page": "revamp",
+      "radius": 12
+    },
+    "VEH-C2-Sheet.dc.html": {
+      "x": 535,
+      "y": 4758,
+      "w": 375,
+      "h": 317,
+      "title": "Sheet",
+      "page": "revamp"
+    },
+    "VEH-C2-Msg.dc.html": {
+      "x": 950,
+      "y": 4758,
+      "w": 390,
+      "h": 288,
+      "title": "Tin đã gửi",
+      "page": "revamp"
+    },
+    "VEH-Note-C3.dc.html": {
+      "x": 1427,
+      "y": 4630,
+      "w": 852,
+      "h": 104,
+      "title": "Case 3",
+      "page": "revamp",
+      "radius": 12
+    },
+    "VEH-C3-Sheet.dc.html": {
+      "x": 1427,
+      "y": 4758,
+      "w": 375,
+      "h": 317,
+      "title": "Sheet",
+      "page": "revamp"
+    },
+    "VEH-C3-Msg.dc.html": {
+      "x": 1842,
+      "y": 4758,
+      "w": 390,
+      "h": 224,
+      "title": "Tin đã gửi",
+      "page": "revamp"
+    },
+    "VEH-Note-C4.dc.html": {
+      "x": 2319,
+      "y": 4630,
+      "w": 852,
+      "h": 104,
+      "title": "Case 4",
+      "page": "revamp",
+      "radius": 12
+    },
+    "VEH-C4-Sheet.dc.html": {
+      "x": 2319,
+      "y": 4758,
+      "w": 375,
+      "h": 219,
+      "title": "Sheet",
+      "page": "revamp"
+    },
+    "VEH-C4-Msg.dc.html": {
+      "x": 2734,
+      "y": 4758,
+      "w": 390,
+      "h": 184,
+      "title": "Tin đã gửi",
+      "page": "revamp"
+    },
+    "VEH-Note-C5.dc.html": {
+      "x": 3211,
+      "y": 4630,
+      "w": 882,
+      "h": 104,
+      "title": "Case 5",
+      "page": "revamp",
+      "radius": 12
+    },
+    "VEH-C5-Sheet.dc.html": {
+      "x": 3211,
+      "y": 4758,
+      "w": 375,
+      "h": 317,
+      "title": "Sheet",
+      "page": "revamp"
+    },
+    "VEH-C5-Msg.dc.html": {
+      "x": 3626,
+      "y": 4758,
+      "w": 390,
+      "h": 200,
+      "title": "Tin đã gửi",
+      "page": "revamp"
+    },
+    "Section-PTY.dc.html": {
+      "x": 0,
+      "y": 5432,
+      "w": 4213,
+      "h": 2516,
+      "title": "Nhà Tốt · Treatment 1",
+      "page": "revamp",
+      "radius": 20
+    },
+    "Panel-PTY-Flow.dc.html": {
+      "x": 80,
+      "y": 5604,
+      "w": 4053,
+      "h": 1036,
+      "title": "PTY · Flow chính",
+      "page": "revamp",
+      "radius": 20
+    },
+    "Panel-PTY-Rules.dc.html": {
+      "x": 80,
+      "y": 6720,
+      "w": 4053,
+      "h": 446,
+      "title": "PTY · Quy tắc & trạng thái",
+      "page": "revamp",
+      "radius": 20
+    },
+    "Panel-PTY-Edge.dc.html": {
+      "x": 80,
+      "y": 7246,
+      "w": 4053,
+      "h": 622,
+      "title": "PTY · Edge cases",
+      "page": "revamp",
+      "radius": 20
+    },
+    "PTY-01-AdView.dc.html": {
+      "x": 120,
+      "y": 5704,
+      "w": 375,
+      "h": 812,
+      "title": "1 · Chi tiết tin → tap Chat",
+      "page": "revamp"
+    },
+    "PTY-02-Sheet.dc.html": {
+      "x": 575,
+      "y": 5704,
+      "w": 375,
+      "h": 812,
+      "title": "2 · Sheet mặc định",
+      "page": "revamp"
+    },
+    "PTY-03-Focus.dc.html": {
+      "x": 1030,
+      "y": 5704,
+      "w": 375,
+      "h": 812,
+      "title": "3 · Focus ô nhập",
+      "page": "revamp"
+    },
+    "PTY-04-Typing.dc.html": {
+      "x": 1485,
+      "y": 5704,
+      "w": 375,
+      "h": 812,
+      "title": "4 · Đang nhập",
+      "page": "revamp"
+    },
+    "PTY-05-Sent.dc.html": {
+      "x": 1940,
+      "y": 5704,
+      "w": 375,
+      "h": 812,
+      "title": "5 · Gửi thành công",
+      "page": "revamp"
+    },
+    "PTY-06-ChatRoom.dc.html": {
+      "x": 2395,
+      "y": 5704,
+      "w": 390,
+      "h": 812,
+      "title": "6 · Phòng chat (theme Chợ Tốt)",
+      "page": "revamp",
+      "radius": 20
+    },
+    "PTY-Prototype.dc.html": {
+      "x": 2905,
+      "y": 5704,
+      "w": 375,
+      "h": 812,
+      "title": "▶ Prototype · Nhà Tốt",
+      "page": "revamp",
+      "is_interactive": true,
+      "radius": 40
+    },
+    "PTY-Note-Main.dc.html": {
+      "x": 120,
+      "y": 6820,
+      "w": 296,
+      "h": 312,
+      "title": "Note",
+      "page": "revamp",
+      "radius": 12
+    },
+    "PTY-DF-Sheet1.dc.html": {
+      "x": 456,
+      "y": 6820,
+      "w": 375,
+      "h": 317,
+      "title": "Default form",
+      "page": "revamp"
+    },
+    "PTY-Note-DF1.dc.html": {
+      "x": 871,
+      "y": 6820,
+      "w": 375,
+      "h": 152,
+      "title": "Note · Remove question",
+      "page": "revamp",
+      "radius": 12
+    },
+    "PTY-DF-Sheet2.dc.html": {
+      "x": 1286,
+      "y": 6820,
+      "w": 375,
+      "h": 317,
+      "title": "Default form · chọn hết gợi ý",
+      "page": "revamp"
+    },
+    "PTY-Note-DF2.dc.html": {
+      "x": 1701,
+      "y": 6820,
+      "w": 375,
+      "h": 152,
+      "title": "Note · Chọn câu hỏi",
+      "page": "revamp",
+      "radius": 12
+    },
+    "PTY-DF-Rows.dc.html": {
+      "x": 2116,
+      "y": 6820,
+      "w": 375,
+      "h": 317,
+      "title": "Chọn 4 câu · 2 chip/hàng",
+      "page": "revamp"
+    },
+    "PTY-DF-NoPhone.dc.html": {
+      "x": 2531,
+      "y": 6820,
+      "w": 375,
+      "h": 291,
+      "title": "SĐT chưa xác thực → ẩn checkbox",
+      "page": "revamp"
+    },
+    "PTY-Note-C1.dc.html": {
+      "x": 120,
+      "y": 7346,
+      "w": 375,
+      "h": 104,
+      "title": "Case 1",
+      "page": "revamp",
+      "radius": 12
+    },
+    "PTY-C1-Sheet.dc.html": {
+      "x": 120,
+      "y": 7474,
+      "w": 375,
+      "h": 219,
+      "title": "Sheet",
+      "page": "revamp"
+    },
+    "PTY-Note-C2.dc.html": {
+      "x": 535,
+      "y": 7346,
+      "w": 852,
+      "h": 104,
+      "title": "Case 2",
+      "page": "revamp",
+      "radius": 12
+    },
+    "PTY-C2-Sheet.dc.html": {
+      "x": 535,
+      "y": 7474,
+      "w": 375,
+      "h": 317,
+      "title": "Sheet",
+      "page": "revamp"
+    },
+    "PTY-C2-Msg.dc.html": {
+      "x": 950,
+      "y": 7474,
+      "w": 390,
+      "h": 288,
+      "title": "Tin đã gửi",
+      "page": "revamp"
+    },
+    "PTY-Note-C3.dc.html": {
+      "x": 1427,
+      "y": 7346,
+      "w": 852,
+      "h": 104,
+      "title": "Case 3",
+      "page": "revamp",
+      "radius": 12
+    },
+    "PTY-C3-Sheet.dc.html": {
+      "x": 1427,
+      "y": 7474,
+      "w": 375,
+      "h": 317,
+      "title": "Sheet",
+      "page": "revamp"
+    },
+    "PTY-C3-Msg.dc.html": {
+      "x": 1842,
+      "y": 7474,
+      "w": 390,
+      "h": 224,
+      "title": "Tin đã gửi",
+      "page": "revamp"
+    },
+    "PTY-Note-C4.dc.html": {
+      "x": 2319,
+      "y": 7346,
+      "w": 852,
+      "h": 104,
+      "title": "Case 4",
+      "page": "revamp",
+      "radius": 12
+    },
+    "PTY-C4-Sheet.dc.html": {
+      "x": 2319,
+      "y": 7474,
+      "w": 375,
+      "h": 219,
+      "title": "Sheet",
+      "page": "revamp"
+    },
+    "PTY-C4-Msg.dc.html": {
+      "x": 2734,
+      "y": 7474,
+      "w": 390,
+      "h": 184,
+      "title": "Tin đã gửi",
+      "page": "revamp"
+    },
+    "PTY-Note-C5.dc.html": {
+      "x": 3211,
+      "y": 7346,
+      "w": 882,
+      "h": 104,
+      "title": "Case 5",
+      "page": "revamp",
+      "radius": 12
+    },
+    "PTY-C5-Sheet.dc.html": {
+      "x": 3211,
+      "y": 7474,
+      "w": 375,
+      "h": 317,
+      "title": "Sheet",
+      "page": "revamp"
+    },
+    "PTY-C5-Msg.dc.html": {
+      "x": 3626,
+      "y": 7474,
+      "w": 390,
+      "h": 200,
+      "title": "Tin đã gửi",
+      "page": "revamp"
+    },
+    "AdViewV.dc.html": {
+      "x": 4413,
+      "y": 272,
+      "w": 375,
+      "h": 812,
+      "title": "Component · AdView (GDS/VEH/PTY)",
       "page": "revamp"
     }
   },
@@ -690,19 +1403,103 @@
     "Keyboard.dc.html",
     "Bubble.dc.html",
     "ChatSheetR1.dc.html",
-    "Section-RV.dc.html",
-    "Panel-RV-GDS.dc.html",
-    "GDS-R1-02-Sheet.dc.html",
-    "GDS-R1-03-Focus.dc.html",
-    "GDS-R1-04-Typing.dc.html",
-    "Panel-RV-VEH.dc.html",
-    "VEH-R1-02-Sheet.dc.html",
-    "VEH-R1-03-Focus.dc.html",
-    "VEH-R1-04-Typing.dc.html",
-    "Panel-RV-PTY.dc.html",
-    "PTY-R1-02-Sheet.dc.html",
-    "PTY-R1-03-Focus.dc.html",
-    "PTY-R1-04-Typing.dc.html"
+    "Section-GDS.dc.html",
+    "Panel-GDS-Flow.dc.html",
+    "Panel-GDS-Rules.dc.html",
+    "Panel-GDS-Edge.dc.html",
+    "GDS-01-AdView.dc.html",
+    "GDS-02-Sheet.dc.html",
+    "GDS-03-Focus.dc.html",
+    "GDS-04-Typing.dc.html",
+    "GDS-05-Sent.dc.html",
+    "GDS-06-ChatRoom.dc.html",
+    "GDS-Prototype.dc.html",
+    "GDS-Note-Main.dc.html",
+    "GDS-DF-Sheet1.dc.html",
+    "GDS-Note-DF1.dc.html",
+    "GDS-DF-Sheet2.dc.html",
+    "GDS-Note-DF2.dc.html",
+    "GDS-DF-Rows.dc.html",
+    "GDS-DF-NoPhone.dc.html",
+    "GDS-Note-C1.dc.html",
+    "GDS-C1-Sheet.dc.html",
+    "GDS-Note-C2.dc.html",
+    "GDS-C2-Sheet.dc.html",
+    "GDS-C2-Msg.dc.html",
+    "GDS-Note-C3.dc.html",
+    "GDS-C3-Sheet.dc.html",
+    "GDS-C3-Msg.dc.html",
+    "GDS-Note-C4.dc.html",
+    "GDS-C4-Sheet.dc.html",
+    "GDS-C4-Msg.dc.html",
+    "GDS-Note-C5.dc.html",
+    "GDS-C5-Sheet.dc.html",
+    "GDS-C5-Msg.dc.html",
+    "Section-VEH.dc.html",
+    "Panel-VEH-Flow.dc.html",
+    "Panel-VEH-Rules.dc.html",
+    "Panel-VEH-Edge.dc.html",
+    "VEH-01-AdView.dc.html",
+    "VEH-02-Sheet.dc.html",
+    "VEH-03-Focus.dc.html",
+    "VEH-04-Typing.dc.html",
+    "VEH-05-Sent.dc.html",
+    "VEH-06-ChatRoom.dc.html",
+    "VEH-Prototype.dc.html",
+    "VEH-Note-Main.dc.html",
+    "VEH-DF-Sheet1.dc.html",
+    "VEH-Note-DF1.dc.html",
+    "VEH-DF-Sheet2.dc.html",
+    "VEH-Note-DF2.dc.html",
+    "VEH-DF-Rows.dc.html",
+    "VEH-DF-NoPhone.dc.html",
+    "VEH-Note-C1.dc.html",
+    "VEH-C1-Sheet.dc.html",
+    "VEH-Note-C2.dc.html",
+    "VEH-C2-Sheet.dc.html",
+    "VEH-C2-Msg.dc.html",
+    "VEH-Note-C3.dc.html",
+    "VEH-C3-Sheet.dc.html",
+    "VEH-C3-Msg.dc.html",
+    "VEH-Note-C4.dc.html",
+    "VEH-C4-Sheet.dc.html",
+    "VEH-C4-Msg.dc.html",
+    "VEH-Note-C5.dc.html",
+    "VEH-C5-Sheet.dc.html",
+    "VEH-C5-Msg.dc.html",
+    "Section-PTY.dc.html",
+    "Panel-PTY-Flow.dc.html",
+    "Panel-PTY-Rules.dc.html",
+    "Panel-PTY-Edge.dc.html",
+    "PTY-01-AdView.dc.html",
+    "PTY-02-Sheet.dc.html",
+    "PTY-03-Focus.dc.html",
+    "PTY-04-Typing.dc.html",
+    "PTY-05-Sent.dc.html",
+    "PTY-06-ChatRoom.dc.html",
+    "PTY-Prototype.dc.html",
+    "PTY-Note-Main.dc.html",
+    "PTY-DF-Sheet1.dc.html",
+    "PTY-Note-DF1.dc.html",
+    "PTY-DF-Sheet2.dc.html",
+    "PTY-Note-DF2.dc.html",
+    "PTY-DF-Rows.dc.html",
+    "PTY-DF-NoPhone.dc.html",
+    "PTY-Note-C1.dc.html",
+    "PTY-C1-Sheet.dc.html",
+    "PTY-Note-C2.dc.html",
+    "PTY-C2-Sheet.dc.html",
+    "PTY-C2-Msg.dc.html",
+    "PTY-Note-C3.dc.html",
+    "PTY-C3-Sheet.dc.html",
+    "PTY-C3-Msg.dc.html",
+    "PTY-Note-C4.dc.html",
+    "PTY-C4-Sheet.dc.html",
+    "PTY-C4-Msg.dc.html",
+    "PTY-Note-C5.dc.html",
+    "PTY-C5-Sheet.dc.html",
+    "PTY-C5-Msg.dc.html",
+    "AdViewV.dc.html"
   ],
   "pages": [
     {

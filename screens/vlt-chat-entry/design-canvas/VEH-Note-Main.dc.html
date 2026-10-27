@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>VEH · Note</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="vlt-tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width: 296px; height: 312px; box-sizing: border-box; overflow: hidden; padding: var(--padding-medium-16); display: flex; flex-direction: column; gap: 10px; background: var(--background-primary); border-radius: var(--radius-card); border-top: 4px solid var(--border-active); font-family: 'Reddit Sans', sans-serif; color: var(--text-primary)">
+  <h3 class="t-display-annotation" style="margin: 0">Note <span style="color: var(--text-error)">(*)</span></h3>
+  <div style="height: 1px; background: var(--border-thin)"></div>
+  <ul class="t-body-section" style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px"><li>Chọn sẵn 3 câu đầu theo config Chợ Tốt Xe (back-office). Ít hơn 3 câu → chọn hết; rỗng/lỗi → không có chip</li><li>Checkbox “Gọi lại cho tôi qua SĐT…” chỉ hiện khi SĐT đã xác thực, mặc định checked</li><li><b>SĐT chưa xác thực → ẩn checkbox, vẫn gửi được, không nhắc xác thực</b></li><li>Vượt chat limit → không mở sheet, toast “Bạn cần xác thực số điện thoại”</li></ul>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":296,"height":312}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

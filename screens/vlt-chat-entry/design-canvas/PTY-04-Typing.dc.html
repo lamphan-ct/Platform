@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>PTY · Đang nhập</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="vlt-tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<div class="theme-pty" style="width: 375px; height: 812px; overflow: hidden">
+<div style="position: relative; width: 375px; height: 812px; overflow: hidden; font-family: 'Reddit Sans', sans-serif; color: var(--text-primary); background: var(--background-primary)">
+    <button aria-label="Đóng" style="position: absolute; inset: 0; border: 0; padding: 0; background: var(--background-overlay); cursor: default"></button>
+    <div style="position: absolute; left: 0; right: 0; top: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0)); pointer-events: none">
+      <div aria-hidden="true" style="height: 44px; display: flex; align-items: center; justify-content: space-between; padding: 0 14px 0 21px; box-sizing: border-box; color: var(--icon-blank)">
+        <span style="font-size: 15px; line-height: 20px; letter-spacing: -0.24px">09:41</span>
+        <span style="display: flex; gap: 5px; align-items: center">
+          <svg width="18" height="12" viewBox="0 0 18 12" fill="none"><rect y="7" width="3" height="5" rx="1" fill="currentColor"></rect><rect x="5" y="5" width="3" height="7" rx="1" fill="currentColor"></rect><rect x="10" y="2.5" width="3" height="9.5" rx="1" fill="currentColor"></rect><rect x="15" width="3" height="12" rx="1" fill="currentColor"></rect></svg>
+          <svg width="17" height="12" viewBox="0 0 17 12" fill="none"><path d="M8.5 2.7c2.4 0 4.6.9 6.3 2.5l1.6-1.7C14.3 1.5 11.5.3 8.5.3S2.7 1.5.6 3.5l1.6 1.7C3.9 3.6 6.1 2.7 8.5 2.7Zm0 4.1c1.3 0 2.5.5 3.4 1.4l1.7-1.7c-1.4-1.3-3.2-2.1-5.1-2.1s-3.7.8-5.1 2.1l1.7 1.7c.9-.9 2.1-1.4 3.4-1.4Zm2 3.4L8.5 12l-2-1.8c.5-.6 1.2-.9 2-.9s1.5.3 2 .9Z" fill="currentColor"></path></svg>
+          <svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x=".5" y=".5" width="21" height="11" rx="3" stroke="currentColor" stroke-opacity=".4"></rect><rect x="2" y="2" width="15" height="8" rx="1.6" fill="currentColor"></rect></svg>
+        </span>
+      </div>
+      <div style="height: 48px; display: flex; align-items: center; justify-content: space-between; padding: 0 var(--padding-medium-16)">
+        <span style="width: 36px; height: 36px; border-radius: 53px; background: rgba(255,255,255,0.75); display: grid; place-items: center; color: var(--icon-primary)">
+          <svg width="20" height="20" viewBox="0 0 24 24" role="img" aria-label="Quay lại"><path d="M10.516 7.24C10.901 6.91 11.481 6.918 11.856 7.275C12.256 7.656 12.271 8.289 11.89 8.689L9.333 11.375H17L17.102 11.38C17.606 11.431 18 11.857 18 12.375C18 12.892 17.606 13.318 17.102 13.37L17 13.375H9.333L11.89 16.06L11.958 16.137C12.268 16.538 12.231 17.117 11.856 17.474C11.481 17.831 10.901 17.839 10.516 17.509L10.442 17.439L6.275 13.064C5.908 12.678 5.908 12.071 6.275 11.685L10.442 7.31L10.516 7.24Z" fill="currentColor"></path></svg>
+        </span>
+        <span style="display: flex; gap: var(--gap-x-small-8)">
+          <span style="width: 36px; height: 36px; border-radius: 53px; background: rgba(255,255,255,0.75); display: grid; place-items: center; color: var(--icon-primary)">
+            <svg width="20" height="20" viewBox="0 0 24 24" role="img" aria-label="Chia sẻ"><path d="M10.926 4.594C11.251 4.42 11.645 4.437 11.952 4.641L21.552 11C21.826 11.181 21.993 11.485 22 11.813C22.006 12.099 21.888 12.373 21.681 12.565L21.586 12.644L11.987 19.605C11.683 19.825 11.28 19.856 10.945 19.686C10.61 19.515 10.4 19.171 10.4 18.795V16.028C8.716 16.077 7.198 16.851 6 17.75C5.307 18.269 4.75 18.808 4.367 19.218C4.176 19.422 4.03 19.592 3.933 19.708C3.885 19.766 3.849 19.81 3.827 19.839C3.815 19.853 3.808 19.864 3.803 19.87L3.798 19.874V19.876L3.799 19.875C3.541 20.219 3.091 20.36 2.683 20.224C2.275 20.088 2 19.705 2 19.274H3C2 19.274 2 19.274 2 19.273V19.234C2 19.213 2.001 19.183 2.002 19.146C2.005 19.073 2.009 18.969 2.018 18.84C2.036 18.581 2.072 18.216 2.143 17.775C2.284 16.897 2.568 15.701 3.138 14.438C4.223 12.037 6.347 9.409 10.4 8.29V5.475L10.409 5.338C10.452 5.024 10.643 4.746 10.926 4.594ZM12.4 9.074C12.4 9.546 12.07 9.954 11.609 10.053C7.78 10.873 5.908 13.164 4.96 15.261C4.793 15.632 4.655 15.997 4.541 16.348C4.625 16.281 4.711 16.216 4.799 16.149C6.396 14.952 8.756 13.736 11.524 14.082C12.024 14.145 12.4 14.57 12.4 15.074V16.834L19.245 11.87L12.4 7.337V9.074Z" fill="currentColor"></path></svg>
+          </span>
+          <span style="width: 36px; height: 36px; border-radius: 53px; background: rgba(255,255,255,0.75); display: grid; place-items: center; color: var(--icon-primary)">
+            <svg width="20" height="20" viewBox="0 0 24 24" role="img" aria-label="Thêm"><path d="M13.781 11.992C13.781 11.008 12.984 10.211 12 10.211C11.015 10.211 10.218 11.008 10.218 11.992C10.218 12.976 11.015 13.773 12 13.773C12.984 13.773 13.781 12.976 13.781 11.992Z" fill="currentColor"></path><path d="M13.781 4.781C13.781 3.797 12.984 3 12 3C11.015 3 10.218 3.797 10.218 4.781C10.218 5.765 11.015 6.562 12 6.562C12.984 6.562 13.781 5.765 13.781 4.781Z" fill="currentColor"></path><path d="M13.781 19.219C13.781 18.234 12.984 17.437 12 17.437C11.015 17.437 10.218 18.234 10.218 19.219C10.218 20.203 11.015 21 12 21C12.984 21 13.781 20.203 13.781 19.219Z" fill="currentColor"></path></svg>
+          </span>
+        </span>
+      </div>
+    </div>
+    <div style="position: absolute; left: 0; right: 0; bottom: 336px">
+<div role="dialog" aria-label="Nhắn tin cho nhà tuyển dụng" style="width: 375px; box-sizing: border-box; overflow: hidden; background: var(--background-primary); border-radius: var(--radius-modal) var(--radius-modal) 0 0; box-shadow: 0 4px 16px rgba(34,34,34,.12); font-family: 'Reddit Sans', sans-serif; color: var(--text-primary)">
+  <div style="padding: var(--padding-x-small-8) var(--padding-medium-16) var(--padding-small-12); display: flex; flex-direction: column; gap: var(--gap-x-small-8)">
+    <div style="display: flex; justify-content: center; padding-bottom: var(--padding-x-small-8)">
+      <div aria-hidden="true" style="width: 60px; height: 5px; border-radius: var(--radius-pill); background: var(--icon-tertiary)"></div>
+    </div>
+      <div style="display: flex; gap: var(--gap-x-small-8); align-items: center; padding-left: var(--padding-small-12); border-left: 2px solid var(--border-active); background: var(--background-primary)">
+      <span style="width: 40px; height: 40px; flex: none; display: grid; place-items: center; border-radius: var(--radius-ad); background: var(--background-tertiary); color: var(--icon-tertiary)">
+              <svg width="20" height="20" viewBox="0 0 24 24" role="img" aria-label="Ảnh tin đăng"><path d="M20 17.397C19.932 17.364 19.867 17.324 19.806 17.275L19.73 17.207L15.937 13.414L11.582 17.769C11.191 18.16 10.558 18.16 10.168 17.769L8.625 16.226L5.177 19.672C5.529 19.879 5.937 20 6.375 20H17.625C18.936 20 20 18.936 20 17.625V17.397ZM8.75 8.062C8.75 7.682 8.442 7.375 8.062 7.375C7.682 7.375 7.375 7.682 7.375 8.062C7.375 8.442 7.682 8.75 8.062 8.75C8.442 8.75 8.75 8.442 8.75 8.062ZM20 6.375C20 5.063 18.936 4 17.625 4H6.375C5.063 4 4 5.063 4 6.375V17.625C4 17.75 4.011 17.872 4.03 17.992L7.917 14.105L7.994 14.037C8.386 13.716 8.965 13.739 9.332 14.105L10.875 15.648L15.23 11.293L15.306 11.224C15.699 10.904 16.278 10.926 16.644 11.293L20 14.648V6.375ZM10.75 8.062C10.75 9.546 9.546 10.75 8.062 10.75C6.578 10.75 5.375 9.546 5.375 8.062C5.375 6.578 6.578 5.375 8.062 5.375C9.546 5.375 10.75 6.578 10.75 8.062ZM22 17.625C22 20.041 20.041 22 17.625 22H6.375C3.958 22 2 20.041 2 17.625V6.375C2 3.958 3.958 2 6.375 2H17.625C20.041 2 22 3.958 22 6.375V17.625Z" fill="currentColor"></path></svg>
+            </span>
+      <div style="min-width: 0; flex: 1; display: flex; flex-direction: column; gap: var(--gap-min-2)">
+        <div class="t-tagline-caption clip1" style="color: var(--text-secondary)">Bán gấp căn nhà ở ngay chợ Bờ Ngựa, hưng nhơnn,</div>
+        <div class="t-label-section clip1" style="color: var(--text-tertiary)">7,5 tỷ</div>
+      </div>
+    </div>
+      <label class="t-body-caption" style="position: relative; display: flex; gap: var(--gap-2x-small-4); align-items: center; cursor: pointer; color: var(--text-tertiary)">
+        <input type="checkbox" checked="" style="position: absolute; left: 0; top: 0; width: 16px; height: 16px; margin: 0; opacity: 0; cursor: pointer">
+        <span aria-hidden="true" style="position: relative; width: 16px; height: 16px; flex: none; overflow: hidden; border-radius: var(--radius-ad-small)">
+          <span style="position: absolute; inset: 1px; box-sizing: border-box; border-radius: var(--radius-ad-small); border: 0; background: var(--background-brand)"></span>
+            <svg width="11" height="11" viewBox="0 0 24 24" style="position: absolute; left: 2.5px; top: 2.5px; color: var(--icon-on-background)"><path fill-rule="evenodd" clip-rule="evenodd" d="M18.395 6.575C18.953 7.237 18.84 8.203 18.142 8.732C16.976 9.615 15.753 11.141 14.658 12.81C13.582 14.449 12.712 16.096 12.224 17.104C11.974 17.622 11.442 17.966 10.841 17.997C10.241 18.029 9.672 17.743 9.363 17.255C9.039 16.744 8.42 16.031 7.709 15.325C7.001 14.623 6.314 14.04 5.917 13.766C5.193 13.267 5.033 12.308 5.559 11.622C6.086 10.937 7.099 10.785 7.822 11.284C8.442 11.711 9.28 12.44 10.051 13.205C10.181 13.334 10.313 13.467 10.444 13.603C10.869 12.845 11.362 12.018 11.906 11.189C13.052 9.444 14.51 7.554 16.118 6.336C16.816 5.806 17.836 5.914 18.395 6.575Z" fill="currentColor"></path></svg>
+        </span>
+        <span>Gọi lại cho tôi qua SĐT 0987654321 để tư vấn thêm.</span>
+      </label>
+    <div style="box-sizing: border-box; width: 100%; padding: var(--padding-small-12); display: flex; flex-direction: column; gap: var(--gap-small-12); border: 1px solid var(--border-bold); border-radius: var(--radius-decoration); overflow: hidden">
+        <div style="display: flex; flex-direction: column; gap: var(--gap-2x-small-4)">
+          <span class="t-label-caption" style="color: var(--text-secondary)">Cho mình hỏi:</span>
+      <div style="position: relative; margin-right: -12px">
+      <div class="no-scrollbar" style="overflow-x: auto">
+      <div style="width: max-content; padding-right: 40px; display: flex; flex-direction: column; gap: var(--gap-x-small-8)">
+        <div style="display: flex; flex-wrap: nowrap; gap: var(--gap-x-small-8)">
+          <button class="t-header-annotation h-chip" aria-label="Bỏ câu hỏi Sổ chung hay riêng z ạ?" style="height: 28px; box-sizing: border-box; padding: 3px 10px; display: inline-flex; align-items: center; justify-content: center; gap: 3px; border-radius: var(--radius-pill); border: 1px solid var(--border-bold); background: var(--background-secondary); color: var(--text-primary); flex: none; white-space: nowrap">
+            Sổ chung hay riêng z ạ?
+            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="flex: none; color: var(--icon-primary)"><path d="M15.292 7.293C15.683 6.902 16.316 6.902 16.707 7.293C17.097 7.683 17.097 8.316 16.707 8.707L13.414 12L16.707 15.293L16.775 15.369C17.095 15.762 17.073 16.341 16.707 16.707C16.34 17.073 15.761 17.095 15.369 16.775L15.292 16.707L11.999 13.414L8.706 16.707C8.316 17.097 7.683 17.097 7.292 16.707C6.902 16.316 6.902 15.683 7.292 15.293L10.585 12L7.292 8.707L7.224 8.63C6.904 8.238 6.926 7.659 7.292 7.293C7.659 6.926 8.238 6.904 8.63 7.224L8.706 7.293L11.999 10.586L15.292 7.293Z" fill="currentColor"></path></svg>
+          </button>
+          <button class="t-header-annotation h-chip" aria-label="Bỏ câu hỏi Có hỗ trợ trả góp ko sốp?" style="height: 28px; box-sizing: border-box; padding: 3px 10px; display: inline-flex; align-items: center; justify-content: center; gap: 3px; border-radius: var(--radius-pill); border: 1px solid var(--border-bold); background: var(--background-secondary); color: var(--text-primary); flex: none; white-space: nowrap">
+            Có hỗ trợ trả góp ko sốp?
+            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="flex: none; color: var(--icon-primary)"><path d="M15.292 7.293C15.683 6.902 16.316 6.902 16.707 7.293C17.097 7.683 17.097 8.316 16.707 8.707L13.414 12L16.707 15.293L16.775 15.369C17.095 15.762 17.073 16.341 16.707 16.707C16.34 17.073 15.761 17.095 15.369 16.775L15.292 16.707L11.999 13.414L8.706 16.707C8.316 17.097 7.683 17.097 7.292 16.707C6.902 16.316 6.902 15.683 7.292 15.293L10.585 12L7.292 8.707L7.224 8.63C6.904 8.238 6.926 7.659 7.292 7.293C7.659 6.926 8.238 6.904 8.63 7.224L8.706 7.293L11.999 10.586L15.292 7.293Z" fill="currentColor"></path></svg>
+          </button>
+        </div>
+        <div style="display: flex; flex-wrap: nowrap; gap: var(--gap-x-small-8)">
+          <button class="t-header-annotation h-chip" aria-label="Bỏ câu hỏi Xin video/hình thực tế ạ" style="height: 28px; box-sizing: border-box; padding: 3px 10px; display: inline-flex; align-items: center; justify-content: center; gap: 3px; border-radius: var(--radius-pill); border: 1px solid var(--border-bold); background: var(--background-secondary); color: var(--text-primary); flex: none; white-space: nowrap">
+            Xin video/hình thực tế ạ
+            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="flex: none; color: var(--icon-primary)"><path d="M15.292 7.293C15.683 6.902 16.316 6.902 16.707 7.293C17.097 7.683 17.097 8.316 16.707 8.707L13.414 12L16.707 15.293L16.775 15.369C17.095 15.762 17.073 16.341 16.707 16.707C16.34 17.073 15.761 17.095 15.369 16.775L15.292 16.707L11.999 13.414L8.706 16.707C8.316 17.097 7.683 17.097 7.292 16.707C6.902 16.316 6.902 15.683 7.292 15.293L10.585 12L7.292 8.707L7.224 8.63C6.904 8.238 6.926 7.659 7.292 7.293C7.659 6.926 8.238 6.904 8.63 7.224L8.706 7.293L11.999 10.586L15.292 7.293Z" fill="currentColor"></path></svg>
+          </button>
+        </div>
+      </div>
+      </div>
+        <div aria-hidden="true" style="position: absolute; top: 0; right: 0; bottom: 0; width: 62px; background: linear-gradient(to left, var(--background-primary) 26%, rgba(255,255,255,0)); pointer-events: none"></div>
+      </div>
+        </div>
+      <div style="display: flex; gap: var(--gap-small-12); align-items: center">
+        <div style="flex: 1; min-width: 0; padding: 10px 0; display: flex; align-items: center">
+          <textarea class="t-body-section no-scrollbar" aria-label="Nhập tin nhắn" placeholder="Nhập tin nhắn…" style="display: block; width: 100%; height: 20px; padding: 0; border: 0; outline: 0; resize: none; background: transparent; color: var(--text-primary); overflow-y: auto">Hi bạn ơi cho mình hỏi|</textarea>
+        </div>
+        <button class="h-brand" aria-label="Gửi" style="position: relative; width: 40px; height: 40px; flex: none; border: 0; padding: 0; border-radius: var(--radius-pill); background: var(--background-brand); color: var(--icon-primary)">
+          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="position: absolute; left: 10px; top: 10px"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.798 5.828C0.885 3.82 2.956 1.756 4.961 2.675L20.893 9.978L21.064 10.064C22.714 10.975 22.684 13.385 21.011 14.254L20.838 14.335L4.981 21.131C2.952 22 0.933 19.883 1.898 17.898L4.681 12.172L1.798 5.828ZM3.618 5C3.472 4.677 3.806 4.345 4.128 4.493L20.06 11.795L20.113 11.824C20.344 11.976 20.34 12.323 20.105 12.469L20.051 12.497L4.193 19.292C3.866 19.432 3.541 19.091 3.697 18.772L6.686 12.624L6.729 12.522C6.815 12.279 6.804 12.01 6.697 11.773L3.618 5Z" fill="currentColor"></path><path d="M3.618 5C3.472 4.677 3.806 4.345 4.128 4.493L20.06 11.795L20.113 11.824C20.344 11.976 20.34 12.323 20.105 12.469L20.051 12.497L4.193 19.292C3.866 19.432 3.541 19.091 3.697 18.772L6.686 12.624L6.729 12.522C6.815 12.279 6.804 12.01 6.697 11.773L3.618 5Z" fill="white"></path></svg>
+        </button>
+      </div>
+    </div>
+      <div style="position: relative; display: flex; gap: var(--gap-x-small-8); align-items: center; overflow: hidden">
+        <span class="t-tagline-caption" style="flex: none; color: var(--text-primary)">Hỏi thêm:</span>
+        <div class="no-scrollbar" style="flex: 1; min-width: 0; display: flex; gap: var(--gap-2x-small-6); align-items: center; overflow-x: auto; padding-right: 36px">
+            <button class="t-header-annotation h-chip" style="flex: none; height: 28px; box-sizing: border-box; padding: 3px 10px; display: inline-flex; align-items: center; justify-content: center; gap: 3px; border-radius: var(--radius-pill); border: 1px solid var(--border-regular); background: var(--background-primary); color: var(--text-secondary); white-space: nowrap">Xin vị trí cụ thể nhé sốp</button>
+            <button class="t-header-annotation h-chip" style="flex: none; height: 28px; box-sizing: border-box; padding: 3px 10px; display: inline-flex; align-items: center; justify-content: center; gap: 3px; border-radius: var(--radius-pill); border: 1px solid var(--border-regular); background: var(--background-primary); color: var(--text-secondary); white-space: nowrap">Giá còn thương lượng không ạ</button>
+        </div>
+        <div aria-hidden="true" style="position: absolute; top: 0; right: 0; width: 36px; height: 28px; background: linear-gradient(to left, var(--background-primary), rgba(255,255,255,0)); pointer-events: none"></div>
+      </div>
+  </div>
+</div>
+    </div>
+      <div style="position: absolute; left: 0; right: 0; bottom: 0">
+<div aria-hidden="true" style="width: 375px; height: 336px; box-sizing: border-box; padding-top: 3px; display: flex; flex-direction: column; background: #d0d3d9; font-family: -apple-system, 'SF Pro', system-ui, sans-serif; color: #000000">
+  <div style="height: 39px; padding: 3px 1px; display: flex; gap: 2px; align-items: center">
+    <div style="flex: 1; height: 39px; border-radius: 4.6px; background: #ebedf0; display: grid; place-items: center; font-size: 17px; letter-spacing: -0.4px">“The”</div>
+    <div style="width: 1px; height: 25px; margin: 0 2px"></div>
+    <div style="flex: 1; height: 39px; display: grid; place-items: center; font-size: 17px; letter-spacing: -0.4px">the</div>
+    <div style="width: 1px; height: 25px; margin: 0 2px; background: rgba(0,0,0,0.1)"></div>
+    <div style="flex: 1; height: 39px; display: grid; place-items: center; font-size: 17px; letter-spacing: -0.4px">to</div>
+  </div>
+  <div style="height: 5px"></div>
+  <div style="position: relative; height: 204px">
+      <div style="position: absolute; top: 0px; left: 2.85px; right: 2.85px; display: flex; gap: 6px">
+          <button tabindex="-1" style="flex: 1; min-width: 0; height: 42px; border: 0; padding: 0 0 6px; border-radius: 4.6px; background: #fcfcfe; box-shadow: 0 1px 0 #898a8d; font-family: inherit; font-size: 25px; line-height: 28px; color: #000000">q</button>
+          <button tabindex="-1" style="flex: 1; min-width: 0; height: 42px; border: 0; padding: 0 0 6px; border-radius: 4.6px; background: #fcfcfe; box-shadow: 0 1px 0 #898a8d; font-family: inherit; font-size: 25px; line-height: 28px; color: #000000">w</button>
+          <button tabindex="-1" style="flex: 1; min-width: 0; height: 42px; border: 0; padding: 0 0 6px; border-radius: 4.6px; background: #fcfcfe; box-shadow: 0 1px 0 #898a8d; font-family: inherit; font-size: 25px; line-height: 28px; color: #000000">e</button>
+          <button tabindex="-1" style="flex: 1; min-width: 0; height: 42px; border: 0; padding: 0 0 6px; border-radius: 4.6px; background: #fcfcfe; box-shadow: 0 1px 0 #898a8d; font-family: inherit; font-size: 25px; line-height: 28px; color: #000000">r</button>
+          <button tabindex="-1" style="flex: 1; min-width: 0; height: 42px; border: 0; padding: 0 0 6px; border-radius: 4.6px; background: #fcfcfe; box-shadow: 0 1px 0 #898a8d; font-family: inherit; font-size: 25px; line-height: 28px; color: #000000">t</button>
+          <button tabindex="-1" style="flex: 1; min-width: 0; height: 42px; border: 0; padding: 0 0 6px; border-radius: 4.6px; background: #fcfcfe; box-shadow: 0 1px 0 #898a8d; font-family: inherit; font-size: 25px; line-height: 28px; color: #000000">y</button>
+          <button tabindex="-1" style="flex: 1; min-width: 0; height: 42px; border: 0; padding: 0 0 6px; border-radius: 4.6px; background: #fcfcfe; box-shadow: 0 1px 0 #898a8d; font-family: inherit; font-size: 25px; line-height: 28px; color: #000000">u</button>
+          <button tabindex="-1" style="flex: 1; min-width: 0; height: 42px; border: 0; padding: 0 0 6px; border-radius: 4.6px; background: #fcfcfe; box-shadow: 0 1px 0 #898a8d; font-family: inherit; font-size: 25px; line-height: 28px; color: #000000">i</button>
+          <button tabindex="-1" style="flex: 1; min-width: 0; height: 42px; border: 0; padding: 0 0 6px; border-radius: 4.6px; background: #fcfcfe; box-shadow: 0 1px 0 #898a8d; font-family: inherit; font-size: 25px; line-height: 28px; color: #000000">o</button>
+          <button tabindex="-1" style="flex: 1; min-width: 0; height: 42px; border: 0; padding: 0 0 6px; border-radius: 4.6px; background: #fcfcfe; box-shadow: 0 1px 0 #898a8d; font-family: inherit; font-size: 25px; line-height: 28px; color: #000000">p</button>
+      </div>
+      <div style="position: absolute; top: 54px; left: 21.9px; right: 21.9px; display: flex; gap: 6px">
+          <button tabindex="-1" style="flex: 1; min-width: 0; height: 42px; border: 0; padding: 0 0 6px; border-radius: 4.6px; background: #fcfcfe; box-shadow: 0 1px 0 #898a8d; font-family: inherit; font-size: 25px; line-height: 28px; color: #000000">a</button>
+          <button tabindex="-1" style="flex: 1; min-width: 0; height: 42px; border: 0; padding: 0 0 6px; border-radius: 4.6px; background: #fcfcfe; box-shadow: 0 1px 0 #898a8d; font-family: inherit; font-size: 25px; line-height: 28px; color: #000000">s</button>
+          <button tabindex="-1" style="flex: 1; min-width: 0; height: 42px; border: 0; padding: 0 0 6px; border-radius: 4.6px; background: #fcfcfe; box-shadow: 0 1px 0 #898a8d; font-family: inherit; font-size: 25px; line-height: 28px; color: #000000">d</button>
+          <button tabindex="-1" style="flex: 1; min-width: 0; height: 42px; border: 0; padding: 0 0 6px; border-radius: 4.6px; background: #fcfcfe; box-shadow: 0 1px 0 #898a8d; font-family: inherit; font-size: 25px; line-height: 28px; color: #000000">f</button>
+          <button tabindex="-1" style="flex: 1; min-width: 0; height: 42px; border: 0; padding: 0 0 6px; border-radius: 4.6px; background: #fcfcfe; box-shadow: 0 1px 0 #898a8d; font-family: inherit; font-size: 25px; line-height: 28px; color: #000000">g</button>
+          <button tabindex="-1" style="flex: 1; min-width: 0; height: 42px; border: 0; padding: 0 0 6px; border-radius: 4.6px; background: #fcfcfe; box-shadow: 0 1px 0 #898a8d; font-family: inherit; font-size: 25px; line-height: 28px; color: #000000">h</button>
+          <button tabindex="-1" style="flex: 1; min-width: 0; height: 42px; border: 0; padding: 0 0 6px; border-radius: 4.6px; background: #fcfcfe; box-shadow: 0 1px 0 #898a8d; font-family: inherit; font-size: 25px; line-height: 28px; color: #000000">j</button>
+          <button tabindex="-1" style="flex: 1; min-width: 0; height: 42px; border: 0; padding: 0 0 6px; border-radius: 4.6px; background: #fcfcfe; box-shadow: 0 1px 0 #898a8d; font-family: inherit; font-size: 25px; line-height: 28px; color: #000000">k</button>
+          <button tabindex="-1" style="flex: 1; min-width: 0; height: 42px; border: 0; padding: 0 0 6px; border-radius: 4.6px; background: #fcfcfe; box-shadow: 0 1px 0 #898a8d; font-family: inherit; font-size: 25px; line-height: 28px; color: #000000">l</button>
+      </div>
+      <div style="position: absolute; top: 108px; left: 59.2px; right: 59.2px; display: flex; gap: 6px">
+          <button tabindex="-1" style="flex: 1; min-width: 0; height: 42px; border: 0; padding: 0 0 6px; border-radius: 4.6px; background: #fcfcfe; box-shadow: 0 1px 0 #898a8d; font-family: inherit; font-size: 25px; line-height: 28px; color: #000000">z</button>
+          <button tabindex="-1" style="flex: 1; min-width: 0; height: 42px; border: 0; padding: 0 0 6px; border-radius: 4.6px; background: #fcfcfe; box-shadow: 0 1px 0 #898a8d; font-family: inherit; font-size: 25px; line-height: 28px; color: #000000">x</button>
+          <button tabindex="-1" style="flex: 1; min-width: 0; height: 42px; border: 0; padding: 0 0 6px; border-radius: 4.6px; background: #fcfcfe; box-shadow: 0 1px 0 #898a8d; font-family: inherit; font-size: 25px; line-height: 28px; color: #000000">c</button>
+          <button tabindex="-1" style="flex: 1; min-width: 0; height: 42px; border: 0; padding: 0 0 6px; border-radius: 4.6px; background: #fcfcfe; box-shadow: 0 1px 0 #898a8d; font-family: inherit; font-size: 25px; line-height: 28px; color: #000000">v</button>
+          <button tabindex="-1" style="flex: 1; min-width: 0; height: 42px; border: 0; padding: 0 0 6px; border-radius: 4.6px; background: #fcfcfe; box-shadow: 0 1px 0 #898a8d; font-family: inherit; font-size: 25px; line-height: 28px; color: #000000">b</button>
+          <button tabindex="-1" style="flex: 1; min-width: 0; height: 42px; border: 0; padding: 0 0 6px; border-radius: 4.6px; background: #fcfcfe; box-shadow: 0 1px 0 #898a8d; font-family: inherit; font-size: 25px; line-height: 28px; color: #000000">n</button>
+          <button tabindex="-1" style="flex: 1; min-width: 0; height: 42px; border: 0; padding: 0 0 6px; border-radius: 4.6px; background: #fcfcfe; box-shadow: 0 1px 0 #898a8d; font-family: inherit; font-size: 25px; line-height: 28px; color: #000000">m</button>
+      </div>
+    <button tabindex="-1" style="position: absolute; top: 108px; left: 2.85px; width: 42px; height: 42px; border: 0; padding: 0; border-radius: 4.6px; background: #abb0ba; box-shadow: 0 1px 0 #898a8d; display: grid; place-items: center">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3 3 10.5h4V17h6v-6.5h4L10 3Z" stroke="#000" stroke-width="1.6" stroke-linejoin="round"></path></svg>
+    </button>
+    <button tabindex="-1" style="position: absolute; top: 108px; right: 2.85px; width: 42px; height: 42px; border: 0; padding: 0; border-radius: 4.6px; background: #abb0ba; box-shadow: 0 1px 0 #898a8d; display: grid; place-items: center">
+      <svg width="24" height="20" viewBox="0 0 24 20" fill="none"><path d="M8 3h13a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H8l-6-7 6-7Z" stroke="#000" stroke-width="1.6" stroke-linejoin="round"></path><path d="m11 7 6 6m0-6-6 6" stroke="#000" stroke-width="1.6" stroke-linecap="round"></path></svg>
+    </button>
+    <button tabindex="-1" style="position: absolute; top: 162px; left: 2.85px; width: 85.5px; height: 42px; border: 0; padding: 0; border-radius: 4.6px; background: #abb0ba; box-shadow: 0 1px 0 #898a8d; font-family: inherit; font-size: 16px; color: #000000">ABC</button>
+    <button tabindex="-1" style="position: absolute; top: 162px; left: 96.4px; width: 182.2px; height: 42px; border: 0; padding: 0; border-radius: 4.6px; background: #fcfcfe; box-shadow: 0 1px 0 #898a8d; font-family: inherit; font-size: 16px; color: #000000">space</button>
+    <button tabindex="-1" style="position: absolute; top: 162px; right: 2.85px; width: 87.75px; height: 42px; border: 0; padding: 0; border-radius: 4.6px; background: #abb0ba; box-shadow: 0 1px 0 #898a8d; font-family: inherit; font-size: 16px; color: #000000">return</button>
+  </div>
+  <div style="height: 58px; box-sizing: border-box; padding: 25px 20px 0; display: flex; justify-content: space-between; align-items: flex-start">
+    <svg width="27" height="27" viewBox="0 0 27 27" fill="none"><circle cx="13.5" cy="13.5" r="12" stroke="rgba(60,60,67,0.8)" stroke-width="1.8"></circle><circle cx="9.5" cy="11" r="1.4" fill="rgba(60,60,67,0.8)"></circle><circle cx="17.5" cy="11" r="1.4" fill="rgba(60,60,67,0.8)"></circle><path d="M8.5 16c1.2 1.9 2.9 2.8 5 2.8s3.8-.9 5-2.8" stroke="rgba(60,60,67,0.8)" stroke-width="1.8" stroke-linecap="round"></path></svg>
+    <svg width="18" height="27" viewBox="0 0 18 27" fill="none"><rect x="5" y="1" width="8" height="15" rx="4" stroke="rgba(60,60,67,0.8)" stroke-width="1.8"></rect><path d="M1.5 12.5a7.5 7.5 0 0 0 15 0M9 20v5" stroke="rgba(60,60,67,0.8)" stroke-width="1.8" stroke-linecap="round"></path></svg>
+  </div>
+  <div style="position: relative; height: 21px">
+    <div style="position: absolute; left: 50%; bottom: 8px; width: 139px; height: 5px; margin-left: -69.5px; border-radius: 100px; background: #000000"></div>
+  </div>
+</div>
+      </div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":375,"height":812}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
