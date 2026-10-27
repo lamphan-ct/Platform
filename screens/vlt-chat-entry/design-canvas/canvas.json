@@ -480,6 +480,149 @@
       "w": 375,
       "x": 2116,
       "y": 4104
+    },
+    "Section-R1.dc.html": {
+      "x": 0,
+      "y": 0,
+      "w": 4213,
+      "h": 1900,
+      "title": "Revamp · Treatment 1",
+      "page": "revamp",
+      "radius": 20
+    },
+    "Panel-R1-Flow.dc.html": {
+      "x": 80,
+      "y": 172,
+      "w": 4053,
+      "h": 1036,
+      "title": "Revamp T1 · Flow chính",
+      "page": "revamp",
+      "radius": 20
+    },
+    "Panel-R1-States.dc.html": {
+      "x": 80,
+      "y": 1288,
+      "w": 4053,
+      "h": 512,
+      "title": "Revamp T1 · Trạng thái",
+      "page": "revamp",
+      "radius": 20
+    },
+    "R1-01-AdView.dc.html": {
+      "x": 120,
+      "y": 272,
+      "w": 375,
+      "h": 812,
+      "title": "1 · Chi tiết tin → tap Chat",
+      "page": "revamp"
+    },
+    "R1-02-Sheet.dc.html": {
+      "x": 575,
+      "y": 272,
+      "w": 375,
+      "h": 812,
+      "title": "2 · Sheet mặc định (revamp)",
+      "page": "revamp"
+    },
+    "R1-03-Focus.dc.html": {
+      "x": 1030,
+      "y": 272,
+      "w": 375,
+      "h": 812,
+      "title": "3 · Focus ô nhập",
+      "page": "revamp"
+    },
+    "R1-04-Typing.dc.html": {
+      "x": 1485,
+      "y": 272,
+      "w": 375,
+      "h": 812,
+      "title": "4 · Đang nhập",
+      "page": "revamp"
+    },
+    "R1-05-Sent.dc.html": {
+      "x": 1940,
+      "y": 272,
+      "w": 375,
+      "h": 812,
+      "title": "5 · Gửi thành công",
+      "page": "revamp"
+    },
+    "R1-06-ChatRoom.dc.html": {
+      "x": 2395,
+      "y": 272,
+      "w": 390,
+      "h": 812,
+      "title": "6 · Phòng chat (theme Chợ Tốt)",
+      "page": "revamp",
+      "radius": 20
+    },
+    "R1-Prototype.dc.html": {
+      "x": 2905,
+      "y": 272,
+      "w": 375,
+      "h": 812,
+      "title": "▶ Prototype · Revamp T1",
+      "page": "revamp",
+      "is_interactive": true,
+      "radius": 40
+    },
+    "Note-R1-Main.dc.html": {
+      "x": 120,
+      "y": 1388,
+      "w": 296,
+      "h": 312,
+      "title": "Note",
+      "page": "revamp",
+      "radius": 12
+    },
+    "R1-S1-MaxQuestions.dc.html": {
+      "x": 456,
+      "y": 1388,
+      "w": 375,
+      "h": 317,
+      "title": "Chọn 4 câu · 2 chip/hàng",
+      "page": "revamp"
+    },
+    "R1-S2-NoQuestion.dc.html": {
+      "x": 871,
+      "y": 1388,
+      "w": 375,
+      "h": 219,
+      "title": "Bỏ hết câu hỏi → Gửi disabled",
+      "page": "revamp"
+    },
+    "R1-S3-NoPhone.dc.html": {
+      "x": 1286,
+      "y": 1388,
+      "w": 375,
+      "h": 291,
+      "title": "SĐT chưa xác thực → ẩn checkbox",
+      "page": "revamp"
+    },
+    "R1-S4-AllSelected.dc.html": {
+      "x": 1701,
+      "y": 1388,
+      "w": 375,
+      "h": 317,
+      "title": "Chọn hết gợi ý → ẩn “Hỏi thêm”",
+      "page": "revamp"
+    },
+    "R1-S5-LongText.dc.html": {
+      "x": 2116,
+      "y": 1388,
+      "w": 375,
+      "h": 317,
+      "title": "Text dài · bỏ tick SĐT",
+      "page": "revamp"
+    },
+    "ChatSheetR1.dc.html": {
+      "x": 2531,
+      "y": 1388,
+      "w": 375,
+      "h": 317,
+      "title": "Component · ChatSheet revamp",
+      "page": "revamp"
     }
   },
   "createdOnFiles": {
@@ -572,12 +715,33 @@
     "ChatRoom.dc.html",
     "ChatSheet.dc.html",
     "Keyboard.dc.html",
-    "Bubble.dc.html"
+    "Bubble.dc.html",
+    "Section-R1.dc.html",
+    "Panel-R1-Flow.dc.html",
+    "Panel-R1-States.dc.html",
+    "R1-01-AdView.dc.html",
+    "R1-02-Sheet.dc.html",
+    "R1-03-Focus.dc.html",
+    "R1-04-Typing.dc.html",
+    "R1-05-Sent.dc.html",
+    "R1-06-ChatRoom.dc.html",
+    "R1-Prototype.dc.html",
+    "Note-R1-Main.dc.html",
+    "R1-S1-MaxQuestions.dc.html",
+    "R1-S2-NoQuestion.dc.html",
+    "R1-S3-NoPhone.dc.html",
+    "R1-S4-AllSelected.dc.html",
+    "R1-S5-LongText.dc.html",
+    "ChatSheetR1.dc.html"
   ],
   "pages": [
     {
       "id": "page-1",
       "name": "Job"
+    },
+    {
+      "id": "revamp",
+      "name": "Revamp chat bottom sheet"
     }
   ],
   "title": "Chat Button Entry"
