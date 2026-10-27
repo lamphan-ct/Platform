@@ -137,6 +137,17 @@ for vi, (k, v) in enumerate(V.items()):
     open(f'{P}/Section-{k}.dc.html', 'w').write(s)
     add(f'Section-{k}', 0, oy, 4213, 2516, f'{v["name"]} · Treatment 1', radius=20)
     s = pflow.replace('id="t1a"', f'id="{k.lower()}a"').replace('url(#t1a)', f'url(#{k.lower()}a)')
+    s = s.replace('màn 1 → 6, prototype', 'màn 1 → 5, prototype')
+    a = s.index('    <path d="M419'); b = s.index('  </svg>')
+    arrows = [(419, 489, ''), (874, 944, ''), (1329, 1399, ''), (1784, 1854, '')]
+    s = s[:a] + ''.join(f'    <path d="M{x1} 506H{x2}" stroke="#e5197e" stroke-width="3" marker-end="url(#{k.lower()}a)"></path>\n' for x1, x2, _ in arrows) + \
+        f'    <path d="M2254 506H2364" stroke="#e5197e" stroke-width="3" stroke-dasharray="8 6" marker-end="url(#{k.lower()}a)"></path>\n' + \
+        f'    <path d="M150.4 916 L150.4 989.9 L2055 986 L2055 922" stroke="#e5197e" stroke-width="3" marker-end="url(#{k.lower()}a)"></path>\n' + s[b:]
+    a = s.index('  <span class="t-label-caption" style="position: absolute; left: 419px'); b = s.index('</div>\n</x-dc>')
+    lab = lambda x, w, t: f'  <span class="t-label-caption" style="position: absolute; left: {x}px; top: 460px; width: {w}px; text-align: center; color: #e5197e">{t}</span>\n'
+    s = s[:a] + lab(419, 72, 'Tap Chat') + lab(874, 72, 'Gõ tin nhắn') + lab(1329, 72, 'Tap Gửi') + lab(1784, 72, 'Xem tin nhắn') + lab(2254, 112, 'Chơi thử') + '\n' + \
+        '  <span class="t-header-annotation" style="position: absolute; left: 495px; top: 926px; width: 375px; text-align: center; color: #e5197e">Sheet trượt từ dưới lên · focus ô nhập + bật bàn phím</span>\n' + \
+        '  <span class="t-label-section" style="position: absolute; left: 502px; top: 973px; width: 1200px; box-sizing: border-box; padding: var(--padding-min-2) var(--padding-x-small-8); text-align: center; color: var(--text-blank); background: #e5197e; border-radius: var(--radius-ad-small)">Trường hợp buyer và seller đã có nhắn tin với tin đăng này → đưa thẳng qua chat room</span>\n' + s[b:]
     s = re.sub(r'<title>[^<]*</title>', f'<title>{k} · Flow chính</title>', s, count=1)
     open(f'{P}/Panel-{k}-Flow.dc.html', 'w').write(s)
     add(f'Panel-{k}-Flow', 80, oy + 172, 4053, 1036, f'{k} · Flow chính', radius=20)
@@ -153,37 +164,36 @@ for vi, (k, v) in enumerate(V.items()):
     fy = oy + 272
     screen(f'{k}-01-AdView', f'{k} · Chi tiết tin', 'mode="ad" hot="{{yes}}"')
     add(f'{k}-01-AdView', 120, fy, 375, 812, '1 · Chi tiết tin → tap Chat')
-    screen(f'{k}-02-Sheet', f'{k} · Sheet mặc định', 'mode="sheet"', cfg=base)
-    add(f'{k}-02-Sheet', 575, fy, 375, 812, '2 · Sheet mặc định')
-    screen(f'{k}-03-Focus', f'{k} · Focus ô nhập', 'mode="sheet" kb="{{yes}}"', cfg=dict(base, placeholder='|Nhập tin nhắn…'))
-    add(f'{k}-03-Focus', 1030, fy, 375, 812, '3 · Focus ô nhập')
-    screen(f'{k}-04-Typing', f'{k} · Đang nhập', 'mode="sheet" kb="{{yes}}"', cfg=dict(base, text=v['typing'] + '|'))
-    add(f'{k}-04-Typing', 1485, fy, 375, 812, '4 · Đang nhập')
-    screen(f'{k}-05-Sent', f'{k} · Gửi thành công', 'mode="ad" toast="{{yes}}"')
-    add(f'{k}-05-Sent', 1940, fy, 375, 812, '5 · Gửi thành công')
-    screen(f'{k}-06-ChatRoom', f'{k} · Phòng chat', 'mode="chat"', msgs=[sent], w=390)
-    add(f'{k}-06-ChatRoom', 2395, fy, 390, 812, '6 · Phòng chat (theme Chợ Tốt)', radius=20)
+    screen(f'{k}-02-Sheet', f'{k} · Sheet mở kèm bàn phím', 'mode="sheet" kb="{{yes}}"', cfg=dict(base, placeholder='|Nhập tin nhắn…'))
+    add(f'{k}-02-Sheet', 575, fy, 375, 812, '2 · Sheet mở kèm bàn phím')
+    screen(f'{k}-03-Typing', f'{k} · Đang nhập', 'mode="sheet" kb="{{yes}}"', cfg=dict(base, text=v['typing'] + '|'))
+    add(f'{k}-03-Typing', 1030, fy, 375, 812, '3 · Đang nhập')
+    screen(f'{k}-04-Sent', f'{k} · Gửi thành công', 'mode="ad" toast="{{yes}}"')
+    add(f'{k}-04-Sent', 1485, fy, 375, 812, '4 · Gửi thành công')
+    screen(f'{k}-05-ChatRoom', f'{k} · Phòng chat', 'mode="chat"', msgs=[sent], w=390)
+    add(f'{k}-05-ChatRoom', 1940, fy, 390, 812, '5 · Phòng chat (theme Chợ Tốt)', radius=20)
 
     # Prototype
     s = main.replace("variant: 't1'", "variant: 'r1', thumb: 'photo', title: AD.title, price: AD.price")
     s = re.sub(r"const Q = \[[^\]]*\];", 'const Q = ' + js(q) + ';\n    const AD = ' + js(ad) + ';', s, count=1)
     s = s.replace("const msg = { header: s.sel.length > 0, qs: s.sel.slice(), after: s.callback && hasPhone ? ['Gọi lại cho tôi qua SĐT 0987654321'] : [], text: s.text.trim() };",
                   "const msg = { tone: 'yellow', title: AD.title, price: AD.price, thumb: 'photo', header: s.sel.length > 0, qs: s.sel.slice(), after: s.callback && hasPhone ? ['Gọi lại cho tôi qua SĐT 0987654321'] : [], text: s.text.trim() };")
+    s = s.replace("this.setState({ mode: 'sheet', kb: false,", "this.setState({ mode: 'sheet', kb: true,")
     s = s.replace('<dc-import name="Screen" mode', '<dc-import name="Screen" ad="{{ad}}" mode')
     s = s.replace('      mode: s.mode, kb: s.kb,', '      ad: AD, mode: s.mode, kb: s.kb,')
     s = s.replace('<div style="width: 375px; height: 812px; overflow: hidden;', f'<div class="{th}" style="width: 375px; height: 812px; overflow: hidden;', 1)
     s = re.sub(r'<title>[^<]*</title>', f'<title>Prototype {k} · Treatment 1</title>', s, count=1)
-    for must in ["tone: 'yellow'", 'ad="{{ad}}"', 'ad: AD', f'class="{th}"', 'const AD']:
+    for must in ["mode: 'sheet', kb: true", "tone: 'yellow'", 'ad="{{ad}}"', 'ad: AD', f'class="{th}"', 'const AD']:
         assert must in s, (k, must)
     open(f'{P}/{k}-Prototype.dc.html', 'w').write(s)
-    add(f'{k}-Prototype', 2905, fy, 375, 812, f'▶ Prototype · {v["name"]}', is_interactive=True, radius=40)
+    add(f'{k}-Prototype', 2450, fy, 375, 812, f'▶ Prototype · {v["name"]}', is_interactive=True, radius=40)
 
     # Rules row
     ry = oy + 1388
-    main_items = [f'Chọn sẵn 3 câu đầu theo {v["source"]}. Ít hơn 3 câu → chọn hết; rỗng/lỗi → không có chip',
+    main_items = ['Tap Chat → mở sheet, focus ô nhập + bật bàn phím', f'Chọn sẵn 3 câu đầu theo {v["source"]}. Ít hơn 3 câu → chọn hết; rỗng/lỗi → không có chip',
                   'Checkbox “Gọi lại cho tôi qua SĐT…” chỉ hiện khi SĐT đã xác thực, mặc định checked']
     if k == 'PTY':
-        main_items += ['<b>SĐT chưa xác thực → ẩn checkbox, vẫn gửi được</b> (PTY bản đầu chỉ mở cho user đã xác thực — PM xác nhận)']
+        main_items += ['<b>SĐT chưa xác thực → ẩn checkbox, vẫn gửi được</b> (PM xác nhận cho PTY)']
     else:
         main_items += ['<b>SĐT chưa xác thực → ẩn checkbox, vẫn gửi được, không nhắc xác thực</b>']
     main_items += ['Vượt chat limit → không mở sheet, toast “Bạn cần xác thực số điện thoại”']

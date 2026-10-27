@@ -511,7 +511,7 @@
       "x": 80,
       "y": 1288,
       "w": 4053,
-      "h": 446,
+      "h": 470,
       "title": "GDS · Quy tắc & trạng thái",
       "page": "revamp",
       "radius": 20
@@ -538,44 +538,11 @@
       "y": 272,
       "w": 375,
       "h": 812,
-      "title": "2 · Sheet mặc định",
+      "title": "2 · Sheet mở kèm bàn phím",
       "page": "revamp"
-    },
-    "GDS-03-Focus.dc.html": {
-      "x": 1030,
-      "y": 272,
-      "w": 375,
-      "h": 812,
-      "title": "3 · Focus ô nhập",
-      "page": "revamp"
-    },
-    "GDS-04-Typing.dc.html": {
-      "x": 1485,
-      "y": 272,
-      "w": 375,
-      "h": 812,
-      "title": "4 · Đang nhập",
-      "page": "revamp"
-    },
-    "GDS-05-Sent.dc.html": {
-      "x": 1940,
-      "y": 272,
-      "w": 375,
-      "h": 812,
-      "title": "5 · Gửi thành công",
-      "page": "revamp"
-    },
-    "GDS-06-ChatRoom.dc.html": {
-      "x": 2395,
-      "y": 272,
-      "w": 390,
-      "h": 812,
-      "title": "6 · Phòng chat (theme Chợ Tốt)",
-      "page": "revamp",
-      "radius": 20
     },
     "GDS-Prototype.dc.html": {
-      "x": 2905,
+      "x": 2450,
       "y": 272,
       "w": 375,
       "h": 812,
@@ -588,7 +555,7 @@
       "x": 120,
       "y": 1388,
       "w": 296,
-      "h": 312,
+      "h": 334,
       "title": "Note",
       "page": "revamp",
       "radius": 12
@@ -782,7 +749,7 @@
       "x": 80,
       "y": 4004,
       "w": 4053,
-      "h": 446,
+      "h": 470,
       "title": "VEH · Quy tắc & trạng thái",
       "page": "revamp",
       "radius": 20
@@ -809,44 +776,11 @@
       "y": 2988,
       "w": 375,
       "h": 812,
-      "title": "2 · Sheet mặc định",
+      "title": "2 · Sheet mở kèm bàn phím",
       "page": "revamp"
-    },
-    "VEH-03-Focus.dc.html": {
-      "x": 1030,
-      "y": 2988,
-      "w": 375,
-      "h": 812,
-      "title": "3 · Focus ô nhập",
-      "page": "revamp"
-    },
-    "VEH-04-Typing.dc.html": {
-      "x": 1485,
-      "y": 2988,
-      "w": 375,
-      "h": 812,
-      "title": "4 · Đang nhập",
-      "page": "revamp"
-    },
-    "VEH-05-Sent.dc.html": {
-      "x": 1940,
-      "y": 2988,
-      "w": 375,
-      "h": 812,
-      "title": "5 · Gửi thành công",
-      "page": "revamp"
-    },
-    "VEH-06-ChatRoom.dc.html": {
-      "x": 2395,
-      "y": 2988,
-      "w": 390,
-      "h": 812,
-      "title": "6 · Phòng chat (theme Chợ Tốt)",
-      "page": "revamp",
-      "radius": 20
     },
     "VEH-Prototype.dc.html": {
-      "x": 2905,
+      "x": 2450,
       "y": 2988,
       "w": 375,
       "h": 812,
@@ -859,7 +793,7 @@
       "x": 120,
       "y": 4104,
       "w": 296,
-      "h": 312,
+      "h": 334,
       "title": "Note",
       "page": "revamp",
       "radius": 12
@@ -1053,7 +987,7 @@
       "x": 80,
       "y": 6720,
       "w": 4053,
-      "h": 446,
+      "h": 470,
       "title": "PTY · Quy tắc & trạng thái",
       "page": "revamp",
       "radius": 20
@@ -1080,44 +1014,11 @@
       "y": 5704,
       "w": 375,
       "h": 812,
-      "title": "2 · Sheet mặc định",
+      "title": "2 · Sheet mở kèm bàn phím",
       "page": "revamp"
-    },
-    "PTY-03-Focus.dc.html": {
-      "x": 1030,
-      "y": 5704,
-      "w": 375,
-      "h": 812,
-      "title": "3 · Focus ô nhập",
-      "page": "revamp"
-    },
-    "PTY-04-Typing.dc.html": {
-      "x": 1485,
-      "y": 5704,
-      "w": 375,
-      "h": 812,
-      "title": "4 · Đang nhập",
-      "page": "revamp"
-    },
-    "PTY-05-Sent.dc.html": {
-      "x": 1940,
-      "y": 5704,
-      "w": 375,
-      "h": 812,
-      "title": "5 · Gửi thành công",
-      "page": "revamp"
-    },
-    "PTY-06-ChatRoom.dc.html": {
-      "x": 2395,
-      "y": 5704,
-      "w": 390,
-      "h": 812,
-      "title": "6 · Phòng chat (theme Chợ Tốt)",
-      "page": "revamp",
-      "radius": 20
     },
     "PTY-Prototype.dc.html": {
-      "x": 2905,
+      "x": 2450,
       "y": 5704,
       "w": 375,
       "h": 812,
@@ -1130,7 +1031,7 @@
       "x": 120,
       "y": 6820,
       "w": 296,
-      "h": 312,
+      "h": 354,
       "title": "Note",
       "page": "revamp",
       "radius": 12
@@ -1317,6 +1218,81 @@
       "h": 812,
       "title": "Component · AdView (PTY)",
       "page": "revamp"
+    },
+    "GDS-03-Typing.dc.html": {
+      "x": 1030,
+      "y": 272,
+      "w": 375,
+      "h": 812,
+      "title": "3 · Đang nhập",
+      "page": "revamp"
+    },
+    "GDS-04-Sent.dc.html": {
+      "x": 1485,
+      "y": 272,
+      "w": 375,
+      "h": 812,
+      "title": "4 · Gửi thành công",
+      "page": "revamp"
+    },
+    "GDS-05-ChatRoom.dc.html": {
+      "x": 1940,
+      "y": 272,
+      "w": 390,
+      "h": 812,
+      "title": "5 · Phòng chat (theme Chợ Tốt)",
+      "page": "revamp",
+      "radius": 20
+    },
+    "VEH-03-Typing.dc.html": {
+      "x": 1030,
+      "y": 2988,
+      "w": 375,
+      "h": 812,
+      "title": "3 · Đang nhập",
+      "page": "revamp"
+    },
+    "VEH-04-Sent.dc.html": {
+      "x": 1485,
+      "y": 2988,
+      "w": 375,
+      "h": 812,
+      "title": "4 · Gửi thành công",
+      "page": "revamp"
+    },
+    "VEH-05-ChatRoom.dc.html": {
+      "x": 1940,
+      "y": 2988,
+      "w": 390,
+      "h": 812,
+      "title": "5 · Phòng chat (theme Chợ Tốt)",
+      "page": "revamp",
+      "radius": 20
+    },
+    "PTY-03-Typing.dc.html": {
+      "x": 1030,
+      "y": 5704,
+      "w": 375,
+      "h": 812,
+      "title": "3 · Đang nhập",
+      "page": "revamp"
+    },
+    "PTY-04-Sent.dc.html": {
+      "x": 1485,
+      "y": 5704,
+      "w": 375,
+      "h": 812,
+      "title": "4 · Gửi thành công",
+      "page": "revamp"
+    },
+    "PTY-05-ChatRoom.dc.html": {
+      "x": 1940,
+      "y": 5704,
+      "w": 390,
+      "h": 812,
+      "title": "5 · Phòng chat (theme Chợ Tốt)",
+      "page": "revamp",
+      "radius": 20
     }
   },
   "createdOnFiles": {
@@ -1417,10 +1393,6 @@
     "Panel-GDS-Edge.dc.html",
     "GDS-01-AdView.dc.html",
     "GDS-02-Sheet.dc.html",
-    "GDS-03-Focus.dc.html",
-    "GDS-04-Typing.dc.html",
-    "GDS-05-Sent.dc.html",
-    "GDS-06-ChatRoom.dc.html",
     "GDS-Prototype.dc.html",
     "GDS-Note-Main.dc.html",
     "GDS-DF-Sheet1.dc.html",
@@ -1449,10 +1421,6 @@
     "Panel-VEH-Edge.dc.html",
     "VEH-01-AdView.dc.html",
     "VEH-02-Sheet.dc.html",
-    "VEH-03-Focus.dc.html",
-    "VEH-04-Typing.dc.html",
-    "VEH-05-Sent.dc.html",
-    "VEH-06-ChatRoom.dc.html",
     "VEH-Prototype.dc.html",
     "VEH-Note-Main.dc.html",
     "VEH-DF-Sheet1.dc.html",
@@ -1481,10 +1449,6 @@
     "Panel-PTY-Edge.dc.html",
     "PTY-01-AdView.dc.html",
     "PTY-02-Sheet.dc.html",
-    "PTY-03-Focus.dc.html",
-    "PTY-04-Typing.dc.html",
-    "PTY-05-Sent.dc.html",
-    "PTY-06-ChatRoom.dc.html",
     "PTY-Prototype.dc.html",
     "PTY-Note-Main.dc.html",
     "PTY-DF-Sheet1.dc.html",
@@ -1508,7 +1472,16 @@
     "PTY-C5-Sheet.dc.html",
     "PTY-C5-Msg.dc.html",
     "AdViewV.dc.html",
-    "AdViewPTY.dc.html"
+    "AdViewPTY.dc.html",
+    "GDS-03-Typing.dc.html",
+    "GDS-04-Sent.dc.html",
+    "GDS-05-ChatRoom.dc.html",
+    "VEH-03-Typing.dc.html",
+    "VEH-04-Sent.dc.html",
+    "VEH-05-ChatRoom.dc.html",
+    "PTY-03-Typing.dc.html",
+    "PTY-04-Sent.dc.html",
+    "PTY-05-ChatRoom.dc.html"
   ],
   "pages": [
     {

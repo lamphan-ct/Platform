@@ -48,7 +48,7 @@ class Component extends DCLogic {
     };
     return {
       ad: AD, mode: s.mode, kb: s.kb, toast: s.toast, cfg, msgs: s.msgs,
-      onChat: () => chatted ? this.setState({ mode: 'chat', toast: false }) : this.setState({ mode: 'sheet', kb: false, sel: Q.slice(0, 3), text: '', callback: true, toast: false }),
+      onChat: () => chatted ? this.setState({ mode: 'chat', toast: false }) : this.setState({ mode: 'sheet', kb: true, sel: Q.slice(0, 3), text: '', callback: true, toast: false }),
       onView: () => this.setState({ mode: 'chat', toast: false }),
       onBack: () => this.setState({ mode: 'ad' }),
       onClose: () => this.setState({ mode: 'ad', kb: false }),
