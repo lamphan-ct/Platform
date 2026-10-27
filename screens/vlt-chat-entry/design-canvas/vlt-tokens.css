@@ -125,3 +125,18 @@ textarea::placeholder, input::placeholder { color: var(--text-tertiary); }
   --interaction-brand-pressed: #ffba00;
   --button-primary: #ffd400;
 }
+
+/* Nhà Tốt (PTY) theme */
+.theme-pty {
+  --border-active: #fa6819;
+  --border-brand: #fa6819;
+  --background-brand: #fa6819;
+  --background-brand-light: #fff4ec;
+  --text-brand: #fa6819;
+  --text-on-background: #ffffff;
+  --icon-brand: #fa6819;
+  --icon-on-background: #ffffff;
+  --interaction-brand-hover: #fb7328;
+  --interaction-brand-pressed: #d14200;
+  --button-primary: #fa6819;
+}

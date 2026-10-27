@@ -623,6 +623,114 @@
       "h": 317,
       "title": "Component · ChatSheet revamp",
       "page": "revamp"
+    },
+    "Section-RV.dc.html": {
+      "x": 0,
+      "y": 2100,
+      "w": 1560,
+      "h": 3292,
+      "title": "Revamp T1 · GDS / VEH / PTY",
+      "page": "revamp",
+      "radius": 20
+    },
+    "Panel-RV-GDS.dc.html": {
+      "x": 80,
+      "y": 2272,
+      "w": 1400,
+      "h": 960,
+      "title": "Revamp · Chợ Tốt",
+      "page": "revamp",
+      "radius": 20
+    },
+    "GDS-R1-02-Sheet.dc.html": {
+      "x": 120,
+      "y": 2372,
+      "w": 375,
+      "h": 812,
+      "title": "GDS · Sheet mặc định",
+      "page": "revamp"
+    },
+    "GDS-R1-03-Focus.dc.html": {
+      "x": 575,
+      "y": 2372,
+      "w": 375,
+      "h": 812,
+      "title": "GDS · Focus ô nhập",
+      "page": "revamp"
+    },
+    "GDS-R1-04-Typing.dc.html": {
+      "x": 1030,
+      "y": 2372,
+      "w": 375,
+      "h": 812,
+      "title": "GDS · Đang nhập",
+      "page": "revamp"
+    },
+    "Panel-RV-VEH.dc.html": {
+      "x": 80,
+      "y": 3312,
+      "w": 1400,
+      "h": 960,
+      "title": "Revamp · Chợ Tốt Xe",
+      "page": "revamp",
+      "radius": 20
+    },
+    "VEH-R1-02-Sheet.dc.html": {
+      "x": 120,
+      "y": 3412,
+      "w": 375,
+      "h": 812,
+      "title": "VEH · Sheet mặc định",
+      "page": "revamp"
+    },
+    "VEH-R1-03-Focus.dc.html": {
+      "x": 575,
+      "y": 3412,
+      "w": 375,
+      "h": 812,
+      "title": "VEH · Focus ô nhập",
+      "page": "revamp"
+    },
+    "VEH-R1-04-Typing.dc.html": {
+      "x": 1030,
+      "y": 3412,
+      "w": 375,
+      "h": 812,
+      "title": "VEH · Đang nhập",
+      "page": "revamp"
+    },
+    "Panel-RV-PTY.dc.html": {
+      "x": 80,
+      "y": 4352,
+      "w": 1400,
+      "h": 960,
+      "title": "Revamp · Nhà Tốt",
+      "page": "revamp",
+      "radius": 20
+    },
+    "PTY-R1-02-Sheet.dc.html": {
+      "x": 120,
+      "y": 4452,
+      "w": 375,
+      "h": 812,
+      "title": "PTY · Sheet mặc định",
+      "page": "revamp"
+    },
+    "PTY-R1-03-Focus.dc.html": {
+      "x": 575,
+      "y": 4452,
+      "w": 375,
+      "h": 812,
+      "title": "PTY · Focus ô nhập",
+      "page": "revamp"
+    },
+    "PTY-R1-04-Typing.dc.html": {
+      "x": 1030,
+      "y": 4452,
+      "w": 375,
+      "h": 812,
+      "title": "PTY · Đang nhập",
+      "page": "revamp"
     }
   },
   "createdOnFiles": {
@@ -732,7 +840,20 @@
     "R1-S3-NoPhone.dc.html",
     "R1-S4-AllSelected.dc.html",
     "R1-S5-LongText.dc.html",
-    "ChatSheetR1.dc.html"
+    "ChatSheetR1.dc.html",
+    "Section-RV.dc.html",
+    "Panel-RV-GDS.dc.html",
+    "GDS-R1-02-Sheet.dc.html",
+    "GDS-R1-03-Focus.dc.html",
+    "GDS-R1-04-Typing.dc.html",
+    "Panel-RV-VEH.dc.html",
+    "VEH-R1-02-Sheet.dc.html",
+    "VEH-R1-03-Focus.dc.html",
+    "VEH-R1-04-Typing.dc.html",
+    "Panel-RV-PTY.dc.html",
+    "PTY-R1-02-Sheet.dc.html",
+    "PTY-R1-03-Focus.dc.html",
+    "PTY-R1-04-Typing.dc.html"
   ],
   "pages": [
     {

@@ -19,11 +19,18 @@
     </div>
 
       <div style="display: flex; gap: var(--gap-x-small-8); align-items: center; padding-left: var(--padding-small-12); border-left: 2px solid var(--border-active); background: var(--background-primary)">
+<sc-if value="{{jobThumb}}" hint-placeholder-val="{{true}}">
       <span style="width: 40px; height: 40px; flex: none; display: grid; place-items: center; border-radius: var(--radius-ad); background: var(--background-info-light); color: var(--icon-brand)">
         <svg width="20" height="20" viewBox="0 0 24 24" role="img" aria-label="Ảnh tin đăng"><path d="M20.5 10.433C20.499 9.771 19.925 9.16 19.125 9.16H4.875C4.074 9.16 3.5 9.771 3.5 10.433V17.253L3.506 17.377C3.572 17.991 4.124 18.527 4.875 18.527H19.125C19.926 18.527 20.5 17.916 20.5 17.253V10.433ZM13.968 5.886C13.968 5.863 13.96 5.835 13.929 5.805C13.897 5.775 13.847 5.75 13.781 5.75H9.625C9.558 5.75 9.508 5.775 9.476 5.805C9.445 5.835 9.437 5.863 9.437 5.886V7.16H13.968V5.886ZM15.968 7.16H19.125C20.947 7.16 22.499 8.585 22.5 10.433V17.253C22.5 19.102 20.947 20.527 19.125 20.527H4.875C3.109 20.527 1.597 19.19 1.504 17.426L1.5 17.253V10.433C1.5 8.585 3.052 7.16 4.875 7.16H7.437V5.886C7.437 4.665 8.458 3.75 9.625 3.75H13.781C14.947 3.75 15.968 4.665 15.968 5.886V7.16Z" fill="currentColor"></path><path d="M13.2 11C13.752 11 14.2 11.447 14.2 12C14.2 12.552 13.752 13 13.2 13H10.2C9.647 13 9.2 12.552 9.2 12C9.2 11.447 9.647 11 10.2 11H13.2Z" fill="currentColor"></path></svg>
       </span>
+      </sc-if>
+      <sc-if value="{{photoThumb}}" hint-placeholder-val="{{false}}">
+      <span style="width: 40px; height: 40px; flex: none; display: grid; place-items: center; border-radius: var(--radius-ad); background: var(--background-tertiary); color: var(--icon-tertiary)">
+              <svg width="20" height="20" viewBox="0 0 24 24" role="img" aria-label="Ảnh tin đăng"><path d="M20 17.397C19.932 17.364 19.867 17.324 19.806 17.275L19.73 17.207L15.937 13.414L11.582 17.769C11.191 18.16 10.558 18.16 10.168 17.769L8.625 16.226L5.177 19.672C5.529 19.879 5.937 20 6.375 20H17.625C18.936 20 20 18.936 20 17.625V17.397ZM8.75 8.062C8.75 7.682 8.442 7.375 8.062 7.375C7.682 7.375 7.375 7.682 7.375 8.062C7.375 8.442 7.682 8.75 8.062 8.75C8.442 8.75 8.75 8.442 8.75 8.062ZM20 6.375C20 5.063 18.936 4 17.625 4H6.375C5.063 4 4 5.063 4 6.375V17.625C4 17.75 4.011 17.872 4.03 17.992L7.917 14.105L7.994 14.037C8.386 13.716 8.965 13.739 9.332 14.105L10.875 15.648L15.23 11.293L15.306 11.224C15.699 10.904 16.278 10.926 16.644 11.293L20 14.648V6.375ZM10.75 8.062C10.75 9.546 9.546 10.75 8.062 10.75C6.578 10.75 5.375 9.546 5.375 8.062C5.375 6.578 6.578 5.375 8.062 5.375C9.546 5.375 10.75 6.578 10.75 8.062ZM22 17.625C22 20.041 20.041 22 17.625 22H6.375C3.958 22 2 20.041 2 17.625V6.375C2 3.958 3.958 2 6.375 2H17.625C20.041 2 22 3.958 22 6.375V17.625Z" fill="currentColor"></path></svg>
+            </span>
+      </sc-if>
       <div style="min-width: 0; flex: 1; display: flex; flex-direction: column; gap: var(--gap-min-2)">
-        <div class="t-tagline-caption clip1" style="color: var(--text-secondary)">GIÁM SÁT &amp; NV TẠP VỤ VỆ SINH BẾN LỨC LONG AN</div>
+        <div class="t-tagline-caption clip1" style="color: var(--text-secondary)">{{title}}</div>
         <div class="t-label-section clip1" style="color: var(--text-tertiary)">{{price}}</div>
       </div>
     </div>
@@ -122,6 +129,8 @@ class Component extends DCLogic {
     const chipsFade = rowW > 317;
     return {
       price: c.price || '8.000.000 đ - 9.000.000 đ/tháng',
+      title: c.title || 'GIÁM SÁT & NV TẠP VỤ VỆ SINH BẾN LỨC LONG AN',
+      jobThumb: (c.thumb || 'job') === 'job', photoThumb: c.thumb === 'photo',
       showCb: c.showCb ?? true,
       hasSel: selected.length > 0,
       selRows, chipsFade, chipsPr: chipsFade ? 40 : 12,
