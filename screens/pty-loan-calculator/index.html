@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dự toán khoản vay</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ds-tokens:start */
+/* DS tokens: Nhà Tốt (PTY), Figma export 2026-10-14. Inserted by scripts/ds_tokens.py inline; do not edit. */
+:root {
+  --logo-primary: #fa6819;
+  --logo-secondary: #ffba00;
+  --logo-on-black: #ffffff;
+  --border-divider: #f4f4f4;
+  --border-thin: #e8e8e8;
+  --border-overlay: #ffffff80;
+  --border-regular: #dddddd;
+  --border-bold: #8c8c8c;
+  --border-active: #fa6819;
+  --border-blank: #ffffff;
+  --border-brand: #fa6819;
+  --border-info: #306bd9;
+  --border-success: #12a154;
+  --border-error: #f0325e;
+  --border-warning: #fb7328;
+  --border-disabled: #c0c0c0;
+  --border-black: #222222;
+  --background-brand-light: #fff1e3;
+  --background-chotot-light: #fff8d6;
+  --background-primary: #ffffff;
+  --background-app: #f7f7f7;
+  --background-secondary: #f4f4f4;
+  --background-tertiary: #e8e8e8;
+  --background-disable: #c0c0c0;
+  --background-error-light: #feebef;
+  --background-info-light: #f2f6fc;
+  --background-success-light: #ecf9f1;
+  --background-warning-light: #fff4ec;
+  --background-brand: #fa6819;
+  --background-appwrapper: #ffd400;
+  --background-chotot: #ffd400;
+  --background-info: #306bd9;
+  --background-error: #f0325e;
+  --background-success: #12a154;
+  --background-warning: #fb7328;
+  --background-inverted: #222222;
+  --background-overlay: #22222280;
+  --background-overlay-inverted: #ffffff1a;
+  --text-brand: #fa6819;
+  --text-on-background: #ffffff;
+  --text-primary: #222222;
+  --text-secondary: #595959;
+  --text-tertiary: #8c8c8c;
+  --text-link: #306bd9;
+  --text-error: #f0325e;
+  --text-success: #12a154;
+  --text-info: #306bd9;
+  --text-warning: #fb7328;
+  --text-chotot: #ffd400;
+  --text-disabled: #c0c0c0;
+  --text-blank: #ffffff;
+  --text-overlay: #ffffffbf;
+  --text-overlay-secondary: #ffffff80;
+  --icon-brand: #fa6819;
+  --icon-chotot: #ffba00;
+  --icon-chotot-bold: #cc8f00;
+  --icon-on-background: #ffffff;
+  --icon-primary: #222222;
+  --icon-secondary: #595959;
+  --icon-tertiary: #8c8c8c;
+  --icon-blank: #ffffff;
+  --icon-info: #306bd9;
+  --icon-success: #12a154;
+  --icon-error: #f0325e;
+  --icon-warning: #fb7328;
+  --icon-disabled: #c0c0c0;
+  --interaction-chotot-hover: #ffe884;
+  --interaction-chotot-pressed: #ffc800;
+  --interaction-brand-hover: #fb7328;
+  --interaction-brand-pressed: #d14200;
+  --interaction-error-hover: #f35b7e;
+  --interaction-error-pressed: #cb294e;
+  --interaction-info-hover: #548af0;
+  --interaction-info-pressed: #1952ba;
+  --interaction-success-hover: #26c06e;
+  --interaction-success-pressed: #108446;
+  --interaction-warning-hover: #ffa97b;
+  --interaction-warning-pressed: #e16725;
+  --interaction-neutral-hover: #595959;
+  --interaction-neutral-pressed: #404040;
+  --interaction-primary-hover: #f4f4f4;
+  --interaction-brand-light-hover: #ffe5cf;
+  --interaction-brand-light-pressed: #ffcfab;
+  --interaction-error-light-hover: #fcd6df;
+  --interaction-error-light-pressed: #fbc2cf;
+  --interaction-info-light-hover: #e4ecfb;
+  --interaction-info-light-pressed: #cadbf7;
+  --interaction-success-light-hover: #d9f2e4;
+  --interaction-success-light-pressed: #abe7c5;
+  --interaction-warning-light-hover: #ffe4d5;
+  --interaction-warning-light-pressed: #ffceb4;
+  --interaction-neutral-light-hover: #e8e8e8;
+  --interaction-neutral-light-pressed: #dddddd;
+  --button-primary: #fa6819;
+  --button-info: #306bd9;
+  --button-success: #12a154;
+  --button-error: #f0325e;
+  --button-chotot: #ffd400;
+  --button-blank: #ffffff;
+  --button-disabled: #c0c0c0;
+  --button-appwrapper: #fa6819;
+  --button-neutral: #222222;
+  --button-secondary: #fff1e3;
+  --button-tonal-success: #ecf9f1;
+  --button-tonal-error: #feebef;
+  --button-tonal-info: #f2f6fc;
+  --button-tonal-neutral: #f4f4f4;
+  --skeleton-background: #f4f4f4;
+  --skeleton-item: #e8e8e8;
+  --gap-min-2: 2px;
+  --gap-2x-small-4: 4px;
+  --gap-2x-small-6: 6px;
+  --gap-x-small-8: 8px;
+  --gap-small-12: 12px;
+  --gap-medium-16: 16px;
+  --gap-large-20: 20px;
+  --padding-min-2: 2px;
+  --padding-2x-small-4: 4px;
+  --padding-2x-small-6: 6px;
+  --padding-x-small-8: 8px;
+  --padding-small-12: 12px;
+  --padding-medium-16: 16px;
+  --padding-large-20: 20px;
+  --radius-ad-small: 4px;
+  --radius-ad: 6px;
+  --radius-card-small: 8px;
+  --radius-card: 12px;
+  --radius-decoration: 16px;
+  --radius-modal: 20px;
+  --radius-pill: 999px;
+  --stroke-divider: 1px;
+  --stroke-action: 2px;
+  --stroke-emphasize: 3px;
+}
+.t-display-page { font: 700 32px/40px 'Reddit Sans', sans-serif; }
+.t-display-section { font: 700 24px/32px 'Reddit Sans', sans-serif; }
+.t-display-caption { font: 700 20px/28px 'Reddit Sans', sans-serif; }
+.t-header-page { font: 600 20px/28px 'Reddit Sans', sans-serif; }
+.t-display-annotation { font: 700 18px/26px 'Reddit Sans', sans-serif; }
+.t-display-price { font: 600 18px/26px 'Reddit Sans', sans-serif; }
+.t-label-page { font: 700 16px/24px 'Reddit Sans', sans-serif; }
+.t-header-section { font: 600 16px/24px 'Reddit Sans', sans-serif; }
+.t-tagline-section { font: 500 16px/20px 'Reddit Sans', sans-serif; }
+.t-body-page { font: 400 16px/24px 'Reddit Sans', sans-serif; }
+.t-label-section { font: 700 14px/20px 'Reddit Sans', sans-serif; }
+.t-header-caption { font: 600 14px/20px 'Reddit Sans', sans-serif; }
+.t-tagline-caption { font: 500 14px/20px 'Reddit Sans', sans-serif; }
+.t-body-section { font: 400 14px/20px 'Reddit Sans', sans-serif; }
+.t-label-caption { font: 700 12px/18px 'Reddit Sans', sans-serif; }
+.t-header-annotation { font: 600 12px/18px 'Reddit Sans', sans-serif; }
+.t-tagline-annotation { font: 500 12px/18px 'Reddit Sans', sans-serif; }
+.t-body-caption { font: 400 12px/18px 'Reddit Sans', sans-serif; }
+.t-label-annotation { font: 700 10px/16px 'Reddit Sans', sans-serif; }
+.t-tagline-footext { font: 500 10px/16px 'Reddit Sans', sans-serif; }
+.t-body-annotation { font: 400 10px/16px 'Reddit Sans', sans-serif; }
+/* ds-tokens:end */
+
+/* ---- Reset chống tràn ngang ---- */
+* { margin:0; padding:0; box-sizing:border-box; }
+button, input { font: inherit; color: inherit; }
+button { background: none; border: 0; cursor: pointer; }
+
+/* ---- Trang demo (ngoài khung máy) ---- */
+body { /* ds-raw: nền canvas trình diễn quanh khung iPhone, không thuộc màn */
+  display:flex; justify-content:center; align-items:flex-start; gap:48px; flex-wrap:wrap;
+  min-height:100vh; padding:40px 16px; background:#dfe1e5;
+  font-family:'Reddit Sans', sans-serif; color:var(--text-primary); -webkit-font-smoothing:antialiased; }
+
+.demo-panel { width:240px; display:flex; flex-direction:column; gap:var(--gap-x-small-8);
+  background:var(--background-primary); border-radius:var(--radius-card); padding:var(--padding-medium-16); }
+.demo-panel p { color:var(--text-secondary); }
+.demo-btn { height:32px; padding:0 var(--padding-small-12); border-radius:var(--radius-card-small);
+  border:1px solid var(--border-regular); background:var(--background-primary); text-align:left; }
+.demo-btn:hover { background:var(--interaction-primary-hover); }
+.demo-btn:focus-visible { outline:2px solid var(--border-info); outline-offset:2px; }
+
+/* ---- Khung iPhone 14 Pro ---- */
+.iphone { position:relative; width:393px; height:806px; flex-shrink:0;
+  background:#1c1c1e; border-radius:56px; padding:9px;
+  box-shadow:0 0 0 2px #3a3a3c, 0 24px 60px rgba(0,0,0,.35); }
+.iphone-screen { position:relative; width:375px; height:788px; border-radius:47px; overflow:hidden;
+  background:var(--background-app); }
+.dynamic-island { position:absolute; top:11px; left:50%; transform:translateX(-50%);
+  width:120px; height:34px; background:#000; border-radius:20px; z-index:9999; }
+.app-scroll { position:absolute; inset:0; overflow-y:auto; overflow-x:hidden;
+  display:flex; flex-direction:column; scrollbar-width:none; background:var(--background-app); }
+.app-scroll::-webkit-scrollbar { display:none; }
+.ios-statusbar { position:sticky; top:0; z-index:20; height:50px; flex-shrink:0;
+  display:flex; align-items:flex-end; justify-content:space-between;
+  padding:0 26px 7px 32px; background:var(--background-primary);
+  color:var(--text-primary); font-size:14px; font-weight:600; }
+.ios-statusbar .icons { display:flex; gap:5px; align-items:center; }
+.home-indicator { position:sticky; bottom:0; z-index:20; flex-shrink:0;
+  width:134px; height:5px; margin:6px auto 8px; border-radius:3px; background:rgba(0,0,0,.85); }
+
+/* ---- Icon ---- */
+.ds-icon { width:24px; height:24px; flex:none; color:var(--icon-primary); vertical-align:middle; }
+.ds-icon--20 { width:20px; height:20px; }
+.ds-icon--16 { width:16px; height:16px; }
+
+/* ---- App bar ---- */
+.appbar { position:sticky; top:50px; z-index:19; height:48px; flex-shrink:0;
+  display:grid; grid-template-columns:48px 1fr 48px; align-items:center;
+  background:var(--background-primary); border-bottom:1px solid var(--border-thin); }
+.appbar h1 { text-align:center; color:var(--text-primary); }
+.icon-btn { width:40px; height:40px; padding:var(--padding-2x-small-4); border-radius:var(--radius-pill);
+  display:inline-flex; align-items:center; justify-content:center; justify-self:center; }
+.icon-btn:hover { background:var(--interaction-primary-hover); }
+.icon-btn:active { background:var(--interaction-neutral-light-pressed); }
+.icon-btn:focus-visible { outline:2px solid var(--border-info); outline-offset:2px; }
+
+/* ---- Nội dung ---- */
+.content { flex:1; display:flex; flex-direction:column; gap:var(--gap-small-12);
+  padding:var(--padding-small-12) var(--padding-medium-16) var(--padding-large-20); }
+.intro { color:var(--text-secondary); padding:0 var(--padding-2x-small-4); }
+.card { background:var(--background-primary); border-radius:var(--radius-card); padding:var(--padding-medium-16);
+  display:flex; flex-direction:column; }
+.card.inputs { gap:var(--gap-large-20); }
+.card.result { gap:var(--gap-medium-16); }
+.block { display:flex; flex-direction:column; gap:var(--gap-x-small-8); }
+
+/* ---- Input Field Currency (floating label) ---- */
+.field { display:flex; flex-direction:column; gap:var(--gap-2x-small-4); }
+.inp-box { height:48px; display:flex; align-items:center; gap:var(--gap-small-12);
+  padding:var(--padding-min-2) var(--padding-medium-16); border:2px solid var(--border-thin);
+  border-radius:var(--radius-card); background:var(--background-primary); transition:border-color .15s ease; }
+.inp-box:hover, .inp-box.filled:focus-within { border-color:var(--border-black); }
+.inp-box.error, .inp-box.error:hover, .inp-box.error:focus-within { border-color:var(--border-error); }
+.inp-main { flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center; }
+.flabel { display:none; color:var(--text-primary); }
+.inp-box.filled .flabel, .inp-box:focus-within .flabel { display:block; }
+.inp-box.error .flabel { color:var(--text-error); }
+.req { color:var(--text-error); }
+.inp-main input { width:100%; border:0; outline:0; background:transparent; color:var(--text-primary); }
+.inp-main input::placeholder { color:var(--text-secondary); }
+.unit { flex:none; color:var(--text-tertiary); }
+.inp-box.filled .unit { color:var(--text-primary); }
+.clr { flex:none; width:32px; height:32px; margin:0 calc(-1 * var(--gap-x-small-8)); border-radius:var(--radius-pill);
+  display:none; align-items:center; justify-content:center; }
+.inp-box.filled .clr { display:inline-flex; }
+.clr .ds-icon { color:var(--icon-tertiary); }
+.clr:hover { background:var(--interaction-primary-hover); }
+.clr:focus-visible { outline:2px solid var(--border-info); }
+.help { color:var(--text-secondary); padding:0 var(--padding-medium-16); }
+.help.err { color:var(--text-error); }
+.help[hidden] { display:none; }
+.shake { animation:shake .3s ease; }
+@keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-4px)} 75%{transform:translateX(4px)} }
+
+/* ---- Chip M-32 Outline ---- */
+.sug { display:flex; align-items:center; gap:var(--gap-x-small-8); }
+.sug[hidden] { display:none; }
+.sug-l { flex:none; color:var(--text-secondary); }
+.hscroll { display:flex; gap:var(--gap-x-small-8); overflow-x:auto; scrollbar-width:none;
+  margin:0 calc(-1 * var(--padding-medium-16)); padding:var(--padding-min-2) var(--padding-medium-16); }
+.sug .hscroll { margin-left:0; padding-left:0; }
+.hscroll::-webkit-scrollbar { display:none; }
+.chip { flex:none; height:32px; padding:var(--padding-2x-small-4) var(--padding-small-12); border-radius:var(--radius-pill);
+  border:1px solid var(--border-regular); background:var(--background-primary); color:var(--text-primary);
+  display:inline-flex; align-items:center; gap:var(--gap-2x-small-4); white-space:nowrap; transition:background .15s ease; }
+.chip:hover { background:var(--interaction-neutral-light-hover); }
+.chip[aria-pressed="true"] { background:var(--background-secondary); border-color:var(--border-black); }
+.chip:focus-visible { outline:2px solid var(--border-info); outline-offset:2px; }
+
+/* ---- Thẻ lãi suất ngân hàng (component ghép) ---- */
+.sub-l { color:var(--text-secondary); }
+.bank { flex:none; min-width:88px; padding:var(--padding-x-small-8) var(--padding-small-12);
+  border:1px solid var(--border-regular); border-radius:var(--radius-card); background:var(--background-primary);
+  display:flex; flex-direction:column; align-items:flex-start; gap:var(--gap-2x-small-4); text-align:left;
+  transition:background .15s ease; }
+.bank:hover { background:var(--interaction-neutral-light-hover); }
+.bank[aria-pressed="true"] { background:var(--background-secondary); border-color:var(--border-black); }
+.bank:focus-visible { outline:2px solid var(--border-info); outline-offset:2px; }
+.bank-top { display:flex; align-items:center; gap:var(--gap-2x-small-6); }
+.bank-name { color:var(--text-secondary); }
+.logo { flex:none; width:20px; height:20px; border-radius:var(--radius-pill); background:var(--background-tertiary);
+  color:var(--text-secondary); display:inline-flex; align-items:center; justify-content:center; overflow:hidden; }
+.logo.lg { width:32px; height:32px; }
+.bank-more { align-self:stretch; height:auto; min-height:58px; }
+
+/* ---- Slider (DS chưa có) ---- */
+.rng-wrap { display:flex; flex-direction:column; gap:var(--gap-2x-small-4); padding-top:var(--padding-x-small-8); }
+.rng { --p:0%; -webkit-appearance:none; appearance:none; width:100%; height:24px; background:transparent; cursor:pointer; }
+.rng:focus-visible { outline:2px solid var(--border-info); outline-offset:4px; border-radius:var(--radius-pill); }
+.rng::-webkit-slider-runnable-track { height:4px; border-radius:var(--radius-pill);
+  background:linear-gradient(to right, var(--background-brand) var(--p), var(--background-tertiary) var(--p)); }
+.rng::-moz-range-track { height:4px; border-radius:var(--radius-pill); background:var(--background-tertiary); }
+.rng::-moz-range-progress { height:4px; border-radius:var(--radius-pill); background:var(--background-brand); }
+.rng::-webkit-slider-thumb { /* ds-raw: căn thumb 24px giữa track 4px */
+  -webkit-appearance:none; width:24px; height:24px; margin-top:-10px; border-radius:var(--radius-pill);
+  background:var(--background-primary); border:2px solid var(--border-brand); box-shadow:0px 4px 8px 0px rgba(89,89,89,0.15); }
+.rng::-moz-range-thumb { width:20px; height:20px; border-radius:var(--radius-pill);
+  background:var(--background-primary); border:2px solid var(--border-brand); }
+.rng-l { display:flex; justify-content:space-between; color:var(--text-tertiary); }
+
+/* ---- Kết quả ---- */
+.res-title { display:flex; align-items:center; gap:var(--gap-x-small-8); color:var(--text-primary); }
+.res-title .ds-icon { color:var(--icon-brand); }
+.hero { background:var(--background-brand-light); border-radius:var(--radius-card-small); padding:var(--padding-medium-16);
+  display:flex; flex-direction:column; gap:var(--gap-2x-small-4); }
+.hero-k { color:var(--text-secondary); }
+.hero-v { color:var(--text-primary); }
+.hero-v .nw { white-space:nowrap; }
+.hero-v.empty { color:var(--text-tertiary); }
+.hero-s { color:var(--text-secondary); }
+.hero-s b { color:var(--text-primary); font-weight:600; }
+.rows { display:flex; flex-direction:column; }
+.row { display:flex; justify-content:space-between; align-items:baseline; gap:var(--gap-small-12);
+  padding:var(--padding-x-small-8) 0; border-bottom:1px solid var(--border-divider); }
+.row .k { color:var(--text-secondary); flex:none; }
+.row .v { color:var(--text-primary); text-align:right; }
+.row.total { border-bottom:0; border-top:1px solid var(--border-thin); padding-top:var(--padding-small-12); }
+.row.total .k { color:var(--text-primary); }
+.flash { animation:flash .4s ease; }
+@keyframes flash { from{opacity:.35} to{opacity:1} }
+
+/* ---- Button ---- */
+.btn { height:40px; padding:var(--padding-2x-small-4) var(--padding-small-12); border-radius:var(--radius-card-small);
+  display:inline-flex; align-items:center; justify-content:center; gap:var(--gap-2x-small-4); white-space:nowrap;
+  transition:background .15s ease; }
+.btn:focus-visible { outline:2px solid var(--border-info); outline-offset:2px; }
+.btn.primary { width:100%; background:var(--button-primary); color:var(--text-on-background); }
+.btn.primary:hover { background:var(--interaction-brand-hover); }
+.btn.primary:active { background:var(--interaction-brand-pressed); }
+.btn.primary:disabled { background:var(--button-disabled); color:var(--text-blank); cursor:not-allowed; }
+.btn.tertiary { height:32px; background:var(--button-blank); border:1px solid var(--border-regular); color:var(--text-primary); }
+.btn.tertiary:hover { background:var(--interaction-primary-hover); }
+.btn.tertiary:active { background:var(--interaction-neutral-light-pressed); }
+.btn.tertiary:disabled { color:var(--text-disabled); cursor:progress; }
+.btn.tertiary:disabled .ds-icon { color:var(--icon-disabled); }
+.spin { width:16px; height:16px; border-radius:var(--radius-pill); border:2px solid var(--border-thin);
+  border-top-color:var(--border-bold); animation:spin .7s linear infinite; }
+@keyframes spin { to { transform:rotate(360deg); } }
+
+/* ---- Announcer ---- */
+.ann { border-radius:var(--radius-card); padding:var(--padding-small-12) var(--padding-medium-16);
+  display:flex; gap:var(--gap-x-small-8); align-items:flex-start; color:var(--text-primary); }
+.ann.neutral { background:var(--background-secondary); }
+.ann.neutral .ds-icon { color:var(--icon-secondary); }
+.ann.success { background:var(--background-success-light); }
+.ann.success .ds-icon { color:var(--icon-success); }
+.ann.error { background:var(--background-error-light); }
+.ann.error .ds-icon { color:var(--icon-error); }
+.ann[hidden] { display:none; }
+.ann.success .ic-err, .ann.error .ic-ok { display:none; }
+
+/* ---- Drawer (bottom sheet) ---- */
+.overlay { position:absolute; inset:0; z-index:40; background:var(--background-overlay);
+  display:flex; align-items:flex-end; opacity:0; pointer-events:none; transition:opacity .3s ease; }
+.overlay.open { opacity:1; pointer-events:auto; }
+.sheet { width:100%; max-height:76%; display:flex; flex-direction:column; background:var(--background-primary);
+  border-radius:var(--radius-modal) var(--radius-modal) 0 0; box-shadow:0px 4px 16px 0px rgba(34,34,34,0.12);
+  transform:translateY(100%); transition:transform .3s ease; }
+.sheet.full { height:calc(100% - 58px); max-height:none; }
+.overlay.open .sheet { transform:translateY(0); }
+.s-head { height:48px; flex:none; display:grid; grid-template-columns:48px 1fr 48px; align-items:center;
+  border-bottom:1px solid var(--border-thin); }
+.s-head h2 { text-align:center; color:var(--text-primary); }
+.s-body { flex:1; overflow-y:auto; padding:var(--padding-medium-16) var(--padding-large-20); scrollbar-width:none; }
+.s-body::-webkit-scrollbar { display:none; }
+.s-top { flex:none; padding:var(--padding-medium-16) var(--padding-large-20) 0; display:flex; flex-direction:column; gap:var(--gap-small-12); }
+.s-foot { flex:none; height:34px; }
+
+/* Search field */
+.search { height:48px; display:flex; align-items:center; gap:var(--gap-x-small-8); padding:0 var(--padding-small-12);
+  border:2px solid var(--border-thin); border-radius:var(--radius-card); }
+.search:hover, .search:focus-within { border-color:var(--border-black); }
+.search input { flex:1; min-width:0; border:0; outline:0; background:transparent; }
+.search input::placeholder { color:var(--text-secondary); }
+.search .clr { display:none; }
+.search.filled .clr { display:inline-flex; }
+
+/* Danh sách ngân hàng */
+.opt { width:100%; min-height:56px; display:flex; align-items:center; gap:var(--gap-small-12);
+  padding:var(--padding-x-small-8) 0; border-bottom:1px solid var(--border-divider); text-align:left; }
+.opt:hover { background:var(--interaction-primary-hover); }
+.opt:focus-visible { outline:2px solid var(--border-info); outline-offset:-2px; }
+.opt .on-name { flex:1; color:var(--text-primary); }
+.opt .on-rate { color:var(--text-primary); }
+.opt .chk { color:var(--icon-brand); visibility:hidden; }
+.opt[aria-selected="true"] .chk { visibility:visible; }
+.empty { display:flex; flex-direction:column; align-items:center; gap:var(--gap-x-small-8);
+  padding:var(--padding-large-20) var(--padding-medium-16); text-align:center; color:var(--text-secondary); }
+.empty .ds-icon { width:40px; height:40px; color:var(--icon-tertiary); }
+.empty[hidden] { display:none; }
+
+/* Lịch trả góp */
+.s-bar { display:flex; align-items:center; justify-content:space-between; gap:var(--gap-x-small-8); }
+.s-bar .sub { color:var(--text-secondary); }
+.m-head { display:flex; justify-content:space-between; padding:var(--padding-x-small-8) 0;
+  border-bottom:1px solid var(--border-thin); color:var(--text-tertiary); }
+.m-row { padding:var(--padding-small-12) 0; border-bottom:1px solid var(--border-divider);
+  display:flex; flex-direction:column; gap:var(--gap-min-2); }
+.m-top { display:flex; justify-content:space-between; color:var(--text-primary); }
+.m-sub { display:flex; gap:var(--gap-small-12); color:var(--text-secondary); }
+.m-left { color:var(--text-tertiary); }
+</style>
+</head>
+<body>
+<svg id="ds-icon-sprite" xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+<symbol id="ds-Arrowleft-outline" viewBox="0 0 24 24"><path d="M10.516 7.24C10.901 6.91 11.481 6.918 11.856 7.275C12.256 7.656 12.271 8.289 11.89 8.689L9.333 11.375H17L17.102 11.38C17.606 11.431 18 11.857 18 12.375C18 12.892 17.606 13.318 17.102 13.37L17 13.375H9.333L11.89 16.06L11.958 16.137C12.268 16.538 12.231 17.117 11.856 17.474C11.481 17.831 10.901 17.839 10.516 17.509L10.442 17.439L6.275 13.064C5.908 12.678 5.908 12.071 6.275 11.685L10.442 7.31L10.516 7.24Z" fill="currentColor"/></symbol>
+<symbol id="ds-Close-fill" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.486 2 2 6.486 2 12C2 17.513 6.486 22 12 22C17.513 22 22 17.513 22 12C22 6.486 17.513 2 12 2ZM15.707 8.292C15.316 7.902 14.683 7.902 14.292 8.292L11.999 10.585L9.706 8.292L9.63 8.224C9.238 7.904 8.659 7.926 8.292 8.292C7.926 8.659 7.904 9.238 8.224 9.63L8.292 9.706L10.585 11.999L8.292 14.292C7.902 14.683 7.902 15.316 8.292 15.707C8.683 16.097 9.316 16.097 9.706 15.707L11.999 13.414L14.292 15.707L14.369 15.775C14.761 16.095 15.34 16.073 15.707 15.707C16.073 15.34 16.095 14.761 15.775 14.369L15.707 14.292L13.414 11.999L15.707 9.706C16.097 9.316 16.097 8.683 15.707 8.292Z" fill="currentColor"/></symbol>
+<symbol id="ds-Money-outline" viewBox="0 0 24 24"><path d="M20.6 7.799C20.6 7.358 20.241 7 19.8 7H4.199C3.758 7 3.4 7.358 3.399 7.799V16.2C3.4 16.641 3.758 16.999 4.199 17H19.8C20.241 16.999 20.6 16.641 20.6 16.2V7.799ZM13.399 12C13.399 11.226 12.772 10.599 11.999 10.599C11.226 10.599 10.6 11.226 10.6 12C10.6 12.773 11.226 13.4 11.999 13.4C12.772 13.4 13.399 12.773 13.399 12ZM15.399 12C15.399 13.877 13.877 15.4 11.999 15.4C10.121 15.4 8.6 13.877 8.6 12C8.6 10.122 10.121 8.599 11.999 8.599C13.877 8.599 15.399 10.122 15.399 12ZM22.6 16.2C22.6 17.746 21.346 18.999 19.8 19H4.199C2.653 18.999 1.4 17.746 1.399 16.2V7.799C1.4 6.253 2.653 5 4.199 5H19.8C21.346 5 22.6 6.253 22.6 7.799V16.2Z" fill="currentColor"/></symbol>
+<symbol id="ds-Info-outline" viewBox="0 0 24 24"><path d="M20 12C20 7.581 16.418 4 12 4C7.581 4 4 7.581 4 12C4 16.418 7.581 20 12 20C16.418 20 20 16.418 20 12ZM11 16.5V12C11 11.447 11.447 11 12 11C12.552 11 13 11.447 13 12V16.5C13 17.052 12.552 17.5 12 17.5C11.447 17.5 11 17.052 11 16.5ZM11 8.665V8.625C11 8.072 11.447 7.625 12 7.625C12.552 7.625 13 8.072 13 8.625V8.665C12.999 9.217 12.552 9.665 12 9.665C11.447 9.665 11 9.217 11 8.665ZM22 12C22 17.522 17.522 22 12 22C6.477 22 2 17.522 2 12C2 6.477 6.477 2 12 2C17.522 2 22 6.477 22 12Z" fill="currentColor"/></symbol>
+<symbol id="ds-Close-outline" viewBox="0 0 24 24"><path d="M15.292 7.293C15.683 6.902 16.316 6.902 16.707 7.293C17.097 7.683 17.097 8.316 16.707 8.707L13.414 12L16.707 15.293L16.775 15.369C17.095 15.762 17.073 16.341 16.707 16.707C16.34 17.073 15.761 17.095 15.369 16.775L15.292 16.707L11.999 13.414L8.706 16.707C8.316 17.097 7.683 17.097 7.292 16.707C6.902 16.316 6.902 15.683 7.292 15.293L10.585 12L7.292 8.707L7.224 8.63C6.904 8.238 6.926 7.659 7.292 7.293C7.659 6.926 8.238 6.904 8.63 7.224L8.706 7.293L11.999 10.586L15.292 7.293Z" fill="currentColor"/></symbol>
+<symbol id="ds-Search-outline" viewBox="0 0 24 24"><path d="M18.279 11.439C18.279 7.662 15.217 4.6 11.439 4.6C7.662 4.6 4.6 7.662 4.6 11.439C4.6 15.217 7.662 18.279 11.439 18.279C15.217 18.279 18.279 15.217 18.279 11.439ZM20.279 11.439C20.279 13.543 19.543 15.474 18.315 16.992L21.095 19.681L21.165 19.756C21.492 20.143 21.478 20.723 21.118 21.095C20.758 21.467 20.179 21.5 19.781 21.186L19.704 21.118L16.89 18.396C15.388 19.574 13.497 20.279 11.439 20.279C6.557 20.279 2.6 16.322 2.6 11.439C2.6 6.557 6.557 2.6 11.439 2.6C16.322 2.6 20.279 6.557 20.279 11.439Z" fill="currentColor"/></symbol>
+<symbol id="ds-Download-outline" viewBox="0 0 24 24"><path d="M3 18.892V15.204C3 14.652 3.447 14.204 4 14.204C4.517 14.204 4.944 14.598 4.995 15.102L5 15.204V18.892L5.005 19.007C5.031 19.273 5.142 19.515 5.311 19.694L5.385 19.765C5.565 19.921 5.783 20 6 20H18L18.092 19.995C18.309 19.972 18.52 19.871 18.688 19.694L18.757 19.614C18.888 19.446 18.972 19.235 18.994 19.007L19 18.892V15.204C19 14.651 19.447 14.204 20 14.204C20.552 14.204 20.999 14.651 21 15.204V18.892L20.986 19.194C20.929 19.793 20.705 20.367 20.335 20.841L20.139 21.071C19.616 21.622 18.908 21.956 18.152 21.996L18 22H6C5.237 22 4.514 21.7 3.967 21.178L3.86 21.071C3.373 20.558 3.079 19.893 3.013 19.194L3 18.892ZM11.001 3C11.001 2.447 11.448 2 12.001 2C12.553 2 13.001 2.447 13.001 3V12.531L15.866 9.671C16.257 9.281 16.89 9.281 17.28 9.672C17.67 10.063 17.67 10.696 17.279 11.086L12.708 15.65C12.317 16.04 11.685 16.039 11.294 15.65L6.723 11.086L6.654 11.01C6.333 10.618 6.356 10.039 6.721 9.672C7.087 9.306 7.667 9.282 8.06 9.602L8.135 9.671L11.001 12.53V3Z" fill="currentColor"/></symbol>
+<symbol id="ds-CircleCheck-fill" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.522 22 22 17.522 22 12C22 6.477 17.522 2 12 2C6.477 2 2 6.477 2 12C2 17.522 6.477 22 12 22ZM16.831 9.823C17.297 9.47 17.372 8.826 17 8.385C16.627 7.944 15.947 7.872 15.482 8.225C14.41 9.038 13.438 10.297 12.674 11.461C12.311 12.014 11.982 12.565 11.699 13.07C11.612 12.979 11.524 12.891 11.438 12.805C10.923 12.295 10.365 11.809 9.951 11.524C9.469 11.192 8.794 11.293 8.443 11.75C8.092 12.207 8.199 12.846 8.681 13.179C8.946 13.361 9.404 13.75 9.876 14.218C10.35 14.689 10.763 15.164 10.978 15.504C11.184 15.83 11.564 16.021 11.964 16C12.364 15.979 12.719 15.749 12.886 15.404C13.211 14.732 13.791 13.634 14.508 12.541C15.239 11.429 16.054 10.412 16.831 9.823Z" fill="currentColor"/></symbol>
+<symbol id="ds-Warning-fill" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.422 4.821C10.166 2.392 13.833 2.392 15.578 4.821L15.746 5.072L15.771 5.116L21.441 15.339C21.796 15.924 22.138 16.761 21.944 17.669L21.896 17.857C21.361 19.678 19.668 21 17.67 21H6.33C4.456 21 2.85 19.838 2.216 18.192L2.103 17.857C1.815 16.877 2.179 15.963 2.558 15.339L8.228 5.116L8.254 5.072L8.422 4.821ZM11 16.224V16.264C11 16.816 11.448 17.264 12 17.264C12.552 17.264 12.999 16.816 13 16.264V16.224C13 15.672 12.552 15.224 12 15.224C11.447 15.224 11 15.672 11 16.224ZM11 8.414V12.9C11 13.452 11.448 13.9 12 13.9C12.552 13.9 13 13.452 13 12.9V8.414C12.999 7.861 12.552 7.414 12 7.414C11.448 7.414 11 7.861 11 8.414Z" fill="currentColor"/></symbol>
+<symbol id="ds-Chevronright-outline" viewBox="0 0 24 24"><path d="M16 11.999C16 12.265 15.894 12.519 15.707 12.707L10.707 17.707L10.63 17.775C10.238 18.095 9.659 18.073 9.292 17.707C8.926 17.34 8.904 16.761 9.224 16.369L9.292 16.292L13.585 11.999L9.292 7.706C8.902 7.316 8.902 6.683 9.292 6.292C9.683 5.902 10.316 5.902 10.707 6.292L15.707 11.292L15.773 11.366C15.919 11.544 16 11.767 16 11.999Z" fill="currentColor"/></symbol>
+<symbol id="ds-Check-outline" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M18.395 6.575C18.953 7.237 18.84 8.203 18.142 8.732C16.976 9.615 15.753 11.141 14.658 12.81C13.582 14.449 12.712 16.096 12.224 17.104C11.974 17.622 11.442 17.966 10.841 17.997C10.241 18.029 9.672 17.743 9.363 17.255C9.039 16.744 8.42 16.031 7.709 15.325C7.001 14.623 6.314 14.04 5.917 13.766C5.193 13.267 5.033 12.308 5.559 11.622C6.086 10.937 7.099 10.785 7.822 11.284C8.442 11.711 9.28 12.44 10.051 13.205C10.181 13.334 10.313 13.467 10.444 13.603C10.869 12.845 11.362 12.018 11.906 11.189C13.052 9.444 14.51 7.554 16.118 6.336C16.816 5.806 17.836 5.914 18.395 6.575Z" fill="currentColor"/></symbol>
+</svg>
+
+
+
+<!-- Bảng chọn trạng thái mẫu: chỉ để trình diễn, không thuộc màn -->
+<aside class="demo-panel" data-ds-context="reference" aria-label="Trạng thái mẫu">
+  <h2 class="t-header-caption">Trạng thái mẫu</h2>
+  <p class="t-body-caption">Chọn nhanh một trạng thái để xem hoặc chụp màn. Màn vẫn nhập tay được bình thường.</p>
+  <button type="button" class="demo-btn t-tagline-caption" data-demo="empty">Chưa nhập</button>
+  <button type="button" class="demo-btn t-tagline-caption" data-demo="filled">Có kết quả</button>
+  <button type="button" class="demo-btn t-tagline-caption" data-demo="error">Lỗi nhập liệu</button>
+  <button type="button" class="demo-btn t-tagline-caption" data-demo="bank">Sheet chọn ngân hàng</button>
+  <button type="button" class="demo-btn t-tagline-caption" data-demo="schedule">Sheet lịch trả góp</button>
+</aside>
+
+<div class="iphone" data-ds-context="reference">
+  <div class="iphone-screen">
+    <div class="dynamic-island" data-ds-context="reference"></div>
+
+    <div class="app-scroll" id="scroll"
+         data-ds-screen="pty-loan-calculator" data-ds-platform="app" data-ds-vertical="PTY"
+         data-ds-surface="page" data-ds-size="375x788" data-ds-bg="background-app">
+
+      <div class="ios-statusbar" data-ds-context="reference">
+        <span>9:41</span>
+        <span class="icons">
+          <svg width="18" height="12" viewBox="0 0 18 12" fill="none"><rect y="7" width="3" height="5" rx="1" fill="currentColor"/><rect x="5" y="5" width="3" height="7" rx="1" fill="currentColor"/><rect x="10" y="2.5" width="3" height="9.5" rx="1" fill="currentColor"/><rect x="15" width="3" height="12" rx="1" fill="currentColor"/></svg>
+          <svg width="17" height="12" viewBox="0 0 17 12" fill="none"><path d="M8.5 2.7c2.4 0 4.6.9 6.3 2.5l1.6-1.7C14.3 1.5 11.5.3 8.5.3S2.7 1.5.6 3.5l1.6 1.7C3.9 3.6 6.1 2.7 8.5 2.7Zm0 4.1c1.3 0 2.5.5 3.4 1.4l1.7-1.7c-1.4-1.3-3.2-2.1-5.1-2.1s-3.7.8-5.1 2.1l1.7 1.7c.9-.9 2.1-1.4 3.4-1.4Zm2 3.4L8.5 12l-2-1.8c.5-.6 1.2-.9 2-.9s1.5.3 2 .9Z" fill="currentColor"/></svg>
+          <svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x=".5" y=".5" width="21" height="11" rx="3" stroke="currentColor" stroke-opacity=".4"/><rect x="2" y="2" width="15" height="8" rx="1.6" fill="currentColor"/><path d="M23.5 4v4c.8-.3 1.3-1.1 1.3-2s-.5-1.7-1.3-2Z" fill="currentColor" fill-opacity=".4"/></svg>
+        </span>
+      </div>
+
+      <!-- App bar: brief không có, thêm cho màn đủ ngữ cảnh -->
+      <header class="appbar" data-ds="App Bar" data-ds-speculative="true" data-ds-bg="background-primary">
+        <button type="button" class="icon-btn" aria-label="Quay lại"
+                data-ds="Icon Button" data-ds-type="Ghost" data-ds-size="L-40" data-ds-state="Active" data-ds-pill="true" data-ds-icon="Arrowleft-outline">
+          <svg class="ds-icon" aria-hidden="true"><use href="#ds-Arrowleft-outline"/></svg>
+        </button>
+        <h1 class="t-header-section" data-ds-typo="header-section" data-ds-color="text-primary">Dự toán khoản vay mua BĐS</h1>
+        <span aria-hidden="true"></span>
+      </header>
+
+      <main class="content" data-ds-pad="padding-small-12 padding-medium-16 padding-large-20" data-ds-gap="gap-small-12">
+        <p class="intro t-body-section" data-ds-typo="body-section" data-ds-color="text-secondary">Ước tính khoản trả hằng tháng, tiền lãi và tổng chi phí vay.</p>
+
+        <!-- ===== NHẬP LIỆU ===== -->
+        <section class="card inputs" aria-label="Thông tin khoản vay"
+                 data-ds="Loan Input Card" data-ds-bg="background-primary" data-ds-radius="radius-card"
+                 data-ds-pad="padding-medium-16" data-ds-gap="gap-large-20">
+
+          <!-- Số tiền vay -->
+          <div class="block" data-ds-gap="gap-x-small-8">
+            <div class="field" data-ds-gap="gap-2x-small-4">
+              <div class="inp-box" id="loanBox"
+                   data-ds="Input Field Currency" data-ds-state="Default" data-ds-radius="radius-card"
+                   data-ds-pad="padding-min-2 padding-medium-16" data-ds-gap="gap-small-12"
+                   data-ds-raw="clear × trong Input Currency: DS Currency không có clearText — cần designer chốt">
+                <div class="inp-main">
+                  <label class="flabel t-label-annotation" for="loan" data-ds-typo="label-annotation" data-ds-color="text-primary">Số tiền vay <span class="req">*</span></label>
+                  <input id="loan" class="t-body-section" type="text" inputmode="numeric" autocomplete="off"
+                         placeholder="Số tiền vay" data-ph="Nhập số tiền" aria-describedby="loanHelp loanErr"
+                         data-ds-typo="body-section" data-ds-color="text-primary">
+                </div>
+                <button type="button" class="clr" data-clear="loan" aria-label="Xoá số tiền đã nhập"
+                        data-ds="Icon Button" data-ds-type="Ghost" data-ds-size="M-32" data-ds-state="Active" data-ds-pill="true" data-ds-icon="Close-fill">
+                  <svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Close-fill"/></svg>
+                </button>
+                <span class="unit t-header-caption" data-ds-typo="header-caption" data-ds-color="text-tertiary">VNĐ</span>
+              </div>
+              <p class="help err t-body-annotation" id="loanErr" role="alert" hidden data-ds-typo="body-annotation" data-ds-color="text-error"></p>
+              <p class="help t-body-annotation" id="loanHelp" hidden data-ds-typo="body-annotation" data-ds-color="text-secondary" data-ds-content-rule="đọc số thành chữ, hiện khi số tiền > 0"></p>
+            </div>
+            <div class="sug" id="loanSug" data-ds-gap="gap-x-small-8" data-ds-visible-if="chưa chọn chip và không lỗi số âm">
+              <span class="sug-l t-body-caption" data-ds-typo="body-caption" data-ds-color="text-secondary">Gợi ý:</span>
+              <div class="hscroll" id="loanChips" role="group" aria-label="Gợi ý số tiền vay"></div>
+            </div>
+          </div>
+
+          <!-- Lãi suất -->
+          <div class="block" data-ds-gap="gap-x-small-8">
+            <div class="field" data-ds-gap="gap-2x-small-4">
+              <div class="inp-box" id="rateBox"
+                   data-ds="Input Field Currency" data-ds-state="Default" data-ds-radius="radius-card"
+                   data-ds-pad="padding-min-2 padding-medium-16" data-ds-gap="gap-small-12"
+                   data-ds-raw="currencyUnit = %/năm (không phải tiền) + clear × — cần designer chốt">
+                <div class="inp-main">
+                  <label class="flabel t-label-annotation" for="rate" data-ds-typo="label-annotation" data-ds-color="text-primary">Lãi suất <span class="req">*</span></label>
+                  <input id="rate" class="t-body-section" type="text" inputmode="decimal" autocomplete="off"
+                         placeholder="Lãi suất" data-ph="Nhập lãi suất" aria-describedby="rateErr"
+                         data-ds-typo="body-section" data-ds-color="text-primary">
+                </div>
+                <button type="button" class="clr" data-clear="rate" aria-label="Xoá lãi suất đã nhập"
+                        data-ds="Icon Button" data-ds-type="Ghost" data-ds-size="M-32" data-ds-state="Active" data-ds-pill="true" data-ds-icon="Close-fill">
+                  <svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Close-fill"/></svg>
+                </button>
+                <span class="unit t-header-caption" data-ds-typo="header-caption" data-ds-color="text-tertiary">%/năm</span>
+              </div>
+              <p class="help err t-body-annotation" id="rateErr" role="alert" hidden data-ds-typo="body-annotation" data-ds-color="text-error"></p>
+            </div>
+            <div class="block" role="group" aria-labelledby="rateSugL" data-ds-gap="gap-x-small-8">
+              <span class="sub-l t-tagline-annotation" id="rateSugL" data-ds-typo="tagline-annotation" data-ds-color="text-secondary">Lãi suất tham khảo</span>
+              <div class="hscroll" id="bankChips" data-ds-gap="gap-x-small-8" data-ds-content-rule="5 ngân hàng lãi thấp nhất, cuộn ngang; chọn ngân hàng ngoài top 5 thì thay vào vị trí 5"></div>
+            </div>
+          </div>
+
+          <!-- Thời gian vay -->
+          <div class="block" data-ds-gap="gap-x-small-8">
+            <div class="field" data-ds-gap="gap-2x-small-4">
+              <div class="inp-box" id="termBox"
+                   data-ds="Input Field Currency" data-ds-state="Default" data-ds-radius="radius-card"
+                   data-ds-pad="padding-min-2 padding-medium-16" data-ds-gap="gap-small-12"
+                   data-ds-raw="currencyUnit = tháng (không phải tiền) + clear × — cần designer chốt">
+                <div class="inp-main">
+                  <label class="flabel t-label-annotation" for="term" data-ds-typo="label-annotation" data-ds-color="text-primary">Thời gian vay <span class="req">*</span></label>
+                  <input id="term" class="t-body-section" type="text" inputmode="numeric" autocomplete="off"
+                         placeholder="Thời gian vay" data-ph="Nhập số tháng" aria-describedby="termHelp termErr"
+                         data-ds-typo="body-section" data-ds-color="text-primary">
+                </div>
+                <button type="button" class="clr" data-clear="term" aria-label="Xoá thời gian vay đã nhập"
+                        data-ds="Icon Button" data-ds-type="Ghost" data-ds-size="M-32" data-ds-state="Active" data-ds-pill="true" data-ds-icon="Close-fill">
+                  <svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Close-fill"/></svg>
+                </button>
+                <span class="unit t-header-caption" data-ds-typo="header-caption" data-ds-color="text-tertiary">tháng</span>
+              </div>
+              <p class="help err t-body-annotation" id="termErr" role="alert" hidden data-ds-typo="body-annotation" data-ds-color="text-error"></p>
+              <p class="help t-body-annotation" id="termHelp" role="status" hidden data-ds-typo="body-annotation" data-ds-color="text-secondary"></p>
+            </div>
+            <div class="sug" id="termSug" data-ds-gap="gap-x-small-8" data-ds-visible-if="chưa chọn chip (tự nhập / kéo slider / xoá thì hiện lại)">
+              <span class="sug-l t-body-caption" data-ds-typo="body-caption" data-ds-color="text-secondary">Gợi ý:</span>
+              <div class="hscroll" id="termChips" role="group" aria-label="Gợi ý thời gian vay"></div>
+            </div>
+            <div class="rng-wrap" data-ds="Slider" data-ds-raw="custom: DS chưa có Slider" data-ds-gap="gap-2x-small-4">
+              <input class="rng" id="rng" type="range" min="0" step="1" value="0" aria-label="Kéo để chọn thời gian vay"
+                     data-ds-content-rule="1–36 tháng bước 1 tháng; từ 36 tháng bước 6 tháng; tối đa 420 tháng">
+              <div class="rng-l t-body-caption" data-ds-typo="body-caption" data-ds-color="text-tertiary"><span>1 tháng</span><span>35 năm</span></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== KẾT QUẢ ===== -->
+        <section class="card result" aria-label="Kết quả dự toán" aria-live="polite"
+                 data-ds="Loan Result Card" data-ds-composite="Hero + Row list + Button Primary L-40 + Announcer Neutral"
+                 data-ds-bg="background-primary" data-ds-radius="radius-card" data-ds-pad="padding-medium-16" data-ds-gap="gap-medium-16">
+          <h2 class="res-title t-header-section" data-ds-typo="header-section" data-ds-color="text-primary" data-ds-gap="gap-x-small-8">
+            <svg class="ds-icon ds-icon--20" aria-hidden="true" data-ds-icon="Money-outline"><use href="#ds-Money-outline"/></svg>
+            Kết quả dự toán
+          </h2>
+
+          <div class="hero" id="hero" data-ds-bg="background-brand-light" data-ds-radius="radius-card-small" data-ds-pad="padding-medium-16" data-ds-gap="gap-2x-small-4">
+            <span class="hero-k t-body-section" data-ds-typo="body-section" data-ds-color="text-secondary">Tiền trả góp hằng tháng*</span>
+            <span class="hero-v empty t-display-caption" id="heroV" data-ds-typo="display-caption" data-ds-color="text-primary" data-ds-content-rule="khoảng tháng cuối – tháng đầu; xuống dòng sau dấu –, không cắt số">– VNĐ</span>
+            <span class="hero-s t-body-caption" id="heroS" data-ds-typo="body-caption" data-ds-color="text-secondary">Nhập số tiền vay, lãi suất và thời gian vay để xem kết quả</span>
+          </div>
+
+          <div class="rows" role="list">
+            <div class="row" role="listitem" data-ds-pad="padding-x-small-8"><span class="k t-body-section" data-ds-typo="body-section" data-ds-color="text-secondary">Số tiền vay</span><span class="v t-header-caption" id="rLoan" data-ds-typo="header-caption" data-ds-color="text-primary">–</span></div>
+            <div class="row" role="listitem"><span class="k t-body-section" data-ds-typo="body-section" data-ds-color="text-secondary">Lãi suất</span><span class="v t-header-caption" id="rRate" data-ds-typo="header-caption" data-ds-color="text-primary">–</span></div>
+            <div class="row" role="listitem"><span class="k t-body-section" data-ds-typo="body-section" data-ds-color="text-secondary">Thời gian vay</span><span class="v t-header-caption" id="rTerm" data-ds-typo="header-caption" data-ds-color="text-primary">–</span></div>
+            <div class="row" role="listitem"><span class="k t-body-section" data-ds-typo="body-section" data-ds-color="text-secondary">Số tiền lãi</span><span class="v t-header-caption" id="rInt" data-ds-typo="header-caption" data-ds-color="text-primary">–</span></div>
+            <div class="row total" role="listitem" data-ds-pad="padding-small-12"><span class="k t-label-section" data-ds-typo="label-section" data-ds-color="text-primary">Tổng tiền vay &amp; lãi</span><span class="v t-display-price" id="rTotal" data-ds-typo="display-price" data-ds-color="text-primary">–</span></div>
+          </div>
+
+          <button type="button" class="btn primary t-label-section" id="openSched" disabled aria-haspopup="dialog"
+                  data-ds="Button" data-ds-type="Primary" data-ds-size="L-40" data-ds-state="Disabled" data-ds-pill="false"
+                  data-ds-typo="label-section" data-ds-color="text-on-background" data-ds-on-tap="mở Drawer lịch trả góp"
+                  data-ds-visible-if="luôn hiện; Disabled khi thiếu hoặc lỗi một trong 3 ô">Xem lịch trả góp chi tiết</button>
+
+          <div class="ann neutral" role="note" data-ds="Announcer" data-ds-type="Neutral" data-ds-size="Mobile"
+               data-ds-radius="radius-card" data-ds-pad="padding-small-12 padding-medium-16" data-ds-gap="gap-x-small-8">
+            <svg class="ds-icon ds-icon--20" aria-hidden="true" data-ds-icon="Info-outline"><use href="#ds-Info-outline"/></svg>
+            <p class="t-body-caption" data-ds-typo="body-caption" data-ds-color="text-primary"><strong>*Kết quả chỉ mang tính tham khảo</strong>, không phải báo giá của ngân hàng. Khoản trả thực tế phụ thuộc vào ngân hàng, điều kiện của từng gói vay và lãi suất thả nổi sau thời gian ưu đãi. Cách tính: gốc trả đều, lãi tính trên dư nợ đầu kỳ.</p>
+          </div>
+        </section>
+      </main>
+
+      <div class="home-indicator" data-ds-context="reference"></div>
+    </div>
+
+    <!-- ===== DRAWER: CHỌN NGÂN HÀNG ===== -->
+    <div class="overlay" id="bankOv" data-ds-surface="bottom-sheet" data-ds-screen="pty-loan-calculator/bank-sheet" data-ds-dismiss="tap scrim · nút đóng · Esc · chọn một ngân hàng">
+      <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="bankTitle"
+           data-ds="Drawer" data-ds-type="Mobile" data-ds-radius="radius-modal">
+        <div class="s-head">
+          <button type="button" class="icon-btn" data-close="bankOv" aria-label="Đóng"
+                  data-ds="Icon Button" data-ds-type="Ghost" data-ds-size="L-40" data-ds-state="Active" data-ds-pill="true" data-ds-icon="Close-outline">
+            <svg class="ds-icon" aria-hidden="true"><use href="#ds-Close-outline"/></svg>
+          </button>
+          <h2 id="bankTitle" class="t-header-section" data-ds-typo="header-section" data-ds-color="text-primary">Lãi suất ưu đãi tham khảo</h2>
+          <span aria-hidden="true"></span>
+        </div>
+        <div class="s-top" data-ds-pad="padding-medium-16 padding-large-20">
+          <div class="search" id="qBox" data-ds="Input Field Search" data-ds-state="Default" data-ds-radius="radius-card">
+            <svg class="ds-icon" aria-hidden="true" data-ds-icon="Search-outline"><use href="#ds-Search-outline"/></svg>
+            <input id="q" class="t-body-section" type="text" autocomplete="off" placeholder="Tìm tên ngân hàng" aria-label="Tìm tên ngân hàng"
+                   data-ds-typo="body-section" data-ds-color="text-primary">
+            <button type="button" class="clr" id="qClr" aria-label="Xoá từ khoá tìm kiếm"
+                    data-ds="Icon Button" data-ds-type="Ghost" data-ds-size="M-32" data-ds-state="Active" data-ds-pill="true" data-ds-icon="Close-fill">
+              <svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Close-fill"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="s-body" data-ds-pad="padding-medium-16 padding-large-20">
+          <div class="empty" id="bankEmpty" hidden data-ds="Empty State" data-ds-raw="Empty State rút gọn: chưa có illustration Keyword - No result trong skill">
+            <svg class="ds-icon" aria-hidden="true" data-ds-icon="Search-outline"><use href="#ds-Search-outline"/></svg>
+            <p class="t-body-section" data-ds-typo="body-section" data-ds-color="text-secondary">Không tìm thấy ngân hàng phù hợp</p>
+            <button type="button" class="btn tertiary t-label-section" id="qReset"
+                    data-ds="Button" data-ds-type="Tertiary" data-ds-size="M-32" data-ds-state="Active" data-ds-pill="false" data-ds-typo="label-section">Xoá từ khoá</button>
+          </div>
+          <div role="listbox" id="bankList" aria-label="Danh sách ngân hàng"></div>
+        </div>
+        <div class="s-foot" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <!-- ===== DRAWER: LỊCH TRẢ GÓP ===== -->
+    <div class="overlay" id="schedOv" data-ds-surface="bottom-sheet" data-ds-screen="pty-loan-calculator/schedule-sheet" data-ds-dismiss="tap scrim · nút đóng · Esc">
+      <div class="sheet full" role="dialog" aria-modal="true" aria-labelledby="schedTitle"
+           data-ds="Drawer" data-ds-type="Mobile" data-ds-radius="radius-modal">
+        <div class="s-head">
+          <button type="button" class="icon-btn" data-close="schedOv" aria-label="Đóng"
+                  data-ds="Icon Button" data-ds-type="Ghost" data-ds-size="L-40" data-ds-state="Active" data-ds-pill="true" data-ds-icon="Close-outline">
+            <svg class="ds-icon" aria-hidden="true"><use href="#ds-Close-outline"/></svg>
+          </button>
+          <h2 id="schedTitle" class="t-header-section" data-ds-typo="header-section" data-ds-color="text-primary">Lịch trả góp từng tháng</h2>
+          <span aria-hidden="true"></span>
+        </div>
+        <div class="s-top" data-ds-pad="padding-medium-16 padding-large-20" data-ds-gap="gap-small-12">
+          <div class="s-bar">
+            <span class="sub t-body-caption" id="schedSub" data-ds-typo="body-caption" data-ds-color="text-secondary">Đơn vị: VNĐ</span>
+            <button type="button" class="btn tertiary t-label-section" id="dl"
+                    data-ds="Button" data-ds-type="Tertiary" data-ds-size="M-32" data-ds-state="Active" data-ds-pill="false"
+                    data-ds-icon="Download-outline" data-ds-typo="label-section" data-ds-color="text-primary" data-ds-on-tap="tải file CSV lich-tra-gop-chi-tiet.csv">
+              <svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Download-outline"/></svg><span>Tải lịch trả góp</span>
+            </button>
+          </div>
+          <div class="ann success" id="dlMsg" role="status" hidden data-ds="Announcer" data-ds-type="Success" data-ds-size="Mobile">
+            <svg class="ds-icon ds-icon--20 ic-ok" aria-hidden="true" data-ds-icon="CircleCheck-fill"><use href="#ds-CircleCheck-fill"/></svg>
+            <svg class="ds-icon ds-icon--20 ic-err" aria-hidden="true" data-ds-icon="Warning-fill" data-ds-visible-if="tải file lỗi"><use href="#ds-Warning-fill"/></svg>
+            <p class="t-body-caption" id="dlText" data-ds-typo="body-caption" data-ds-color="text-primary"></p>
+          </div>
+        </div>
+        <div class="s-body" data-ds-pad="padding-medium-16 padding-large-20">
+          <div class="m-head t-header-annotation" aria-hidden="true" data-ds-typo="header-annotation" data-ds-color="text-tertiary"><span>Kỳ</span><span>Tổng thanh toán</span></div>
+          <div role="list" id="schedList" aria-label="Lịch trả góp từng tháng"
+               data-ds="Schedule Row" data-ds-composite="header-caption + label-section / body-caption × 2 / body-caption"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function () {
+  /* ============ DỮ LIỆU & GIỚI HẠN (giữ nguyên bản PM) ============ */
+  var RATES = [
+    { bank: 'Agribank', mono: 'AGR', rate: 8.2 },
+    { bank: 'Techcombank', mono: 'TCB', rate: 9.2 },
+    { bank: 'ACB', mono: 'ACB', rate: 9.5 },
+    { bank: 'Vietcombank', mono: 'VCB', rate: 9.8 },
+    { bank: 'HDBank', mono: 'HDB', rate: 9.8 },
+    { bank: 'TPBank', mono: 'TPB', rate: 9.8 },
+    { bank: 'VietinBank', mono: 'CTG', rate: 10.5 },
+    { bank: 'BIDV', mono: 'BIDV', rate: 10.8 }
+  ].map(function (x, i) { x.i = i; return x; }).sort(function (a, b) { return a.rate - b.rate || a.i - b.i; });
+  var RATE_MAX = 30, TERM_MIN = 1, TERM_MAX = 420;
+  var LOAN_DEFAULT = [5e8, 1e9, 1.5e9, 2e9, 2.5e9];
+  var LOAN_LEVELS = []; for (var v = 5e8; v <= 5e9; v += 1e8) LOAN_LEVELS.push(v);
+  var TERM_SUG = [12, 60, 120, 240];
+  var STEPS = []; for (var m = 1; m <= 36; m++) STEPS.push(m); for (m = 42; m <= TERM_MAX; m += 6) STEPS.push(m);
+
+  /* ============ ĐỊNH DẠNG ============ */
+  function fmt(n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+  function vnd(n) { return fmt(n) + ' VNĐ'; }
+  function dec(x) { return String(Math.round(x * 100) / 100).replace('.', ','); }
+  function shortVnd(n) { return n >= 1e9 ? dec(n / 1e9) + ' tỷ' : Math.round(n / 1e6) + ' triệu'; }
+  function yearsLong(m) { var y = Math.floor(m / 12), mo = m % 12; if (!y) return mo + ' tháng'; return y + ' năm' + (mo ? ' ' + mo + ' tháng' : ''); }
+  function norm(t) { return String(t || '').normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[đĐ]/g, 'd').toLowerCase().trim(); }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+  // 350602000 -> "Ba trăm năm mươi triệu, sáu trăm lẻ hai nghìn VNĐ"
+  function words(n) {
+    if (!n || n < 1) return '';
+    var D = ['không', 'một', 'hai', 'ba', 'bốn', 'năm', 'sáu', 'bảy', 'tám', 'chín'];
+    function read3(g) {
+      var h = Math.floor(g / 100), t = Math.floor(g / 10) % 10, u = g % 10, p = [];
+      if (h > 0) p.push(D[h] + ' trăm');
+      if (t === 0) { if (u > 0) p.push((h > 0 ? 'lẻ ' : '') + D[u]); }
+      else if (t === 1) p.push('mười' + (u ? ' ' + (u === 5 ? 'lăm' : D[u]) : ''));
+      else p.push(D[t] + ' mươi' + (u ? ' ' + (u === 1 ? 'mốt' : u === 5 ? 'lăm' : D[u]) : ''));
+      return p.join(' ');
+    }
+    var parts = [], bil = Math.floor(n / 1e9);
+    if (bil > 0) { var th = Math.floor(bil / 1000), rest = bil % 1000; parts.push((th ? read3(th) + ' nghìn' + (rest ? ' ' : '') : '') + (rest ? read3(rest) : '') + ' tỷ'); }
+    [[1e6, 'triệu'], [1e3, 'nghìn'], [1, '']].forEach(function (u) { var g = Math.floor(n / u[0]) % 1000; if (g > 0) parts.push(read3(g) + (u[1] ? ' ' + u[1] : '')); });
+    var out = parts.join(', ') + ' VNĐ';
+    return out.charAt(0).toUpperCase() + out.slice(1);
+  }
+
+  /* ============ TRẠNG THÁI ============ */
+  var S = { loanS: '', loanNeg: false, loanPicked: false, rateS: '', rateBank: '', termS: '', termPicked: false, q: '' };
+
+  function inputs() {
+    var loan = S.loanS === '' ? null : parseInt(S.loanS, 10), loanErr = '';
+    if (S.loanNeg) loanErr = 'Số tiền vay không được là số âm.';
+    else if (loan !== null && !(loan > 0)) loanErr = 'Vui lòng nhập số tiền vay lớn hơn 0.';
+    var rate = S.rateS ? parseFloat(S.rateS.replace(',', '.')) : null, rateErr = '';
+    if (rate !== null && !isFinite(rate)) { rate = null; rateErr = 'Lãi suất không hợp lệ.'; }
+    else if (rate !== null && !(rate > 0)) rateErr = 'Vui lòng nhập lãi suất lớn hơn 0.';
+    else if (rate !== null && rate > RATE_MAX) rateErr = 'Lãi suất tối đa ' + RATE_MAX + '%/năm.';
+    var term = S.termS === '' ? null : parseInt(S.termS, 10), termErr = '';
+    if (term !== null && (term < TERM_MIN || term > TERM_MAX)) termErr = 'Thời gian vay từ ' + TERM_MIN + ' đến ' + TERM_MAX + ' tháng.';
+    var lo = !loanErr && loan !== null, ro = !rateErr && rate !== null, to = !termErr && term !== null;
+    return { loan: loan, loanErr: loanErr, loanOk: lo, rate: rate, rateErr: rateErr, rateOk: ro, term: term, termErr: termErr, termOk: to, ok: lo && ro && to };
+  }
+
+  // Gốc trả đều, lãi trên dư nợ đầu kỳ. Gốc làm tròn theo luỹ kế để tổng gốc = P.
+  function analyze(P, N, r) {
+    var mp = P / N, i = r / 100 / 12, rows = [], prev = 0, cum = 0, sumI = 0, bal = P;
+    for (var t = 1; t <= N; t++) {
+      var exInt = bal * i;
+      cum += (t === N ? bal : mp);
+      var rc = t === N ? Math.round(P) : Math.round(cum), prin = rc - prev, it = Math.round(exInt);
+      rows.push({ k: t, open: Math.round(P) - prev, prin: prin, int: it, total: prin + it, close: Math.round(P) - rc });
+      bal = t === N ? 0 : bal - mp; prev = rc; sumI += it;
+    }
+    return { rows: rows, N: N, totalInterest: sumI, totalPay: Math.round(P) + sumI, first: rows[0].total, last: rows[N - 1].total };
+  }
+
+  function loanSuggest(typed) {
+    if (!typed) return LOAN_DEFAULT;
+    var tier = function (v) { return v % 1e9 === 0 ? 0 : v % 5e8 === 0 ? 1 : 2; };
+    return LOAN_LEVELS.filter(function (v) { return String(v).indexOf(typed) === 0; })
+      .sort(function (a, b) { return tier(a) - tier(b) || a - b; }).slice(0, 5);
+  }
+
+  /* ============ DOM ============ */
+  var $ = function (id) { return document.getElementById(id); };
+  var el = { loan: $('loan'), rate: $('rate'), term: $('term'), rng: $('rng') };
+  el.rng.max = STEPS.length - 1;
+  var lastOk = false;
+
+  function setField(box, input, value, err, errEl) {
+    box.classList.toggle('filled', value !== '');
+    box.classList.toggle('error', !!err);
+    box.setAttribute('data-ds-state', err ? 'Error' : value !== '' ? 'Filled' : 'Default');
+    input.setAttribute('aria-invalid', err ? 'true' : 'false');
+    if (document.activeElement !== input || input.value !== value) input.value = value;
+    errEl.hidden = !err; errEl.textContent = err;
+  }
+
+  function chip(label, pressed, attrs) {
+    return '<button type="button" class="chip t-tagline-caption" aria-pressed="' + pressed + '" ' + attrs +
+      ' data-ds="Chip" data-ds-type="Outline" data-ds-size="M-32" data-ds-state="' + (pressed ? 'Selected' : 'Default') + '" data-ds-pill="true" data-ds-typo="tagline-caption">' + esc(label) + '</button>';
+  }
+
+  function render() {
+    var inp = inputs();
+
+    /* Ô nhập */
+    var loanTxt = S.loanS ? fmt(parseInt(S.loanS, 10)) : (S.loanNeg ? '-' : '');
+    setField($('loanBox'), el.loan, loanTxt, inp.loanErr, $('loanErr'));
+    $('loanBox').classList.toggle('filled', S.loanS !== '' || S.loanNeg);
+    var w = inp.loan > 0 && !S.loanNeg ? words(inp.loan) : '';
+    $('loanHelp').hidden = !w; $('loanHelp').textContent = w;
+
+    setField($('rateBox'), el.rate, S.rateS, inp.rateErr, $('rateErr'));
+    setField($('termBox'), el.term, S.termS, inp.termErr, $('termErr'));
+    var yt = inp.termOk ? 'Tương đương ' + yearsLong(inp.term) : '';
+    $('termHelp').hidden = !yt; $('termHelp').textContent = yt;
+
+    /* Gợi ý số tiền */
+    var ls = (S.loanNeg || S.loanPicked) ? [] : loanSuggest(S.loanS);
+    $('loanSug').hidden = !ls.length;
+    $('loanChips').innerHTML = ls.map(function (v) { return chip(shortVnd(v), S.loanS === String(v), 'data-loan="' + v + '"'); }).join('');
+
+    /* Ngân hàng: top 5, chọn ngoài top 5 thì thay vị trí 5 */
+    var extra = RATES.slice(5).filter(function (x) { return x.bank === S.rateBank; });
+    var top = extra.length ? RATES.slice(0, 4).concat(extra) : RATES.slice(0, 5);
+    $('bankChips').innerHTML = top.map(function (x) {
+      var on = S.rateBank === x.bank;
+      return '<button type="button" class="bank" aria-pressed="' + on + '" data-bank="' + esc(x.bank) + '" aria-label="' + esc(x.bank) + ', lãi suất ' + dec(x.rate) + '%/năm"' +
+        ' data-ds="Bank Rate Chip" data-ds-composite="Chip Outline + logo 20 + label-section + body-caption" data-ds-state="' + (on ? 'Selected' : 'Default') + '" data-ds-radius="radius-card" data-ds-pad="padding-x-small-8 padding-small-12">' +
+        '<span class="bank-top"><span class="logo t-label-annotation" aria-hidden="true" data-ds-raw="placeholder viết tắt — chờ logo ngân hàng chính thức">' + esc(x.mono.slice(0, 3)) + '</span>' +
+        '<span class="t-label-section" data-ds-typo="label-section" data-ds-color="text-primary">' + dec(x.rate) + '%</span></span>' +
+        '<span class="bank-name t-body-caption" data-ds-typo="body-caption" data-ds-color="text-secondary">' + esc(x.bank) + '</span></button>';
+    }).join('') +
+      '<button type="button" class="chip bank-more t-tagline-caption" id="moreBank" aria-haspopup="dialog" data-ds="Chip" data-ds-type="Outline" data-ds-size="M-32" data-ds-state="Default" data-ds-pill="true" data-ds-icon="Chevronright-outline" data-ds-typo="tagline-caption">Xem thêm' +
+      '<svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-Chevronright-outline"/></svg></button>';
+
+    /* Gợi ý thời gian + slider */
+    $('termSug').hidden = S.termPicked;
+    $('termChips').innerHTML = TERM_SUG.map(function (m) { return chip((m / 12) + ' năm', S.termS === String(m), 'data-term="' + m + '"'); }).join('');
+    var idx = 0;
+    if (inp.termOk) STEPS.forEach(function (v, i) { if (Math.abs(v - inp.term) < Math.abs(STEPS[idx] - inp.term)) idx = i; });
+    el.rng.value = idx;
+    el.rng.style.setProperty('--p', (idx / (STEPS.length - 1) * 100) + '%');
+    el.rng.setAttribute('aria-valuetext', inp.termOk ? yearsLong(inp.term) : 'Chưa chọn');
+
+    /* Kết quả */
+    $('rLoan').textContent = inp.loanOk ? vnd(inp.loan) : '–';
+    $('rRate').textContent = inp.rateOk ? dec(inp.rate) + '%/năm' : '–';
+    $('rTerm').textContent = inp.termOk ? inp.term + ' tháng (' + yearsLong(inp.term) + ')' : '–';
+    var heroV = $('heroV'), heroS = $('heroS');
+    if (inp.ok) {
+      var a = analyze(inp.loan, inp.term, inp.rate);
+      heroV.classList.remove('empty');
+      heroV.innerHTML = a.first === a.last
+        ? '<span class="nw">' + fmt(a.first) + ' VNĐ</span>'
+        : '<span class="nw">' + fmt(a.last) + ' –</span> <span class="nw">' + fmt(a.first) + ' VNĐ</span>';
+      heroS.innerHTML = a.first === a.last
+        ? 'Trả một lần ở tháng thứ nhất'
+        : 'Tháng đầu <b>' + vnd(a.first) + '</b>, giảm dần còn <b>' + vnd(a.last) + '</b> ở tháng cuối';
+      $('rInt').textContent = vnd(a.totalInterest);
+      $('rTotal').textContent = vnd(a.totalPay);
+      if (!lastOk) { $('hero').classList.remove('flash'); void $('hero').offsetWidth; $('hero').classList.add('flash'); }
+    } else {
+      heroV.classList.add('empty'); heroV.textContent = '– VNĐ';
+      heroS.textContent = (inp.loanErr || inp.rateErr || inp.termErr)
+        ? 'Hãy sửa các ô đang báo lỗi để xem kết quả'
+        : 'Nhập số tiền vay, lãi suất và thời gian vay để xem kết quả';
+      $('rInt').textContent = '–'; $('rTotal').textContent = '–';
+    }
+    lastOk = inp.ok;
+    var ob = $('openSched');
+    ob.disabled = !inp.ok;
+    ob.setAttribute('data-ds-state', inp.ok ? 'Active' : 'Disabled');
+
+    renderBankList();
+  }
+
+  function renderBankList() {
+    var list = RATES.filter(function (x) { return norm(x.bank).indexOf(norm(S.q)) !== -1; });
+    $('qBox').classList.toggle('filled', S.q !== '');
+    $('bankEmpty').hidden = list.length > 0;
+    $('bankList').innerHTML = list.map(function (x) {
+      var on = S.rateBank === x.bank;
+      return '<button type="button" class="opt" role="option" aria-selected="' + on + '" data-pick="' + esc(x.bank) + '"' +
+        ' data-ds="Bank Rate Row" data-ds-composite="logo 32 + tagline-caption + label-section + Check-outline">' +
+        '<span class="logo lg t-label-annotation" aria-hidden="true" data-ds-raw="placeholder viết tắt — chờ logo ngân hàng chính thức">' + esc(x.mono) + '</span>' +
+        '<span class="on-name t-tagline-caption" data-ds-typo="tagline-caption" data-ds-color="text-primary">' + esc(x.bank) + '</span>' +
+        '<span class="on-rate t-label-section" data-ds-typo="label-section" data-ds-color="text-primary">' + dec(x.rate) + '%/năm</span>' +
+        '<svg class="ds-icon ds-icon--20 chk" aria-hidden="true" data-ds-icon="Check-outline"><use href="#ds-Check-outline"/></svg></button>';
+    }).join('');
+  }
+
+  function renderSchedule() {
+    var inp = inputs(); if (!inp.ok) return;
+    var a = analyze(inp.loan, inp.term, inp.rate);
+    $('schedSub').textContent = 'Đơn vị: VNĐ · ' + a.N + ' kỳ thanh toán';
+    $('schedList').innerHTML = a.rows.map(function (x) {
+      return '<div class="m-row" role="listitem">' +
+        '<div class="m-top"><span class="t-header-caption">Tháng ' + x.k + '</span><span class="t-label-section">' + fmt(x.total) + '</span></div>' +
+        '<div class="m-sub t-body-caption"><span>Gốc ' + fmt(x.prin) + '</span><span>Lãi ' + fmt(x.int) + '</span></div>' +
+        '<div class="m-left t-body-caption">Dư nợ còn lại: ' + fmt(x.close) + '</div></div>';
+    }).join('');
+    return a;
+  }
+
+  function shake(box) { box.classList.remove('shake'); void box.offsetWidth; box.classList.add('shake'); }
+
+  /* ============ SỰ KIỆN ============ */
+  [el.loan, el.rate, el.term].forEach(function (i) {
+    i.addEventListener('focus', function () { i.placeholder = i.dataset.ph; });
+    i.addEventListener('blur', function () { i.placeholder = i.closest('.inp-box').querySelector('.flabel').firstChild.textContent.trim(); });
+  });
+  el.loan.addEventListener('input', function () {
+    var raw = el.loan.value;
+    S.loanPicked = false; S.loanNeg = /^\s*-/.test(raw);
+    S.loanS = raw.replace(/\D/g, '').replace(/^0+(?=\d)/, '').slice(0, 13);
+    render(); if (inputs().loanErr) shake($('loanBox'));
+  });
+  el.rate.addEventListener('input', function () {
+    S.rateS = el.rate.value.replace(/[^\d.,]/g, '').slice(0, 6); S.rateBank = '';
+    render(); if (inputs().rateErr) shake($('rateBox'));
+  });
+  el.term.addEventListener('input', function () {
+    S.termS = el.term.value.replace(/\D/g, '').replace(/^0+(?=\d)/, '').slice(0, 3); S.termPicked = false;
+    render(); if (inputs().termErr) shake($('termBox'));
+  });
+  el.rng.addEventListener('input', function () { S.termS = String(STEPS[+el.rng.value]); S.termPicked = false; render(); });
+
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('button'); if (!t) return;
+    if (t.dataset.clear) {
+      var k = t.dataset.clear;
+      if (k === 'loan') { S.loanS = ''; S.loanNeg = false; S.loanPicked = false; }
+      if (k === 'rate') { S.rateS = ''; S.rateBank = ''; }
+      if (k === 'term') { S.termS = ''; S.termPicked = false; }
+      render(); el[k].focus();
+    } else if (t.dataset.loan) { S.loanS = t.dataset.loan; S.loanNeg = false; S.loanPicked = true; render(); }
+    else if (t.dataset.term) { S.termS = t.dataset.term; S.termPicked = true; render(); }
+    else if (t.dataset.bank) { pickBank(t.dataset.bank); render(); }
+    else if (t.dataset.pick) { pickBank(t.dataset.pick); closeSheet('bankOv'); render(); }
+    else if (t.id === 'moreBank') openSheet('bankOv', t);
+    else if (t.id === 'openSched') { renderSchedule(); $('dlMsg').hidden = true; openSheet('schedOv', t); }
+    else if (t.dataset.close) closeSheet(t.dataset.close);
+    else if (t.id === 'qClr' || t.id === 'qReset') { S.q = ''; $('q').value = ''; renderBankList(); $('q').focus(); }
+    else if (t.id === 'dl') download(t);
+    else if (t.dataset.demo) demo(t.dataset.demo);
+  });
+  function pickBank(name) { var x = RATES.filter(function (r) { return r.bank === name; })[0]; S.rateS = dec(x.rate); S.rateBank = x.bank; }
+  $('q').addEventListener('input', function () { S.q = $('q').value; renderBankList(); });
+
+  /* Drawer: mở/đóng, Esc, chạm nền mờ, trả focus */
+  var opener = null;
+  function openSheet(id, from) {
+    opener = from || null;
+    if (id === 'bankOv') { S.q = ''; $('q').value = ''; renderBankList(); }
+    var ov = $(id); ov.classList.add('open');
+    setTimeout(function () { (id === 'bankOv' ? $('q') : ov.querySelector('[data-close]')).focus(); }, 300);
+  }
+  function closeSheet(id) { $(id).classList.remove('open'); if (opener && document.contains(opener)) opener.focus(); opener = null; }
+  ['bankOv', 'schedOv'].forEach(function (id) {
+    $(id).addEventListener('click', function (e) { if (e.target === $(id)) closeSheet(id); });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    ['bankOv', 'schedOv'].forEach(function (id) { if ($(id).classList.contains('open')) closeSheet(id); });
+  });
+
+  /* Tải CSV: có loading state + Announcer kết quả */
+  function download(btn) {
+    var inp = inputs(); if (!inp.ok) return;
+    var a = analyze(inp.loan, inp.term, inp.rate);
+    var lines = ['Kỳ thanh toán,Dư nợ đầu kỳ,Trả nợ gốc,Trả lãi,Tổng thanh toán,Dư nợ cuối kỳ'];
+    a.rows.forEach(function (x) { lines.push(['Tháng ' + x.k, x.open, x.prin, x.int, x.total, x.close].join(',')); });
+    var label = btn.innerHTML;
+    btn.disabled = true; btn.setAttribute('data-ds-state', 'Loading');
+    btn.innerHTML = '<span class="spin" aria-hidden="true"></span><span>Đang tạo file…</span>';
+    setTimeout(function () {
+      var box = $('dlMsg'), ok = true;
+      try {
+        var blob = new Blob(['﻿' + lines.join('\r\n')], { type: 'text/csv;charset=utf-8' });
+        var link = document.createElement('a');
+        link.href = URL.createObjectURL(blob); link.download = 'lich-tra-gop-chi-tiet.csv';
+        document.body.appendChild(link); link.click(); link.remove();
+        setTimeout(function () { URL.revokeObjectURL(link.href); }, 1000);
+      } catch (err) { ok = false; }
+      box.className = 'ann ' + (ok ? 'success' : 'error');
+      box.setAttribute('data-ds-type', ok ? 'Success' : 'Error');
+            $('dlText').textContent = ok ? 'Đã tạo file lich-tra-gop-chi-tiet.csv' : 'Không tải được file. Vui lòng thử lại.';
+      box.hidden = false;
+      btn.disabled = false; btn.setAttribute('data-ds-state', 'Active'); btn.innerHTML = label;
+    }, 600);
+  }
+
+  /* Trạng thái mẫu cho demo */
+  function demo(k) {
+    closeSheet('bankOv'); closeSheet('schedOv');
+    S = { loanS: '', loanNeg: false, loanPicked: false, rateS: '', rateBank: '', termS: '', termPicked: false, q: '' };
+    if (k === 'filled' || k === 'bank' || k === 'schedule') { S.loanS = '2000000000'; S.loanPicked = true; pickBank('Vietcombank'); S.termS = '240'; S.termPicked = true; }
+    if (k === 'error') { S.loanNeg = true; S.rateS = '35'; S.termS = '500'; }
+    render();
+    $('scroll').scrollTop = k === 'filled' ? 360 : 0;
+    if (k === 'bank') openSheet('bankOv');
+    if (k === 'schedule') { renderSchedule(); $('dlMsg').hidden = true; openSheet('schedOv'); }
+  }
+
+  render();
+  el.loan.focus({ preventScroll: true });
+})();
+</script>
+</body>
+</html>
