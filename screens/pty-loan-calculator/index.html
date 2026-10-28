@@ -289,7 +289,7 @@ body { /* ds-raw: nền canvas trình diễn quanh khung iPhone, không thuộc 
 .logo { flex:none; width:20px; height:20px; border-radius:var(--radius-pill); background:var(--background-tertiary);
   color:var(--text-secondary); display:inline-flex; align-items:center; justify-content:center; overflow:hidden; }
 .logo.lg { width:32px; height:32px; }
-.bank-more { align-self:stretch; height:auto; min-height:58px; }
+.bank-more { align-self:center; }
 
 /* ---- Slider (DS chưa có) ---- */
 .rng-wrap { display:flex; flex-direction:column; gap:var(--gap-2x-small-4); padding-top:var(--padding-x-small-8); }
@@ -373,6 +373,9 @@ body { /* ds-raw: nền canvas trình diễn quanh khung iPhone, không thuộc 
 .s-body::-webkit-scrollbar { display:none; }
 .s-top { flex:none; padding:var(--padding-medium-16) var(--padding-large-20) 0; display:flex; flex-direction:column; gap:var(--gap-small-12); }
 .s-foot { flex:none; height:34px; }
+.s-cta { flex:none; padding:var(--padding-small-12) var(--padding-large-20) 34px; border-top:1px solid var(--border-thin); }
+.btn.primary .ds-icon { color:var(--icon-on-background); }
+.btn.primary:disabled .ds-icon { color:var(--icon-blank); }
 
 /* Search field */
 .search { height:48px; display:flex; align-items:center; gap:var(--gap-x-small-8); padding:0 var(--padding-small-12);
@@ -382,6 +385,7 @@ body { /* ds-raw: nền canvas trình diễn quanh khung iPhone, không thuộc 
 .search input::placeholder { color:var(--text-secondary); }
 .search .clr { display:none; }
 .search.filled .clr { display:inline-flex; }
+.search.filled .flabel { display:block; }
 
 /* Danh sách ngân hàng */
 .opt { width:100%; min-height:56px; display:flex; align-items:center; gap:var(--gap-small-12);
@@ -393,8 +397,12 @@ body { /* ds-raw: nền canvas trình diễn quanh khung iPhone, không thuộc 
 .opt .chk { color:var(--icon-brand); visibility:hidden; }
 .opt[aria-selected="true"] .chk { visibility:visible; }
 .empty { display:flex; flex-direction:column; align-items:center; gap:var(--gap-x-small-8);
-  padding:var(--padding-large-20) var(--padding-medium-16); text-align:center; color:var(--text-secondary); }
-.empty .ds-icon { width:40px; height:40px; color:var(--icon-tertiary); }
+  padding:var(--padding-x-small-8) var(--padding-medium-16) 40px; text-align:center; }
+.empty .empty-ill { width:80px; height:80px; color:var(--icon-tertiary); }
+.empty-txt { display:flex; flex-direction:column; gap:var(--gap-2x-small-4); }
+.empty-txt p:first-child { color:var(--text-primary); }
+.empty-txt p:last-child { color:var(--text-secondary); }
+.empty .btn { max-width:600px; padding:var(--padding-x-small-8) var(--padding-medium-16); }
 .empty[hidden] { display:none; }
 
 /* Lịch trả góp */
@@ -417,12 +425,13 @@ body { /* ds-raw: nền canvas trình diễn quanh khung iPhone, không thuộc 
 <symbol id="ds-Info-outline" viewBox="0 0 24 24"><path d="M20 12C20 7.581 16.418 4 12 4C7.581 4 4 7.581 4 12C4 16.418 7.581 20 12 20C16.418 20 20 16.418 20 12ZM11 16.5V12C11 11.447 11.447 11 12 11C12.552 11 13 11.447 13 12V16.5C13 17.052 12.552 17.5 12 17.5C11.447 17.5 11 17.052 11 16.5ZM11 8.665V8.625C11 8.072 11.447 7.625 12 7.625C12.552 7.625 13 8.072 13 8.625V8.665C12.999 9.217 12.552 9.665 12 9.665C11.447 9.665 11 9.217 11 8.665ZM22 12C22 17.522 17.522 22 12 22C6.477 22 2 17.522 2 12C2 6.477 6.477 2 12 2C17.522 2 22 6.477 22 12Z" fill="currentColor"/></symbol>
 <symbol id="ds-Close-outline" viewBox="0 0 24 24"><path d="M15.292 7.293C15.683 6.902 16.316 6.902 16.707 7.293C17.097 7.683 17.097 8.316 16.707 8.707L13.414 12L16.707 15.293L16.775 15.369C17.095 15.762 17.073 16.341 16.707 16.707C16.34 17.073 15.761 17.095 15.369 16.775L15.292 16.707L11.999 13.414L8.706 16.707C8.316 17.097 7.683 17.097 7.292 16.707C6.902 16.316 6.902 15.683 7.292 15.293L10.585 12L7.292 8.707L7.224 8.63C6.904 8.238 6.926 7.659 7.292 7.293C7.659 6.926 8.238 6.904 8.63 7.224L8.706 7.293L11.999 10.586L15.292 7.293Z" fill="currentColor"/></symbol>
 <symbol id="ds-Search-outline" viewBox="0 0 24 24"><path d="M18.279 11.439C18.279 7.662 15.217 4.6 11.439 4.6C7.662 4.6 4.6 7.662 4.6 11.439C4.6 15.217 7.662 18.279 11.439 18.279C15.217 18.279 18.279 15.217 18.279 11.439ZM20.279 11.439C20.279 13.543 19.543 15.474 18.315 16.992L21.095 19.681L21.165 19.756C21.492 20.143 21.478 20.723 21.118 21.095C20.758 21.467 20.179 21.5 19.781 21.186L19.704 21.118L16.89 18.396C15.388 19.574 13.497 20.279 11.439 20.279C6.557 20.279 2.6 16.322 2.6 11.439C2.6 6.557 6.557 2.6 11.439 2.6C16.322 2.6 20.279 6.557 20.279 11.439Z" fill="currentColor"/></symbol>
-<symbol id="ds-Download-outline" viewBox="0 0 24 24"><path d="M3 18.892V15.204C3 14.652 3.447 14.204 4 14.204C4.517 14.204 4.944 14.598 4.995 15.102L5 15.204V18.892L5.005 19.007C5.031 19.273 5.142 19.515 5.311 19.694L5.385 19.765C5.565 19.921 5.783 20 6 20H18L18.092 19.995C18.309 19.972 18.52 19.871 18.688 19.694L18.757 19.614C18.888 19.446 18.972 19.235 18.994 19.007L19 18.892V15.204C19 14.651 19.447 14.204 20 14.204C20.552 14.204 20.999 14.651 21 15.204V18.892L20.986 19.194C20.929 19.793 20.705 20.367 20.335 20.841L20.139 21.071C19.616 21.622 18.908 21.956 18.152 21.996L18 22H6C5.237 22 4.514 21.7 3.967 21.178L3.86 21.071C3.373 20.558 3.079 19.893 3.013 19.194L3 18.892ZM11.001 3C11.001 2.447 11.448 2 12.001 2C12.553 2 13.001 2.447 13.001 3V12.531L15.866 9.671C16.257 9.281 16.89 9.281 17.28 9.672C17.67 10.063 17.67 10.696 17.279 11.086L12.708 15.65C12.317 16.04 11.685 16.039 11.294 15.65L6.723 11.086L6.654 11.01C6.333 10.618 6.356 10.039 6.721 9.672C7.087 9.306 7.667 9.282 8.06 9.602L8.135 9.671L11.001 12.53V3Z" fill="currentColor"/></symbol>
 <symbol id="ds-CircleCheck-fill" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.522 22 22 17.522 22 12C22 6.477 17.522 2 12 2C6.477 2 2 6.477 2 12C2 17.522 6.477 22 12 22ZM16.831 9.823C17.297 9.47 17.372 8.826 17 8.385C16.627 7.944 15.947 7.872 15.482 8.225C14.41 9.038 13.438 10.297 12.674 11.461C12.311 12.014 11.982 12.565 11.699 13.07C11.612 12.979 11.524 12.891 11.438 12.805C10.923 12.295 10.365 11.809 9.951 11.524C9.469 11.192 8.794 11.293 8.443 11.75C8.092 12.207 8.199 12.846 8.681 13.179C8.946 13.361 9.404 13.75 9.876 14.218C10.35 14.689 10.763 15.164 10.978 15.504C11.184 15.83 11.564 16.021 11.964 16C12.364 15.979 12.719 15.749 12.886 15.404C13.211 14.732 13.791 13.634 14.508 12.541C15.239 11.429 16.054 10.412 16.831 9.823Z" fill="currentColor"/></symbol>
 <symbol id="ds-Warning-fill" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.422 4.821C10.166 2.392 13.833 2.392 15.578 4.821L15.746 5.072L15.771 5.116L21.441 15.339C21.796 15.924 22.138 16.761 21.944 17.669L21.896 17.857C21.361 19.678 19.668 21 17.67 21H6.33C4.456 21 2.85 19.838 2.216 18.192L2.103 17.857C1.815 16.877 2.179 15.963 2.558 15.339L8.228 5.116L8.254 5.072L8.422 4.821ZM11 16.224V16.264C11 16.816 11.448 17.264 12 17.264C12.552 17.264 12.999 16.816 13 16.264V16.224C13 15.672 12.552 15.224 12 15.224C11.447 15.224 11 15.672 11 16.224ZM11 8.414V12.9C11 13.452 11.448 13.9 12 13.9C12.552 13.9 13 13.452 13 12.9V8.414C12.999 7.861 12.552 7.414 12 7.414C11.448 7.414 11 7.861 11 8.414Z" fill="currentColor"/></symbol>
+<symbol id="ds-Download-outline" viewBox="0 0 24 24"><path d="M3 18.892V15.204C3 14.652 3.447 14.204 4 14.204C4.517 14.204 4.944 14.598 4.995 15.102L5 15.204V18.892L5.005 19.007C5.031 19.273 5.142 19.515 5.311 19.694L5.385 19.765C5.565 19.921 5.783 20 6 20H18L18.092 19.995C18.309 19.972 18.52 19.871 18.688 19.694L18.757 19.614C18.888 19.446 18.972 19.235 18.994 19.007L19 18.892V15.204C19 14.651 19.447 14.204 20 14.204C20.552 14.204 20.999 14.651 21 15.204V18.892L20.986 19.194C20.929 19.793 20.705 20.367 20.335 20.841L20.139 21.071C19.616 21.622 18.908 21.956 18.152 21.996L18 22H6C5.237 22 4.514 21.7 3.967 21.178L3.86 21.071C3.373 20.558 3.079 19.893 3.013 19.194L3 18.892ZM11.001 3C11.001 2.447 11.448 2 12.001 2C12.553 2 13.001 2.447 13.001 3V12.531L15.866 9.671C16.257 9.281 16.89 9.281 17.28 9.672C17.67 10.063 17.67 10.696 17.279 11.086L12.708 15.65C12.317 16.04 11.685 16.039 11.294 15.65L6.723 11.086L6.654 11.01C6.333 10.618 6.356 10.039 6.721 9.672C7.087 9.306 7.667 9.282 8.06 9.602L8.135 9.671L11.001 12.53V3Z" fill="currentColor"/></symbol>
 <symbol id="ds-Chevronright-outline" viewBox="0 0 24 24"><path d="M16 11.999C16 12.265 15.894 12.519 15.707 12.707L10.707 17.707L10.63 17.775C10.238 18.095 9.659 18.073 9.292 17.707C8.926 17.34 8.904 16.761 9.224 16.369L9.292 16.292L13.585 11.999L9.292 7.706C8.902 7.316 8.902 6.683 9.292 6.292C9.683 5.902 10.316 5.902 10.707 6.292L15.707 11.292L15.773 11.366C15.919 11.544 16 11.767 16 11.999Z" fill="currentColor"/></symbol>
 <symbol id="ds-Check-outline" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M18.395 6.575C18.953 7.237 18.84 8.203 18.142 8.732C16.976 9.615 15.753 11.141 14.658 12.81C13.582 14.449 12.712 16.096 12.224 17.104C11.974 17.622 11.442 17.966 10.841 17.997C10.241 18.029 9.672 17.743 9.363 17.255C9.039 16.744 8.42 16.031 7.709 15.325C7.001 14.623 6.314 14.04 5.917 13.766C5.193 13.267 5.033 12.308 5.559 11.622C6.086 10.937 7.099 10.785 7.822 11.284C8.442 11.711 9.28 12.44 10.051 13.205C10.181 13.334 10.313 13.467 10.444 13.603C10.869 12.845 11.362 12.018 11.906 11.189C13.052 9.444 14.51 7.554 16.118 6.336C16.816 5.806 17.836 5.914 18.395 6.575Z" fill="currentColor"/></symbol>
 </svg>
+
 
 
 
@@ -458,7 +467,7 @@ body { /* ds-raw: nền canvas trình diễn quanh khung iPhone, không thuộc 
       <header class="appbar" data-ds="App Bar" data-ds-speculative="true" data-ds-bg="background-primary">
         <button type="button" class="icon-btn" aria-label="Quay lại"
                 data-ds="Icon Button" data-ds-type="Ghost" data-ds-size="L-40" data-ds-state="Active" data-ds-pill="true" data-ds-icon="Arrowleft-outline">
-          <svg class="ds-icon" aria-hidden="true"><use href="#ds-Arrowleft-outline"/></svg>
+          <svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Arrowleft-outline"/></svg>
         </button>
         <h1 class="t-header-section" data-ds-typo="header-section" data-ds-color="text-primary">Dự toán khoản vay mua BĐS</h1>
         <span aria-hidden="true"></span>
@@ -592,7 +601,7 @@ body { /* ds-raw: nền canvas trình diễn quanh khung iPhone, không thuộc 
           <div class="ann neutral" role="note" data-ds="Announcer" data-ds-type="Neutral" data-ds-size="Mobile"
                data-ds-radius="radius-card" data-ds-pad="padding-small-12 padding-medium-16" data-ds-gap="gap-x-small-8">
             <svg class="ds-icon ds-icon--20" aria-hidden="true" data-ds-icon="Info-outline"><use href="#ds-Info-outline"/></svg>
-            <p class="t-body-caption" data-ds-typo="body-caption" data-ds-color="text-primary"><strong>*Kết quả chỉ mang tính tham khảo</strong>, không phải báo giá của ngân hàng. Khoản trả thực tế phụ thuộc vào ngân hàng, điều kiện của từng gói vay và lãi suất thả nổi sau thời gian ưu đãi. Cách tính: gốc trả đều, lãi tính trên dư nợ đầu kỳ.</p>
+            <p class="t-body-section" data-ds-typo="body-section" data-ds-color="text-primary"><strong>*Kết quả chỉ mang tính tham khảo</strong>, không phải báo giá của ngân hàng. Khoản trả thực tế phụ thuộc vào ngân hàng, điều kiện của từng gói vay và lãi suất thả nổi sau thời gian ưu đãi. Cách tính: gốc trả đều, lãi tính trên dư nợ đầu kỳ.</p>
           </div>
         </section>
       </main>
@@ -615,8 +624,11 @@ body { /* ds-raw: nền canvas trình diễn quanh khung iPhone, không thuộc 
         <div class="s-top" data-ds-pad="padding-medium-16 padding-large-20">
           <div class="search" id="qBox" data-ds="Input Field Search" data-ds-state="Default" data-ds-radius="radius-card">
             <svg class="ds-icon" aria-hidden="true" data-ds-icon="Search-outline"><use href="#ds-Search-outline"/></svg>
-            <input id="q" class="t-body-section" type="text" autocomplete="off" placeholder="Tìm tên ngân hàng" aria-label="Tìm tên ngân hàng"
-                   data-ds-typo="body-section" data-ds-color="text-primary">
+            <div class="inp-main">
+              <label class="flabel t-label-annotation" for="q" data-ds-typo="label-annotation" data-ds-color="text-primary">Tìm tên ngân hàng</label>
+              <input id="q" class="t-body-section" type="text" autocomplete="off" placeholder="Tìm tên ngân hàng"
+                     data-ds-typo="body-section" data-ds-color="text-primary">
+            </div>
             <button type="button" class="clr" id="qClr" aria-label="Xoá từ khoá tìm kiếm"
                     data-ds="Icon Button" data-ds-type="Ghost" data-ds-size="M-32" data-ds-state="Active" data-ds-pill="true" data-ds-icon="Close-fill">
               <svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Close-fill"/></svg>
@@ -624,11 +636,16 @@ body { /* ds-raw: nền canvas trình diễn quanh khung iPhone, không thuộc 
           </div>
         </div>
         <div class="s-body" data-ds-pad="padding-medium-16 padding-large-20">
-          <div class="empty" id="bankEmpty" hidden data-ds="Empty State" data-ds-raw="Empty State rút gọn: chưa có illustration Keyword - No result trong skill">
-            <svg class="ds-icon" aria-hidden="true" data-ds-icon="Search-outline"><use href="#ds-Search-outline"/></svg>
-            <p class="t-body-section" data-ds-typo="body-section" data-ds-color="text-secondary">Không tìm thấy ngân hàng phù hợp</p>
-            <button type="button" class="btn tertiary t-label-section" id="qReset"
-                    data-ds="Button" data-ds-type="Tertiary" data-ds-size="M-32" data-ds-state="Active" data-ds-pill="false" data-ds-typo="label-section">Xoá từ khoá</button>
+          <div class="empty" id="bankEmpty" hidden data-ds="Empty State" data-ds-pad="padding-x-small-8 padding-medium-16" data-ds-gap="gap-x-small-8">
+            <svg class="ds-icon empty-ill" aria-hidden="true" data-ds-icon="Search-outline" data-ds-raw="thay cho Empty Illustration 200×200 'Keyword - No result': skill chưa có file PNG">
+              <use href="#ds-Search-outline"/></svg>
+            <div class="empty-txt" data-ds-gap="gap-2x-small-4">
+              <p class="t-display-annotation" data-ds-typo="display-annotation" data-ds-color="text-primary">Không tìm thấy ngân hàng phù hợp</p>
+              <p class="t-body-section" data-ds-typo="body-section" data-ds-color="text-secondary">Thử tìm bằng tên khác của ngân hàng.</p>
+            </div>
+            <button type="button" class="btn primary t-label-page" id="qReset"
+                    data-ds="Button" data-ds-type="Primary" data-ds-size="L-40" data-ds-state="Active" data-ds-pill="false"
+                    data-ds-typo="label-page" data-ds-color="text-on-background">Xoá từ khoá</button>
           </div>
           <div role="listbox" id="bankList" aria-label="Danh sách ngân hàng"></div>
         </div>
@@ -651,22 +668,24 @@ body { /* ds-raw: nền canvas trình diễn quanh khung iPhone, không thuộc 
         <div class="s-top" data-ds-pad="padding-medium-16 padding-large-20" data-ds-gap="gap-small-12">
           <div class="s-bar">
             <span class="sub t-body-caption" id="schedSub" data-ds-typo="body-caption" data-ds-color="text-secondary">Đơn vị: VNĐ</span>
-            <button type="button" class="btn tertiary t-label-section" id="dl"
-                    data-ds="Button" data-ds-type="Tertiary" data-ds-size="M-32" data-ds-state="Active" data-ds-pill="false"
-                    data-ds-icon="Download-outline" data-ds-typo="label-section" data-ds-color="text-primary" data-ds-on-tap="tải file CSV lich-tra-gop-chi-tiet.csv">
-              <svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Download-outline"/></svg><span>Tải lịch trả góp</span>
-            </button>
           </div>
           <div class="ann success" id="dlMsg" role="status" hidden data-ds="Announcer" data-ds-type="Success" data-ds-size="Mobile">
             <svg class="ds-icon ds-icon--20 ic-ok" aria-hidden="true" data-ds-icon="CircleCheck-fill"><use href="#ds-CircleCheck-fill"/></svg>
             <svg class="ds-icon ds-icon--20 ic-err" aria-hidden="true" data-ds-icon="Warning-fill" data-ds-visible-if="tải file lỗi"><use href="#ds-Warning-fill"/></svg>
-            <p class="t-body-caption" id="dlText" data-ds-typo="body-caption" data-ds-color="text-primary"></p>
+            <p class="t-body-section" id="dlText" data-ds-typo="body-section" data-ds-color="text-primary"></p>
           </div>
         </div>
         <div class="s-body" data-ds-pad="padding-medium-16 padding-large-20">
           <div class="m-head t-header-annotation" aria-hidden="true" data-ds-typo="header-annotation" data-ds-color="text-tertiary"><span>Kỳ</span><span>Tổng thanh toán</span></div>
           <div role="list" id="schedList" aria-label="Lịch trả góp từng tháng"
                data-ds="Schedule Row" data-ds-composite="header-caption + label-section / body-caption × 2 / body-caption"></div>
+        </div>
+        <div class="s-cta" data-ds-pad="padding-small-12 padding-large-20">
+          <button type="button" class="btn primary t-label-page" id="dl"
+                  data-ds="Button" data-ds-type="Primary" data-ds-size="L-40" data-ds-state="Active" data-ds-pill="false"
+                  data-ds-icon="Download-outline" data-ds-typo="label-page" data-ds-color="text-on-background" data-ds-on-tap="tải file CSV lich-tra-gop-chi-tiet.csv">
+            <svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Download-outline"/></svg><span>Tải lịch trả góp</span>
+          </button>
         </div>
       </div>
     </div>
@@ -810,7 +829,7 @@ body { /* ds-raw: nền canvas trình diễn quanh khung iPhone, không thuộc 
         '<span class="bank-name t-body-caption" data-ds-typo="body-caption" data-ds-color="text-secondary">' + esc(x.bank) + '</span></button>';
     }).join('') +
       '<button type="button" class="chip bank-more t-tagline-caption" id="moreBank" aria-haspopup="dialog" data-ds="Chip" data-ds-type="Outline" data-ds-size="M-32" data-ds-state="Default" data-ds-pill="true" data-ds-icon="Chevronright-outline" data-ds-typo="tagline-caption">Xem thêm' +
-      '<svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-Chevronright-outline"/></svg></button>';
+      '<svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Chevronright-outline"/></svg></button>';
 
     /* Gợi ý thời gian + slider */
     $('termSug').hidden = S.termPicked;
