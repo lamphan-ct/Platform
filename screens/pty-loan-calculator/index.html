@@ -809,7 +809,7 @@ body { /* ds-raw: nền canvas trình diễn quanh khung iPhone, không thuộc 
 
     setField($('rateBox'), el.rate, S.rateS, inp.rateErr, $('rateErr'));
     setField($('termBox'), el.term, S.termS, inp.termErr, $('termErr'));
-    var yt = inp.termOk ? 'Tương đương ' + yearsLong(inp.term) : '';
+    var yt = inp.termOk && inp.term >= 12 ? 'Tương đương ' + yearsLong(inp.term) : '';
     $('termHelp').hidden = !yt; $('termHelp').textContent = yt;
 
     /* Gợi ý số tiền */
@@ -843,7 +843,7 @@ body { /* ds-raw: nền canvas trình diễn quanh khung iPhone, không thuộc 
     /* Kết quả */
     $('rLoan').textContent = inp.loanOk ? vnd(inp.loan) : '–';
     $('rRate').textContent = inp.rateOk ? dec(inp.rate) + '%/năm' : '–';
-    $('rTerm').textContent = inp.termOk ? inp.term + ' tháng (' + yearsLong(inp.term) + ')' : '–';
+    $('rTerm').textContent = inp.termOk ? (inp.term >= 12 ? inp.term + ' tháng (' + yearsLong(inp.term) + ')' : inp.term + ' tháng') : '–';
     var heroV = $('heroV'), heroS = $('heroS');
     if (inp.ok) {
       var a = analyze(inp.loan, inp.term, inp.rate);
