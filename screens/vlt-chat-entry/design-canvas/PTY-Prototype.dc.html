@@ -39,7 +39,7 @@ class Component extends DCLogic {
     const cfg = {
       variant: 'r1', thumb: 'photo', title: AD.title, price: AD.price, selected: s.sel, suggest: Q.filter((q) => !s.sel.includes(q)), text: s.text,
       callback: s.callback, showCb: hasPhone, focus: s.kb,
-      onAdd: (q) => this.setState({ sel: s.sel.concat([q]) }),
+      onAdd: (q) => s.sel.length < 3 && this.setState({ sel: s.sel.concat([q]) }),
       onRemove: (q) => this.setState({ sel: s.sel.filter((x) => x !== q) }),
       onText: (e) => this.setState({ text: e.target.value }),
       onFocus: () => this.setState({ kb: true }),

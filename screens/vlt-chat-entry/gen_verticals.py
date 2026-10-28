@@ -31,7 +31,7 @@ V = {
         q=['Sổ chung hay riêng z ạ?', 'Có hỗ trợ trả góp ko sốp?', 'Xin video/hình thực tế ạ', 'Xin vị trí cụ thể nhé sốp', 'Giá còn thương lượng không ạ'],
         typing='Hi bạn ơi cho mình hỏi', short='Cuối tuần mình qua xem nhà được không bạn?',
         long='Cho mình hỏi nhà có bị quy hoạch hay tranh chấp gì không, hẻm trước nhà rộng bao nhiêu mét bạn',
-        source='bộ câu hỏi Enquiry Form theo ad_type (bán / cho thuê)'),
+        source='config Nhà Tốt (back-office, khởi tạo từ bộ câu hỏi bán / cho thuê)'),
 }
 PHONE = 'Gọi lại cho tôi qua SĐT 0987654321'
 
@@ -179,11 +179,12 @@ for vi, (k, v) in enumerate(V.items()):
     s = s.replace("const msg = { header: s.sel.length > 0, qs: s.sel.slice(), after: s.callback && hasPhone ? ['Gọi lại cho tôi qua SĐT 0987654321'] : [], text: s.text.trim() };",
                   "const msg = { tone: 'yellow', title: AD.title, price: AD.price, thumb: 'photo', header: s.sel.length > 0, qs: s.sel.slice(), after: s.callback && hasPhone ? ['Gọi lại cho tôi qua SĐT 0987654321'] : [], text: s.text.trim() };")
     s = s.replace("this.setState({ mode: 'sheet', kb: false,", "this.setState({ mode: 'sheet', kb: true,")
+    s = s.replace('onAdd: (q) => this.setState({ sel: s.sel.concat([q]) }),', 'onAdd: (q) => s.sel.length < 3 && this.setState({ sel: s.sel.concat([q]) }),')
     s = s.replace('<dc-import name="Screen" mode', '<dc-import name="Screen" ad="{{ad}}" mode')
     s = s.replace('      mode: s.mode, kb: s.kb,', '      ad: AD, mode: s.mode, kb: s.kb,')
     s = s.replace('<div style="width: 375px; height: 812px; overflow: hidden;', f'<div class="{th}" style="width: 375px; height: 812px; overflow: hidden;', 1)
     s = re.sub(r'<title>[^<]*</title>', f'<title>Prototype {k} · Treatment 1</title>', s, count=1)
-    for must in ["mode: 'sheet', kb: true", "tone: 'yellow'", 'ad="{{ad}}"', 'ad: AD', f'class="{th}"', 'const AD']:
+    for must in ["s.sel.length < 3 &&", "mode: 'sheet', kb: true", "tone: 'yellow'", 'ad="{{ad}}"', 'ad: AD', f'class="{th}"', 'const AD']:
         assert must in s, (k, must)
     open(f'{P}/{k}-Prototype.dc.html', 'w').write(s)
     add(f'{k}-Prototype', 2450, fy, 375, 812, f'▶ Prototype · {v["name"]}', is_interactive=True, radius=40)
@@ -193,7 +194,7 @@ for vi, (k, v) in enumerate(V.items()):
     main_items = ['Tap Chat → mở sheet, focus ô nhập + bật bàn phím', f'Chọn sẵn 3 câu đầu theo {v["source"]}. Ít hơn 3 câu → chọn hết; rỗng/lỗi → không có chip',
                   'Checkbox “Gọi lại cho tôi qua SĐT…” chỉ hiện khi SĐT đã xác thực, mặc định checked']
     if k == 'PTY':
-        main_items += ['<b>SĐT chưa xác thực → ẩn checkbox, vẫn gửi được</b> (PM xác nhận cho PTY)']
+        main_items += ['<b>SĐT chưa xác thực → ẩn checkbox, vẫn gửi được</b>']
     else:
         main_items += ['<b>SĐT chưa xác thực → ẩn checkbox, vẫn gửi được, không nhắc xác thực</b>']
     main_items += ['Vượt chat limit → không mở sheet, toast “Bạn cần xác thực số điện thoại”']
@@ -205,13 +206,13 @@ for vi, (k, v) in enumerate(V.items()):
     note(f'{k}-Note-DF1', 375, 152, 'Bỏ câu hỏi', ['Chip bị bỏ quay về list “Hỏi thêm” <b>đúng vị trí theo thứ tự config</b>', 'Bỏ hết câu đã chọn → ẩn “Cho mình hỏi:”'], f'{k} · Note bỏ câu hỏi')
     static.append(f'{k}-Note-DF1')
     add(f'{k}-Note-DF1', 871, ry, 375, 152, 'Note · Remove question', radius=12)
-    sheet(f'{k}-DF-Sheet2', f'{k} · Chọn hết gợi ý', {'selected': q, 'suggest': []})
-    add(f'{k}-DF-Sheet2', 1286, ry, 375, 317, 'Default form · chọn hết gợi ý')
-    note(f'{k}-Note-DF2', 375, 152, 'Chọn câu ở “Hỏi thêm”', ['Câu được chọn thêm vào cuối “Cho mình hỏi:”', 'Chọn hết câu trong list → ẩn list “Hỏi thêm”', 'Câu đã chọn: mỗi hàng 2 chip, dài hơn khung → scroll ngang'], f'{k} · Note chọn câu')
+    sheet(f'{k}-DF-Sheet2', f'{k} · Config chỉ có 3 câu', {'selected': q[:3], 'suggest': []})
+    add(f'{k}-DF-Sheet2', 1286, ry, 375, 317, 'Config ≤ 3 câu → chọn hết, ẩn “Hỏi thêm”')
+    note(f'{k}-Note-DF2', 375, 152, 'Chọn câu ở “Hỏi thêm”', ['Câu được chọn thêm vào cuối “Cho mình hỏi:”', '<b>Tối đa 3 câu</b>: đã đủ 3 → tap chip ở “Hỏi thêm” không thêm được', 'Câu đã chọn: mỗi hàng 2 chip, dài hơn khung → scroll ngang'], f'{k} · Note chọn câu')
     static.append(f'{k}-Note-DF2')
     add(f'{k}-Note-DF2', 1701, ry, 375, 152, 'Note · Chọn câu hỏi', radius=12)
-    sheet(f'{k}-DF-Rows', f'{k} · 4 câu, 2 chip mỗi hàng', {'selected': q[:4], 'suggest': q[4:]})
-    add(f'{k}-DF-Rows', 2116, ry, 375, 317, 'Chọn 4 câu · 2 chip/hàng')
+    sheet(f'{k}-DF-Rows', f'{k} · Đã đủ 3 câu', {'selected': [q[0], q[3], q[2]], 'suggest': [q[1], q[4]]})
+    add(f'{k}-DF-Rows', 2116, ry, 375, 317, 'Đủ 3 câu → không thêm được (≤ 3)')
     sheet(f'{k}-DF-NoPhone', f'{k} · SĐT chưa xác thực', {'showCb': False})
     add(f'{k}-DF-NoPhone', 2531, ry, 375, 291, 'SĐT chưa xác thực → ẩn checkbox')
 

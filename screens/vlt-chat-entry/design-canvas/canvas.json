@@ -581,8 +581,8 @@
       "x": 1286,
       "y": 1388,
       "w": 375,
-      "h": 317,
-      "title": "Default form · chọn hết gợi ý",
+      "h": 281,
+      "title": "Config ≤ 3 câu → chọn hết, ẩn “Hỏi thêm”",
       "page": "revamp"
     },
     "GDS-Note-DF2.dc.html": {
@@ -599,7 +599,7 @@
       "y": 1388,
       "w": 375,
       "h": 317,
-      "title": "Chọn 4 câu · 2 chip/hàng",
+      "title": "Đủ 3 câu → không thêm được (≤ 3)",
       "page": "revamp"
     },
     "GDS-DF-NoPhone.dc.html": {
@@ -819,8 +819,8 @@
       "x": 1286,
       "y": 4104,
       "w": 375,
-      "h": 317,
-      "title": "Default form · chọn hết gợi ý",
+      "h": 281,
+      "title": "Config ≤ 3 câu → chọn hết, ẩn “Hỏi thêm”",
       "page": "revamp"
     },
     "VEH-Note-DF2.dc.html": {
@@ -837,7 +837,7 @@
       "y": 4104,
       "w": 375,
       "h": 317,
-      "title": "Chọn 4 câu · 2 chip/hàng",
+      "title": "Đủ 3 câu → không thêm được (≤ 3)",
       "page": "revamp"
     },
     "VEH-DF-NoPhone.dc.html": {
@@ -1031,7 +1031,7 @@
       "x": 120,
       "y": 6820,
       "w": 296,
-      "h": 354,
+      "h": 359,
       "title": "Note",
       "page": "revamp",
       "radius": 12
@@ -1057,8 +1057,8 @@
       "x": 1286,
       "y": 6820,
       "w": 375,
-      "h": 317,
-      "title": "Default form · chọn hết gợi ý",
+      "h": 281,
+      "title": "Config ≤ 3 câu → chọn hết, ẩn “Hỏi thêm”",
       "page": "revamp"
     },
     "PTY-Note-DF2.dc.html": {
@@ -1075,7 +1075,7 @@
       "y": 6820,
       "w": 375,
       "h": 317,
-      "title": "Chọn 4 câu · 2 chip/hàng",
+      "title": "Đủ 3 câu → không thêm được (≤ 3)",
       "page": "revamp"
     },
     "PTY-DF-NoPhone.dc.html": {
