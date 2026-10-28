@@ -498,8 +498,7 @@ body { /* ds-raw: nền canvas trình diễn quanh khung iPhone, không thuộc 
                    data-ds-pad="padding-min-2 padding-medium-16" data-ds-gap="gap-x-small-8" data-ds-figma="10353:37227">
                 <div class="inp-main">
                   <label class="flabel t-label-annotation" for="loan" data-ds-typo="label-annotation" data-ds-color="text-primary">Số tiền vay <span class="req">*</span></label>
-                  <input id="loan" class="t-body-section" type="text" inputmode="numeric" autocomplete="off"
-                         placeholder="Số tiền vay" data-ph="Nhập số tiền" aria-describedby="loanHelp loanErr"
+                  <input id="loan" class="t-body-section" type="text" inputmode="numeric" autocomplete="off" aria-describedby="loanHelp loanErr"
                          data-ds-typo="body-section" data-ds-color="text-primary">
                 </div>
                 <span class="unit t-header-caption" data-ds-typo="header-caption" data-ds-color="text-tertiary">đ</span>
@@ -522,8 +521,7 @@ body { /* ds-raw: nền canvas trình diễn quanh khung iPhone, không thuộc 
                    data-ds-raw="currencyUnit = %/năm (không phải tiền) — cần designer chốt">
                 <div class="inp-main">
                   <label class="flabel t-label-annotation" for="rate" data-ds-typo="label-annotation" data-ds-color="text-primary">Lãi suất <span class="req">*</span></label>
-                  <input id="rate" class="t-body-section" type="text" inputmode="decimal" autocomplete="off"
-                         placeholder="Lãi suất" data-ph="Nhập lãi suất" aria-describedby="rateErr"
+                  <input id="rate" class="t-body-section" type="text" inputmode="decimal" autocomplete="off" aria-describedby="rateErr"
                          data-ds-typo="body-section" data-ds-color="text-primary">
                 </div>
                 <span class="unit t-header-caption" data-ds-typo="header-caption" data-ds-color="text-tertiary">%/năm</span>
@@ -545,8 +543,7 @@ body { /* ds-raw: nền canvas trình diễn quanh khung iPhone, không thuộc 
                    data-ds-raw="currencyUnit = tháng (không phải tiền) — cần designer chốt">
                 <div class="inp-main">
                   <label class="flabel t-label-annotation" for="term" data-ds-typo="label-annotation" data-ds-color="text-primary">Thời gian vay <span class="req">*</span></label>
-                  <input id="term" class="t-body-section" type="text" inputmode="numeric" autocomplete="off"
-                         placeholder="Thời gian vay" data-ph="Nhập số tháng" aria-describedby="termHelp termErr"
+                  <input id="term" class="t-body-section" type="text" inputmode="numeric" autocomplete="off" aria-describedby="termHelp termErr"
                          data-ds-typo="body-section" data-ds-color="text-primary">
                 </div>
                 <span class="unit t-header-caption" data-ds-typo="header-caption" data-ds-color="text-tertiary">tháng</span>
@@ -900,10 +897,6 @@ body { /* ds-raw: nền canvas trình diễn quanh khung iPhone, không thuộc 
   function shake(box) { box.classList.remove('shake'); void box.offsetWidth; box.classList.add('shake'); }
 
   /* ============ SỰ KIỆN ============ */
-  [el.loan, el.rate, el.term].forEach(function (i) {
-    i.addEventListener('focus', function () { i.placeholder = i.dataset.ph; });
-    i.addEventListener('blur', function () { i.placeholder = i.closest('.inp-box').querySelector('.flabel').firstChild.textContent.trim(); });
-  });
   el.loan.addEventListener('input', function () {
     var raw = el.loan.value;
     S.loanPicked = false; S.loanNeg = /^\s*-/.test(raw);
