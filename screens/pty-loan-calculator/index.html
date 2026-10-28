@@ -292,8 +292,10 @@ body { /* ds-raw: nền canvas trình diễn quanh khung iPhone, không thuộc 
 .bank-more { align-self:center; }
 
 /* ---- Slider (DS chưa có) ---- */
-.rng-wrap { display:flex; flex-direction:column; gap:var(--gap-2x-small-4); padding-top:var(--padding-x-small-8); }
-.rng { --p:0%; -webkit-appearance:none; appearance:none; width:100%; height:24px; background:transparent; cursor:pointer; }
+/* Slider theo UI app: [nhãn min] [track + progress] [nhãn max] trên một hàng */
+.rng-wrap { display:flex; align-items:center; gap:var(--gap-small-12); padding-top:var(--padding-x-small-8); }
+.rng-v { flex:none; color:var(--text-primary); }
+.rng { --p:0%; -webkit-appearance:none; appearance:none; flex:1; min-width:0; width:100%; height:24px; background:transparent; cursor:pointer; }
 .rng:focus-visible { outline:2px solid var(--border-info); outline-offset:4px; border-radius:var(--radius-pill); }
 .rng::-webkit-slider-runnable-track { height:4px; border-radius:var(--radius-pill);
   background:linear-gradient(to right, var(--background-brand) var(--p), var(--background-tertiary) var(--p)); }
@@ -304,7 +306,6 @@ body { /* ds-raw: nền canvas trình diễn quanh khung iPhone, không thuộc 
   background:var(--background-primary); border:2px solid var(--border-brand); box-shadow:0px 4px 8px 0px rgba(89,89,89,0.15); }
 .rng::-moz-range-thumb { width:20px; height:20px; border-radius:var(--radius-pill);
   background:var(--background-primary); border:2px solid var(--border-brand); }
-.rng-l { display:flex; justify-content:space-between; color:var(--text-tertiary); }
 
 /* ---- Kết quả ---- */
 .res-title { display:flex; align-items:center; gap:var(--gap-x-small-8); color:var(--text-primary); }
@@ -562,10 +563,11 @@ body { /* ds-raw: nền canvas trình diễn quanh khung iPhone, không thuộc 
               <span class="sug-l t-body-caption" data-ds-typo="body-caption" data-ds-color="text-secondary">Gợi ý:</span>
               <div class="hscroll" id="termChips" role="group" aria-label="Gợi ý thời gian vay"></div>
             </div>
-            <div class="rng-wrap" data-ds="Slider" data-ds-raw="custom: DS chưa có Slider" data-ds-gap="gap-2x-small-4">
+            <div class="rng-wrap" data-ds="Slider" data-ds-raw="custom: DS chưa có Slider" data-ds-gap="gap-small-12">
+              <span class="rng-v t-body-section" data-ds-typo="body-section" data-ds-color="text-primary">1 tháng</span>
               <input class="rng" id="rng" type="range" min="0" step="1" value="0" aria-label="Kéo để chọn thời gian vay"
                      data-ds-content-rule="1–36 tháng bước 1 tháng; từ 36 tháng bước 6 tháng; tối đa 420 tháng">
-              <div class="rng-l t-body-caption" data-ds-typo="body-caption" data-ds-color="text-tertiary"><span>1 tháng</span><span>35 năm</span></div>
+              <span class="rng-v t-body-section" data-ds-typo="body-section" data-ds-color="text-primary">35 năm</span>
             </div>
           </div>
         </section>
