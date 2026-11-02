@@ -282,17 +282,8 @@ body { /* ds-raw: nền canvas trình diễn quanh khung iPhone, không thuộc 
 .chip[aria-pressed="true"] { background:var(--background-secondary); border-color:var(--border-black); }
 .chip:focus-visible { outline:2px solid var(--border-info); outline-offset:2px; }
 
-/* ---- Thẻ lãi suất ngân hàng (component ghép) ---- */
+/* ---- Logo ngân hàng: icon trái của Chip M, avatar 32 trong sheet ---- */
 .sub-l { color:var(--text-secondary); }
-.bank { flex:none; min-width:88px; padding:var(--padding-x-small-8) var(--padding-small-12);
-  border:1px solid var(--border-regular); border-radius:var(--radius-card); background:var(--background-primary);
-  display:flex; flex-direction:column; align-items:flex-start; gap:var(--gap-2x-small-4); text-align:left;
-  transition:background .15s ease; }
-.bank:hover { background:var(--interaction-neutral-light-hover); }
-.bank[aria-pressed="true"] { background:var(--background-secondary); border-color:var(--border-black); }
-.bank:focus-visible { outline:2px solid var(--border-info); outline-offset:2px; }
-.bank-top { display:flex; align-items:center; gap:var(--gap-2x-small-6); }
-.bank-name { color:var(--text-secondary); }
 .logo { flex:none; width:20px; height:20px; border-radius:var(--radius-pill); background:var(--background-tertiary);
   color:var(--text-secondary); display:inline-flex; align-items:center; justify-content:center; overflow:hidden; }
 .logo.lg { width:32px; height:32px; }
@@ -816,11 +807,10 @@ body { /* ds-raw: nền canvas trình diễn quanh khung iPhone, không thuộc 
     var top = extra.length ? RATES.slice(0, 4).concat(extra) : RATES.slice(0, 5);
     $('bankChips').innerHTML = top.map(function (x) {
       var on = S.rateBank === x.bank;
-      return '<button type="button" class="bank" aria-pressed="' + on + '" data-bank="' + esc(x.bank) + '" aria-label="' + esc(x.bank) + ', lãi suất ' + dec(x.rate) + '%/năm"' +
-        ' data-ds="Bank Rate Chip" data-ds-composite="Chip Outline + logo 20 + label-section + body-caption" data-ds-state="' + (on ? 'Selected' : 'Default') + '" data-ds-radius="radius-card" data-ds-pad="padding-x-small-8 padding-small-12">' +
-        '<span class="bank-top"><span class="logo t-label-annotation" aria-hidden="true" data-ds-raw="placeholder viết tắt — chờ logo ngân hàng chính thức">' + esc(x.mono.slice(0, 3)) + '</span>' +
-        '<span class="t-label-section" data-ds-typo="label-section" data-ds-color="text-primary">' + dec(x.rate) + '%</span></span>' +
-        '<span class="bank-name t-body-caption" data-ds-typo="body-caption" data-ds-color="text-secondary">' + esc(x.bank) + '</span></button>';
+      return '<button type="button" class="chip t-tagline-caption" aria-pressed="' + on + '" data-bank="' + esc(x.bank) + '" aria-label="' + esc(x.bank) + ', lãi suất ' + dec(x.rate) + '%/năm"' +
+        ' data-ds="Chip" data-ds-type="Outline" data-ds-size="M-32" data-ds-state="' + (on ? 'Selected' : 'Default') + '" data-ds-pill="true" data-ds-typo="tagline-caption" data-ds-content-rule="leftIcon = logo ngân hàng 20px; text = tên ngân hàng + lãi suất">' +
+        '<span class="logo t-label-annotation" aria-hidden="true" data-ds-raw="placeholder viết tắt — chờ logo ngân hàng chính thức">' + esc(x.mono.slice(0, 3)) + '</span>' +
+        '<span>' + esc(x.bank) + ' ' + dec(x.rate) + '%</span></button>';
     }).join('') +
       '<button type="button" class="chip bank-more t-tagline-caption" id="moreBank" aria-haspopup="dialog" data-ds="Chip" data-ds-type="Outline" data-ds-size="M-32" data-ds-state="Default" data-ds-pill="true" data-ds-icon="Chevronright-outline" data-ds-typo="tagline-caption">Xem thêm' +
       '<svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Chevronright-outline"/></svg></button>';
