@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tin đăng đã xem</title>
+<link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --canvas-bg: #f0efed; --canvas-dot: #d6d3cf;
+  --chrome-bg: #ffffff; --chrome-border: #e3e1de; --chrome-text: #222222; --chrome-muted: #7a7a7a; --chrome-hover: rgba(34,34,34,.06);
+  --accent: #e0b800; --accent-ink: #222222; --select: #306bd9; --arrow: #595959;
+  --note-bg: #ffffff; --q-bg: #fff8d6; --q-border: #f0d75a; --ok: #12a154; --warn: #fb7328; --danger: #f0325e;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --canvas-bg: #1e1e1f; --canvas-dot: #343436; --chrome-bg: #2a2a2c; --chrome-border: #3a3a3d; --chrome-text: #f2f2f2;
+    --chrome-muted: #9a9a9e; --chrome-hover: rgba(255,255,255,.08); --arrow: #b0b0b4; --note-bg: #2a2a2c; --q-bg: #3a3420; --q-border: #6b5d1d;
+  }
+}
+:root[data-theme="dark"] {
+  --canvas-bg: #1e1e1f; --canvas-dot: #343436; --chrome-bg: #2a2a2c; --chrome-border: #3a3a3d; --chrome-text: #f2f2f2;
+  --chrome-muted: #9a9a9e; --chrome-hover: rgba(255,255,255,.08); --arrow: #b0b0b4; --note-bg: #2a2a2c; --q-bg: #3a3420; --q-border: #6b5d1d;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body { font-family: 'Reddit Sans', system-ui, sans-serif; color: var(--chrome-text); background: var(--canvas-bg); overflow: hidden; -webkit-font-smoothing: antialiased; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+button:focus-visible { outline: 2px solid var(--select); outline-offset: 2px; }
+
+.viewport { position: fixed; inset: 0; overflow: hidden; touch-action: none; background-color: var(--canvas-bg); background-image: radial-gradient(var(--canvas-dot) 1px, transparent 1px); user-select: none; }
+.viewport.panning { cursor: grab; } .viewport.panning.dragging { cursor: grabbing; }
+.viewport.panning iframe { pointer-events: none; }
+.world { position: absolute; left: 0; top: 0; transform-origin: 0 0; will-change: transform; }
+
+.frame { position: absolute; }
+.frame iframe { display: block; border: 0; background: transparent; }
+.frame.board iframe { background: #fff; pointer-events: none; box-shadow: 0 1px 3px rgba(0,0,0,.08), 0 8px 24px rgba(0,0,0,.06); }
+.frame.board { cursor: pointer; }
+.frame.sel::after { content: ""; position: absolute; left: -4px; top: -4px; width: calc(100% + 8px); height: 820px; border: 2px solid var(--select); border-radius: 4px; pointer-events: none; }
+.label { position: absolute; left: 0; bottom: 100%; padding-bottom: 10px; display: flex; gap: 8px; align-items: center; white-space: nowrap; font-size: 15px; line-height: 20px; }
+.label b { font-weight: 600; }
+.label span { color: var(--chrome-muted); }
+.tag { font-size: 12px; font-weight: 700; line-height: 18px; padding: 1px 8px; border-radius: 999px; background: var(--accent); color: var(--accent-ink); }
+.tag.edge { background: var(--chrome-text); color: var(--chrome-bg); }
+.tag.num { min-width: 22px; text-align: center; }
+
+.heading { position: absolute; font-size: 28px; line-height: 36px; font-weight: 700; white-space: nowrap; }
+.heading small { display: block; font-size: 16px; line-height: 24px; font-weight: 400; color: var(--chrome-muted); }
+
+.note { position: absolute; width: 375px; background: var(--note-bg); border: 1px solid var(--chrome-border); border-radius: 12px; padding: 16px; font-size: 14px; line-height: 20px; box-shadow: 0 1px 2px rgba(0,0,0,.04); }
+.note dl { display: grid; grid-template-columns: 84px 1fr; gap: 8px 12px; }
+.note dt { color: var(--chrome-muted); font-weight: 500; }
+.note dd ul { padding-left: 16px; }
+.note dd li + li { margin-top: 2px; }
+.note code { font-family: ui-monospace, Menlo, monospace; font-size: 12px; background: var(--chrome-hover); padding: 0 4px; border-radius: 4px; }
+.note.wide { width: 460px; }
+.note h3 { font-size: 18px; line-height: 26px; margin-bottom: 12px; display: flex; gap: 8px; align-items: center; }
+.note ol, .note > ul { padding-left: 20px; }
+.note ol li + li, .note > ul li + li { margin-top: 8px; }
+.note.q { background: var(--q-bg); border-color: var(--q-border); }
+
+.arrows { position: absolute; left: 0; top: 0; overflow: visible; pointer-events: none; }
+.arrows path { fill: none; stroke: var(--arrow); stroke-width: 2; }
+.arrows path.dash { stroke-dasharray: 6 6; }
+.pill { position: absolute; transform: translate(-50%, -50%); white-space: nowrap; font-size: 13px; line-height: 18px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: var(--chrome-bg); border: 1px solid var(--chrome-border); box-shadow: 0 2px 6px rgba(0,0,0,.06); }
+
+.states { position: absolute; width: 393px; background: var(--chrome-bg); border: 1px solid var(--chrome-border); border-radius: 16px; padding: 16px; box-shadow: 0 4px 16px rgba(0,0,0,.06); }
+.states h4 { font-size: 15px; line-height: 20px; font-weight: 600; margin-bottom: 4px; }
+.states p { font-size: 13px; line-height: 18px; color: var(--chrome-muted); margin-bottom: 12px; }
+.states .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.states button { text-align: left; font-size: 13px; line-height: 18px; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--chrome-border); display: flex; gap: 8px; align-items: center; }
+.states button:hover { background: var(--chrome-hover); }
+.states button.on { background: var(--chrome-text); color: var(--chrome-bg); border-color: var(--chrome-text); }
+.states button i { font-style: normal; font-weight: 700; font-size: 11px; opacity: .7; min-width: 16px; }
+
+.topbar { position: fixed; left: 16px; top: 16px; z-index: 10; display: flex; gap: 10px; align-items: center; background: var(--chrome-bg); border: 1px solid var(--chrome-border); border-radius: 12px; padding: 8px 12px; box-shadow: 0 4px 16px rgba(0,0,0,.06); max-width: calc(100vw - 32px); }
+.topbar .dot { width: 10px; height: 10px; border-radius: 3px; background: var(--accent); flex: none; }
+.topbar b { font-weight: 600; font-size: 14px; white-space: nowrap; }
+.topbar span { color: var(--chrome-muted); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.toolbar { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); z-index: 10; display: flex; gap: 2px; align-items: center; padding: 4px; background: var(--chrome-bg); border: 1px solid var(--chrome-border); border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,.08); max-width: calc(100vw - 16px); }
+.toolbar button { height: 32px; min-width: 32px; padding: 0 10px; border-radius: 8px; font-size: 13px; font-weight: 500; display: inline-flex; align-items: center; justify-content: center; gap: 6px; white-space: nowrap; }
+.toolbar button:hover { background: var(--chrome-hover); }
+.toolbar button.on { background: var(--chrome-text); color: var(--chrome-bg); }
+.toolbar .sep { width: 1px; height: 20px; background: var(--chrome-border); margin: 0 4px; }
+.toolbar .zoom { min-width: 56px; font-variant-numeric: tabular-nums; }
+.toolbar svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.toolbar .k { opacity: .5; font-size: 11px; }
+.hint { position: fixed; right: 16px; bottom: 20px; z-index: 10; font-size: 12px; line-height: 18px; color: var(--chrome-muted); text-align: right; }
+@media (max-width: 860px) { .hint { display: none; } .toolbar .lbl, .toolbar .k { display: none; } }
+</style>
+</head>
+<body>
+<div class="topbar"><i class="dot"></i><b>Trang chủ · Tin đăng đã xem</b><span>Chợ Tốt · section mới trên “Chung cư Quận Phú Nhuận”</span></div>
+
+<div class="viewport" id="vp"><div class="world" id="world"></div></div>
+
+<div class="toolbar" role="toolbar" aria-label="Điều khiển canvas">
+  <button id="tHand" title="Kéo canvas (H / giữ Space)" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M18 11V6a2 2 0 0 0-4 0v5M14 10V4a2 2 0 0 0-4 0v6M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.9-6-2.4l-3.6-3.6a2 2 0 0 1 2.8-2.8L7 15"/></svg><span class="lbl">Kéo</span></button>
+  <span class="sep"></span>
+  <button id="tOut" title="Thu nhỏ (−)" aria-label="Thu nhỏ"><svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg></button>
+  <button id="tZoom" class="zoom" title="Về 100% (Shift+0)">100%</button>
+  <button id="tIn" title="Phóng to (+)" aria-label="Phóng to"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+  <span class="sep"></span>
+  <button id="tFit" title="Toàn bộ (Shift+1)"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg><span class="lbl">Toàn bộ</span></button>
+  <button id="tProto" title="Prototype (1)"><span class="lbl">Prototype</span><span class="k">1</span></button>
+  <button id="tFlow" title="Flow chính (2)"><span class="lbl">Flow</span><span class="k">2</span></button>
+  <button id="tEdge" title="Edge cases (3)"><span class="lbl">Edge cases</span><span class="k">3</span></button>
+</div>
+<div class="hint">Cuộn để di chuyển · Ctrl/⌘ + cuộn để zoom · Space + kéo để pan<br>Bấm vào artboard để đưa prototype về đúng trạng thái đó</div>
+
+<script id="proto-src" type="application/json">/*__PROTO__*/</script>
+<script>
+(function () {
+  const SRC = JSON.parse(document.getElementById('proto-src').textContent);
+  const vp = document.getElementById('vp'), world = document.getElementById('world');
+  const el = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
+  const at = (e, x, y, w) => { e.style.left = x + 'px'; e.style.top = y + 'px'; if (w) e.style.width = w + 'px'; world.appendChild(e); return e; };
+  const docFor = (cls, data = {}) => {
+    const attrs = Object.entries(data).map(([k, v]) => ` data-${k}="${v}"`).join('');
+    return SRC.replace('<html lang="vi">', `<html lang="vi" class="${cls}"${attrs}>`);
+  };
+
+  /* ---------- Content ---------- */
+  const W = 375, H = 812, BX = 600;
+  const FLOW = [
+    { key: 'default', n: '1', name: 'Mặc định', sub: '3–10 tin', data: { state: 'default' },
+      note: { 'Điều kiện': 'Có từ 3 đến 10 tin đã xem còn hiệu lực.',
+              'Hiển thị': 'Carousel ngang, card 158px, cách nhau 8px. Tin mới xem nhất đứng đầu. Card thứ 3 lộ một phần để gợi ý cuộn.',
+              'Tương tác': '<ul><li>Tap card → Chi tiết tin</li><li>Tap tiêu đề hoặc chevron → Lịch sử tin đã xem <span style="opacity:.6">(ngoài phạm vi)</span></li><li>Tim → lưu tin, đồng bộ với Tin đã lưu</li><li>✕ → Drawer xác nhận</li></ul>' } },
+    { key: 'drawer', n: '2', name: 'Drawer xác nhận ẩn', sub: 'Drawer DS · mobile', data: { state: 'default', drawer: 'open' },
+      note: { 'Kích hoạt': 'Tap ✕ trên header section.',
+              'Nội dung': 'Tiêu đề “Ẩn mục Tin đăng đã xem?”. Mô tả nói rõ lịch sử xem không bị xoá.',
+              'Hành động': '<ul><li><b>Ẩn mục này</b> (Primary L-40) → thu gọn section</li><li><b>Huỷ</b> (Secondary L-40), ✕, tap nền tối, Esc → đóng drawer, giữ nguyên</li></ul>' } },
+    { key: 'hidden', n: '3', name: 'Section đã ẩn', sub: 'sau khi xác nhận', data: { state: 'hidden' },
+      note: { 'Hiển thị': 'Section thu gọn (height + opacity, 300ms). “Chung cư Quận Phú Nhuận” dồn lên ngay dưới danh mục.',
+              'Dữ liệu': 'Chỉ ẩn trên Trang chủ. Không xoá lịch sử xem.',
+              'Cần chốt': 'Ẩn trong bao lâu, và người dùng bật lại ở đâu (xem Câu hỏi mở #3).' } },
+  ];
+  const EDGES = [
+    { key: 'loading', n: 'E1', name: 'Đang tải', sub: 'skeleton', data: { state: 'loading' },
+      note: { 'Điều kiện': 'Đang gọi API lịch sử xem.',
+              'Hiển thị': 'Skeleton tiêu đề + 3 card cùng kích thước card thật, để layout không nhảy khi có data.',
+              'Lỗi / timeout': 'Ẩn section, không báo lỗi. Trang chủ không bị chặn vì một section phụ.' } },
+    { key: 'one', n: 'E2', name: 'Chỉ có 1 tin', sub: 'card ngang', data: { state: 'one' },
+      note: { 'Điều kiện': 'Còn đúng 1 tin hợp lệ.',
+              'Hiển thị': 'Đổi sang card ngang full-width (ảnh 120px + tiêu đề, param, giá). Không dùng carousel, vì một card 158px nằm lẻ loi bên trái trông như bị lỗi.',
+              'Không hiện': 'Ô “Xem tất cả”.' } },
+    { key: 'two', n: 'E3', name: '2 tin', sub: 'vừa khung, không cuộn', data: { state: 'two' },
+      note: { 'Điều kiện': 'Còn đúng 2 tin hợp lệ.',
+              'Hiển thị': 'Hai card dọc 158px như mặc định, vừa trong 375px nên không cuộn. Không kéo giãn card cho đầy hàng.',
+              'Lưu ý': 'Giữ cùng component card với case mặc định, dev không phải làm thêm layout.' } },
+    { key: 'many', n: 'E4', name: 'Hơn 10 tin', sub: 'cuộn tới cuối', data: { state: 'many', 'scroll-end': '1' },
+      note: { 'Điều kiện': 'Có trên 10 tin hợp lệ.',
+              'Hiển thị': 'Chỉ lấy 10 tin mới xem nhất. Cuối carousel có ô “Xem tất cả”, kèm tổng số tin (vd “12 tin đã xem”).',
+              'Tương tác': 'Tap ô “Xem tất cả” → Lịch sử tin đã xem (giống tap tiêu đề).' } },
+    { key: 'filtered', n: 'E5', name: 'Có tin đã bán / ẩn / hết hạn', sub: '4 tin → còn 1', data: { state: 'filtered' },
+      note: { 'Điều kiện': 'Trong lịch sử có tin đã bán, bị ẩn, hết hạn hoặc bị xoá.',
+              'Quy tắc': 'Lọc bỏ trước, rồi mới đếm để chọn layout. Ví dụ: 4 tin, 3 tin không còn hiệu lực → còn 1 → dùng layout E2.',
+              'Còn lại 0': 'Lọc xong không còn tin nào → áp E6.' } },
+    { key: 'empty', n: 'E6', name: 'Không có tin nào', sub: 'ẩn section', data: { state: 'empty' },
+      note: { 'Điều kiện': 'User mới, đã xoá lịch sử, hoặc lọc xong còn 0 tin.',
+              'Hiển thị': 'Không render section, kể cả header. Không dùng empty state, vì trang chủ không nên có khối trống.',
+              'Kết quả': 'Giống hệt Trang chủ hiện tại: “Chung cư Quận Phú Nhuận” nằm ngay dưới danh mục.' } },
+  ];
+  const RULES = `<h3>Quy tắc chung</h3><ul>
+    <li><b>Vị trí:</b> ngay trên “Chung cư Quận Phú Nhuận”, dưới thanh danh mục. Khoảng cách tới section dưới cần chốt (<code>data-ds-gap="?? confirm"</code>).</li>
+    <li><b>Thứ tự:</b> theo thời điểm xem gần nhất. Một tin xem nhiều lần chỉ hiện 1 card và được đưa lên đầu.</li>
+    <li><b>Giới hạn:</b> tối đa 10 card. Trên 10 tin thì thêm ô “Xem tất cả”.</li>
+    <li><b>Layout theo số tin hợp lệ:</b> 0 → ẩn · 1 → card ngang · 2 → 2 card không cuộn · 3–10 → carousel · trên 10 → carousel + “Xem tất cả”.</li>
+    <li><b>Dữ liệu card:</b> lấy theo trạng thái mới nhất của tin. Giá đổi thì hiện giá mới, giá trống thì hiện “Thỏa thuận”.</li>
+    <li><b>Card:</b> dùng lại card dọc của section host. Tiêu đề tối đa 2 dòng, param 1 dòng, cắt bằng dấu ba chấm. Ảnh lỗi → nền <code>background-secondary</code>.</li>
+    <li><b>Tim:</b> trạng thái tim khớp với Tin đã lưu ở mọi nơi trên Trang chủ.</li>
+  </ul>`;
+  const QUESTIONS = `<h3>Câu hỏi mở · cần PM/Design chốt</h3><ol>
+    <li><b>Trùng tin giữa 2 section:</b> Kingston, Garden Gate đang có ở cả “Tin đăng đã xem” và “Chung cư Quận Phú Nhuận”. Có loại trùng ở section gợi ý không?</li>
+    <li><b>Nhãn thời gian trên ảnh:</b> giữ thời gian đăng như card host (“19 giờ trước”), hay đổi thành “Đã xem 2 giờ trước”?</li>
+    <li><b>Ẩn section:</b> ẩn vĩnh viễn, hay hiện lại sau N ngày hoặc khi có tin xem mới? Có chỗ bật lại trong Tài khoản không?</li>
+    <li><b>Subtitle:</b> prototype đang đề xuất “Xem lại những tin bạn quan tâm” (gắn <code>data-ds-speculative</code>). Giữ, đổi chữ, hay bỏ?</li>
+    <li><b>Màn Lịch sử tin đã xem:</b> đã có màn đích chưa? Nếu chưa thì tiêu đề và “Xem tất cả” dẫn đi đâu?</li>
+    <li><b>Phạm vi dữ liệu:</b> chỉ lấy tin xem trong N ngày? Khách chưa đăng nhập dùng lịch sử lưu trên máy? Có loại tin của chính user không?</li>
+  </ol>`;
+
+  /* ---------- Layout ---------- */
+  const R1 = 120, GAP1 = 150, R2 = 1520, GAP2 = 72, NOTE_DY = H + 28;
+  const boards = {};
+  at(el('div', 'heading', '1 · Flow chính<small>Ẩn section Tin đăng đã xem</small>'), BX, R1 - 110);
+  at(el('div', 'heading', '2 · Edge cases<small>Theo số lượng và trạng thái dữ liệu tin đã xem</small>'), BX, R2 - 110);
+
+  function board(item, x, y, edge) {
+    const f = el('div', 'frame board');
+    f.style.width = W + 'px'; f.style.height = H + 'px'; f.dataset.key = item.key; f.tabIndex = 0;
+    f.appendChild(el('div', 'label', `<span class="tag num ${edge ? 'edge' : ''}">${item.n}</span><b>${item.name}</b><span>${item.sub}</span>`));
+    const ifr = el('iframe'); ifr.width = W; ifr.height = H; ifr.tabIndex = -1; ifr.title = item.name; ifr.loading = 'lazy';
+    ifr.srcdoc = docFor('artboard mark', item.data); f.appendChild(ifr);
+    at(f, x, y);
+    const n = el('div', 'note', '<dl>' + Object.entries(item.note).map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('') + '</dl>');
+    at(n, x, y + NOTE_DY);
+    boards[item.key] = { f, x, y };
+    f.addEventListener('click', () => syncProto(item.key));
+    f.addEventListener('keydown', e => { if (e.key === 'Enter') syncProto(item.key); });
+  }
+  FLOW.forEach((it, i) => board(it, BX + i * (W + GAP1), R1, false));
+  EDGES.forEach((it, i) => board(it, BX + i * (W + GAP2), R2, true));
+  const SIDE = BX + 3 * (W + GAP1) + 10;
+  at(el('div', 'note wide', RULES), SIDE, R1);
+  at(el('div', 'note wide q', QUESTIONS), SIDE + 460 + 40, R1);
+
+  /* Arrows (flow row) */
+  const svgNS = 'http://www.w3.org/2000/svg';
+  const svg = document.createElementNS(svgNS, 'svg'); svg.setAttribute('class', 'arrows'); svg.setAttribute('width', 1); svg.setAttribute('height', 1);
+  svg.innerHTML = '<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor" stroke="none"/></marker></defs>';
+  svg.style.color = 'var(--arrow)'; world.appendChild(svg);
+  function arrow(d, label, lx, ly, dash) {
+    const p = document.createElementNS(svgNS, 'path'); p.setAttribute('d', d); p.setAttribute('marker-end', 'url(#ah)'); if (dash) p.setAttribute('class', 'dash'); svg.appendChild(p);
+    if (label) at(el('div', 'pill', label), lx, ly);
+  }
+  const fy = R1 + 430; // section height in artboards
+  const a1 = BX + W, a2 = BX + W + GAP1, b1 = a2 + W, b2 = b1 + GAP1;
+  arrow(`M${a1 + 8} ${fy} L${a2 - 8} ${fy}`, 'Tap ✕', (a1 + a2) / 2, fy - 22);
+  arrow(`M${b1 + 8} ${fy} L${b2 - 8} ${fy}`, 'Ẩn mục này', (b1 + b2) / 2, fy - 22);
+  arrow(`M${a2 - 8} ${fy + 120} C ${a2 - 60} ${fy + 120}, ${a1 + 60} ${fy + 120}, ${a1 + 8} ${fy + 120}`, 'Huỷ · ✕ · nền tối', (a1 + a2) / 2, fy + 148, true);
+
+  /* Prototype + state panel */
+  const PX = 0, PY = R1 - 40;
+  const fp = el('div', 'frame proto'); fp.style.width = '473px'; fp.style.height = '886px';
+  fp.appendChild(el('div', 'label', '<span class="tag">Prototype</span><b>iPhone 14 Pro</b><span>tương tác</span>')).style.cssText = 'left:40px;bottom:calc(100% - 30px)';
+  const ifp = el('iframe'); ifp.width = 473; ifp.height = 886; ifp.title = 'Prototype tương tác';
+  ifp.srcdoc = docFor('embed'); fp.appendChild(ifp); at(fp, PX, PY);
+  const STATES = [['default', '1', 'Mặc định'], ['drawer', '2', 'Drawer xác nhận'], ['hidden', '3', 'Đã ẩn section'], ['loading', 'E1', 'Đang tải'], ['one', 'E2', 'Chỉ 1 tin'], ['two', 'E3', '2 tin'], ['many', 'E4', 'Hơn 10 tin'], ['filtered', 'E5', 'Lọc tin đã bán'], ['empty', 'E6', 'Không có tin']];
+  const panel = el('div', 'states', '<h4>Trạng thái section</h4><p>Chuyển prototype sang từng case. Bấm thẳng vào artboard cũng được.</p><div class="grid"></div>');
+  const grid = panel.querySelector('.grid');
+  STATES.forEach(([k, n, t]) => { const b = el('button', '', `<i>${n}</i>${t}`); b.dataset.key = k; b.onclick = () => syncProto(k); grid.appendChild(b); });
+  at(panel, PX + 40, PY + 900);
+
+  function mark(key) {
+    grid.querySelectorAll('button').forEach(b => b.classList.toggle('on', b.dataset.key === key));
+    Object.entries(boards).forEach(([k, b]) => b.f.classList.toggle('sel', k === key));
+  }
+  function syncProto(key) {
+    const w = ifp.contentWindow; if (!w || !w.setViewedState) return;
+    if (key === 'drawer') { w.setViewedState('default'); setTimeout(() => w.openHideDrawer(), 50); }
+    else w.setViewedState(key);
+    mark(key);
+  }
+  addEventListener('message', e => { if (e.data && e.data.type === 'viewed-state') mark(e.data.state); });
+  ifp.addEventListener('load', () => {
+    const w = ifp.contentWindow;
+    w.addEventListener('keydown', e => onKey(e, true)); w.addEventListener('keyup', e => { if (e.code === 'Space') onKey(e, false); });
+    setTimeout(() => mark('default'), 1600);
+  });
+
+  /* ---------- Camera ---------- */
+  const zoomBtn = document.getElementById('tZoom');
+  const cam = { x: 0, y: 0, z: 1 }, MIN = 0.06, MAX = 4;
+  function apply() {
+    world.style.transform = `translate(${cam.x}px, ${cam.y}px) scale(${cam.z})`;
+    const g = 24 * cam.z; vp.style.backgroundSize = `${g}px ${g}px`; vp.style.backgroundPosition = `${cam.x}px ${cam.y}px`;
+    zoomBtn.textContent = Math.round(cam.z * 100) + '%';
+  }
+  function zoomAt(z, cx, cy) { z = Math.min(MAX, Math.max(MIN, z)); cam.x = cx - (cx - cam.x) * (z / cam.z); cam.y = cy - (cy - cam.y) * (z / cam.z); cam.z = z; apply(); }
+  let anim;
+  function animateTo(t) {
+    cancelAnimationFrame(anim); const s = { ...cam }, t0 = performance.now(), D = 340;
+    const step = now => { const k = Math.min(1, (now - t0) / D), e = 1 - Math.pow(1 - k, 3);
+      cam.x = s.x + (t.x - s.x) * e; cam.y = s.y + (t.y - s.y) * e; cam.z = s.z + (t.z - s.z) * e; apply(); if (k < 1) anim = requestAnimationFrame(step); };
+    anim = requestAnimationFrame(step);
+  }
+  function fitRect(r, pad = 56, maxZ = 1) {
+    const Wv = innerWidth, Hv = innerHeight - 70, z = Math.min(maxZ, (Wv - pad * 2) / r.w, (Hv - pad * 2) / r.h);
+    return { z, x: (Wv - r.w * z) / 2 - r.x * z, y: 30 + (Hv - r.h * z) / 2 - r.y * z };
+  }
+  const ALL = { x: -20, y: 0, w: SIDE + 960 + 40, h: R2 + NOTE_DY + 300 };
+  const views = {
+    all: () => animateTo(fitRect(ALL, 40)),
+    proto: () => animateTo(fitRect({ x: 0, y: PY + 10, w: 473, h: 886 + 220 }, 24)),
+    flow: () => animateTo(fitRect({ x: BX - 20, y: R1 - 120, w: SIDE + 960 - BX + 40, h: NOTE_DY + 360 }, 40)),
+    edge: () => animateTo(fitRect({ x: BX - 20, y: R2 - 120, w: 6 * W + 5 * GAP2 + 40, h: NOTE_DY + 360 }, 40)),
+  };
+
+  vp.addEventListener('wheel', e => { e.preventDefault();
+    if (e.ctrlKey || e.metaKey) zoomAt(cam.z * Math.exp(-e.deltaY * 0.01), e.clientX, e.clientY);
+    else { cam.x -= e.deltaX; cam.y -= e.deltaY; apply(); } }, { passive: false });
+
+  let space = false, hand = false, drag = null, pinch = null;
+  const handBtn = document.getElementById('tHand');
+  const setPan = () => { vp.classList.toggle('panning', space || hand); handBtn.classList.toggle('on', hand); handBtn.setAttribute('aria-pressed', hand); };
+  vp.addEventListener('pointerdown', e => {
+    const onThing = e.target.closest('.frame, .states, .note');
+    if (onThing && !(space || hand)) return;
+    drag = { id: e.pointerId, x: e.clientX, y: e.clientY, cx: cam.x, cy: cam.y, moved: false };
+    vp.setPointerCapture(e.pointerId); vp.classList.add('panning', 'dragging');
+  });
+  vp.addEventListener('pointermove', e => { if (!drag || e.pointerId !== drag.id || pinch) return; cam.x = drag.cx + e.clientX - drag.x; cam.y = drag.cy + e.clientY - drag.y; apply(); });
+  const endDrag = () => { drag = null; vp.classList.remove('dragging'); setPan(); };
+  vp.addEventListener('pointerup', endDrag); vp.addEventListener('pointercancel', endDrag);
+  vp.addEventListener('touchstart', e => { if (e.touches.length === 2) { const [a, b] = e.touches; pinch = { d: Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY), z: cam.z }; } }, { passive: true });
+  vp.addEventListener('touchmove', e => { if (!pinch || e.touches.length !== 2) return; const [a, b] = e.touches;
+    zoomAt(pinch.z * Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY) / pinch.d, (a.clientX + b.clientX) / 2, (a.clientY + b.clientY) / 2); }, { passive: true });
+  vp.addEventListener('touchend', e => { if (e.touches.length < 2) pinch = null; });
+
+  function onKey(e, down) {
+    if (e.code === 'Space') { space = down; setPan(); if (down) e.preventDefault(); return; }
+    if (!down) return;
+    const c = [innerWidth / 2, innerHeight / 2];
+    if (e.key === '+' || e.key === '=') zoomAt(cam.z * 1.25, ...c);
+    else if (e.key === '-' || e.key === '_') zoomAt(cam.z / 1.25, ...c);
+    else if (e.shiftKey && e.code === 'Digit0') zoomAt(1, ...c);
+    else if (e.shiftKey && e.code === 'Digit1') views.all();
+    else if (e.key === '1') views.proto();
+    else if (e.key === '2') views.flow();
+    else if (e.key === '3') views.edge();
+    else if (e.key === 'h' || e.key === 'H') { hand = !hand; setPan(); }
+    else return;
+    e.preventDefault();
+  }
+  addEventListener('keydown', e => onKey(e, true)); addEventListener('keyup', e => onKey(e, false));
+
+  handBtn.onclick = () => { hand = !hand; setPan(); };
+  document.getElementById('tIn').onclick = () => zoomAt(cam.z * 1.25, innerWidth / 2, innerHeight / 2);
+  document.getElementById('tOut').onclick = () => zoomAt(cam.z / 1.25, innerWidth / 2, innerHeight / 2);
+  zoomBtn.onclick = () => zoomAt(1, innerWidth / 2, innerHeight / 2);
+  document.getElementById('tFit').onclick = views.all;
+  document.getElementById('tProto').onclick = views.proto;
+  document.getElementById('tFlow').onclick = views.flow;
+  document.getElementById('tEdge').onclick = views.edge;
+
+  // Initial view: prototype + first flow row
+  Object.assign(cam, fitRect({ x: -10, y: PY - 20, w: BX + 2 * W + GAP1 + 20, h: 920 }, 32)); apply();
+})();
+</script>
+</body>
+</html>

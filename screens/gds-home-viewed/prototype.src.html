@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trang chủ · Tin đăng đã xem</title>
+<link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ds-tokens:start */
+/* DS tokens: Chợ Tốt (GDS), Figma export 2026-10-14. Inserted by scripts/ds_tokens.py inline; do not edit. */
+:root {
+  --logo-primary: #ffba00;
+  --logo-secondary: #ffba00;
+  --logo-on-black: #ffffff;
+  --border-divider: #f4f4f4;
+  --border-thin: #e8e8e8;
+  --border-overlay: #ffffff80;
+  --border-regular: #dddddd;
+  --border-bold: #8c8c8c;
+  --border-active: #ffd400;
+  --border-blank: #ffffff;
+  --border-brand: #ffd400;
+  --border-info: #306bd9;
+  --border-success: #12a154;
+  --border-error: #f0325e;
+  --border-warning: #fb7328;
+  --border-disabled: #c0c0c0;
+  --border-black: #222222;
+  --background-brand-light: #fff8d6;
+  --background-chotot-light: #fff8d6;
+  --background-primary: #ffffff;
+  --background-app: #f7f7f7;
+  --background-secondary: #f4f4f4;
+  --background-tertiary: #e8e8e8;
+  --background-disable: #c0c0c0;
+  --background-error-light: #feebef;
+  --background-info-light: #f2f6fc;
+  --background-success-light: #ecf9f1;
+  --background-warning-light: #fff4ec;
+  --background-brand: #ffd400;
+  --background-appwrapper: #ffd400;
+  --background-chotot: #ffd400;
+  --background-info: #306bd9;
+  --background-error: #f0325e;
+  --background-success: #12a154;
+  --background-warning: #fb7328;
+  --background-inverted: #222222;
+  --background-overlay: #22222280;
+  --background-overlay-inverted: #ffffff1a;
+  --text-brand: #cc8f00;
+  --text-on-background: #222222;
+  --text-primary: #222222;
+  --text-secondary: #595959;
+  --text-tertiary: #8c8c8c;
+  --text-link: #306bd9;
+  --text-error: #f0325e;
+  --text-success: #12a154;
+  --text-info: #306bd9;
+  --text-warning: #fb7328;
+  --text-chotot: #ffd400;
+  --text-disabled: #c0c0c0;
+  --text-blank: #ffffff;
+  --text-overlay: #ffffffbf;
+  --text-overlay-secondary: #ffffff80;
+  --icon-brand: #ffba00;
+  --icon-chotot: #ffba00;
+  --icon-chotot-bold: #cc8f00;
+  --icon-on-background: #222222;
+  --icon-primary: #222222;
+  --icon-secondary: #595959;
+  --icon-tertiary: #8c8c8c;
+  --icon-blank: #ffffff;
+  --icon-info: #306bd9;
+  --icon-success: #12a154;
+  --icon-error: #f0325e;
+  --icon-warning: #fb7328;
+  --icon-disabled: #c0c0c0;
+  --interaction-chotot-hover: #ffe884;
+  --interaction-chotot-pressed: #ffc800;
+  --interaction-brand-hover: #ffe884;
+  --interaction-brand-pressed: #ffba00;
+  --interaction-error-hover: #f35b7e;
+  --interaction-error-pressed: #cb294e;
+  --interaction-info-hover: #548af0;
+  --interaction-info-pressed: #1952ba;
+  --interaction-success-hover: #26c06e;
+  --interaction-success-pressed: #108446;
+  --interaction-warning-hover: #ffa97b;
+  --interaction-warning-pressed: #e16725;
+  --interaction-neutral-hover: #595959;
+  --interaction-neutral-pressed: #404040;
+  --interaction-primary-hover: #f4f4f4;
+  --interaction-brand-light-hover: #fff8d6;
+  --interaction-brand-light-pressed: #ffd400;
+  --interaction-error-light-hover: #fcd6df;
+  --interaction-error-light-pressed: #fbc2cf;
+  --interaction-info-light-hover: #e4ecfb;
+  --interaction-info-light-pressed: #cadbf7;
+  --interaction-success-light-hover: #d9f2e4;
+  --interaction-success-light-pressed: #abe7c5;
+  --interaction-warning-light-hover: #ffe4d5;
+  --interaction-warning-light-pressed: #ffceb4;
+  --interaction-neutral-light-hover: #e8e8e8;
+  --interaction-neutral-light-pressed: #dddddd;
+  --button-primary: #ffd400;
+  --button-info: #306bd9;
+  --button-success: #12a154;
+  --button-error: #f0325e;
+  --button-chotot: #ffd400;
+  --button-blank: #ffffff;
+  --button-disabled: #c0c0c0;
+  --button-appwrapper: #ffd400;
+  --button-neutral: #222222;
+  --button-secondary: #fff8d6;
+  --button-tonal-success: #ecf9f1;
+  --button-tonal-error: #feebef;
+  --button-tonal-info: #f2f6fc;
+  --button-tonal-neutral: #f4f4f4;
+  --skeleton-background: #f4f4f4;
+  --skeleton-item: #e8e8e8;
+  --gap-min-2: 2px;
+  --gap-2x-small-4: 4px;
+  --gap-2x-small-6: 6px;
+  --gap-x-small-8: 8px;
+  --gap-small-12: 12px;
+  --gap-medium-16: 16px;
+  --gap-large-20: 20px;
+  --padding-min-2: 2px;
+  --padding-2x-small-4: 4px;
+  --padding-2x-small-6: 6px;
+  --padding-x-small-8: 8px;
+  --padding-small-12: 12px;
+  --padding-medium-16: 16px;
+  --padding-large-20: 20px;
+  --radius-ad-small: 4px;
+  --radius-ad: 6px;
+  --radius-card-small: 8px;
+  --radius-card: 12px;
+  --radius-decoration: 16px;
+  --radius-modal: 20px;
+  --radius-pill: 999px;
+  --stroke-divider: 1px;
+  --stroke-action: 2px;
+  --stroke-emphasize: 3px;
+}
+.t-display-page { font: 700 32px/40px 'Reddit Sans', sans-serif; }
+.t-display-section { font: 700 24px/32px 'Reddit Sans', sans-serif; }
+.t-display-caption { font: 700 20px/28px 'Reddit Sans', sans-serif; }
+.t-header-page { font: 600 20px/28px 'Reddit Sans', sans-serif; }
+.t-display-annotation { font: 700 18px/26px 'Reddit Sans', sans-serif; }
+.t-display-price { font: 600 18px/26px 'Reddit Sans', sans-serif; }
+.t-label-page { font: 700 16px/24px 'Reddit Sans', sans-serif; }
+.t-header-section { font: 600 16px/24px 'Reddit Sans', sans-serif; }
+.t-tagline-section { font: 500 16px/20px 'Reddit Sans', sans-serif; }
+.t-body-page { font: 400 16px/24px 'Reddit Sans', sans-serif; }
+.t-label-section { font: 700 14px/20px 'Reddit Sans', sans-serif; }
+.t-header-caption { font: 600 14px/20px 'Reddit Sans', sans-serif; }
+.t-tagline-caption { font: 500 14px/20px 'Reddit Sans', sans-serif; }
+.t-body-section { font: 400 14px/20px 'Reddit Sans', sans-serif; }
+.t-label-caption { font: 700 12px/18px 'Reddit Sans', sans-serif; }
+.t-header-annotation { font: 600 12px/18px 'Reddit Sans', sans-serif; }
+.t-tagline-annotation { font: 500 12px/18px 'Reddit Sans', sans-serif; }
+.t-body-caption { font: 400 12px/18px 'Reddit Sans', sans-serif; }
+.t-label-annotation { font: 700 10px/16px 'Reddit Sans', sans-serif; }
+.t-tagline-footext { font: 500 10px/16px 'Reddit Sans', sans-serif; }
+.t-body-annotation { font: 400 10px/16px 'Reddit Sans', sans-serif; }
+/* ds-tokens:end */
+
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  display: flex; justify-content: center; align-items: flex-start; min-height: 100vh; padding: 40px 0;
+  background: var(--background-app); font-family: 'Reddit Sans', sans-serif; color: var(--text-primary);
+  -webkit-font-smoothing: antialiased; overflow: hidden;
+}
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+button:focus-visible, a:focus-visible, [tabindex]:focus-visible { outline: 2px solid var(--border-info); outline-offset: 2px; }
+.ds-icon { width: 24px; height: 24px; flex: none; color: var(--icon-primary); vertical-align: middle; }
+.ds-icon--20 { width: 20px; height: 20px; } .ds-icon--16 { width: 16px; height: 16px; }
+
+/* ---------- iPhone 14 Pro frame ---------- */
+.iphone { /* ds-raw: khung máy, không thuộc DS */
+  position: relative; width: 393px; height: 806px; flex-shrink: 0; background: #1c1c1e; border-radius: 56px; padding: 9px;
+  box-shadow: 0 0 0 2px #3a3a3c, 0 24px 60px rgba(0,0,0,.35);
+}
+.iphone-screen { /* ds-raw: khung máy */
+  position: relative; width: 375px; height: 788px; border-radius: 47px; overflow: hidden; background: var(--background-primary);
+}
+.dynamic-island { /* ds-raw: khung máy */
+  position: absolute; top: 11px; left: 50%; transform: translateX(-50%); width: 120px; height: 34px; background: #000; border-radius: 20px; z-index: 9999;
+}
+.app-scroll {
+  position: absolute; inset: 0; overflow-y: auto; overflow-x: hidden; display: flex; flex-direction: column;
+  scrollbar-width: none; background: var(--background-primary);
+}
+.app-scroll::-webkit-scrollbar { display: none; }
+.app-scroll > * { flex-shrink: 0; }
+
+/* Embedded on canvas: transparent page, keeps the 40px breathing room */
+html.embed body { background: transparent; }
+/* Artboard: plain 375 × viewport screen, no bezel */
+html.artboard body { padding: 0; background: var(--background-primary); }
+html.artboard .iphone { width: 375px; height: 100vh; padding: 0; border-radius: 0; box-shadow: none; background: none; }
+html.artboard .iphone-screen { height: 100vh; border-radius: 0; }
+html.artboard .dynamic-island { display: none; }
+html.artboard .app-scroll { scroll-behavior: auto; }
+html.mark #viewed:not(.collapsed) { outline: 2px dashed var(--border-info); outline-offset: -2px; }
+html.mark #viewed:not(.collapsed)::before {
+  content: "MỚI"; position: absolute; right: var(--padding-x-small-8); top: var(--padding-x-small-8); z-index: 2;
+  padding: 0 var(--padding-2x-small-6); border-radius: var(--radius-ad-small); background: var(--background-info); color: var(--text-blank);
+  font: 700 10px/16px 'Reddit Sans', sans-serif;
+}
+
+/* ---------- Top bar (status bar + search) ---------- */
+.topbar { position: sticky; top: 0; z-index: 20; background: var(--background-brand); transition: background .2s ease; }
+.ios-statusbar { /* ds-raw: status bar iOS thuộc khung máy */
+  height: 50px; display: flex; align-items: flex-end; justify-content: space-between; padding: 0 26px 7px 32px;
+  color: var(--text-primary); font-size: 14px; font-weight: 600;
+}
+.ios-statusbar .icons { display: flex; gap: 5px; align-items: center; }
+.searchrow { height: 56px; display: flex; align-items: center; gap: var(--gap-2x-small-4); padding: 0 var(--padding-x-small-8); }
+.icon-btn {
+  position: relative; width: 40px; height: 40px; flex: none; display: grid; place-items: center;
+  border-radius: var(--radius-pill); transition: background .15s ease;
+}
+.icon-btn:hover { background: var(--interaction-brand-light-hover); }
+.icon-btn:active { background: var(--interaction-brand-pressed); }
+.search {
+  flex: 1; min-width: 0; height: 40px; display: flex; align-items: center; gap: var(--gap-x-small-8);
+  padding: 0 var(--padding-small-12); border-radius: var(--radius-pill); background: var(--background-primary);
+  color: var(--text-tertiary); text-align: left; transition: background .2s ease;
+}
+.search .ds-icon { color: var(--icon-primary); }
+.badge {
+  position: absolute; top: 2px; right: 0; min-width: 20px; height: 20px; padding: 0 var(--padding-2x-small-4);
+  border-radius: var(--radius-pill); background: var(--background-error); color: var(--text-blank);
+  display: grid; place-items: center; box-shadow: 0 0 0 2px var(--background-brand);
+}
+.topbar.scrolled { background: var(--background-primary); box-shadow: 0 1px 0 var(--border-thin); }
+.topbar.scrolled .search { background: var(--background-secondary); }
+.topbar.scrolled .badge { box-shadow: 0 0 0 2px var(--background-primary); }
+.topbar.scrolled .icon-btn:hover { background: var(--interaction-neutral-light-hover); }
+
+.chips { display: flex; gap: var(--gap-x-small-8); padding: var(--padding-2x-small-4) var(--padding-medium-16) var(--padding-medium-16); overflow-x: auto; scrollbar-width: none; background: var(--background-brand); }
+.chips::-webkit-scrollbar { display: none; }
+.hchip {
+  height: 32px; flex: none; display: inline-flex; align-items: center; gap: var(--gap-2x-small-4);
+  padding: 0 var(--padding-x-small-8) 0 var(--padding-x-small-8); border-radius: var(--radius-pill); background: var(--background-primary);
+}
+.hchip .ds-icon { color: var(--icon-tertiary); }
+.hchip .count { padding: 0 var(--padding-2x-small-6); border-radius: var(--radius-pill); background: var(--background-warning); color: var(--text-blank); }
+
+/* ---------- Sheet ---------- */
+.sheet { position: relative; margin-top: -12px; border-radius: var(--radius-modal) var(--radius-modal) 0 0; background: var(--background-primary); padding-top: var(--padding-medium-16); }
+.cats { display: flex; gap: var(--gap-x-small-8); padding: 0 var(--padding-small-12); overflow-x: auto; scrollbar-width: none; }
+.cats::-webkit-scrollbar { display: none; }
+.cat { width: 72px; flex: none; display: flex; flex-direction: column; align-items: center; gap: var(--gap-2x-small-4); text-align: center; color: var(--text-secondary); border-radius: var(--radius-card-small); padding: var(--padding-2x-small-4) 0; }
+.cat:hover { background: var(--interaction-neutral-light-hover); }
+.cat img { width: 48px; height: 48px; object-fit: contain; }
+.pager { display: flex; justify-content: center; gap: 0; padding: var(--padding-small-12) 0 0; }
+.pager i { width: 16px; height: 4px; border-radius: var(--radius-pill); background: var(--background-tertiary); }
+.pager i:first-child { background: var(--background-brand); }
+
+/* ---------- Section (shared by new + host) ---------- */
+.section { position: relative; overflow: hidden; transition: height .3s ease, opacity .3s ease; }
+.sec-head { display: flex; align-items: flex-start; gap: var(--gap-x-small-8); padding: 24px var(--padding-medium-16) var(--padding-small-12); }
+.sec-title { flex: 1; min-width: 0; }
+.sec-title .row { display: flex; align-items: center; gap: var(--gap-2x-small-4); }
+.sec-title .row button { display: inline-flex; align-items: center; gap: var(--gap-2x-small-4); text-align: left; border-radius: var(--radius-card-small); }
+.sec-title .sub { color: var(--text-secondary); margin-top: var(--padding-min-2); }
+.chev { width: 24px; height: 24px; display: grid; place-items: center; border-radius: var(--radius-pill); background: var(--button-tonal-neutral); }
+.chev .ds-icon { width: 16px; height: 16px; }
+.close-btn {
+  width: 32px; height: 32px; flex: none; display: grid; place-items: center; border-radius: var(--radius-pill);
+  background: var(--button-blank); border: 1px solid var(--border-regular); transition: background .15s ease;
+}
+.close-btn:hover { background: var(--interaction-neutral-light-hover); }
+.close-btn:active { background: var(--interaction-neutral-light-pressed); }
+.close-btn .ds-icon { width: 20px; height: 20px; color: var(--icon-secondary); }
+
+.hscroll { display: flex; gap: var(--gap-x-small-8); padding: 0 var(--padding-medium-16) var(--padding-x-small-8); overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; scroll-padding: 0 var(--padding-medium-16); }
+.hscroll::-webkit-scrollbar { display: none; }
+.hscroll.dragging { scroll-snap-type: none; cursor: grabbing; }
+.hscroll > * { scroll-snap-align: start; }
+
+/* Vertical ad card (reused from host) */
+.card { width: 158px; flex: none; text-align: left; display: flex; flex-direction: column; border-radius: var(--radius-card-small); transition: transform .12s ease; }
+.card:active { transform: scale(.98); }
+.thumb { position: relative; width: 100%; aspect-ratio: 1 / 1; border-radius: var(--radius-card-small); overflow: hidden; background: var(--background-secondary); }
+.thumb img { width: 100%; height: 100%; object-fit: cover; display: block; -webkit-user-drag: none; }
+.thumb .shade { position: absolute; left: 0; right: 0; bottom: 0; height: 40px; background: linear-gradient(transparent, var(--background-overlay)); }
+.thumb .meta { position: absolute; left: var(--padding-x-small-8); right: var(--padding-x-small-8); bottom: var(--padding-2x-small-6); display: flex; justify-content: space-between; align-items: center; color: var(--text-blank); }
+.thumb .meta span:last-child { display: inline-flex; align-items: center; gap: var(--gap-min-2); }
+.thumb .meta .ds-icon { color: var(--icon-blank); }
+.fav {
+  position: absolute; top: var(--padding-2x-small-4); right: var(--padding-2x-small-4); width: 32px; height: 32px;
+  display: grid; place-items: center; border-radius: var(--radius-pill);
+}
+.fav .ds-icon { color: var(--icon-blank); filter: drop-shadow(0 1px 2px var(--background-overlay)); transition: transform .2s ease; }
+.fav.on .ds-icon { color: var(--icon-error); }
+.fav.pop .ds-icon { transform: scale(1.25); }
+.c-title { margin-top: var(--padding-x-small-8); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; color: var(--text-primary); }
+.c-param { color: var(--text-tertiary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.c-param span + span::before { content: ""; display: inline-block; width: var(--gap-x-small-8); }
+.c-price { color: var(--text-error); }
+
+/* "Xem tất cả" tile (edge: >10 tin) */
+.seeall {
+  width: 158px; height: 158px; flex: none; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--gap-x-small-8);
+  border-radius: var(--radius-card-small); background: var(--background-secondary); color: var(--text-primary); transition: background .15s ease;
+}
+.seeall:hover { background: var(--interaction-neutral-light-hover); }
+.seeall .circ { width: 40px; height: 40px; display: grid; place-items: center; border-radius: var(--radius-pill); background: var(--button-blank); border: 1px solid var(--border-regular); }
+.seeall small { color: var(--text-secondary); }
+
+/* Horizontal ad card (edge: chỉ 1 tin) */
+.hcard { display: flex; gap: var(--gap-small-12); margin: 0 var(--padding-medium-16) var(--padding-x-small-8); text-align: left; border-radius: var(--radius-card-small); transition: transform .12s ease; }
+.hcard:active { transform: scale(.99); }
+.hcard .thumb { width: 120px; flex: none; }
+.hcard .info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: var(--gap-2x-small-4); }
+.hcard .c-title { margin-top: 0; }
+.hcard .when { margin-top: auto; color: var(--text-tertiary); }
+
+/* Skeleton (edge: loading) */
+.sk { background: var(--skeleton-item); border-radius: var(--radius-ad-small); position: relative; overflow: hidden; }
+.sk::after { content: ""; position: absolute; inset: 0; transform: translateX(-100%); background: linear-gradient(90deg, transparent, var(--background-overlay-inverted), var(--background-primary), transparent); opacity: .7; animation: shimmer 1.2s infinite; }
+@keyframes shimmer { to { transform: translateX(100%); } }
+.sk-card { width: 158px; flex: none; display: flex; flex-direction: column; gap: var(--gap-x-small-8); }
+.sk-card .sk.img { aspect-ratio: 1 / 1; border-radius: var(--radius-card-small); }
+.sk.l1 { height: 16px; } .sk.l2 { height: 16px; width: 70%; } .sk.l3 { height: 20px; width: 50%; }
+.sk.t1 { height: 20px; width: 160px; } .sk.t2 { height: 16px; width: 200px; margin-top: var(--padding-2x-small-6); }
+
+/* ---------- Host: tabs + feed ---------- */
+.tabs { display: flex; justify-content: space-between; padding: 24px var(--padding-medium-16) var(--padding-medium-16); }
+.tabs button { color: var(--text-tertiary); position: relative; }
+.tabs button.on { color: var(--text-primary); }
+.tabs .ds-icon { position: absolute; top: -6px; right: -12px; width: 16px; height: 16px; color: var(--icon-info); }
+.feed { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap-medium-16) var(--gap-small-12); padding: 0 var(--padding-medium-16) var(--padding-medium-16); }
+.feed .card { width: auto; }
+.loc { display: flex; gap: var(--gap-2x-small-4); align-items: flex-start; margin-top: var(--padding-x-small-8); color: var(--text-tertiary); }
+.loc span { flex: 1; min-width: 0; }
+.loc .ds-icon { color: var(--icon-tertiary); }
+
+/* ---------- Bottom nav ---------- */
+.nav { position: sticky; bottom: 0; z-index: 20; margin-top: auto; background: var(--background-primary); border-top: 1px solid var(--border-thin); }
+.nav .items { display: grid; grid-template-columns: repeat(5, 1fr); height: 56px; }
+.nav .it { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--gap-min-2); color: var(--text-tertiary); }
+.nav .it .ds-icon { color: var(--icon-tertiary); }
+.nav .it.on { color: var(--text-primary); }
+.nav .it.on .ds-icon { color: var(--icon-brand); }
+.nav .post .plus { width: 48px; height: 48px; margin-top: -24px; display: grid; place-items: center; border-radius: var(--radius-pill); background: var(--button-primary); box-shadow: 0 0 0 4px var(--background-primary); transition: background .15s ease; }
+.nav .post:hover .plus { background: var(--interaction-brand-hover); }
+.nav .post .plus .ds-icon { color: var(--icon-on-background); }
+.nav .post { color: var(--text-primary); }
+.nav .ava { width: 24px; height: 24px; border-radius: var(--radius-pill); object-fit: cover; }
+.home-indicator { /* ds-raw: khung máy */ width: 134px; height: 5px; margin: 6px auto 8px; border-radius: 3px; background: rgba(0,0,0,.85); }
+
+/* ---------- Drawer xác nhận ẩn ---------- */
+.scrim { position: absolute; inset: 0; z-index: 50; background: var(--background-overlay); opacity: 0; pointer-events: none; transition: opacity .3s ease; }
+.drawer {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 51; background: var(--background-primary);
+  border-radius: var(--radius-modal) var(--radius-modal) 0 0; box-shadow: 0 4px 16px var(--background-overlay);
+  transform: translateY(100%); transition: transform .3s ease;
+}
+.open .scrim { opacity: 1; pointer-events: auto; }
+.open .drawer { transform: none; }
+.dr-head { height: 48px; display: grid; grid-template-columns: 40px 1fr 40px; align-items: center; padding: 0 var(--padding-x-small-8); border-bottom: 1px solid var(--border-thin); text-align: center; }
+.dr-head .icon-btn:hover { background: var(--interaction-neutral-light-hover); }
+.dr-body { padding: var(--padding-medium-16) var(--padding-large-20); color: var(--text-secondary); }
+.dr-foot { display: flex; gap: var(--gap-x-small-8); padding: var(--padding-small-12) var(--padding-large-20) 34px; }
+.btn { flex: 1; height: 40px; padding: var(--padding-2x-small-4) var(--padding-small-12); border-radius: var(--radius-card-small); display: inline-flex; align-items: center; justify-content: center; color: var(--text-primary); transition: background .15s ease; }
+.btn.primary { background: var(--button-primary); }
+.btn.primary:hover { background: var(--interaction-brand-hover); }
+.btn.primary:active { background: var(--interaction-brand-pressed); }
+.btn.secondary { background: var(--button-tonal-neutral); }
+.btn.secondary:hover { background: var(--interaction-neutral-light-hover); }
+.btn.secondary:active { background: var(--interaction-neutral-light-pressed); }
+</style>
+</head>
+<body>
+<svg id="ds-icon-sprite" xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+<symbol id="ds-Image-outline" viewBox="0 0 24 24"><path d="M20 17.397C19.932 17.364 19.867 17.324 19.806 17.275L19.73 17.207L15.937 13.414L11.582 17.769C11.191 18.16 10.558 18.16 10.168 17.769L8.625 16.226L5.177 19.672C5.529 19.879 5.937 20 6.375 20H17.625C18.936 20 20 18.936 20 17.625V17.397ZM8.75 8.062C8.75 7.682 8.442 7.375 8.062 7.375C7.682 7.375 7.375 7.682 7.375 8.062C7.375 8.442 7.682 8.75 8.062 8.75C8.442 8.75 8.75 8.442 8.75 8.062ZM20 6.375C20 5.063 18.936 4 17.625 4H6.375C5.063 4 4 5.063 4 6.375V17.625C4 17.75 4.011 17.872 4.03 17.992L7.917 14.105L7.994 14.037C8.386 13.716 8.965 13.739 9.332 14.105L10.875 15.648L15.23 11.293L15.306 11.224C15.699 10.904 16.278 10.926 16.644 11.293L20 14.648V6.375ZM10.75 8.062C10.75 9.546 9.546 10.75 8.062 10.75C6.578 10.75 5.375 9.546 5.375 8.062C5.375 6.578 6.578 5.375 8.062 5.375C9.546 5.375 10.75 6.578 10.75 8.062ZM22 17.625C22 20.041 20.041 22 17.625 22H6.375C3.958 22 2 20.041 2 17.625V6.375C2 3.958 3.958 2 6.375 2H17.625C20.041 2 22 3.958 22 6.375V17.625Z" fill="currentColor"/></symbol>
+<symbol id="ds-Heart-outline" viewBox="0 0 24 24"><path d="M16.807 3C17.577 2.993 18.341 3.14 19.054 3.431C19.767 3.723 20.414 4.154 20.959 4.699C21.503 5.243 21.934 5.891 22.226 6.603C22.517 7.316 22.664 8.08 22.657 8.85C22.651 9.62 22.49 10.381 22.187 11.089C21.885 11.791 21.447 12.426 20.898 12.959L20.899 12.96L12.705 21.154C12.518 21.342 12.263 21.447 11.998 21.447C11.733 21.447 11.479 21.342 11.291 21.154L3.098 12.96C2.01 11.872 1.4 10.397 1.399 8.859C1.399 7.321 2.01 5.846 3.098 4.759C4.185 3.671 5.66 3.059 7.198 3.059C8.736 3.059 10.211 3.67 11.299 4.758L11.998 5.457L12.698 4.758C13.231 4.21 13.866 3.772 14.568 3.47C15.276 3.167 16.037 3.006 16.807 3ZM3.399 8.859C3.4 9.867 3.799 10.833 4.512 11.546L11.998 19.032L19.497 11.533L19.63 11.398C19.931 11.077 20.174 10.705 20.349 10.3C20.548 9.836 20.653 9.337 20.657 8.833C20.662 8.328 20.565 7.828 20.374 7.361C20.183 6.894 19.901 6.47 19.544 6.113C19.187 5.756 18.763 5.474 18.296 5.283C17.829 5.092 17.329 4.995 16.824 5C16.32 5.004 15.821 5.109 15.357 5.308C14.952 5.483 14.58 5.726 14.259 6.027L14.124 6.16C14.12 6.164 14.116 6.168 14.111 6.173L12.705 7.578C12.315 7.968 11.682 7.968 11.292 7.578L9.885 6.173C9.172 5.46 8.206 5.059 7.198 5.059C6.254 5.059 5.345 5.412 4.648 6.043L4.512 6.173C3.8 6.885 3.399 7.852 3.399 8.859Z" fill="currentColor"/></symbol>
+<symbol id="ds-Heart-fill" viewBox="0 0 24 24"><path d="M16.807 3C17.577 2.993 18.341 3.14 19.054 3.431C19.767 3.723 20.414 4.154 20.959 4.699C21.503 5.243 21.934 5.891 22.226 6.603C22.517 7.316 22.664 8.08 22.657 8.85C22.651 9.62 22.49 10.381 22.187 11.089C21.885 11.791 21.447 12.426 20.898 12.959L12.705 21.154C12.518 21.342 12.263 21.447 11.998 21.447C11.733 21.447 11.479 21.342 11.291 21.154L3.098 12.96C2.01 11.872 1.4 10.397 1.399 8.859C1.399 7.321 2.01 5.846 3.098 4.759C4.185 3.671 5.66 3.059 7.198 3.059C8.736 3.059 10.211 3.67 11.299 4.758L11.998 5.457L12.698 4.758C13.231 4.21 13.866 3.772 14.568 3.47C15.276 3.167 16.037 3.006 16.807 3Z" fill="currentColor"/></symbol>
+<symbol id="ds-Arrowright-outline" viewBox="0 0 24 24"><path d="M12.143 7.275C12.518 6.918 13.098 6.91 13.483 7.24L13.557 7.31L17.724 11.685C18.092 12.071 18.092 12.678 17.724 13.064L13.557 17.439L13.483 17.509C13.098 17.839 12.518 17.831 12.143 17.474C11.743 17.093 11.728 16.46 12.109 16.06L14.667 13.375H7C6.447 13.375 6 12.927 6 12.375C6 11.822 6.447 11.375 7 11.375H14.667L12.109 8.689L12.042 8.612C11.731 8.211 11.768 7.632 12.143 7.275Z" fill="currentColor"/></symbol>
+<symbol id="ds-Location-outline" viewBox="0 0 24 24"><path d="M18 10.043C18 6.7 15.308 4 12 4C8.692 4 6 6.7 6 10.043C6 10.986 6.357 12.089 6.979 13.27C7.593 14.438 8.425 15.604 9.275 16.651C10.124 17.694 10.975 18.599 11.615 19.243C11.754 19.382 11.884 19.509 12 19.623C12.116 19.509 12.246 19.382 12.385 19.243C13.025 18.599 13.876 17.694 14.725 16.651C15.575 15.604 16.407 14.438 17.022 13.27C17.643 12.089 18 10.986 18 10.043ZM13.236 9.75C13.236 9.053 12.677 8.5 12 8.5C11.323 8.5 10.765 9.053 10.765 9.75C10.765 10.446 11.323 10.999 12 11C12.677 11 13.236 10.446 13.236 9.75ZM20 10.043C20 11.449 19.482 12.888 18.791 14.202C18.093 15.528 17.174 16.807 16.275 17.913C15.374 19.021 14.475 19.976 13.803 20.653C13.466 20.992 13.185 21.262 12.986 21.449C12.887 21.542 12.808 21.616 12.754 21.666C12.727 21.69 12.706 21.71 12.691 21.723C12.684 21.73 12.678 21.735 12.674 21.739C12.672 21.741 12.67 21.742 12.669 21.743L12.667 21.745L12 22.341L11.333 21.745L11.331 21.743C11.33 21.742 11.328 21.741 11.326 21.739C11.322 21.735 11.316 21.73 11.309 21.723C11.294 21.71 11.273 21.69 11.246 21.666C11.192 21.616 11.113 21.542 11.014 21.449C10.815 21.262 10.534 20.992 10.197 20.653C9.525 19.976 8.626 19.021 7.725 17.913C6.826 16.807 5.907 15.528 5.209 14.202C4.518 12.888 4 11.449 4 10.043C4 5.607 7.576 2 12 2C16.424 2 20 5.607 20 10.043ZM15.236 9.75C15.236 11.539 13.793 13 12 13C10.207 12.999 8.765 11.539 8.765 9.75C8.765 7.961 10.207 6.5 12 6.5C13.793 6.5 15.236 7.96 15.236 9.75Z" fill="currentColor"/></symbol>
+<symbol id="ds-Morevertical-outline" viewBox="0 0 24 24"><path d="M13.781 11.992C13.781 11.008 12.984 10.211 12 10.211C11.015 10.211 10.218 11.008 10.218 11.992C10.218 12.976 11.015 13.773 12 13.773C12.984 13.773 13.781 12.976 13.781 11.992Z" fill="currentColor"/><path d="M13.781 4.781C13.781 3.797 12.984 3 12 3C11.015 3 10.218 3.797 10.218 4.781C10.218 5.765 11.015 6.562 12 6.562C12.984 6.562 13.781 5.765 13.781 4.781Z" fill="currentColor"/><path d="M13.781 19.219C13.781 18.234 12.984 17.437 12 17.437C11.015 17.437 10.218 18.234 10.218 19.219C10.218 20.203 11.015 21 12 21C12.984 21 13.781 20.203 13.781 19.219Z" fill="currentColor"/></symbol>
+<symbol id="ds-Menu-outline" viewBox="0 0 24 24"><path d="M20 17C20.552 17 21 17.447 21 18C21 18.552 20.552 19 20 19H4C3.447 19 3 18.552 3 18C3 17.447 3.447 17 4 17H20ZM20 11C20.552 11 21 11.447 21 12C21 12.552 20.552 13 20 13H4C3.447 13 3 12.552 3 12C3 11.447 3.447 11 4 11H20ZM20 5C20.552 5 21 5.447 21 6C21 6.552 20.552 7 20 7H4C3.447 7 3 6.552 3 6C3 5.447 3.447 5 4 5H20Z" fill="currentColor"/></symbol>
+<symbol id="ds-Search-outline" viewBox="0 0 24 24"><path d="M18.279 11.439C18.279 7.662 15.217 4.6 11.439 4.6C7.662 4.6 4.6 7.662 4.6 11.439C4.6 15.217 7.662 18.279 11.439 18.279C15.217 18.279 18.279 15.217 18.279 11.439ZM20.279 11.439C20.279 13.543 19.543 15.474 18.315 16.992L21.095 19.681L21.165 19.756C21.492 20.143 21.478 20.723 21.118 21.095C20.758 21.467 20.179 21.5 19.781 21.186L19.704 21.118L16.89 18.396C15.388 19.574 13.497 20.279 11.439 20.279C6.557 20.279 2.6 16.322 2.6 11.439C2.6 6.557 6.557 2.6 11.439 2.6C16.322 2.6 20.279 6.557 20.279 11.439Z" fill="currentColor"/></symbol>
+<symbol id="ds-Notification-outline" viewBox="0 0 24 24"><path d="M14.042 19.309C14.474 18.965 15.103 19.035 15.447 19.466C15.792 19.898 15.722 20.527 15.29 20.872C14.403 21.58 13.247 22 11.999 22C10.829 22 9.741 21.631 8.878 21.002L8.708 20.872L8.632 20.804C8.27 20.45 8.228 19.871 8.551 19.466C8.874 19.062 9.447 18.975 9.873 19.25L9.956 19.309L10.163 19.46C10.665 19.794 11.298 20 11.999 20C12.8 20 13.514 19.731 14.042 19.309ZM11.999 2C16.395 2 19.805 5.876 19.805 10.46V10.471L19.78 12.548C19.783 13.818 20.246 14.883 20.733 15.615L20.793 15.713C21.074 16.212 21.032 16.774 20.876 17.175C20.716 17.588 20.277 18.181 19.492 18.181H4.507C3.71 18.181 3.272 17.57 3.116 17.157C2.954 16.727 2.92 16.105 3.282 15.582L3.471 15.292C3.903 14.58 4.268 13.633 4.268 12.537V12.525L4.292 10.34C4.298 5.821 7.662 2 11.999 2ZM11.999 4C8.932 4 6.292 6.755 6.292 10.351V10.363L6.268 12.547C6.265 14.005 5.808 15.246 5.268 16.181H18.739C18.22 15.243 17.781 13.998 17.78 12.537V12.525L17.805 10.46L17.797 10.12C17.637 6.631 15.024 4 11.999 4Z" fill="currentColor"/></symbol>
+<symbol id="ds-Clock-fill" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C17.522 2 22 6.477 22 12C22 17.522 17.522 22 12 22C6.477 22 2 17.522 2 12C2 6.477 6.477 2 12 2ZM12 7.42C11.447 7.42 11 7.868 11 8.42V13.125C11 13.555 11.275 13.937 11.683 14.073L15.058 15.198L15.157 15.226C15.651 15.337 16.159 15.057 16.323 14.566C16.487 14.075 16.248 13.546 15.786 13.338L15.691 13.301L13 12.404V8.42C13 7.868 12.552 7.42 12 7.42Z" fill="currentColor"/></symbol>
+<symbol id="ds-Close-outline" viewBox="0 0 24 24"><path d="M15.292 7.293C15.683 6.902 16.316 6.902 16.707 7.293C17.097 7.683 17.097 8.316 16.707 8.707L13.414 12L16.707 15.293L16.775 15.369C17.095 15.762 17.073 16.341 16.707 16.707C16.34 17.073 15.761 17.095 15.369 16.775L15.292 16.707L11.999 13.414L8.706 16.707C8.316 17.097 7.683 17.097 7.292 16.707C6.902 16.316 6.902 15.683 7.292 15.293L10.585 12L7.292 8.707L7.224 8.63C6.904 8.238 6.926 7.659 7.292 7.293C7.659 6.926 8.238 6.904 8.63 7.224L8.706 7.293L11.999 10.586L15.292 7.293Z" fill="currentColor"/></symbol>
+<symbol id="ds-Chevronright-outline" viewBox="0 0 24 24"><path d="M16 11.999C16 12.265 15.894 12.519 15.707 12.707L10.707 17.707L10.63 17.775C10.238 18.095 9.659 18.073 9.292 17.707C8.926 17.34 8.904 16.761 9.224 16.369L9.292 16.292L13.585 11.999L9.292 7.706C8.902 7.316 8.902 6.683 9.292 6.292C9.683 5.902 10.316 5.902 10.707 6.292L15.707 11.292L15.773 11.366C15.919 11.544 16 11.767 16 11.999Z" fill="currentColor"/></symbol>
+<symbol id="ds-Sparkle-fill" viewBox="0 0 24 24"><path d="M6.672 12.654C6.985 12.654 7.277 12.809 7.453 13.068L8.86 15.14L10.931 16.547C11.19 16.722 11.345 17.014 11.345 17.327C11.345 17.639 11.19 17.932 10.931 18.107L8.86 19.513L7.453 21.586C7.277 21.844 6.985 21.999 6.672 22C6.399 22 6.141 21.881 5.963 21.678L5.892 21.586L4.484 19.514L2.413 18.107C2.155 17.932 2 17.639 2 17.327C2 17.014 2.155 16.722 2.413 16.547L4.484 15.139L5.892 13.068L5.963 12.976C6.141 12.773 6.399 12.654 6.672 12.654ZM14.663 2C15.058 2 15.411 2.246 15.548 2.616L17.123 6.875L21.383 8.451L21.516 8.512C21.811 8.677 22 8.99 22 9.336C22 9.681 21.811 9.995 21.516 10.159L21.383 10.22L17.123 11.796L15.548 16.056C15.411 16.426 15.058 16.672 14.663 16.672C14.269 16.672 13.915 16.426 13.778 16.056L12.202 11.796L7.943 10.22C7.573 10.083 7.327 9.73 7.327 9.336C7.327 8.941 7.573 8.588 7.943 8.451L12.202 6.875L13.778 2.616L13.84 2.483C14.005 2.188 14.318 2 14.663 2Z" fill="currentColor"/></symbol>
+<symbol id="ds-House-fill" viewBox="0 0 24 24"><path d="M22 19.288C22 20.832 20.698 21.999 19.2 22H4.799C3.301 21.999 2 20.832 2 19.288V9.416C2 8.701 2.364 8.049 2.944 7.657L10.744 2.382L10.888 2.293C11.623 1.874 12.548 1.904 13.255 2.382L21.055 7.657L21.162 7.734C21.68 8.131 22 8.745 22 9.416V19.288Z" fill="currentColor"/></symbol>
+<symbol id="ds-tag-outline" viewBox="0 0 24 24"><path d="M11.714 2.678C12.252 2.196 12.966 1.952 13.691 2.007L19.128 2.425L19.37 2.456C20.561 2.657 21.479 3.646 21.573 4.871L21.991 10.308L21.998 10.453C22.014 11.175 21.735 11.876 21.221 12.39L12.39 21.221C11.417 22.194 9.879 22.255 8.835 21.404L8.633 21.221L2.778 15.366C1.74 14.328 1.74 12.646 2.778 11.609L11.609 2.778L11.714 2.678ZM13.537 4.001C13.37 3.989 13.205 4.04 13.075 4.144L13.023 4.192L4.192 13.023C3.935 13.279 3.935 13.694 4.192 13.951L10.048 19.807L10.151 19.891C10.405 20.059 10.752 20.031 10.976 19.807L19.807 10.976C19.926 10.857 19.994 10.699 19.999 10.533L19.997 10.461L19.579 5.024C19.558 4.742 19.358 4.51 19.093 4.44L18.975 4.419L13.537 4.001ZM16.086 6.923L16.189 6.929C16.693 6.983 17.084 7.412 17.081 7.929C17.078 8.447 16.683 8.871 16.178 8.919L16.076 8.923H16.07C15.517 8.92 15.073 8.471 15.075 7.918C15.078 7.366 15.528 6.921 16.08 6.923H16.086Z" fill="currentColor"/></symbol>
+<symbol id="ds-Plus-outline" viewBox="0 0 24 24"><path d="M11 16.799V12.999H7.2C6.647 12.999 6.2 12.552 6.2 11.999C6.2 11.447 6.647 10.999 7.2 10.999H11V7.199C11 6.647 11.447 6.2 12 6.199C12.552 6.199 13 6.647 13 7.199V10.999H16.799L16.902 11.004C17.406 11.055 17.799 11.482 17.799 11.999C17.799 12.517 17.406 12.943 16.902 12.994L16.799 12.999H13V16.799C13 17.351 12.552 17.799 12 17.799C11.447 17.799 11 17.351 11 16.799Z" fill="currentColor"/></symbol>
+<symbol id="ds-Chat-outline" viewBox="0 0 24 24"><path d="M20.599 11.999C20.599 7.25 16.748 3.399 11.999 3.399C7.249 3.4 3.399 7.25 3.399 11.999C3.399 16.749 7.249 20.599 11.999 20.6C13.529 20.6 14.964 20.2 16.208 19.501L16.293 19.458C16.495 19.368 16.723 19.348 16.94 19.402L20.4 20.267L19.793 16.019C19.767 15.833 19.793 15.644 19.869 15.473C20.338 14.412 20.599 13.237 20.599 11.999ZM12.599 12.199L12.701 12.204C13.205 12.255 13.599 12.681 13.599 13.199C13.599 13.717 13.205 14.143 12.701 14.194L12.599 14.199H8.399C7.847 14.199 7.399 13.752 7.399 13.199C7.399 12.647 7.847 12.199 8.399 12.199H12.599ZM15.599 7.399L15.701 7.404C16.205 7.455 16.599 7.881 16.599 8.399C16.599 8.917 16.205 9.344 15.701 9.395L15.599 9.399H8.399C7.847 9.399 7.399 8.952 7.399 8.399C7.399 7.847 7.847 7.399 8.399 7.399H15.599ZM22.599 11.999C22.599 13.415 22.317 14.768 21.811 16.005L22.59 21.457C22.637 21.787 22.517 22.118 22.27 22.341C22.023 22.564 21.681 22.649 21.358 22.568L16.829 21.436C15.379 22.179 13.737 22.6 11.999 22.6C6.144 22.599 1.399 17.853 1.399 11.999C1.399 6.145 6.145 1.4 11.999 1.399C17.853 1.399 22.599 6.145 22.599 11.999Z" fill="currentColor"/></symbol>
+</svg>
+
+<!-- icons used from JS (keeps ds_icons.py inline aware) --><svg style="display:none" aria-hidden="true"><use href="#ds-Image-outline"/><use href="#ds-Heart-outline"/><use href="#ds-Heart-fill"/><use href="#ds-Arrowright-outline"/><use href="#ds-Location-outline"/><use href="#ds-Morevertical-outline"/></svg>
+<div class="iphone" data-ds-context="reference">
+ <div class="iphone-screen" id="screen">
+  <div class="dynamic-island" data-ds-context="reference"></div>
+  <div class="app-scroll" id="scroll" data-ds-screen="gds-home" data-ds-platform="app" data-ds-vertical="GDS" data-ds-surface="page" data-ds-size="375x812">
+
+   <!-- ===== Host: top bar (reference) ===== -->
+   <div class="topbar" id="topbar" data-ds-context="reference">
+    <div class="ios-statusbar" data-ds-context="reference">
+     <span>9:41</span>
+     <span class="icons">
+      <svg width="18" height="12" viewBox="0 0 18 12" fill="none"><rect y="7" width="3" height="5" rx="1" fill="currentColor"/><rect x="5" y="5" width="3" height="7" rx="1" fill="currentColor"/><rect x="10" y="2.5" width="3" height="9.5" rx="1" fill="currentColor"/><rect x="15" width="3" height="12" rx="1" fill="currentColor"/></svg>
+      <svg width="17" height="12" viewBox="0 0 17 12" fill="none"><path d="M8.5 2.7c2.4 0 4.6.9 6.3 2.5l1.6-1.7C14.3 1.5 11.5.3 8.5.3S2.7 1.5.6 3.5l1.6 1.7C3.9 3.6 6.1 2.7 8.5 2.7Zm0 4.1c1.3 0 2.5.5 3.4 1.4l1.7-1.7c-1.4-1.3-3.2-2.1-5.1-2.1s-3.7.8-5.1 2.1l1.7 1.7c.9-.9 2.1-1.4 3.4-1.4Zm2 3.4L8.5 12l-2-1.8c.5-.6 1.2-.9 2-.9s1.5.3 2 .9Z" fill="currentColor"/></svg>
+      <svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x=".5" y=".5" width="21" height="11" rx="3" stroke="currentColor" stroke-opacity=".4"/><rect x="2" y="2" width="15" height="8" rx="1.6" fill="currentColor"/><path d="M23.5 4v4c.8-.3 1.3-1.1 1.3-2s-.5-1.7-1.3-2Z" fill="currentColor" fill-opacity=".4"/></svg>
+     </span>
+    </div>
+    <div class="searchrow">
+     <button class="icon-btn" aria-label="Danh mục"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Menu-outline"/></svg></button>
+     <button class="search t-body-page" aria-label="Tìm sản phẩm"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Search-outline"/></svg>Tìm sản phẩm...</button>
+     <button class="icon-btn" aria-label="Tin đã lưu"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Heart-outline"/></svg></button>
+     <button class="icon-btn" aria-label="Thông báo, 15 mới"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Notification-outline"/></svg><span class="badge t-label-annotation">15</span></button>
+    </div>
+   </div>
+   <div class="chips" data-ds-context="reference">
+    <button class="hchip t-tagline-caption"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Clock-fill"/></svg>kệ sắt<span class="count t-label-caption">+98</span><svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-Close-outline"/></svg></button>
+    <button class="hchip t-tagline-caption"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Clock-fill"/></svg>ghế gỗ<span class="count t-label-caption">+99</span><svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-Close-outline"/></svg></button>
+    <button class="hchip t-tagline-caption"><svg class="ds-icon ds-icon--20" aria-hidden="true"><use href="#ds-Clock-fill"/></svg>đôn gỗ<span class="count t-label-caption">+42</span><svg class="ds-icon ds-icon--16" aria-hidden="true"><use href="#ds-Close-outline"/></svg></button>
+   </div>
+
+   <div class="sheet">
+    <!-- ===== Host: danh mục (reference) ===== -->
+    <div class="cats" data-ds-context="reference">
+     <button class="cat t-body-section"><img src="assets/cat-canho.png" alt="">Căn hộ / Chung cư</button>
+     <button class="cat t-body-section"><img src="assets/cat-oto.png" alt="">Ô tô</button>
+     <button class="cat t-body-section"><img src="assets/cat-nhao.png" alt="">Nhà ở</button>
+     <button class="cat t-body-section"><img src="assets/cat-bds.png" alt="">Bất động sản</button>
+     <button class="cat t-body-section"><img src="assets/cat-xe.png" alt="">Xe cộ</button>
+    </div>
+    <div class="pager" data-ds-context="reference"><i></i><i></i></div>
+
+    <!-- ===== NEW: Tin đăng đã xem ===== -->
+    <section class="section" id="viewed" aria-labelledby="viewedTitle"
+      data-ds="Section · Tin đăng đã xem" data-ds-mode="partial" data-ds-screen="gds-home"
+      data-ds-insert="before:section-chungcu-quan-phu-nhuan" data-ds-gap="?? confirm"
+      data-ds-visible-if="viewed_ads_valid_count >= 1">
+     <div class="sec-head" data-ds-pad="24 · padding-medium-16 · padding-small-12">
+      <div class="sec-title">
+       <div class="row">
+        <button id="viewedTitle" class="t-header-section" data-ds-typo="header-section" data-ds-color="text-primary" data-ds-on-tap="open:viewed-history">Tin đăng đã xem
+         <span class="chev" data-ds="Icon Button" data-ds-type="Secondary" data-ds-size="S-24" data-ds-pill="true" data-ds-icon="Chevronright-outline"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Chevronright-outline"/></svg></span>
+        </button>
+       </div>
+       <p class="sub t-body-section" data-ds-typo="body-section" data-ds-color="text-secondary" data-ds-speculative="true">Xem lại những tin bạn quan tâm</p>
+      </div>
+      <button class="close-btn" id="viewedClose" aria-label="Ẩn mục Tin đăng đã xem" data-ds="Icon Button" data-ds-type="Tertiary" data-ds-size="M-32" data-ds-state="Active" data-ds-pill="true" data-ds-icon="Close-outline" data-ds-on-tap="open:drawer-hide-viewed"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Close-outline"/></svg></button>
+     </div>
+     <div id="viewedBody"></div>
+    </section>
+
+    <!-- ===== Host: Chung cư Quận Phú Nhuận (reference) ===== -->
+    <section class="section" id="chungcu" data-ds-context="reference">
+     <div class="sec-head">
+      <div class="sec-title">
+       <div class="row"><button class="t-header-section">Chung cư Quận Phú Nhuận <span class="chev"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Chevronright-outline"/></svg></span></button></div>
+       <p class="sub t-body-section">Vì bạn đã xem gần đây</p>
+      </div>
+      <button class="close-btn" aria-label="Ẩn mục Chung cư Quận Phú Nhuận"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Close-outline"/></svg></button>
+     </div>
+     <div class="hscroll" id="chungcuList"></div>
+    </section>
+
+    <!-- ===== Host: tabs + feed (reference) ===== -->
+    <div class="tabs" data-ds-context="reference" role="tablist">
+     <button class="t-header-section on" role="tab" aria-selected="true">Dành cho bạn</button>
+     <button class="t-header-section" role="tab">Gần bạn</button>
+     <button class="t-header-section" role="tab">Mới nhất</button>
+     <button class="t-header-section" role="tab">Video<svg class="ds-icon" aria-hidden="true"><use href="#ds-Sparkle-fill"/></svg></button>
+    </div>
+    <div class="feed" id="feed" data-ds-context="reference"></div>
+   </div>
+
+   <!-- ===== Host: bottom nav (reference) ===== -->
+   <nav class="nav" data-ds-context="reference" aria-label="Điều hướng chính">
+    <div class="items">
+     <button class="it on t-label-caption"><svg class="ds-icon" aria-hidden="true"><use href="#ds-House-fill"/></svg>Trang chủ</button>
+     <button class="it t-body-caption"><svg class="ds-icon" aria-hidden="true"><use href="#ds-tag-outline"/></svg>Quản lý tin</button>
+     <button class="it post t-label-caption"><span class="plus"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Plus-outline"/></svg></span>Đăng tin</button>
+     <button class="it t-body-caption"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Chat-outline"/></svg>Liên hệ</button>
+     <button class="it t-body-caption"><img class="ava" src="assets/avatar.jpg" alt="">Tài khoản</button>
+    </div>
+    <div class="home-indicator" data-ds-context="reference"></div>
+   </nav>
+  </div>
+
+  <!-- ===== NEW: Drawer xác nhận ẩn section ===== -->
+  <div class="scrim" id="scrim"></div>
+  <div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drTitle"
+    data-ds="Drawer" data-ds-surface="bottom-sheet" data-ds-dismiss="close-icon | scrim | Huỷ">
+   <div class="dr-head" data-ds-pad="padding-x-small-8">
+    <button class="icon-btn" id="drClose" aria-label="Đóng" data-ds="Icon Button" data-ds-type="Ghost" data-ds-size="L-40" data-ds-pill="true" data-ds-icon="Close-outline"><svg class="ds-icon" aria-hidden="true"><use href="#ds-Close-outline"/></svg></button>
+    <h2 id="drTitle" class="t-header-section" data-ds-typo="header-section" data-ds-color="text-primary">Ẩn mục Tin đăng đã xem?</h2>
+    <span></span>
+   </div>
+   <p class="dr-body t-body-section" data-ds-typo="body-section" data-ds-color="text-secondary">Mục này sẽ không hiện trên Trang chủ nữa. Lịch sử xem tin của bạn vẫn được giữ nguyên.</p>
+   <div class="dr-foot" data-ds-gap="gap-x-small-8">
+    <button class="btn secondary t-label-section" id="drCancel" data-ds="Button" data-ds-type="Secondary" data-ds-size="L-40" data-ds-state="Active" data-ds-pill="false" data-ds-typo="label-section">Huỷ</button>
+    <button class="btn primary t-label-section" id="drConfirm" data-ds="Button" data-ds-type="Primary" data-ds-size="L-40" data-ds-state="Active" data-ds-pill="false" data-ds-typo="label-section">Ẩn mục này</button>
+   </div>
+  </div>
+ </div>
+</div>
+
+<script>
+(function () {
+  const IMG = { kingston: 'assets/kingston.jpg', garden: 'assets/garden.jpg', auco1: 'assets/auco1.jpg', auco2: 'assets/auco2.jpg', iphone: 'assets/iphone.jpg', car: 'assets/car.jpg' };
+  // Mock: tin user đã xem, mới xem nhất đứng đầu. status: active | sold | hidden | expired
+  const VIEWED = [
+    { id: 1, img: 'kingston', t: 'Bán căn hộ Kingston - 2Pn giá 6.5 tỷ - 3PN giá 8 tỷ', p: ['2 PN', 'Hướng Nam', 'Chung cư'], price: '6,5 tỷ', when: '19 giờ trước', n: 3 },
+    { id: 2, img: 'iphone', t: '14ProMax 128/256 Quốc Tế Zin góp 0đ Bao Nợ Xấu', p: ['iPhone 14 Pro Max', '128 GB'], price: '14.300.000 đ', when: 'Tin tiêu biểu', n: 5 },
+    { id: 3, img: 'car', t: 'Hyundai Stargazer 2024 7 chỗ 4 vạn Trắng', p: ['2024', '4 km', 'Xăng', 'Tự động'], price: '460.000.000 đ', when: 'hôm qua', n: 5 },
+    { id: 4, img: 'garden', t: 'Bán căn hộ Garden Gate - 75m2/2PN giá 7,3 tỷ', p: ['2 PN', 'Hướng Nam', 'Chung cư'], price: '7,3 tỷ', when: 'hôm qua', n: 5 },
+    { id: 5, img: 'auco1', t: 'Chính chủ bán căn hộ Âu Cơ tower, căn góc 3 pn', p: ['3 PN', 'Hướng Tây Bắc', 'Chung cư'], price: '4,55 tỷ', when: '4 ngày trước', n: 5 },
+    { id: 6, img: 'auco2', t: 'Chính chủ cần bán căn hộ CC Âu cơ Tower, dt: 98m2', p: ['3 PN', 'Chung cư'], price: '3,8 tỷ', when: '23 giờ trước', n: 6 },
+    { id: 7, img: 'iphone', t: 'iPhone 14 Pro 256GB VN/A pin 92% fullbox', p: ['iPhone 14 Pro', '256 GB'], price: '17.500.000 đ', when: '2 ngày trước', n: 4 },
+    { id: 8, img: 'kingston', t: 'Cho thuê căn hộ Kingston 1PN full nội thất', p: ['1 PN', 'Chung cư'], price: '15 triệu/tháng', when: '3 ngày trước', n: 7 },
+    { id: 9, img: 'car', t: 'Hyundai Stargazer X 2024 bản cao cấp', p: ['2024', '12.000 km', 'Xăng'], price: 'Thỏa thuận', when: '5 ngày trước', n: 8 },
+    { id: 10, img: 'garden', t: 'Garden Gate 3PN view công viên, sổ hồng', p: ['3 PN', 'Hướng Đông'], price: '9,1 tỷ', when: '1 tuần trước', n: 6 },
+    { id: 11, img: 'auco1', t: 'Căn hộ Âu Cơ Tower 2PN nhà mới', p: ['2 PN', 'Chung cư'], price: '3,2 tỷ', when: '1 tuần trước', n: 3 },
+    { id: 12, img: 'auco2', t: 'Bán gấp căn hộ Âu Cơ 86m2', p: ['2 PN', 'Chung cư'], price: '3,5 tỷ', when: '2 tuần trước', n: 5 },
+  ];
+  const CHUNGCU = [
+    { img: 'kingston', t: 'Bán căn hộ Kingston - 2Pn giá 6.5 tỷ - 3PN giá 8 tỷ', p: ['2 PN', 'Hướng Nam', 'Chung cư'], price: '6,5 tỷ', when: '19 giờ trước', n: 3 },
+    { img: 'garden', t: 'Bán căn hộ Garden Gate - 75m2/2PN giá 7,3 tỷ', p: ['2 PN', 'Hướng Nam', 'Chung cư'], price: '7,3 tỷ', when: 'hôm qua', n: 5 },
+    { img: 'auco2', t: 'Bán căn hộ Nguyễn Kim 2PN full nội thất', p: ['2 PN', 'Chung cư'], price: '6,7 tỷ', when: '3 ngày trước', n: 4 },
+  ];
+  const FEED = [
+    { img: 'auco1', t: 'Chính chủ bán căn hộ Âu Cơ tower, căn góc 3 pn', p: ['3 PN', 'Hướng Tây Bắc', 'Chung cư'], price: '4,55 tỷ', when: '4 ngày trước', n: 5, loc: 'Q. Tân Phú (P. Phú Thọ Hòa mới)' },
+    { img: 'iphone', t: '14ProMax 128/256 Quốc Tế Zin góp 0đ Bao Nợ Xấu', p: ['iPhone 14 Pro Max', '128 GB'], price: '14.300.000 đ', when: 'Tin tiêu biểu', n: 5, loc: 'Thành phố Thủ Đức (P. Thủ Đức mới)' },
+    { img: 'auco2', t: 'Chính chủ cần bán căn hộ CC Âu cơ Tower, dt: 98m2', p: ['3 PN', 'Chung cư'], price: '3,8 tỷ', when: '23 giờ trước', n: 6, loc: 'Q. Tân Phú (P. Tân Sơn Nhì)' },
+    { img: 'car', t: 'Hyundai Stargazer 2024 7 chỗ 4 vạn Trắng', p: ['2024', '4 km', 'Xăng', 'Tự động'], price: '460.000.000 đ', when: 'hôm qua', n: 5, loc: 'Q. Gò Vấp (P. 5)' },
+  ];
+  // Dataset per state (raw list BEFORE business rules are applied)
+  const SETS = {
+    default: () => VIEWED.slice(0, 6),
+    many: () => VIEWED.slice(0, 12),
+    one: () => VIEWED.slice(0, 1),
+    two: () => VIEWED.slice(0, 2),
+    empty: () => [],
+    filtered: () => [
+      { ...VIEWED[2], status: 'sold' }, { ...VIEWED[0] }, { ...VIEWED[4], status: 'hidden' }, { ...VIEWED[5], status: 'expired' },
+    ],
+    loading: () => VIEWED.slice(0, 6),
+    hidden: () => VIEWED.slice(0, 6),
+  };
+  const MAX = 10;
+
+  const $ = s => document.querySelector(s);
+  const icon = (id, cls = '') => `<svg class="ds-icon ${cls}" aria-hidden="true"><use href="${'#ds-' + id}"/></svg>`;
+  const params = p => p.map(x => `<span>${x}</span>`).join('');
+  const thumb = (a, favId) => `
+    <div class="thumb" data-ds-radius="radius-card-small">
+      <img src="${IMG[a.img]}" alt="" loading="lazy" onerror="this.remove()">
+      <div class="shade"></div>
+      <div class="meta t-tagline-annotation" data-ds-typo="tagline-annotation" data-ds-color="text-blank"><span>${a.when}</span><span>${a.n}${icon('Image-outline', 'ds-icon--16')}</span></div>
+      <span class="fav" role="button" tabindex="0" aria-label="Lưu tin" aria-pressed="false" data-fav="${favId || ''}" data-ds="Icon Button" data-ds-type="Ghost" data-ds-size="M-32" data-ds-icon="Heart-outline">${icon('Heart-outline')}</span>
+    </div>`;
+  const vCard = (a, extra = '') => `
+    <a class="card" href="#" ${extra} data-ds="Ad Card · vertical" data-ds-on-tap="open:adview">
+      ${thumb(a, a.id)}
+      <span class="c-title t-body-section" data-ds-typo="body-section" data-ds-color="text-primary" data-ds-content-rule="max-2-lines, ellipsis">${a.t}</span>
+      <span class="c-param t-body-caption" data-ds-typo="body-caption" data-ds-color="text-tertiary" data-ds-content-rule="1-line, ellipsis">${params(a.p)}</span>
+      <span class="c-price t-display-price" data-ds-typo="display-price" data-ds-color="text-error">${a.price}</span>
+    </a>`;
+  const hCard = a => `
+    <a class="hcard" href="#" data-ds="Ad Card · horizontal" data-ds-composite="Ad Card thumb 120 + title/param/price stack" data-ds-gap="gap-small-12" data-ds-on-tap="open:adview">
+      ${thumb(a, a.id)}
+      <span class="info">
+        <span class="c-title t-body-section" data-ds-typo="body-section" data-ds-color="text-primary" data-ds-content-rule="max-2-lines, ellipsis">${a.t}</span>
+        <span class="c-param t-body-caption" data-ds-typo="body-caption" data-ds-color="text-tertiary">${params(a.p)}</span>
+        <span class="c-price t-display-price" data-ds-typo="display-price" data-ds-color="text-error">${a.price}</span>
+      </span>
+    </a>`;
+  const seeAll = total => `
+    <a class="seeall" href="#" data-ds="See-all tile" data-ds-composite="Icon Button L-40 Tertiary pill + label" data-ds-on-tap="open:viewed-history">
+      <span class="circ">${icon('Arrowright-outline', 'ds-icon--20')}</span>
+      <span class="t-label-section" data-ds-typo="label-section">Xem tất cả</span>
+      <small class="t-body-caption" data-ds-typo="body-caption" data-ds-color="text-secondary">${total} tin đã xem</small>
+    </a>`;
+  const skeleton = () => `<div class="hscroll" aria-busy="true" aria-label="Đang tải tin đã xem">${'<div class="sk-card"><div class="sk img"></div><div class="sk l1"></div><div class="sk l2"></div><div class="sk l3"></div></div>'.repeat(3)}</div>`;
+
+  /* Business rules: lọc tin không còn hiệu lực → đếm → chọn layout */
+  function resolve(raw) {
+    const valid = raw.filter(a => !a.status || a.status === 'active');
+    return { valid, shown: valid.slice(0, MAX), total: valid.length };
+  }
+
+  const sec = $('#viewed'), body = $('#viewedBody');
+  let timer;
+  function showSection(on) {
+    sec.classList.remove('collapsed'); sec.style.height = ''; sec.style.opacity = '';
+    sec.hidden = !on;
+  }
+  function render(state) {
+    clearTimeout(timer);
+    document.documentElement.dataset.state = state;
+    if (state === 'hidden') { showSection(false); sec.classList.add('collapsed'); return; }
+    if (state === 'loading') {
+      showSection(true);
+      body.innerHTML = skeleton();
+      setHead(true);
+      if (!document.documentElement.classList.contains('artboard')) timer = setTimeout(() => render('default'), 1500);
+      return;
+    }
+    setHead(false);
+    const { shown, total } = resolve(SETS[state]());
+    if (total === 0) { showSection(false); body.innerHTML = ''; return; }
+    showSection(true);
+    if (total === 1) body.innerHTML = hCard(shown[0]);
+    else body.innerHTML = `<div class="hscroll">${shown.map(a => vCard(a)).join('')}${total > MAX ? seeAll(total) : ''}</div>`;
+    wire(body);
+  }
+  // Header skeleton while loading
+  const headEl = sec.querySelector('.sec-head'), headHTML = headEl.innerHTML;
+  function setHead(loading) {
+    if (loading) headEl.innerHTML = '<div class="sec-title"><div class="sk t1"></div><div class="sk t2"></div></div>';
+    else if (headEl.innerHTML !== headHTML) { headEl.innerHTML = headHTML; $('#viewedClose').onclick = openDrawer; }
+  }
+
+  /* Host sections */
+  $('#chungcuList').innerHTML = CHUNGCU.map(a => vCard(a)).join('');
+  $('#feed').innerHTML = FEED.map(a => vCard(a).replace('</a>', `<span class="loc t-body-caption">${icon('Location-outline', 'ds-icon--16')}<span>${a.loc}</span>${icon('Morevertical-outline', 'ds-icon--20')}</span></a>`)).join('');
+
+  /* Interactions */
+  const favs = new Set();
+  function wire(root) {
+    root.querySelectorAll('.hscroll').forEach(dragScroll);
+  }
+  document.addEventListener('click', e => {
+    const f = e.target.closest('.fav');
+    if (f) {
+      e.preventDefault(); e.stopPropagation();
+      const on = !f.classList.contains('on'); f.classList.toggle('on', on); f.setAttribute('aria-pressed', on);
+      f.querySelector('use').setAttribute('href', on ? '#ds-Heart-fill' : '#ds-Heart-outline');
+      f.classList.add('pop'); setTimeout(() => f.classList.remove('pop'), 200);
+      return;
+    }
+    if (e.target.closest('a')) e.preventDefault();
+  });
+  document.addEventListener('keydown', e => {
+    if ((e.key === 'Enter' || e.key === ' ') && e.target.classList.contains('fav')) { e.preventDefault(); e.target.click(); }
+    if (e.key === 'Escape') closeDrawer();
+  });
+  function dragScroll(el) {
+    let d = null, moved = false;
+    el.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse') return; d = { x: e.clientX, s: el.scrollLeft }; moved = false; });
+    el.addEventListener('pointermove', e => {
+      if (!d) return; const dx = e.clientX - d.x;
+      if (Math.abs(dx) > 4) { moved = true; el.classList.add('dragging'); }
+      el.scrollLeft = d.s - dx;
+    });
+    const end = () => { if (!d) return; d = null; el.classList.remove('dragging'); };
+    el.addEventListener('pointerup', end); el.addEventListener('pointerleave', end);
+    el.addEventListener('click', e => { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
+  }
+  wire(document);
+
+  const screen = $('#screen');
+  function openDrawer() { screen.classList.add('open'); setTimeout(() => $('#drConfirm').focus({ preventScroll: true }), 300); }
+  function closeDrawer() { screen.classList.remove('open'); }
+  $('#viewedClose').onclick = openDrawer;
+  $('#scrim').onclick = closeDrawer; $('#drClose').onclick = closeDrawer; $('#drCancel').onclick = closeDrawer;
+  $('#drConfirm').onclick = () => {
+    closeDrawer();
+    sec.style.height = sec.offsetHeight + 'px';
+    requestAnimationFrame(() => { sec.style.height = '0px'; sec.style.opacity = '0'; });
+    setTimeout(() => { render('hidden'); notify('hidden'); }, 320);
+  };
+
+  /* Sticky header turns white on scroll */
+  const scroll = $('#scroll'), topbar = $('#topbar');
+  scroll.addEventListener('scroll', () => topbar.classList.toggle('scrolled', scroll.scrollTop > 40), { passive: true });
+
+  function notify(state) { try { parent.postMessage({ type: 'viewed-state', state }, '*'); } catch (e) {} }
+
+  /* Public API for the canvas */
+  window.setViewedState = s => { closeDrawer(); scroll.scrollTop = 0; render(s); };
+  window.openHideDrawer = () => { screen.classList.add('open'); };
+
+  /* Boot from <html data-*> (canvas artboards) */
+  const ds = document.documentElement.dataset;
+  render(ds.state || 'loading');
+  if (ds.drawer === 'open') screen.classList.add('open');
+  const after = () => {
+    if (ds.scrollEnd) body.querySelectorAll('.hscroll').forEach(h => h.scrollLeft = h.scrollWidth);
+    if (ds.scrollY) scroll.scrollTop = +ds.scrollY;
+  };
+  after(); addEventListener('load', after);
+})();
+</script>
+</body>
+</html>
