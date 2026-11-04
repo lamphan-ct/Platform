@@ -1,0 +1,150 @@
+/* Chotot Clad UI — Color tokens
+ * Source of truth: clad-ui theme/chotot.js (colors). Base palettes + semantic aliases.
+ * Brand color is "vertical" yellow (#FFD400). Neutrals carry most surfaces & text.
+ */
+:root {
+  /* ---- Neutrals / Gray ramp ---- */
+  --ct-gray-0: #FFFFFF;
+  --ct-gray-25: #F7F7F7;
+  --ct-gray-50: #F4F4F4;
+  --ct-gray-75: #E8E8E8;
+  --ct-gray-100: #DADADA;
+  --ct-gray-200: #C0C0C0;
+  --ct-gray-300: #A7A7A7;
+  --ct-gray-400: #8C8C8C;
+  --ct-gray-500: #737373;
+  --ct-gray-600: #595959;
+  --ct-gray-700: #404040;
+  --ct-gray-800: #2E2E2E;
+  --ct-gray-900: #222222;
+
+  /* ---- Yellow / Brand "vertical" ramp ---- */
+  --ct-yellow-50: #FFF8D6;
+  --ct-yellow-75: #FFE884;
+  --ct-yellow-100: #FFD400;
+  --ct-yellow-200: #FFC800;
+  --ct-yellow-300: #FFBA00;
+  --ct-yellow-400: #CC8F00;
+  --ct-yellow-500: #9E6C00;
+  --ct-yellow-600: #7F5500;
+  --ct-yellow-700: #603F00;
+  --ct-yellow-800: #4F3200;
+  --ct-yellow-900: #432900;
+
+  /* ---- Red ramp (error / critical) ---- */
+  --ct-red-50: #FEEBEF;
+  --ct-red-75: #FCD6DF;
+  --ct-red-100: #FBC2CF;
+  --ct-red-200: #F9ADBF;
+  --ct-red-300: #F6849E;
+  --ct-red-400: #F35B7E;
+  --ct-red-500: #F0325E;
+  --ct-red-600: #CB294E;
+  --ct-red-700: #A6203F;
+  --ct-red-800: #82162F;
+  --ct-red-900: #5D0D20;
+
+  /* ---- Orange ramp (warning) ---- */
+  --ct-orange-50: #FFF4EC;
+  --ct-orange-75: #FFE4D5;
+  --ct-orange-100: #FFCEB4;
+  --ct-orange-200: #FFA97B;
+  --ct-orange-300: #FB7328;
+  --ct-orange-400: #E16725;
+  --ct-orange-500: #C44E0E;
+  --ct-orange-600: #993600;
+  --ct-orange-700: #6D2600;
+  --ct-orange-800: #591F00;
+  --ct-orange-900: #471900;
+
+  /* ---- Green ramp (success / positive) ---- */
+  --ct-green-50: #ECF9F1;
+  --ct-green-75: #D9F2E4;
+  --ct-green-100: #ABE7C5;
+  --ct-green-200: #6ED498;
+  --ct-green-300: #26C06E;
+  --ct-green-400: #12A154;
+  --ct-green-500: #108446;
+  --ct-green-600: #0F6638;
+  --ct-green-700: #0D4A29;
+  --ct-green-800: #0E3A22;
+  --ct-green-900: #082B18;
+
+  /* ---- Blue ramp (info / link) ---- */
+  --ct-blue-50: #F2F6FC;
+  --ct-blue-75: #E4ECFB;
+  --ct-blue-100: #CADBF7;
+  --ct-blue-200: #A3C0F5;
+  --ct-blue-300: #7FA7F0;
+  --ct-blue-400: #548AF0;
+  --ct-blue-500: #306BD9;
+  --ct-blue-600: #1952BA;
+  --ct-blue-700: #113B8A;
+  --ct-blue-800: #0B2F70;
+  --ct-blue-900: #0B234F;
+
+  /* ============================================================
+   * SEMANTIC ALIASES — use these in product UI, not raw ramps.
+   * ============================================================ */
+
+  /* Backgrounds / surfaces */
+  --ct-bg-brand: var(--ct-yellow-100);          /* banners, illustrations, header */
+  --ct-bg-brand-light: var(--ct-yellow-50);
+  --ct-bg-primary: var(--ct-gray-0);            /* layer 1 / cards */
+  --ct-bg-secondary: var(--ct-gray-50);         /* page background */
+  --ct-bg-tertiary: var(--ct-gray-75);
+  --ct-bg-inverted: var(--ct-gray-900);         /* default snackbar */
+  --ct-bg-overlay: rgba(34, 34, 34, 0.5);       /* modal / drawer scrim */
+  --ct-bg-info-light: var(--ct-blue-50);
+  --ct-bg-success-light: var(--ct-green-50);
+  --ct-bg-error-light: var(--ct-red-50);
+  --ct-bg-warning-light: var(--ct-orange-50);
+  --ct-bg-disabled: var(--ct-gray-400);
+
+  /* Text */
+  --ct-text-primary: var(--ct-gray-900);        /* body, headers */
+  --ct-text-secondary: var(--ct-gray-600);      /* help text */
+  --ct-text-tertiary: var(--ct-gray-400);       /* meta, timestamps */
+  --ct-text-brand: var(--ct-yellow-400);        /* brand text (dark yellow for contrast) */
+  --ct-text-link: var(--ct-blue-500);
+  --ct-text-info: var(--ct-blue-500);
+  --ct-text-success: var(--ct-green-400);
+  --ct-text-error: var(--ct-red-500);
+  --ct-text-warning: var(--ct-orange-400);
+  --ct-text-disabled: var(--ct-gray-200);
+  --ct-text-blank: var(--ct-gray-0);            /* text on color */
+  --ct-text-on-brand: var(--ct-gray-900);       /* text on yellow */
+
+  /* Borders */
+  --ct-border-thin: var(--ct-gray-75);          /* dividers, card stroke */
+  --ct-border-regular: var(--ct-gray-100);      /* inputs, buttons */
+  --ct-border-bold: var(--ct-gray-400);         /* hover */
+  --ct-border-active: var(--ct-yellow-100);     /* focus / selected */
+  --ct-border-brand: var(--ct-yellow-100);
+  --ct-border-info: var(--ct-blue-500);
+  --ct-border-success: var(--ct-green-400);
+  --ct-border-error: var(--ct-red-500);
+  --ct-border-black: var(--ct-gray-900);
+
+  /* Icons */
+  --ct-icon-brand: var(--ct-yellow-300);
+  --ct-icon-primary: var(--ct-gray-900);
+  --ct-icon-secondary: var(--ct-gray-600);
+  --ct-icon-tertiary: var(--ct-gray-400);
+  --ct-icon-disabled: var(--ct-gray-200);
+
+  /* Buttons */
+  --ct-button-primary: var(--ct-yellow-100);    /* solid primary = brand yellow */
+  --ct-button-secondary: var(--ct-yellow-50);   /* tonal */
+  --ct-button-info: var(--ct-blue-500);
+  --ct-button-success: var(--ct-green-400);
+  --ct-button-error: var(--ct-red-500);
+  --ct-button-disabled: var(--ct-gray-200);
+
+  /* Interaction states */
+  --ct-brand-hover: var(--ct-yellow-75);
+  --ct-brand-pressed: var(--ct-yellow-200);
+  --ct-brand-light-hover: var(--ct-yellow-50);
+  --ct-neutral-light-hover: var(--ct-gray-75);
+  --ct-neutral-light-pressed: var(--ct-gray-100);
+}

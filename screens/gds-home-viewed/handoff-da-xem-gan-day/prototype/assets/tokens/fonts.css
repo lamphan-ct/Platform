@@ -1,0 +1,6 @@
+/* Chotot Clad UI — Webfonts
+ * Brand typeface: Reddit Sans (body + heading). Roboto is the legacy fallback.
+ * Loaded from Google Fonts (the real families used in production).
+ */
+@import url('https://fonts.googleapis.com/css2?family=Reddit+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap');

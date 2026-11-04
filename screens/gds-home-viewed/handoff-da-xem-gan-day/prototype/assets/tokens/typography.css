@@ -1,0 +1,39 @@
+/* Chotot Clad UI — Typography tokens
+ * Families: Reddit Sans (brand). Type system is a matrix:
+ *   Roles  : Display, Header, Label, Body, Note, Tagline
+ *   Scales : Page, Section, Caption, Annotation (largest -> smallest)
+ * Each composite token bundles font-size / line-height / weight.
+ */
+:root {
+  /* Families */
+  --ct-font-body: 'Reddit Sans', Helvetica, Arial, Roboto, sans-serif;
+  --ct-font-heading: 'Reddit Sans', Helvetica, Arial, Roboto, sans-serif;
+  --ct-font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+
+  /* Font sizes (rem, 16px root) */
+  --ct-fs-xxs: 0.625rem;  /* 10 */
+  --ct-fs-xs: 0.75rem;    /* 12 */
+  --ct-fs-sm: 0.875rem;   /* 14 — default body */
+  --ct-fs-md: 1rem;       /* 16 */
+  --ct-fs-lg: 1.125rem;   /* 18 */
+  --ct-fs-xl: 1.25rem;    /* 20 */
+  --ct-fs-xxl: 1.5rem;    /* 24 */
+  --ct-fs-xxxl: 2rem;     /* 32 */
+
+  /* Line heights */
+  --ct-lh-xs: 1rem;       /* 16 */
+  --ct-lh-xsm: 1.125rem;  /* 18 */
+  --ct-lh-sm: 1.25rem;    /* 20 */
+  --ct-lh-md: 1.5rem;     /* 24 */
+  --ct-lh-mdl: 1.75rem;   /* 28 */
+  --ct-lh-lg: 2rem;       /* 32 */
+  --ct-lh-xl: 2.5rem;     /* 40 */
+  --ct-lh-heading: 1.25; /* @kind font */
+  --ct-lh-paragraph: 1.5; /* @kind font */
+
+  /* Weights */
+  --ct-fw-regular: 400; /* @kind font */
+  --ct-fw-medium: 500; /* @kind font */
+  --ct-fw-semibold: 600; /* @kind font */
+  --ct-fw-bold: 700; /* @kind font */
+}

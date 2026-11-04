@@ -1,0 +1,82 @@
+/* Chotot Clad UI — Spacing, sizing, radius, shadow, z-index, motion tokens
+ * Source: clad-ui theme/chotot.js (space, sizes, radii, shadows, zIndices, durations).
+ */
+:root {
+  /* ---- Spacing scale (margin / padding / gap) ---- */
+  --ct-space-none: 0px;
+  --ct-space-xxxs: 2px;
+  --ct-space-xxs: 4px;
+  --ct-space-xs: 8px;
+  --ct-space-sm: 12px;
+  --ct-space-md: 16px;
+  --ct-space-mdl: 20px;
+  --ct-space-lg: 24px;
+  --ct-space-xl: 32px;
+  --ct-space-xxl: 48px;
+  --ct-space-xxxl: 64px;
+  --ct-space-xxxxl: 96px;
+  --ct-space-xxxxxl: 128px;
+
+  /* ---- Component sizes (control heights, icon boxes) ---- */
+  --ct-size-xxs: 16px;
+  --ct-size-xs: 20px;
+  --ct-size-sm: 24px;   /* small button / chip */
+  --ct-size-md: 28px;
+  --ct-size-lg: 32px;   /* medium button */
+  --ct-size-lxl: 40px;  /* large button / input */
+  --ct-size-xl: 48px;   /* xlarge button */
+  --ct-size-xxl: 64px;
+  --ct-size-button-max: 352px;
+
+  /* ---- Radii ---- */
+  --ct-radius-none: 0;
+  --ct-radius-xs: 2px;    /* images, thumbnails */
+  --ct-radius-sm: 4px;    /* small buttons */
+  --ct-radius-card: 6px;  /* inputs, cards ($sm) */
+  --ct-radius-md: 8px;    /* buttons (default) */
+  --ct-radius-lg: 12px;
+  --ct-radius-xl: 20px;   /* C2C home thumbnails */
+  --ct-radius-pill: 9999px;
+  --ct-radius-circle: 100%;
+
+  /* ---- Border widths ---- */
+  --ct-border-width-sm: 1px;   /* dividers */
+  --ct-border-width-md: 2px;   /* inputs / focus */
+  --ct-border-width-lg: 3px;
+
+  /* ---- Shadows ---- */
+  --ct-shadow-none: none;
+  --ct-shadow-sm: 0px 2px 4px rgba(0, 0, 0, 0.5);
+  --ct-shadow-md: 0px 0px 8px rgba(0, 0, 0, 0.3);
+  --ct-shadow-lg: 2px 2px 14px rgba(0, 0, 0, 0.3);
+  /* Practical card elevation used across product surfaces */
+  --ct-shadow-card: 0px 1px 4px rgba(0, 0, 0, 0.08);
+  --ct-shadow-pop: 0px 4px 16px rgba(0, 0, 0, 0.12);
+
+  /* ---- Gradients (image protection) ---- */
+  --ct-gradient-to-dark: linear-gradient(180deg, rgba(0, 0, 0, 0) 3%, #101426 100%); /* @kind other */
+  --ct-gradient-to-light: linear-gradient(0deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%); /* @kind other */
+
+  /* ---- z-index ---- */
+  --ct-z-down: -1; /* @kind other */
+  --ct-z-base: 0; /* @kind other */
+  --ct-z-up: 1; /* @kind other */
+  --ct-z-modal: 1600; /* @kind other */
+  --ct-z-dropdown: 1700; /* @kind other */
+  --ct-z-tooltip: 1800; /* @kind other */
+  --ct-z-notification: 1900; /* @kind other */
+
+  /* ---- Motion durations ---- */
+  --ct-duration-xxxs: 100ms; /* @kind other */
+  --ct-duration-xxs: 150ms; /* @kind other */
+  --ct-duration-xs: 300ms; /* @kind other */
+  --ct-duration-sm: 500ms; /* @kind other */
+  --ct-ease: ease; /* @kind other */
+
+  /* ---- Breakpoints (reference) ---- */
+  --ct-bp-sm: 576px; /* @kind other */
+  --ct-bp-md: 768px; /* @kind other */
+  --ct-bp-lg: 992px; /* @kind other */
+  --ct-bp-xl: 1280px; /* @kind other */
+  --ct-bp-xxl: 1440px; /* @kind other */
+}
